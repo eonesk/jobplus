@@ -1,5 +1,7 @@
 package job.resume.license.bean;
 
+import java.util.Date;
+
 public class RS_licenseDTO {
 
     // 자격증seq 
@@ -12,7 +14,7 @@ public class RS_licenseDTO {
     private String rslsCompany;
 
     // 취득년월 
-    private String rslsDate;
+    private Date rslsDate;
 
     // 회원 아이디 
     private String mId;
@@ -41,11 +43,11 @@ public class RS_licenseDTO {
         this.rslsCompany = rslsCompany;
     }
 
-    public String getRslsDate() {
+    public Date getRslsDate() {
         return rslsDate;
     }
 
-    public void setRslsDate(String rslsDate) {
+    public void setRslsDate(Date rslsDate) {
         this.rslsDate = rslsDate;
     }
 

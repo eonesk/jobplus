@@ -1,5 +1,7 @@
 package job.recruitment.bean;
 
+import java.util.Date;
+
 public class recruitmentDTO {
 
     // 채용공고seq 
@@ -18,10 +20,10 @@ public class recruitmentDTO {
     private String rmWorktype;
 
     // 시작일 
-    private String rmStartdate;
+    private Date rmStartdate;
 
     // 종료일 
-    private String rmEnddate;
+    private Date rmEnddate;
 
     // 지원방식 
     private String rmSupport;
@@ -90,19 +92,19 @@ public class recruitmentDTO {
         this.rmWorktype = rmWorktype;
     }
 
-    public String getRmStartdate() {
+    public Date getRmStartdate() {
         return rmStartdate;
     }
 
-    public void setRmStartdate(String rmStartdate) {
+    public void setRmStartdate(Date rmStartdate) {
         this.rmStartdate = rmStartdate;
     }
 
-    public String getRmEnddate() {
+    public Date getRmEnddate() {
         return rmEnddate;
     }
 
-    public void setRmEnddate(String rmEnddate) {
+    public void setRmEnddate(Date rmEnddate) {
         this.rmEnddate = rmEnddate;
     }
 

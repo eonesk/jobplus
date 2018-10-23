@@ -1,5 +1,7 @@
 package job.resume.edu.bean;
 
+import java.util.Date;
+
 public class RS_eduDTO {
 
     // 교육 이수seq 
@@ -12,10 +14,10 @@ public class RS_eduDTO {
     private String rseCompany;
 
     // 시작년월 
-    private String rseStartdate;
+    private Date rseStartdate;
 
     // 종료년월 
-    private String rseEnddate;
+    private Date rseEnddate;
 
     // 교육내용 
     private String rseContent;
@@ -47,19 +49,19 @@ public class RS_eduDTO {
         this.rseCompany = rseCompany;
     }
 
-    public String getRseStartdate() {
+    public Date getRseStartdate() {
         return rseStartdate;
     }
 
-    public void setRseStartdate(String rseStartdate) {
+    public void setRseStartdate(Date rseStartdate) {
         this.rseStartdate = rseStartdate;
     }
 
-    public String getRseEnddate() {
+    public Date getRseEnddate() {
         return rseEnddate;
     }
 
-    public void setRseEnddate(String rseEnddate) {
+    public void setRseEnddate(Date rseEnddate) {
         this.rseEnddate = rseEnddate;
     }
 

@@ -1,5 +1,7 @@
 package job.resume.vip.bean;
 
+import java.util.Date;
+
 public class RS_vipDTO {
 
     // 취업우대seq 
@@ -21,10 +23,10 @@ public class RS_vipDTO {
     private String rsvMilitary;
 
     // 입대일 
-    private String rsvStartdate;
+    private Date rsvStartdate;
 
     // 제대일 
-    private String rsvEnddate;
+    private Date rsvEnddate;
 
     // 군별, 제대 계급 
     private String rsvPosition;
@@ -80,19 +82,19 @@ public class RS_vipDTO {
         this.rsvMilitary = rsvMilitary;
     }
 
-    public String getRsvStartdate() {
+    public Date getRsvStartdate() {
         return rsvStartdate;
     }
 
-    public void setRsvStartdate(String rsvStartdate) {
+    public void setRsvStartdate(Date rsvStartdate) {
         this.rsvStartdate = rsvStartdate;
     }
 
-    public String getRsvEnddate() {
+    public Date getRsvEnddate() {
         return rsvEnddate;
     }
 
-    public void setRsvEnddate(String rsvEnddate) {
+    public void setRsvEnddate(Date rsvEnddate) {
         this.rsvEnddate = rsvEnddate;
     }
 

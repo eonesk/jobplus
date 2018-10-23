@@ -1,5 +1,7 @@
 package job.recruitment.companyQA.bean;
 
+import java.util.Date;
+
 public class companyQADTO {
 
     // 기업정보QnAseq 
@@ -15,7 +17,7 @@ public class companyQADTO {
     private String cpqaAnswer;
 
     // 등록시간 
-    private String cpqaLogtime;
+    private Date cpqaLogtime;
 
     public Integer getCpqaSeq() {
         return cpqaSeq;
@@ -49,11 +51,11 @@ public class companyQADTO {
         this.cpqaAnswer = cpqaAnswer;
     }
 
-    public String getCpqaLogtime() {
+    public Date getCpqaLogtime() {
         return cpqaLogtime;
     }
 
-    public void setCpqaLogtime(String cpqaLogtime) {
+    public void setCpqaLogtime(Date cpqaLogtime) {
         this.cpqaLogtime = cpqaLogtime;
     }
 

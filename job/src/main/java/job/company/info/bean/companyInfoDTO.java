@@ -1,5 +1,7 @@
 package job.company.info.bean;
 
+import java.util.Date;
+
 public class companyInfoDTO {
 
     // 기업정보seq 
@@ -27,7 +29,7 @@ public class companyInfoDTO {
     private String cpiPhone;
 
     // 설립일 
-    private String cpiOpendate;
+    private Date cpiOpendate;
 
     // 홈페이지 
     private String cpiHomepage;
@@ -120,11 +122,11 @@ public class companyInfoDTO {
         this.cpiPhone = cpiPhone;
     }
 
-    public String getCpiOpendate() {
+    public Date getCpiOpendate() {
         return cpiOpendate;
     }
 
-    public void setCpiOpendate(String cpiOpendate) {
+    public void setCpiOpendate(Date cpiOpendate) {
         this.cpiOpendate = cpiOpendate;
     }
 

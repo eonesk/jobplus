@@ -1,5 +1,7 @@
 package job.web.QA.bean;
 
+import java.util.Date;
+
 public class QADTO {
 
     // QA게시판seq 
@@ -18,7 +20,7 @@ public class QADTO {
     private String mId;
 
     // 등록시간 
-    private String qaLogtime;
+    private Date qaLogtime;
 
     // 조회수 
     private Integer qaHit;
@@ -63,11 +65,11 @@ public class QADTO {
         this.mId = mId;
     }
 
-    public String getQaLogtime() {
+    public Date getQaLogtime() {
         return qaLogtime;
     }
 
-    public void setQaLogtime(String qaLogtime) {
+    public void setQaLogtime(Date qaLogtime) {
         this.qaLogtime = qaLogtime;
     }
 

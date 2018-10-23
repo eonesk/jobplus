@@ -1,5 +1,7 @@
 package job.resume.foreign.bean;
 
+import java.util.Date;
+
 public class RS_foreignDTO {
 
     // 해외경험seq 
@@ -9,10 +11,10 @@ public class RS_foreignDTO {
     private String rsfName;
 
     // 시작년월 
-    private String rsfStartdate;
+    private Date rsfStartdate;
 
     // 종료년월 
-    private String rsfEnddate;
+    private Date rsfEnddate;
 
     // 해외경험내용 
     private String rsfContent;
@@ -36,19 +38,19 @@ public class RS_foreignDTO {
         this.rsfName = rsfName;
     }
 
-    public String getRsfStartdate() {
+    public Date getRsfStartdate() {
         return rsfStartdate;
     }
 
-    public void setRsfStartdate(String rsfStartdate) {
+    public void setRsfStartdate(Date rsfStartdate) {
         this.rsfStartdate = rsfStartdate;
     }
 
-    public String getRsfEnddate() {
+    public Date getRsfEnddate() {
         return rsfEnddate;
     }
 
-    public void setRsfEnddate(String rsfEnddate) {
+    public void setRsfEnddate(Date rsfEnddate) {
         this.rsfEnddate = rsfEnddate;
     }
 

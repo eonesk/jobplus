@@ -1,5 +1,7 @@
 package job.resume.trophy.bean;
 
+import java.util.Date;
+
 public class RS_trophyDTO {
 
     // 수상seq 
@@ -12,7 +14,7 @@ public class RS_trophyDTO {
     private String rstCompany;
 
     // 수상연도 
-    private String rstDate;
+    private Date rstDate;
 
     // 수여내용 
     private String rstContent;
@@ -44,11 +46,11 @@ public class RS_trophyDTO {
         this.rstCompany = rstCompany;
     }
 
-    public String getRstDate() {
+    public Date getRstDate() {
         return rstDate;
     }
 
-    public void setRstDate(String rstDate) {
+    public void setRstDate(Date rstDate) {
         this.rstDate = rstDate;
     }
 
