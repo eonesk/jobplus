@@ -11,4 +11,5 @@ public interface RS_foreignService {
 	
 	//삭제
 	//int RS_foreignDelete(int rsimSeq);
+	int a=0;
 }
