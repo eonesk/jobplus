@@ -4,7 +4,7 @@ import java.util.Date;
 
 //회원정보 
 public class MemberDTO {
-
+	//주석인데
     // 회원 아이디 
     private String mId;
 
