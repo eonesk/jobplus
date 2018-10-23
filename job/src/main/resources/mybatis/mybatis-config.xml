@@ -4,9 +4,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<!-- 클래스에 별명 설정 -->
-	<typeAliases>
-		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"/>
-	</typeAliases>
+	
 	<!-- SQL Mapper 설정  -->
 	<mappers>
 		<!-- SQL문장이 기술되는 Mapper파일 -->
