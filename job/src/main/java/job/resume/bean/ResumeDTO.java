@@ -2,7 +2,6 @@ package job.resume.bean;
 
 //이력서 
 public class ResumeDTO {
-int a;
     // 이력서 seq 
     private Integer rsSeq;
 
