@@ -21,6 +21,9 @@ public class RS_foreignDTO {
 
     // 회원 아이디 
     private String mId;
+    
+    // 사용자 설정 이름 
+    private String rsfUsertitle;
 
     public Integer getRsfSeq() {
         return rsfSeq;
@@ -69,5 +72,12 @@ public class RS_foreignDTO {
     public void setMId(String mId) {
         this.mId = mId;
     }
+    
+    public String getRsfUsertitle() {
+        return rsfUsertitle;
+    }
 
+    public void setRsfUsertitle(String rsfUsertitle) {
+        this.rsfUsertitle = rsfUsertitle;
+    }
 }
