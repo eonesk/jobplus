@@ -14,4 +14,6 @@
     <mvc:annotation-driven />
 	<mvc:resources location="/script/" mapping="/script/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
+	<mvc:resources location="/member/" mapping="/member/**"/>
+	<mvc:resources location="/img/" mapping="/img/**"/>
 </beans>
