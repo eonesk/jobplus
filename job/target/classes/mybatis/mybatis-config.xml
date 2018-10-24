@@ -4,10 +4,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<!-- 클래스에 별명 설정 -->
-	
+	<typeAliases>		
+		<typeAlias type="job.resume.intern.bean.RS_internDTO" alias="internDTO"/>
+	</typeAliases>
 	<!-- SQL Mapper 설정  -->
 	<mappers>
 		<!-- SQL문장이 기술되는 Mapper파일 -->
-		<mapper resource="mybatis/member-mapping.xml"/>
+		<mapper resource="mybatis/intern-mapping.xml"/>
 	</mappers>
 </configuration>
