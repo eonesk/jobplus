@@ -14,4 +14,7 @@
     <mvc:annotation-driven />
 	<mvc:resources location="/script/" mapping="/script/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
+	
+	<!-- Controller 어노테이션 등록준비 -->
+    <context:component-scan base-package="job.resume.foreign.controller"/>
 </beans>
