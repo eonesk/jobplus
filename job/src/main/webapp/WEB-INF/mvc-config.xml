@@ -14,4 +14,6 @@
     <mvc:annotation-driven />
 	<mvc:resources location="/script/" mapping="/script/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
+	
+	<context:component-scan base-package="job.resume.controller"/>
 </beans>
