@@ -3,7 +3,7 @@ package job.resume.edu.bean;
 import java.util.Date;
 
 public class RS_eduDTO {
-
+int a=1;
     // 교육 이수seq 
     private Integer rseSeq;
 
