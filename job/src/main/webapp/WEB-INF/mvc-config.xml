@@ -15,6 +15,8 @@
 	<mvc:resources location="/script/" mapping="/script/**"/>
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
+	<mvc:resources location="/member/" mapping="/member/**"/>
+	<mvc:resources location="/img/" mapping="/img/**"/>
 	
 
 	<context:component-scan base-package="job.resume.intern.controller"/>
