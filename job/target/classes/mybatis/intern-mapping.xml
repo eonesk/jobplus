@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.internMapper">
+	
+	 <insert id="Write" parameterType="internDTO">
+	 	insert into RS_intern values  
+		(RS_intern_SEQ.nextval,0,0,sysdate,sysdate,0,0,0) 
+	 </insert>
+		
+	 <!-- sql문 write 고쳐야함	
+	 <insert id="Write" parameterType="internDTO">
+	 	insert into RS_intern values  
+		(seq_board.nextval, #{rsitType},#{rsitCompany},#{rsitStartdate},
+			#{rsitEnddate},#{rsitContent},#{mId},#{userTitle}) 
+	 </insert>
+	 -->
+	<delete id="Delete" parameterType="int">
+		delete RS_intern where rsitSeq=#{rsitSeq}
+	</delete>
+
+</mapper>
