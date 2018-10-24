@@ -19,7 +19,8 @@
 
 	<context:component-scan base-package="job.resume.intern.controller"/>
 	
-
+	<!-- Controller 어노테이션 등록준비 -->
+    <context:component-scan base-package="job.resume.foreign.controller"/>
 	<context:component-scan base-package="job.resume.controller"/>
 
 </beans>
