@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	 <insert id="Write" parameterType="internDTO">
 	 	insert into RS_intern values  
-		(RS_intern_SEQ.nextval,0,0,sysdate,sysdate,0,0,0) 
+		(RS_intern_SEQ.nextval,#{rsitType},#{rsitCompany},#{rsitStartdate},#{rsitEnddate},#{rsitContent},0,0) 
 	 </insert>
 		
 	 <!-- sql문 write 고쳐야함	
