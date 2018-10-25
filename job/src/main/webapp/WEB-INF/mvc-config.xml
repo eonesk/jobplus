@@ -18,7 +18,7 @@
 	<mvc:resources location="/member/" mapping="/member/**"/>
 	<mvc:resources location="/img/" mapping="/img/**"/>
 	<mvc:resources location="/pr/" mapping="/pr/**"/>
-	
+
 <!-- Controller 어노테이션 등록준비 -->
 	
 	<context:component-scan base-package="job.resume.pr.controller"/>

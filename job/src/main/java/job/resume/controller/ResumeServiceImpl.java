@@ -11,7 +11,7 @@ import job.resume.dao.ResumeDAO;
 public class ResumeServiceImpl implements ResumeService {
 
 	@Autowired
-	ResumeDAO resumeDAO;
+	private ResumeDAO resumeDAO;
 	
 	@Override
 	public int insertResume(ResumeDTO resumeDTO) {
