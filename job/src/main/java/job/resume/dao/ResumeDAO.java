@@ -14,7 +14,7 @@ import job.resume.bean.ResumeDTO;
 public class ResumeDAO {
 	
 	@Autowired
-	SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSession;
 	
 	//이력서 새로 입력
 	public int insertResume(ResumeDTO resumeDTO) {
