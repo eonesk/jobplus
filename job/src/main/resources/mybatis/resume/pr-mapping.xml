@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.prMapper">
+	<insert id="rsprSave" parameterType="rsprDTO">
+		insert into RS_pr values (RS_pr_SEQ.nextval, #{rsprTitle}, #{rsprContent}, #{mId}, #{rsprUserTitle})
+	</insert>
+	
+	<select id="selectNumberOfPr" parameterType="String" resultType="int">
+		select count (*) from RS_pr where M_id = #{memId}
+	</select>
+	
+	<select id="selectRsprUserTitleList" parameterType="String" resultType="String">
+		select rspr_UserTitle from RS_pr where M_id = #{memId}
+	</select>
+</mapper>

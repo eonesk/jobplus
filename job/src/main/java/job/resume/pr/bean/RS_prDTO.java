@@ -13,6 +13,9 @@ public class RS_prDTO {
 
     // 회원 아이디 
     private String mId;
+    
+    // 사용자 설정 이름
+    private String rsprUserTitle;
 
     public Integer getRsprSeq() {
         return rsprSeq;
@@ -45,5 +48,13 @@ public class RS_prDTO {
     public void setMId(String mId) {
         this.mId = mId;
     }
+
+	public String getRsprUserTitle() {
+		return rsprUserTitle;
+	}
+
+	public void setRsprUserTitle(String rsprUserTitle) {
+		this.rsprUserTitle = rsprUserTitle;
+	}
 
 }

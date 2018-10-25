@@ -3,7 +3,7 @@ package job.resume.edu.bean;
 import java.util.Date;
 
 public class RS_eduDTO {
-int a=1;
+	
     // 교육 이수seq 
     private Integer rseSeq;
 
@@ -24,6 +24,9 @@ int a=1;
 
     // 회원 아이디 
     private String mId;
+    
+    // 사용자 설정 이름
+    private String rseUserTitle;
 
     public Integer getRseSeq() {
         return rseSeq;
@@ -80,5 +83,13 @@ int a=1;
     public void setMId(String mId) {
         this.mId = mId;
     }
+
+	public String getRseUserTitle() {
+		return rseUserTitle;
+	}
+
+	public void setRseUserTitle(String rseUserTitle) {
+		this.rseUserTitle = rseUserTitle;
+	}
 
 }

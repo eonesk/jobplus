@@ -19,6 +19,9 @@ public class RS_licenseDTO {
     // 회원 아이디 
     private String mId;
 
+    // 사용자 설정 이름
+    private String rslsUserTitle;
+
     public Integer getRslsSeq() {
         return rslsSeq;
     }
@@ -58,5 +61,13 @@ public class RS_licenseDTO {
     public void setMId(String mId) {
         this.mId = mId;
     }
+
+	public String getRslsUserTitle() {
+		return rslsUserTitle;
+	}
+
+	public void setRslsUserTitle(String rslsUserTitle) {
+		this.rslsUserTitle = rslsUserTitle;
+	}
 
 }

@@ -38,7 +38,10 @@ public class RS_workLVDTO {
     private String rswCareer;
 
     // 회원 아이디 
-    private String mId;
+    private String mId;    
+
+    // 사용자 설정 이름
+    private String rswUserTitle;
 
     public Integer getRswSeq() {
         return rswSeq;
@@ -135,5 +138,13 @@ public class RS_workLVDTO {
     public void setMId(String mId) {
         this.mId = mId;
     }
+
+	public String getRswUserTitle() {
+		return rswUserTitle;
+	}
+
+	public void setRswUserTitle(String rswUserTitle) {
+		this.rswUserTitle = rswUserTitle;
+	}
 
 }

@@ -17,8 +17,11 @@
 	<mvc:resources location="/js/" mapping="/js/**"/>
 	<mvc:resources location="/member/" mapping="/member/**"/>
 	<mvc:resources location="/img/" mapping="/img/**"/>
+	<mvc:resources location="/pr/" mapping="/pr/**"/>
+
 <!-- Controller 어노테이션 등록준비 -->
 	
+	<context:component-scan base-package="job.resume.pr.controller"/>
 	<context:component-scan base-package="job.resume.intern.controller"/>
 	<context:component-scan base-package="job.resume.foreign.controller"/>
 	<context:component-scan base-package="job.resume.controller"/>
