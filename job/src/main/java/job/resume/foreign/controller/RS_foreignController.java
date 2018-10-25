@@ -19,16 +19,16 @@ import job.resume.foreign.bean.RS_foreignDTO;
 public class RS_foreignController {
 	
 	@Autowired
-	private RS_foreignService rs_foreignService;
+	private RS_foreignService foreignService;
 	
-	@RequestMapping(value="/resume/foreign/foreignWriteForm.do")
+	@RequestMapping(value="/foreign/foreignWriteForm.do")
 	public ModelAndView foreignWriteForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("foreignWriteForm.jsp");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/job/foreign/foreignWrite.do")
+	@RequestMapping(value="/foreign/foreignWrite.do")
 	public ModelAndView foreignWrite(HttpServletRequest request) {
 		
 		//데이터
@@ -46,14 +46,14 @@ public class RS_foreignController {
 		//나중에 session으로 바꾸기
 		String mId = request.getParameter("mId");
 		
-		RS_foreignDTO rs_foreignDTO = new RS_foreignDTO();
-		rs_foreignDTO.setRsfSeq(rsfSeq);
-		rs_foreignDTO.setRsfStartdate(date);
-		rs_foreignDTO.setRsfEnddate(date);
-		rs_foreignDTO.setRsfContent(rsfContent);
-		rs_foreignDTO.setMId(mId);
+		RS_foreignDTO foreignDTO = new RS_foreignDTO();
+		foreignDTO.setRsfSeq(rsfSeq);
+		foreignDTO.setRsfStartdate(date);
+		foreignDTO.setRsfEnddate(date);
+		foreignDTO.setRsfContent(rsfContent);
+		foreignDTO.setMId(mId);
 		//DB
-		int su = rs_foreignService.RS_foreignInsert(rs_foreignDTO);
+		int su = foreignService.foreignWrite(foreignDTO);
 		//화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);

@@ -1,7 +1,7 @@
 package job.resume.image.bean;
 
 public class RS_imageDTO {
-int a=1;
+
     // 증명사진 seq 
     private Integer rsimSeq;
 
@@ -10,6 +10,9 @@ int a=1;
 
     // 회원 아이디 
     private String mId;
+    
+    // 사용자 설정 이름 
+    private String rsimUsertitle;
 
     public Integer getRsimSeq() {
         return rsimSeq;
@@ -34,5 +37,12 @@ int a=1;
     public void setMId(String mId) {
         this.mId = mId;
     }
+    
+    public String getRsimUsertitle() {
+        return rsimUsertitle;
+    }
 
+    public void setRsimUsertitle(String rsimUsertitle) {
+        this.rsimUsertitle = rsimUsertitle;
+    }
 }

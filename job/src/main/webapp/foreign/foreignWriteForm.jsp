@@ -8,7 +8,7 @@
 <script type="text/javascript" src="../script/foreignScript.js"></script>
 </head>
 <body>
-<form action="foreignWrite.do" name="foreignWriteForm" method="post">
+<form action="../foreign/foreignWrite.do" name="foreignWriteForm" method="post">
 <div>아이디: <input type="text" name="mId"></div>
 <label>국가명: <input type="text" name="rsfName"></label>
 <label>시작년월: <input type="date" name="rsfStartdate"></label>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.imageMapper">
+	
+	 <insert id="imageWrite" parameterType="imageDTO">
+	 	insert into RS_image values 
+		(RS_image_SEQ.nextval, #{rsimName}, #{mId}, #{rsimUsertitle});
+	 </insert>
+		
+<!--
+	<delete id="imageDelete" parameterType="int">
+		delete RS_image where RSIM_seq = #{rsimSeq};
+	</delete>
+ -->
+</mapper>

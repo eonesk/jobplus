@@ -10,16 +10,16 @@ import job.resume.foreign.dao.RS_foreignDAO;
 public class RS_foreignServiceImpl implements RS_foreignService{
 	
 	@Autowired
-	private RS_foreignDAO rs_foreignDAO;
+	private RS_foreignDAO foreignDAO;
 	
 	@Override
-	public int RS_foreignInsert(RS_foreignDTO rs_foreignDTO) {
-		return rs_foreignDAO.RS_foreignInsert(rs_foreignDTO);
+	public int foreignWrite(RS_foreignDTO foreignDTO) {
+		return foreignDAO.foreignWrite(foreignDTO);
 	}
 
 	@Override
-	public int RS_foreignDelete(int rsfSeq) {
-		return rs_foreignDAO.RS_foreignDelete(rsfSeq);
+	public int foreignDelete(int rsfSeq) {
+		return foreignDAO.foreignDelete(rsfSeq);
 	}
 
 
