@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import job.member.bean.MemberDTO;
 import job.resume.bean.ResumeDTO;
 
 @Repository
@@ -36,12 +37,18 @@ public class ResumeDAO {
 		return sqlSession.update(mybatisPath, map);
 	}
 	
+	//이력서 삭제
 	public int deleteResume(int rsSeq, String mId) {
 		Map<String, String> map = new HashMap<>();
 		
 		map.put("rsSeq", String.valueOf(rsSeq));
 		map.put("mId", mId);
 		return sqlSession.delete("mybatis.resumeMapper.deleteResume", map);
+	}
+	
+	//이력서 만들때 멤버테이블에서 정보가져오기
+	public MemberDTO selectMember(String memId) {
+		return sqlSession.selectOne("mybatis.resumeMapper.selectMember", memId);
 	}
 	
 }

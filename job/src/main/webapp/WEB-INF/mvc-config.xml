@@ -18,11 +18,10 @@
 	<mvc:resources location="/member/" mapping="/member/**"/>
 	<mvc:resources location="/img/" mapping="/img/**"/>
 	
-
-	<context:component-scan base-package="job.resume.intern.controller"/>
+<!-- Controller 어노테이션 등록준비 -->
 	
-	<!-- Controller 어노테이션 등록준비 -->
-    <context:component-scan base-package="job.resume.foreign.controller"/>
+	<context:component-scan base-package="job.resume.intern.controller"/>
+	<context:component-scan base-package="job.resume.foreign.controller"/>
 	<context:component-scan base-package="job.resume.controller"/>
 
 </beans>
