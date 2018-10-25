@@ -14,6 +14,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{rslgSeq}, #{rspfSeq}, #{rsvSeq}, #{rsprSeq})
 	</insert>
 	
+	<select id="selectMember" parameterType="String" resultType="memberDTO">
+		select M_name, M_birth, M_gender, M_email, M_homeNum, M_phone, M_address from
+		member where M_id=#{memId}
+	</select>
+	
 	<update id="updateResume" parameterType="resumeDTO">
 		update resume set 
 		(RS_TITLE, RS_TYPE, RS_PAY, 
