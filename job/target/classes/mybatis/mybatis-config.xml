@@ -5,13 +5,19 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 클래스에 별명 설정 -->
 	<typeAliases>
-		<typeAlias type="job.member.bean.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="job.member.bean.MemberDTO" alias="memberDTO"/>		
+		<typeAlias type="job.resume.intern.bean.RS_internDTO" alias="internDTO"/>
+		<typeAlias type="job.resume.foreign.bean.RS_foreignDTO" alias="rs_foreignDTO"/>
 		<typeAlias type="job.resume.bean.ResumeDTO" alias="resumeDTO"/>
-	</typeAliases>
+	</typeAliases>	
 	
 	<!-- SQL Mapper 설정  -->
 	<mappers>
 		<!-- SQL문장이 기술되는 Mapper파일 -->
+		<mapper resource="mybatis/member-mapping.xml"/>
+		<mapper resource="mybatis/intern-mapping.xml"/>
+		<mapper resource="mybatis/member-mapping.xml"/>
+		<mapper resource="mybatis/foreign-mapping.xml"/>
 		<mapper resource="mybatis/resume-mapping.xml"/>
 	</mappers>
 </configuration>

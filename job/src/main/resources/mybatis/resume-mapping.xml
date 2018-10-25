@@ -4,7 +4,87 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.resumeMapper">
-	<insert id="" parameterType="resumeDTO">
-		
+	<insert id="insertResume" parameterType="resumeDTO">
+		insert into resume values
+		(resume_seq.nextval, #{mId}, #{rsTitle},#{rsType}, #{rsPay},
+		#{rsWorkspace1}, #{rsWorkspace2}, #{rsWorkspace3},
+		#{rsJob1}, #{rsJob2}, #{rsJob3},
+		#{rsimSeq}, #{rssSeq}, #{rswSeq}, #{rsitSeq},
+		#{rseSeq}, #{rslsSeq}, #{rstSeq}, #{rsfSeq},
+		#{rslgSeq}, #{rspfSeq}, #{rsvSeq}, #{rsprSeq})
 	</insert>
+	
+	<select id="selectMember" parameterType="String" resultType="memberDTO">
+		select M_name, M_birth, M_gender, M_email, M_homeNum, M_phone, M_address from
+		member where M_id=#{memId}
+	</select>
+	
+	<update id="updateResume" parameterType="resumeDTO">
+		update resume set 
+		(RS_TITLE, RS_TYPE, RS_PAY, 
+		RS_WORKSPACE1, RS_WORKSPACE2, RS_WORKSPACE3, 
+		RS_JOB1, RS_JOB2, RS_JOB3, 
+		RSIM_SEQ, RSS_SEQ, RSW_SEQ, RSIT_SEQ, 
+		RSE_SEQ, RSLS_SEQ, RST_SEQ, RSF_SEQ, 
+		RSLG_SEQ, RSPF_SEQ, RSV_SEQ, RSPR_SEQ) = 
+		(#{rsTitle},#{rsType}, #{rsPay},
+		#{rsWorkspace1}, #{rsWorkspace2}, #{rsWorkspace3},
+		#{rsJob1}, #{rsJob2}, #{rsJob3},
+		#{rsimSeq}, #{rssSeq}, #{rswSeq}, #{rsitSeq},
+		#{rseSeq}, #{rslsSeq}, #{rstSeq}, #{rsfSeq},
+		#{rslgSeq}, #{rspfSeq}, #{rsvSeq}, #{rsprSeq})
+		where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSIM_SEQ" parameterType="java.util.Map">
+		update resume set RSIM_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSS_SEQ" parameterType="java.util.Map">
+		update resume set RSS_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSW_SEQ" parameterType="java.util.Map">
+		update resume set RSW_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSIT_SEQ" parameterType="java.util.Map">
+		update resume set RSIT_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSE_SEQ" parameterType="java.util.Map">
+		update resume set RSE_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSLS_SEQ" parameterType="java.util.Map">
+		update resume set RSLS_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RST_SEQ" parameterType="java.util.Map">
+		update resume set RST_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSF_SEQ" parameterType="java.util.Map">
+		update resume set RSF_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSLG_SEQ" parameterType="java.util.Map">
+		update resume set RSLG_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSPF_SEQ" parameterType="java.util.Map">
+		update resume set RSPF_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSV_SEQ" parameterType="java.util.Map">
+		update resume set RSV_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<update id="updateResume_RSPR_SEQ" parameterType="java.util.Map">
+		update resume set RSPR_SEQ=#{tableSeq} where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</update>
+	
+	<delete id="deleteResume" parameterType="java.util.Map">
+		delete from resume where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+	</delete>
 </mapper>
