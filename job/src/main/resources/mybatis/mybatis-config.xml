@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<!-- SQL문장이 기술되는 Mapper파일 -->
 		<mapper resource="mybatis/member-mapping.xml"/>
-		<mapper resource="mybatis/member-mapping.xml"/>
+    <mapper resource="mybatis/member-mapping.xml"/>
 		<mapper resource="mybatis/resume-mapping.xml"/>
 		
 		<!-- SQL문장이 기술되는 Mapper파일 / resume 하위 테이블들 -->
