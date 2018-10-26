@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +12,23 @@
 	body{
 		padding: 0;
 		margin: 0;
+		position: static;
 	}
-		
+	#fixWidth{
+		width: 100%;
+	}
+	#left{
+		float: left;
+		width: 30%;
+	}
+	#right{
+		float: right;
+		width: 30%;
+	}
+	
 </style>
 <script type="text/javascript">
-	/* $(function() {
+	$(function() {
 		$("#header a").css("text-decoration", "none");
 		
 		$("#header").css("height", "30px");
@@ -26,41 +39,73 @@
 		$("#header #fixWidth").css("width", "60%");
 		$("#header #fixWidth").css("height", "30px");
 		
-		
-	}); */
+	});
 </script>
 </head>
 <body>
-	<!-- <div id="header" align="center">
+	<div id="header" align="center">
 		<div id="fixWidth">
-			<span id="inline-block">
+			<div id="left">
 				<a href="#">JOBPLUS</a>
-			</span>
-			<span id="inline-block" >
-				<a href="#">개인회원 홈</a>
+			</div>
+			<div id="right">
 				<a href="#">이력서 관리</a>
-			</span>
+			</div>
 		</div>
-	</div> -->
-	<div>
-		${sessionScope.memId }님의 이력서<br>
+	</div>
+	<div id="member_info">
+		${memberDTO.m_Name }님의 이력서<br>
 		제목
 		<input type="text" name="title"><br>
-		이름
-		${memberDTO.mName }
-		<input type="text" name="mName" value="${memberDTO.mName }"><br>
-		생년월일
-		<input type="text" name="mBirth" value="${memberDTO.mBirth }"><br>
-		성별
-		<input type="text" name="mGender" value="${memberDTO.mGender }"><br>
-		이메일
-		<input type="text" name="mEmail" value="${memberDTO.mEmail }"><br>
-		전화번호
-		<input type="text" name="mHomenum" value="${memberDTO.mHomenum }"><br>
-		휴대폰번호
-		<input type="text" name="mPhone" value="${memberDTO.mPhone }"><br>
-		주소
-		<input type="text" name="mAddress" value="${memberDTO.mAddress }"><br>
+		이름<input type="text" name="m_Name" value="${memberDTO.m_Name }"><br>
+		생년월일<input type="text" name="m_Birth" value="${memberDTO.m_Birth }"><br>
+		성별<select name="m_Gender">
+			<c:if test="${memberDTO.m_Gender == '남자' }">
+				<option value="남자" selected="selected">남자</option>
+				<option value="여자">여자</option>
+			</c:if>
+			<c:if test="${memberDTO.m_Gender == '여자' }">
+				<option value="남자">남자</option>
+				<option value="여자" selected="selected">여자</option>
+			</c:if>
+		</select>
+		<br>
+		이메일<input type="text" name="m_Email" value="${memberDTO.m_Email }"><br>
+		전화번호<input type="text" name="m_Homenum" value="${memberDTO.m_Homenum }"><br>
+		휴대폰번호<input type="text" name="m_Phone" value="${memberDTO.m_Phone }"><br>
+		주소<input type="text" name="m_Address" value="${memberDTO.m_Address }"><br>
+	</div>
+	<div id="working_conditions">
+		<select name="type">
+			<option value="정규직">정규직</option>
+			<option value="계약직">계약직</option>
+			<option value="병역특례">병역특례</option>
+			<option value="프리랜서">프리랜서</option>
+			<option value="파견대행">파견대행</option>
+			<option value="인턴직">인턴직</option>
+		</select>
+		<input type="number" >만원이상
+		<input type="checkbox" value="">면접 후 결정
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
