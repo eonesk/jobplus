@@ -49,8 +49,6 @@ public class ResumeDAO {
 	// 이력서 만들때 멤버테이블에서 정보가져오기
 	public MemberDTO selectMember(String memId) {
 		MemberDTO memberDTO = sqlSession.selectOne("mybatis.resumeMapper.selectMember", memId);
-		System.out.println("dao : "+memId);
-		System.out.println("dao : "+memberDTO);
 		return memberDTO;
 	}
 }

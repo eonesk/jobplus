@@ -28,7 +28,6 @@ public class ResumeController {
 		
 		String memId = (String) session.getAttribute("memId");
 		MemberDTO memberDTO = resumeService.selectMember(memId);
-		System.out.println(memberDTO);
 		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.setViewName("resumeWriteForm.jsp");
 		
@@ -57,28 +56,28 @@ public class ResumeController {
 		}
 		
 		ResumeDTO resumeDTO = new ResumeDTO();
-		resumeDTO.setMId((String)session.getAttribute("memId"));
-		resumeDTO.setRsTitle(request.getParameter("title"));
-		resumeDTO.setRsType(request.getParameter("type"));
-		resumeDTO.setRsPay(request.getParameter("pay"));
-		resumeDTO.setRsWorkspace1(request.getParameter("workspace1"));
-		resumeDTO.setRsWorkspace2(request.getParameter("workspace2"));
-		resumeDTO.setRsWorkspace3(request.getParameter("workspace3"));
-		resumeDTO.setRsJob1(request.getParameter("job1"));
-		resumeDTO.setRsJob2(request.getParameter("job2"));
-		resumeDTO.setRsJob3(request.getParameter("job3"));
-		resumeDTO.setRsimSeq(seq[0]);
-		resumeDTO.setRssSeq(seq[1]);
-		resumeDTO.setRswSeq(seq[2]);
-		resumeDTO.setRsitSeq(seq[3]);
-		resumeDTO.setRseSeq(seq[4]);
-		resumeDTO.setRslsSeq(seq[5]);
-		resumeDTO.setRstSeq(seq[6]);
-		resumeDTO.setRsfSeq(seq[7]);
-		resumeDTO.setRslgSeq(seq[8]);
-		resumeDTO.setRspfSeq(seq[9]);
-		resumeDTO.setRsvSeq(seq[10]);
-		resumeDTO.setRsprSeq(seq[11]);
+		resumeDTO.setM_Id((String)session.getAttribute("memId"));
+		resumeDTO.setRs_Title(request.getParameter("title"));
+		resumeDTO.setRs_Type(request.getParameter("type"));
+		resumeDTO.setRs_Pay(request.getParameter("pay"));
+		resumeDTO.setRs_Workspace1(request.getParameter("workspace1"));
+		resumeDTO.setRs_Workspace2(request.getParameter("workspace2"));
+		resumeDTO.setRs_Workspace3(request.getParameter("workspace3"));
+		resumeDTO.setRs_Job1(request.getParameter("job1"));
+		resumeDTO.setRs_Job2(request.getParameter("job2"));
+		resumeDTO.setRs_Job3(request.getParameter("job3"));
+		resumeDTO.setRsim_Seq(seq[0]);
+		resumeDTO.setRss_Seq(seq[1]);
+		resumeDTO.setRsw_Seq(seq[2]);
+		resumeDTO.setRsit_Seq(seq[3]);
+		resumeDTO.setRse_Seq(seq[4]);
+		resumeDTO.setRsls_Seq(seq[5]);
+		resumeDTO.setRst_Seq(seq[6]);
+		resumeDTO.setRsf_Seq(seq[7]);
+		resumeDTO.setRslg_Seq(seq[8]);
+		resumeDTO.setRspf_Seq(seq[9]);
+		resumeDTO.setRsv_Seq(seq[10]);
+		resumeDTO.setRspr_Seq(seq[11]);
 		
 		int su = resumeService.insertResume(resumeDTO);
 		

@@ -5,58 +5,58 @@ import java.util.Date;
 public class companyQADTO {
 
     // 기업정보QnAseq 
-    private Integer cpqaSeq;
+    private Integer cpqa_Seq;
 
     // 채용공고seq 
-    private Integer rmSeq;
+    private Integer rm_Seq;
 
     // 기업질문 
-    private String cpqaQuest;
+    private String cpqa_Quest;
 
     // 기업답변 
-    private String cpqaAnswer;
+    private String cpqa_Answer;
 
     // 등록시간 
-    private Date cpqaLogtime;
+    private Date cpqa_Logtime;
 
-    public Integer getCpqaSeq() {
-        return cpqaSeq;
-    }
+	public Integer getCpqa_Seq() {
+		return cpqa_Seq;
+	}
 
-    public void setCpqaSeq(Integer cpqaSeq) {
-        this.cpqaSeq = cpqaSeq;
-    }
+	public void setCpqa_Seq(Integer cpqa_Seq) {
+		this.cpqa_Seq = cpqa_Seq;
+	}
 
-    public Integer getRmSeq() {
-        return rmSeq;
-    }
+	public Integer getRm_Seq() {
+		return rm_Seq;
+	}
 
-    public void setRmSeq(Integer rmSeq) {
-        this.rmSeq = rmSeq;
-    }
+	public void setRm_Seq(Integer rm_Seq) {
+		this.rm_Seq = rm_Seq;
+	}
 
-    public String getCpqaQuest() {
-        return cpqaQuest;
-    }
+	public String getCpqa_Quest() {
+		return cpqa_Quest;
+	}
 
-    public void setCpqaQuest(String cpqaQuest) {
-        this.cpqaQuest = cpqaQuest;
-    }
+	public void setCpqa_Quest(String cpqa_Quest) {
+		this.cpqa_Quest = cpqa_Quest;
+	}
 
-    public String getCpqaAnswer() {
-        return cpqaAnswer;
-    }
+	public String getCpqa_Answer() {
+		return cpqa_Answer;
+	}
 
-    public void setCpqaAnswer(String cpqaAnswer) {
-        this.cpqaAnswer = cpqaAnswer;
-    }
+	public void setCpqa_Answer(String cpqa_Answer) {
+		this.cpqa_Answer = cpqa_Answer;
+	}
 
-    public Date getCpqaLogtime() {
-        return cpqaLogtime;
-    }
+	public Date getCpqa_Logtime() {
+		return cpqa_Logtime;
+	}
 
-    public void setCpqaLogtime(Date cpqaLogtime) {
-        this.cpqaLogtime = cpqaLogtime;
-    }
+	public void setCpqa_Logtime(Date cpqa_Logtime) {
+		this.cpqa_Logtime = cpqa_Logtime;
+	}
 
 }

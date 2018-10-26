@@ -3,91 +3,91 @@ package job.recruitment.condition.bean;
 public class RM_conditionDTO {
 
     // 채용공고seq 
-    private Integer rmSeq;
+    private Integer rm_Seq;
 
     // 급여 
-    private String rmcSalary;
+    private String rmc_Salary;
 
     // 업종1(대분류) 
-    private String rmcBusiness1;
+    private String rmc_Business1;
 
     // 업종2(중분류) 
-    private String rmcBusiness2;
+    private String rmc_Business2;
 
     // 업종3(소분류) 
-    private String rmcBusiness3;
+    private String rmc_Business3;
 
     // 근무지역 
-    private String rmcWorkspace;
+    private String rmc_Workspace;
 
     // 근무요일 
-    private String rmcWeek;
+    private String rmc_Week;
 
     // 근무시간 
-    private String rmcTime;
+    private String rmc_Time;
 
-    public Integer getRmSeq() {
-        return rmSeq;
-    }
+	public Integer getRm_Seq() {
+		return rm_Seq;
+	}
 
-    public void setRmSeq(Integer rmSeq) {
-        this.rmSeq = rmSeq;
-    }
+	public void setRm_Seq(Integer rm_Seq) {
+		this.rm_Seq = rm_Seq;
+	}
 
-    public String getRmcSalary() {
-        return rmcSalary;
-    }
+	public String getRmc_Salary() {
+		return rmc_Salary;
+	}
 
-    public void setRmcSalary(String rmcSalary) {
-        this.rmcSalary = rmcSalary;
-    }
+	public void setRmc_Salary(String rmc_Salary) {
+		this.rmc_Salary = rmc_Salary;
+	}
 
-    public String getRmcBusiness1() {
-        return rmcBusiness1;
-    }
+	public String getRmc_Business1() {
+		return rmc_Business1;
+	}
 
-    public void setRmcBusiness1(String rmcBusiness1) {
-        this.rmcBusiness1 = rmcBusiness1;
-    }
+	public void setRmc_Business1(String rmc_Business1) {
+		this.rmc_Business1 = rmc_Business1;
+	}
 
-    public String getRmcBusiness2() {
-        return rmcBusiness2;
-    }
+	public String getRmc_Business2() {
+		return rmc_Business2;
+	}
 
-    public void setRmcBusiness2(String rmcBusiness2) {
-        this.rmcBusiness2 = rmcBusiness2;
-    }
+	public void setRmc_Business2(String rmc_Business2) {
+		this.rmc_Business2 = rmc_Business2;
+	}
 
-    public String getRmcBusiness3() {
-        return rmcBusiness3;
-    }
+	public String getRmc_Business3() {
+		return rmc_Business3;
+	}
 
-    public void setRmcBusiness3(String rmcBusiness3) {
-        this.rmcBusiness3 = rmcBusiness3;
-    }
+	public void setRmc_Business3(String rmc_Business3) {
+		this.rmc_Business3 = rmc_Business3;
+	}
 
-    public String getRmcWorkspace() {
-        return rmcWorkspace;
-    }
+	public String getRmc_Workspace() {
+		return rmc_Workspace;
+	}
 
-    public void setRmcWorkspace(String rmcWorkspace) {
-        this.rmcWorkspace = rmcWorkspace;
-    }
+	public void setRmc_Workspace(String rmc_Workspace) {
+		this.rmc_Workspace = rmc_Workspace;
+	}
 
-    public String getRmcWeek() {
-        return rmcWeek;
-    }
+	public String getRmc_Week() {
+		return rmc_Week;
+	}
 
-    public void setRmcWeek(String rmcWeek) {
-        this.rmcWeek = rmcWeek;
-    }
+	public void setRmc_Week(String rmc_Week) {
+		this.rmc_Week = rmc_Week;
+	}
 
-    public String getRmcTime() {
-        return rmcTime;
-    }
+	public String getRmc_Time() {
+		return rmc_Time;
+	}
 
-    public void setRmcTime(String rmcTime) {
-        this.rmcTime = rmcTime;
-    }
+	public void setRmc_Time(String rmc_Time) {
+		this.rmc_Time = rmc_Time;
+	}
 
 }
