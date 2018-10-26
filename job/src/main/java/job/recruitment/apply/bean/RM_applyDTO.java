@@ -3,102 +3,104 @@ package job.recruitment.apply.bean;
 public class RM_applyDTO {
 
     // 채용공고seq 
-    private Integer rmSeq;
+    private Integer rm_Seq;
 
     // 학력조건 
-    private String rmaStudylv;
+    private String rma_Studylv;
 
     // 졸업여부 
-    private String rmaIsfinish;
+    private String rma_Isfinish;
 
     // 전공학과 
-    private String rmaMajor;
+    private String rma_Major;
 
     // 우대조건 
-    private String rmaVip;
+    private String rma_Vip;
 
     // 외국어 
-    private String rmaForeign;
+    private String rma_Foreign;
 
     // 자격증 
-    private String rmaLicense;
+    private String rma_License;
 
     // 성별 
-    private String rmaGender;
+    private String rma_Gender;
 
     // 연령 
-    private String rmaAge;
+    private String rma_Age;
 
-    public Integer getRmSeq() {
-        return rmSeq;
-    }
+	public Integer getRm_Seq() {
+		return rm_Seq;
+	}
 
-    public void setRmSeq(Integer rmSeq) {
-        this.rmSeq = rmSeq;
-    }
+	public void setRm_Seq(Integer rm_Seq) {
+		this.rm_Seq = rm_Seq;
+	}
 
-    public String getRmaStudylv() {
-        return rmaStudylv;
-    }
+	public String getRma_Studylv() {
+		return rma_Studylv;
+	}
 
-    public void setRmaStudylv(String rmaStudylv) {
-        this.rmaStudylv = rmaStudylv;
-    }
+	public void setRma_Studylv(String rma_Studylv) {
+		this.rma_Studylv = rma_Studylv;
+	}
 
-    public String getRmaIsfinish() {
-        return rmaIsfinish;
-    }
+	public String getRma_Isfinish() {
+		return rma_Isfinish;
+	}
 
-    public void setRmaIsfinish(String rmaIsfinish) {
-        this.rmaIsfinish = rmaIsfinish;
-    }
+	public void setRma_Isfinish(String rma_Isfinish) {
+		this.rma_Isfinish = rma_Isfinish;
+	}
 
-    public String getRmaMajor() {
-        return rmaMajor;
-    }
+	public String getRma_Major() {
+		return rma_Major;
+	}
 
-    public void setRmaMajor(String rmaMajor) {
-        this.rmaMajor = rmaMajor;
-    }
+	public void setRma_Major(String rma_Major) {
+		this.rma_Major = rma_Major;
+	}
 
-    public String getRmaVip() {
-        return rmaVip;
-    }
+	public String getRma_Vip() {
+		return rma_Vip;
+	}
 
-    public void setRmaVip(String rmaVip) {
-        this.rmaVip = rmaVip;
-    }
+	public void setRma_Vip(String rma_Vip) {
+		this.rma_Vip = rma_Vip;
+	}
 
-    public String getRmaForeign() {
-        return rmaForeign;
-    }
+	public String getRma_Foreign() {
+		return rma_Foreign;
+	}
 
-    public void setRmaForeign(String rmaForeign) {
-        this.rmaForeign = rmaForeign;
-    }
+	public void setRma_Foreign(String rma_Foreign) {
+		this.rma_Foreign = rma_Foreign;
+	}
 
-    public String getRmaLicense() {
-        return rmaLicense;
-    }
+	public String getRma_License() {
+		return rma_License;
+	}
 
-    public void setRmaLicense(String rmaLicense) {
-        this.rmaLicense = rmaLicense;
-    }
+	public void setRma_License(String rma_License) {
+		this.rma_License = rma_License;
+	}
 
-    public String getRmaGender() {
-        return rmaGender;
-    }
+	public String getRma_Gender() {
+		return rma_Gender;
+	}
 
-    public void setRmaGender(String rmaGender) {
-        this.rmaGender = rmaGender;
-    }
+	public void setRma_Gender(String rma_Gender) {
+		this.rma_Gender = rma_Gender;
+	}
 
-    public String getRmaAge() {
-        return rmaAge;
-    }
+	public String getRma_Age() {
+		return rma_Age;
+	}
 
-    public void setRmaAge(String rmaAge) {
-        this.rmaAge = rmaAge;
-    }
+	public void setRma_Age(String rma_Age) {
+		this.rma_Age = rma_Age;
+	}
+    
+    
 
 }

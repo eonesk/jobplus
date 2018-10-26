@@ -6,5 +6,5 @@ public interface RS_internService {
 	// 글 등록
 	int Write(RS_internDTO internDTO);	
 	// 글 삭제
-	int Delete(int rsitSeq);	
+	int Delete(int rsit_Seq);	
 }

@@ -12,12 +12,12 @@ public class RS_internDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	// 글 저장
-	public int Write(RS_internDTO rs_internDTO) {
-		return sqlSession.insert("mybatis.internMapper.Write", rs_internDTO);
+	public int Write(RS_internDTO internDTO) {
+		return sqlSession.insert("mybatis.internMapper.Write", internDTO);
 	}
 
 	// 글 삭제
-	public int Delete(int rsitSeq) {	
-		return sqlSession.delete("mybatis.internMapper.Delete", rsitSeq);
+	public int Delete(int rsit_Seq) {	
+		return sqlSession.delete("mybatis.internMapper.Delete", rsit_Seq);
 	}
 }

@@ -3,113 +3,113 @@ package job.company.member.bean;
 public class companyMemberDTO {
 
     // 기업아이디 
-    private String cpmId;
+    private String cpm_Id;
 
     // 기업비밀번호 
-    private String cpmPw;
+    private String cpm_Pw;
 
     // 사업자등록번호 
-    private String cpmNum;
+    private String cpm_Num;
 
     // 기업인증 
-    private String cpmConfirm;
+    private String cpm_Confirm;
 
     // 기업구분 
-    private String cpmType;
+    private String cpm_Type;
 
     // 개인정보보유기간 
-    private String cpmInfotime;
+    private String cpm_Infotime;
 
     // 기업명 
-    private String cpmCompanyname;
+    private String cpm_Companyname;
 
     // 대표자명 
-    private String cpmCeoname;
+    private String cpm_Ceoname;
 
     // 업종1(대분류) 
-    private String cpmBusiness1;
+    private String cpm_Business1;
 
     // 업종2(중분류) 
-    private String cpmBusiness2;
+    private String cpm_Business2;
 
-    public String getCpmId() {
-        return cpmId;
-    }
+	public String getCpm_Id() {
+		return cpm_Id;
+	}
 
-    public void setCpmId(String cpmId) {
-        this.cpmId = cpmId;
-    }
+	public void setCpm_Id(String cpm_Id) {
+		this.cpm_Id = cpm_Id;
+	}
 
-    public String getCpmPw() {
-        return cpmPw;
-    }
+	public String getCpm_Pw() {
+		return cpm_Pw;
+	}
 
-    public void setCpmPw(String cpmPw) {
-        this.cpmPw = cpmPw;
-    }
+	public void setCpm_Pw(String cpm_Pw) {
+		this.cpm_Pw = cpm_Pw;
+	}
 
-    public String getCpmNum() {
-        return cpmNum;
-    }
+	public String getCpm_Num() {
+		return cpm_Num;
+	}
 
-    public void setCpmNum(String cpmNum) {
-        this.cpmNum = cpmNum;
-    }
+	public void setCpm_Num(String cpm_Num) {
+		this.cpm_Num = cpm_Num;
+	}
 
-    public String getCpmConfirm() {
-        return cpmConfirm;
-    }
+	public String getCpm_Confirm() {
+		return cpm_Confirm;
+	}
 
-    public void setCpmConfirm(String cpmConfirm) {
-        this.cpmConfirm = cpmConfirm;
-    }
+	public void setCpm_Confirm(String cpm_Confirm) {
+		this.cpm_Confirm = cpm_Confirm;
+	}
 
-    public String getCpmType() {
-        return cpmType;
-    }
+	public String getCpm_Type() {
+		return cpm_Type;
+	}
 
-    public void setCpmType(String cpmType) {
-        this.cpmType = cpmType;
-    }
+	public void setCpm_Type(String cpm_Type) {
+		this.cpm_Type = cpm_Type;
+	}
 
-    public String getCpmInfotime() {
-        return cpmInfotime;
-    }
+	public String getCpm_Infotime() {
+		return cpm_Infotime;
+	}
 
-    public void setCpmInfotime(String cpmInfotime) {
-        this.cpmInfotime = cpmInfotime;
-    }
+	public void setCpm_Infotime(String cpm_Infotime) {
+		this.cpm_Infotime = cpm_Infotime;
+	}
 
-    public String getCpmCompanyname() {
-        return cpmCompanyname;
-    }
+	public String getCpm_Companyname() {
+		return cpm_Companyname;
+	}
 
-    public void setCpmCompanyname(String cpmCompanyname) {
-        this.cpmCompanyname = cpmCompanyname;
-    }
+	public void setCpm_Companyname(String cpm_Companyname) {
+		this.cpm_Companyname = cpm_Companyname;
+	}
 
-    public String getCpmCeoname() {
-        return cpmCeoname;
-    }
+	public String getCpm_Ceoname() {
+		return cpm_Ceoname;
+	}
 
-    public void setCpmCeoname(String cpmCeoname) {
-        this.cpmCeoname = cpmCeoname;
-    }
+	public void setCpm_Ceoname(String cpm_Ceoname) {
+		this.cpm_Ceoname = cpm_Ceoname;
+	}
 
-    public String getCpmBusiness1() {
-        return cpmBusiness1;
-    }
+	public String getCpm_Business1() {
+		return cpm_Business1;
+	}
 
-    public void setCpmBusiness1(String cpmBusiness1) {
-        this.cpmBusiness1 = cpmBusiness1;
-    }
+	public void setCpm_Business1(String cpm_Business1) {
+		this.cpm_Business1 = cpm_Business1;
+	}
 
-    public String getCpmBusiness2() {
-        return cpmBusiness2;
-    }
+	public String getCpm_Business2() {
+		return cpm_Business2;
+	}
 
-    public void setCpmBusiness2(String cpmBusiness2) {
-        this.cpmBusiness2 = cpmBusiness2;
-    }
+	public void setCpm_Business2(String cpm_Business2) {
+		this.cpm_Business2 = cpm_Business2;
+	}
 
 }

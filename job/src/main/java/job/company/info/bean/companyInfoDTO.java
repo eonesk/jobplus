@@ -5,201 +5,202 @@ import java.util.Date;
 public class companyInfoDTO {
 
     // 기업정보seq 
-    private Integer cpiSeq;
+    private Integer cpi_Seq;
 
     // 기업아이디 
-    private String cpmId;
+    private String cpm_Id;
 
     // 주요사업내용 
-    private String cpiBusinesscontent;
+    private String cpi_Businesscontent;
 
     // 브랜드명 
-    private String cpiBrandname;
+    private String cpi_Brandname;
 
     // 회사주소 
-    private String cpiAddress;
+    private String cpi_Address;
 
     // 해외여부 
-    private String cpiIsforeign;
+    private String cpi_Isforeign;
 
     // 기업형태 
-    private String cpiType;
+    private String cpi_Type;
 
     // 대표전화 
-    private String cpiPhone;
+    private String cpi_Phone;
 
     // 설립일 
-    private Date cpiOpendate;
+    private Date cpi_Opendate;
 
     // 홈페이지 
-    private String cpiHomepage;
+    private String cpi_Homepage;
 
     // 블로그 
-    private String cpiBlog;
+    private String cpi_Blog;
 
     // 기업SNS 
-    private String cpiSns;
+    private String cpi_Sns;
 
     // 기업로고seq 
-    private Integer cplSeq;
+    private Integer cpl_Seq;
 
     // 개요및비전 
-    private String cpiVision;
+    private String cpi_Vision;
 
     // 연혁및실적 
-    private String cpiHistory;
+    private String cpi_History;
 
     // 복리후생 
-    private String cpiWelfare;
+    private String cpi_Welfare;
 
     // 사내동호회 
-    private String cpiCafe;
+    private String cpi_Cafe;
 
     // 기타정보 
-    private String cpiEtc;
+    private String cpi_Etc;
 
-    public Integer getCpiSeq() {
-        return cpiSeq;
-    }
+	public Integer getCpi_Seq() {
+		return cpi_Seq;
+	}
 
-    public void setCpiSeq(Integer cpiSeq) {
-        this.cpiSeq = cpiSeq;
-    }
+	public void setCpi_Seq(Integer cpi_Seq) {
+		this.cpi_Seq = cpi_Seq;
+	}
 
-    public String getCpmId() {
-        return cpmId;
-    }
+	public String getCpm_Id() {
+		return cpm_Id;
+	}
 
-    public void setCpmId(String cpmId) {
-        this.cpmId = cpmId;
-    }
+	public void setCpm_Id(String cpm_Id) {
+		this.cpm_Id = cpm_Id;
+	}
 
-    public String getCpiBusinesscontent() {
-        return cpiBusinesscontent;
-    }
+	public String getCpi_Businesscontent() {
+		return cpi_Businesscontent;
+	}
 
-    public void setCpiBusinesscontent(String cpiBusinesscontent) {
-        this.cpiBusinesscontent = cpiBusinesscontent;
-    }
+	public void setCpi_Businesscontent(String cpi_Businesscontent) {
+		this.cpi_Businesscontent = cpi_Businesscontent;
+	}
 
-    public String getCpiBrandname() {
-        return cpiBrandname;
-    }
+	public String getCpi_Brandname() {
+		return cpi_Brandname;
+	}
 
-    public void setCpiBrandname(String cpiBrandname) {
-        this.cpiBrandname = cpiBrandname;
-    }
+	public void setCpi_Brandname(String cpi_Brandname) {
+		this.cpi_Brandname = cpi_Brandname;
+	}
 
-    public String getCpiAddress() {
-        return cpiAddress;
-    }
+	public String getCpi_Address() {
+		return cpi_Address;
+	}
 
-    public void setCpiAddress(String cpiAddress) {
-        this.cpiAddress = cpiAddress;
-    }
+	public void setCpi_Address(String cpi_Address) {
+		this.cpi_Address = cpi_Address;
+	}
 
-    public String getCpiIsforeign() {
-        return cpiIsforeign;
-    }
+	public String getCpi_Isforeign() {
+		return cpi_Isforeign;
+	}
 
-    public void setCpiIsforeign(String cpiIsforeign) {
-        this.cpiIsforeign = cpiIsforeign;
-    }
+	public void setCpi_Isforeign(String cpi_Isforeign) {
+		this.cpi_Isforeign = cpi_Isforeign;
+	}
 
-    public String getCpiType() {
-        return cpiType;
-    }
+	public String getCpi_Type() {
+		return cpi_Type;
+	}
 
-    public void setCpiType(String cpiType) {
-        this.cpiType = cpiType;
-    }
+	public void setCpi_Type(String cpi_Type) {
+		this.cpi_Type = cpi_Type;
+	}
 
-    public String getCpiPhone() {
-        return cpiPhone;
-    }
+	public String getCpi_Phone() {
+		return cpi_Phone;
+	}
 
-    public void setCpiPhone(String cpiPhone) {
-        this.cpiPhone = cpiPhone;
-    }
+	public void setCpi_Phone(String cpi_Phone) {
+		this.cpi_Phone = cpi_Phone;
+	}
 
-    public Date getCpiOpendate() {
-        return cpiOpendate;
-    }
+	public Date getCpi_Opendate() {
+		return cpi_Opendate;
+	}
 
-    public void setCpiOpendate(Date cpiOpendate) {
-        this.cpiOpendate = cpiOpendate;
-    }
+	public void setCpi_Opendate(Date cpi_Opendate) {
+		this.cpi_Opendate = cpi_Opendate;
+	}
 
-    public String getCpiHomepage() {
-        return cpiHomepage;
-    }
+	public String getCpi_Homepage() {
+		return cpi_Homepage;
+	}
 
-    public void setCpiHomepage(String cpiHomepage) {
-        this.cpiHomepage = cpiHomepage;
-    }
+	public void setCpi_Homepage(String cpi_Homepage) {
+		this.cpi_Homepage = cpi_Homepage;
+	}
 
-    public String getCpiBlog() {
-        return cpiBlog;
-    }
+	public String getCpi_Blog() {
+		return cpi_Blog;
+	}
 
-    public void setCpiBlog(String cpiBlog) {
-        this.cpiBlog = cpiBlog;
-    }
+	public void setCpi_Blog(String cpi_Blog) {
+		this.cpi_Blog = cpi_Blog;
+	}
 
-    public String getCpiSns() {
-        return cpiSns;
-    }
+	public String getCpi_Sns() {
+		return cpi_Sns;
+	}
 
-    public void setCpiSns(String cpiSns) {
-        this.cpiSns = cpiSns;
-    }
+	public void setCpi_Sns(String cpi_Sns) {
+		this.cpi_Sns = cpi_Sns;
+	}
 
-    public Integer getCplSeq() {
-        return cplSeq;
-    }
+	public Integer getCpl_Seq() {
+		return cpl_Seq;
+	}
 
-    public void setCplSeq(Integer cplSeq) {
-        this.cplSeq = cplSeq;
-    }
+	public void setCpl_Seq(Integer cpl_Seq) {
+		this.cpl_Seq = cpl_Seq;
+	}
 
-    public String getCpiVision() {
-        return cpiVision;
-    }
+	public String getCpi_Vision() {
+		return cpi_Vision;
+	}
 
-    public void setCpiVision(String cpiVision) {
-        this.cpiVision = cpiVision;
-    }
+	public void setCpi_Vision(String cpi_Vision) {
+		this.cpi_Vision = cpi_Vision;
+	}
 
-    public String getCpiHistory() {
-        return cpiHistory;
-    }
+	public String getCpi_History() {
+		return cpi_History;
+	}
 
-    public void setCpiHistory(String cpiHistory) {
-        this.cpiHistory = cpiHistory;
-    }
+	public void setCpi_History(String cpi_History) {
+		this.cpi_History = cpi_History;
+	}
 
-    public String getCpiWelfare() {
-        return cpiWelfare;
-    }
+	public String getCpi_Welfare() {
+		return cpi_Welfare;
+	}
 
-    public void setCpiWelfare(String cpiWelfare) {
-        this.cpiWelfare = cpiWelfare;
-    }
+	public void setCpi_Welfare(String cpi_Welfare) {
+		this.cpi_Welfare = cpi_Welfare;
+	}
 
-    public String getCpiCafe() {
-        return cpiCafe;
-    }
+	public String getCpi_Cafe() {
+		return cpi_Cafe;
+	}
 
-    public void setCpiCafe(String cpiCafe) {
-        this.cpiCafe = cpiCafe;
-    }
+	public void setCpi_Cafe(String cpi_Cafe) {
+		this.cpi_Cafe = cpi_Cafe;
+	}
 
-    public String getCpiEtc() {
-        return cpiEtc;
-    }
+	public String getCpi_Etc() {
+		return cpi_Etc;
+	}
 
-    public void setCpiEtc(String cpiEtc) {
-        this.cpiEtc = cpiEtc;
-    }
-
+	public void setCpi_Etc(String cpi_Etc) {
+		this.cpi_Etc = cpi_Etc;
+	}
+    
+    
 }

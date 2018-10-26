@@ -5,80 +5,81 @@ import java.util.Date;
 public class QADTO {
 
     // QA게시판seq 
-    private Integer qaSeq;
+    private Integer qa_Seq;
 
     // 분류 
-    private String qaType;
+    private String qa_Type;
 
     // 글제목 
-    private String qaTitle;
+    private String qa_Title;
 
     // 글내용 
-    private String qaContent;
+    private String qa_Content;
 
     // 아이디 
-    private String mId;
+    private String m_Id;
 
     // 등록시간 
-    private Date qaLogtime;
+    private Date qa_Logtime;
 
     // 조회수 
-    private Integer qaHit;
+    private Integer qa_Hit;
 
-    public Integer getQaSeq() {
-        return qaSeq;
-    }
+	public Integer getQa_Seq() {
+		return qa_Seq;
+	}
 
-    public void setQaSeq(Integer qaSeq) {
-        this.qaSeq = qaSeq;
-    }
+	public void setQa_Seq(Integer qa_Seq) {
+		this.qa_Seq = qa_Seq;
+	}
 
-    public String getQaType() {
-        return qaType;
-    }
+	public String getQa_Type() {
+		return qa_Type;
+	}
 
-    public void setQaType(String qaType) {
-        this.qaType = qaType;
-    }
+	public void setQa_Type(String qa_Type) {
+		this.qa_Type = qa_Type;
+	}
 
-    public String getQaTitle() {
-        return qaTitle;
-    }
+	public String getQa_Title() {
+		return qa_Title;
+	}
 
-    public void setQaTitle(String qaTitle) {
-        this.qaTitle = qaTitle;
-    }
+	public void setQa_Title(String qa_Title) {
+		this.qa_Title = qa_Title;
+	}
 
-    public String getQaContent() {
-        return qaContent;
-    }
+	public String getQa_Content() {
+		return qa_Content;
+	}
 
-    public void setQaContent(String qaContent) {
-        this.qaContent = qaContent;
-    }
+	public void setQa_Content(String qa_Content) {
+		this.qa_Content = qa_Content;
+	}
 
-    public String getMId() {
-        return mId;
-    }
+	public String getM_Id() {
+		return m_Id;
+	}
 
-    public void setMId(String mId) {
-        this.mId = mId;
-    }
+	public void setM_Id(String m_Id) {
+		this.m_Id = m_Id;
+	}
 
-    public Date getQaLogtime() {
-        return qaLogtime;
-    }
+	public Date getQa_Logtime() {
+		return qa_Logtime;
+	}
 
-    public void setQaLogtime(Date qaLogtime) {
-        this.qaLogtime = qaLogtime;
-    }
+	public void setQa_Logtime(Date qa_Logtime) {
+		this.qa_Logtime = qa_Logtime;
+	}
 
-    public Integer getQaHit() {
-        return qaHit;
-    }
+	public Integer getQa_Hit() {
+		return qa_Hit;
+	}
 
-    public void setQaHit(Integer qaHit) {
-        this.qaHit = qaHit;
-    }
+	public void setQa_Hit(Integer qa_Hit) {
+		this.qa_Hit = qa_Hit;
+	}
+
 
 }

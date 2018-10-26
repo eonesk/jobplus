@@ -3,14 +3,15 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mybatis.foreingMapper">
-	<insert id="RS_foreignInsert" parameterType="foreignDTO">
-		insert into RS_portfolio
-		values (#{rsfSeq} , #{rsfName} , #{rsfStartdate},
-		#{rsfEnddate} , #{rsfContent} , #{mId})
+<mapper namespace="mybatis.foreignMapper">
+	<insert id="foreignWrite" parameterType="foreignDTO">
+		insert into RS_foreign values 
+		(RS_foreign_SEQ.nextval, #{rsfName} , #{rsfStartdate},
+			#{rsfEnddate} , #{rsfContent} , #{mId} , #{rsfUsertitle})
 	</insert>
-	
-	<delete id="RS_foreignDelete" parameterType="integer">
-		delete RS_foreign where RSF_seq = #{rsfSeq};
+<!-- 
+	<delete id="foreignDelete" parameterType="int">
+		delete RS_foreign where RSF_seq = #{rsfSeq}
 	</delete>
+ -->	
 </mapper>

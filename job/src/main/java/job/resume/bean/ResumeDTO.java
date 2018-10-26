@@ -3,256 +3,257 @@ package job.resume.bean;
 //이력서 
 public class ResumeDTO {
     // 이력서 seq 
-    private Integer rsSeq;
+    private Integer rs_Seq;
 
     // 회원 아이디 
-    private String mId;
+    private String m_Id;
 
     // 이력서 제목 
-    private String rsTitle;
+    private String rs_Title;
 
     // 고용형태 
-    private String rsType;
+    private String rs_Type;
 
     // 희망연봉 
-    private String rsPay;
+    private String rs_Pay;
 
     // 희망근무지1 
-    private String rsWorkspace1;
+    private String rs_Workspace1;
 
     // 희망근무지2 
-    private String rsWorkspace2;
+    private String rs_Workspace2;
 
     // 희망근무지3 
-    private String rsWorkspace3;
+    private String rs_Workspace3;
 
     // 직무1 
-    private String rsJob1;
+    private String rs_Job1;
 
     // 직무2 
-    private String rsJob2;
+    private String rs_Job2;
 
     // 직무3 
-    private String rsJob3;
+    private String rs_Job3;
 
     // 증명사진 seq 
-    private Integer rsimSeq;
+    private Integer rsim_Seq;
 
     // 학력seq 
-    private Integer rssSeq;
+    private Integer rss_Seq;
 
     // 경력seq 
-    private Integer rswSeq;
+    private Integer rsw_Seq;
 
     // 인턴,대외활동seq 
-    private Integer rsitSeq;
+    private Integer rsit_Seq;
 
     // 교육 이수seq 
-    private Integer rseSeq;
+    private Integer rse_Seq;
 
     // 자격증seq 
-    private Integer rslsSeq;
+    private Integer rsls_Seq;
 
     // 수상seq 
-    private Integer rstSeq;
+    private Integer rst_Seq;
 
     // 해외경험seq 
-    private Integer rsfSeq;
+    private Integer rsf_Seq;
 
     // 어학seq 
-    private Integer rslgSeq;
+    private Integer rslg_Seq;
 
     // 포트폴리오seq 
-    private Integer rspfSeq;
+    private Integer rspf_Seq;
 
     // 취업우대seq 
-    private Integer rsvSeq;
+    private Integer rsv_Seq;
 
     // 자기소개서seq 
-    private Integer rsprSeq;
+    private Integer rspr_Seq;
 
-    public Integer getRsSeq() {
-        return rsSeq;
-    }
+	public Integer getRs_Seq() {
+		return rs_Seq;
+	}
 
-    public void setRsSeq(Integer rsSeq) {
-        this.rsSeq = rsSeq;
-    }
+	public void setRs_Seq(Integer rs_Seq) {
+		this.rs_Seq = rs_Seq;
+	}
 
-    public String getMId() {
-        return mId;
-    }
+	public String getM_Id() {
+		return m_Id;
+	}
 
-    public void setMId(String mId) {
-        this.mId = mId;
-    }
+	public void setM_Id(String m_Id) {
+		this.m_Id = m_Id;
+	}
 
-    public String getRsTitle() {
-        return rsTitle;
-    }
+	public String getRs_Title() {
+		return rs_Title;
+	}
 
-    public void setRsTitle(String rsTitle) {
-        this.rsTitle = rsTitle;
-    }
+	public void setRs_Title(String rs_Title) {
+		this.rs_Title = rs_Title;
+	}
 
-    public String getRsType() {
-        return rsType;
-    }
+	public String getRs_Type() {
+		return rs_Type;
+	}
 
-    public void setRsType(String rsType) {
-        this.rsType = rsType;
-    }
+	public void setRs_Type(String rs_Type) {
+		this.rs_Type = rs_Type;
+	}
 
-    public String getRsPay() {
-        return rsPay;
-    }
+	public String getRs_Pay() {
+		return rs_Pay;
+	}
 
-    public void setRsPay(String rsPay) {
-        this.rsPay = rsPay;
-    }
+	public void setRs_Pay(String rs_Pay) {
+		this.rs_Pay = rs_Pay;
+	}
 
-    public String getRsWorkspace1() {
-        return rsWorkspace1;
-    }
+	public String getRs_Workspace1() {
+		return rs_Workspace1;
+	}
 
-    public void setRsWorkspace1(String rsWorkspace1) {
-        this.rsWorkspace1 = rsWorkspace1;
-    }
+	public void setRs_Workspace1(String rs_Workspace1) {
+		this.rs_Workspace1 = rs_Workspace1;
+	}
 
-    public String getRsWorkspace2() {
-        return rsWorkspace2;
-    }
+	public String getRs_Workspace2() {
+		return rs_Workspace2;
+	}
 
-    public void setRsWorkspace2(String rsWorkspace2) {
-        this.rsWorkspace2 = rsWorkspace2;
-    }
+	public void setRs_Workspace2(String rs_Workspace2) {
+		this.rs_Workspace2 = rs_Workspace2;
+	}
 
-    public String getRsWorkspace3() {
-        return rsWorkspace3;
-    }
+	public String getRs_Workspace3() {
+		return rs_Workspace3;
+	}
 
-    public void setRsWorkspace3(String rsWorkspace3) {
-        this.rsWorkspace3 = rsWorkspace3;
-    }
+	public void setRs_Workspace3(String rs_Workspace3) {
+		this.rs_Workspace3 = rs_Workspace3;
+	}
 
-    public String getRsJob1() {
-        return rsJob1;
-    }
+	public String getRs_Job1() {
+		return rs_Job1;
+	}
 
-    public void setRsJob1(String rsJob1) {
-        this.rsJob1 = rsJob1;
-    }
+	public void setRs_Job1(String rs_Job1) {
+		this.rs_Job1 = rs_Job1;
+	}
 
-    public String getRsJob2() {
-        return rsJob2;
-    }
+	public String getRs_Job2() {
+		return rs_Job2;
+	}
 
-    public void setRsJob2(String rsJob2) {
-        this.rsJob2 = rsJob2;
-    }
+	public void setRs_Job2(String rs_Job2) {
+		this.rs_Job2 = rs_Job2;
+	}
 
-    public String getRsJob3() {
-        return rsJob3;
-    }
+	public String getRs_Job3() {
+		return rs_Job3;
+	}
 
-    public void setRsJob3(String rsJob3) {
-        this.rsJob3 = rsJob3;
-    }
+	public void setRs_Job3(String rs_Job3) {
+		this.rs_Job3 = rs_Job3;
+	}
 
-    public Integer getRsimSeq() {
-        return rsimSeq;
-    }
+	public Integer getRsim_Seq() {
+		return rsim_Seq;
+	}
 
-    public void setRsimSeq(Integer rsimSeq) {
-        this.rsimSeq = rsimSeq;
-    }
+	public void setRsim_Seq(Integer rsim_Seq) {
+		this.rsim_Seq = rsim_Seq;
+	}
 
-    public Integer getRssSeq() {
-        return rssSeq;
-    }
+	public Integer getRss_Seq() {
+		return rss_Seq;
+	}
 
-    public void setRssSeq(Integer rssSeq) {
-        this.rssSeq = rssSeq;
-    }
+	public void setRss_Seq(Integer rss_Seq) {
+		this.rss_Seq = rss_Seq;
+	}
 
-    public Integer getRswSeq() {
-        return rswSeq;
-    }
+	public Integer getRsw_Seq() {
+		return rsw_Seq;
+	}
 
-    public void setRswSeq(Integer rswSeq) {
-        this.rswSeq = rswSeq;
-    }
+	public void setRsw_Seq(Integer rsw_Seq) {
+		this.rsw_Seq = rsw_Seq;
+	}
 
-    public Integer getRsitSeq() {
-        return rsitSeq;
-    }
+	public Integer getRsit_Seq() {
+		return rsit_Seq;
+	}
 
-    public void setRsitSeq(Integer rsitSeq) {
-        this.rsitSeq = rsitSeq;
-    }
+	public void setRsit_Seq(Integer rsit_Seq) {
+		this.rsit_Seq = rsit_Seq;
+	}
 
-    public Integer getRseSeq() {
-        return rseSeq;
-    }
+	public Integer getRse_Seq() {
+		return rse_Seq;
+	}
 
-    public void setRseSeq(Integer rseSeq) {
-        this.rseSeq = rseSeq;
-    }
+	public void setRse_Seq(Integer rse_Seq) {
+		this.rse_Seq = rse_Seq;
+	}
 
-    public Integer getRslsSeq() {
-        return rslsSeq;
-    }
+	public Integer getRsls_Seq() {
+		return rsls_Seq;
+	}
 
-    public void setRslsSeq(Integer rslsSeq) {
-        this.rslsSeq = rslsSeq;
-    }
+	public void setRsls_Seq(Integer rsls_Seq) {
+		this.rsls_Seq = rsls_Seq;
+	}
 
-    public Integer getRstSeq() {
-        return rstSeq;
-    }
+	public Integer getRst_Seq() {
+		return rst_Seq;
+	}
 
-    public void setRstSeq(Integer rstSeq) {
-        this.rstSeq = rstSeq;
-    }
+	public void setRst_Seq(Integer rst_Seq) {
+		this.rst_Seq = rst_Seq;
+	}
 
-    public Integer getRsfSeq() {
-        return rsfSeq;
-    }
+	public Integer getRsf_Seq() {
+		return rsf_Seq;
+	}
 
-    public void setRsfSeq(Integer rsfSeq) {
-        this.rsfSeq = rsfSeq;
-    }
+	public void setRsf_Seq(Integer rsf_Seq) {
+		this.rsf_Seq = rsf_Seq;
+	}
 
-    public Integer getRslgSeq() {
-        return rslgSeq;
-    }
+	public Integer getRslg_Seq() {
+		return rslg_Seq;
+	}
 
-    public void setRslgSeq(Integer rslgSeq) {
-        this.rslgSeq = rslgSeq;
-    }
+	public void setRslg_Seq(Integer rslg_Seq) {
+		this.rslg_Seq = rslg_Seq;
+	}
 
-    public Integer getRspfSeq() {
-        return rspfSeq;
-    }
+	public Integer getRspf_Seq() {
+		return rspf_Seq;
+	}
 
-    public void setRspfSeq(Integer rspfSeq) {
-        this.rspfSeq = rspfSeq;
-    }
+	public void setRspf_Seq(Integer rspf_Seq) {
+		this.rspf_Seq = rspf_Seq;
+	}
 
-    public Integer getRsvSeq() {
-        return rsvSeq;
-    }
+	public Integer getRsv_Seq() {
+		return rsv_Seq;
+	}
 
-    public void setRsvSeq(Integer rsvSeq) {
-        this.rsvSeq = rsvSeq;
-    }
+	public void setRsv_Seq(Integer rsv_Seq) {
+		this.rsv_Seq = rsv_Seq;
+	}
 
-    public Integer getRsprSeq() {
-        return rsprSeq;
-    }
+	public Integer getRspr_Seq() {
+		return rspr_Seq;
+	}
 
-    public void setRsprSeq(Integer rsprSeq) {
-        this.rsprSeq = rsprSeq;
-    }
+	public void setRspr_Seq(Integer rspr_Seq) {
+		this.rspr_Seq = rspr_Seq;
+	}
+    
 
 }

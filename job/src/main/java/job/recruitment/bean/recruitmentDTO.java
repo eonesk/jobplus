@@ -5,179 +5,180 @@ import java.util.Date;
 public class recruitmentDTO {
 
     // 채용공고seq 
-    private Integer rmSeq;
+    private Integer rm_Seq;
 
     // 제목 
-    private String rmTitle;
+    private String rm_Title;
 
     // 조회수 
-    private Integer rmHit;
+    private Integer rm_Hit;
 
     // 스크랩수 
-    private Integer rmScrap;
+    private Integer rm_Scrap;
 
     // 고용형태 
-    private String rmWorktype;
+    private String rm_Worktype;
 
     // 시작일 
-    private Date rmStartdate;
+    private Date rm_Startdate;
 
     // 종료일 
-    private Date rmEnddate;
+    private Date rm_Enddate;
 
     // 지원방식 
-    private String rmSupport;
+    private String rm_Support;
 
     // 근무지역 
-    private String rmWorkspace;
+    private String rm_Workspace;
 
     // 기업정보 
-    private Integer cpiSeq;
+    private Integer cpi_Seq;
 
     // 합격자료 
-    private String rmSuccess;
+    private String rm_Success;
 
     // 담당업무1 
-    private String rmWorkpart1;
+    private String rm_Workpart1;
 
     // 담당업무2 
-    private String rmWorkpart2;
+    private String rm_Workpart2;
 
     // 담당업무3 
-    private String rmWorkpart3;
+    private String rm_Workpart3;
 
     // 담당자정보seq 
-    private Integer rmpSeq;
+    private Integer rmp_Seq;
 
     // 채용종료 
-    private String rmEnd;
+    private String rm_End;
 
-    public Integer getRmSeq() {
-        return rmSeq;
-    }
+	public Integer getRm_Seq() {
+		return rm_Seq;
+	}
 
-    public void setRmSeq(Integer rmSeq) {
-        this.rmSeq = rmSeq;
-    }
+	public void setRm_Seq(Integer rm_Seq) {
+		this.rm_Seq = rm_Seq;
+	}
 
-    public String getRmTitle() {
-        return rmTitle;
-    }
+	public String getRm_Title() {
+		return rm_Title;
+	}
 
-    public void setRmTitle(String rmTitle) {
-        this.rmTitle = rmTitle;
-    }
+	public void setRm_Title(String rm_Title) {
+		this.rm_Title = rm_Title;
+	}
 
-    public Integer getRmHit() {
-        return rmHit;
-    }
+	public Integer getRm_Hit() {
+		return rm_Hit;
+	}
 
-    public void setRmHit(Integer rmHit) {
-        this.rmHit = rmHit;
-    }
+	public void setRm_Hit(Integer rm_Hit) {
+		this.rm_Hit = rm_Hit;
+	}
 
-    public Integer getRmScrap() {
-        return rmScrap;
-    }
+	public Integer getRm_Scrap() {
+		return rm_Scrap;
+	}
 
-    public void setRmScrap(Integer rmScrap) {
-        this.rmScrap = rmScrap;
-    }
+	public void setRm_Scrap(Integer rm_Scrap) {
+		this.rm_Scrap = rm_Scrap;
+	}
 
-    public String getRmWorktype() {
-        return rmWorktype;
-    }
+	public String getRm_Worktype() {
+		return rm_Worktype;
+	}
 
-    public void setRmWorktype(String rmWorktype) {
-        this.rmWorktype = rmWorktype;
-    }
+	public void setRm_Worktype(String rm_Worktype) {
+		this.rm_Worktype = rm_Worktype;
+	}
 
-    public Date getRmStartdate() {
-        return rmStartdate;
-    }
+	public Date getRm_Startdate() {
+		return rm_Startdate;
+	}
 
-    public void setRmStartdate(Date rmStartdate) {
-        this.rmStartdate = rmStartdate;
-    }
+	public void setRm_Startdate(Date rm_Startdate) {
+		this.rm_Startdate = rm_Startdate;
+	}
 
-    public Date getRmEnddate() {
-        return rmEnddate;
-    }
+	public Date getRm_Enddate() {
+		return rm_Enddate;
+	}
 
-    public void setRmEnddate(Date rmEnddate) {
-        this.rmEnddate = rmEnddate;
-    }
+	public void setRm_Enddate(Date rm_Enddate) {
+		this.rm_Enddate = rm_Enddate;
+	}
 
-    public String getRmSupport() {
-        return rmSupport;
-    }
+	public String getRm_Support() {
+		return rm_Support;
+	}
 
-    public void setRmSupport(String rmSupport) {
-        this.rmSupport = rmSupport;
-    }
+	public void setRm_Support(String rm_Support) {
+		this.rm_Support = rm_Support;
+	}
 
-    public String getRmWorkspace() {
-        return rmWorkspace;
-    }
+	public String getRm_Workspace() {
+		return rm_Workspace;
+	}
 
-    public void setRmWorkspace(String rmWorkspace) {
-        this.rmWorkspace = rmWorkspace;
-    }
+	public void setRm_Workspace(String rm_Workspace) {
+		this.rm_Workspace = rm_Workspace;
+	}
 
-    public Integer getCpiSeq() {
-        return cpiSeq;
-    }
+	public Integer getCpi_Seq() {
+		return cpi_Seq;
+	}
 
-    public void setCpiSeq(Integer cpiSeq) {
-        this.cpiSeq = cpiSeq;
-    }
+	public void setCpi_Seq(Integer cpi_Seq) {
+		this.cpi_Seq = cpi_Seq;
+	}
 
-    public String getRmSuccess() {
-        return rmSuccess;
-    }
+	public String getRm_Success() {
+		return rm_Success;
+	}
 
-    public void setRmSuccess(String rmSuccess) {
-        this.rmSuccess = rmSuccess;
-    }
+	public void setRm_Success(String rm_Success) {
+		this.rm_Success = rm_Success;
+	}
 
-    public String getRmWorkpart1() {
-        return rmWorkpart1;
-    }
+	public String getRm_Workpart1() {
+		return rm_Workpart1;
+	}
 
-    public void setRmWorkpart1(String rmWorkpart1) {
-        this.rmWorkpart1 = rmWorkpart1;
-    }
+	public void setRm_Workpart1(String rm_Workpart1) {
+		this.rm_Workpart1 = rm_Workpart1;
+	}
 
-    public String getRmWorkpart2() {
-        return rmWorkpart2;
-    }
+	public String getRm_Workpart2() {
+		return rm_Workpart2;
+	}
 
-    public void setRmWorkpart2(String rmWorkpart2) {
-        this.rmWorkpart2 = rmWorkpart2;
-    }
+	public void setRm_Workpart2(String rm_Workpart2) {
+		this.rm_Workpart2 = rm_Workpart2;
+	}
 
-    public String getRmWorkpart3() {
-        return rmWorkpart3;
-    }
+	public String getRm_Workpart3() {
+		return rm_Workpart3;
+	}
 
-    public void setRmWorkpart3(String rmWorkpart3) {
-        this.rmWorkpart3 = rmWorkpart3;
-    }
+	public void setRm_Workpart3(String rm_Workpart3) {
+		this.rm_Workpart3 = rm_Workpart3;
+	}
 
-    public Integer getRmpSeq() {
-        return rmpSeq;
-    }
+	public Integer getRmp_Seq() {
+		return rmp_Seq;
+	}
 
-    public void setRmpSeq(Integer rmpSeq) {
-        this.rmpSeq = rmpSeq;
-    }
+	public void setRmp_Seq(Integer rmp_Seq) {
+		this.rmp_Seq = rmp_Seq;
+	}
 
-    public String getRmEnd() {
-        return rmEnd;
-    }
+	public String getRm_End() {
+		return rm_End;
+	}
 
-    public void setRmEnd(String rmEnd) {
-        this.rmEnd = rmEnd;
-    }
+	public void setRm_End(String rm_End) {
+		this.rm_End = rm_End;
+	}
+
 
 }

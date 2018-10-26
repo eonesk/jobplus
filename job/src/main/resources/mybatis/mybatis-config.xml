@@ -23,5 +23,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/resume/pr-mapping.xml"/>
 		<mapper resource="mybatis/resume/foreign-mapping.xml"/>
 		<mapper resource="mybatis/resume/intern-mapping.xml"/>
+		<mapper resource="mybatis/resume/image-mapping.xml"/>
 	</mappers>
 </configuration>
