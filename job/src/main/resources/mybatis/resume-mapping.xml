@@ -7,11 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertResume" parameterType="resumeDTO">
 		insert into resume values
 		(resume_seq.nextval, #{mId}, #{rsTitle},#{rsType}, #{rsPay},
-		#{rsWorkspace1}, #{rsWorkspace2}, #{rsWorkspace3},
-		#{rsJob1}, #{rsJob2}, #{rsJob3},
-		#{rsimSeq}, #{rssSeq}, #{rswSeq}, #{rsitSeq},
-		#{rseSeq}, #{rslsSeq}, #{rstSeq}, #{rsfSeq},
-		#{rslgSeq}, #{rspfSeq}, #{rsvSeq}, #{rsprSeq})
+		#{rsWorkspace1}, #{rsWorkspace2, jdbcType=VARCHAR}, #{rsWorkspace3, jdbcType=VARCHAR},
+		#{rsJob1}, #{rsJob2, jdbcType=VARCHAR}, #{rsJob3, jdbcType=VARCHAR},
+		#{rsimSeq, jdbcType=INTEGER}, #{rssSeq, jdbcType=INTEGER}, #{rswSeq, jdbcType=INTEGER}, #{rsitSeq, jdbcType=INTEGER},
+		#{rseSeq, jdbcType=INTEGER}, #{rslsSeq, jdbcType=INTEGER}, #{rstSeq, jdbcType=INTEGER}, #{rsfSeq, jdbcType=INTEGER},
+		#{rslgSeq, jdbcType=INTEGER}, #{rspfSeq, jdbcType=INTEGER}, #{rsvSeq, jdbcType=INTEGER}, #{rsprSeq, jdbcType=INTEGER})
 	</insert>
 	
 	<select id="selectMember" parameterType="String" resultType="memberDTO">
