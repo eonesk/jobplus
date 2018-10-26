@@ -12,12 +12,12 @@ public class RS_foreignDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	//해외경험 입력,저장
-	public int RS_foreignInsert(RS_foreignDTO rs_foreignDTO) {
-		return sqlSession.insert("mybatis.foreingMapper.RS_foreignInsert", rs_foreignDTO);
+	public int foreignWrite(RS_foreignDTO foreignDTO) {
+		return sqlSession.insert("mybatis.foreignMapper.foreignWrite", foreignDTO);
 	}
 	
-	//해외경험 삭제
-	public int RS_foreignDelete(int rsfSeq) {
-		return sqlSession.delete("mybatis.foreingMapper.RS_foreignDelete", rsfSeq);
-	}
+	/*//해외경험 삭제
+	public int foreignDelete(int rsfSeq) {
+		return sqlSession.delete("mybatis.foreignMapper.foreignDelete", rsfSeq);
+	}*/
 }

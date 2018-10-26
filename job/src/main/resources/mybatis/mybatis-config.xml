@@ -21,5 +21,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!-- SQL문장이 기술되는 Mapper파일 / resume 하위 테이블들 -->
 		<mapper resource="mybatis/resume/foreign-mapping.xml"/>
 		<mapper resource="mybatis/resume/intern-mapping.xml"/>
+		<mapper resource="mybatis/resume/image-mapping.xml"/>
 	</mappers>
 </configuration>

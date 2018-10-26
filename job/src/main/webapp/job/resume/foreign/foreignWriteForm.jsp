@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>해외경험입력</title>
-<script type="text/javascript" src="../script/foreignScript.js"></script>
+<script type="text/javascript" src="script/foreignScript.js"></script>
 </head>
 <body>
 <form action="foreignWrite.do" name="foreignWriteForm" method="post">
-<div>아이디: <input type="text" name="mId"></div>
+<label>타이틀: <input type="text" name="rsfUsertitle"></label>
 <label>국가명: <input type="text" name="rsfName"></label>
 <label>시작년월: <input type="date" name="rsfStartdate"></label>
 <label>종료년월: <input type="date" name="rsfEnddate"></label>

@@ -6,17 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	window.onload=function() {
-		if(${su > 0}) {
-			alert("입력 성공");
-//			location.href="foreignWriteForm.do";
-		} else {
-			alert("입력 실패");
-//			location.href="foreignWriteForm.do";
-		}
+	if(${su > 0}) {
+		alert("사진이 저장되었습니다.");
+		self.close();
+	} else {
+		alert("등록실패.");
+		location.href="imageForm.jsp";
 	}
 </script>
-
 </head>
 <body>
 
