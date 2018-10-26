@@ -21,7 +21,7 @@ public class RS_internController {
 	private RS_internService internService;
 	
 	@RequestMapping(value="/job/resume/intern/internWriteForm.do")
-	public ModelAndView boardWriteForm() {
+	public ModelAndView internWriteForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		//modelAndView.addObject("display", "../job/job/resume/intern/internWriteForm.jsp");
 		modelAndView.setViewName("internWriteForm.jsp");
@@ -29,45 +29,52 @@ public class RS_internController {
 		//return "boardWriteForm";
 	}	
 	@RequestMapping(value="/job/resume/intern/Write.do")
-	public ModelAndView boardWrite(HttpServletRequest request, HttpSession session) {
+	public ModelAndView internWrite(HttpServletRequest request, HttpSession session) {
 		// (1) 데이터
+		System.out.println("write.do접근완료");
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
-		}		
-		String rsitCompany = request.getParameter("rsitCompany");
-		String rsitStartdate = request.getParameter("rsitStartdate");
-		String rsitEnddate = request.getParameter("rsitEnddate");
-		String rsitContent = request.getParameter("rsitContent");
-		String rsitType = request.getParameter("rsitType");
-		// String mId = request.getParameter("mId");
-		// String mId = (String) session.getAttribute("mId");
+		}			
+		System.out.println("write.do접근완료1");
+		String rsit_Company = request.getParameter("rsit_Company");
+		String rsit_Startdate = request.getParameter("rsit_Startdate");
+		String rsit_Enddate = request.getParameter("rsit_Enddate");
+		String rsit_Content = request.getParameter("rsit_Content");
+		String rsit_Type = request.getParameter("rsit_Type");
+		String rsit_UserTitle = request.getParameter("rsit_UserTitle");		
+		// String m_Id = request.getParameter("m_Id");
+		System.out.println("write.do접근완료2");
 		Date Startdate=null;
 		try {
-			Startdate = new SimpleDateFormat("yyyyMMdd").parse(rsitStartdate);
+			Startdate = new SimpleDateFormat("yyyyMMdd").parse(rsit_Startdate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		Date Enddate=null;
 		try {
-			Enddate = new SimpleDateFormat("yyyyMMdd").parse(rsitEnddate);
+			Enddate = new SimpleDateFormat("yyyyMMdd").parse(rsit_Enddate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}				
+		System.out.println("write.do접근완료3");
 		RS_internDTO internDTO = new RS_internDTO();
-		internDTO.setRsitCompany(rsitCompany);
-		internDTO.setRsitContent(rsitContent);
-		internDTO.setRsitType(rsitType);		
-		internDTO.setRsitStartdate(Startdate);
-		internDTO.setRsitEnddate(Enddate);		
+		internDTO.setRsit_Company(rsit_Company);
+		internDTO.setRsit_Content(rsit_Content);
+		internDTO.setRsit_Type(rsit_Type);		
+		internDTO.setRsit_Startdate(Startdate);
+		internDTO.setRsit_Enddate(Enddate);	
+		internDTO.setRsit_UserTitle(rsit_UserTitle);
 		// (2) DB		
+		System.out.println("write.do접근완료4");
 		int su = internService.Write(internDTO);
 		// (3) 화면네비게이션
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);
 		//modelAndView.addObject("display", "../job/job/resume/intern/internWrite.jsp");
-		modelAndView.setViewName("internWrite.jsp");
+		System.out.println("write.do접근완료5");
+		modelAndView.setViewName("ok.jsp");
 		return modelAndView;
 	}
 	
