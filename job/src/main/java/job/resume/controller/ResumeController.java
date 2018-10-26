@@ -28,7 +28,6 @@ public class ResumeController {
 		
 		String memId = (String) session.getAttribute("memId");
 		MemberDTO memberDTO = resumeService.selectMember(memId);
-		System.out.println(memberDTO);
 		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.setViewName("resumeWriteForm.jsp");
 		
