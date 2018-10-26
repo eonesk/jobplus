@@ -47,20 +47,20 @@
 		제목
 		<input type="text" name="title"><br>
 		이름
-		${memberDTO.mName }
-		<input type="text" name="mName" value="${memberDTO.mName }"><br>
+		${memberDTO.m_name }
+		<input type="text" name="mName" value="${memberDTO.m_name }"><br>
 		생년월일
-		<input type="text" name="mBirth" value="${memberDTO.mBirth }"><br>
+		<input type="text" name="mBirth" value="${memberDTO.m_birth }"><br>
 		성별
-		<input type="text" name="mGender" value="${memberDTO.mGender }"><br>
+		<input type="text" name="mGender" value="${memberDTO.m_gender }"><br>
 		이메일
-		<input type="text" name="mEmail" value="${memberDTO.mEmail }"><br>
+		<input type="text" name="mEmail" value="${memberDTO.m_email }"><br>
 		전화번호
-		<input type="text" name="mHomenum" value="${memberDTO.mHomenum }"><br>
+		<input type="text" name="mHomenum" value="${memberDTO.m_homenum }"><br>
 		휴대폰번호
-		<input type="text" name="mPhone" value="${memberDTO.mPhone }"><br>
+		<input type="text" name="mPhone" value="${memberDTO.m_phone }"><br>
 		주소
-		<input type="text" name="mAddress" value="${memberDTO.mAddress }"><br>
+		<input type="text" name="mAddress" value="${memberDTO.m_address }"><br>
 	</div>
 </body>
 </html>

@@ -6,135 +6,136 @@ import java.util.Date;
 public class MemberDTO {
 	//주석인데
     // 회원 아이디 
-    private String mId;
+    private String m_id;
 
     // 회원 비밀번호 
-    private String mPw;
+    private String m_pw;
 
     // 회원 이름 
-    private String mName;
+    private String m_name;
 
     // 회원 성별 
-    private String mGender;
+    private String m_gender;
 
     // 회원 집번호 
-    private String mHomenum;
+    private String m_homenum;
 
     // 회원 핸드폰번호 
-    private String mPhone;
+    private String m_phone;
 
     // 회원 생일 
-    private Date mBirth;
+    private Date m_birth;
 
     // 회원 이메일 
-    private String mEmail;
+    private String m_email;
 
     // 회원 주소 
-    private String mAddress;
+    private String m_address;
 
     // 이메일 수신동의 
     private String mIsemail;
 
     // 문자 수신동의 
-    private String mIsphone;
+    private String m_isphone;
 
     // 해외 거주 여부 
-    private String mIsforeign;
+    private String m_isForeign;
 
-    public String getMId() {
-        return mId;
-    }
+	public String getM_id() {
+		return m_id;
+	}
 
-    public void setMId(String mId) {
-        this.mId = mId;
-    }
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
 
-    public String getMPw() {
-        return mPw;
-    }
+	public String getM_pw() {
+		return m_pw;
+	}
 
-    public void setMPw(String mPw) {
-        this.mPw = mPw;
-    }
+	public void setM_pw(String m_pw) {
+		this.m_pw = m_pw;
+	}
 
-    public String getMName() {
-        return mName;
-    }
+	public String getM_name() {
+		return m_name;
+	}
 
-    public void setMName(String mName) {
-        this.mName = mName;
-    }
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
 
-    public String getMGender() {
-        return mGender;
-    }
+	public String getM_gender() {
+		return m_gender;
+	}
 
-    public void setMGender(String mGender) {
-        this.mGender = mGender;
-    }
+	public void setM_gender(String m_gender) {
+		this.m_gender = m_gender;
+	}
 
-    public String getMHomenum() {
-        return mHomenum;
-    }
+	public String getM_homenum() {
+		return m_homenum;
+	}
 
-    public void setMHomenum(String mHomenum) {
-        this.mHomenum = mHomenum;
-    }
+	public void setM_homenum(String m_homenum) {
+		this.m_homenum = m_homenum;
+	}
 
-    public String getMPhone() {
-        return mPhone;
-    }
+	public String getM_phone() {
+		return m_phone;
+	}
 
-    public void setMPhone(String mPhone) {
-        this.mPhone = mPhone;
-    }
+	public void setM_phone(String m_phone) {
+		this.m_phone = m_phone;
+	}
 
-    public Date getMBirth() {
-        return mBirth;
-    }
+	public Date getM_birth() {
+		return m_birth;
+	}
 
-    public void setMBirth(Date mBirth) {
-        this.mBirth = mBirth;
-    }
+	public void setM_birth(Date m_birth) {
+		this.m_birth = m_birth;
+	}
 
-    public String getMEmail() {
-        return mEmail;
-    }
+	public String getM_email() {
+		return m_email;
+	}
 
-    public void setMEmail(String mEmail) {
-        this.mEmail = mEmail;
-    }
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
+	}
 
-    public String getMAddress() {
-        return mAddress;
-    }
+	public String getM_address() {
+		return m_address;
+	}
 
-    public void setMAddress(String mAddress) {
-        this.mAddress = mAddress;
-    }
+	public void setM_address(String m_address) {
+		this.m_address = m_address;
+	}
 
-    public String getMIsemail() {
-        return mIsemail;
-    }
+	public String getmIsemail() {
+		return mIsemail;
+	}
 
-    public void setMIsemail(String mIsemail) {
-        this.mIsemail = mIsemail;
-    }
+	public void setmIsemail(String mIsemail) {
+		this.mIsemail = mIsemail;
+	}
 
-    public String getMIsphone() {
-        return mIsphone;
-    }
+	public String getM_isphone() {
+		return m_isphone;
+	}
 
-    public void setMIsphone(String mIsphone) {
-        this.mIsphone = mIsphone;
-    }
+	public void setM_isphone(String m_isphone) {
+		this.m_isphone = m_isphone;
+	}
 
-    public String getMIsforeign() {
-        return mIsforeign;
-    }
+	public String getM_isForeign() {
+		return m_isForeign;
+	}
 
-    public void setMIsforeign(String mIsforeign) {
-        this.mIsforeign = mIsforeign;
-    }
+	public void setM_isForeign(String m_isForeign) {
+		this.m_isForeign = m_isForeign;
+	}
 
+    
 }

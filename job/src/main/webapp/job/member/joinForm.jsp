@@ -72,7 +72,29 @@ input[type=text],input[type=password],input[type=email],[type=tel] {
 	margin-top: 30px;
 	margin-bottom: 10px;
 }
-#join
+#joinContent #consent{
+	width:100%;
+	background:#fff;
+	border: 1px solid gray;
+}
+
+#joinContent #consent li{
+	padding-top:10px;
+	padding-left:10px;
+	padding-right:10px;
+	list-style: none;
+	min-height: 50px;
+}
+#joinContent #consent li label{
+	float: right;
+}
+#joinContent #consent li label .mustCheckoff{
+	background:url(//www.saraminimage.co.kr/ui/join/bg_check_bullet.png) no-repeat 0 0px;
+}
+
+#joinContent #consent #allCheck{
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -84,17 +106,18 @@ input[type=text],input[type=password],input[type=email],[type=tel] {
 			<ul class="joinCategory">
 				<li class="on">
 					<h2 class="tab01">
-						<a href="#" class="tabBtn"> <strong>개인회원가입</strong>만 15세 이상 가능
+						<a href="#" class="tabBtn"><strong>개인회원가입</strong>만 15세 이상 가능
 						</a>
 					</h2>
 				</li>
 				<li class="">
 					<h2 class="tab02">
-						<a href="#" class="tabBtn"> <strong>기업회원가입</strong></a>
+						<a href="CompanyJoinForm.do" class="tabBtn"><strong>기업회원가입</strong></a>
 					</h2>
 				</li>
 			</ul>
 		</div>
+		<form action="join.do" name="joinForm" method="post">
 		<div id="joinContent">
 			<h3>
 				<span>ID/PW</span>
@@ -138,7 +161,22 @@ input[type=text],input[type=password],input[type=email],[type=tel] {
 			</h3>
 			<input name="M_address1" id="M_address1" type="text" placeholder="주소지">
 			<input name="M_address2" id="M_address2" type="text" placeholder="상세주소지">
+			
+			<h3>
+				<span>약관동의</span>
+			</h3>
+			<div id="consent">
+				<ul>
+					<li id="allCheck">전체동의<label for="allConsent" class="mustCheckoff"><input id="allConsent" type="checkbox"></label></li>
+					<li>개인회원 약관에 동의<label class="mustCheckoff"><input id="ruleConsent" type="checkbox"></label></li>
+					<li>개인정보 수집 및 이용에 동의<label class="mustCheckoff"><input id="takeConsent" type="checkbox"></label></li>
+					<li>마케팅 정보 수신 동의 - 이메일<label class="mustCheckoff"><input id="emailConsent"type="checkbox"></label></li>
+					<li>마케팅 정보 수신 동의 - SMS/MMS<label class="mustCheckoff"><input id="smsConsent"type="checkbox"></label></li>
+					<li>개인정보 제 3자 제공 및 위탁사항 이용약관 <label class="mustCheckoff"><input id="foreignConsent" type="checkbox"></label></li>
+				</ul>
+			</div>
 		</div>
+		</form>
 	</div>
 </body>
 </html>
