@@ -25,7 +25,7 @@ public class RS_prServiceImpl implements RS_prService {
 	}
 
 	@Override
-	public List<String> selectRsprUserTitleList(String memId) {
+	public List<RS_prDTO> selectRsprUserTitleList(String memId) {
 		return rsprDAO.selectRsprUserTitleList(memId);
 	}
 

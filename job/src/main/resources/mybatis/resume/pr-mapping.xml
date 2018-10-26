@@ -5,14 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mybatis.prMapper">
 	<insert id="rsprSave" parameterType="rsprDTO">
-		insert into RS_pr values (RS_pr_SEQ.nextval, #{rsprTitle}, #{rsprContent}, #{mId}, #{rsprUserTitle})
+		insert into RS_pr values (RS_pr_SEQ.nextval, #{rspr_Title}, #{rspr_Content}, #{m_Id}, #{rspr_UserTitle})
 	</insert>
 	
 	<select id="selectNumberOfPr" parameterType="String" resultType="int">
 		select count (*) from RS_pr where M_id = #{memId}
 	</select>
 	
-	<select id="selectRsprUserTitleList" parameterType="String" resultType="String">
-		select rspr_UserTitle from RS_pr where M_id = #{memId}
+	<select id="selectRsprUserTitleList" parameterType="String" resultType="rsprDTO">
+		select * from RS_pr where M_id = #{memId}
 	</select>
 </mapper>
