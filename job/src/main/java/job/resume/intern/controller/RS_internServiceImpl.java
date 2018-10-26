@@ -16,8 +16,8 @@ public class RS_internServiceImpl implements RS_internService {
 		return internDAO.Write(internDTO);
 	}
 	@Override
-	public int Delete(int rsitSeq) {
-		return internDAO.Delete(rsitSeq);
+	public int Delete(int rsit_Seq) {
+		return internDAO.Delete(rsit_Seq);
 	}
 
 }
