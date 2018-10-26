@@ -24,6 +24,14 @@
 	<context:component-scan base-package="job.resume.pr.controller"/>
 	<context:component-scan base-package="job.resume.intern.controller"/>
 	<context:component-scan base-package="job.resume.foreign.controller"/>
+	<context:component-scan base-package="job.resume.image.controller"/>
 	<context:component-scan base-package="job.resume.controller"/>
 
+<!-- 반드시 id="multipartResolver" 를 사용해야한다. -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5000000"/>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	
 </beans>

@@ -22,7 +22,15 @@ public class RS_foreignDTO {
     // 회원 아이디 
     private String mId;
     
-    // 사용자 설정 이름 
+    
+    @Override
+	public String toString() {
+		return "RS_foreignDTO [rsfSeq=" + rsfSeq + ", rsfName=" + rsfName + ", rsfStartdate=" + rsfStartdate
+				+ ", rsfEnddate=" + rsfEnddate + ", rsfContent=" + rsfContent + ", mId=" + mId + ", rsfUsertitle="
+				+ rsfUsertitle + "]";
+	}
+
+	// 사용자 설정 이름 
     private String rsfUsertitle;
 
     public Integer getRsfSeq() {

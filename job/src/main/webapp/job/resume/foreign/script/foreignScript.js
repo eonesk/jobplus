@@ -1,6 +1,7 @@
 function checkForeignInsert() {
-	if(document.foreignWriteForm.mId.value=="") {
-		alert("아이디를 입력하세요");
+	if(document.foreignWriteForm.rsfName.value=="") {
+		alert("나라 입력");
+		document.foreignWriteForm.rsfName.focus();
 	} else {
 		document.foreignWriteForm.submit();
 	}
