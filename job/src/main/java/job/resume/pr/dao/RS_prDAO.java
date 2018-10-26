@@ -22,7 +22,7 @@ public class RS_prDAO {
 		return sqlSession.selectOne("mybatis.prMapper.selectNumberOfPr", memId);
 	}
 	
-	public List<String> selectRsprUserTitleList(String memId){
+	public List<RS_prDTO> selectRsprUserTitleList(String memId){
 		return sqlSession.selectList("mybatis.prMapper.selectRsprUserTitleList", memId);
 	}
 }

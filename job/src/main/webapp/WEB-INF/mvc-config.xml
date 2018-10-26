@@ -12,12 +12,13 @@
 
 
     <mvc:annotation-driven />
+    <mvc:resources location="/job/" mapping="/job/**"/>
 	<mvc:resources location="/script/" mapping="/script/**"/>
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
 	<mvc:resources location="/member/" mapping="/member/**"/>
 	<mvc:resources location="/img/" mapping="/img/**"/>
-	<mvc:resources location="/pr/" mapping="/pr/**"/>
+	<!-- <mvc:resources location="/pr/" mapping="/pr/**"/> -->
 
 <!-- Controller 어노테이션 등록준비 -->
 	

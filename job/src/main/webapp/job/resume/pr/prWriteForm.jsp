@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>자기소개서폼</title>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#RSPR_saveA").click(function() {
@@ -16,24 +16,12 @@
 				alert("자기소개서의 내용을 입력해주세요.");
 				$("#rsprContent").focus();
 			} else {
-				window.open("../pr/prSavePopUp.jsp", "", "width=500px height=500px");
+				window.open("./prSavePopUp.jsp", "", "width=500px height=500px");
 			}			
 		});
 		
 		$("#RSPR_loadA").click(function() {
-			$.ajax({
-				type: 'POST',
-				url: '../pr/rsprLoad.do',
-				dataType: 'json',
-				success: function(data) {
-					if(data > 0) {
-						alert("성공");
-						window.close();
-					} else {
-						alert("실패");
-					}
-				}
-			});
+			window.open("./prLoadPopUp.jsp", "", "width=500px height=500px");
 		});
 	});
 </script>
@@ -50,7 +38,7 @@
 			<a href="#" id="RSPR_saveA">자소서관리에 저장</a>
 		</div>
 		<p style="clear: both; font-size: 12px; margin: 3px;">
-		각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다.</p>
+		각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. ㅇ아아앙ㅇㅇㅇㅇㅇ아아ㅏ아아</p>
 		<br>
 		<div style="padding: 3px;">
 			<input type="text" placeholder="제목을 입력하세요."
