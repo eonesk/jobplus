@@ -3,80 +3,81 @@ package job.recruitment.personnel.bean;
 public class RM_personnelDTO {
 
     // 담당자정보seq 
-    private Integer rmpSeq;
+    private Integer rmp_Seq;
 
     // 기업아이디 
-    private String comId;
+    private String com_Id;
 
     // 이름 
-    private String rmpName;
+    private String rmp_Name;
 
     // 부서 
-    private String rmpDept;
+    private String rmp_Dept;
 
     // 이메일 
-    private String rmpEmail;
+    private String rmp_Email;
 
     // 전화번호1 
-    private String rmpPhone1;
+    private String rmp_Phone1;
 
     // 전화번호2 
-    private String rmpPhone2;
+    private String rmp_Phone2;
 
-    public Integer getRmpSeq() {
-        return rmpSeq;
-    }
+	public Integer getRmp_Seq() {
+		return rmp_Seq;
+	}
 
-    public void setRmpSeq(Integer rmpSeq) {
-        this.rmpSeq = rmpSeq;
-    }
+	public void setRmp_Seq(Integer rmp_Seq) {
+		this.rmp_Seq = rmp_Seq;
+	}
 
-    public String getComId() {
-        return comId;
-    }
+	public String getCom_Id() {
+		return com_Id;
+	}
 
-    public void setComId(String comId) {
-        this.comId = comId;
-    }
+	public void setCom_Id(String com_Id) {
+		this.com_Id = com_Id;
+	}
 
-    public String getRmpName() {
-        return rmpName;
-    }
+	public String getRmp_Name() {
+		return rmp_Name;
+	}
 
-    public void setRmpName(String rmpName) {
-        this.rmpName = rmpName;
-    }
+	public void setRmp_Name(String rmp_Name) {
+		this.rmp_Name = rmp_Name;
+	}
 
-    public String getRmpDept() {
-        return rmpDept;
-    }
+	public String getRmp_Dept() {
+		return rmp_Dept;
+	}
 
-    public void setRmpDept(String rmpDept) {
-        this.rmpDept = rmpDept;
-    }
+	public void setRmp_Dept(String rmp_Dept) {
+		this.rmp_Dept = rmp_Dept;
+	}
 
-    public String getRmpEmail() {
-        return rmpEmail;
-    }
+	public String getRmp_Email() {
+		return rmp_Email;
+	}
 
-    public void setRmpEmail(String rmpEmail) {
-        this.rmpEmail = rmpEmail;
-    }
+	public void setRmp_Email(String rmp_Email) {
+		this.rmp_Email = rmp_Email;
+	}
 
-    public String getRmpPhone1() {
-        return rmpPhone1;
-    }
+	public String getRmp_Phone1() {
+		return rmp_Phone1;
+	}
 
-    public void setRmpPhone1(String rmpPhone1) {
-        this.rmpPhone1 = rmpPhone1;
-    }
+	public void setRmp_Phone1(String rmp_Phone1) {
+		this.rmp_Phone1 = rmp_Phone1;
+	}
 
-    public String getRmpPhone2() {
-        return rmpPhone2;
-    }
+	public String getRmp_Phone2() {
+		return rmp_Phone2;
+	}
 
-    public void setRmpPhone2(String rmpPhone2) {
-        this.rmpPhone2 = rmpPhone2;
-    }
+	public void setRmp_Phone2(String rmp_Phone2) {
+		this.rmp_Phone2 = rmp_Phone2;
+	}
 
+    
 }
