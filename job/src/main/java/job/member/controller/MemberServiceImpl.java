@@ -5,16 +5,15 @@ import org.springframework.stereotype.Service;
 
 import job.member.bean.MemberDTO;
 import job.member.dao.MemberDAO;
-@Service
 
+@Service
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 
 	@Override
-	public int write(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int memberInsert(MemberDTO memberDTO) {
+		return memberDAO.memberInsert(memberDTO);
 	}
 
 	@Override
