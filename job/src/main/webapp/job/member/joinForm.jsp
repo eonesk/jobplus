@@ -48,8 +48,14 @@ $(function() {
 		}
 		
 		if(!$("input[name='m_Address2']").val()){
-			alert("상세주소를 입력하세요.");
+			alert("주소를 입력하세요.");
 			$("input[name='m_Address2']").focus();
+			return false;
+		}
+		
+		if(!$("input[name='m_Homenum']").val()){
+			alert("상세주소를 입력하세요.");
+			$("input[name='m_Homenum']").focus();
 			return false;
 		}
 		
@@ -59,6 +65,21 @@ $(function() {
 			$("input[name='m_Phone']").focus();
 			return false;
 		}
+		
+		/**핸드폰번호 입력여부 검사 */
+		if(!$("input[name='m_Phone']").val()){
+			alert("핸드폰번호를 입력하세요.");
+			$("input[name='m_Phone']").focus();
+			return false;
+		}
+		
+		/**핸드폰번호 입력여부 검사 */
+		if(!$("input[name='m_Birth']").val()){
+			alert("핸드폰번호를 입력하세요.");
+			$("input[name='m_Birth']").focus();
+			return false;
+		}
+		
 		/**체크박스 선택여부 검사 */
 		if(!$("li.must .consent").is(":checked")){
 			alert("필수약관에 동의 해주십시오.");
@@ -72,9 +93,13 @@ $(function() {
 		if(is_check){
 			$(this).next().addClass("mustCheckon");
 			$(this).next().removeClass("mustCheckoff");
+			$(".consent").next().addClass("mustCheckon");
+			$(".consent").next().removeClass("mustCheckoff");
 		}else{
 			$(this).next().addClass("mustCheckoff");
 			$(this).next().removeClass("mustCheckon");
+			$(".consent").next().addClass("mustCheckoff");
+			$(".consent").next().removeClass("mustCheckon");
 		}
 		$(".consent").prop("checked",is_check);
 	});
@@ -86,8 +111,12 @@ $(function() {
 		}else{
 			$(this).next().addClass("mustCheckoff");
 			$(this).next().removeClass("mustCheckon");
+			$("#allConsent").next().addClass("mustCheckoff");
+			$("#allConsent").next().removeClass("mustCheckon");
 		}
-		$("#allConsent").prop("checked",is_check);
+		if(!is_check){
+			$("#allConsent").prop("checked",is_check);
+		}
 	});
 });
 </script>

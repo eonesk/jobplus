@@ -2,7 +2,7 @@ package job.member.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -43,6 +43,12 @@ public class MemberController {
 		String m_Isforeign = request.getParameter("m_Isforeign");
 		
 		
+		Date birthDate=null;
+		try {
+			birthDate = new SimpleDateFormat("yyyyMMdd").parse(m_Birth);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		
 		
@@ -51,7 +57,7 @@ public class MemberController {
 		memberDTO.setM_name(m_Name);
 		memberDTO.setM_gender(m_Gender);
 		memberDTO.setM_homenum(m_Homenum);
-		/*memberDTO.setM_Birth(M_BitrthDate);*/
+		memberDTO.setM_birth(birthDate);
 		memberDTO.setM_phone(m_Phone);
 		memberDTO.setM_email(m_Email);
 		memberDTO.setM_address(m_Address);
