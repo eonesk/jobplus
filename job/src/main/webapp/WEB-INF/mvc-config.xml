@@ -22,8 +22,9 @@
 
 <!-- Controller 어노테이션 등록준비 -->
 	
-	<context:component-scan base-package="job.resume.pr.controller"/>
 	<context:component-scan base-package="job.resume.intern.controller"/>
+	<context:component-scan base-package="job.resume.trophy.controller"/>	
+	<context:component-scan base-package="job.resume.pr.controller"/>
 	<context:component-scan base-package="job.resume.foreign.controller"/>
 	<context:component-scan base-package="job.resume.image.controller"/>
 	<context:component-scan base-package="job.resume.controller"/>
