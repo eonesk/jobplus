@@ -9,10 +9,10 @@
 	window.onload=function() {
 		if(${su > 0}) {
 			alert("입력 성공");
-//			location.href="foreignWriteForm.do";
+			location.href="foreignWriteForm.do";
 		} else {
 			alert("입력 실패");
-//			location.href="foreignWriteForm.do";
+			location.href="foreignWriteForm.do";
 		}
 	}
 </script>

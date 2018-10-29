@@ -5,11 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mybatis.imageMapper">
 	
-	 <insert id="imageWrite" parameterType="imageDTO">
-	 	insert into RS_image values 
-		(RS_image_SEQ.nextval, #{rsim_Name}, #{m_Id}, #{rsim_Usertitle})
-	 </insert>
-		
+	<insert id="imageWrite" parameterType="imageDTO">
+	 	INSERT INTO RS_IMAGE VALUES 
+		(RS_IMAGE_SEQ.NEXTVAL, #{rsim_Name}, #{m_Id}, #{rsim_Usertitle})
+	</insert>
+	
+	<select id="getImageOfId" parameterType="String" resultType="int">
+		SELECT COUNT (*) FROM RS_IMAGE WHERE M_ID = #{m_Id}
+	</select>	
+	
+	<select id="viewImageOfId" parameterType="String" resultType="imageDTO">
+		SELECT * FROM RS_IMAGE WHERE M_ID = #{m_Id}
+	</select>
+	
+	<select id="ImageListOfId" parameterType="java.util.Map" resultType="imageDTO">
+		<![CDATA[ SELECT * FROM 
+				 (SELECT ROWNUM RN,TT.*FROM
+				 (SELECT * FROM RS_IMAGE WHERE M_ID = #{m_Id} ORDER BY RSIM_SEQ DESC) TT)
+				 WHERE RN >= #{startNum} AND RN <= #{endNum} ]]>
+	</select>
 <!--
 	<delete id="imageDelete" parameterType="int">
 		delete RS_image where RSIM_seq = #{rsim_Seq};
