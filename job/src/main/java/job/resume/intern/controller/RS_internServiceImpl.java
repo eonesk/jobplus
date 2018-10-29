@@ -1,5 +1,7 @@
 package job.resume.intern.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,16 @@ public class RS_internServiceImpl implements RS_internService {
 		return internDAO.Write(internDTO);
 	}
 	@Override
+	public int selectNumintern(String memId) {
+		return internDAO.selectNumintern(memId);
+	}
+	@Override
+	public List<RS_internDTO> selectTitleList(String memId) {
+		return internDAO.selectTitleList(memId);
+	}
+	@Override
 	public int Delete(int rsit_Seq) {
 		return internDAO.Delete(rsit_Seq);
-	}
-
+	}	
+	
 }

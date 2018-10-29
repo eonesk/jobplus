@@ -5,17 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mybatis.internMapper">
 	
-	 <insert id="Write" parameterType="internDTO">
+	<insert id="Write" parameterType="internDTO">
 	 	insert into RS_intern values  
-		(RS_intern_SEQ.nextval,#{rsit_Type},#{rsit_Company},#{rsit_Startdate},#{rsit_Enddate},#{rsit_Content},0,#{rsit_UserTitle}) 
-	 </insert>		
-	 <!-- sql문 write 고쳐야함	
-	 <insert id="Write" parameterType="internDTO">
-	 	insert into RS_intern values  
-		(seq_board.nextval, #{rsitType},#{rsitCompany},#{rsitStartdate},
-			#{rsitEnddate},#{rsitContent},#{mId},#{userTitle}) 
-	 </insert>
-	 -->
+		(RS_intern_SEQ.nextval,#{rsit_Type},#{rsit_Company},#{rsit_Startdate},#{rsit_Enddate},#{rsit_Content},#{m_Id},#{rsit_UserTitle}) 
+	</insert>		
+	 
+	<select id="selectNumintern" parameterType="String" resultType="int">
+		select count (*) from RS_intern where M_id = #{memId}
+	</select>
+	
+	<select id="selectTitleList" parameterType="String" resultType="internDTO">
+		select * from RS_intern where M_id = #{memId}
+	</select>
+	
 	<delete id="Delete" parameterType="int">
 		delete RS_intern where RSIT_seq=#{rsit_Seq}
 	</delete>
