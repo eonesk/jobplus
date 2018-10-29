@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="./script/resumeWriteForm.js"></script>
 <style type="text/css">
 	body{
 		background: aqua; 
@@ -112,7 +111,7 @@ var rs_workspace_cnt = 1;
 					var data1 = $("#rs_workspace_select1 > select > option:selected").val();
 					var data2 = $("#rs_workspace_select2 > select > option:selected").val();
 					var result = data1 + " > "+ data2;
-					$("#rs_workspace"+rs_workspace_cnt).val(result+"   x");
+					$("#rs_workspace"+rs_workspace_cnt).val(result);
 					$("#rs_workspace"+rs_workspace_cnt).show();
 					rs_workspace_cnt++;
 					$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
@@ -158,7 +157,6 @@ var rs_workspace_cnt = 1;
 		});
 		
 		$(function reset_rs_job() {
-			
 			$("#rs_job_select1").load("text/category_hopejob.html #category1-1", function() {
 				$(this).hide();
 			});	
@@ -189,7 +187,7 @@ var rs_workspace_cnt = 1;
 					var data2 = $("#rs_job_select2 > select > option:selected").val();
 					var data3 = $("#rs_job_select3 > select > option:selected").val();
 					var result = data1 + " > "+ data2 + " > " + data3;
-					$("#rs_job"+rs_job_cnt).val(result+"   x");
+					$("#rs_job"+rs_job_cnt).val(result);
 					$("#rs_job"+rs_job_cnt).show();
 					rs_job_cnt++;
 					$(".rs_job_cnt").html(rs_job_cnt-1);
@@ -205,8 +203,8 @@ var rs_workspace_cnt = 1;
 			});
 		});
 		$("#rs_job_btn").on("click", function() {
-			if(rs_job_cnt > 5){
-				alert("희망직종은 5종류까지 선택 할 수 있습니다.");
+			if(rs_job_cnt > 3){
+				alert("희망직종은 3종류까지 선택 할 수 있습니다.");
 				return false;
 			}
 			if(rs_job_btn_ck){
@@ -332,8 +330,123 @@ var rs_workspace_cnt = 1;
 			}
 		});
 		
+		
 		$("#writeBtn").click(function() {
-			writeCheck();
+			if($("#rs_name").val() == ""){
+				alert("이름을 입력하세요.");
+				return false;
+			}else if($("#rs_birth").val() == ""){
+				alert("생년월일을 입력하세요.");
+				return false;
+			}else if($("#rs_gender option:selected").val() == "error"){
+				alert("성별을 선택하세요.");
+				return false;
+			}else if($("#rs_email").val() == ""){
+				alert("이메일을 입력하세요.");
+				return false;
+			}else if($("#rs_homenum").val() == ""){
+				alert("집번호를 입력하세요.");
+				return false;
+			}else if($("#rs_phone").val() == ""){
+				alert("핸드폰번호를 입력하세요.");
+				return false;
+			}else if($("#rs_address").val() == ""){
+				alert("주소를 입력하세요");
+				return false;
+			}else if($("#rs_type option:selected").val() == "error"){
+				alert("고용 형태를 선택하세요.");
+				return false;
+			}else if(!($("#rs_pay_no").is(":checked"))){
+				if($("#rs_pay").val() == ""){
+					alert("희망연봉을 작성하세요.");
+					return false;
+				}					
+			}
+			if($("#rs_title").val() == ""){
+				alert("이력서 제목을 입력하세요.");
+				return false;
+			}else if($("#rs_workspace1").val() == ""){
+				alert("희망 근무지를 선택하세요.");
+				return false;
+			}else if($("#rs_job1").val() == ""){
+				alert("직무 산업 키워드를 선택하세요.");
+				return false;
+			}
+			var rs_name = $("#rs_name").val();
+			var rs_birth = $("#rs_birth").val();
+			var rs_gender = $("#rs_gender").val();
+			var rs_email = $("#rs_email").val();
+			var rs_homenum = $("#rs_homenum").val();
+			var rs_phone = $("#rs_phone").val();
+			var rs_address = $("#rs_address").val();
+			var rs_title = $("#rs_title").val();
+			var rs_type = $("#rs_type option:selected").val();
+			if($("#rs_pay_no").is(":checked")){
+				var rs_pay = "면접 후 결정";
+			}else{
+				var rs_pay = $("#rs_pay").val() + "만원이상";
+			}
+			var rs_workspace1 = $("#rs_workspace1").val();
+			var rs_workspace2 = $("#rs_workspace2").val();
+			var rs_workspace3 = $("#rs_workspace3").val();
+			var rs_job1 = $("#rs_job1").val();
+			var rs_job2 = $("#rs_job2").val();
+			var rs_job3 = $("#rs_job3").val();
+			var RSIM_seq = null;
+			var RSS_seq = null;
+			var RSW_seq = null;
+			var RSIT_seq = null;
+			var RSE_seq = null;
+			var RSLS_seq = null;
+			var RST_seq = null;
+			var RSF_seq = null;
+			var RSLG_seq = null;
+			var RSPF_seq = null;
+			var RSV_seq = null;
+			var RSPR_seq = null;
+			$.ajax({
+				url: 'resumeWrite.do',
+				type: 'post',
+				data: {
+					"rs_name" : rs_name,
+					"rs_birth": rs_birth,
+					"rs_gender": rs_gender,
+					"rs_email": rs_email,
+					"rs_homenum": rs_homenum,
+					"rs_phone": rs_phone,
+					"rs_address": rs_address,
+					"rs_title": rs_title,
+					"rs_type": rs_type,
+					"rs_pay": rs_pay,
+					"rs_workspace1": rs_workspace1,
+					"rs_workspace2": rs_workspace2,
+					"rs_workspace3": rs_workspace3,
+					"rs_job1": rs_job1,
+					"rs_job2": rs_job2,
+					"rs_job3": rs_job3,
+					"RSIM_seq": RSIM_seq,
+					"RSS_seq": RSS_seq,
+					"RSW_seq": RSW_seq,
+					"RSIT_seq": RSIT_seq,
+					"RSE_seq": RSE_seq,
+					"RSLS_seq": RSLS_seq,
+					"RST_seq": RST_seq,
+					"RSF_seq": RSF_seq,
+					"RSLG_seq": RSLG_seq,
+					"RSPF_seq": RSPF_seq,
+					"RSV_seq": RSV_seq,
+					"RSPR_seq": RSPR_seq
+				},
+				dataType: 'text',
+				timeout: 30000,
+				cache: false,
+				success: function() {
+					alert("입력성공");
+				},
+				error: function() {
+					alert("입력실패");
+				}
+			});
 		});
 	});
 </script>
@@ -345,33 +458,33 @@ var rs_workspace_cnt = 1;
 	<a href="#">이력서 관리</a>
 </div>
 <div id="section">
-	<input type="text" name="rs_title" placeholder="이력서 제목" width="99%" id="rs_title"><br>
+	<input type="text" name="rs_title" id="rs_title" placeholder="이력서 제목" width="99%"><br>
 	<div id="member_info">
 	<h2>인적사항</h2>
 		<table>
 			<tr>
-				<td><input type="text" name="m_Name" value="${memberDTO.m_Name }" placeholder="이름"></td>
-				<td><input type="text" name="m_Birth" value="${memberDTO.m_Birth }" placeholder="생년월일"></td>
+				<td><input type="text" name="rs_name" id="rs_name" value="${memberDTO.m_name }" placeholder="이름"></td>
+				<td><input type="date" name="rs_birth" id="rs_birth" value="${memberDTO.m_birth }" placeholder="생년월일"></td>
 				<td>
-					<select name="m_Gender">
-						<option>---성별---</option>
-					<c:if test="${memberDTO.m_Gender == '남자' }">
+					<select name="rs_gender" id="rs_gender">
+						<option value="error">---성별---</option>
+					<c:if test="${memberDTO.m_gender == '남자' }">
 						<option value="남자" selected="selected">남자</option>
 						<option value="여자">여자</option>
 					</c:if>
-					<c:if test="${memberDTO.m_Gender == '여자' }">
+					<c:if test="${memberDTO.m_gender == '여자' }">
 						<option value="남자">남자</option>
 						<option value="여자" selected="selected">여자</option>
 					</c:if>
 					</select>
 				</td>
-				<td><input type="text" name="m_Email" value="${memberDTO.m_Email }" placeholder="이메일"></td>
+				<td><input type="text" name="rs_email" id="rs_email" value="${memberDTO.m_email }" placeholder="이메일"></td>
 				<td rowspan="2"><img src="./img/IDphoto_103x132.jpg" onclick="alert('오')"></td>
 			</tr>
 			<tr>
-				<td><input type="text" name="m_Homenum" value="${memberDTO.m_Homenum }" placeholder="전화번호"></td>
-				<td><input type="text" name="m_Phone" value="${memberDTO.m_Phone }" placeholder="휴대폰번호"></td>
-				<td colspan="2"><input type="text" name="m_Address" value="${memberDTO.m_Address }" placeholder="주소"></td>
+				<td><input type="text" name="rs_homenum" id="rs_homenum" value="${memberDTO.m_homenum }" placeholder="전화번호"></td>
+				<td><input type="text" name="rs_phone" id="rs_phone" value="${memberDTO.m_phone }" placeholder="휴대폰번호"></td>
+				<td colspan="2"><input type="text" name="rs_address" id="rs_address" value="${memberDTO.m_address }" placeholder="주소"></td>
 			</tr>
 		</table>
 	</div>
@@ -380,8 +493,8 @@ var rs_workspace_cnt = 1;
 		<table>
 			<tr>
 				<td width="50%">
-					<select name="rs_type">
-						<option>---고용형태---</option>
+					<select id="rs_type" name="rs_type">
+						<option value="error">---고용형태---</option>
 						<option value="정규직">정규직</option>
 						<option value="계약직">계약직</option>
 						<option value="병역특례">병역특례</option>
@@ -391,8 +504,8 @@ var rs_workspace_cnt = 1;
 					</select>
 				</td>
 				<td>
-					<input type="number" placeholder="희망연봉" id="rs_pay"><font>만원이상</font> 
-					<input type="checkbox" value="면접 후 결정" id="rs_pay_no"><font>면접 후 결정</font>
+					<input type="number" placeholder="희망연봉" id="rs_pay" name="rs_pay"><font>만원이상</font> 
+					<input type="checkbox" value="면접 후 결정" id="rs_pay_no" name="rs_pay_no"><font>면접 후 결정</font>
 				</td>
 			</tr>
 			<tr>
@@ -413,7 +526,7 @@ var rs_workspace_cnt = 1;
 			<tr>
 				<td colspan="2">
 					<div class="header">
-						<div class="left"><font>직무 산업 키워드</font><span class="rs_job_cnt"></span>/5</div>
+						<div class="left"><font>직무 산업 키워드</font><span class="rs_job_cnt"></span>/3</div>
 						<div class="right"><input type="button" id="rs_job_btn" value="추가하기"></div>
 						<div id="rs_job_select1"></div>
 						<div id="rs_job_select2"></div>
@@ -423,8 +536,6 @@ var rs_workspace_cnt = 1;
 						<input type="button" id="rs_job1">
 						<input type="button" id="rs_job2">
 						<input type="button" id="rs_job3">
-						<input type="button" id="rs_job4">
-						<input type="button" id="rs_job5">
 					</div>                          
 				</td>
 			</tr>

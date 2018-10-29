@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.languageMapper">
+	
+	<insert id="Write" parameterType="languageDTO">
+	 	insert into RS_language values  
+		(RS_language_SEQ.nextval,#{RSLG_category},#{RSLG_name},#{RSLG_LV},#{M_id},#{RSLG_UserTitle}, #{rslg_score}, #{rslg_date}, #{rslg_test}) 
+	</insert>
+	
+	<select id="selectNumlanguage" parameterType="String" resultType="int">
+		select count (*) from RS_language where M_id = #{memId}
+	</select>
+	
+	<select id="selectTitleList" parameterType="String" resultType="languageDTO">
+		select * from RS_language where M_id = #{memId}
+	</select>
+	 			
+	<delete id="Delete" parameterType="int">
+		delete RS_language where rslg_Seq=#{rslg_Seq}
+	</delete>
+
+</mapper>

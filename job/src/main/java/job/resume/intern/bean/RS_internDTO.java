@@ -18,8 +18,14 @@ public class RS_internDTO {
     // 회원 아이디 
     private String m_Id;
     // 사용자정의 아이디
-    private String rsit_UserTitle;
+    private String rsit_UserTitle;    
     
+	@Override
+	public String toString() {
+		return "RS_internDTO [rsit_Seq=" + rsit_Seq + ", rsit_Type=" + rsit_Type + ", rsit_Company=" + rsit_Company
+				+ ", rsit_Startdate=" + rsit_Startdate + ", rsit_Enddate=" + rsit_Enddate + ", rsit_Content="
+				+ rsit_Content + ", m_Id=" + m_Id + ", rsit_UserTitle=" + rsit_UserTitle + "]";
+	}
 	public Integer getRsit_Seq() {
 		return rsit_Seq;
 	}
