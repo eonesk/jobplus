@@ -1,5 +1,7 @@
 package job.resume.bean;
 
+import java.util.Date;
+
 //이력서 
 public class ResumeDTO {
     // 이력서 seq 
@@ -8,7 +10,84 @@ public class ResumeDTO {
     // 회원 아이디 
     private String m_Id;
 
-    // 이력서 제목 
+ // 이력서 이름 
+    private String rs_Name;
+
+    // 이력서 생년월일 
+    private Date rs_Birth;
+
+    // 이력서 성별 
+    private String rs_Gender;
+
+    // 이력서 이메일 
+    private String rs_Email;
+
+    // 이력서 전화번호 
+    private String rs_Homenum;
+
+    // 이력서 핸드폰번호 
+    private String rs_Phone;
+
+    // 이력서 주소 
+    private String rs_Address;
+
+    public String getRs_Name() {
+		return rs_Name;
+	}
+
+	public void setRs_Name(String rs_Name) {
+		this.rs_Name = rs_Name;
+	}
+
+	public Date getRs_Birth() {
+		return rs_Birth;
+	}
+
+	public void setRs_Birth(Date rs_Birth) {
+		this.rs_Birth = rs_Birth;
+	}
+
+	public String getRs_Gender() {
+		return rs_Gender;
+	}
+
+	public void setRs_Gender(String rs_Gender) {
+		this.rs_Gender = rs_Gender;
+	}
+
+	public String getRs_Email() {
+		return rs_Email;
+	}
+
+	public void setRs_Email(String rs_Email) {
+		this.rs_Email = rs_Email;
+	}
+
+	public String getRs_Homenum() {
+		return rs_Homenum;
+	}
+
+	public void setRs_Homenum(String rs_Homenum) {
+		this.rs_Homenum = rs_Homenum;
+	}
+
+	public String getRs_Phone() {
+		return rs_Phone;
+	}
+
+	public void setRs_Phone(String rs_Phone) {
+		this.rs_Phone = rs_Phone;
+	}
+
+	public String getRs_Address() {
+		return rs_Address;
+	}
+
+	public void setRs_Address(String rs_Address) {
+		this.rs_Address = rs_Address;
+	}
+
+	// 이력서 제목 
     private String rs_Title;
 
     // 고용형태 
