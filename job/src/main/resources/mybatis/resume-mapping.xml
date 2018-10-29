@@ -6,12 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.resumeMapper">
 	<insert id="insertResume" parameterType="resumeDTO">
 		insert into resume values
-		(resume_seq.nextval, #{mId}, #{rsTitle},#{rsType}, #{rsPay},
-		#{rsWorkspace1}, #{rsWorkspace2, jdbcType=VARCHAR}, #{rsWorkspace3, jdbcType=VARCHAR},
-		#{rsJob1}, #{rsJob2, jdbcType=VARCHAR}, #{rsJob3, jdbcType=VARCHAR},
-		#{rsimSeq, jdbcType=INTEGER}, #{rssSeq, jdbcType=INTEGER}, #{rswSeq, jdbcType=INTEGER}, #{rsitSeq, jdbcType=INTEGER},
-		#{rseSeq, jdbcType=INTEGER}, #{rslsSeq, jdbcType=INTEGER}, #{rstSeq, jdbcType=INTEGER}, #{rsfSeq, jdbcType=INTEGER},
-		#{rslgSeq, jdbcType=INTEGER}, #{rspfSeq, jdbcType=INTEGER}, #{rsvSeq, jdbcType=INTEGER}, #{rsprSeq, jdbcType=INTEGER})
+		(resume_seq.nextval, #{m_Id}, #{rs_Title},#{rs_Type}, #{rs_Pay},
+		#{rs_Workspace1}, #{rs_Workspace2, jdbcType=VARCHAR}, #{rs_Workspace3, jdbcType=VARCHAR},
+		#{rs_Job1}, #{rs_Job2, jdbcType=VARCHAR}, #{rs_Job3, jdbcType=VARCHAR},
+		#{rsim_Seq, jdbcType=INTEGER}, #{rss_Seq, jdbcType=INTEGER}, #{rsw_Seq, jdbcType=INTEGER}, #{rsit_Seq, jdbcType=INTEGER},
+		#{rse_Seq, jdbcType=INTEGER}, #{rsls_Seq, jdbcType=INTEGER}, #{rst_Seq, jdbcType=INTEGER}, #{rsf_Seq, jdbcType=INTEGER},
+		#{rslg_Seq, jdbcType=INTEGER}, #{rspf_Seq, jdbcType=INTEGER}, #{rsv_Seq, jdbcType=INTEGER}, #{rspr_Seq, jdbcType=INTEGER},
+		#{rs_Name},#{rs_Birth},#{rs_Gender},#{rs_Email},#{rs_Homenum},#{rs_Phone},#{rs_Address})
 	</insert>
 	
 	<select id="selectMember" parameterType="String" resultType="memberDTO">
@@ -27,13 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		RSIM_SEQ, RSS_SEQ, RSW_SEQ, RSIT_SEQ, 
 		RSE_SEQ, RSLS_SEQ, RST_SEQ, RSF_SEQ, 
 		RSLG_SEQ, RSPF_SEQ, RSV_SEQ, RSPR_SEQ) = 
-		(#{rsTitle},#{rsType}, #{rsPay},
-		#{rsWorkspace1}, #{rsWorkspace2}, #{rsWorkspace3},
-		#{rsJob1}, #{rsJob2}, #{rsJob3},
-		#{rsimSeq}, #{rssSeq}, #{rswSeq}, #{rsitSeq},
-		#{rseSeq}, #{rslsSeq}, #{rstSeq}, #{rsfSeq},
-		#{rslgSeq}, #{rspfSeq}, #{rsvSeq}, #{rsprSeq})
-		where RS_SEQ=#{rsSeq} and M_ID=#{mId}
+		(#{rs_Title},#{rs_Type}, #{rs_Pay},
+		#{rs_Workspace1}, #{rs_Workspace2}, #{rs_Workspace3},
+		#{rs_Job1}, #{rs_Job2}, #{rs_Job3},
+		#{rsim_Seq}, #{rss_Seq}, #{rsw_Seq}, #{rsit_Seq},
+		#{rse_Seq}, #{rsls_Seq}, #{rst_Seq}, #{rsf_Seq},
+		#{rslg_Seq}, #{rspf_Seq}, #{rsv_Seq}, #{rspr_Seq})
+		where RS_SEQ=#{rs_Seq} and M_ID=#{m_Id}
 	</update>
 	
 	<update id="updateResume_RSIM_SEQ" parameterType="java.util.Map">
