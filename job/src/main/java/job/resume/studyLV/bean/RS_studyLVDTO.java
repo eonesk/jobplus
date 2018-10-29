@@ -5,113 +5,131 @@ import java.util.Date;
 public class RS_studyLVDTO {
 
     // 학력seq 
-    private Integer rssSeq;
+    private Integer rss_Seq;
 
     // 학교구분 
-    private String rssType;
+    private String rss_Type;
 
     // 학교명 
-    private String rssName;
+    private String rss_Name;
 
     // 입학년월 
-    private Date rssStartdate;
+    private Date rss_Startdate;
 
     // 졸업년월 
-    private Date rssEnddate;
+    private Date rss_Enddate;
 
     // 고졸여부 
-    private String rssIshighschool;
+    private String rss_Ishighschool;
 
     // 전공명 
-    private String rssMajor;
+    private String rss_Major;
 
     // 학점 
-    private Integer rssScore;
+    private Integer rss_Score;
 
     // 총점 
-    private Integer rssTotscore;
+    private Integer rss_Totscore;
 
     // 회원 아이디 
-    private String mId;
+    private String m_Id;
+    
+    // 사용자 설정 이름
+    private String rss_UserTitle;
 
-    public Integer getRssSeq() {
-        return rssSeq;
-    }
+	@Override
+	public String toString() {
+		return "RS_studyLVDTO [rss_Seq=" + rss_Seq + ", rss_Type=" + rss_Type + ", rss_Name=" + rss_Name
+				+ ", rss_Startdate=" + rss_Startdate + ", rss_Enddate=" + rss_Enddate + ", rss_Ishighschool="
+				+ rss_Ishighschool + ", rss_Major=" + rss_Major + ", rss_Score=" + rss_Score + ", rss_Totscore="
+				+ rss_Totscore + ", m_Id=" + m_Id + ", rss_UserTitle=" + rss_UserTitle + "]";
+	}
 
-    public void setRssSeq(Integer rssSeq) {
-        this.rssSeq = rssSeq;
-    }
+	public Integer getRss_Seq() {
+		return rss_Seq;
+	}
 
-    public String getRssType() {
-        return rssType;
-    }
+	public void setRss_Seq(Integer rss_Seq) {
+		this.rss_Seq = rss_Seq;
+	}
 
-    public void setRssType(String rssType) {
-        this.rssType = rssType;
-    }
+	public String getRss_Type() {
+		return rss_Type;
+	}
 
-    public String getRssName() {
-        return rssName;
-    }
+	public void setRss_Type(String rss_Type) {
+		this.rss_Type = rss_Type;
+	}
 
-    public void setRssName(String rssName) {
-        this.rssName = rssName;
-    }
+	public String getRss_Name() {
+		return rss_Name;
+	}
 
-    public Date getRssStartdate() {
-        return rssStartdate;
-    }
+	public void setRss_Name(String rss_Name) {
+		this.rss_Name = rss_Name;
+	}
 
-    public void setRssStartdate(Date rssStartdate) {
-        this.rssStartdate = rssStartdate;
-    }
+	public Date getRss_Startdate() {
+		return rss_Startdate;
+	}
 
-    public Date getRssEnddate() {
-        return rssEnddate;
-    }
+	public void setRss_Startdate(Date rss_Startdate) {
+		this.rss_Startdate = rss_Startdate;
+	}
 
-    public void setRssEnddate(Date rssEnddate) {
-        this.rssEnddate = rssEnddate;
-    }
+	public Date getRss_Enddate() {
+		return rss_Enddate;
+	}
 
-    public String getRssIshighschool() {
-        return rssIshighschool;
-    }
+	public void setRss_Enddate(Date rss_Enddate) {
+		this.rss_Enddate = rss_Enddate;
+	}
 
-    public void setRssIshighschool(String rssIshighschool) {
-        this.rssIshighschool = rssIshighschool;
-    }
+	public String getRss_Ishighschool() {
+		return rss_Ishighschool;
+	}
 
-    public String getRssMajor() {
-        return rssMajor;
-    }
+	public void setRss_Ishighschool(String rss_Ishighschool) {
+		this.rss_Ishighschool = rss_Ishighschool;
+	}
 
-    public void setRssMajor(String rssMajor) {
-        this.rssMajor = rssMajor;
-    }
+	public String getRss_Major() {
+		return rss_Major;
+	}
 
-    public Integer getRssScore() {
-        return rssScore;
-    }
+	public void setRss_Major(String rss_Major) {
+		this.rss_Major = rss_Major;
+	}
 
-    public void setRssScore(Integer rssScore) {
-        this.rssScore = rssScore;
-    }
+	public Integer getRss_Score() {
+		return rss_Score;
+	}
 
-    public Integer getRssTotscore() {
-        return rssTotscore;
-    }
+	public void setRss_Score(Integer rss_Score) {
+		this.rss_Score = rss_Score;
+	}
 
-    public void setRssTotscore(Integer rssTotscore) {
-        this.rssTotscore = rssTotscore;
-    }
+	public Integer getRss_Totscore() {
+		return rss_Totscore;
+	}
 
-    public String getMId() {
-        return mId;
-    }
+	public void setRss_Totscore(Integer rss_Totscore) {
+		this.rss_Totscore = rss_Totscore;
+	}
 
-    public void setMId(String mId) {
-        this.mId = mId;
-    }
+	public String getM_Id() {
+		return m_Id;
+	}
 
+	public void setM_Id(String m_Id) {
+		this.m_Id = m_Id;
+	}
+
+	public String getRss_UserTitle() {
+		return rss_UserTitle;
+	}
+
+	public void setRss_UserTitle(String rss_UserTitle) {
+		this.rss_UserTitle = rss_UserTitle;
+	}
 }

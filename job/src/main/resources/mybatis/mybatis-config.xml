@@ -13,6 +13,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="job.resume.bean.ResumeDTO" alias="resumeDTO"/>
 		<typeAlias type="job.resume.image.bean.RS_imageDTO" alias="imageDTO"/>
 		<typeAlias type="job.resume.pr.bean.RS_prDTO" alias="rsprDTO"/>
+    <typeAlias type="job.resume.studyLV.bean.RS_studyLVDTO" alias="studyLVDTO"/>
+		<typeAlias type="job.resume.edu.bean.RS_eduDTO" alias="eduDTO"/>
+		<typeAlias type="job.resume.license.bean.RS_licenseDTO" alias="licenseDTO"/>
 		<typeAlias type="job.resume.portfolio.bean.RS_portfolioDTO" alias="portfolioDTO"/>
 	</typeAliases>	
 	
@@ -22,7 +25,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/member-mapping.xml"/>
 		<mapper resource="mybatis/resume-mapping.xml"/>
 		
-		<!-- SQL문장이 기술되는 Mapper파일 / resume 하위 테이블들 -->	
+
+		<!-- SQL문장이 기술되는 Mapper파일 / resume 하위 테이블들 -->
+  	<mapper resource="mybatis/resume/license-mapping.xml"/>
+		<mapper resource="mybatis/resume/edu-mapping.xml"/>
+		<mapper resource="mybatis/resume/studyLV-mapping.xml"/>
 		<mapper resource="mybatis/resume/intern-mapping.xml"/>
 		<mapper resource="mybatis/resume/trophy-mapping.xml"/>	
 		<mapper resource="mybatis/resume/language-mapping.xml"/>	

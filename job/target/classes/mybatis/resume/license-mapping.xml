@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.licenseMapper">
+	<insert id="rslsSave" parameterType="licenseDTO">
+		insert into RS_license values (RS_license_SEQ.nextval, #{rsls_Name}, #{rsls_Company}, #{rsls_Date}, #{m_Id}, #{rsls_UserTitle})
+	</insert>
+	
+	<select id="selectNumberOfLicense" parameterType="String" resultType="int">
+		select count (*) from RS_license where M_id = #{m_Id}
+	</select>
+	 
+	<select id="selectLicenseUserTitleList" parameterType="String" resultType="licenseDTO">
+		select * from RS_license where M_id = #{memId}
+	</select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.studyLVMapper">
+	<insert id="rssSave" parameterType="studyLVDTO">
+		insert into RS_studyLV values (RS_studyLV_SEQ.nextval,#{rss_Type},#{rss_Name},#{rss_Startdate},#{rss_Enddate},#{rss_Ishighschool},#{rss_Major},#{rss_Score},#{rss_Totscore},#{m_Id},#{rss_UserTitle})
+	</insert>
+	 
+	<select id="selectNumberOfStudyLV" parameterType="String" resultType="int">
+		select count (*) from RS_studyLV where M_id = #{memId}
+	</select>
+	
+	<select id="selectStudyLVUserTitleList" parameterType="String" resultType="studyLVDTO">
+		select * from RS_studyLV where M_id = #{memId}
+	</select>
+</mapper>

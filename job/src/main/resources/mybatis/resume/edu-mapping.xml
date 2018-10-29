@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.eduMapper">
+	<insert id="rseSave" parameterType="eduDTO">
+		insert into RS_edu values(RS_edu_SEQ.nextval, #{rse_Name}, #{rse_Company}, #{rse_Startdate}, #{rse_Enddate}, #{rse_Content}, #{m_Id}, #{rse_UserTitle})
+	</insert>
+	
+	<select id="selectNumberOfEdu" parameterType="String" resultType="int">
+		select count (*) from RS_edu where M_id = #{m_Id}
+	</select>
+	 
+	<select id="selectEduUserTitleList" parameterType="String" resultType="eduDTO">
+		select * from RS_edu where M_id = #{memId}
+	</select>
+</mapper>

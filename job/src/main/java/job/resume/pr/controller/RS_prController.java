@@ -8,7 +8,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,7 @@ public class RS_prController {
 		
 		String rsprUserTitle = request.getParameter("rsprUserTitle");
 		System.out.println("[RS_prController] rsprUserTitle : " + rsprUserTitle);
+		
 		// DTO에 변수 저장
 		RS_prDTO rsprDTO = new RS_prDTO();
 		
@@ -64,7 +66,7 @@ public class RS_prController {
 		PrintWriter out = response.getWriter();
 
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num5";
+		String memId = "num1";
 		
 		// DB작업 : memID가 가지고 있는 자소서의 개수를 구함
 		int numberOfPr = rsprService.selectNumberOfPr(memId);		
@@ -73,11 +75,13 @@ public class RS_prController {
 		out.print(numberOfPr);
 	}
 	
-	@RequestMapping(value="/job/resume/pr/rsprLoad.do", method=RequestMethod.POST)
-	public void rsprLoad(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	@RequestMapping(value="/job/resume/pr/rsprLoad.do")
+	public ModelAndView rsprLoad(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		//response.setContentType("text/html; charset=UTF-8");
+		//PrintWriter out = response.getWriter();
+		
+		ModelAndView modelAndView = new ModelAndView();
 		
 		/** Session으로 넘어오는 memID값 임시 지정 */
 		String memId = "num1";
@@ -85,12 +89,24 @@ public class RS_prController {
 		// memId가 가지고 있는 자소서의 rsprUserTitle을 select해서 list에 추가
 		List<RS_prDTO> rsprUserTitleList = rsprService.selectRsprUserTitleList(memId);
 		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
 		// rsprUserTitleList 리스트값 확인
 		for(int i = 0; i < rsprUserTitleList.size(); i++) {
-			RS_prDTO testDTO = rsprUserTitleList.get(i);
-			System.out.println("[RS_prController] testDTO 출력 : " + testDTO.toString());
+			RS_prDTO rsprDTO = rsprUserTitleList.get(i);
+			System.out.println("[RS_prController] rsprDTO 출력 : " + rsprDTO.toString());
+			JSONObject temp = new JSONObject();
+			temp.put("rspr_Seq", rsprDTO.getRspr_Seq());
+			temp.put("rspr_Title", rsprDTO.getRspr_Title());
+			temp.put("rspr_Content", rsprDTO.getRspr_Content());
+			temp.put("m_Id", rsprDTO.getM_Id());
+			temp.put("rspr_UserTitle", rsprDTO.getRspr_UserTitle());
+			items.put(i, temp);
 		}
 		
+		jsonObject.put("items", items);
+/*		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("rsprUserTitleList", rsprUserTitleList);
 		System.out.println("[RS_prController] map 출력 : " + map);
@@ -98,8 +114,17 @@ public class RS_prController {
 		jsonObject.putAll(map);
 		System.out.println("[RS_prController] jsonObject 출력 : " + jsonObject);
 		
+		String jsonObject_str = jsonObject.toString();
+		System.out.println("[RS_prController] jsonObject_str 출력 : " + jsonObject_str);
+*/		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/pr/prLoadJson.jsp");
 		
-		out.println(jsonObject);
+		System.out.println("[RS_prController] jsonObject 출력 : " + jsonObject);
+		
+		return modelAndView;
+		
+		//out.print(jsonObject_str);
 	}
 }
 
