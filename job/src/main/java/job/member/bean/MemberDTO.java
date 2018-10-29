@@ -6,135 +6,137 @@ import java.util.Date;
 public class MemberDTO {
 	//주석인데
     // 회원 아이디 
-    private String m_Id;
+    private String m_id;
 
     // 회원 비밀번호 
-    private String m_Pw;
+    private String m_pw;
 
     // 회원 이름 
-    private String m_Name;
+    private String m_name;
 
     // 회원 성별 
-    private String m_Gender;
+    private String m_gender;
 
     // 회원 집번호 
-    private String m_Homenum;
+    private String m_homenum;
 
     // 회원 핸드폰번호 
-    private String m_Phone;
+    private String m_phone;
 
     // 회원 생일 
-    private Date m_Birth;
+    private Date m_birth;
 
     // 회원 이메일 
-    private String m_Email;
+    private String m_email;
 
     // 회원 주소 
-    private String m_Address;
+    private String m_address;
 
     // 이메일 수신동의 
-    private String m_Isemail;
+    private String m_isemail;
 
     // 문자 수신동의 
-    private String m_Isphone;
+    private String m_isphone;
 
     // 해외 거주 여부 
-    private String m_Isforeign;
+    private String m_isForeign;
 
-	public String getM_Id() {
-		return m_Id;
+	public String getM_id() {
+		return m_id;
 	}
 
-	public void setM_Id(String m_Id) {
-		this.m_Id = m_Id;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 
-	public String getM_Pw() {
-		return m_Pw;
+	public String getM_pw() {
+		return m_pw;
 	}
 
-	public void setM_Pw(String m_Pw) {
-		this.m_Pw = m_Pw;
+	public void setM_pw(String m_pw) {
+		this.m_pw = m_pw;
 	}
 
-	public String getM_Name() {
-		return m_Name;
+	public String getM_name() {
+		return m_name;
 	}
 
-	public void setM_Name(String m_Name) {
-		this.m_Name = m_Name;
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
 	}
 
-	public String getM_Gender() {
-		return m_Gender;
+	public String getM_gender() {
+		return m_gender;
 	}
 
-	public void setM_Gender(String m_Gender) {
-		this.m_Gender = m_Gender;
+	public void setM_gender(String m_gender) {
+		this.m_gender = m_gender;
 	}
 
-	public String getM_Homenum() {
-		return m_Homenum;
+	public String getM_homenum() {
+		return m_homenum;
 	}
 
-	public void setM_Homenum(String m_Homenum) {
-		this.m_Homenum = m_Homenum;
+	public void setM_homenum(String m_homenum) {
+		this.m_homenum = m_homenum;
 	}
 
-	public String getM_Phone() {
-		return m_Phone;
+	public String getM_phone() {
+		return m_phone;
 	}
 
-	public void setM_Phone(String m_Phone) {
-		this.m_Phone = m_Phone;
+	public void setM_phone(String m_phone) {
+		this.m_phone = m_phone;
 	}
 
-	public Date getM_Birth() {
-		return m_Birth;
+	public Date getM_birth() {
+		return m_birth;
 	}
 
-	public void setM_Birth(Date m_Birth) {
-		this.m_Birth = m_Birth;
+	public void setM_birth(Date m_birth) {
+		this.m_birth = m_birth;
 	}
 
-	public String getM_Email() {
-		return m_Email;
+	public String getM_email() {
+		return m_email;
 	}
 
-	public void setM_Email(String m_Email) {
-		this.m_Email = m_Email;
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
 	}
 
-	public String getM_Address() {
-		return m_Address;
+	public String getM_address() {
+		return m_address;
 	}
 
-	public void setM_Address(String m_Address) {
-		this.m_Address = m_Address;
+	public void setM_address(String m_address) {
+		this.m_address = m_address;
 	}
 
-	public String getM_Isemail() {
-		return m_Isemail;
+	
+
+	public String getM_isemail() {
+		return m_isemail;
 	}
 
-	public void setM_Isemail(String m_Isemail) {
-		this.m_Isemail = m_Isemail;
+	public void setM_isemail(String m_isemail) {
+		this.m_isemail = m_isemail;
 	}
 
-	public String getM_Isphone() {
-		return m_Isphone;
+	public String getM_isphone() {
+		return m_isphone;
 	}
 
-	public void setM_Isphone(String m_Isphone) {
-		this.m_Isphone = m_Isphone;
+	public void setM_isphone(String m_isphone) {
+		this.m_isphone = m_isphone;
 	}
 
-	public String getM_Isforeign() {
-		return m_Isforeign;
+	public String getM_isForeign() {
+		return m_isForeign;
 	}
 
-	public void setM_Isforeign(String m_Isforeign) {
-		this.m_Isforeign = m_Isforeign;
+	public void setM_isForeign(String m_isForeign) {
+		this.m_isForeign = m_isForeign;
 	}
 
     
