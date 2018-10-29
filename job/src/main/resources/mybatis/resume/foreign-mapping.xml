@@ -4,14 +4,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.foreignMapper">
+
 	<insert id="foreignWrite" parameterType="foreignDTO">
-		insert into RS_foreign values 
-		(RS_foreign_SEQ.nextval, #{rsfName} , #{rsfStartdate},
-			#{rsfEnddate} , #{rsfContent} , #{mId} , #{rsfUsertitle})
+		INSERT INTO RS_FOREIGN VALUES
+		(RS_foreign_SEQ.nextval, #{rsf_Name} , #{rsf_Startdate},
+		#{rsf_Enddate} , #{rsf_Content} , #{m_Id} , #{rsf_Usertitle})
 	</insert>
+	
+	<select id="getForeignOfId" parameterType="String" resultType="int">
+		SELECT COUNT (*) FROM RS_FOREIGN WHERE M_ID = #{m_Id}
+	</select>	
+	
+	<select id="viewForeignOfId" parameterType="String" resultType="foreignDTO">
+		SELECT * FROM RS_FOREIGN WHERE M_ID = #{m_Id}
+	</select>
+	
+	<select id="foreignListOfId" parameterType="java.util.Map" resultType="foreignDTO">
+		<![CDATA[ SELECT * FROM 
+				 (SELECT ROWNUM RN,TT.*FROM
+				 (SELECT * FROM RS_FOREIGN WHERE M_ID = #{m_Id} ORDER BY rsf_Seq DESC) TT)
+				 WHERE RN >= #{startNum} AND RN <= #{endNum} ]]>
+	</select>
+	
 <!-- 
 	<delete id="foreignDelete" parameterType="int">
-		delete RS_foreign where RSF_seq = #{rsfSeq}
+		delete RS_foreign where RSF_seq = #{rsf_Seq}
 	</delete>
  -->	
 </mapper>

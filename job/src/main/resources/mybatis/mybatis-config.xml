@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="job.resume.bean.ResumeDTO" alias="resumeDTO"/>
 		<typeAlias type="job.resume.image.bean.RS_imageDTO" alias="imageDTO"/>
 		<typeAlias type="job.resume.pr.bean.RS_prDTO" alias="rsprDTO"/>
+		<typeAlias type="job.resume.portfolio.bean.RS_portfolioDTO" alias="portfolioDTO"/>
 	</typeAliases>	
 	
 	<!-- SQL Mapper 설정  -->
@@ -24,5 +25,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/resume/foreign-mapping.xml"/>
 		<mapper resource="mybatis/resume/intern-mapping.xml"/>
 		<mapper resource="mybatis/resume/image-mapping.xml"/>
+		<mapper resource="mybatis/resume/portfolio-mapping.xml"/>
 	</mappers>
 </configuration>
