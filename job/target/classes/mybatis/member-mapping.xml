@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="memberInsert" parameterType="memberDTO">
 		insert into member 
 		values (#{m_id},#{m_pw},#{m_name},#{m_gender},#{m_homenum},#{m_phone},
-		sysdate,#{m_email},#{m_address},#{m_isemail},#{m_isphone},#{m_isForeign})
+		#{m_birth},#{m_email},#{m_address},#{m_isemail},#{m_isphone},#{m_isForeign})
 	</insert>
 	<update id="memberModify" parameterType="memberDTO">
 		update member set name=#{name}, pwd=#{pwd},gender=#{gender},

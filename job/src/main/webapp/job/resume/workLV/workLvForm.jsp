@@ -13,7 +13,6 @@ body{
 }
 
 #workLvContainer{
-	
 	margin:auto;
 }
 #workLvContent{
@@ -41,6 +40,44 @@ body{
 	width:280px; 
 	height:50px;
 }
+
+#workLvPosition{
+	position:relative;
+}
+
+#rsw_position{
+	
+	cursor:pointer;
+}
+
+#position_list{
+	position:absolute;
+	left:0;
+	top:56px;
+	width:381px;
+	height:342px;
+	border:1px solid gray;
+	background-color: white;
+}
+
+#left,#right{
+	float:left;
+	width:49%;
+	height:100%;
+}
+
+#left{
+	border-right:1px solid gray;
+}
+
+#headerLeft,#headerRight{
+	/* border-bottom: 1px solid gray;
+	background-color: gainsboro;
+	height:10%;
+	width: 99%; */
+}
+
+
 #workLvPart textarea{
 	width:900px; 
 	height:80px;
@@ -119,8 +156,23 @@ body{
 			</div>
 			<div id="lineTwo" class="contentDiv">
 				<div id="workLvPosition">
-					<input type="text" id="rsw_position" name="rsw_position" placeholder="직급/직책">
-					<input type="text" id="rsw_job" name="rsw_job" placeholder="직무">
+					<input type="text" id="rsw_position" 
+						name="rsw_position" placeholder="직급/직책"
+							readonly="readonly">
+					<input type="text" id="rsw_job" 
+						name="rsw_job" placeholder="직무">
+					<div id="position_list">
+						<div id="left">
+							<div id="headerLeft">레프트</div>
+							<div id="bodyLeft">레프트</div>
+							<div id="footerLeft">레프트</div>
+						</div>
+						<div id="right">
+							<div id="headerRight">라이트</div>
+							<div id="bodyRight">라이트</div>
+							<div id="footerRight">라이트</div>
+						</div>
+					</div>
 				</div>
 				<div id="workLvPay">
 					<input type="text" id="rsw_pay" name="rsw_pay" placeholder="연봉">
