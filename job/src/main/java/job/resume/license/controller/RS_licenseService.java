@@ -1,5 +1,11 @@
 package job.resume.license.controller;
 
-public interface RS_licenseService {
+import java.util.List;
 
+import job.resume.license.bean.RS_licenseDTO;
+
+public interface RS_licenseService {
+	int rslsSave(RS_licenseDTO licenseDTO);
+	int selectNumberOfLicense(String memId);
+	List<RS_licenseDTO> selectLicenseUserTitleList(String memId);
 }

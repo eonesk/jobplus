@@ -21,7 +21,7 @@
 		});
 		
 		$("#RSPR_loadA").click(function() {
-			window.open("./prLoadPopUp.jsp", "", "width=500px height=500px");
+			window.open("./prLoadPopUp.jsp", "", "width=570px height=600px");
 		});
 	});
 </script>
@@ -29,7 +29,7 @@
 <body>
 	<!-- jQuery로 생성할 부분.. 자기소개서 누르면 나타남 -->
 	<div id="PR_div"
-		style="display: inline-block; margin: 15px; width: 95%; background-color: #f5f7fb;">
+		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
 		<h3>자기소개서</h3>
 		<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
 			<a href="#" id="RSPR_loadA">내 자소서 불러오기</a>
