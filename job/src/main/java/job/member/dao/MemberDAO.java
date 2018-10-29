@@ -14,7 +14,7 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public int write(MemberDTO memberDTO) {
+	public int memberInsert(MemberDTO memberDTO) {
 		return sqlSession.insert("mybatis.memberMapper.memberInsert", memberDTO);
 	}	
 	public int modify(MemberDTO memberDTO) {

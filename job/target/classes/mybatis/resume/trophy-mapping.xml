@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.trophyMapper">
+	
+	<insert id="Write" parameterType="trophyDTO">
+	 	insert into RS_trophy values  
+		(RS_trophy_SEQ.nextval,#{rst_Name},#{rst_Company},#{rst_Date},#{rst_Content},#{m_Id},#{RST_UserTitle}) 
+	</insert>
+	
+	<select id="selectNumtrophy" parameterType="String" resultType="int">
+		select count (*) from RS_trophy where M_id = #{memId}
+	</select>
+	
+	<select id="selectTitleList" parameterType="String" resultType="trophyDTO">
+		select * from RS_trophy where M_id = #{memId}
+	</select>
+	 			
+	<delete id="Delete" parameterType="int">
+		delete RS_trophy where rst_Seq=#{rst_Seq}
+	</delete>
+
+</mapper>

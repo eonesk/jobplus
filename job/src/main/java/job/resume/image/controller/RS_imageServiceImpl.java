@@ -1,8 +1,8 @@
 package job.resume.image.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import job.resume.image.bean.RS_imageDTO;
 import job.resume.image.dao.RS_imageDAO;
 
@@ -19,4 +19,21 @@ public class RS_imageServiceImpl implements RS_imageService {
 //	public int imageDelete(int rsim_Seq) {
 //		return imageDAO.imageDelete(rsim_Seq);
 //	}
+
+	@Override
+	public int getImageOfId(String memId) {
+		return imageDAO.getImageOfId(memId);
+	}
+
+	@Override
+	public RS_imageDTO viewImageOfId(String memId) {
+		return imageDAO.viewImageOfId(memId);
+	}
+
+	@Override
+	public List<RS_imageDTO> ImageListOfId(int startNum, int endNum,String m_Id) {
+		return imageDAO.ImageListOfId(startNum, endNum, m_Id);
+	}
+
+	
 }

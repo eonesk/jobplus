@@ -3,69 +3,79 @@ package job.resume.portfolio.bean;
 public class RS_portfolioDTO {
 
     // 포트폴리오seq 
-    private Integer rspfSeq;
+    private Integer rs_pfSeq;
 
     // 포트폴리오 URL 
-    private String rspfUrl;
+    private String rs_pfUrl;
 
     // 포트폴리오 파일 
-    private String rspfFile;
+    private String rs_pfFile;
 
     // 회원 아이디 
-    private String mId;
+    private String m_Id;
     
     // 파일구분 
-    private String rspfType;
+    private String rs_pfType;
 
-    // 포트폴리오 구분 
-    private String rspfFileorurl;
+    // 파일타입 
+    private String rs_pfFileorurl;
 
-    public Integer getRspfSeq() {
-		return rspfSeq;
+    // 제목
+    private String rs_pfUsertitle;
+    
+	public String getRs_pfUsertitle() {
+		return rs_pfUsertitle;
 	}
 
-	public void setRspfSeq(Integer rspfSeq) {
-		this.rspfSeq = rspfSeq;
+	public void setRs_pfUsertitle(String rs_pfUsertitle) {
+		this.rs_pfUsertitle = rs_pfUsertitle;
 	}
 
-	public String getRspfUrl() {
-		return rspfUrl;
+	public Integer getRs_pfSeq() {
+		return rs_pfSeq;
+	}
+		
+	public void setRs_pfSeq(Integer rs_pfSeq) {
+		this.rs_pfSeq = rs_pfSeq;
 	}
 
-	public void setRspfUrl(String rspfUrl) {
-		this.rspfUrl = rspfUrl;
+	public String getRs_pfUrl() {
+		return rs_pfUrl;
 	}
 
-	public String getRspfFile() {
-		return rspfFile;
+	public void setRs_pfUrl(String rs_pfUrl) {
+		this.rs_pfUrl = rs_pfUrl;
 	}
 
-	public void setRspfFile(String rspfFile) {
-		this.rspfFile = rspfFile;
+	public String getRs_pfFile() {
+		return rs_pfFile;
 	}
 
-	public String getmId() {
-		return mId;
+	public void setRs_pfFile(String rs_pfFile) {
+		this.rs_pfFile = rs_pfFile;
 	}
 
-	public void setmId(String mId) {
-		this.mId = mId;
+	public String getM_Id() {
+		return m_Id;
 	}
 
-	public String getRspfType() {
-		return rspfType;
+	public void setM_Id(String m_Id) {
+		this.m_Id = m_Id;
 	}
 
-	public void setRspfType(String rspfType) {
-		this.rspfType = rspfType;
+	public String getRs_pfType() {
+		return rs_pfType;
 	}
 
-	public String getRspfFileorurl() {
-		return rspfFileorurl;
+	public void setRs_pfType(String rs_pfType) {
+		this.rs_pfType = rs_pfType;
 	}
 
-	public void setRspfFileorurl(String rspfFileorurl) {
-		this.rspfFileorurl = rspfFileorurl;
+	public String getRs_pfFileorurl() {
+		return rs_pfFileorurl;
 	}
 
+	public void setRs_pfFileorurl(String rs_pfFileorurl) {
+		this.rs_pfFileorurl = rs_pfFileorurl;
+	}
 }

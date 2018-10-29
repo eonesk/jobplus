@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	window.onload = function() {
-		if(${su > 0}) {
-			alert("저장하였습니다.");
+		if(${resultCount > 0}) {
+			alert("회원가입성공.");
 		} else {
-			alert("저장하지 못하였습니다.");
+			alert("회원가입실패.");
 		}
 	}
 </script>

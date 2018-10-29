@@ -5,15 +5,18 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 클래스에 별명 설정 -->
 	<typeAliases>
-		<typeAlias type="job.member.bean.MemberDTO" alias="memberDTO"/>		
 		<typeAlias type="job.resume.intern.bean.RS_internDTO" alias="internDTO"/>
+		<typeAlias type="job.resume.trophy.bean.RS_trophyDTO" alias="trophyDTO"/>
+		<typeAlias type="job.resume.language.bean.RS_languageDTO" alias="languageDTO"/>
+		<typeAlias type="job.member.bean.MemberDTO" alias="memberDTO"/>		
 		<typeAlias type="job.resume.foreign.bean.RS_foreignDTO" alias="foreignDTO"/>
 		<typeAlias type="job.resume.bean.ResumeDTO" alias="resumeDTO"/>
 		<typeAlias type="job.resume.image.bean.RS_imageDTO" alias="imageDTO"/>
 		<typeAlias type="job.resume.pr.bean.RS_prDTO" alias="rsprDTO"/>
-		<typeAlias type="job.resume.studyLV.bean.RS_studyLVDTO" alias="studyLVDTO"/>
+    <typeAlias type="job.resume.studyLV.bean.RS_studyLVDTO" alias="studyLVDTO"/>
 		<typeAlias type="job.resume.edu.bean.RS_eduDTO" alias="eduDTO"/>
 		<typeAlias type="job.resume.license.bean.RS_licenseDTO" alias="licenseDTO"/>
+		<typeAlias type="job.resume.portfolio.bean.RS_portfolioDTO" alias="portfolioDTO"/>
 	</typeAliases>	
 	
 	<!-- SQL Mapper 설정  -->
@@ -22,13 +25,17 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/member-mapping.xml"/>
 		<mapper resource="mybatis/resume-mapping.xml"/>
 		
+
 		<!-- SQL문장이 기술되는 Mapper파일 / resume 하위 테이블들 -->
-		<mapper resource="mybatis/resume/license-mapping.xml"/>
+  	<mapper resource="mybatis/resume/license-mapping.xml"/>
 		<mapper resource="mybatis/resume/edu-mapping.xml"/>
 		<mapper resource="mybatis/resume/studyLV-mapping.xml"/>
+		<mapper resource="mybatis/resume/intern-mapping.xml"/>
+		<mapper resource="mybatis/resume/trophy-mapping.xml"/>	
+		<mapper resource="mybatis/resume/language-mapping.xml"/>	
 		<mapper resource="mybatis/resume/pr-mapping.xml"/>
 		<mapper resource="mybatis/resume/foreign-mapping.xml"/>
-		<mapper resource="mybatis/resume/intern-mapping.xml"/>
 		<mapper resource="mybatis/resume/image-mapping.xml"/>
+		<mapper resource="mybatis/resume/portfolio-mapping.xml"/>
 	</mappers>
 </configuration>
