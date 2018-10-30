@@ -23,14 +23,14 @@ public class RS_foreignServiceImpl implements RS_foreignService{
 	}
 
 	@Override
-	public RS_foreignDTO viewForeignOfId(String memId) {
+	public List<RS_foreignDTO> viewForeignOfId(String memId) {
 		return foreignDAO.viewForeignOfId(memId);
 	}
 
-	@Override
-	public List<RS_foreignDTO> foreignListOfId(int startNum, int endNum, String memId) {
-		return foreignDAO.foreignListOfId(startNum, endNum, memId);
-	}
+//	@Override
+//	public List<RS_foreignDTO> foreignListOfId(int startNum, int endNum, String memId) {
+//		return foreignDAO.foreignListOfId(startNum, endNum, memId);
+//	}
 
 	/*@Override
 	public int foreignDelete(int rsfSeq) {

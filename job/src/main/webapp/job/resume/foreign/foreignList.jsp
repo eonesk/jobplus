@@ -8,7 +8,74 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-
+	$(function() {
+		
+		/* 자기소개서의 총 개수 구함 */
+		$.ajax({
+			type: 'POST',
+			url: 'foreignLoadCount.do',
+			dataType: 'text',
+			cache: false,
+			success: function(data) {
+				$("#numberOfPf").append(data);
+				if(data == "0") {
+					alert("해외경험 등록 글 없음");
+					$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo($("<tr>")).addClass("rsprLoadListLabelTr").appendTo("#rsprLoadListTable");
+					//$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo("#rsprLoadListTable");
+				} else {
+				
+					alert("자기소개서 있을 때");
+					/* Json 하는 거 어떻게 하지 ㅠㅠ */
+					$.ajax({
+						type: 'POST',
+						url: 'foreignLoadlist.do',
+						dataType: "json",
+						success: function(data) {//rsprLoadListTable  item.rspr_UserTitle
+							alert("성공");
+							
+							var trTitle = $("<tr>").addClass("rsprLoadListLabelTr");
+							var tdTitle = $("<td>").addClass("rsprLoadListLabelTd").html("제목");
+							
+							trTitle.append(tdTitle);
+							$("#rsprLoadListTable").append(trTitle);
+							
+							$.each(data.items, function(index, item) {
+								var tr = $("<tr>").addClass("rsprLoadListLabelTr");
+								var td = $("<td>").addClass("rsprLoadListLabelTd");
+								var a = $("<a>").attr({
+									"id": "rspr_UserTitleA",
+									"href": "#"
+								}).html(item.rspr_UserTitle);
+								
+								td.append(a);
+								tr.append(td);
+								$("#rsprLoadListTable").append(tr);							
+								
+								/* 
+								$("#rspr_UserTitleA").click(function() {
+									alert(item.rspr_UserTitle);
+								});
+								 */								 
+							});
+							
+							
+							
+							alert("종료");
+							
+							
+							
+						},
+						error : function(e) {
+			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+			         	}
+					});				
+				}
+			},
+			error : function(e) {
+	            alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+	     	}
+		});		
+	});
 
 // 	function check(cb) {
 // 		for (i = 0; i < 4; i++) {
