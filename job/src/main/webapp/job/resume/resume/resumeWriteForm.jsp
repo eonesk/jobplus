@@ -464,7 +464,7 @@ var rs_workspace_cnt = 1;
 		<table>
 			<tr>
 				<td><input type="text" name="rs_name" id="rs_name" value="${memberDTO.m_name }" placeholder="이름"></td>
-				<td><input type="date" name="rs_birth" id="rs_birth" value="${memberDTO.m_birth }" placeholder="생년월일"></td>
+				<td><input type="date" name="rs_birth" id="rs_birth" value="${m_birth }" placeholder="생년월일"></td>
 				<td>
 					<select name="rs_gender" id="rs_gender">
 						<option value="error">---성별---</option>

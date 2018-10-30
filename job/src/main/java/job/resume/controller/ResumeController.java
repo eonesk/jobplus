@@ -1,6 +1,7 @@
 package job.resume.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,6 +32,11 @@ public class ResumeController {
 		
 		String memId = (String) session.getAttribute("memId");
 		MemberDTO memberDTO = resumeService.selectMember(memId);
+		
+		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String m_birth_string = sdFormat.format(memberDTO.getM_birth());
+		
+		modelAndView.addObject("m_birth", m_birth_string);
 		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.setViewName("resumeWriteForm.jsp");
 		
@@ -69,7 +75,7 @@ public class ResumeController {
 		resumeDTO.setRs_Name(request.getParameter("rs_name"));
 		resumeDTO.setRs_Birth(date);
 		resumeDTO.setRs_Gender(request.getParameter("rs_gender"));
-		resumeDTO.setRs_Email(request.getParameter("rs_gender"));
+		resumeDTO.setRs_Email(request.getParameter("rs_email"));
 		resumeDTO.setRs_Homenum(request.getParameter("rs_homenum"));
 		resumeDTO.setRs_Phone(request.getParameter("rs_phone"));
 		resumeDTO.setRs_Address(request.getParameter("rs_address"));
