@@ -20,6 +20,15 @@ public class ResumeDAO {
 	public int insertResume(ResumeDTO resumeDTO) {
 		return sqlSession.insert("mybatis.resumeMapper.insertResume", resumeDTO);
 	}
+	
+	// 이력서 수정폼을 생성 하기전 값 가져오기
+	public ResumeDTO selectResume(String memId, int rs_seq) {
+		Map<String, String> map = new HashMap<>();
+		map.put("memId", memId);
+		map.put("rs_seq", String.valueOf(rs_seq));
+		
+		return sqlSession.selectOne("mybatis.resumeMapper.selectResume", map);
+	}
 
 	// 이력서 자체의 업데이트문
 	public int updateResume(ResumeDTO resumeDTO) {
@@ -27,22 +36,22 @@ public class ResumeDAO {
 	}
 
 	// 이력서의 하위테이블에 대한 개별적 업데이트문
-	public int updateResume_table(int tableSeq, int rsSeq, String mId, String table) {
+	public int updateResume_table(int table_Seq, int rs_Seq, String m_Id, String table) {
 		Map<String, String> map = new HashMap<>();
 		String mybatisPath = "mybatis.resumeMapper.updateResume_" + table + "_SEQ";
 
-		map.put("tableSeq", String.valueOf(tableSeq));
-		map.put("rsSeq", String.valueOf(rsSeq));
-		map.put("mId", mId);
+		map.put("table_Seq", String.valueOf(table_Seq));
+		map.put("rs_Seq", String.valueOf(rs_Seq));
+		map.put("m_Id", m_Id);
 		return sqlSession.update(mybatisPath, map);
 	}
 
 	// 이력서 삭제
-	public int deleteResume(int rsSeq, String mId) {
+	public int deleteResume(int rs_Seq, String m_Id) {
 		Map<String, String> map = new HashMap<>();
 
-		map.put("rsSeq", String.valueOf(rsSeq));
-		map.put("mId", mId);
+		map.put("rs_Seq", String.valueOf(rs_Seq));
+		map.put("m_Id", m_Id);
 		return sqlSession.delete("mybatis.resumeMapper.deleteResume", map);
 	}
 
