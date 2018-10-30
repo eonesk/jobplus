@@ -9,6 +9,10 @@
 <script type="text/javascript">
 	$(function() {
 		
+		$("#rsprLoadCancel").click(function() {
+			window.close();
+		});
+		
 		/* 자기소개서의 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -39,25 +43,41 @@
 							$("#rsprLoadListTable").append(trTitle);
 							
 							$.each(data.items, function(index, item) {
+								var dto = item;
 								var tr = $("<tr>").addClass("rsprLoadListLabelTr");
 								var td = $("<td>").addClass("rsprLoadListLabelTd");
 								var a = $("<a>").attr({
 									"id": "rspr_UserTitleA",
 									"href": "#"
-								}).html(item.rspr_UserTitle);
+								}).html(item.rspr_UserTitle).bind('click', {param: dto}, add_event);
 								
 								td.append(a);
 								tr.append(td);
 								$("#rsprLoadListTable").append(tr);							
-								
-								/* 
-								$("#rspr_UserTitleA").click(function() {
-									alert(item.rspr_UserTitle);
-								});
-								 */								 
+																 
 							});
 							
-							
+							function add_event(event) {
+								alert(event.data.param.rspr_UserTitle + " // " + event.data.param.m_Id);
+				                $("#rsprLoadViewInit").hide();
+				                var title = $("<h3>").html("[ " + event.data.param.rspr_Title + " ]");
+				                var content = $("<p>").html(" " + event.data.param.rspr_Content);
+				                
+				                $("#rsprLoadView").append(title);
+				                $("#rsprLoadView").append(content);
+				                
+				                $("#rsprLoadSubmit").click(function() {
+				                	alert(event.data.param.rspr_Title);
+				                	$("#rsprTitle", opener.document).val("");
+				                	$("#rsprContent", opener.document).val("");
+				                	$("#rsprSeq", opener.document).val("");
+				                	$("#rsprTitle", opener.document).val(event.data.param.rspr_Title);
+				                	$("#rsprContent", opener.document).val(event.data.param.rspr_Content);
+				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
+				                	self.close();
+				                });
+				                
+							}
 							
 							alert("종료");
 							

@@ -7,7 +7,12 @@
 <title>학력정보불러오기폼</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	$(function() {		
+	$(function() {
+		
+		$("#studyLVLoadCancel").click(function() {
+			window.close();
+		});
+		
 		/* 학력정보의 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -17,11 +22,13 @@
 			success: function(data) {
 				$("#numberOfstudyLV").append(data);
 				if(data == "0") {
-					alert("자기소개서 없음");
-					$("<tr>").addClass("studyLVLoadListLabelTr").appendTo("#studyLVLoadListTable");
-					$("<td>").addClass("studyLVLoadListLabelTd").html("제목").appendTo("#studyLVLoadListTable");
+					alert("학력정보 없음");
+					$("<td>").addClass("studyLVLoadListLabelTd").html("제목").appendTo($("<tr>")).addClass("studyLVLoadListLabelTr").appendTo("#studyLVLoadListTable");
+					
+					//$("<tr>").addClass("studyLVLoadListLabelTr").appendTo("#studyLVLoadListTable");
+					//$("<td>").addClass("studyLVLoadListLabelTd").html("제목").appendTo("#studyLVLoadListTable");
 				} else {
-					alert("자기소개서 있을 때");
+					alert("학력정보 있음");
 					/* Json 하는 거 어떻게 하지 ㅠㅠ */
 					$.ajax({
 						type: 'POST',
@@ -29,10 +36,73 @@
 						dataType: "json",
 						cache: false,
 						success: function(data) {
-							alert(data.studyLVUserTitleList);							
+							alert("성공");
+							
+							var trTitle = $("<tr>").addClass("studyLVLoadListLabelTr");
+							var tdTitle = $("<td>").addClass("studyLVLoadListLabelTd").html("제목");
+							
+							trTitle.append(tdTitle);
+							$("#studyLVLoadListTable").append(trTitle);
+							
+							$.each(data.items, function(index, item) {
+								var dto = item;
+								var tr = $("<tr>").addClass("studyLVLoadListLabelTr");
+								var td = $("<td>").addClass("studyLVLoadListLabelTd");
+/* 								var radio = $("<input>").attr({
+									"id": "rss_UserTitleR",
+									"type": "checkbox",
+									"value": item.rss_Seq
+								}); */
+								var a = $("<a>").attr({
+									"id": "rss_UserTitleA",
+									"href": "#"
+								}).html(item.rss_UserTitle).bind('click', {param: dto}, add_event);
+								
+								//td.append(radio);
+								td.append(a);
+								tr.append(td);
+								$("#studyLVLoadListTable").append(tr);	
+								 
+								$("#studyLVLoadSubmit").click(function() {
+									var studyLVSeqList = new Array();
+					                $("#rss_UserTitleR:checked").each(function() {
+					                	alert($(this).val());
+					                	studyLVSeqList.push($(this).val());
+					                });
+					                alert(studyLVSeqList);
+								});											 
+							});
+							
+							function add_event(event) {
+							/* 	alert(event.data.param.rss_UserTitle + " // " + event.data.param.m_Id);
+				                $("#studyLVLoadViewInit").hide();
+				                var title = $("<h3>").html("[ " + event.data.param.rss_Title + " ]");
+				                var content = $("<p>").html(" " + event.data.param.rss_Content);
+				                
+				                $("#rsprLoadView").append(title);
+				                $("#rsprLoadView").append(content);
+				                
+				                $("#rsprLoadSubmit").click(function() {
+				                	alert(event.data.param.rspr_Title);
+				                	$("#rsprTitle", opener.document).val("");
+				                	$("#rsprContent", opener.document).val("");
+				                	$("#rsprSeq", opener.document).val("");
+				                	$("#rsprTitle", opener.document).val(event.data.param.rspr_Title);
+				                	$("#rsprContent", opener.document).val(event.data.param.rspr_Content);
+				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
+				                	self.close();
+				                }); */
+				                
+				                
+				                
+							}
+							
+							
+							alert("종료");
+							
 						},
 						error : function(e) {
-			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
 			         	}
 					});
 					

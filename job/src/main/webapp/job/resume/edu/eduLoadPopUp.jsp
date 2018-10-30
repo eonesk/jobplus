@@ -30,7 +30,102 @@
 						dataType: "json",
 						cache: false,
 						success: function(data) {
-							alert(data.eduUserTitleList);							
+							alert("성공");
+							
+							
+							
+							var trTitle = $("<tr>").addClass("eduLoadListLabelTr");
+							var tdTitle = $("<td>").addClass("eduLoadListLabelTd").html("제목");
+							
+							trTitle.append(tdTitle);
+							$("#eduLoadListTable").append(trTitle);
+							
+							$.each(data.items, function(index, item) {
+								var dto = item;
+								var tr = $("<tr>").addClass("eduLoadListLabelTr");
+								var td = $("<td>").addClass("eduLoadListLabelTd");
+ 								var checkbox = $("<input>").attr({
+									"id": "rse_UserTitleR",
+									"type": "checkbox",
+									"value": item.rse_Seq
+								});
+								var a = $("<a>").attr({
+									"id": "rse_UserTitleA",
+									"href": "#"
+								}).html(item.rse_UserTitle).bind('click', {param: dto}, add_event);
+								
+								td.append(checkbox);
+								td.append(a);
+								tr.append(td);
+								$("#eduLoadListTable").append(tr);	
+								 
+																			 
+							});
+							
+
+							$("#eduLoadSubmit").click(function() {
+								var eduSeqList = new Array();
+				                $("#rse_UserTitleR:checked").each(function() {
+				                	alert($(this).val());
+				                	eduSeqList.push($(this).val());
+				                });
+				                alert(eduSeqList);
+				              	//var testDTO =  
+								//alert(testDTO[0].rse_UserTitle);
+				                if(eduSeqList == "") {
+				                	alert("체크해주셍ㅂ");
+				                } else {
+				                	opener.parent.test();
+				                }
+							});
+							
+							function add_event(event) {
+								alert(event.data.param.rse_UserTitle + " // " + event.data.param.m_Id);
+								$("#eduLoadViewInit").hide();
+								$("#eduLoadView").html("");
+
+								var userTitle = $("<h3>").html("[ " + event.data.param.rse_UserTitle + " ]");
+								var table = $("<table>").attr("border", "1");
+								var indexTr = $("<tr>");
+								var indexTd1 = $("<td>").html("교육명");
+								var indexTd2 = $("<td>").html("교육기관");
+								var indexTd3 = $("<td>").html("시작년월");
+								var indexTd4 = $("<td>").html("종료년월");
+								var indexTd5 = $("<td>").html("교육내용");
+								
+								indexTr.append(indexTd1).append(indexTd2).append(indexTd3).append(indexTd4).append(indexTd5);
+								table.append(indexTr);
+								
+								var contentTr = $("<tr>");
+								var contentTd1 = $("<td>").html(event.data.param.rse_Name);
+								var contentTd2 = $("<td>").html(event.data.param.rse_Company);								
+								var contentTd3 = $("<td>").html(event.data.param.rse_Startdate);
+								var contentTd4 = $("<td>").html(event.data.param.rse_Enddate);
+								var contentTd5 = $("<td>").html(event.data.param.rse_Content);
+								
+								contentTr.append(contentTd1).append(contentTd2).append(contentTd3).append(contentTd4).append(contentTd5);
+								table.append(contentTr);
+								
+								$("#eduLoadView").append(userTitle);
+								$("#eduLoadView").append(table);
+				                
+// 				                $("#eduLoadSubmit").click(function() {
+// 				                	alert(event.data.param.rse_Name);
+// 				                	$("#rsprTitle", opener.document).val("");
+// 				                	$("#rsprContent", opener.document).val("");
+// 				                	$("#rsprSeq", opener.document).val("");
+// 				                	$("#rsprTitle", opener.document).val(event.data.param.rspr_Title);
+// 				                	$("#rsprContent", opener.document).val(event.data.param.rspr_Content);
+// 				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
+// 				                	self.close();
+// 				                });
+				                
+				                
+				                
+							}
+							
+							
+							alert("종료");					
 						},
 						error : function(e) {
 			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');

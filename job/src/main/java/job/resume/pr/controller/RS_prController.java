@@ -76,11 +76,8 @@ public class RS_prController {
 	}
 	
 	@RequestMapping(value="/job/resume/pr/rsprLoad.do")
-	public ModelAndView rsprLoad(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		//response.setContentType("text/html; charset=UTF-8");
-		//PrintWriter out = response.getWriter();
-		
+	public ModelAndView rsprLoad(HttpServletRequest request) throws IOException {
+
 		ModelAndView modelAndView = new ModelAndView();
 		
 		/** Session으로 넘어오는 memID값 임시 지정 */
@@ -106,25 +103,13 @@ public class RS_prController {
 		}
 		
 		jsonObject.put("items", items);
-/*		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("rsprUserTitleList", rsprUserTitleList);
-		System.out.println("[RS_prController] map 출력 : " + map);
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.putAll(map);
-		System.out.println("[RS_prController] jsonObject 출력 : " + jsonObject);
 		
-		String jsonObject_str = jsonObject.toString();
-		System.out.println("[RS_prController] jsonObject_str 출력 : " + jsonObject_str);
-*/		
 		modelAndView.addObject("jsonObject", jsonObject);
 		modelAndView.setViewName("/job/resume/pr/prLoadJson.jsp");
 		
 		System.out.println("[RS_prController] jsonObject 출력 : " + jsonObject);
 		
 		return modelAndView;
-		
-		//out.print(jsonObject_str);
 	}
 }
 
