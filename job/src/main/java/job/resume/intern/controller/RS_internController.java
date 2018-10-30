@@ -63,7 +63,6 @@ public class RS_internController {
 		// (2) DB			
 		int su = internService.Write(internDTO);
 		// (3) 화면네비게이션	
-		System.out.println(su);
 		out.print(su);
 	}
 	
