@@ -4,34 +4,162 @@ import java.util.Date;
 
 //이력서 
 public class ResumeDTO {
-    // 이력서 seq 
-    private Integer rs_Seq;
 
-    // 회원 아이디 
-    private String m_Id;
+	// 이력서 seq
+	private Integer rs_Seq;
 
- // 이력서 이름 
-    private String rs_Name;
+	// 회원 아이디
+	private String m_Id;
 
-    // 이력서 생년월일 
-    private Date rs_Birth;
+	// 이력서 이름
+	private String rs_Name;
 
-    // 이력서 성별 
-    private String rs_Gender;
+	// 이력서 생년월일
+	private Date rs_Birth;
 
-    // 이력서 이메일 
-    private String rs_Email;
+	// 이력서 성별
+	private String rs_Gender;
 
-    // 이력서 전화번호 
-    private String rs_Homenum;
+	// 이력서 이메일
+	private String rs_Email;
 
-    // 이력서 핸드폰번호 
-    private String rs_Phone;
+	// 이력서 전화번호
+	private String rs_Homenum;
 
-    // 이력서 주소 
-    private String rs_Address;
+	// 이력서 제목
+	private String rs_Title;
 
-    public String getRs_Name() {
+	// 이력서 핸드폰번호
+	private String rs_Phone;
+
+	// 이력서 주소
+	private String rs_Address;
+
+	// 고용형태
+	private String rs_Type;
+
+	// 희망연봉
+	private String rs_Pay;
+
+	// 희망근무지1
+	private String rs_Workspace1;
+
+	// 희망근무지2
+	private String rs_Workspace2;
+
+	// 희망근무지3
+	private String rs_Workspace3;
+
+	// 직무1
+	private String rs_Job1;
+
+	// 직무2
+	private String rs_Job2;
+
+	// 직무3
+	private String rs_Job3;
+
+	// 증명사진 seq
+	private Integer rsim_Seq;
+
+	// 학력seq1
+	private Integer rss_Seq1;
+
+	// 학력seq2
+	private Integer rss_Seq2;
+
+	// 학력seq3
+	private Integer rss_Seq3;
+
+	// 경력seq1
+	private Integer rsw_Seq1;
+
+	// 경력seq2
+	private Integer rsw_Seq2;
+
+	// 경력seq3
+	private Integer rsw_Seq3;
+
+	// 인턴,대외활동seq1
+	private Integer rsit_Seq1;
+
+	// 인턴,대외활동seq2
+	private Integer rsit_Seq2;
+
+	// 인턴,대외활동seq3
+	private Integer rsit_Seq3;
+
+	// 교육 이수seq1
+	private Integer rse_Seq1;
+
+	// 교육 이수seq2
+	private Integer rse_Seq2;
+
+	// 교육 이수seq3
+	private Integer rse_Seq3;
+
+	// 자격증seq1
+	private Integer rsls_Seq1;
+
+	// 자격증seq2
+	private Integer rsls_Seq2;
+
+	// 자격증seq3
+	private Integer rsls_Seq3;
+
+	// 수상seq1
+	private Integer rst_Seq1;
+
+	// 수상seq2
+	private Integer rst_Seq2;
+
+	// 수상seq3
+	private Integer rst_Seq3;
+
+	// 해외경험seq1
+	private Integer rsf_Seq1;
+
+	// 해외경험seq2
+	private Integer rsf_Seq2;
+
+	// 해외경험seq3
+	private Integer rsf_Seq3;
+
+	// 어학seq1
+	private Integer rslg_Seq1;
+
+	// 어학seq2
+	private Integer rslg_Seq2;
+
+	// 어학seq3
+	private Integer rslg_Seq3;
+
+	// 포트폴리오seq
+	private Integer rspf_Seq;
+
+	// 취업우대seq
+	private Integer rsv_Seq;
+
+	// 자기소개서seq
+	private Integer rspr_Seq;
+
+	public Integer getRs_Seq() {
+		return rs_Seq;
+	}
+
+	public void setRs_Seq(Integer rs_Seq) {
+		this.rs_Seq = rs_Seq;
+	}
+
+	public String getM_Id() {
+		return m_Id;
+	}
+
+	public void setM_Id(String m_Id) {
+		this.m_Id = m_Id;
+	}
+
+	public String getRs_Name() {
 		return rs_Name;
 	}
 
@@ -71,6 +199,14 @@ public class ResumeDTO {
 		this.rs_Homenum = rs_Homenum;
 	}
 
+	public String getRs_Title() {
+		return rs_Title;
+	}
+
+	public void setRs_Title(String rs_Title) {
+		this.rs_Title = rs_Title;
+	}
+
 	public String getRs_Phone() {
 		return rs_Phone;
 	}
@@ -85,93 +221,6 @@ public class ResumeDTO {
 
 	public void setRs_Address(String rs_Address) {
 		this.rs_Address = rs_Address;
-	}
-
-	// 이력서 제목 
-    private String rs_Title;
-
-    // 고용형태 
-    private String rs_Type;
-
-    // 희망연봉 
-    private String rs_Pay;
-
-    // 희망근무지1 
-    private String rs_Workspace1;
-
-    // 희망근무지2 
-    private String rs_Workspace2;
-
-    // 희망근무지3 
-    private String rs_Workspace3;
-
-    // 직무1 
-    private String rs_Job1;
-
-    // 직무2 
-    private String rs_Job2;
-
-    // 직무3 
-    private String rs_Job3;
-
-    // 증명사진 seq 
-    private Integer rsim_Seq;
-
-    // 학력seq 
-    private Integer rss_Seq;
-
-    // 경력seq 
-    private Integer rsw_Seq;
-
-    // 인턴,대외활동seq 
-    private Integer rsit_Seq;
-
-    // 교육 이수seq 
-    private Integer rse_Seq;
-
-    // 자격증seq 
-    private Integer rsls_Seq;
-
-    // 수상seq 
-    private Integer rst_Seq;
-
-    // 해외경험seq 
-    private Integer rsf_Seq;
-
-    // 어학seq 
-    private Integer rslg_Seq;
-
-    // 포트폴리오seq 
-    private Integer rspf_Seq;
-
-    // 취업우대seq 
-    private Integer rsv_Seq;
-
-    // 자기소개서seq 
-    private Integer rspr_Seq;
-
-	public Integer getRs_Seq() {
-		return rs_Seq;
-	}
-
-	public void setRs_Seq(Integer rs_Seq) {
-		this.rs_Seq = rs_Seq;
-	}
-
-	public String getM_Id() {
-		return m_Id;
-	}
-
-	public void setM_Id(String m_Id) {
-		this.m_Id = m_Id;
-	}
-
-	public String getRs_Title() {
-		return rs_Title;
-	}
-
-	public void setRs_Title(String rs_Title) {
-		this.rs_Title = rs_Title;
 	}
 
 	public String getRs_Type() {
@@ -246,68 +295,196 @@ public class ResumeDTO {
 		this.rsim_Seq = rsim_Seq;
 	}
 
-	public Integer getRss_Seq() {
-		return rss_Seq;
+	public Integer getRss_Seq1() {
+		return rss_Seq1;
 	}
 
-	public void setRss_Seq(Integer rss_Seq) {
-		this.rss_Seq = rss_Seq;
+	public void setRss_Seq1(Integer rss_Seq1) {
+		this.rss_Seq1 = rss_Seq1;
 	}
 
-	public Integer getRsw_Seq() {
-		return rsw_Seq;
+	public Integer getRss_Seq2() {
+		return rss_Seq2;
 	}
 
-	public void setRsw_Seq(Integer rsw_Seq) {
-		this.rsw_Seq = rsw_Seq;
+	public void setRss_Seq2(Integer rss_Seq2) {
+		this.rss_Seq2 = rss_Seq2;
 	}
 
-	public Integer getRsit_Seq() {
-		return rsit_Seq;
+	public Integer getRss_Seq3() {
+		return rss_Seq3;
 	}
 
-	public void setRsit_Seq(Integer rsit_Seq) {
-		this.rsit_Seq = rsit_Seq;
+	public void setRss_Seq3(Integer rss_Seq3) {
+		this.rss_Seq3 = rss_Seq3;
 	}
 
-	public Integer getRse_Seq() {
-		return rse_Seq;
+	public Integer getRsw_Seq1() {
+		return rsw_Seq1;
 	}
 
-	public void setRse_Seq(Integer rse_Seq) {
-		this.rse_Seq = rse_Seq;
+	public void setRsw_Seq1(Integer rsw_Seq1) {
+		this.rsw_Seq1 = rsw_Seq1;
 	}
 
-	public Integer getRsls_Seq() {
-		return rsls_Seq;
+	public Integer getRsw_Seq2() {
+		return rsw_Seq2;
 	}
 
-	public void setRsls_Seq(Integer rsls_Seq) {
-		this.rsls_Seq = rsls_Seq;
+	public void setRsw_Seq2(Integer rsw_Seq2) {
+		this.rsw_Seq2 = rsw_Seq2;
 	}
 
-	public Integer getRst_Seq() {
-		return rst_Seq;
+	public Integer getRsw_Seq3() {
+		return rsw_Seq3;
 	}
 
-	public void setRst_Seq(Integer rst_Seq) {
-		this.rst_Seq = rst_Seq;
+	public void setRsw_Seq3(Integer rsw_Seq3) {
+		this.rsw_Seq3 = rsw_Seq3;
 	}
 
-	public Integer getRsf_Seq() {
-		return rsf_Seq;
+	public Integer getRsit_Seq1() {
+		return rsit_Seq1;
 	}
 
-	public void setRsf_Seq(Integer rsf_Seq) {
-		this.rsf_Seq = rsf_Seq;
+	public void setRsit_Seq1(Integer rsit_Seq1) {
+		this.rsit_Seq1 = rsit_Seq1;
 	}
 
-	public Integer getRslg_Seq() {
-		return rslg_Seq;
+	public Integer getRsit_Seq2() {
+		return rsit_Seq2;
 	}
 
-	public void setRslg_Seq(Integer rslg_Seq) {
-		this.rslg_Seq = rslg_Seq;
+	public void setRsit_Seq2(Integer rsit_Seq2) {
+		this.rsit_Seq2 = rsit_Seq2;
+	}
+
+	public Integer getRsit_Seq3() {
+		return rsit_Seq3;
+	}
+
+	public void setRsit_Seq3(Integer rsit_Seq3) {
+		this.rsit_Seq3 = rsit_Seq3;
+	}
+
+	public Integer getRse_Seq1() {
+		return rse_Seq1;
+	}
+
+	public void setRse_Seq1(Integer rse_Seq1) {
+		this.rse_Seq1 = rse_Seq1;
+	}
+
+	public Integer getRse_Seq2() {
+		return rse_Seq2;
+	}
+
+	public void setRse_Seq2(Integer rse_Seq2) {
+		this.rse_Seq2 = rse_Seq2;
+	}
+
+	public Integer getRse_Seq3() {
+		return rse_Seq3;
+	}
+
+	public void setRse_Seq3(Integer rse_Seq3) {
+		this.rse_Seq3 = rse_Seq3;
+	}
+
+	public Integer getRsls_Seq1() {
+		return rsls_Seq1;
+	}
+
+	public void setRsls_Seq1(Integer rsls_Seq1) {
+		this.rsls_Seq1 = rsls_Seq1;
+	}
+
+	public Integer getRsls_Seq2() {
+		return rsls_Seq2;
+	}
+
+	public void setRsls_Seq2(Integer rsls_Seq2) {
+		this.rsls_Seq2 = rsls_Seq2;
+	}
+
+	public Integer getRsls_Seq3() {
+		return rsls_Seq3;
+	}
+
+	public void setRsls_Seq3(Integer rsls_Seq3) {
+		this.rsls_Seq3 = rsls_Seq3;
+	}
+
+	public Integer getRst_Seq1() {
+		return rst_Seq1;
+	}
+
+	public void setRst_Seq1(Integer rst_Seq1) {
+		this.rst_Seq1 = rst_Seq1;
+	}
+
+	public Integer getRst_Seq2() {
+		return rst_Seq2;
+	}
+
+	public void setRst_Seq2(Integer rst_Seq2) {
+		this.rst_Seq2 = rst_Seq2;
+	}
+
+	public Integer getRst_Seq3() {
+		return rst_Seq3;
+	}
+
+	public void setRst_Seq3(Integer rst_Seq3) {
+		this.rst_Seq3 = rst_Seq3;
+	}
+
+	public Integer getRsf_Seq1() {
+		return rsf_Seq1;
+	}
+
+	public void setRsf_Seq1(Integer rsf_Seq1) {
+		this.rsf_Seq1 = rsf_Seq1;
+	}
+
+	public Integer getRsf_Seq2() {
+		return rsf_Seq2;
+	}
+
+	public void setRsf_Seq2(Integer rsf_Seq2) {
+		this.rsf_Seq2 = rsf_Seq2;
+	}
+
+	public Integer getRsf_Seq3() {
+		return rsf_Seq3;
+	}
+
+	public void setRsf_Seq3(Integer rsf_Seq3) {
+		this.rsf_Seq3 = rsf_Seq3;
+	}
+
+	public Integer getRslg_Seq1() {
+		return rslg_Seq1;
+	}
+
+	public void setRslg_Seq1(Integer rslg_Seq1) {
+		this.rslg_Seq1 = rslg_Seq1;
+	}
+
+	public Integer getRslg_Seq2() {
+		return rslg_Seq2;
+	}
+
+	public void setRslg_Seq2(Integer rslg_Seq2) {
+		this.rslg_Seq2 = rslg_Seq2;
+	}
+
+	public Integer getRslg_Seq3() {
+		return rslg_Seq3;
+	}
+
+	public void setRslg_Seq3(Integer rslg_Seq3) {
+		this.rslg_Seq3 = rslg_Seq3;
 	}
 
 	public Integer getRspf_Seq() {
@@ -333,6 +510,4 @@ public class ResumeDTO {
 	public void setRspr_Seq(Integer rspr_Seq) {
 		this.rspr_Seq = rspr_Seq;
 	}
-    
-
 }
