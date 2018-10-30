@@ -11,10 +11,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import job.resume.edu.bean.RS_eduDTO;
 import job.resume.studyLV.bean.RS_studyLVDTO;
@@ -122,7 +125,7 @@ public class RS_studyLVController {
 		PrintWriter out = response.getWriter();
 
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num5";
+		String memId = "num1";
 		
 		// DB작업 : memID가 가지고 있는 자소서의 개수를 구함
 		int numberOfStudyLV = studyLVService.selectNumberOfStudyLV(memId);		
@@ -132,34 +135,46 @@ public class RS_studyLVController {
 	}
 	
 	@RequestMapping(value="/job/resume/studyLV/studyLVLoad.do", method=RequestMethod.POST)
-	public void studyLVLoad(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public ModelAndView studyLVLoad(HttpServletRequest request) throws IOException {
 		System.out.println("[RS_studyLVController] studyLVLoad");
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		ModelAndView modelAndView = new ModelAndView();
 		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num5";
+		String memId = "num1";
 		
 		// memId가 가지고 있는 자소서의 rsprUserTitle을 select해서 list에 추가
 		List<RS_studyLVDTO> studyLVUserTitleList = studyLVService.selectStudyLVUserTitleList(memId);
 		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
 		// rsprUserTitleList 리스트값 확인
 		for(int i = 0; i < studyLVUserTitleList.size(); i++) {
-			RS_studyLVDTO testDTO = studyLVUserTitleList.get(i);
-			System.out.println("[RS_studyLVController] testDTO 출력 : " + testDTO.toString());
+			RS_studyLVDTO studyLVDTO = studyLVUserTitleList.get(i);
+			System.out.println("[RS_studyLVController] studyLVDTO 출력 : " + studyLVDTO.toString());
+			JSONObject temp = new JSONObject();
+			temp.put("rss_Seq", studyLVDTO.getRss_Seq());
+			temp.put("rss_Type", studyLVDTO.getRss_Type());
+			temp.put("rss_Name", studyLVDTO.getRss_Name());
+			temp.put("rss_Startdate", studyLVDTO.getRss_Startdate());
+			temp.put("rss_Enddate", studyLVDTO.getRss_Enddate());
+			temp.put("rss_Ishighschool", studyLVDTO.getRss_Ishighschool());
+			temp.put("rss_Major", studyLVDTO.getRss_Major());
+			temp.put("rss_Score", studyLVDTO.getRss_Score());
+			temp.put("rss_Totscore", studyLVDTO.getRss_Totscore());
+			temp.put("m_Id", studyLVDTO.getM_Id());
+			temp.put("rss_UserTitle", studyLVDTO.getRss_UserTitle());
+			items.put(i, temp);			
 		}
-/*
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("studyLVUserTitleList", studyLVUserTitleList);
-		System.out.println("[RS_studyLVController] map 출력 : " + map);
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.putAll(map);
-		System.out.println("[RS_studyLVController] jsonObject 출력 : " + jsonObject);
 		
-		String jsonObject_str = jsonObject.toString();
-		System.out.println("[RS_studyLVController] jsonObject_str 출력 : " + jsonObject_str);
+		jsonObject.put("items", items);
 		
-		out.print(jsonObject_str);*/
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/studyLV/stydyLVLoadJson.jsp");
+		
+		System.out.println("[RS_prController] jsonObject 출력 : " + jsonObject);
+		
+		return modelAndView;
 	}
 }

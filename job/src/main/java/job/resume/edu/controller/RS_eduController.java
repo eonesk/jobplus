@@ -11,10 +11,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import job.resume.edu.bean.RS_eduDTO;
 import job.resume.pr.bean.RS_prDTO;
@@ -93,11 +96,10 @@ public class RS_eduController {
 	}
 	
 	@RequestMapping(value="/job/resume/edu/eduLoad.do", method=RequestMethod.POST)
-	public void eduLoad(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public ModelAndView eduLoad(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println("[RS_eduLVController] eduLoad");
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		ModelAndView modelAndView = new ModelAndView();
 		
 		/** Session으로 넘어오는 memID값 임시 지정 */
 		String memId = "num1";
@@ -105,22 +107,33 @@ public class RS_eduController {
 		// memId가 가지고 있는 자소서의 rsprUserTitle을 select해서 list에 추가
 		List<RS_eduDTO> eduUserTitleList = eduService.selectEduUserTitleList(memId);
 		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
 		// rsprUserTitleList 리스트값 확인
 		for(int i = 0; i < eduUserTitleList.size(); i++) {
-			RS_eduDTO testDTO = eduUserTitleList.get(i);
-			System.out.println("[RS_eduLVController] testDTO 출력 : " + testDTO.toString());
+			RS_eduDTO eduDTO = eduUserTitleList.get(i);
+			System.out.println("[RS_eduLVController] eduDTO 출력 : " + eduDTO.toString());
+			JSONObject temp = new JSONObject();
+			temp.put("rse_Seq", eduDTO.getRse_Seq());
+			temp.put("rse_Name", eduDTO.getRse_Name());
+			temp.put("rse_Company", eduDTO.getRse_Company());
+			temp.put("rse_Startdate", eduDTO.getRse_Startdate());
+			temp.put("rse_Enddate", eduDTO.getRse_Enddate());
+			temp.put("rse_Content", eduDTO.getRse_Content());
+			temp.put("m_Id", eduDTO.getM_Id());
+			temp.put("rse_UserTitle", eduDTO.getRse_UserTitle());
+			items.put(i, temp);
 		}
-		/*
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("eduUserTitleList", eduUserTitleList);
-		System.out.println("[RS_eduLVController] map 출력 : " + map);
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.putAll(map);
+		
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/edu/eduLoadJson.jsp");
+		
 		System.out.println("[RS_eduLVController] jsonObject 출력 : " + jsonObject);
 		
-		String jsonObject_str = jsonObject.toString();
-		System.out.println("[RS_eduLVController] jsonObject_str 출력 : " + jsonObject_str);
-		*/
-		//out.print(jsonObject_str);
+		return modelAndView;
+		
 	}
 }
