@@ -25,19 +25,19 @@ public class RS_foreignDAO {
 	}
 	
 	//쓴 글 확인
-	public RS_foreignDTO viewForeignOfId(String m_Id) {
-		return sqlSession.selectOne("mybatis.foreignMapper.viewForeignOfId", m_Id);
+	public List<RS_foreignDTO> viewForeignOfId(String memId) {
+		return sqlSession.selectOne("mybatis.foreignMapper.viewForeignOfId", memId);
 	}
 	
-	//목록보기
-	public List<RS_foreignDTO> foreignListOfId(int startNum, int endNum, String m_Id) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("startNum", startNum);
-		map.put("endNum", endNum);
-		map.put("m_Id", m_Id);
-		System.out.println("map >>>>>>>>>>> " + map);
-		return sqlSession.selectList("mybatis.foreignMapper.foreignListOfId", map);
-	}
+//	//목록보기
+//	public List<RS_foreignDTO> foreignListOfId(int startNum, int endNum, String m_Id) {
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("startNum", startNum);
+//		map.put("endNum", endNum);
+//		map.put("m_Id", m_Id);
+//		System.out.println("map >>>>>>>>>>> " + map);
+//		return sqlSession.selectList("mybatis.foreignMapper.foreignListOfId", map);
+//	}
 	
 	/*//해외경험 삭제
 	public int foreignDelete(int rsfSeq) {
