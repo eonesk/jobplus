@@ -8,58 +8,77 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() { 
-    $('#urlForm').hide(); 
+    $('#rs_pfUrl').hide(); 
     
     $("input[class='fileType']").change(function() {
 
     	var radioValue = $(this).val();
     	if(radioValue == "1"){
-    		$('#urlForm').hide();
-    		$('#fileForm').show(); 
-    		$('#fileForm').val();
+    		$('#rs_pfUrl').hide();
+    		$('#rs_pfFile').show(); 
+    		$('#rs_pfFile').val();
     	}  
     	if(radioValue == "2"){
-    		$('#fileForm').hide();
-    		$('#urlForm').show();
+    		$('#rs_pfFile').hide();
+    		$('#rs_pfUrl').show();
     	}  
     });
-    $("#savePortfolio").click(function() {
+    $("#save").click(function() {
+    	if(!$("#rs_pfUsertitle").val()) {
+			alert("제목을 입력해주세요");
+			$("#rs_pfUsertitle").focus();
+    	}
     	var radioValue = $(":input:radio[name=rs_pfFileorurl]:checked").val();
 		//Validation
-    	if(!$("#fileForm").val() && radioValue == "1") {
+    	if(!$("#rs_pfFile").val() && radioValue == "1") {
 			alert("추가하실 파일을 선택하세요");
-			$("#fileForm").focus();
+			$("#rs_pfFile").focus();
 			return false;
 		}  
-    	else if(!$("#urlForm").val()  && radioValue == "2") {
+    	else if(!$("#rs_pfUrl").val()  && radioValue == "2") {
 			alert("URL을 입력하세요"); 
-			$("#urlForm").focus();
+			$("#rs_pfUrl").focus();
 			return false;
-		} else {
-			alert("등록되었습니다");
-			self.close();
 		}  
-    });
-// 		$("#savePortfolio").click(function() {
-// 			$("form[name='portfolioWriteForm']").submit(); 
-// 		});
-
- });
-      
-//     $("#savePortfolio").click(function() {  
-//     
-			
-//     }); 
-//     	if (checkPfInsert) {
-//     		location.replace("portfolioWrite.jsp");
-//     	}
+    	var rs_pfUsertitle = $("#rs_pfUsertitle").val();
+ 		var rs_pfType = 	$("#rs_pfType option:selected").val();
+ 		var rs_pfFileorurl =$('input[name="rs_pfFileorurl"]:checked').val();
+ 		var rs_pfUrl = 		$("#rs_pfUrl").val();
+ 		var rs_pfFile = 	$("#rs_pfFile").val();
+ 		alert(rs_pfUsertitle+"//"+ rs_pfType +"//"+ rs_pfFileorurl +"//"+ rs_pfUrl+"//"+ rs_pfFile);
+ 		$.ajax({
+			type: 'POST',
+			url: 'portfolioWrite.do',
+			dataType: 'text',
+			data: {
+				"rs_pfUrl": rs_pfUrl,
+				"rs_pfFile": rs_pfFile,
+				"rs_pfType": rs_pfType,
+				"rs_pfFileorurl": rs_pfFileorurl,
+				"rs_pfUsertitle": rs_pfUsertitle
+			},
+			success: function(data) {
+				if(data > 0) {
+					alert("성공");
+					window.close();
+				} else {
+					alert("실패");
+				}
+			}
+		});
+	});
+	
+	$("#cancle").click(function() {
+		window.close();
+	});
+});
 
 </script>
 </head>
 <body>
 <h4>첨부파일 등록</h4>
-<form action="portfolioWrite.do" enctype="multipart/form-data" name="portfolioWriteForm" method="post">
-타이틀 입력 : <input type="text" name="rs_pfUsertitle">
+<input type="text" id="rs_pfUsertitle" name="rs_pfUsertitle" 
+						placeholder="저장하실 포트폴리오의 이름을 입력해주세요" size="40">
 <table>
 	<tr>
 		<td>파일구분</td>
@@ -80,17 +99,17 @@ $(document).ready(function() {
 	</tr>
 	<tr> 
 		<td>파일찾기</td>
-		<td> 
-			<label>1: <input class="fileType" type="radio" name="rs_pfFileorurl" value="1" checked="checked"/> 파일</label>
-			<label>2: <input class="fileType" type="radio" name="rs_pfFileorurl" value="2"/> URL</label> 
-			<div><input type="file" id='fileForm' name="pfFile"></div>
-			<div><input type="text" id='urlForm' name="rs_pfUrl" id=""  placeholder="http://" value=""></div>
+		<td>
+			<label><input class="fileType" type="radio" name="rs_pfFileorurl" value="1" checked="checked"/> 파일</label>
+			<label><input class="fileType" type="radio" name="rs_pfFileorurl" value="2"/> URL</label> 
+			<div><input type="file" id='rs_pfFile' name="pfFile"></div>
+			<div><input type="text" id='rs_pfUrl' name="rs_pfUrl" placeholder="http://"></div>
 		</td>
 	</tr>
 </table>
 <!-- <input type="button" value="작성" onclick="checkForeignInsert()"> -->
-<input type="button" id="savePortfolio" value="작성">
-<input type="button" value="취소" onclick="window.close();">
-</form>
+<input type="button" id="save" value="작성">
+<input type="button" value="취소" id="cancle">
+
 </body>
 </html>

@@ -28,7 +28,7 @@
 	#section tr, td{
 		padding: 5px;
 	}
-	#writeBtn{
+	#modifyBtn{
 		width: 100%; height: 50px; bottom: 0px;
 	}
 	#test{
@@ -332,7 +332,7 @@ var rs_workspace_cnt = 1;
 		});
 		
 		
-		$("#writeBtn").click(function() {
+		$("#modifyBtn").click(function() {
 			if($("#rs_name").val() == ""){
 				alert("이름을 입력하세요.");
 				return false;
@@ -418,9 +418,7 @@ var rs_workspace_cnt = 1;
 			var RSLG_seq1 = null;
 			var RSLG_seq2 = null;
 			var RSLG_seq3 = null;
-			var RSPF_seq = null;
-			var RSV_seq = null;
-			var RSPR_seq = null;
+			var RSPF_seq = null
 			$.ajax({
 				url: 'resumeWrite.do',
 				type: 'post',
@@ -656,7 +654,7 @@ var rs_workspace_cnt = 1;
 				<td><input type="checkbox" id="prCheck"></td>
 			</tr>
 		</table>
-		<input type="button" value="작성완료" id="writeBtn">
+		<input type="button" value="작성완료" id="modifyBtn">
 </div>
 </form>
 </body>

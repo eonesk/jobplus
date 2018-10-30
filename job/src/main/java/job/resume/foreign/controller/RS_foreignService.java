@@ -12,10 +12,10 @@ public interface RS_foreignService {
 	int getForeignOfId(String memId);
 	
 	//쓴 글 확인
-	RS_foreignDTO viewForeignOfId(String memId);
+	List<RS_foreignDTO> viewForeignOfId(String memId);
 	
-	//쓴 목록 보기
-	List<RS_foreignDTO> foreignListOfId(int startNum, int endNum, String memId);
+//	//쓴 목록 보기
+//	List<RS_foreignDTO> foreignListOfId(int startNum, int endNum, String memId);
 	
 	//삭제
 	//int foreignDelete(int rsfSeq);
