@@ -24,18 +24,23 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	public int updateResume_table(int tableSeq, int rsSeq, String mId, String table) {
-		return resumeDAO.updateResume_table(tableSeq, rsSeq, mId, table);
+	public int updateResume_table(int table_Seq, int rs_Seq, String m_Id, String table) {
+		return resumeDAO.updateResume_table(table_Seq, rs_Seq, m_Id, table);
 	}
 
 	@Override
-	public int deleteResume(int rsSeq, String mId) {
-		return resumeDAO.deleteResume(rsSeq, mId);
+	public int deleteResume(int rs_Seq, String m_Id) {
+		return resumeDAO.deleteResume(rs_Seq, m_Id);
 	}
 
 	@Override
 	public MemberDTO selectMember(String memId) {
 		return resumeDAO.selectMember(memId);
+	}
+
+	@Override
+	public ResumeDTO selectResume(String memId, int rs_seq) {
+		return resumeDAO.selectResume(memId, rs_seq);
 	}
 
 }
