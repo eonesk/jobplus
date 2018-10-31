@@ -93,37 +93,7 @@ var rs_workspace_cnt = 1;
 			$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
 		});
 		
-		$(function reset_rs_workspace() {
-			$("#rs_workspace_select1").load("text/category_hopework.html #category1-1", function() {
-				$(this).hide();
-			});	
-			$(document).on("change", "#rs_workspace_select1 > select", function() {
-				$("#rs_workspace_select2").empty().hide();
-				var target = $(this).find("option:selected").attr("data-target");
-			    	var selector = "text/category_hopework.html " + target;
-			    	// 다음 항목 로드
-			    	$("#rs_workspace_select2").load(selector, function() {
-			    		$(this).show();
-			    	});
-			});
-			$(document).on("change", "#rs_workspace_select2 > select", function() {
-				if($(this).find("option:selected").index() != null){
-					var data1 = $("#rs_workspace_select1 > select > option:selected").val();
-					var data2 = $("#rs_workspace_select2 > select > option:selected").val();
-					var result = data1 + " > "+ data2;
-					$("#rs_workspace"+rs_workspace_cnt).val(result);
-					$("#rs_workspace"+rs_workspace_cnt).show();
-					rs_workspace_cnt++;
-					$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-					rs_workspace_btn_ck = false;
-					$("#rs_workspace_select1").empty().hide();
-					$("#rs_workspace_select2").empty().hide();
-					$(document).off("change", "#rs_workspace_select1 > select");
-					$(document).off("change", "#rs_workspace_select2 > select");
-					reset_rs_workspace();
-				}
-			});
-		});
+		
 		$("#rs_workspace_btn").click(function() {
 			if(rs_workspace_cnt > 3){
 				alert("희망근무지는 3곳까지 선택 할 수 있습니다.");
@@ -131,12 +101,43 @@ var rs_workspace_cnt = 1;
 			}
 			if(rs_workspace_btn_ck){
 				rs_workspace_btn_ck = false;
-				$("#rs_workspace_select1").hide();
-				$("#rs_workspace_select2").hide();
+				$("#rs_workspace_select1").empty().hide();
+				$("#rs_workspace_select2").empty().hide();
+				$(document).off("change", "#rs_workspace_select1 > select");
+				$(document).off("change", "#rs_workspace_select2 > select");
 			}else{
 				rs_workspace_btn_ck = true;
-				$("#rs_workspace_select1").show();
-				$("#rs_workspace_select2").show();
+				$(function reset_rs_workspace() {
+					$("#rs_workspace_select1").load("text/category_hopework.html #category1-1", function() {
+						$(this).show();
+					});	
+					$(document).on("change", "#rs_workspace_select1 > select", function() {
+						$("#rs_workspace_select2").empty().hide();
+						var target = $(this).find("option:selected").attr("data-target");
+					    	var selector = "text/category_hopework.html " + target;
+					    	// 다음 항목 로드
+					    	$("#rs_workspace_select2").load(selector, function() {
+					    		$(this).show();
+					    	});
+					});
+					$(document).on("change", "#rs_workspace_select2 > select", function() {
+						if($(this).find("option:selected").index() != null){
+							var data1 = $("#rs_workspace_select1 > select > option:selected").val();
+							var data2 = $("#rs_workspace_select2 > select > option:selected").val();
+							var result = data1 + " > "+ data2;
+							$("#rs_workspace"+rs_workspace_cnt).val(result);
+							$("#rs_workspace"+rs_workspace_cnt).show();
+							rs_workspace_cnt++;
+							$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+							rs_workspace_btn_ck = false;
+							$("#rs_workspace_select1").empty().hide();
+							$("#rs_workspace_select2").empty().hide();
+							$(document).off("change", "#rs_workspace_select1 > select");
+							$(document).off("change", "#rs_workspace_select2 > select");
+							reset_rs_workspace();
+						}
+					});
+				});
 			}
 		});
 		
