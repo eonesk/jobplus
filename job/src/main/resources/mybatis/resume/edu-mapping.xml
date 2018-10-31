@@ -15,4 +15,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectEduUserTitleList" parameterType="String" resultType="eduDTO">
 		select * from RS_edu where M_id = #{memId}
 	</select>
+	
+	<select id="selectEduDTO" parameterType="int" resultType="eduDTO">
+		select * from RS_edu where rse_Seq = #{rse_Seq}
+	</select>
 </mapper>

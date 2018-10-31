@@ -25,7 +25,7 @@
 			alert("활동내용을 입력하세요.");
 			$("#rsitContent").focus();	
 		}else {
-			window.open("internWrite.jsp","", "width=500px height=500px");
+			window.open("internWrite.jsp", "", "width=500px height=500px");
 			}
 		});
 		$("#internload").click(function() {
