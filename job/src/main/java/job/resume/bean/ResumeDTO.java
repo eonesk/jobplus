@@ -142,6 +142,17 @@ public class ResumeDTO {
 
 	// 자기소개서seq
 	private Integer rspr_Seq;
+	
+	// 이력서 수정날짜 
+    private Date rs_Logdate;
+
+	public Date getRs_Logdate() {
+		return rs_Logdate;
+	}
+
+	public void setRs_Logdate(Date rs_Logdate) {
+		this.rs_Logdate = rs_Logdate;
+	}
 
 	public Integer getRs_Seq() {
 		return rs_Seq;
