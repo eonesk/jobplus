@@ -1,5 +1,8 @@
 package job.resume.portfolio.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import job.resume.portfolio.bean.RS_portfolioDTO;
@@ -15,10 +18,15 @@ public class RS_portfolioServiceImpl implements RS_portfolioService {
 		return portfolioDAO.portfolioWrite(PortfolioDTO);
 	}
 
-//	@Override
-//	public int getportfolioOfId(String memId) {
-//		return 0;
-//	}
+	@Override
+	public List<RS_portfolioDTO> selectPortfolioList(String memId) {		
+		return portfolioDAO.selectPortfolioList(memId);
+	}
+
+	@Override
+	public int getportfolioOfId(String memId) {
+		return portfolioDAO.getportfolioOfId(memId);
+	}
 //
 //	@Override
 //	public RS_portfolioDTO viewportfolioOfId(String memId) {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +8,24 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+// $( document ).ready(function() {
+	
+// });
+
 	/**
 	type: 파일구분
 	tilte: 제목
 	filename: 파일이름
 	*/
+	
+	$(function() {
+		
+	});
+	
 	function addList(type, tilte, filename) {
+		var a = $('#파일구분').val();
+		var b = $('#파일 라디오박스').val();
+		var c = $('#파일 이름').val();
 		//새로 리스트 작성되는 li태그 객체
 		var new_li = $("<li>");
 		new_li.attr("file_num", num);
@@ -44,26 +57,37 @@
 		$("ul#portfolio_list").append(new_li);
 	}
 	/**내용넣기*/
+	
 </script>
 
 </head>
 <body>
 <form id="portfolioList">
 <div>
-<h4>포트폴리오 및 기타문서</h4>
-	<a href="#" onclick="window.open('portfolioWriteForm.jsp','portfolioWriteForm','width=500, height=350, left=300, top=200')">불러오기</a>
+<h4>포트폴리오 및 기타문서</h4> 
+	<a href="#" onclick="window.open('portfolioWriteForm.jsp','portfolioWriteForm','width=500, height=350, left=300, top=200')">등록하기</a>
+	<a href="#" onclick="window.open('portfolioLoad.jsp','portfolioLoad','width=500, height=350, left=300, top=200')">불러오기</a>
 	<ul id="portfolio_list">
-	<!-- 동적요소 생성 -->
-	<!-- 	<li file-num="4" class="file"> -->
-	<!-- 		<p class="comment_item"> -->
-	<!-- 			<span class="type">[이력서 구분]</span> -->
-	<!-- 			<span> 포트폴리오 타이틀 </span> -->
-	<!-- 			<input type="button" value="삭제하기" class="delete_btn"> -->
-	<!-- 		</p> -->
-	<!-- 		<a> 파일이름 및 URL 주소 </a> -->
-	<!-- 	</li> -->
+<!-- 	동적요소 생성 -->
+		<c:forEach var ='ls' items="${list }">
+		<li file-num="4" class="file"> 
+			<p class="comment_item"> 
+				<span class="type">[이력서 구분]</span>  
+				<span>${ls.rs_pfUsertitle}</span>
+				<input type="button" value="삭제하기" class="delete_btn">
+			</p>
+			<a> 파일이름 및 URL 주소 </a>
+		</li> 
+		</c:forEach>
+		<div diplay:none>
+			<input type='text' id='파일구분' value = '' />
+			<input type='text' id='파일 라디오박스' value = '' />
+			<input type='text' id='파일이름' value = '' />
+			<button onclick="addList();">버튼입네당</button>
+		</div>
 	</ul>
 </div>
 </form>
+
 </body>
 </html>

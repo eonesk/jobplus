@@ -45,33 +45,24 @@ public class RS_foreignController {
 		
 		// 넘어오는 변수값 콘솔 확인
 		String rsf_Name = request.getParameter("rsf_Name");
-		System.out.println("[PF] rsf_Name : " + rsf_Name);
-		
 		String rsf_Startdate = request.getParameter("rsf_Startdate");
-		System.out.println("[PF] rsf_Startdate : " + rsf_Startdate);
-		
 		String rsf_Enddate = request.getParameter("rsf_Enddate");
-		System.out.println("[PF] rsprUserTitle : " + rsf_Enddate);
-		
 		String rsf_Content = request.getParameter("rsf_Content");
-		System.out.println("[PF] rsf_Content : " + rsf_Content);
-		
+		String m_Id = memId;
 		String rsf_Usertitle = request.getParameter("rsf_Usertitle");
-		System.out.println("[PF] rsf_Usertitle : " + rsf_Usertitle);
+	
+		System.out.println("[RS_foreignCon] : " + rsf_Name + " // " + rsf_Startdate + " // " + rsf_Enddate + " // " 
+				+ rsf_Content + " // " + m_Id + " // " + rsf_Usertitle);
 		
 		Date Startdate=null;
 		Date Enddate=null;
-		
 		try {
 			Startdate = new SimpleDateFormat("yyyyMMdd").parse(rsf_Startdate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		try {
 			Enddate = new SimpleDateFormat("yyyyMMdd").parse(rsf_Enddate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
 		RS_foreignDTO foreignDTO = new RS_foreignDTO();
 		foreignDTO.setM_Id(memId);
 		foreignDTO.setRsf_Name(rsf_Name);
@@ -96,27 +87,31 @@ public class RS_foreignController {
 		String memId = "num1";
 		
 		//memId가 가진 글 개수
-		int numberOfPf = foreignService.getForeignOfId(memId);
-		out.print(numberOfPf);
+		int numberOfForeign = foreignService.getForeignOfId(memId);
+		System.out.println("[RS_foreignCon] numberOfForeign : " + numberOfForeign);
+		out.print(numberOfForeign);
 	}
 	
 	//글 확인(이거를 다시 폼으로 불러옴)
 	@RequestMapping(value="/job/resume/foreign/foreignLoadlist.do")
 	public ModelAndView viewForeignOfId(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("[RS_foreignController] viewForeignOfId");
+		
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		/** Session으로 넘어오는 memID값 임시 지정 */
 		String memId = "num1";
-		//memId가 가진 글 리스트
-		List<RS_foreignDTO> foreignList = foreignService.viewForeignOfId(memId);
 		
+		//memId가 가진 글 리스트
+		List<RS_foreignDTO> viewForeignOfId = foreignService.viewForeignOfId(memId);
+		System.out.println("??????"+viewForeignOfId);
 		JSONObject jsonObject = new JSONObject();
 		JSONArray items = new JSONArray();
 		
 		// rsprUserTitleList 리스트값 확인
-		for(int i = 0; i < foreignList.size(); i++) {
-			RS_foreignDTO foreignDTO = foreignList.get(i);
+		for(int i = 0; i < viewForeignOfId.size(); i++) {
+			RS_foreignDTO foreignDTO = viewForeignOfId.get(i);
 			System.out.println("[PF] foreignDTO 출력 : " + foreignDTO);
 			
 			JSONObject temp = new JSONObject();
@@ -130,10 +125,11 @@ public class RS_foreignController {
 			items.put(i, temp);
 		}		
 		jsonObject.put("items", items);
+		
 		modelAndView.addObject("jsonObject", jsonObject);
 		modelAndView.setViewName("/job/resume/foreign/foreignJson.jsp");
 		
-		System.out.println("[PF] jsonObject 출력 : " + jsonObject);
+		System.out.println("[RS_foreignCon] jsonObject 출력 : " + jsonObject);
 		return modelAndView;
 	}
 }

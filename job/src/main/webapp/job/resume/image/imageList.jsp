@@ -23,7 +23,7 @@ tr:visited {border: 1px solid #000000;	background-color: #dbeeff;}
 function profileImgSave(imgPath){
 	alert("사진이 등록되었습니다.");
 // 	window.opener.document.getElementById("fromInput").value=document.getElementById("imgValue").value
-	var imgData = $('#imgValue2').val(); 
+	var imgData = $('#imgValue').val(); 
 	$(opener.document).find("#aaa").attr("src",imgData);
 	window.close(); 
 // 	$("#img_form_url").attr("src", imgurl);
@@ -59,7 +59,7 @@ function cscontrol(chk,imgPath){
 		$('#selectPhoto'+chk).css("background-color","");
 	}else{  
 		$('#selectPhoto'+chk).css("background-color","#dbeeff"); 
-		$('#imgValue2').val(imgPath);
+		$('#imgValue').val(imgPath);
 	}  
 //     $('#selectPhoto').removeClass("visited");
 }
