@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,20 +54,23 @@ public class ResumeController {
 		session.setAttribute("memId", "test");
 
 		String memId = (String) session.getAttribute("memId");
-		int rs_seq = Integer.parseInt(request.getParameter("rs_seq"));
+		
+		//수정해야됨!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		int rs_seq = 15;
 		
 		ResumeDTO resumeDTO = resumeService.selectResume(memId, rs_seq);
 		
+		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String rs_birth_string = sdFormat.format(resumeDTO.getRs_Birth());
+		
+		modelAndView.addObject("rs_Birth", rs_birth_string);
 		modelAndView.addObject("resumeDTO", resumeDTO);
 		modelAndView.setViewName("resumeModifyForm.jsp");
 
 		return modelAndView;
 	}
 	
-
-	@RequestMapping(value = "/job/resume/resume/resumeWrite.do")
-	public ModelAndView resumeWrite(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
+	public ResumeDTO resumeSetting(HttpServletRequest request, boolean ck) {
 		HttpSession session = request.getSession();
 		String[] tableName = { "RSIM", "RSS1", "RSS2", "RSS3", "RSW1", "RSW2", "RSW3", 
 				"RSIT1", "RSIT2", "RSIT3", "RSE1", "RSE2", "RSE3", 
@@ -93,7 +97,11 @@ public class ResumeController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
 		ResumeDTO resumeDTO = new ResumeDTO();
+		if(ck) {
+			resumeDTO.setRs_Seq(Integer.parseInt(request.getParameter("rs_seq")));
+		}
 		resumeDTO.setM_Id((String) session.getAttribute("memId"));
 		resumeDTO.setRs_Name(request.getParameter("rs_name"));
 		resumeDTO.setRs_Birth(date);
@@ -139,8 +147,27 @@ public class ResumeController {
 		resumeDTO.setRspf_Seq(seq[25]);
 		resumeDTO.setRsv_Seq(seq[26]);
 		resumeDTO.setRspr_Seq(seq[27]);
+		
+		return resumeDTO;
+	}
+	
+	@RequestMapping(value = "/job/resume/resume/resumeModify.do")
+	public ModelAndView resumeModify(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		int su = resumeService.updateResume(resumeSetting(request, true));
+		
+		modelAndView.addObject("su",su);
+		modelAndView.setViewName("resumeModify.jsp");
+		
+		return modelAndView;
+	}
 
-		int su = resumeService.insertResume(resumeDTO);
+	@RequestMapping(value = "/job/resume/resume/resumeWrite.do")
+	public ModelAndView resumeWrite(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		int su = resumeService.insertResume(resumeSetting(request, false));
 
 		modelAndView.addObject("su", su);
 		modelAndView.setViewName("resumeWrite.jsp");

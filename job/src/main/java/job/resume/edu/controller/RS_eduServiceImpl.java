@@ -29,4 +29,9 @@ public class RS_eduServiceImpl implements RS_eduService {
 		return eduDAO.selectEduUserTitleList(memId);
 	}
 
+	@Override
+	public RS_eduDTO selectEduDTO(int rse_Seq) {
+		return eduDAO.selectEduDTO(rse_Seq);
+	}
+
 }

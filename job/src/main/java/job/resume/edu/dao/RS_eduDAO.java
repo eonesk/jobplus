@@ -25,4 +25,8 @@ public class RS_eduDAO {
 	public List<RS_eduDTO> selectEduUserTitleList(String memId){
 		return sqlSession.selectList("mybatis.eduMapper.selectEduUserTitleList", memId);
 	}
+	
+	public RS_eduDTO selectEduDTO(int rse_Seq) {
+		return sqlSession.selectOne("mybatis.eduMapper.selectEduDTO", rse_Seq);
+	}
 }

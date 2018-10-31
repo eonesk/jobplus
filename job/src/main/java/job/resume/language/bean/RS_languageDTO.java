@@ -16,11 +16,11 @@ public class RS_languageDTO {
     // 사용자 설정 이름
     private String RSLG_UserTitle;
     // 어학 점수
-    private String rslg_score;
+    private String rslg_Score;
     // 취득년월
-    private Date rslg_date;
+    private Date rslg_Date;
     // 공인시험
-    private String rslg_test;
+    private String rslg_Test;
     
 	public Integer getRslg_Seq() {
 		return rslg_Seq;
@@ -58,24 +58,26 @@ public class RS_languageDTO {
 	public void setRSLG_UserTitle(String rSLG_UserTitle) {
 		RSLG_UserTitle = rSLG_UserTitle;
 	}
-	public String getRslg_score() {
-		return rslg_score;
+	public String getRslg_Score() {
+		return rslg_Score;
 	}
-	public void setRslg_score(String rslg_score) {
-		this.rslg_score = rslg_score;
+	public void setRslg_Score(String rslg_Score) {
+		this.rslg_Score = rslg_Score;
 	}
-	public Date getRslg_date() {
-		return rslg_date;
+	public Date getRslg_Date() {
+		return rslg_Date;
 	}
-	public void setRslg_date(Date rslg_date) {
-		this.rslg_date = rslg_date;
+	public void setRslg_Date(Date rslg_Date) {
+		this.rslg_Date = rslg_Date;
 	}
-	public String getRslg_test() {
-		return rslg_test;
+	public String getRslg_Test() {
+		return rslg_Test;
 	}
-	public void setRslg_test(String rslg_test) {
-		this.rslg_test = rslg_test;
-	}    
+	public void setRslg_Test(String rslg_Test) {
+		this.rslg_Test = rslg_Test;
+	}
+    
+    
 	
     
 }

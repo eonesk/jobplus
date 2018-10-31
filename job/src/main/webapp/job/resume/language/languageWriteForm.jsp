@@ -24,15 +24,15 @@
 				if($("#rslgName option:selected").val() == "외국어명"){
 					alert("외국어명을 입력하세요.");
 					$("#rslgName").focus();	
-				}else if(!$("#rslgtest").val()){
+				}else if(!$("#rslgTest").val()){
 					alert("공인시험을 입력하세요.");
-					$("#rslgtest").focus();
-				}else if(!$("#rslgscore").val()){
+					$("#rslgTest").focus();
+				}else if(!$("#rslgScore").val()){
 					alert("급수/점수를 입력하세요.");
-					$("#rslgscore").focus();	
-				}else if(!$("#rslgdate").val()){
+					$("#rslgScore").focus();	
+				}else if(!$("#rslgDate").val()){
 					alert("취득년월을 입력하세요.");
-					$("#rslgdate").focus();	
+					$("#rslgDate").focus();	
 				}else {
 					window.open("languageWrite.jsp","", "width=500px height=500px");
 				}								
@@ -106,9 +106,9 @@
 			</select>
 		</div>
 		<div id="test" style="display: none;">				
-			<input type="text" id="rslgtest" name="rslgtest" placeholder="공인시험">
-			<input type="text" id="rslgscore" name="rslgscore" placeholder="급수/점수">
-			<input type="date" id="rslgdate" name="rslgdate" placeholder="취득년월">
+			<input type="text" id="rslgTest" name="rslgTest" placeholder="공인시험">
+			<input type="text" id="rslgScore" name="rslgScore" placeholder="급수/점수">
+			<input type="date" id="rslgDate" name="rslgDate" placeholder="취득년월">
 		</div>
 		<div>			
 			<input type="button" value="저장하기" id="langsave">
