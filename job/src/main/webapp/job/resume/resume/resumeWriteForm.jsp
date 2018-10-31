@@ -219,6 +219,7 @@ var rs_workspace_cnt = 1;
 				$("#rs_pay").attr("placeholder", "면접 후 결정");
 				$("#rs_pay").attr("disabled", true);
 			}else{
+				$("#rs_pay").val("");
 				$("#rs_pay").attr("placeholder", "희망연봉");
 				$("#rs_pay").attr("disabled", false);
 			}
@@ -378,7 +379,7 @@ var rs_workspace_cnt = 1;
 			if($("#rs_pay_no").is(":checked")){
 				var rs_pay = "면접 후 결정";
 			}else{
-				var rs_pay = $("#rs_pay").val() + "만원이상";
+				var rs_pay = $("#rs_pay").val();
 			}
 			var rs_workspace1 = $("#rs_workspace1").val();
 			var rs_workspace2 = $("#rs_workspace2").val();
