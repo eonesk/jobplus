@@ -26,7 +26,7 @@ public class RS_foreignDAO {
 	
 	//쓴 글 확인
 	public List<RS_foreignDTO> viewForeignOfId(String memId) {
-		return sqlSession.selectOne("mybatis.foreignMapper.viewForeignOfId", memId);
+		return sqlSession.selectList("mybatis.foreignMapper.viewForeignOfId", memId);
 	}
 	
 //	//목록보기

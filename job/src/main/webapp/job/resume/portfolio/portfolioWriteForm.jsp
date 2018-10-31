@@ -13,12 +13,12 @@ $(document).ready(function() {
     $("input[class='fileType']").change(function() {
 
     	var radioValue = $(this).val();
-    	if(radioValue == "1"){
+    	if(radioValue == "F"){
     		$('#rs_pfUrl').hide();
     		$('#rs_pfFile').show(); 
     		$('#rs_pfFile').val();
     	}  
-    	if(radioValue == "2"){
+    	if(radioValue == "U"){
     		$('#rs_pfFile').hide();
     		$('#rs_pfUrl').show();
     	}  
@@ -39,33 +39,46 @@ $(document).ready(function() {
 			alert("URL을 입력하세요"); 
 			$("#rs_pfUrl").focus();
 			return false;
-		}  
-    	var rs_pfUsertitle = $("#rs_pfUsertitle").val();
- 		var rs_pfType = 	$("#rs_pfType option:selected").val();
- 		var rs_pfFileorurl =$('input[name="rs_pfFileorurl"]:checked').val();
- 		var rs_pfUrl = 		$("#rs_pfUrl").val();
- 		var rs_pfFile = 	$("#rs_pfFile").val();
- 		alert(rs_pfUsertitle+"//"+ rs_pfType +"//"+ rs_pfFileorurl +"//"+ rs_pfUrl+"//"+ rs_pfFile);
- 		$.ajax({
-			type: 'POST',
-			url: 'portfolioWrite.do',
-			dataType: 'text',
-			data: {
-				"rs_pfUrl": rs_pfUrl,
-				"rs_pfFile": rs_pfFile,
-				"rs_pfType": rs_pfType,
-				"rs_pfFileorurl": rs_pfFileorurl,
-				"rs_pfUsertitle": rs_pfUsertitle
-			},
-			success: function(data) {
-				if(data > 0) {
-					alert("성공");
-					window.close();
-				} else {
-					alert("실패");
-				}
-			}
-		});
+		}  else {
+			$("#form").submit();
+			window.close();
+// 			var rs_pfType = $("#rs_pfType").val();
+// 			var rs_pfFileorurl = $("#rs_pfFileorurl").val();
+// 			var rs_pfUrl = $("#rs_pfUrl").val();
+// 			var rs_pfFile = $("#rs_pfFile").val();
+// 			var rs_pfUsertitle = $("#rs_pfUsertitle").val();
+												//  		var params = $("#form").serialize(); 
+												//  		alert(rs_pfUsertitle+"//"+ rs_pfType +"//"+ rs_pfFileorurl +"//"+ rs_pfUrl+"//"+ rs_pfFile);
+
+//  			var form = $("#form");
+//  			form.method = "POST";
+//  			form.enctype = "multipart/form-data";
+			
+//  			var fileData = new FormData(form);
+			
+			
+																//  		$.ajax({ 
+																// 			type: 'POST', 
+																// 			url: 'portfolioWrite.do',
+																// 			dataType: 'json',  
+																// 			data: fileData,
+																// 			{
+																// 				"rs_pfType" : rs_pfType,
+																// 				"rs_pfFileorurl" : rs_pfFileorurl,
+																// 				"rs_pfUrl" : rs_pfUrl,
+																// 				"rs_pfFile" : rs_pfFile,
+																// 				"rs_pfUsertitle" : rs_pfUsertitle
+																// 			},
+																// 			async: false,
+																// 			cache: false,
+																// 			contentType: false,
+																// 			processData: false
+																// 			success: function(data) {
+																// 				alert("성공");
+																// 			}
+																// 		});
+ 		
+		}
 	});
 	
 	$("#cancle").click(function() {
@@ -73,12 +86,16 @@ $(document).ready(function() {
 	});
 });
 
+function aaa(){
+	document.form.submit();
+}
+
 </script>
 </head>
-<body>
+<body> 
 <h4>첨부파일 등록</h4>
-<input type="text" id="rs_pfUsertitle" name="rs_pfUsertitle" 
-						placeholder="저장하실 포트폴리오의 이름을 입력해주세요" size="40">
+<form id='form' name='form' method="post" action='portfolioWrite.do' enctype="multipart/form-data">
+<input type="text" id="rs_pfUsertitle" name="rs_pfUsertitle" placeholder="저장하실 포트폴리오의 이름을 입력해주세요" size="40">
 <table>
 	<tr>
 		<td>파일구분</td>
@@ -100,14 +117,15 @@ $(document).ready(function() {
 	<tr> 
 		<td>파일찾기</td>
 		<td>
-			<label><input class="fileType" type="radio" name="rs_pfFileorurl" value="1" checked="checked"/> 파일</label>
-			<label><input class="fileType" type="radio" name="rs_pfFileorurl" value="2"/> URL</label> 
-			<div><input type="file" id='rs_pfFile' name="pfFile"></div>
-			<div><input type="text" id='rs_pfUrl' name="rs_pfUrl" placeholder="http://"></div>
+			<label><input class="fileType" type="radio" name="rs_pfFileorurl" value="F" checked="checked"/> 파일</label>
+			<label><input class="fileType" type="radio" name="rs_pfFileorurl" value="U"/> URL</label> 
+			<div><input type="file" id='rs_pfFile' name="pfFile"/></div>
+			<div><input type="text" id='rs_pfUrl' name="rs_pfUrl" placeholder="http://"/></div>
 		</td>
 	</tr>
 </table>
-<!-- <input type="button" value="작성" onclick="checkForeignInsert()"> -->
+</form>
+<!-- <input type="button" value="작성" onclick="aaa();"> -->
 <input type="button" id="save" value="작성">
 <input type="button" value="취소" id="cancle">
 
