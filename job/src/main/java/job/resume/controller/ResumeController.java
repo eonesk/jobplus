@@ -53,13 +53,11 @@ public class ResumeController {
 		session.setAttribute("memId", "test");
 
 		String memId = (String) session.getAttribute("memId");
-		MemberDTO memberDTO = resumeService.selectMember(memId);
-
-		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String m_birth_string = sdFormat.format(memberDTO.getM_birth());
-
-		modelAndView.addObject("m_birth", m_birth_string);
-		modelAndView.addObject("memberDTO", memberDTO);
+		int rs_seq = Integer.parseInt(request.getParameter("rs_seq"));
+		
+		ResumeDTO resumeDTO = resumeService.selectResume(memId, rs_seq);
+		
+		modelAndView.addObject("resumeDTO", resumeDTO);
 		modelAndView.setViewName("resumeModifyForm.jsp");
 
 		return modelAndView;
