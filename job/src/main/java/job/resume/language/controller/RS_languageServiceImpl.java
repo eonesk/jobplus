@@ -11,6 +11,7 @@ import job.resume.language.dao.RS_languageDAO;
 public class RS_languageServiceImpl implements RS_languageService {	
 	@Autowired
 	private RS_languageDAO languageDAO;
+	
 	@Override
 	public int Write(RS_languageDTO languageDTO) {
 		return languageDAO.Write(languageDTO);
