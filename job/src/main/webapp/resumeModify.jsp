@@ -8,11 +8,5 @@
 </head>
 <body>
 
-<form action="resumeWriteForm.do" method="post">
-	<input type="submit" value="이력서작성">
-</form>
-<form action="resumeModifyForm.do" method="post">
-	<input type="submit" value="이력서수정">
-</form>
 </body>
 </html>

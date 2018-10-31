@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import job.resume.language.bean.RS_languageDTO;
 
-
 @Repository
 public class RS_languageDAO {
 	@Autowired

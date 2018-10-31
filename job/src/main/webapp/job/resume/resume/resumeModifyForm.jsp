@@ -83,6 +83,7 @@
 var rs_workspace_btn_ck = false;
 var rs_workspace_cnt = 1;
 	$(function() {
+		
 		$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
 		$("#rs_workspace1").hide();
 		$("#rs_workspace2").hide();
@@ -92,7 +93,6 @@ var rs_workspace_cnt = 1;
 			rs_workspace_cnt--;
 			$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
 		});
-		
 		
 		$("#rs_workspace_btn").click(function() {
 			if(rs_workspace_cnt > 3){
@@ -107,40 +107,36 @@ var rs_workspace_cnt = 1;
 				$(document).off("change", "#rs_workspace_select2 > select");
 			}else{
 				rs_workspace_btn_ck = true;
-				$(function reset_rs_workspace() {
-					$("#rs_workspace_select1").load("text/category_hopework.html #category1-1", function() {
-						$(this).show();
-					});	
-					$(document).on("change", "#rs_workspace_select1 > select", function() {
+				$("#rs_workspace_select1").load("text/category_hopework.html #category1-1", function() {
+					$(this).show();
+				});	
+				$(document).on("change", "#rs_workspace_select1 > select", function() {
+					$("#rs_workspace_select2").empty().hide();
+					var target = $(this).find("option:selected").attr("data-target");
+				    	var selector = "text/category_hopework.html " + target;
+				    	// 다음 항목 로드
+				    	$("#rs_workspace_select2").load(selector, function() {
+				    		$(this).show();
+				    	});
+				});
+				$(document).on("change", "#rs_workspace_select2 > select", function() {
+					if($(this).find("option:selected").index() != null){
+						var data1 = $("#rs_workspace_select1 > select > option:selected").val();
+						var data2 = $("#rs_workspace_select2 > select > option:selected").val();
+						var result = data1 + " > "+ data2;
+						$("#rs_workspace"+rs_workspace_cnt).val(result);
+						$("#rs_workspace"+rs_workspace_cnt).show();
+						rs_workspace_cnt++;
+						$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+						rs_workspace_btn_ck = false;
+						$("#rs_workspace_select1").empty().hide();
 						$("#rs_workspace_select2").empty().hide();
-						var target = $(this).find("option:selected").attr("data-target");
-					    	var selector = "text/category_hopework.html " + target;
-					    	// 다음 항목 로드
-					    	$("#rs_workspace_select2").load(selector, function() {
-					    		$(this).show();
-					    	});
-					});
-					$(document).on("change", "#rs_workspace_select2 > select", function() {
-						if($(this).find("option:selected").index() != null){
-							var data1 = $("#rs_workspace_select1 > select > option:selected").val();
-							var data2 = $("#rs_workspace_select2 > select > option:selected").val();
-							var result = data1 + " > "+ data2;
-							$("#rs_workspace"+rs_workspace_cnt).val(result);
-							$("#rs_workspace"+rs_workspace_cnt).show();
-							rs_workspace_cnt++;
-							$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-							rs_workspace_btn_ck = false;
-							$("#rs_workspace_select1").empty().hide();
-							$("#rs_workspace_select2").empty().hide();
-							$(document).off("change", "#rs_workspace_select1 > select");
-							$(document).off("change", "#rs_workspace_select2 > select");
-							reset_rs_workspace();
-						}
-					});
+						$(document).off("change", "#rs_workspace_select1 > select");
+						$(document).off("change", "#rs_workspace_select2 > select");
+					}
 				});
 			}
 		});
-		
 		
 		/* rs_job */
 		var rs_job_btn_ck = false;
@@ -157,7 +153,6 @@ var rs_workspace_cnt = 1;
 			$(".rs_job_cnt").html(rs_job_cnt-1);
 		});
 		
-		
 		$("#rs_job_btn").on("click", function() {
 			if(rs_job_cnt > 3){
 				alert("희망직종은 3종류까지 선택 할 수 있습니다.");
@@ -173,57 +168,54 @@ var rs_workspace_cnt = 1;
 				$(document).off("change", "#rs_job_select3 > select");
 			}else{
 				rs_job_btn_ck = true;
-				$(function reset_rs_job() {
-					$("#rs_job_select1").load("text/category_hopejob.html #category1-1", function() {
-						$(this).show();
-					});	
-					
-					$(document).on("change", "#rs_job_select1 > select", function() {
-						$("#rs_job_select2").empty().hide();
-						$("#rs_job_select3").empty().hide();
-						var target = $(this).find("option:selected").attr("data-target");
-					    	var selector = "text/category_hopejob.html " + target;
-					    	// 다음 항목 로드
-					    	$("#rs_job_select2").load(selector, function() {
-					    		$(this).show();
-					    	});
-					});
-					$(document).on("change", "#rs_job_select2 > select", function() {
-						$("#rs_job_select3").empty().hide();
-						var target = $(this).find("option:selected").attr("data-target");
-					    	var selector = "text/category_hopejob.html " + target;
-					    	// 다음 항목 로드
-					    	$("#rs_job_select3").load(selector, function() {
-					    		$(this).show();
-					    	});
-					});
-					
-					$(document).on("change", "#rs_job_select3 > select", function() {
-						if($(this).find("option:selected").index() != null){
-							var data1 = $("#rs_job_select1 > select > option:selected").val();
-							var data2 = $("#rs_job_select2 > select > option:selected").val();
-							var data3 = $("#rs_job_select3 > select > option:selected").val();
-							var result = data1 + " > "+ data2 + " > " + data3;
-							$("#rs_job"+rs_job_cnt).val(result);
-							$("#rs_job"+rs_job_cnt).show();
-							rs_job_cnt++;
-							$(".rs_job_cnt").html(rs_job_cnt-1);
-							rs_job_btn_ck = false;
-							$("#rs_job_select1").empty().hide();
-							$("#rs_job_select2").empty().hide();
-							$("#rs_job_select3").empty().hide();
-							$(document).off("change", "#rs_job_select1 > select");
-							$(document).off("change", "#rs_job_select2 > select");
-							$(document).off("change", "#rs_job_select3 > select");
-						}
-					});
+				$("#rs_job_select1").load("text/category_hopejob.html #category1-1", function() {
+					$(this).show();
+				});	
+				$(document).on("change", "#rs_job_select1 > select", function() {
+					$("#rs_job_select2").empty().hide();
+					$("#rs_job_select3").empty().hide();
+					var target = $(this).find("option:selected").attr("data-target");
+				    	var selector = "text/category_hopejob.html " + target;
+				    	// 다음 항목 로드
+				    	$("#rs_job_select2").load(selector, function() {
+				    		$(this).show();
+				    	});
+				});
+				$(document).on("change", "#rs_job_select2 > select", function() {
+					$("#rs_job_select3").empty().hide();
+					var target = $(this).find("option:selected").attr("data-target");
+				    	var selector = "text/category_hopejob.html " + target;
+				    	// 다음 항목 로드
+				    	$("#rs_job_select3").load(selector, function() {
+				    		$(this).show();
+				    	});
 				});
 				
+				$(document).on("change", "#rs_job_select3 > select", function() {
+					if($(this).find("option:selected").index() != null){
+						var data1 = $("#rs_job_select1 > select > option:selected").val();
+						var data2 = $("#rs_job_select2 > select > option:selected").val();
+						var data3 = $("#rs_job_select3 > select > option:selected").val();
+						var result = data1 + " > "+ data2 + " > " + data3;
+						$("#rs_job"+rs_job_cnt).val(result);
+						$("#rs_job"+rs_job_cnt).show();
+						rs_job_cnt++;
+						$(".rs_job_cnt").html(rs_job_cnt-1);
+						rs_job_btn_ck = false;
+						$("#rs_job_select1").empty().hide();
+						$("#rs_job_select2").empty().hide();
+						$("#rs_job_select3").empty().hide();
+						$(document).off("change", "#rs_job_select1 > select");
+						$(document).off("change", "#rs_job_select2 > select");
+						$(document).off("change", "#rs_job_select3 > select");
+					}
+				});
 			}
 		});
 		
 		$("#rs_pay_no").change(function() {
 			if($(this).is(":checked")){
+				$("#rs_pay").val("");
 				$("#rs_pay").attr("placeholder", "면접 후 결정");
 				$("#rs_pay").attr("disabled", true);
 			}else{
@@ -333,6 +325,79 @@ var rs_workspace_cnt = 1;
 		});
 		
 		
+		$("#rs_seq").val("${resumeDTO.rs_Seq}");
+		$("#rs_name").val("${resumeDTO.rs_Name}");
+		$("#rs_birth").val("${rs_Birth}");
+		$("#rs_email").val("${resumeDTO.rs_Email}");
+		$("#rs_homenum").val("${resumeDTO.rs_Homenum}");
+		$("#rs_title").val("${resumeDTO.rs_Title}");
+		$("#rs_phone").val("${resumeDTO.rs_Phone}");
+		$("#rs_address").val("${resumeDTO.rs_Address}");
+		$("#rs_type").val("${resumeDTO.rs_Type}");
+		
+		if("${resumeDTO.rs_Pay}" == "면접 후 결정"){
+			$("#rs_pay_no").prop("checked", true);
+			$("#rs_pay").val("");
+			$("#rs_pay").attr("placeholder", "면접 후 결정");
+			$("#rs_pay").attr("disabled", true);
+		}else{
+			$("#rs_pay").val("${resumeDTO.rs_Pay}");
+		}
+		
+		
+		$("#rs_workspace1").val("${resumeDTO.rs_Workspace1}");
+		$("#rs_workspace2").val("${resumeDTO.rs_Workspace2}");
+		$("#rs_workspace3").val("${resumeDTO.rs_Workspace3}");
+		for(var i=1; i<4; i++){
+			if($("#rs_workspace"+i).val() != ""){
+				$("#rs_workspace"+i).show();
+				rs_workspace_cnt++;
+			}
+		}
+		$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+		
+		$("#rs_job1").val("${resumeDTO.rs_Job1}");
+		$("#rs_job2").val("${resumeDTO.rs_Job2}");
+		$("#rs_job3").val("${resumeDTO.rs_Job3}");
+		for(var i=1; i<4; i++){
+			if($("#rs_job"+i).val() != ""){
+				$("#rs_job"+i).show();
+				rs_job_cnt++;
+			}
+		}
+		$(".rs_job_cnt").html(rs_job_cnt-1);
+		
+		/* $("#RSIM_seq").val(${resumeDTO.rsim_Seq});
+		$("#RSS_seq1").val(${resumeDTO.rss_Seq1});
+		$("#RSS_seq2").val(${resumeDTO.rss_Seq2});
+		$("#RSS_seq3").val(${resumeDTO.rss_Seq3});
+		$("#RSW_seq1").val(${resumeDTO.rsw_Seq1});
+		$("#RSW_seq2").val(${resumeDTO.rsw_Seq2});
+		$("#RSW_seq3").val(${resumeDTO.rsw_Seq3});
+		$("#RSIT_seq1").val(${resumeDTO.rsit_Seq1});
+		$("#RSIT_seq2").val(${resumeDTO.rsit_Seq2});
+		$("#RSIT_seq3").val(${resumeDTO.rsit_Seq3});
+		$("#RSE_seq1").val(${resumeDTO.rse_Seq1});
+		$("#RSE_seq2").val(${resumeDTO.rse_Seq2});
+		$("#RSE_seq3").val(${resumeDTO.rse_Seq3});
+		$("#RSLS_seq1").val(${resumeDTO.rsls_Seq1});
+		$("#RSLS_seq2").val(${resumeDTO.rsls_Seq2});
+		$("#RSLS_seq3").val(${resumeDTO.rsls_Seq3});
+		$("#RST_seq1").val(${resumeDTO.rst_Seq1});
+		$("#RST_seq2").val(${resumeDTO.rst_Seq2});
+		$("#RST_seq3").val(${resumeDTO.rst_Seq3});
+		$("#RSF_seq1").val(${resumeDTO.rsf_Seq1});
+		$("#RSF_seq2").val(${resumeDTO.rsf_Seq2});
+		$("#RSF_seq3").val(${resumeDTO.rsf_Seq3});
+		$("#RSLG_seq1").val(${resumeDTO.rslg_Seq1});
+		$("#RSLG_seq2").val(${resumeDTO.rslg_Seq2});
+		$("#RSLG_seq3").val(${resumeDTO.rslg_Seq3});
+		$("#RSPF_seq").val(${resumeDTO.rspf_Seq});
+		$("#RSV_seq").val(${resumeDTO.rsv_Seq});
+		$("#RSPR_seq").val(${resumeDTO.rspr_Seq}); */
+		
+		
+		
 		$("#modifyBtn").click(function() {
 			if($("#rs_name").val() == ""){
 				alert("이름을 입력하세요.");
@@ -374,6 +439,7 @@ var rs_workspace_cnt = 1;
 				alert("직무 산업 키워드를 선택하세요.");
 				return false;
 			}
+			var rs_seq = $("#rs_seq").val();
 			var rs_name = $("#rs_name").val();
 			var rs_birth = $("#rs_birth").val();
 			var rs_gender = $("#rs_gender").val();
@@ -386,7 +452,7 @@ var rs_workspace_cnt = 1;
 			if($("#rs_pay_no").is(":checked")){
 				var rs_pay = "면접 후 결정";
 			}else{
-				var rs_pay = $("#rs_pay").val() + "만원이상";
+				var rs_pay = $("#rs_pay").val();
 			}
 			var rs_workspace1 = $("#rs_workspace1").val();
 			var rs_workspace2 = $("#rs_workspace2").val();
@@ -419,11 +485,14 @@ var rs_workspace_cnt = 1;
 			var RSLG_seq1 = null;
 			var RSLG_seq2 = null;
 			var RSLG_seq3 = null;
-			var RSPF_seq = null
+			var RSPF_seq = null;
+			var RSV_seq = null;
+			var RSPR_seq = null;
 			$.ajax({
-				url: 'resumeWrite.do',
+				url: 'resumeModify.do',
 				type: 'post',
 				data: {
+					"rs_seq" : rs_seq,
 					"rs_name" : rs_name,
 					"rs_birth": rs_birth,
 					"rs_gender": rs_gender,
@@ -485,6 +554,7 @@ var rs_workspace_cnt = 1;
 </head>
 <body>
 <form action="resumeWrite.do" method="post" name="resumeWriteForm">
+<input type="hidden" id="rs_seq">
 <div id="header">
 	<a href="#">JOBPLUS</a>
 	<a href="#">이력서 관리</a>
@@ -500,11 +570,11 @@ var rs_workspace_cnt = 1;
 				<td>
 					<select name="rs_gender" id="rs_gender">
 						<option value="error">---성별---</option>
-					<c:if test="${memberDTO.m_gender == '남자' }">
+					<c:if test="${resumeDTO.rs_Gender == '남자' }">
 						<option value="남자" selected="selected">남자</option>
 						<option value="여자">여자</option>
 					</c:if>
-					<c:if test="${memberDTO.m_gender == '여자' }">
+					<c:if test="${resumeDTO.rs_Gender == '여자' }">
 						<option value="남자">남자</option>
 						<option value="여자" selected="selected">여자</option>
 					</c:if>

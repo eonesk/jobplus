@@ -8,15 +8,29 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		var rslgCategory = $("#rslgCategory", opener.document).val();		
+		var rslgCategory = $("#rslgCategory", opener.document).val();	
+		if(rslgCategory == "공인시험"){
+			var rslgName = $("#rslgName", opener.document).val();			
+			var rslgTest = $("#rslgTest", opener.document).val();
+			var rslgScore = $("#rslgScore", opener.document).val();
+			var rslgDate = $("#rslgDate", opener.document).val();
+			var rslgLv = null;
+		}else{
+			var rslgName = $("#rslgName", opener.document).val();
+			var rslgLv = $("#rslgLv", opener.document).val();
+			var rslgTest = null;
+			var rslgScore = null;
+			var rslgDate = null;
+		}
+		/**
 		var rslgName = $("#rslgName", opener.document).val();
 		var rslgLv = $("#rslgLv", opener.document).val();
-		var rslgName = $("#rslgName", opener.document).val();
-		var rslgtest = $("#rslgtest", opener.document).val();
-		var rslgscore = $("#rslgscore", opener.document).val();
-		var rslgdate = $("#rslgdate", opener.document).val();
+		var rslgTest = $("#rslgTest", opener.document).val();
+		var rslgScore = $("#rslgScore", opener.document).val();
+		var rslgDate = $("#rslgDate", opener.document).val();
+		*/
 		alert(rslgCategory + " // " + rslgName + " // " + rslgLv
-				+ " // " + rslgtest+ " // " + rslgscore+ " // " + rslgdate);
+				+ " // " + rslgTest+ " // " + rslgScore+ " // " + rslgDate);
 			
 		$("#save").click(function() {
 			if(!$("#rslgUserTitle").val()) {
@@ -37,9 +51,9 @@
 					"rslgCategory": rslgCategory,
 					"rslgName": rslgName,
 					"rslgLv": rslgLv,
-					"rslgtest": rslgtest,
-					"rslgscore": rslgscore,
-					"rslgdate": rslgdate,
+					"rslgTest": rslgTest,
+					"rslgScore": rslgScore,
+					"rslgDate": rslgDate,
 					"rslgUserTitle": rslgUserTitle
 				},
 				success: function(data) {
