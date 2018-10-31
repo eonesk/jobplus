@@ -33,12 +33,53 @@
 		});
 	});	
 </script>
+<style type="text/css">
+.write {
+    background-color: #e8ecef;
+}
+body {
+	height: 100%;
+    width: 100%;
+    font: 12px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
+    color: #666;
+    letter-spacing: -1px;
+    padding: 0;
+    margin: 0;
+}
+.title {
+	font: 24px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
+	font-weight: bold;
+	color: #2A120A;
+}
+fieldset {
+	background-color: #FFFFFF;
+}
+.content {
+	padding-top: 5px;
+}
+#internsave, #internload {
+	width:80px;
+    background-color: #5882FA;
+    border: none;
+    color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+}
+#internsave:hover, #internload:hover {
+    background-color: #2E9AFE;
+}
+</style>
 </head>
-<body>
+<body class="write">
 	<fieldset>
-		<legend>인턴-대외활동</legend> 
+		<p class="title">인턴·대외활동</p> 
 		<div>
-			<select name="rsitType" id="rsitType">				
+			<select name="rsitType" id="rsitType" style="width:100px;height:35px;" >				
 				<option value="활동구분">---활동구분---</option>
 				<option value="인턴">인턴</option>
 				<option value="아르바이트">아르바이트</option>
@@ -46,12 +87,12 @@
 				<option value="자원봉사">자원봉사</option>
 			</select>
 						
-			<input type="text" id="rsitCompany" name="rsitCompany" placeholder="회사/기관/단체명" size="48">
-			<input type="date" id="rsitStartdate" name="rsitStartdate" placeholder="시작년월" size="7">
-			<input type="date" id="rsitEnddate" name="rsitEnddate" placeholder="종료년월" size="7">
+			<input type="text" id="rsitCompany" name="rsitCompany" placeholder="회사/기관/단체명" style="width:200px;height:28px;">
+			<input type="date" id="rsitStartdate" name="rsitStartdate" style="width: 120px;height: 30px;">
+			<input type="date" id="rsitEnddate" name="rsitEnddate" style="width: 120px;height: 30px;">
 		</div>
-		<div>			
-			<textarea id="rsitContent" name="rsitContent" placeholder="활동내용" cols="70" rows="5"></textarea>
+		<div class="content">			
+			<textarea id="rsitContent" name="rsitContent" placeholder="활동내용" cols="85" rows="7"></textarea>
 		</div>		
 		<div>
 			<!-- <input type="submit" value="저장"> -->

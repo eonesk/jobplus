@@ -54,16 +54,38 @@
 		});
 	});
 </script>
+<style type="text/css">
+.title {
+	font: 20px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
+	font-weight: bold;
+	color: #2A120A;
+}
+#save, #cancle {
+	width:70px;
+    background-color: #5882FA;
+    border: none;
+    color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+}
+#save:hover, #cancle:hover {
+    background-color: #2E9AFE;
+}
+</style>
 </head>
 <body>
-	<fieldset>			
+	<fieldset>	
+		<p class="title">제목 저장하기</p>		
 		<div>			
-			<input type="text" id="rsitUserTitle" name="rsitUserTitle"  size="30">
-		</div>		
-		<div>			
+			<input type="text" id="rsitUserTitle" name="rsitUserTitle" style="width:280px;height:30px;">
 			<input type="button" value="저장하기" id="save">
-			<input type="button" value="취소" id="cancle">			
-		</div>		
+			<input type="button" value="취소" id="cancle">		
+		</div>				
 	</fieldset>
 </body>
 </html>

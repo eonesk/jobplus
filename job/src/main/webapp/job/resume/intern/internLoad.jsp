@@ -20,24 +20,7 @@
 					alert("인턴이력 없음");
 				} else {
 					alert("인턴이력");
-					/* Json 하는 거 어떻게 하지 ㅠㅠ 
-					$.ajax({
-						type: 'POST',
-						url: 'rsprLoad.do',
-						dataType: 'json',
-						cache: false,
-						success: function(data) {
-							alert(data.rsprUserTitleList);
-							
-						},
-						error : function(e) {
-
-			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
-
-			         	}
-					});
-					*/
-					
+										
 						$.each(data.memberlist, function(index, memberlist) { // 이치를 써서 모든 데이터들을 배열에 넣음					
 
 						var items = [];
@@ -62,36 +45,67 @@
 			error : function(e) {
                 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
          	}
+		});		
+	});
+	$(function() {		
+		$("#cancle").click(function() {
+			window.close();
 		});
-		
-		
-		
 	});
 </script>
+<style type="text/css">
+.title {
+	font: 20px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
+	font-weight: bold;
+	color: #2A120A;
+}
+#load, #cancle {
+	width:70px;
+    background-color: #5882FA;
+    border: none;
+    color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px;
+    cursor: pointer;
+}
+#load:hover, #cancle:hover {
+    background-color: #2E9AFE;
+}
+</style>
 </head>
 <body>
-	<h3>인턴이력 불러오기</h3>
-	내 인턴이력 보관함 총&nbsp;<span id="number">&nbsp;</span>건
-	<div>
-		<table border="1" name="LoadList">
-			<!-- 기본 -->
-			<tr><td>제목</td></tr>
-			<tr>
-				<td>리스트1</td>
-			</tr>
-			<tr>
-				<td>리스트2</td>
-			</tr>
-			<tr>
-				<td>리스트3</td>
-			</tr>
-			<tr>
-				<td>리스트4</td>
-			</tr>
-			<tr>
-				<td>리스트5</td>
-			</tr>					
-		</table>
-	</div>
+	<fieldset>
+		<p class="title">인턴이력 불러오기</p>
+		내 인턴이력 보관함 총&nbsp;<span id="number">&nbsp;</span>건
+		<div>
+			<table border="1" name="LoadList">
+				<!-- 기본 -->
+				<tr>
+					<td>제목</td>
+				</tr>
+				<tr>
+					<td>리스트1</td>
+				</tr>
+				<tr>
+					<td>리스트2</td>
+				</tr>
+				<tr>
+					<td>리스트3</td>
+				</tr>
+				<tr>
+					<td>리스트4</td>
+				</tr>
+				<tr>
+					<td>리스트5</td>
+				</tr>
+			</table>			
+		</div>
+		<input type="button" value="불러오기" id="load">
+		<input type="button" value="취소" id="cancle">	
+	</fieldset>
 </body>
 </html>
