@@ -8,4 +8,5 @@ public interface RS_eduService {
 	int rseSave(RS_eduDTO eduDTO);
 	int selectNumberOfEdu(String memId);
 	List<RS_eduDTO> selectEduUserTitleList(String memId);
+	RS_eduDTO selectEduDTO(int rse_Seq);
 }

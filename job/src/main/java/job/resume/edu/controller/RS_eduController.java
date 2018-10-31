@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +52,7 @@ public class RS_eduController {
 	
 		Date rse_Startdate = null;
 		Date rse_Enddate = null;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");		
 		
 		try {
 			rse_Startdate = dateFormat.parse(rse_Startdate_str);
@@ -96,7 +97,7 @@ public class RS_eduController {
 	}
 	
 	@RequestMapping(value="/job/resume/edu/eduLoad.do", method=RequestMethod.POST)
-	public ModelAndView eduLoad(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public ModelAndView eduLoad(HttpServletRequest request) throws IOException {
 		System.out.println("[RS_eduLVController] eduLoad");
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -136,4 +137,50 @@ public class RS_eduController {
 		return modelAndView;
 		
 	}
+	
+	@RequestMapping(value="/job/resume/edu/rseLoadView.do", method=RequestMethod.POST)
+	public ModelAndView rseLoadView(HttpServletRequest request) {
+		System.out.println("[RS_eduLVController] rseLoadView");		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
+		String accumSeq = request.getParameter("accumSeq");
+		System.out.println("[RS_eduLVController] accumSeq : " + accumSeq);
+		
+		int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");
+		System.out.println("[RS_eduLVController] accumSeqLastIndexOf : " + accumSeqLastIndexOf);
+		
+		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);
+		System.out.println("[RS_eduLVController] accumSeqSubstring : " + accumSeqSubstring);
+		
+		String[] accumSeqSplit = accumSeq.split("/"); 
+		for(int i = 0; i < accumSeqSplit.length; i++) {
+			System.out.println("[RS_eduLVController] accumSeqSplit[" + i + "] : " + accumSeqSplit[i]);
+			int rse_Seq = Integer.parseInt(accumSeqSplit[i]);
+			RS_eduDTO eduDTO = eduService.selectEduDTO(rse_Seq);
+			System.out.println("[RS_eduLVController] eduDTO : " + eduDTO.toString());
+			JSONObject temp = new JSONObject();
+			temp.put("rse_Seq", eduDTO.getRse_Seq());
+			temp.put("rse_Name", eduDTO.getRse_Name());
+			temp.put("rse_Company", eduDTO.getRse_Company());
+			temp.put("rse_Startdate", eduDTO.getRse_Startdate());
+			temp.put("rse_Enddate", eduDTO.getRse_Enddate());
+			temp.put("rse_Content", eduDTO.getRse_Content());
+			temp.put("m_Id", eduDTO.getM_Id());
+			temp.put("rse_UserTitle", eduDTO.getRse_UserTitle());
+			items.put(i, temp);
+		}
+		
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/edu/selectedDTOJson.jsp");
+		
+		System.out.println("[RS_eduLVController] jsonObject 출력 : " + jsonObject);
+		
+		return modelAndView;
+	}
+	
 }

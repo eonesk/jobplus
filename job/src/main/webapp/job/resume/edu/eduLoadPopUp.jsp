@@ -31,8 +31,8 @@
 						cache: false,
 						success: function(data) {
 							alert("성공");
-							
-							
+			              	//var testDTO =  data.items;
+							//alert(testDTO[0].rse_UserTitle);					
 							
 							var trTitle = $("<tr>").addClass("eduLoadListLabelTr");
 							var tdTitle = $("<td>").addClass("eduLoadListLabelTd").html("제목");
@@ -60,22 +60,29 @@
 								$("#eduLoadListTable").append(tr);	
 								 
 																			 
-							});
-							
+							});							
 
 							$("#eduLoadSubmit").click(function() {
-								var eduSeqList = new Array();
+								//var eduSeqList = new Array();
+								var accumSeq = "";
+								
 				                $("#rse_UserTitleR:checked").each(function() {
 				                	alert($(this).val());
-				                	eduSeqList.push($(this).val());
+				                	//eduSeqList.push($(this).val());
+				                	accumSeq += $(this).val() + "/";
 				                });
-				                alert(eduSeqList);
-				              	//var testDTO =  
-								//alert(testDTO[0].rse_UserTitle);
-				                if(eduSeqList == "") {
+				                
+				                alert(accumSeq);
+				                
+				                if(accumSeq == "") {
 				                	alert("체크해주셍ㅂ");
 				                } else {
-				                	opener.parent.test();
+				                	alert("체크됨");
+				                	if(confirm("불러오기를 진행하시겠습니까?")) {
+				                		opener.parent.test(accumSeq);
+					                	self.close();
+				                	}
+				                	
 				                }
 							});
 							
