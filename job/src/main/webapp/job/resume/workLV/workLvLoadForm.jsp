@@ -78,6 +78,7 @@
 			<legend>목록</legend>
 			
 		</fieldset>
+		<div></div>
 	</div>
 	<div id="loadFooter">
 		<button type="button" id="loadCancle">취소</button>
