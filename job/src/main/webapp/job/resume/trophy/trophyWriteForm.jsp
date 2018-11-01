@@ -33,27 +33,30 @@
 	});
 </script>
 </head>
-<body>
+<body class="write">
 <fieldset>
-	<legend>수상내역</legend>
-		<div>
-			<input type="text" id="rstName" name="rstName" placeholder="수상명" size="30">
-			<input type="text" id="rstCompany" name="rstCompany" placeholder="수여기관" size="30">
-			<input type="date" id="rstDate" name="rstDate" placeholder="수상연도" size="7">
+	<p class="title">수상내역</p>
+	<div id="t" class="t">
+		<br>	
+		<div>		
+			<input type="text" id="rstName" name="rstName" class="rstName" placeholder="수상명" size="30">
+			<input type="text" id="rstCompany" name="rstCompany" class="rstCompany" placeholder="수여기관" size="30">
+			<input type="date" id="rstDate" name="rstDate" class="rstDate" placeholder="수상연도" size="7">
 		</div>
 		<div>			
-			<textarea id="rstContent" name="rstContent" placeholder="수여내용" cols="70" rows="5"></textarea>
+			<textarea id="rstContent" name="rstContent" class="rstContent" placeholder="수여내용" cols="70" rows="5"></textarea>
 		</div>		
 		<div>
 			<!-- <input type="submit" value="저장"> -->
-			<input type="button" value="저장하기" id="trophysave">
-			<input type="button" value="불러오기" id="trophyload">
+			<input type="button" value="저장하기" id="trophysave" class="trophysave">
+			<input type="button" value="불러오기" id="trophyload" class="trophyload">
 			<!-- 			
 			<script type="text/javascript" src="script/internScript.js"></script>
 			<input type="button" value="새창" onclick="window.open('', '이력서 저장', 'width=700, height=400')">		
 			<input type="button" value="저장하기" onclick="checkWrite()">
 			 -->
-		</div>	
+		</div>
+	</div>	
 </fieldset>
 </body>
 </html>
