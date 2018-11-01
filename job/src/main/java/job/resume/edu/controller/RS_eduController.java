@@ -52,7 +52,7 @@ public class RS_eduController {
 	
 		Date rse_Startdate = null;
 		Date rse_Enddate = null;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");		
 		
 		try {
 			rse_Startdate = dateFormat.parse(rse_Startdate_str);

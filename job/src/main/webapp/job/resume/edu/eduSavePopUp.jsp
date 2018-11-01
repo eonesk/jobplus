@@ -8,12 +8,13 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		alert("[savePopUp] eduPlusButtonCnt : " + ${param.eduPlusButtonCnt});
-		var rse_Name = $("#rse_Name", opener.document).val();
-		var rse_Company = $("#rse_Company", opener.document).val();
-		var rse_Startdate = $("#rse_Startdate", opener.document).val();
-		var rse_Enddate = $("#rse_Enddate", opener.document).val();
-		var rse_Content = $("#rse_Content", opener.document).val();
+		var save = "${param.numbering}";
+		alert("[savePopUp] numbering : " + save);
+		var rse_Name = $("#rse_Name"+save, opener.document).val();
+		var rse_Company = $("#rse_Company"+save, opener.document).val();
+		var rse_Startdate = $("#rse_Startdate"+save, opener.document).val();
+		var rse_Enddate = $("#rse_Enddate"+save, opener.document).val();
+		var rse_Content = $("#rse_Content"+save, opener.document).val();
 		
 		alert(rse_Name + " // " + rse_Company + " // " + rse_Startdate + " // "
 				+ rse_Enddate + " // " + rse_Content);

@@ -8,9 +8,9 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
-	$(function() {
-		
-		var eduPlusButtonCnt = 0;
+	var eduPlusButtonCnt = 0;
+	
+	$(function() {	
 		
 		$("#eduPlus").hide();
 		
@@ -18,6 +18,12 @@
 			eduPlusButtonCnt++;
 			var numbering = "_" + eduPlusButtonCnt;
 			var clone = $("#eduPlus").clone().attr("id", "eduPlus" + numbering);
+			
+			if(eduPlusButtonCnt >=4){
+				console.log("항목추가는 최대 3개까지만 추가가능 합니다.")
+				eduPlusButtonCnt--;
+				return false;
+			}
 			
 			// id&name 넘버링 변경 작업
 			clone.find("*[id]").each(function() {
@@ -35,6 +41,7 @@
 			/** 이벤트 바인딩 */
 			// 'X'표 눌렀을 때 닫기
 			$("#eduPlusCancel" + numbering).on("click", function() {
+				console.log("[eventBindingInit] #eduPlusCancel" + numbering + "(X표) : 닫기");
 				$(this).parent("#eduPlus" + numbering).remove();
 				eduPlusButtonCnt--;
 			});
@@ -54,8 +61,8 @@
 					alert("종료년월을 입력해주세요.");
 					$("#rse_Enddate" + numbering).focus();
 				} else {
-					alert("[검사 후 eduPlusButtonCnt] eduPlusButtonCnt : " + eduPlusButtonCnt);
-					window.open("./eduSavePopUp.jsp?eduPlusButtonCnt=" + eduPlusButtonCnt, "", "width=500px height=500px");
+					console.log("[saveButtonInit] numbering : " + numbering);
+					window.open("./eduSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
 				}
 			});
 			
@@ -63,16 +70,18 @@
 		
 		/** 내 교육이수사항 불러오기 */
 		$("#RSE_loadA").click(function() {
+			console.log("[load] eduPlusButtonCnt : " + eduPlusButtonCnt);
 			window.open("./eduLoadPopUp.jsp?eduPlusButtonCnt=" + eduPlusButtonCnt, "", "width=500px height=500px");
 		});
 	});
 	
+	/** Load 함수 */
 	function selected(accumSeq, eduPlusButtonCnt_Delivered) {
 		$(function() {
-			alert("부모창 할롱");
+			console.log("[selected]----------부모창 시작----------");
 			eduPlusButtonCnt = eduPlusButtonCnt_Delivered;
-			alert("[selected] accumSeq : " + accumSeq);
-			alert("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
+			console.log("[selected] accumSeq : " + accumSeq);
+			console.log("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
 			$.ajax({
 				type: 'POST',
 				url: 'rseLoadView.do',
@@ -81,12 +90,13 @@
 					"accumSeq": accumSeq
 				},
 				success: function(data) {
-					alert("부모창 성공");
-					alert("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
-					var testDTO =  data.items;
+					console.log("[selected] 부모창 ajax 성공");
+					console.log("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
 					
 					
-					for(var i = 0; i < testDTO.length; i++) {						
+					$.each(data.items, function(index, item) {
+						var testDTO = item;
+						
 						eduPlusButtonCnt++;
 						
 						var numbering = "_" + eduPlusButtonCnt;
@@ -108,6 +118,7 @@
 						/** 이벤트 바인딩 */
 						// 'X'표 눌렀을 때 닫기
 						$("#eduPlusCancel" + numbering).on("click", function() {
+							console.log("[eventBindingSelected] #eduPlusCancel" + numbering + "(X표) : 닫기");
 							$(this).parent("#eduPlus" + numbering).remove();
 							eduPlusButtonCnt--;
 						});
@@ -127,22 +138,27 @@
 								alert("종료년월을 입력해주세요.");
 								$("#rse_Enddate" + numbering).focus();
 							} else {
-								window.open("./eduSavePopUp.jsp?eduPlusButtonCnt"+eduPlusButtonCnt, "", "width=500px height=500px");
+								console.log("[saveButtonSelected] numbering : " + numbering);
+								window.open("./eduSavePopUp.jsp?numbering="+numbering, "", "width=500px height=500px");
 							}
 						});
-							alert(testDTO[i].rse_UserTitle);
-							$("#rse_Name" + numbering).val(testDTO[i].rse_Name);
-							$("#rse_Company" + numbering).val(testDTO[i].rse_Company);
-							$("#rse_Startdate" + numbering).val(testDTO[i].rse_Startdate);
-							$("#rse_Enddate" + numbering).val(testDTO[i].rse_Enddate);
-							$("#rse_Content" + numbering).val(testDTO[i].rse_Content);
-												
-					}				
+						
+						console.log("[selected] rse_UserTitle : " + testDTO.rse_UserTitle);
+						$("#rse_Seq" + numbering).val(testDTO.rse_Seq);
+						$("#rse_Name" + numbering).val(testDTO.rse_Name);
+						$("#rse_Company" + numbering).val(testDTO.rse_Company);
+						$("#rse_Startdate" + numbering).val(testDTO.rse_Startdate);
+						$("#rse_Enddate" + numbering).val(testDTO.rse_Enddate);
+						$("#rse_Content" + numbering).val(testDTO.rse_Content);
+							
+					});
+					
 				},
 				error: function(e) {
 					 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
 				}
 			});
+			
 		});
 	}
 </script>
@@ -154,7 +170,7 @@
 		<!-- Title -->
 		<h3 style="font-weight: bold;">교육</h3>
 		
-		<!-- Save / Load -->
+		<!-- Load -->
 		<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
 			<a href="#" id="RSE_loadA">내 교육이수사항 불러오기</a>
 		</div>
@@ -170,14 +186,14 @@
 		
 		
 		<div id="eduPlusField" style="background-color: white; padding: 0px; padding-bottom: 20px; border-bottom: 0px; border: 1px solid rgba(86, 111, 237, 0.3); width: 90%; height: auto;">
-			<!-- <input id="hiddenCnt" type="hidden"> -->
 			<div id="eduPlus" class="eduPlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
-				<a id="eduPlusCancel" href="#" style="text-decoration: none;">
+				<input id="rse_Seq" name="rse_Seq" class="rse_Seq" type="hidden">
+				<a id="eduPlusCancel" name="eduPlusCancel" href="#" style="text-decoration: none;">
 					<div id="eduCloseButton" style="border: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
 				</a>
 							
 				<!-- 교육명 -->
-				<input id="rse_Name"; name="rse_Name" 
+				<input id="rse_Name"; name="rse_Name"
 						type="text" placeholder="교육명" style="margin-left: 10px; margin-top: 8px; margin-right: 10px; float: left; width: 250px; height: 48px; border: 1px solid lightgray;">
 				
 				<!-- 교육기관 -->		
