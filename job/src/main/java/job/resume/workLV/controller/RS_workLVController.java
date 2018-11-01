@@ -5,17 +5,22 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-
+import job.resume.edu.bean.RS_eduDTO;
 import job.resume.workLV.bean.RS_workLVDTO;
+import job.resume.workLV.dao.RS_workLVDAO;
 
 @Controller
 public class RS_workLVController {
@@ -74,5 +79,66 @@ public class RS_workLVController {
 		//DB 저장
 		int saveCount = rs_workLVService.rswSave(rs_workLVDTO);
 		out.print(saveCount);
+	}
+	
+	@RequestMapping(value="/job/resume/workLV/rswLoadCount.do", method=RequestMethod.POST)
+	public void eduLoadCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = "num1";
+		
+		//DB작업 : memID가 가지고 있는 자소서의 개수를 구함
+		int countingValue = rs_workLVService.rswCounting(memId);		
+		
+		
+		out.print(countingValue);	
+	}
+	
+	@RequestMapping(value="/job/resume/workLV/rswLoad.do", method=RequestMethod.POST)
+	public ModelAndView eduLoad(HttpServletRequest request) throws IOException {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = "num1";
+		
+		// memId의 갯수구하기
+		List<RS_workLVDTO> rsw_list = rs_workLVService.rswGetList(memId);
+		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
+		// rsw_list 리스트값 확인
+		for(int i = 0; i < rsw_list.size(); i++) {
+			RS_workLVDTO rsw_dto = rsw_list.get(i);
+			
+			JSONObject temp = new JSONObject();
+			temp.put("rsw_seq", rsw_dto.getRsw_seq());
+			temp.put("rsw_company", rsw_dto.getRsw_company());
+			temp.put("rsw_dept", rsw_dto.getRsw_dept());
+			temp.put("rsw_startDate", rsw_dto.getRsw_startDate());
+			temp.put("rsw_endDate", rsw_dto.getRsw_endDate());
+			temp.put("rsw_isNow", rsw_dto.getRsw_isNow());
+			temp.put("rsw_position", rsw_dto.getRsw_position());
+			temp.put("rsw_job", rsw_dto.getRsw_job());
+			temp.put("rsw_pay", rsw_dto.getRsw_pay());
+			temp.put("rsw_part", rsw_dto.getRsw_part());
+			temp.put("rsw_career", rsw_dto.getRsw_career());
+			temp.put("rsw_userTitle", rsw_dto.getRsw_userTitle());
+			temp.put("m_Id", rsw_dto.getM_id());
+			
+			items.put(i, temp);
+		}
+		
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("json", jsonObject);
+		modelAndView.setViewName("/job/resume/workLV/workLvLoadJson.jsp");
+		
+		
+		
+		return modelAndView;
+		
 	}
 }
