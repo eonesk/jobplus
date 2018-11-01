@@ -76,7 +76,6 @@ public class RS_eduController {
 		System.out.println("[RS_eduLVController] saveCount : " + saveCount);
 		
 		out.print(saveCount);
-		
 	}
 	
 	@RequestMapping(value="/job/resume/edu/eduLoadCount.do", method=RequestMethod.POST)

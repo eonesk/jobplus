@@ -7,12 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="portfolioWrite" parameterType="portfolioDTO">
 		INSERT INTO RS_PORTFOLIO VALUES
-		(RS_portfolio_SEQ.nextval,#{rs_pfType},#{rs_pfFileorurl},#{rs_pfUrl},#{rs_pfFile},#{m_Id},#{rs_pfUsertitle})
+		(RS_portfolio_SEQ.nextval, #{rspf_Type},#{rspf_Fileorurl},#{rspf_Url},#{rspf_File},#{m_Id},#{rspf_Usertitle})
 	</insert>
 	
 	<select id="getportfolioOfId" parameterType="String" resultType="int">
-		SELECT COUNT (*) FROM RS_PORTFOLIO WHERE M_ID = #{m_Id}
+		SELECT COUNT (*) FROM RS_PORTFOLIO WHERE M_ID = #{memId}
 	</select>	
+	
+	<select id="viewportfolioOfId" parameterType="String" resultType="portfolioDTO">
+		SELECT * FROM RS_PORTFOLIO WHERE M_ID = #{memId}
+	</select>
 	
 <!--  	<select id="selectPortfolioList" parameterType="String" resultType="portfolioDTO"> -->
 <!-- 		SELECT  -->
@@ -24,17 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 			RSPF_FILEORURL, -->
 <!-- 		RSPF_USERTITLE FROM RS_PORTFOLIO -->
 <!--  	</select> -->
- 	
-	<select id="selectPortfolioList" parameterType="String" resultType="portfolioDTO">
-		SELECT * FROM RS_PORTFOLIO WHERE M_ID = #{m_Id}
-	</select>
 	
-<!-- 	<select id="portfolioListOfId" parameterType="java.util.Map" resultType="portfolioDTO"> -->
-<!-- 		<![CDATA[ SELECT * FROM  -->
-<!-- 				 (SELECT ROWNUM RN,TT.*FROM -->
-<!-- 				 (SELECT * FROM RS_PORTFOLIO WHERE M_ID = #{m_Id} ORDER BY rs_pfSeq DESC) TT) -->
-<!-- 				 WHERE RN >= #{startNum} AND RN <= #{endNum} ]]> -->
-<!-- 	</select> -->
+	<select id="portfolioListOfId" parameterType="java.util.Map" resultType="portfolioDTO">
+		<![CDATA[ SELECT * FROM 
+				 (SELECT ROWNUM RN,TT.*FROM
+ 				 (SELECT * FROM RS_PORTFOLIO WHERE M_ID = #{m_Id} ORDER BY rspf_Seq DESC) TT)
+ 				 WHERE RN >= #{startNum} AND RN <= #{endNum} ]]>
+	</select>
 	
 <!-- 
 	<delete id="foreignDelete" parameterType="int">

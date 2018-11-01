@@ -24,43 +24,41 @@ public class RS_trophyController {
 	private RS_trophyService trophyService;	
 
 	@RequestMapping(value="/job/resume/trophy/Write.do", method=RequestMethod.POST)
-	public void Save(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void Write(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// Session으로 넘어오는 memID값 임시 지정
+		String mId = "ID";
 		
 		response.setContentType("text/html; charset=UTF-8");		
 		PrintWriter out = response.getWriter();
-		
-		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "ID";
 		
 		// 넘어오는 변수값 콘솔 확인
 		String rstName = request.getParameter("rstName");
 		String rstCompany = request.getParameter("rstCompany");
 		String rstDate = request.getParameter("rstDate");
 		String rstContent = request.getParameter("rstContent");
-		String RSTUserTitle = request.getParameter("rstUserTitle");
+		String RSTUserTitle = request.getParameter("rstuserTitle");
 		Date date=null;
 		try {
-			date = new SimpleDateFormat("yyyyMMdd").parse(rstDate);
+			date = new SimpleDateFormat("yyyy-MM-dd").parse(rstDate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		// DTO에 변수 저장
-		RS_trophyDTO trophyDTO = new RS_trophyDTO();
-		
+		RS_trophyDTO trophyDTO = new RS_trophyDTO();		
 		trophyDTO.setRst_Name(rstName);
 		trophyDTO.setRst_Company(rstCompany);
 		trophyDTO.setRst_Date(date);
 		trophyDTO.setRst_Content(rstContent);
 		trophyDTO.setRST_UserTitle(RSTUserTitle);
-		trophyDTO.setM_Id(memId);
-		
+		trophyDTO.setM_Id(mId);
 		// DB작업
 		int su = trophyService.Write(trophyDTO);		
-				
+		// (3) 화면네비게이션		
 		out.print(su);
 	}
 	@RequestMapping(value="/job/resume/trophy/LoadCount.do", method=RequestMethod.POST)
 	public void LoadCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 

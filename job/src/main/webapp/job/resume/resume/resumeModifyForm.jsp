@@ -80,138 +80,151 @@
 </style>
 <script type="text/javascript">
 /* rs_workspace */
-var rs_workspace_btn_ck = false;
-var rs_workspace_cnt = 1;
-	$(function() {
-		
-		$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-		$("#rs_workspace1").hide();
-		$("#rs_workspace2").hide();
-		$("#rs_workspace3").hide();
-		$("#rs_workspace_result").children().on("click",function() {
-			$(this).hide();
-			rs_workspace_cnt--;
-			$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-		});
-		
-		$("#rs_workspace_btn").click(function() {
-			if(rs_workspace_cnt > 3){
-				alert("희망근무지는 3곳까지 선택 할 수 있습니다.");
-				return false;
-			}
-			if(rs_workspace_btn_ck){
-				rs_workspace_btn_ck = false;
-				$("#rs_workspace_select1").empty().hide();
+$(function() {
+	/* rs_workspace */
+	var rs_workspace_btn_ck = false;
+	var rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+	$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+	$("#rs_workspace").hide();
+	
+	$("#rs_workspace_btn").click(function() {
+		if(rs_workspace_cnt > 3){
+			alert("희망근무지는 3곳까지 선택 할 수 있습니다.");
+			return false;
+		}
+		if(rs_workspace_btn_ck){
+			rs_workspace_btn_ck = false;
+			$("#rs_workspace_select1").empty().hide();
+			$("#rs_workspace_select2").empty().hide();
+			$(document).off("change", "#rs_workspace_select1 > select");
+			$(document).off("change", "#rs_workspace_select2 > select");
+		}else{
+			rs_workspace_btn_ck = true;
+			$("#rs_workspace_select1").load("text/category_hopework.html #category1-1", function() {
+				$(this).show();
+			});	
+			$(document).on("change", "#rs_workspace_select1 > select", function() {
 				$("#rs_workspace_select2").empty().hide();
-				$(document).off("change", "#rs_workspace_select1 > select");
-				$(document).off("change", "#rs_workspace_select2 > select");
-			}else{
-				rs_workspace_btn_ck = true;
-				$("#rs_workspace_select1").load("text/category_hopework.html #category1-1", function() {
-					$(this).show();
-				});	
-				$(document).on("change", "#rs_workspace_select1 > select", function() {
-					$("#rs_workspace_select2").empty().hide();
-					var target = $(this).find("option:selected").attr("data-target");
-				    	var selector = "text/category_hopework.html " + target;
-				    	// 다음 항목 로드
-				    	$("#rs_workspace_select2").load(selector, function() {
-				    		$(this).show();
-				    	});
-				});
-				$(document).on("change", "#rs_workspace_select2 > select", function() {
-					if($(this).find("option:selected").index() != null){
-						var data1 = $("#rs_workspace_select1 > select > option:selected").val();
-						var data2 = $("#rs_workspace_select2 > select > option:selected").val();
-						var result = data1 + " > "+ data2;
-						$("#rs_workspace"+rs_workspace_cnt).val(result);
-						$("#rs_workspace"+rs_workspace_cnt).show();
-						rs_workspace_cnt++;
+				var target = $(this).find("option:selected").attr("data-target");
+			    	var selector = "text/category_hopework.html " + target;
+			    	// 다음 항목 로드
+			    	$("#rs_workspace_select2").load(selector, function() {
+			    		$(this).show();
+			    	});
+			});
+			$(document).on("change", "#rs_workspace_select2 > select", function() {
+				if($(this).find("option:selected").index() != null){
+					var data1 = $("#rs_workspace_select1 > select > option:selected").val();
+					var data2 = $("#rs_workspace_select2 > select > option:selected").val();
+					var result = data1 + " > "+ data2;
+					rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+					var clone_workspace = $("#rs_workspace").clone().attr('id', 'rs_workspace'+rs_workspace_cnt);
+					clone_workspace.insertBefore("#rs_workspace");
+					$("#rs_workspace"+(rs_workspace_cnt)).val(result);
+					$("#rs_workspace"+(rs_workspace_cnt)).show();
+					
+					$("#rs_workspace"+rs_workspace_cnt).on("click",function() {
+						var rs_workspace_number = $(this).attr('id').substring(12);
+						$(this).remove();
+						rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
 						$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-						rs_workspace_btn_ck = false;
-						$("#rs_workspace_select1").empty().hide();
-						$("#rs_workspace_select2").empty().hide();
-						$(document).off("change", "#rs_workspace_select1 > select");
-						$(document).off("change", "#rs_workspace_select2 > select");
-					}
-				});
-			}
-		});
-		
-		/* rs_job */
-		var rs_job_btn_ck = false;
-		var rs_job_cnt = 1;
-		$(".rs_job_cnt").html(rs_job_cnt-1);
-		$("#rs_job1").hide();
-		$("#rs_job2").hide();
-		$("#rs_job3").hide();
-		$("#rs_job4").hide();
-		$("#rs_job5").hide();
-		$("#rs_job_result").children().on("click",function() {
-			$(this).hide();
-			rs_job_cnt--;
-			$(".rs_job_cnt").html(rs_job_cnt-1);
-		});
-		
-		$("#rs_job_btn").on("click", function() {
-			if(rs_job_cnt > 3){
-				alert("희망직종은 3종류까지 선택 할 수 있습니다.");
-				return false;
-			}
-			if(rs_job_btn_ck){
-				rs_job_btn_ck = false;
-				$("#rs_job_select1").empty().hide();
+						for(var i=rs_workspace_cnt; i>rs_workspace_number; i--){
+							$("#rs_workspace"+i).attr('id','rs_workspace'+(i-1));
+						}
+					});
+					rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+					$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+					rs_workspace_btn_ck = false;
+					$("#rs_workspace_select1").empty().hide();
+					$("#rs_workspace_select2").empty().hide();
+					$(document).off("change", "#rs_workspace_select1 > select");
+					$(document).off("change", "#rs_workspace_select2 > select");
+				}
+			});
+		}
+	});
+	
+	
+	/* rs_job */
+	var rs_job_btn_ck = false;
+	var rs_job_cnt = $("#rs_job_result input[type=button]").length;
+	$(".rs_job_cnt").html(rs_job_cnt-1);
+	$("#rs_job").hide();
+	
+	$("#rs_job_btn").on("click", function() {
+		if(rs_job_cnt > 3){
+			alert("희망직종은 3종류까지 선택 할 수 있습니다.");
+			return false;
+		}
+		if(rs_job_btn_ck){
+			rs_job_btn_ck = false;
+			$("#rs_job_select1").empty().hide();
+			$("#rs_job_select2").empty().hide();
+			$("#rs_job_select3").empty().hide();
+			$(document).off("change", "#rs_job_select1 > select");
+			$(document).off("change", "#rs_job_select2 > select");
+			$(document).off("change", "#rs_job_select3 > select");
+		}else{
+			rs_job_btn_ck = true;
+			$("#rs_job_select1").load("text/category_hopejob.html #category1-1", function() {
+				$(this).show();
+			});	
+			$(document).on("change", "#rs_job_select1 > select", function() {
 				$("#rs_job_select2").empty().hide();
 				$("#rs_job_select3").empty().hide();
-				$(document).off("change", "#rs_job_select1 > select");
-				$(document).off("change", "#rs_job_select2 > select");
-				$(document).off("change", "#rs_job_select3 > select");
-			}else{
-				rs_job_btn_ck = true;
-				$("#rs_job_select1").load("text/category_hopejob.html #category1-1", function() {
-					$(this).show();
-				});	
-				$(document).on("change", "#rs_job_select1 > select", function() {
+				var target = $(this).find("option:selected").attr("data-target");
+			    	var selector = "text/category_hopejob.html " + target;
+			    	// 다음 항목 로드
+			    	$("#rs_job_select2").load(selector, function() {
+			    		$(this).show();
+			    	});
+			});
+			$(document).on("change", "#rs_job_select2 > select", function() {
+				$("#rs_job_select3").empty().hide();
+				var target = $(this).find("option:selected").attr("data-target");
+			    	var selector = "text/category_hopejob.html " + target;
+			    	// 다음 항목 로드
+			    	$("#rs_job_select3").load(selector, function() {
+			    		$(this).show();
+			    	});
+			});
+			
+			$(document).on("change", "#rs_job_select3 > select", function() {
+				if($(this).find("option:selected").index() != null){
+					var data1 = $("#rs_job_select1 > select > option:selected").val();
+					var data2 = $("#rs_job_select2 > select > option:selected").val();
+					var data3 = $("#rs_job_select3 > select > option:selected").val();
+					var result = data1 + " > "+ data2 + " > " + data3;
+					rs_job_cnt = $("#rs_job_result input[type=button]").length;
+					
+					var clone_job = $("#rs_job").clone().attr('id', 'rs_job'+rs_job_cnt);
+					clone_job.insertBefore("#rs_job");
+					$("#rs_job"+(rs_job_cnt)).val(result);
+					$("#rs_job"+(rs_job_cnt)).show();
+					
+					$("#rs_job"+rs_job_cnt).on("click",function() {
+						var rs_job_number = $(this).attr('id').substring(6);
+						$(this).remove();
+						rs_job_cnt = $("#rs_job_result input[type=button]").length;
+						$(".rs_job_cnt").html(rs_job_cnt-1);
+						for(var i=rs_job_cnt; i>rs_job_number; i--){
+							$("#rs_job"+i).attr('id','rs_job'+(i-1));
+						}
+					});
+					
+					rs_job_cnt = $("#rs_job_result input[type=button]").length;
+					$(".rs_job_cnt").html(rs_job_cnt-1);
+					rs_job_btn_ck = false;
+					$("#rs_job_select1").empty().hide();
 					$("#rs_job_select2").empty().hide();
 					$("#rs_job_select3").empty().hide();
-					var target = $(this).find("option:selected").attr("data-target");
-				    	var selector = "text/category_hopejob.html " + target;
-				    	// 다음 항목 로드
-				    	$("#rs_job_select2").load(selector, function() {
-				    		$(this).show();
-				    	});
-				});
-				$(document).on("change", "#rs_job_select2 > select", function() {
-					$("#rs_job_select3").empty().hide();
-					var target = $(this).find("option:selected").attr("data-target");
-				    	var selector = "text/category_hopejob.html " + target;
-				    	// 다음 항목 로드
-				    	$("#rs_job_select3").load(selector, function() {
-				    		$(this).show();
-				    	});
-				});
-				
-				$(document).on("change", "#rs_job_select3 > select", function() {
-					if($(this).find("option:selected").index() != null){
-						var data1 = $("#rs_job_select1 > select > option:selected").val();
-						var data2 = $("#rs_job_select2 > select > option:selected").val();
-						var data3 = $("#rs_job_select3 > select > option:selected").val();
-						var result = data1 + " > "+ data2 + " > " + data3;
-						$("#rs_job"+rs_job_cnt).val(result);
-						$("#rs_job"+rs_job_cnt).show();
-						rs_job_cnt++;
-						$(".rs_job_cnt").html(rs_job_cnt-1);
-						rs_job_btn_ck = false;
-						$("#rs_job_select1").empty().hide();
-						$("#rs_job_select2").empty().hide();
-						$("#rs_job_select3").empty().hide();
-						$(document).off("change", "#rs_job_select1 > select");
-						$(document).off("change", "#rs_job_select2 > select");
-						$(document).off("change", "#rs_job_select3 > select");
-					}
-				});
-			}
-		});
+					$(document).off("change", "#rs_job_select1 > select");
+					$(document).off("change", "#rs_job_select2 > select");
+					$(document).off("change", "#rs_job_select3 > select");
+				}
+			});
+		}
+	});
 		
 		$("#rs_pay_no").change(function() {
 			if($(this).is(":checked")){
@@ -345,27 +358,63 @@ var rs_workspace_cnt = 1;
 		}
 		
 		
-		$("#rs_workspace1").val("${resumeDTO.rs_Workspace1}");
-		$("#rs_workspace2").val("${resumeDTO.rs_Workspace2}");
-		$("#rs_workspace3").val("${resumeDTO.rs_Workspace3}");
-		for(var i=1; i<4; i++){
-			if($("#rs_workspace"+i).val() != ""){
-				$("#rs_workspace"+i).show();
-				rs_workspace_cnt++;
+		var rs_workspace_create_cnt = 0;
+		var rs_workspace_array = new Array("${resumeDTO.rs_Workspace1}", "${resumeDTO.rs_Workspace2}", "${resumeDTO.rs_Workspace3}");
+		
+		for(var i=0; i<3; i++){
+			if(rs_workspace_array[i] != ""){
+				rs_workspace_create_cnt++;
 			}
 		}
+		for(var i=0; i<rs_workspace_create_cnt; i++){
+			var result = rs_workspace_array[i];
+			var clone_workspace = $("#rs_workspace").clone().attr('id', 'rs_workspace'+(i+1));
+			clone_workspace.insertBefore("#rs_workspace");
+			$("#rs_workspace"+(i+1)).val(result);
+			$("#rs_workspace"+(i+1)).show();
+			
+			$("#rs_workspace"+(i+1)).on("click",function() {
+				var rs_workspace_number = $(this).attr('id').substring(12);
+				$(this).remove();
+				rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+				$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+				for(var k=rs_workspace_cnt; k>rs_workspace_number; k--){
+					$("#rs_workspace"+i).attr('id','rs_workspace'+(k-1));
+				}
+			});
+		}
+		rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
 		$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
 		
-		$("#rs_job1").val("${resumeDTO.rs_Job1}");
-		$("#rs_job2").val("${resumeDTO.rs_Job2}");
-		$("#rs_job3").val("${resumeDTO.rs_Job3}");
-		for(var i=1; i<4; i++){
-			if($("#rs_job"+i).val() != ""){
-				$("#rs_job"+i).show();
-				rs_job_cnt++;
+		
+		var rs_job_create_cnt = 0;
+		var rs_job_array = new Array("${resumeDTO.rs_Job1}", "${resumeDTO.rs_Job2}", "${resumeDTO.rs_Job3}");
+		
+		for(var i=0; i<3; i++){
+			if(rs_job_array[i] != ""){
+				rs_job_create_cnt++;
 			}
 		}
-		$(".rs_job_cnt").html(rs_job_cnt-1);
+		for(var i=0; i<rs_job_create_cnt; i++){
+			var result = rs_job_array[i];
+			var clone_job = $("#rs_job").clone().attr('id', 'rs_job'+(i+1));
+			clone_job.insertBefore("#rs_job");
+			$("#rs_job"+(i+1)).val(result);
+			$("#rs_job"+(i+1)).show();
+			
+			$("#rs_job"+(i+1)).on("click",function() {
+				var rs_job_number = $(this).attr('id').substring(6);
+				$(this).remove();
+				rs_job_cnt = $("#rs_job_result input[type=button]").length;
+				$(".rs_job_cnt").html(rs_job_cnt-1);
+				for(var k=rs_job_cnt; k>rs_job_number; k--){
+					$("#rs_job"+k).attr('id','rs_job'+(k-1));
+				}
+			});
+		}
+		rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+		$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+		 
 		
 		/* $("#RSIM_seq").val(${resumeDTO.rsim_Seq});
 		$("#RSS_seq1").val(${resumeDTO.rss_Seq1});
@@ -619,9 +668,7 @@ var rs_workspace_cnt = 1;
 						<span id="rs_workspace_select2"></span>
 					</div>
 					<div class="section" id="rs_workspace_result">
-						<input type="button" id="rs_workspace1">
-						<input type="button" id="rs_workspace2">
-						<input type="button" id="rs_workspace3">
+						<input type="button" id="rs_workspace">
 					</div>
 				</td>
 			</tr>
@@ -635,9 +682,7 @@ var rs_workspace_cnt = 1;
 						<div id="rs_job_select3"></div>
 					</div>
 					<div class="section" id="rs_job_result">
-						<input type="button" id="rs_job1">
-						<input type="button" id="rs_job2">
-						<input type="button" id="rs_job3">
+						<input type="button" id="rs_job">
 					</div>                          
 				</td>
 			</tr>

@@ -8,6 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {		
+		var num = ${param.num};
 		/* 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -20,27 +21,51 @@
 					alert("인턴이력 없음");
 				} else {
 					alert("인턴이력");
-										
-						$.each(data.memberlist, function(index, memberlist) { // 이치를 써서 모든 데이터들을 배열에 넣음					
-
-						var items = [];
-
-						items.push("<td>" + memberlist.id + "</td>"); // 여기에 id pw addr tel의 값을 배열에 넣은뒤
-
-						items.push("<td>" + memberlist.pw + "</td>");
-
-						items.push("<td>" + memberlist.addr + "</td>");
-
-						items.push("<td>" + memberlist.tel + "</td>");
-
-						$("<tr/>", {
-
-							html : items // 티알에 붙임,
-
-						}).appendTo("table"); // 그리고 그 tr을 테이블에 붙임
-
-					});					
-				}
+					$.ajax({
+						type: 'POST',
+						url: 'Load.do',
+						dataType: "json",
+						success: function(data) {
+							var trTitle = $("<tr>").addClass("LoadListTr");
+							var tdTitle = $("<td>").addClass("LoadListTd").html("제목");
+							
+							trTitle.append(tdTitle);
+							$("#LoadList").append(trTitle);
+							
+							$.each(data.items, function(index, item) {
+								var dto = item;
+								var tr = $("<tr>").addClass("LoadListTr");
+								var td = $("<td>").addClass("LoadListTd");
+								var a = $("<a>").attr({
+									"id": "rsit_UserTitle1",
+									"href": "#"
+								}).html(item.rsit_UserTitle).bind('click', {param: dto}, add_event);								
+								td.append(a);
+								tr.append(td);
+								$("#LoadList").append(tr);	
+							});
+							function add_event(event) { 			                
+				                $("#load").click(function() {
+				                	$("#rsitSeq"+num, opener.document).val(event.data.param.rsit_Seq);
+				                	$("#rsitType"+num, opener.document).val(event.data.param.rsit_Type);
+				                	$("#rsitCompany"+num, opener.document).val(event.data.param.rsit_Company);
+				                	/*
+				                	$("#rsitStartdate"+num, opener.document).val("rsitStartdate");
+				                	$("#rsitEnddate"+num, opener.document).val("rsitEnddate");
+				                	*/
+				                	$("#rsitStartdate"+num, opener.document).val(event.data.param.rsit_Startdate);
+				                	$("#rsitEnddate"+num, opener.document).val(event.data.param.rsit_Enddate);
+				                	$("#rsitContent"+num, opener.document).val(event.data.param.rsit_Content);
+				                	$("#rsitUserTitle"+num, opener.document).val(event.data.param.rsit_UserTitle);
+				                	self.close();
+				                });				                
+							}
+						},
+						error : function(e) {
+			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+			         	}
+					});
+				}						
 			},
 			error : function(e) {
                 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
@@ -82,26 +107,7 @@
 		<p class="title">인턴이력 불러오기</p>
 		내 인턴이력 보관함 총&nbsp;<span id="number">&nbsp;</span>건
 		<div>
-			<table border="1" name="LoadList">
-				<!-- 기본 -->
-				<tr>
-					<td>제목</td>
-				</tr>
-				<tr>
-					<td>리스트1</td>
-				</tr>
-				<tr>
-					<td>리스트2</td>
-				</tr>
-				<tr>
-					<td>리스트3</td>
-				</tr>
-				<tr>
-					<td>리스트4</td>
-				</tr>
-				<tr>
-					<td>리스트5</td>
-				</tr>
+			<table border="1" name="LoadList" id="LoadList">				
 			</table>			
 		</div>
 		<input type="button" value="불러오기" id="load">

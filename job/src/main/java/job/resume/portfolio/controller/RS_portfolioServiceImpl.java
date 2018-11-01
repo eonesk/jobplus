@@ -19,19 +19,19 @@ public class RS_portfolioServiceImpl implements RS_portfolioService {
 	}
 
 	@Override
-	public List<RS_portfolioDTO> selectPortfolioList(String memId) {		
-		return portfolioDAO.selectPortfolioList(memId);
-	}
-
-	@Override
 	public int getportfolioOfId(String memId) {
 		return portfolioDAO.getportfolioOfId(memId);
 	}
-//
-//	@Override
-//	public RS_portfolioDTO viewportfolioOfId(String memId) {
-//		return null;
-//	}
+
+	@Override
+	public RS_portfolioDTO viewportfolioOfId(String memId) {
+		return portfolioDAO.viewportfolioOfId(memId);
+	}
+
+	@Override
+	public List<RS_portfolioDTO> portfolioListOfId(int startNum, int endNum, String memId) {
+		return portfolioDAO.portfolioListOfId(startNum, endNum, memId);
+	}
 
 
 }

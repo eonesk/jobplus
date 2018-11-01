@@ -36,34 +36,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="updateResume" parameterType="resumeDTO">
 		update resume set
-		(rs_name, rs_birth, rs_Gender,rs_Email,rs_Homenum,rs_Title,rs_Phone,rs_Address,rs_Type,
-		rs_Pay,rs_Workspace1,rs_Workspace2,rs_Workspace3,
-		rs_Job1,rs_Job2,rs_Job3,
-		rsim_Seq,
-		rss_Seq1, rss_Seq2, rss_Seq3,
-		rsw_Seq1, rsw_Seq2, rsw_Seq3,
-		rsit_Seq1, rsit_Seq2, rsit_Seq3,
-		rse_Seq1, rse_Seq2, rse_Seq3,
-		rsls_Seq1, rsls_Seq2, rsls_Seq3,
-		rst_Seq1, rst_Seq2, rst_Seq3,
-		rsf_Seq1, rsf_Seq2, rsf_Seq3,
-		rslg_Seq1, rslg_Seq2, rslg_Seq3,
-		rspf_Seq, rsv_Seq, rspr_Seq, rs_Logdate) =
-		(#{rs_Name},#{rs_Birth},#{rs_Gender},#{rs_Email},#{rs_Homenum},#{rs_Title},#{rs_Phone},#{rs_Address},#{rs_Type},
-		#{rs_Pay}, #{rs_Workspace1}, #{rs_Workspace2, jdbcType=VARCHAR}, #{rs_Workspace3, jdbcType=VARCHAR},
-		#{rs_Job1}, #{rs_Job2, jdbcType=VARCHAR}, #{rs_Job3, jdbcType=VARCHAR},
-		#{rsim_Seq, jdbcType=INTEGER}, 
-		#{rss_Seq1, jdbcType=INTEGER},#{rss_Seq2, jdbcType=INTEGER},#{rss_Seq3, jdbcType=INTEGER},
-		#{rsw_Seq1,	jdbcType=INTEGER},#{rsw_Seq2, jdbcType=INTEGER},#{rsw_Seq3,	jdbcType=INTEGER},
-		#{rsit_Seq1, jdbcType=INTEGER}, #{rsit_Seq2, jdbcType=INTEGER}, #{rsit_Seq3, jdbcType=INTEGER},
-		#{rse_Seq1,	jdbcType=INTEGER},#{rse_Seq2, jdbcType=INTEGER},#{rse_Seq3,	jdbcType=INTEGER},
-		#{rsls_Seq1, jdbcType=INTEGER},#{rsls_Seq2,	jdbcType=INTEGER},#{rsls_Seq3, jdbcType=INTEGER},
-		#{rst_Seq1,	jdbcType=INTEGER},#{rst_Seq2, jdbcType=INTEGER},#{rst_Seq3,	jdbcType=INTEGER},
-		#{rsf_Seq1, jdbcType=INTEGER},#{rsf_Seq2, jdbcType=INTEGER},#{rsf_Seq3, jdbcType=INTEGER},
-		#{rslg_Seq1, jdbcType=INTEGER},#{rslg_Seq2, jdbcType=INTEGER},#{rslg_Seq3, jdbcType=INTEGER},
-		#{rspf_Seq, jdbcType=INTEGER}, #{rsv_Seq, jdbcType=INTEGER}, #{rspr_Seq, jdbcType=INTEGER}, sysdate)
-		where
-		RS_SEQ=#{rs_Seq} and M_ID=#{m_Id}
+		rs_name=#{rs_Name}, rs_birth=#{rs_Birth}, rs_Gender=#{rs_Gender}, rs_Email=#{rs_Email},
+		rs_Homenum=#{rs_Homenum}, rs_Title=#{rs_Title}, rs_Phone=#{rs_Phone}, rs_Address=#{rs_Address}, rs_Type=#{rs_Type},
+		rs_Pay=#{rs_Pay}, rs_Workspace1=#{rs_Workspace1}, rs_Workspace2=#{rs_Workspace2, jdbcType=VARCHAR}, rs_Workspace3=#{rs_Workspace3, jdbcType=VARCHAR},
+		rs_Job1=#{rs_Job1}, rs_Job2=#{rs_Job2, jdbcType=VARCHAR}, rs_Job3=#{rs_Job3, jdbcType=VARCHAR},
+		rsim_Seq=#{rsim_Seq, jdbcType=INTEGER}, 
+		rss_Seq1=#{rss_Seq1, jdbcType=INTEGER}, rss_Seq2=#{rss_Seq2, jdbcType=INTEGER}, rss_Seq3=#{rss_Seq3, jdbcType=INTEGER},
+		rsw_Seq1=#{rsw_Seq1, jdbcType=INTEGER}, rsw_Seq2=#{rsw_Seq2, jdbcType=INTEGER}, rsw_Seq3=#{rsw_Seq3, jdbcType=INTEGER},
+		rsit_Seq1=#{rsit_Seq1, jdbcType=INTEGER}, rsit_Seq2=#{rsit_Seq2, jdbcType=INTEGER}, rsit_Seq3=#{rsit_Seq3, jdbcType=INTEGER},
+		rse_Seq1=#{rse_Seq1, jdbcType=INTEGER}, rse_Seq2=#{rse_Seq2, jdbcType=INTEGER}, rse_Seq3=#{rse_Seq3, jdbcType=INTEGER},
+		rsls_Seq1=#{rsls_Seq1, jdbcType=INTEGER}, rsls_Seq2=#{rsls_Seq2, jdbcType=INTEGER}, rsls_Seq3=#{rsls_Seq3, jdbcType=INTEGER},
+		rst_Seq1=#{rst_Seq1, jdbcType=INTEGER}, rst_Seq2=#{rst_Seq2, jdbcType=INTEGER}, rst_Seq3=#{rst_Seq3, jdbcType=INTEGER},
+		rsf_Seq1=#{rsf_Seq1, jdbcType=INTEGER}, rsf_Seq2=#{rsf_Seq2, jdbcType=INTEGER}, rsf_Seq3=#{rsf_Seq3, jdbcType=INTEGER},
+		rslg_Seq1=#{rslg_Seq1, jdbcType=INTEGER}, rslg_Seq2=#{rslg_Seq2, jdbcType=INTEGER}, rslg_Seq3=#{rslg_Seq3, jdbcType=INTEGER},
+		rspf_Seq=#{rspf_Seq, jdbcType=INTEGER}, rsv_Seq=#{rsv_Seq, jdbcType=INTEGER}, rspr_Seq=#{rspr_Seq, jdbcType=INTEGER}, rs_Logdate=sysdate 
+		where RS_SEQ=#{rs_Seq} and M_ID=#{m_Id}
 	</update>
 
 	<delete id="deleteResume" parameterType="java.util.Map">

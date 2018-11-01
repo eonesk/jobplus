@@ -36,9 +36,9 @@ public class RS_imageController {
 			HttpSession session, MultipartFile img, RS_imageDTO imageDTO) {		
 		String filePath =
 				//학원 컴퓨터 경로
-				"c:/users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
+//				"c:/users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
 				//집 컴퓨터 경로
-//				"c:/Java/spring/workspace/job/src/main/webapp/job/resume/image/img/storage";
+				"C:/Users/jo2ri/git/jobplus14/job/src/main/webapp/job/resume/image/img/storage";
 		String fileName = img.getOriginalFilename();
  		File file = new File(filePath, fileName);
 		System.out.println("file=" + file);
@@ -75,32 +75,32 @@ public class RS_imageController {
 //		int getImageOfId = imageService.getImageOfId(memId); 	
 //	}
 //	
-	
-	//쓴 글 확인하기
-	@RequestMapping(value="")
-	public ModelAndView viewImageOfId(HttpServletRequest request) {
-		
-		// 임의로 아이디 지정 (session값)
-		String memId = "num1";
-		int getImageOfId = imageService.getImageOfId(memId);
-		//데이터
-		String m_Id = request.getParameter(memId);
-		int pg = Integer.parseInt(request.getParameter("pg"));
-		//DB
-		RS_imageDTO imageDTO = new RS_imageDTO();
-		imageDTO.setM_Id(memId);
-		imageDTO = imageService.viewImageOfId(m_Id);
-		//네비게이션
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("imageDTO", imageDTO);
-		modelAndView.addObject("m_Id", m_Id);
-		modelAndView.addObject("pg", pg);
-		modelAndView.setViewName("");
-		return modelAndView;
-		
-		
-	}
-	
+//	
+//	//쓴 글 확인하기
+//	@RequestMapping(value="")
+//	public ModelAndView viewImageOfId(HttpServletRequest request) {
+//		
+//		// 임의로 아이디 지정 (session값)
+//		String memId = "num1";
+//		int getImageOfId = imageService.getImageOfId(memId);
+//		//데이터
+//		String m_Id = request.getParameter(memId);
+//		int pg = Integer.parseInt(request.getParameter("pg"));
+//		//DB
+//		RS_imageDTO imageDTO = new RS_imageDTO();
+//		imageDTO.setM_Id(memId);
+//		imageDTO = imageService.viewImageOfId(m_Id);
+//		//네비게이션
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("imageDTO", imageDTO);
+//		modelAndView.addObject("m_Id", m_Id);
+//		modelAndView.addObject("pg", pg);
+//		modelAndView.setViewName("");
+//		return modelAndView;
+//		
+//		
+//	}
+//	
 	//쓴 목록 보기
 	@RequestMapping(value="/job/resume/image/imageList.do")
 	public ModelAndView ImageListOfId(HttpServletRequest request) {

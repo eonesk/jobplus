@@ -8,7 +8,7 @@
 <script type="text/javascript" src="script/foreignScript.js"></script>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-
+var count = 0;
 	$(function() {
 		$("#save").click(function() {
 			if(!$("#rsf_Name").val()) {
@@ -31,46 +31,127 @@
 			window.open("foreignList.jsp", "", "width=570px height=600px");
 		});
 	});
-// 		$("#loadForeignList").click(function() {
-// 			window.open("./foreignList.jsp","","width=400px height=500px");
-// 		});
-// 	});
-//////////////////
-// 	function checkForeignInsert() {
-// 		if(document.foreignWriteForm.rsf_Usertitle.value=="") {
-// 			alert("제목을 입력해주세요.");  
-// 			document.foreignWriteForm.rsf_Usertitle.focus();
-// 		} else if(document.foreignWriteForm.rsf_Name.value == "") {
-// 			alert("국가명을 입력해주세요.")    
-// 			document.foreignWriteForm.rsf_Name.focus();
-// 		} else if(document.foreignWriteForm.rsf_Startdate.value == "") {
-// 			alert("시작일을 입력해주세요.")    
-// 			document.foreignWriteForm.rsf_Startdate.focus();
-// 		} else if(document.foreignWriteForm.rsf_Enddate.value == "") {
-// 			alert("종료일을 입력해주세요.")    
-// 			document.foreignWriteForm.rsf_Enddate.focus();
-// 		} else {  
-// 			document.foreignWriteForm.submit();	
-// 		}
-// 	}
 	
-	
-	
+	$(function() {
+		$("#plus_tap").click(function() {
+			count++;
+			alert("탭추가"+count);
+			if(count >=3) {
+				alert("항목은 최대 3개까지만 추가가능합니다.");
+				return false;
+			}
+			var clone = $("#foreign_section").clone(true);
+			clone.find('*[id]').each(function() {
+				$(this).attr("id", $(this).attr("id")+count);
+			});
+			clone.insertAfter("#foreign_section");
+		});
+		
+		$(function() {
+			$(".delete_tap").on("click", function() {
+				alert("삭제되었습니다" + count);
+				$(".delete_tap").parents(".foreign_section").remove();
+				count--;
+			});
+		});
+	});
 </script>
+<style type="text/css">
+.subtitle {
+	font: 20px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
+	font-weight: bold;
+	color: #2A120A;
+	letter-spacing: -1px;
+}
+.foreign_1 {
+		width: 130px;
+		height: 40px;
+		margin: 0px 10px 10px 0px;
+}
+.foreign_2 {
+		width: 180px;
+		height: 40px;
+		margin: 0px 10px 10px 5px;	
+}
+#foreign_area {
+    position: relative;
+    margin-bottom: 40px;
+    min-height: 80px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.1);
+    font-size: 0;
+}
+.button {
+	width:100px;
+    background-color: #5882FA;
+    border: none;
+    color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    margin: 20px 0px 0px 0px;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #2E9AFE;
+}
+#plus_tap {
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+    border: 1px solid #5882FA;
+    color: #5882FA;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    display: inline-block;
+    cursor: pointer;
+}
+#foreign_section {
+	border: 1px solid #e6e6e6;
+	padding: 15px;
+}
+#delete_tap {
+	background-color: #e6e6e6;
+    border: none;
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    left: 800; 
+}
+</style>
 </head>
 <body>
 	<!-- jQuery -->
-<div>
-	<h3>해외경험</h3>
-	<label>국가명: <input type="text" id="rsf_Name" name="rsf_Name"></label>
-	<label>시작년월: <input type="date" id="rsf_Startdate" name="rsf_Startdate"></label>
-	<label>종료년월: <input type="date" id="rsf_Enddate" name="rsf_Enddate"></label>
-	<div>내용: <textarea rows="5" cols="80" id="rsf_Content" name="rsf_Content"></textarea></div> 
-</div>
-<div>
-	<input type="button" value="작성" id="save">
-	<input type="button" value="목록보기" id="load"> 
-</div>
+<div id="foreign_area">
+	<p class="subtitle">해외경험</p>
+	<div id="foreign_section" class="foreign_section">
+		<div>
+			<input type="button" value="불러오기" class="button" id="load"> 
+		<button type="button" class="delete_tap" id="delete_tap"><span>X</span></button>
+		</div>
+		<div>
+			<input type="text" id="rsf_Name" name="rsf_Name" class="foreign_1" placeholder="국가명">
+			<input type="date" id="rsf_Startdate" name="rsf_Startdate" class="foreign_2">
+			<input type="date" id="rsf_Enddate" name="rsf_Enddate" class="foreign_2">
+		</div>
+		<div>
+			<textarea rows="6" cols="73" id="rsf_Content" name="rsf_Content" class="foreign_3" style="resize: none;"></textarea> 
+			<input type="button" value="저장하기" class="button" id="save">	 
+		</div>
 
+	</div>
+	<div align="center">
+		
+			
+		
+		
+	</div>	
+	<input type="button" value="추가" id="plus_tap" class="plus_tap">	
+</div>
 </body>
 </html>

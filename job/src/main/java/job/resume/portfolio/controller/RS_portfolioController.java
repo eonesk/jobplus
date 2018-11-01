@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+
+import job.resume.image.bean.RS_imageDTO;
+import job.resume.image.controller.RS_imageController;
 import job.resume.portfolio.bean.RS_portfolioDTO;
 import job.resume.pr.bean.RS_prDTO;
 
@@ -35,14 +39,14 @@ public class RS_portfolioController {
 	public ModelAndView portfolioWriteForm(HttpServletRequest request,Model model) {
 		
 //		String memId = request.getParameter(memId);
-		String memId = "num1";
+//		String memId = "num1";
 		
-		List <RS_portfolioDTO> list =portfolioService.selectPortfolioList(memId); 
-		System.out.println( "list" + list);
-		model.addAttribute("list", list);
+//		List <RS_portfolioDTO> list =portfolioService.selectPortfolioList(memId); 
+//		System.out.println( "list" + list);
+//		model.addAttribute("list", list);
 				
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("portfolioList.jsp");
+		modelAndView.setViewName("portfolioWriteForm.jsp");
 		return modelAndView;
 	}
 	
@@ -71,7 +75,7 @@ public class RS_portfolioController {
 		
 		String filePath = 
 				// 학원 컴퓨터 경로
-				"C:/Users/user/git/jobplus/job/src/main/webapp/job/resume/portfolio/img/storage";
+				"C:/Users/user/git/jobplus655/job/src/main/webapp/job/resume/portfolio/img/storage";
 				// 집 컴퓨터 경로
 //				"c:/Java/spring/workspace/job/src/main/webapp/job/resume/portfolio/img/storage";
 		String fileName = pfFile.getOriginalFilename();
@@ -89,30 +93,39 @@ public class RS_portfolioController {
 		/** Session으로 넘어오는 memID값 임시 지정 */
 		String memId = "num1";
 		
-////////////////
-	String rs_pfUsertitle = request.getParameter("rs_pfUsertitle");
-	System.out.println("rs_pfUsertitle>>>" + rs_pfUsertitle);
-	
-	String rs_pfType = request.getParameter("rs_pfType");
-	System.out.println("rs_pfType>>>" + rs_pfType);
-	
-	String rs_pfFileorurl = request.getParameter("rs_pfFileorurl");
-	System.out.println("rs_pfFileorurl>>>>" + rs_pfFileorurl);
-	System.out.println("rs_pfFileorurl[DTO] : " + portfolioDTO.getRs_pfFileorurl());
-	
-	String rs_pfUrl = request.getParameter("rs_pfUrl");
-	System.out.println("rs_pfUrl>>>" + rs_pfUrl);
+		String rspf_Usertitle = request.getParameter("rspf_Usertitle");
+		System.out.println("rspf_Usertitle>>>" + rspf_Usertitle);
+		
+		String rspf_Type = request.getParameter("rspf_Type");
+		System.out.println("rspf_Type>>>" + rspf_Type);
+		
+		String rspf_Fileorurl = request.getParameter("rspf_Fileorurl");
+		System.out.println("rspf_Fileorurl>>>>" + rspf_Fileorurl);
+		System.out.println("rspf_Fileorurl[DTO] : " + portfolioDTO.getrspf_Fileorurl());
+		
+		String rspf_Url = request.getParameter("rspf_Url");
+		System.out.println("rspf_Url>>>" + rspf_Url);
 
-	String rs_pfFile = fileName;
-	System.out.println("rs_pfFile>>>>" + rs_pfFile);
+		String rspf_File = fileName;
+		System.out.println("rspf_File>>>>" + rspf_File);
+		
+		if(fileName == "") {
+			fileName="파일없음";
+		}
+		if(request.getParameter("rspf_Url")==null) {
+			rspf_Url="URL없음";
+		}
+		System.out.println("다시~~rspf_Url>>>" + rspf_Url);
+////////////////
+	
 			
 		// 데이터
 		portfolioDTO.setM_Id(memId);
-		portfolioDTO.setRs_pfType(rs_pfType);
-		portfolioDTO.setRs_pfFileorurl(rs_pfFileorurl);
-		portfolioDTO.setRs_pfUrl(rs_pfUrl);
-		portfolioDTO.setRs_pfFile(fileName);
-		portfolioDTO.setRs_pfUsertitle(rs_pfUsertitle);
+		portfolioDTO.setrspf_Type(rspf_Type);
+		portfolioDTO.setrspf_Fileorurl(rspf_Fileorurl);
+		portfolioDTO.setrspf_Url(rspf_Url);
+		portfolioDTO.setrspf_File(fileName);
+		portfolioDTO.setrspf_Usertitle(rspf_Usertitle);
 		
 		// DB
 		int su = portfolioService.portfolioWrite(portfolioDTO);
@@ -121,7 +134,7 @@ public class RS_portfolioController {
 
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("su", su);		       
-		modelAndView.setViewName("");
+		modelAndView.setViewName("portfolioWrite.jsp");
 		return modelAndView;
 	}
 	
@@ -141,43 +154,110 @@ public class RS_portfolioController {
 		out.print(numberOfportfolio);
 	}
 	
+//	@RequestMapping(value="")
+//	public ModelAndView viewportfolioOfId(HttpServletRequest request) {
+//		// 임의로 아이디 지정 (session값)
+//		String memId = "num1";
+//		int getFileOfId = portfolioService.getportfolioOfId(memId);
+//		// 데이터
+//		String m_Id = request.getParameter(memId);
+//		int pg = Integer.parseInt(request.getParameter("pg"));
+//		// DB
+//		RS_portfolioDTO portfolioDTO = new RS_portfolioDTO();
+//		portfolioDTO.setM_Id(memId);
+//		portfolioDTO = portfolioService.viewportfolioOfId(memId);
+//		//
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("portfolioDTO",portfolioDTO);
+//		modelAndView.addObject("m_Id", m_Id);
+//		modelAndView.addObject("pg", pg);
+//		modelAndView.setViewName("");
+//		return modelAndView;
+//	}
 	@RequestMapping(value="/job/resume/portfolio/portfolioLoad.do")
-	public ModelAndView selectPortfolioList(HttpServletRequest request,HttpServletResponse response) throws IOException {
-		
-		ModelAndView modelAndView = new ModelAndView();
-		System.out.println("타주세요 제발");
-		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
-		
-		List<RS_portfolioDTO> portfolioList = portfolioService.selectPortfolioList(memId);
-		System.out.println("떠라좀"+portfolioList);
-		JSONObject jsonObject = new JSONObject();
-		JSONArray items = new JSONArray();
-		
-		for(int i = 0; i < portfolioList.size(); i++) {
-			RS_portfolioDTO portfolioDTO = portfolioList.get(i);
-			
-			System.out.println("rs_pfType::" +portfolioDTO.getRs_pfType());
-			
-			JSONObject temp = new JSONObject();
-			temp.put("rs_pfType", 		portfolioDTO.getRs_pfType());
-			temp.put("rs_pfFileorurl", 		portfolioDTO.getRs_pfFileorurl());
-			temp.put("rs_pfUrl",	portfolioDTO.getRs_pfUrl());
-			temp.put("rs_pfFile", 			portfolioDTO.getRs_pfFile());
-			temp.put("m_Id",	portfolioDTO.getM_Id());
-			temp.put("rs_pfUsertitle",	portfolioDTO.getRs_pfUsertitle());
-			items.put(i, temp);
-			
+	public ModelAndView portfolioListOfId(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
-		
-		jsonObject.put("items", items);
-		
-		modelAndView.addObject("jsonObject", jsonObject);
-		modelAndView.setViewName("/job/resume/portfolio/portfolioJson.jsp");
-		
-		System.out.println("[RS_portfolioController] jsonObject 출력 : " + jsonObject);
-		
-		return modelAndView;
-		
+		String path = RS_portfolioController.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+	    System.out.println(path); //--> 절대 경로가 출력됨
+		//데이터
+		String memId = "num1";
+		String m_Id = request.getParameter(memId);
+		String str = request.getParameter("pg");
+		int pg = 0;
+		if(str != null && str != "") {
+			pg = Integer.parseInt(str);
+		}else {
+			pg = 1;
+		}
+		  // Value of counter to be checked
+
+		//목록 수 : 3개씩
+		int endNum = pg * 10;
+		int startNum = endNum - 9;
+//		int endNum = 10;
+//		int startNum = 1;
+		List<RS_portfolioDTO> list = portfolioService.portfolioListOfId(startNum, endNum, memId);
+		System.out.println("list :: " + list);
+		//페이징 처리
+		int totalA = portfolioService.getportfolioOfId(memId);
+		int totalP = (totalA + 9) / 10;		// 총페이지수 = 9
+		int startPage = (pg-1)/3*3+1;
+		int endPage = startPage + 2;
+		if(endPage > totalP) endPage = totalP;
+		//네비게이션
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("pg", pg);
+//		modelAndView.addObject("m_Id", m_Id);
+		modelAndView.addObject("list", list);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.setViewName("portfolioLoad.jsp");
+		return modelAndView;		
 	}
+	
+//	@RequestMapping(value="/job/resume/portfolio/portfolioLoad.do")
+//	public ModelAndView viewportfolioOfId(HttpServletRequest request,HttpServletResponse response) throws IOException {
+//		
+//		ModelAndView modelAndView = new ModelAndView();
+//		System.out.println("타주세요 제발");
+//		/** Session으로 넘어오는 memID값 임시 지정 */
+//		String memId = "num1";
+//		
+//		List<RS_portfolioDTO> portfolioList = portfolioService.viewportfolioOfId(memId);
+//		System.out.println("떠라좀"+portfolioList);
+//		JSONObject jsonObject = new JSONObject();
+//		JSONArray items = new JSONArray();
+//		
+//		for(int i = 0; i < portfolioList.size(); i++) {
+//			RS_portfolioDTO portfolioDTO = portfolioList.get(i);
+//			
+//			System.out.println("rspf_Type::" +portfolioDTO.getrspf_Type());
+//			System.out.println("rspf_Fileorurl::" +portfolioDTO.getrspf_Fileorurl());
+//			
+//			JSONObject temp = new JSONObject();
+//			temp.put("rspf_Type", 		portfolioDTO.getrspf_File());
+//			temp.put("rspf_Fileorurl", 		portfolioDTO.getrspf_Fileorurl());
+//			temp.put("rspf_Url",	portfolioDTO.getrspf_Url());
+//			temp.put("rspf_File", 			portfolioDTO.getrspf_File());
+//			temp.put("m_Id",	portfolioDTO.getM_Id());
+//			temp.put("rspf_Usertitle",	portfolioDTO.getrspf_Usertitle());
+//			items.put(i, temp);
+//			
+//		}
+//		
+//		jsonObject.put("items", items);
+//		
+//		modelAndView.addObject("jsonObject", jsonObject);
+//		modelAndView.setViewName("/job/resume/portfolio/portfolioJson.jsp");
+//		
+//		System.out.println("[RS_portfolioController] jsonObject 출력 : " + jsonObject);
+//		
+//		return modelAndView;
+//		
+//	}
 }
