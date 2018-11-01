@@ -8,6 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {		
+		var num = ${param.num};
 		/* 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -38,21 +39,24 @@
 								var a = $("<a>").attr({
 									"id": "rsit_UserTitle1",
 									"href": "#"
-								}).html(item.rsit_UserTitle).bind('click', {param: dto}, add_event);
-								
+								}).html(item.rsit_UserTitle).bind('click', {param: dto}, add_event);								
 								td.append(a);
 								tr.append(td);
 								$("#LoadList").append(tr);	
 							});
 							function add_event(event) { 			                
 				                $("#load").click(function() {
-				                	$("#rsitSeq", opener.document).val(event.data.param.rsit_Seq);
-				                	$("#rsitType", opener.document).val(event.data.param.rsit_Type);
-				                	$("#rsitCompany", opener.document).val(event.data.param.rsit_Company);
-				                	$("#rsitStartdate", opener.document).val(event.data.param.rsit_Startdate);
-				                	$("#rsitEnddate", opener.document).val(event.data.param.rsit_Enddate);
-				                	$("#rsitContent", opener.document).val(event.data.param.rsit_Content);
-				                	$("#rsitUserTitle", opener.document).val(event.data.param.rsit_UserTitle);
+				                	$("#rsitSeq"+num, opener.document).val(event.data.param.rsit_Seq);
+				                	$("#rsitType"+num, opener.document).val(event.data.param.rsit_Type);
+				                	$("#rsitCompany"+num, opener.document).val(event.data.param.rsit_Company);
+				                	/*
+				                	$("#rsitStartdate"+num, opener.document).val("rsitStartdate");
+				                	$("#rsitEnddate"+num, opener.document).val("rsitEnddate");
+				                	*/
+				                	$("#rsitStartdate"+num, opener.document).val(event.data.param.rsit_Startdate);
+				                	$("#rsitEnddate"+num, opener.document).val(event.data.param.rsit_Enddate);
+				                	$("#rsitContent"+num, opener.document).val(event.data.param.rsit_Content);
+				                	$("#rsitUserTitle"+num, opener.document).val(event.data.param.rsit_UserTitle);
 				                	self.close();
 				                });				                
 							}

@@ -13,105 +13,67 @@
 <title>internWriteForm</title>
 
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
-
-<script type="text/javascript">	
-
+<script type="text/javascript">		
 	$(function() {
-
-		$("#internsave").click(function() {
-
-		if($("#rsitType option:selected").val() == "활동구분"){
-
-			alert("활동구분 선택하세요.");
-
-			$("#rsitType").focus();	
-
-		}else if(!$("#rsitCompany").val()){
-
-			alert("회사,기관명을 입력하세요.");
-
-			$("#rsitCompany").focus();	
-
-		}else if(!$("#rsitStartdate").val()){
-
-			alert("시작년월을 입력하세요.");
-
-			$("#rsitStartdate").focus();
-
-		}else if(!$("#rsitEnddate").val()){
-
-			alert("종료년월을 입력하세요.");
-
-			$("#rsitEnddate").focus();	
-
-		}else if(!$("#rsitContent").val()){
-
-			alert("활동내용을 입력하세요.");
-
-			$("#rsitContent").focus();	
-
-		}else {
-
-			window.open("internWrite.jsp", "", "width=500px height=500px");
-
-			}
-
-		});
-
-		$("#internload").click(function() {
-
-			window.open("internLoad.jsp", "", "width=500px height=500px");
-
-		});		
-
-	});		
-
-	$(function() {
-
-		var count = 0;
-
+		var count = 0;		
 		$("#t").hide();
-
-		$("#internplus").click(function() {
-
+		
+		$("#internplus").click(function() {		
 			count++;
-
-			if(count >= 4){
-
+			var num = count;	
+			if (count >= 4) {	
 				alert("항목추가는 최대 3개까지만 추가가능합니다.")
-
+				count--;
 				return false;
 
 			}
-
-			var clone = $("#t").clone().attr('id', 't'+count);
-
-			clone.find('*[id]').each(function () {					
-
-				$(this).attr("id",$(this).attr("id") + count);
-
+			var clone = $("#t").clone().attr('id', 't' + count);
+			clone.find('*[id]').each(function() {
+				$(this).attr("id", $(this).attr("id") + count);
 			});
-
-			clone.insertAfter("#t");
-
-			$("#t"+count).show();
-
+			clone.insertBefore("#t");
+			$("#t" + count).show();
 			
-
-			$("#interndelete"+count).on("click", function() {
-
-				$("#t"+count).remove();
-
+			$("#interndelete" + num).on("click", function() {
+				/*$("#t" + count).remove();*/
+				$(this).parent().remove();
+				alert("삭제버튼 누르고 감산 전"+count);
 				count--;
-
+				alert("삭제버튼 누르고 감산 후"+count);
 			});
-
+			
+			$("#internsave" + num).on("click", function() {
+				if ($("#rsitType" + num).val() == "활동구분") {
+					alert("활동구분 선택하세요.");
+					$("#rsitType" + num).focus();
+					return false;
+				}
+				if (!$("#rsitCompany" + num).val()) {
+					alert("회사,기관명을 입력하세요.");
+					$("#rsitCompany" + num).focus();
+					return false;
+				}
+				if (!$("#rsitStartdate" + num).val()) {
+					alert("시작년월을 입력하세요.");
+					$("#rsitStartdate" + num).focus();
+					return false;
+				}
+				if (!$("#rsitEnddate" + num).val()) {
+					alert("종료년월을 입력하세요.");
+					$("#rsitEnddate" + num).focus();
+					return false;
+				}
+				if (!$("#rsitContent" + num).val()) {
+					alert("활동내용을 입력하세요.");
+					$("#rsitContent" + num).focus();
+					return false;
+				}
+				window.open("internWrite.jsp?num=" + num, "", "width=500px height=500px");
+			});
+			$("#internload" + num).click(function() {
+				window.open("internLoad.jsp?num=" + num, "", "width=500px height=500px");
+			});
 		});
-
-		
-
-		
-
 	});			
 
 </script>
@@ -136,6 +98,7 @@
 
     margin: 0;
 
+    overflow: auto;
 }
 
 .title {
@@ -276,7 +239,8 @@ fieldset {
 
 			</select>
 
-						
+			<input type="hidden" id="rsitSeq" name="rsitSeq" class="rsitSeq">
+			<input type="hidden" id="count" name="count" class="count">			
 
 			<input type="text" id="rsitCompany" name="rsitCompany" class="rsitCompany" placeholder="회사/기관/단체명">
 
@@ -287,6 +251,8 @@ fieldset {
 			<div class="content">			
 
 				<textarea id="rsitContent" name="rsitContent" placeholder="활동내용" cols="85" rows="7"></textarea>
+
+				<textarea id="rsitContent" name="rsitContent" class="rsitContent" placeholder="활동내용" cols="85" rows="7"></textarea>
 
 			</div>		
 
