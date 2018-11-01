@@ -30,55 +30,34 @@ $(document).ready(function() {
     	}
     	var radioValue = $(":input:radio[name=rs_pfFileorurl]:checked").val();
 		//Validation
-    	if(!$("#rs_pfFile").val() && radioValue == "1") {
+    	if(!$("#rs_pfFile").val() && radioValue == "F") {
 			alert("추가하실 파일을 선택하세요");
 			$("#rs_pfFile").focus();
 			return false;
 		}  
-    	else if(!$("#rs_pfUrl").val()  && radioValue == "2") {
+    	else if(!$("#rs_pfUrl").val()  && radioValue == "U") {
 			alert("URL을 입력하세요"); 
 			$("#rs_pfUrl").focus();
 			return false;
-		}  else {
-			$("#form").submit();
-			window.close();
-// 			var rs_pfType = $("#rs_pfType").val();
-// 			var rs_pfFileorurl = $("#rs_pfFileorurl").val();
-// 			var rs_pfUrl = $("#rs_pfUrl").val();
-// 			var rs_pfFile = $("#rs_pfFile").val();
-// 			var rs_pfUsertitle = $("#rs_pfUsertitle").val();
-												//  		var params = $("#form").serialize(); 
-												//  		alert(rs_pfUsertitle+"//"+ rs_pfType +"//"+ rs_pfFileorurl +"//"+ rs_pfUrl+"//"+ rs_pfFile);
-
-//  			var form = $("#form");
-//  			form.method = "POST";
-//  			form.enctype = "multipart/form-data";
-			
-//  			var fileData = new FormData(form);
-			
-			
-																//  		$.ajax({ 
-																// 			type: 'POST', 
-																// 			url: 'portfolioWrite.do',
-																// 			dataType: 'json',  
-																// 			data: fileData,
-																// 			{
-																// 				"rs_pfType" : rs_pfType,
-																// 				"rs_pfFileorurl" : rs_pfFileorurl,
-																// 				"rs_pfUrl" : rs_pfUrl,
-																// 				"rs_pfFile" : rs_pfFile,
-																// 				"rs_pfUsertitle" : rs_pfUsertitle
-																// 			},
-																// 			async: false,
-																// 			cache: false,
-																// 			contentType: false,
-																// 			processData: false
-																// 			success: function(data) {
-																// 				alert("성공");
-																// 			}
-																// 		});
- 		
-		}
+		}  
+ 		var params = $("#form").serialize(); 
+//  		alert(rs_pfUsertitle+"//"+ rs_pfType +"//"+ rs_pfFileorurl +"//"+ rs_pfUrl+"//"+ rs_pfFile);
+ 		$.ajax({ 
+			type: 'POST', 
+			url: 'portfolioWrite.do',
+			enctype: "multipart/form-data",
+			dataType: 'json',  
+			data:params,
+			success: function(data) {
+				if(data > 0) {
+					alert("성공");
+					$("#form").submit();
+					window.close();
+				} else {
+					alert("실패");
+				}
+			}
+		});
 	});
 	
 	$("#cancle").click(function() {
