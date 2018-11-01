@@ -56,7 +56,7 @@ public class ResumeController {
 		String memId = (String) session.getAttribute("memId");
 		
 		//수정해야됨!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		int rs_seq = 1;
+		int rs_seq = 16;
 		
 		ResumeDTO resumeDTO = resumeService.selectResume(memId, rs_seq);
 		
