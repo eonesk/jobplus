@@ -2,6 +2,7 @@ package job.resume.intern.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -63,8 +64,11 @@ public class RS_internController {
 		internDTO.setRsit_UserTitle(rsitUserTitle);		
 		// (2) DB			
 		int su = internService.Write(internDTO);
+		
+		int rsit_Seq = internService.selectLastSeq();
+		
 		// (3) 화면네비게이션	
-		out.print(su);
+		out.print(rsit_Seq);
 	}
 	
 	@RequestMapping(value="/job/resume/intern/LoadCount.do", method=RequestMethod.POST)
@@ -74,6 +78,7 @@ public class RS_internController {
 		PrintWriter out = response.getWriter();
 
 		// Session으로 넘어오는 ID값 임시 지정 
+		
 		String memId = "ID";
 		
 		// DB작업 : memID가 가지고 있는 자소서의 개수를 구함
@@ -82,34 +87,37 @@ public class RS_internController {
 	}
 	@RequestMapping(value="/job/resume/intern/Load.do")
 	public ModelAndView Load(HttpServletRequest request) throws IOException {
-		
 		ModelAndView modelAndView = new ModelAndView();		
 		// Session으로 넘어오는 ID값 임시 지정
-		String memId = "ID";
-		
+		String memId = "ID";		
 		// memId가 가지고 있는 자소서의 rsprUserTitle을 select해서 list에 추가
 		List<RS_internDTO> UserTitleList = internService.selectTitleList(memId);
 		JSONObject jsonObject = new JSONObject();
 		JSONArray items = new JSONArray();
-		
+		String rsit_Startdate = "";
+		String rsit_Enddate = "";
 		for(int i = 0; i < UserTitleList.size(); i++) {
 			RS_internDTO internDTO = UserTitleList.get(i);
 			System.out.println("internDTO 출력 : " + internDTO.toString());
+			DateFormat Format = new SimpleDateFormat("yyyy-MM-dd");
+			rsit_Startdate = Format.format(internDTO.getRsit_Startdate());
+			rsit_Enddate = Format.format(internDTO.getRsit_Enddate());
 			JSONObject temp = new JSONObject();
 			temp.put("rsit_Seq", internDTO.getRsit_Seq());
 			temp.put("rsit_Type", internDTO.getRsit_Type());
 			temp.put("rsit_Company", internDTO.getRsit_Company());
 			// date값 넘기는법 
-			temp.put("rsit_Startdate", internDTO.getRsit_Startdate());
-			temp.put("rsit_Enddate", internDTO.getRsit_Enddate());
+			temp.put("rsit_Startdate", rsit_Startdate);			
+			temp.put("rsit_Enddate", rsit_Enddate);
 			temp.put("rsit_Content", internDTO.getRsit_Content());
 			temp.put("m_Id", internDTO.getM_Id());
 			temp.put("rsit_UserTitle", internDTO.getRsit_UserTitle());
+			
 			items.put(i, temp);
 		}
 		
 		jsonObject.put("items", items);
-		
+		// date
 		modelAndView.addObject("jsonObject", jsonObject);
 		modelAndView.setViewName("/job/resume/intern/internJson.jsp");		
 

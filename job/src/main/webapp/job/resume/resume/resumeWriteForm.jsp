@@ -79,20 +79,12 @@
 	}
 </style>
 <script type="text/javascript">
-/* rs_workspace */
-var rs_workspace_btn_ck = false;
-var rs_workspace_cnt = 1;
 	$(function() {
+		/* rs_workspace */
+		var rs_workspace_btn_ck = false;
+		var rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
 		$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-		$("#rs_workspace1").hide();
-		$("#rs_workspace2").hide();
-		$("#rs_workspace3").hide();
-		$("#rs_workspace_result").children().on("click",function() {
-			$(this).hide();
-			rs_workspace_cnt--;
-			$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-		});
-		
+		$("#rs_workspace").hide();
 		
 		$("#rs_workspace_btn").click(function() {
 			if(rs_workspace_cnt > 3){
@@ -124,9 +116,22 @@ var rs_workspace_cnt = 1;
 						var data1 = $("#rs_workspace_select1 > select > option:selected").val();
 						var data2 = $("#rs_workspace_select2 > select > option:selected").val();
 						var result = data1 + " > "+ data2;
-						$("#rs_workspace"+rs_workspace_cnt).val(result);
-						$("#rs_workspace"+rs_workspace_cnt).show();
-						rs_workspace_cnt++;
+						rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+						var clone_workspace = $("#rs_workspace").clone().attr('id', 'rs_workspace'+rs_workspace_cnt);
+						clone_workspace.insertBefore("#rs_workspace");
+						$("#rs_workspace"+(rs_workspace_cnt)).val(result);
+						$("#rs_workspace"+(rs_workspace_cnt)).show();
+						
+						$("#rs_workspace"+rs_workspace_cnt).on("click",function() {
+							var rs_workspace_number = $(this).attr('id').substring(12);
+							$(this).remove();
+							rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+							$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+							for(var i=rs_workspace_cnt; i>rs_workspace_number; i--){
+								$("#rs_workspace"+i).attr('id','rs_workspace'+(i-1));
+							}
+						});
+						rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
 						$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
 						rs_workspace_btn_ck = false;
 						$("#rs_workspace_select1").empty().hide();
@@ -141,18 +146,9 @@ var rs_workspace_cnt = 1;
 		
 		/* rs_job */
 		var rs_job_btn_ck = false;
-		var rs_job_cnt = 1;
+		var rs_job_cnt = $("#rs_job_result input[type=button]").length;
 		$(".rs_job_cnt").html(rs_job_cnt-1);
-		$("#rs_job1").hide();
-		$("#rs_job2").hide();
-		$("#rs_job3").hide();
-		$("#rs_job4").hide();
-		$("#rs_job5").hide();
-		$("#rs_job_result").children().on("click",function() {
-			$(this).hide();
-			rs_job_cnt--;
-			$(".rs_job_cnt").html(rs_job_cnt-1);
-		});
+		$("#rs_job").hide();
 		
 		$("#rs_job_btn").on("click", function() {
 			if(rs_job_cnt > 3){
@@ -198,9 +194,24 @@ var rs_workspace_cnt = 1;
 						var data2 = $("#rs_job_select2 > select > option:selected").val();
 						var data3 = $("#rs_job_select3 > select > option:selected").val();
 						var result = data1 + " > "+ data2 + " > " + data3;
-						$("#rs_job"+rs_job_cnt).val(result);
-						$("#rs_job"+rs_job_cnt).show();
-						rs_job_cnt++;
+						rs_job_cnt = $("#rs_job_result input[type=button]").length;
+						
+						var clone_job = $("#rs_job").clone().attr('id', 'rs_job'+rs_job_cnt);
+						clone_job.insertBefore("#rs_job");
+						$("#rs_job"+(rs_job_cnt)).val(result);
+						$("#rs_job"+(rs_job_cnt)).show();
+						
+						$("#rs_job"+rs_job_cnt).on("click",function() {
+							var rs_job_number = $(this).attr('id').substring(6);
+							$(this).remove();
+							rs_job_cnt = $("#rs_job_result input[type=button]").length;
+							$(".rs_job_cnt").html(rs_job_cnt-1);
+							for(var i=rs_job_cnt; i>rs_job_number; i--){
+								$("#rs_job"+i).attr('id','rs_job'+(i-1));
+							}
+						});
+						
+						rs_job_cnt = $("#rs_job_result input[type=button]").length;
 						$(".rs_job_cnt").html(rs_job_cnt-1);
 						rs_job_btn_ck = false;
 						$("#rs_job_select1").empty().hide();
@@ -387,34 +398,34 @@ var rs_workspace_cnt = 1;
 			var rs_job1 = $("#rs_job1").val();
 			var rs_job2 = $("#rs_job2").val();
 			var rs_job3 = $("#rs_job3").val();
-			var RSIM_seq = null;
-			var RSS_seq1 = null;
-			var RSS_seq2 = null;
-			var RSS_seq3 = null;
-			var RSW_seq1 = null;
-			var RSW_seq2 = null;
-			var RSW_seq3 = null;
-			var RSIT_seq1 = null;
-			var RSIT_seq2 = null;
-			var RSIT_seq3 = null;
-			var RSE_seq1 = null;
-			var RSE_seq2 = null;
-			var RSE_seq3 = null;
-			var RSLS_seq1 = null;
-			var RSLS_seq2 = null;
-			var RSLS_seq3 = null;
-			var RST_seq1 = null;
-			var RST_seq2 = null;
-			var RST_seq3 = null;
-			var RSF_seq1 = null;
-			var RSF_seq2 = null;
-			var RSF_seq3 = null;
-			var RSLG_seq1 = null;
-			var RSLG_seq2 = null;
-			var RSLG_seq3 = null;
-			var RSPF_seq = null;
-			var RSV_seq = null;
-			var RSPR_seq = null;
+			var rsim_Seq = null;
+			var rss_Seq1 = null;
+			var rss_Seq2 = null;
+			var rss_Seq3 = null;
+			var rsw_Seq1 = null;
+			var rsw_Seq2 = null;
+			var rsw_Seq3 = null;
+			var rsit_Seq1 = $("#rsitSeq1").val();
+			var rsit_Seq2 = $("#rsitSeq2").val();
+			var rsit_Seq3 = $("#rsitSeq3").val();
+			var rse_Seq1 = null;
+			var rse_Seq2 = null;
+			var rse_Seq3 = null;
+			var rsls_Seq1 = null;
+			var rsls_Seq2 = null;
+			var rsls_Seq3 = null;
+			var rst_Seq1 = null;
+			var rst_Seq2 = null;
+			var rst_Seq3 = null;
+			var rsf_Seq1 = null;
+			var rsf_Seq2 = null;
+			var rsf_Seq3 = null;
+			var rslg_Seq1 = null;
+			var rslg_Seq2 = null;
+			var rslg_Seq3 = null;
+			var rspf_Seq = null;
+			var rsv_Seq = null;
+			var rspr_Seq = null;
 			$.ajax({
 				url: 'resumeWrite.do',
 				type: 'post',
@@ -435,34 +446,34 @@ var rs_workspace_cnt = 1;
 					"rs_job1": rs_job1,
 					"rs_job2": rs_job2,
 					"rs_job3": rs_job3,
-					"RSIM_seq": RSIM_seq,
-					"RSS_seq1": RSS_seq1,
-					"RSS_seq2": RSS_seq2,
-					"RSS_seq3": RSS_seq3,
-					"RSW_seq1": RSW_seq1,
-					"RSW_seq2": RSW_seq2,
-					"RSW_seq3": RSW_seq3,
-					"RSIT_seq1": RSIT_seq1,
-					"RSIT_seq2": RSIT_seq2,
-					"RSIT_seq3": RSIT_seq3,
-					"RSE_seq1": RSE_seq1,
-					"RSE_seq2": RSE_seq2,
-					"RSE_seq3": RSE_seq3,
-					"RSLS_seq1": RSLS_seq1,
-					"RSLS_seq2": RSLS_seq2,
-					"RSLS_seq3": RSLS_seq3,
-					"RST_seq1": RST_seq1,
-					"RST_seq2": RST_seq2,
-					"RST_seq3": RST_seq3,
-					"RSF_seq1": RSF_seq1,
-					"RSF_seq2": RSF_seq2,
-					"RSF_seq3": RSF_seq3,
-					"RSLG_seq1": RSLG_seq1,
-					"RSLG_seq2": RSLG_seq2,
-					"RSLG_seq3": RSLG_seq3,
-					"RSPF_seq": RSPF_seq,
-					"RSV_seq": RSV_seq,
-					"RSPR_seq": RSPR_seq
+					"rsim_Seq": rsim_Seq,
+					"rss_Seq1": rss_Seq1,
+					"rss_Seq2": rss_Seq2,
+					"rss_Seq3": rss_Seq3,
+					"rsw_Seq1": rsw_Seq1,
+					"rsw_Seq2": rsw_Seq2,
+					"rsw_Seq3": rsw_Seq3,
+					"rsit_Seq1": rsit_Seq1,
+					"rsit_Seq2": rsit_Seq2,
+					"rsit_Seq3": rsit_Seq3,
+					"rse_Seq1": rse_Seq1,
+					"rse_Seq2": rse_Seq2,
+					"rse_Seq3": rse_Seq3,
+					"rsls_Seq1": rsls_Seq1,
+					"rsls_Seq2": rsls_Seq2,
+					"rsls_Seq3": rsls_Seq3,
+					"rst_Seq1": rst_Seq1,
+					"rst_Seq2": rst_Seq2,
+					"rst_Seq3": rst_Seq3,
+					"rsf_Seq1": rsf_Seq1,
+					"rsf_Seq2": rsf_Seq2,
+					"rsf_Seq3": rsf_Seq3,
+					"rslg_Seq1": rslg_Seq1,
+					"rslg_Seq2": rslg_Seq2,
+					"rslg_Seq3": rslg_Seq3,
+					"rspf_Seq": rspf_Seq,
+					"rsv_Seq": rsv_Seq,
+					"rspr_Seq": rspr_Seq
 				},
 				dataType: 'text',
 				timeout: 30000,
@@ -544,9 +555,7 @@ var rs_workspace_cnt = 1;
 						<span id="rs_workspace_select2"></span>
 					</div>
 					<div class="section" id="rs_workspace_result">
-						<input type="button" id="rs_workspace1">
-						<input type="button" id="rs_workspace2">
-						<input type="button" id="rs_workspace3">
+						<input type="button" id="rs_workspace">
 					</div>
 				</td>
 			</tr>
@@ -560,9 +569,7 @@ var rs_workspace_cnt = 1;
 						<div id="rs_job_select3"></div>
 					</div>
 					<div class="section" id="rs_job_result">
-						<input type="button" id="rs_job1">
-						<input type="button" id="rs_job2">
-						<input type="button" id="rs_job3">
+						<input type="button" id="rs_job">
 					</div>                          
 				</td>
 			</tr>
@@ -575,7 +582,7 @@ var rs_workspace_cnt = 1;
 		<h2>경력</h2>
 	</div>
 	<div id="internDiv">
-		<h2>인턴 대외활동</h2>
+		<jsp:include page="../intern/internWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="eduDiv">
 		<h2>교육이수</h2>

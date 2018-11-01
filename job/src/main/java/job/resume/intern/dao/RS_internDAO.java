@@ -29,4 +29,9 @@ public class RS_internDAO {
 	public int Delete(int rsit_Seq) {	
 		return sqlSession.delete("mybatis.internMapper.Delete", rsit_Seq);
 	}
+	
+	// 최근 저장된 글 seq 가져오기
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.internMapper.selectLastSeq");
+	}
 }

@@ -12,5 +12,7 @@ public interface RS_internService {
 	// 리스트
 	List<RS_internDTO> selectTitleList(String memId);
 	// 삭제
-	int Delete(int rsit_Seq);	
+	int Delete(int rsit_Seq);
+	
+	int selectLastSeq();
 }
