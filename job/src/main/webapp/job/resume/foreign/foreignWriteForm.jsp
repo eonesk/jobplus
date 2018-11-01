@@ -8,6 +8,7 @@
 <script type="text/javascript" src="script/foreignScript.js"></script>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+var count = 0;
 	$(function() {
 		$("#save").click(function() {
 			if(!$("#rsf_Name").val()) {
@@ -30,8 +31,8 @@
 			window.open("foreignList.jsp", "", "width=570px height=600px");
 		});
 	});
+	
 	$(function() {
-		var count = 0;
 		$("#plus_tap").click(function() {
 			count++;
 			alert("탭추가"+count);
@@ -39,46 +40,21 @@
 				alert("항목은 최대 3개까지만 추가가능합니다.");
 				return false;
 			}
-			var clone = $("#foreign_section").clone();
+			var clone = $("#foreign_section").clone(true);
 			clone.find('*[id]').each(function() {
-				$(this).attr("id",$(this).attr("id")+count);
+				$(this).attr("id", $(this).attr("id")+count);
 			});
 			clone.insertAfter("#foreign_section");
 		});
+		
 		$(function() {
-			$("#delete_tap").on("click", function() {
-				$("delete_tap").remove();
-				alert("삭제되었습니다 + count);
-			}
-			if(count ==1) {
-				alert("더 이상 삭제할 수 없습니다.");
-				return false;
-			}
+			$(".delete_tap").on("click", function() {
+				alert("삭제되었습니다" + count);
+				$(".delete_tap").parents(".foreign_section").remove();
+				count--;
+			});
 		});
 	});
-	
-// 		$("#loadForeignList").click(function() {
-// 			window.open("./foreignList.jsp","","width=400px height=500px");
-// 		});
-// 	});
-//////////////////
-// 	function checkForeignInsert() {
-// 		if(document.foreignWriteForm.rsf_Usertitle.value=="") {
-// 			alert("제목을 입력해주세요.");  
-// 			document.foreignWriteForm.rsf_Usertitle.focus();
-// 		} else if(document.foreignWriteForm.rsf_Name.value == "") {
-// 			alert("국가명을 입력해주세요.")    
-// 			document.foreignWriteForm.rsf_Name.focus();
-// 		} else if(document.foreignWriteForm.rsf_Startdate.value == "") {
-// 			alert("시작일을 입력해주세요.")    
-// 			document.foreignWriteForm.rsf_Startdate.focus();
-// 		} else if(document.foreignWriteForm.rsf_Enddate.value == "") {
-// 			alert("종료일을 입력해주세요.")    
-// 			document.foreignWriteForm.rsf_Enddate.focus();
-// 		} else {  
-// 			document.foreignWriteForm.submit();	
-// 		}
-// 	}
 </script>
 <style type="text/css">
 .subtitle {
@@ -137,26 +113,43 @@
 	border: 1px solid #e6e6e6;
 	padding: 15px;
 }
+#delete_tap {
+	background-color: #e6e6e6;
+    border: none;
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    left: 800; 
+}
 </style>
 </head>
 <body>
 	<!-- jQuery -->
 <div id="foreign_area">
 	<p class="subtitle">해외경험</p>
-	<div id="foreign_section">
+	<div id="foreign_section" class="foreign_section">
+		<div>
+			<input type="button" value="불러오기" class="button" id="load"> 
+		<button type="button" class="delete_tap" id="delete_tap"><span>X</span></button>
+		</div>
 		<div>
 			<input type="text" id="rsf_Name" name="rsf_Name" class="foreign_1" placeholder="국가명">
 			<input type="date" id="rsf_Startdate" name="rsf_Startdate" class="foreign_2">
 			<input type="date" id="rsf_Enddate" name="rsf_Enddate" class="foreign_2">
 		</div>
 		<div>
-			<textarea rows="6" cols="73" id="rsf_Content" name="rsf_Content" class="foreign_3"></textarea> 
+			<textarea rows="6" cols="73" id="rsf_Content" name="rsf_Content" class="foreign_3" style="resize: none;"></textarea> 
+			<input type="button" value="저장하기" class="button" id="save">	 
 		</div>
+
 	</div>
 	<div align="center">
-		<input type="button" value="저장하기" class="button" id="save">	
-		<input type="button" value="불러오기" class="button" id="load">	
-		<input type="button" value="삭제" id="delete_tap" class="delete_tap">	
+		
+			
+		
+		
 	</div>	
 	<input type="button" value="추가" id="plus_tap" class="plus_tap">	
 </div>

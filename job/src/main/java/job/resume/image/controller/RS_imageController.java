@@ -75,32 +75,32 @@ public class RS_imageController {
 //		int getImageOfId = imageService.getImageOfId(memId); 	
 //	}
 //	
-	
-	//쓴 글 확인하기
-	@RequestMapping(value="")
-	public ModelAndView viewImageOfId(HttpServletRequest request) {
-		
-		// 임의로 아이디 지정 (session값)
-		String memId = "num1";
-		int getImageOfId = imageService.getImageOfId(memId);
-		//데이터
-		String m_Id = request.getParameter(memId);
-		int pg = Integer.parseInt(request.getParameter("pg"));
-		//DB
-		RS_imageDTO imageDTO = new RS_imageDTO();
-		imageDTO.setM_Id(memId);
-		imageDTO = imageService.viewImageOfId(m_Id);
-		//네비게이션
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("imageDTO", imageDTO);
-		modelAndView.addObject("m_Id", m_Id);
-		modelAndView.addObject("pg", pg);
-		modelAndView.setViewName("");
-		return modelAndView;
-		
-		
-	}
-	
+//	
+//	//쓴 글 확인하기
+//	@RequestMapping(value="")
+//	public ModelAndView viewImageOfId(HttpServletRequest request) {
+//		
+//		// 임의로 아이디 지정 (session값)
+//		String memId = "num1";
+//		int getImageOfId = imageService.getImageOfId(memId);
+//		//데이터
+//		String m_Id = request.getParameter(memId);
+//		int pg = Integer.parseInt(request.getParameter("pg"));
+//		//DB
+//		RS_imageDTO imageDTO = new RS_imageDTO();
+//		imageDTO.setM_Id(memId);
+//		imageDTO = imageService.viewImageOfId(m_Id);
+//		//네비게이션
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.addObject("imageDTO", imageDTO);
+//		modelAndView.addObject("m_Id", m_Id);
+//		modelAndView.addObject("pg", pg);
+//		modelAndView.setViewName("");
+//		return modelAndView;
+//		
+//		
+//	}
+//	
 	//쓴 목록 보기
 	@RequestMapping(value="/job/resume/image/imageList.do")
 	public ModelAndView ImageListOfId(HttpServletRequest request) {

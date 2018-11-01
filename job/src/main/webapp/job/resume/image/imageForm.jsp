@@ -47,16 +47,9 @@
 	}
 	function photoList() { 
 // 		if(${getImageOfId > 0}) {
-			window.open("/job/job/resume/image/imageList.do", 
+			window.open("imageList.do", 
 					"이미지저장목록", "width=470, height=400, left=400, top=100");
-// 		} else {
-// 			alert("저장된 이미지가 없습니다.");
-// 		}
 	}
-// 	$("#img_form_url").attr("src", imgurl);
-
-// 저장된 목록이 없으면 버튼 비활성화
-
 </script>
 </head>
 <body>
