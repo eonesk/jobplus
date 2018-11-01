@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-	
+		alert("licensePlusButtonCnt : " + ${param.licensePlusButtonCnt});
 		/* 자기소개서의 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -48,7 +48,7 @@
 									"id": "rsls_UserTitleR",
 									"type": "checkbox",
 									"value": item.rsls_Seq
-								});
+								}).addClass("rsls_UserTitleR");
 								var a = $("<a>").attr({
 									"id": "rsls_UserTitleA",
 									"href": "#"
@@ -57,11 +57,33 @@
 								td.append(checkbox);
 								td.append(a);
 								tr.append(td);
-								$("#licenseLoadListTable").append(tr);	
-								 
-																			 
+								$("#licenseLoadListTable").append(tr);																			 
 							});							
 
+							/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
+							// {부모창+checkbox선택값 >3}이 되면 checkbox값이 disabled됨.
+							alert("licensePlusButtonCnt[eduLoadSubmit click] : " + ${param.licensePlusButtonCnt});
+							var isOverflow = ${param.licensePlusButtonCnt};
+							alert("var = isOverflow[eduLoadSubmit click] : " + isOverflow);
+							
+							if(isOverflow == 3) {
+								$(".rsls_UserTitleR").attr("disabled", "true");
+							} else if(isOverflow < 3 || isOverflow >= 0) {
+								$(".rsls_UserTitleR").on("change", function() {
+									if($(this).is(":checked")){
+										isOverflow++;
+										alert("isOverflow[rsls_UserTitleR change] : " + isOverflow);
+										if(isOverflow == 3) {
+											$(".rsls_UserTitleR").not($(".rsls_UserTitleR:checked")).attr("disabled", "true");
+										}
+									} else {
+										isOverflow--;
+										$(".rsls_UserTitleR").removeAttr("disabled");
+										alert("isOverflow[rsls_UserTitleR change] : " + isOverflow);
+									}
+								});
+							}
+							
 							$("#licenseLoadSubmit").click(function() {
 								//var eduSeqList = new Array();
 								var accumSeq = "";
@@ -72,14 +94,14 @@
 				                	accumSeq += $(this).val() + "/";
 				                });
 				                
-				                alert(accumSeq);
+				                alert("accumSeq : " + accumSeq);
 				                
 				                if(accumSeq == "") {
 				                	alert("체크해주셍ㅂ");
 				                } else {
 				                	alert("체크됨");
 				                	if(confirm("불러오기를 진행하시겠습니까?")) {
-				                		opener.parent.selected(accumSeq);
+				                		opener.parent.selected(accumSeq, ${param.licensePlusButtonCnt});
 					                	self.close();
 				                	}
 				                	
