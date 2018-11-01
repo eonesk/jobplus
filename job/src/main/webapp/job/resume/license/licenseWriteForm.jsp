@@ -31,6 +31,60 @@
 			}
 		});
 	});
+	
+	function selected(accumSeq) {
+		$(function() {
+			alert("부모창 할롱");
+			alert(accumSeq);
+			$.ajax({
+				type: 'POST',
+				url: 'rslsLoadView.do',
+				dataType: 'json',
+				data: {
+					"accumSeq": accumSeq
+				},
+				success: function(data) {
+					alert("부모창 성공");
+					
+					alert(testDTO[0].rsls_UserTitle);
+					console.log(testDTO[0].rsls_UserTitle);
+					console.log("할로");
+					
+// 					var testDTO =  data.items;
+// 					$("#eduPlus2").hide();
+// 					$("#eduPlus3").hide();
+// 					var cnt = 1;
+// 					//alert(testDTO[0].rse_UserTitle);	
+					
+// 					for(var i = 0; i < testDTO.length; i++) {
+// 						if(i == 0) {
+// 							alert(testDTO[i].rse_UserTitle);
+// 							$("#eduPlus1  #rse_Name").val(testDTO[i].rse_Name);
+// 							$("#eduPlus1  #rse_Company").val(testDTO[i].rse_Company);
+// 							$("#eduPlus1  #rse_Startdate").val(testDTO[i].rse_Startdate);
+// 							$("#eduPlus1  #rse_Enddate").val(testDTO[i].rse_Enddate);
+// 							$("#eduPlus1  #rse_Content").val(testDTO[i].rse_Content);
+// 						} else {
+// 							cnt++;
+// 							var selector = "#eduPlus" + cnt;
+// 							alert(cnt);
+// 							alert(testDTO[i].rse_UserTitle);
+// 							$(selector).show();
+// 							$(selector + " #rse_Name").val(testDTO[i].rse_Name);
+// 							$(selector + " #rse_Company").val(testDTO[i].rse_Company);
+// 							$(selector + " #rse_Startdate").val(testDTO[i].rse_Startdate);
+// 							$(selector + " #rse_Enddate").val(testDTO[i].rse_Enddate);
+// 							$(selector + " #rse_Content").val(testDTO[i].rse_Content);
+// 						}						
+// 					}				
+				},
+				error: function(e) {
+					 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+				}
+			});
+		});
+	}
+	
 </script>
 </head>
 <body>

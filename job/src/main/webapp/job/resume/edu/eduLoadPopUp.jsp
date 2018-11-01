@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-
+		alert("eduPlusButtonCnt : " + ${param.eduPlusButtonCnt});
 		/* 자기소개서의 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -44,11 +44,13 @@
 								var dto = item;
 								var tr = $("<tr>").addClass("eduLoadListLabelTr");
 								var td = $("<td>").addClass("eduLoadListLabelTd");
+								
+								
  								var checkbox = $("<input>").attr({
 									"id": "rse_UserTitleR",
 									"type": "checkbox",
 									"value": item.rse_Seq
-								});
+								}).addClass("rse_UserTitleR");
 								var a = $("<a>").attr({
 									"id": "rse_UserTitleA",
 									"href": "#"
@@ -62,11 +64,35 @@
 																			 
 							});							
 
+							/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
+							// {부모창+checkbox선택값 >3}이 되면 checkbox값이 disabled됨.
+							alert("eduPlusButtonCnt[eduLoadSubmit click] : " + ${param.eduPlusButtonCnt});
+							var isOverflow = ${param.eduPlusButtonCnt};
+							alert("var = isOverflow[eduLoadSubmit click] : " + isOverflow);
+							
+							if(isOverflow == 3) {
+								$(".rse_UserTitleR").attr("disabled", "true");
+							} else if(isOverflow < 3 || isOverflow >= 0) {
+								$(".rse_UserTitleR").on("change", function() {
+									if($(this).is(":checked")){
+										isOverflow++;
+										alert("isOverflow[rse_UserTitleR change] : " + isOverflow);
+										if(isOverflow == 3) {
+											$(".rse_UserTitleR").attr("disabled", "true");
+										}
+									} else {
+										isOverflow--;
+										alert("isOverflow[rse_UserTitleR change] : " + isOverflow);
+									}
+								});
+							}
+							
 							$("#eduLoadSubmit").click(function() {
 								//var eduSeqList = new Array();
+								
 								var accumSeq = "";
 								
-				                $("#rse_UserTitleR:checked").each(function() {
+				                $(".rse_UserTitleR:checked").each(function() {
 				                	alert($(this).val());
 				                	//eduSeqList.push($(this).val());
 				                	accumSeq += $(this).val() + "/";
@@ -79,7 +105,7 @@
 				                } else {
 				                	alert("체크됨");
 				                	if(confirm("불러오기를 진행하시겠습니까?")) {
-				                		opener.parent.test(accumSeq);
+				                		opener.parent.selected(accumSeq, ${param.eduPlusButtonCnt});
 					                	self.close();
 				                	}
 				                	

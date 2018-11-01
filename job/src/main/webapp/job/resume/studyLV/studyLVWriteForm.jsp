@@ -178,7 +178,7 @@
 		
 			<!-- 학력구분데이터 -->
 			<span id="rssTypeFirst" style="margin-top: 8px; float: left; background-color:white; padding-left: 5px; padding-top: 13px; border: 1px solid lightgray; display: inline-block; width: 105px; height: 37px;">
-				<p id="rssTypeTitle" style="display: inline;">학교구분</p><span style="text-align: right;">ㅎ</span>
+				<p id="rssTypeTitle" style="display: inline;">학교구분</p><span style="text-align: right;">&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</span>
 				<input id="rssTypeValue" name="rss_Type" type="hidden">
 			</span>
 			
