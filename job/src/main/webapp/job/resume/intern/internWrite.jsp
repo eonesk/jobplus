@@ -8,11 +8,13 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		var rsitType = $("#rsitType", opener.document).val();
-		var rsitCompany = $("#rsitCompany", opener.document).val();
-		var rsitStartdate = $("#rsitStartdate", opener.document).val();
-		var rsitEnddate = $("#rsitEnddate", opener.document).val();
-		var rsitContent = $("#rsitContent", opener.document).val();
+		var num = ${param.num};
+		alert("num의 수 = " + num);
+		var rsitType = $("#rsitType"+num, opener.document).val();
+		var rsitCompany = $("#rsitCompany"+num, opener.document).val();
+		var rsitStartdate = $("#rsitStartdate"+num, opener.document).val();
+		var rsitEnddate = $("#rsitEnddate"+num, opener.document).val();
+		var rsitContent = $("#rsitContent"+num, opener.document).val();
 		alert(rsitType + " // " + rsitCompany+ " // " + rsitStartdate
 				+ " // " + rsitEnddate+ " // " + rsitContent);
 		
@@ -26,7 +28,6 @@
 			}	*/		
 			
 			var rsitUserTitle = $("#rsitUserTitle").val();
-			
 			$.ajax({
 				type: 'POST',
 				url: 'Write.do',
@@ -42,6 +43,8 @@
 				success: function(data) {
 					if(data > 0) {
 						alert("성공");
+						alert("seq값"+data);
+						$("#rsitSeq"+num, opener.document).val(data);
 						window.close();
 					} else {
 						alert("실패");

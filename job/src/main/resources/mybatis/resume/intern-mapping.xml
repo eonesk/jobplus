@@ -22,4 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete RS_intern where RSIT_seq=#{rsit_Seq}
 	</delete>
 
+	<select id="selectLastSeq" resultType="int">
+		select max(rsit_seq) from rs_intern
+	</select>
 </mapper>

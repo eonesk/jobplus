@@ -3,22 +3,16 @@ package job.resume.trophy.bean;
 import java.util.Date;
 
 public class RS_trophyDTO {
-
     // 수상seq 
     private Integer rst_Seq;
-
     // 수상명 
     private String rst_Name;
-
     // 수여기관 
     private String rst_Company;
-
     // 수상연도 
     private Date rst_Date;
-
     // 수여내용 
     private String rst_Content;
-
     // 회원 아이디 
     private String m_Id;
     // 사용자정의 아이디

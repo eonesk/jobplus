@@ -56,7 +56,7 @@ public class ResumeController {
 		String memId = (String) session.getAttribute("memId");
 		
 		//수정해야됨!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		int rs_seq = 1;
+		int rs_seq = 16;
 		
 		ResumeDTO resumeDTO = resumeService.selectResume(memId, rs_seq);
 		
@@ -72,11 +72,17 @@ public class ResumeController {
 	
 	public ResumeDTO resumeSetting(HttpServletRequest request, boolean ck) {
 		HttpSession session = request.getSession();
-		String[] tableName = { "RSIM", "RSS1", "RSS2", "RSS3", "RSW1", "RSW2", "RSW3", 
-				"RSIT1", "RSIT2", "RSIT3", "RSE1", "RSE2", "RSE3", 
-				"RSLS1", "RSLS2", "RSLS3", "RST1", "RST2", "RST3", 
-				"RSF1", "RSF2", "RSF3", "RSLG1", "RSLG2", "RSLG3", 
-				"RSPF", "RSV", "RSPR" };
+		String[] tableName = { "rsim", "rss", "rss", "rss", "rsw", "rsw", "rsw", 
+				"rsit", "rsit", "rsit", "rse", "rse", "rse", 
+				"rsls", "rsls", "rsls", "rst", "rst", "rst", 
+				"rsf", "rsf", "rsf", "rslg", "rslg", "rslg", 
+				"rspf", "rsv", "rspr" };
+		String[] tableNum = {
+			"", "1", "2", "3", "1", "2", "3",
+			"1", "2", "3", "1", "2", "3",
+			"1", "2", "3", "1", "2", "3",
+			"1", "2", "3", "1", "2", "3",
+			"", "", ""};
 		Integer[] seq = new Integer[tableName.length];
 		try {
 			request.setCharacterEncoding("utf-8");
@@ -86,7 +92,7 @@ public class ResumeController {
 
 		for (int i = 0; i < seq.length; i++) {
 			if (request.getParameter(tableName[i] + "Seq") != null) {
-				seq[i] = Integer.parseInt(request.getParameter(tableName[i] + "_seq"));
+				seq[i] = Integer.parseInt(request.getParameter(tableName[i] + "_seq" + tableNum[i]));
 			} else {
 				seq[i] = null;
 			}

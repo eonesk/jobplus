@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	 			
 	<delete id="Delete" parameterType="int">
-		delete RS_trophy where rst_Seq=#{rst_Seq}
+		delete RS_trophy where RST_seq=#{rst_Seq}
 	</delete>
 
 </mapper>
