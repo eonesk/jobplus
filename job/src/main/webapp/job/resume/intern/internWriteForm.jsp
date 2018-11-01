@@ -156,7 +156,6 @@ fieldset {
 				<textarea id="rsitContent" name="rsitContent" class="rsitContent" placeholder="활동내용" cols="85" rows="7"></textarea>
 			</div>		
 			<div>
-				<!-- <input type="submit" value="저장"> -->
 				<input type="button" value="저장하기" id="internsave" class="internsave">
 				<input type="button" value="불러오기" id="internload" class="internload">
 			</div>				
