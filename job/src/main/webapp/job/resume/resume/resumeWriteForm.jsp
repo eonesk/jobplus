@@ -79,20 +79,12 @@
 	}
 </style>
 <script type="text/javascript">
-/* rs_workspace */
-var rs_workspace_btn_ck = false;
-var rs_workspace_cnt = 1;
 	$(function() {
+		/* rs_workspace */
+		var rs_workspace_btn_ck = false;
+		var rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
 		$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-		$("#rs_workspace1").hide();
-		$("#rs_workspace2").hide();
-		$("#rs_workspace3").hide();
-		$("#rs_workspace_result").children().on("click",function() {
-			$(this).hide();
-			rs_workspace_cnt--;
-			$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-		});
-		
+		$("#rs_workspace").hide();
 		
 		$("#rs_workspace_btn").click(function() {
 			if(rs_workspace_cnt > 3){
@@ -124,9 +116,22 @@ var rs_workspace_cnt = 1;
 						var data1 = $("#rs_workspace_select1 > select > option:selected").val();
 						var data2 = $("#rs_workspace_select2 > select > option:selected").val();
 						var result = data1 + " > "+ data2;
-						$("#rs_workspace"+rs_workspace_cnt).val(result);
-						$("#rs_workspace"+rs_workspace_cnt).show();
-						rs_workspace_cnt++;
+						rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+						var clone_workspace = $("#rs_workspace").clone().attr('id', 'rs_workspace'+rs_workspace_cnt);
+						clone_workspace.insertBefore("#rs_workspace");
+						$("#rs_workspace"+(rs_workspace_cnt)).val(result);
+						$("#rs_workspace"+(rs_workspace_cnt)).show();
+						
+						$("#rs_workspace"+rs_workspace_cnt).on("click",function() {
+							var rs_workspace_number = $(this).attr('id').substring(12);
+							$(this).remove();
+							rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+							$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+							for(var i=rs_workspace_cnt; i>rs_workspace_number; i--){
+								$("#rs_workspace"+i).attr('id','rs_workspace'+(i-1));
+							}
+						});
+						rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
 						$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
 						rs_workspace_btn_ck = false;
 						$("#rs_workspace_select1").empty().hide();
@@ -141,18 +146,9 @@ var rs_workspace_cnt = 1;
 		
 		/* rs_job */
 		var rs_job_btn_ck = false;
-		var rs_job_cnt = 1;
+		var rs_job_cnt = $("#rs_job_result input[type=button]").length;
 		$(".rs_job_cnt").html(rs_job_cnt-1);
-		$("#rs_job1").hide();
-		$("#rs_job2").hide();
-		$("#rs_job3").hide();
-		$("#rs_job4").hide();
-		$("#rs_job5").hide();
-		$("#rs_job_result").children().on("click",function() {
-			$(this).hide();
-			rs_job_cnt--;
-			$(".rs_job_cnt").html(rs_job_cnt-1);
-		});
+		$("#rs_job").hide();
 		
 		$("#rs_job_btn").on("click", function() {
 			if(rs_job_cnt > 3){
@@ -198,9 +194,24 @@ var rs_workspace_cnt = 1;
 						var data2 = $("#rs_job_select2 > select > option:selected").val();
 						var data3 = $("#rs_job_select3 > select > option:selected").val();
 						var result = data1 + " > "+ data2 + " > " + data3;
-						$("#rs_job"+rs_job_cnt).val(result);
-						$("#rs_job"+rs_job_cnt).show();
-						rs_job_cnt++;
+						rs_job_cnt = $("#rs_job_result input[type=button]").length;
+						
+						var clone_job = $("#rs_job").clone().attr('id', 'rs_job'+rs_job_cnt);
+						clone_job.insertBefore("#rs_job");
+						$("#rs_job"+(rs_job_cnt)).val(result);
+						$("#rs_job"+(rs_job_cnt)).show();
+						
+						$("#rs_job"+rs_job_cnt).on("click",function() {
+							var rs_job_number = $(this).attr('id').substring(6);
+							$(this).remove();
+							rs_job_cnt = $("#rs_job_result input[type=button]").length;
+							$(".rs_job_cnt").html(rs_job_cnt-1);
+							for(var i=rs_job_cnt; i>rs_job_number; i--){
+								$("#rs_job"+i).attr('id','rs_job'+(i-1));
+							}
+						});
+						
+						rs_job_cnt = $("#rs_job_result input[type=button]").length;
 						$(".rs_job_cnt").html(rs_job_cnt-1);
 						rs_job_btn_ck = false;
 						$("#rs_job_select1").empty().hide();
@@ -544,9 +555,7 @@ var rs_workspace_cnt = 1;
 						<span id="rs_workspace_select2"></span>
 					</div>
 					<div class="section" id="rs_workspace_result">
-						<input type="button" id="rs_workspace1">
-						<input type="button" id="rs_workspace2">
-						<input type="button" id="rs_workspace3">
+						<input type="button" id="rs_workspace">
 					</div>
 				</td>
 			</tr>
@@ -560,9 +569,7 @@ var rs_workspace_cnt = 1;
 						<div id="rs_job_select3"></div>
 					</div>
 					<div class="section" id="rs_job_result">
-						<input type="button" id="rs_job1">
-						<input type="button" id="rs_job2">
-						<input type="button" id="rs_job3">
+						<input type="button" id="rs_job">
 					</div>                          
 				</td>
 			</tr>
