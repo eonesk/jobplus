@@ -1,5 +1,7 @@
 package job.resume.workLV.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,16 @@ public class RS_workLVServiceImpl implements RS_workLVService {
 	@Override
 	public int rswSave(RS_workLVDTO rs_workLVDTO) {
 		return rs_workLVDAO.rswSave(rs_workLVDTO);
+	}
+
+	@Override
+	public int rswCounting(String memId) {
+		return rs_workLVDAO.rswCounting(memId);
+	}
+
+	@Override
+	public List<RS_workLVDTO> rswGetList(String memId) {
+		return rs_workLVDAO.rswGetList(memId);
 	}
 
 }
