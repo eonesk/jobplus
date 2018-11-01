@@ -64,8 +64,11 @@ public class RS_internController {
 		internDTO.setRsit_UserTitle(rsitUserTitle);		
 		// (2) DB			
 		int su = internService.Write(internDTO);
+		
+		int rsit_Seq = internService.selectLastSeq();
+		
 		// (3) 화면네비게이션	
-		out.print(su);
+		out.print(rsit_Seq);
 	}
 	
 	@RequestMapping(value="/job/resume/intern/LoadCount.do", method=RequestMethod.POST)
@@ -75,6 +78,7 @@ public class RS_internController {
 		PrintWriter out = response.getWriter();
 
 		// Session으로 넘어오는 ID값 임시 지정 
+		
 		String memId = "ID";
 		
 		// DB작업 : memID가 가지고 있는 자소서의 개수를 구함
@@ -114,8 +118,6 @@ public class RS_internController {
 		
 		jsonObject.put("items", items);
 		// date
-		System.out.println(rsit_Startdate);
-		System.out.println(rsit_Enddate);
 		modelAndView.addObject("jsonObject", jsonObject);
 		modelAndView.setViewName("/job/resume/intern/internJson.jsp");		
 

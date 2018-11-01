@@ -28,7 +28,6 @@
 			}	*/		
 			
 			var rsitUserTitle = $("#rsitUserTitle").val();
-			
 			$.ajax({
 				type: 'POST',
 				url: 'Write.do',
@@ -44,6 +43,8 @@
 				success: function(data) {
 					if(data > 0) {
 						alert("성공");
+						alert("seq값"+data);
+						$("#rsitSeq"+num, opener.document).val(data);
 						window.close();
 					} else {
 						alert("실패");
