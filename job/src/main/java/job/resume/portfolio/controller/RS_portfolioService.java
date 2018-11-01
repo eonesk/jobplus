@@ -12,9 +12,9 @@ public interface RS_portfolioService {
 	
 	//개수확인
 	int getportfolioOfId(String memId);
-//	
-//	//글 확인
-	List<RS_portfolioDTO> selectPortfolioList(String memId);
+
+	//글 확인
+	List<RS_portfolioDTO> viewportfolioOfId(String memId);
 //	
 //	//목록보기
 //	//삭제
