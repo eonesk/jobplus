@@ -36,9 +36,9 @@ public class RS_imageController {
 			HttpSession session, MultipartFile img, RS_imageDTO imageDTO) {		
 		String filePath =
 				//학원 컴퓨터 경로
-				"c:/users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
+//				"c:/users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
 				//집 컴퓨터 경로
-//				"c:/Java/spring/workspace/job/src/main/webapp/job/resume/image/img/storage";
+				"C:/Users/jo2ri/git/jobplus14/job/src/main/webapp/job/resume/image/img/storage";
 		String fileName = img.getOriginalFilename();
  		File file = new File(filePath, fileName);
 		System.out.println("file=" + file);

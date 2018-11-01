@@ -20,8 +20,8 @@ public class RS_portfolioDAO {
 		return sqlSession.insert("mybatis.portfolioMapper.portfolioWrite", portfolioDTO);
 	}
 	
-	public List<RS_portfolioDTO> selectPortfolioList(String memId) {
-		return sqlSession.selectList("mybatis.portfolioMapper.selectPortfolioList", memId);
+	public List<RS_portfolioDTO> viewportfolioOfId(String memId) {
+		return sqlSession.selectList("mybatis.portfolioMapper.viewportfolioOfId", memId);
 	}
 	
 	public int getportfolioOfId(String memId) {
