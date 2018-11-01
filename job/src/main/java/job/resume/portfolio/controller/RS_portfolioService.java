@@ -14,8 +14,10 @@ public interface RS_portfolioService {
 	int getportfolioOfId(String memId);
 
 	//글 확인
-	List<RS_portfolioDTO> viewportfolioOfId(String memId);
-//	
-//	//목록보기
+	RS_portfolioDTO viewportfolioOfId(String memId);
+	
+	//목록보기
+	List<RS_portfolioDTO> portfolioListOfId(int startNum, int endNum, String memId);
+	
 //	//삭제
 }

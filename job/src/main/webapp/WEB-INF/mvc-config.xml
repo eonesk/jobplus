@@ -30,7 +30,7 @@
 	<context:component-scan base-package="job.resume.edu.controller"/>
 	<context:component-scan base-package="job.resume.studyLV.controller"/>
 	<context:component-scan base-package="job.resume.pr.controller"/>
-	<context:component-scan base-package="job.resume.pr.controller"/>
+<!-- 	<context:component-scan base-package="job.resume.pr.controller"/> -->
 	<context:component-scan base-package="job.resume.foreign.controller"/>
 	<context:component-scan base-package="job.resume.image.controller"/>
 	<context:component-scan base-package="job.resume.portfolio.controller"/>

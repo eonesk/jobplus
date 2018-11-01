@@ -22,6 +22,12 @@
 		
 	});
 	
+	function test(rowData) {
+		alert("부모창 ");
+		alert("rowData : " + rowData);
+	}
+	
+	
 	function addList(type, tilte, filename) {
 		var a = $('#파일구분').val();
 		var b = $('#파일 라디오박스').val();
@@ -59,33 +65,84 @@
 	/**내용넣기*/
 	
 </script>
-
+<style type="text/css">
+.subtitle {
+	font: 20px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
+	font-weight: bold;
+	color: #2A120A;
+	letter-spacing: -1px;
+}
+/* #portfolio_area { */
+/*     position: relative; */
+/*     margin-bottom: 40px; */
+/*     min-height: 80px; */
+/*     background: #fff; */
+/*     box-sizing: border-box; */
+/*     box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.1); */
+/*     font-size: 0; */
+/* } */
+.button {
+	width:100px;
+    background-color: #5882FA;
+    border: none;
+    color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    margin: 20px 0px 0px 0px;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #2E9AFE;
+}
+</style>
 </head>
 <body>
 <form id="portfolioList">
 <div>
-<h4>포트폴리오 및 기타문서</h4> 
-	<a href="#" onclick="window.open('portfolioWriteForm.jsp','portfolioWriteForm','width=500, height=350, left=300, top=200')">등록하기</a>
-	<a href="#" onclick="window.open('portfolioLoad.jsp','portfolioLoad','width=500, height=350, left=300, top=200')">불러오기</a>
-	<ul id="portfolio_list">
-<!-- 	동적요소 생성 -->
-		<c:forEach var ='ls' items="${list }">
-		<li file-num="4" class="file"> 
-			<p class="comment_item"> 
-				<span class="type">[이력서 구분]</span>  
-				<span>${ls.rs_pfUsertitle}</span>
-				<input type="button" value="삭제하기" class="delete_btn">
-			</p>
-			<a> 파일이름 및 URL 주소 </a>
-		</li> 
-		</c:forEach>
-		<div diplay:none>
-			<input type='text' id='파일구분' value = '' />
-			<input type='text' id='파일 라디오박스' value = '' />
-			<input type='text' id='파일이름' value = '' />
-			<button onclick="addList();">버튼입네당</button>
-		</div>
-	</ul>
+
+	
+<div id="portfolio_area">
+	<p class="subtitle">포트폴리오 및 기타문서</p>
+	<div>
+		<button type="button" class="button" onclick="window.open('portfolioWriteForm.jsp','portfolioWriteForm','width=500, height=350, left=300, top=200')">등록</button>
+		<button type="button" class="button" onclick="window.open('portfolioLoad.do','portfolioLoad','width=500, height=700, left=300, top=200')">내 파일함</button>
+	</div>	
+		<ul id="portfolio_list">
+	<!-- 	동적요소 생성 -->
+	<table border="1">
+		<tr>
+			<td>타이틀</td>
+			<td>파일구분</td>
+			<td>파일이름 a및 URL</td>
+		</tr>
+		<tr>
+			<td id="rsprTitle">
+			</td>
+		</tr>
+		
+	</table>
+	
+	
+<%-- 			<c:forEach var ='ls' items="${list }"> --%>
+<!-- 			<li file-num="4" class="file">  -->
+<!-- 				<p class="comment_item">  -->
+<!-- 					<span class="type">[이력서 구분]</span>   -->
+<%-- 					<span>${ls.rspf_Usertitle}</span> --%>
+<!-- 					<input type="button" value="삭제하기" class="delete_btn"> -->
+<!-- 				</p> -->
+<!-- 				<a> 파일이름 및 URL 주소 </a> -->
+<!-- 			</li>  -->
+<%-- 			</c:forEach> --%>
+<!-- 			<div diplay:none> -->
+<!-- 				<input type='text' id='파일구분' value = '' /> -->
+<!-- 				<input type='text' id='파일 라디오박스' value = '' /> -->
+<!-- 				<input type='text' id='파일이름' value = '' /> -->
+<!-- 				<button onclick="addList();">버튼입네당</button> -->
+<!-- 			</div> -->
+		</ul>
+	</div>
 </div>
 </form>
 
