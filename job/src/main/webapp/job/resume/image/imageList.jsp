@@ -6,16 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-table {border-collapse: collapse;	margin: auto; }
-#titleSize {width: 250px;}
-#thumnail {width: 90px; height: 130px;}
-#selectPhoto {border: 1px solid #83c5ff;}
-/* #selectPhoto:hover {cursor: pointer;} */
-tr:active {background-color: #dbeeff;}
-tr:visited {border: 1px solid #000000;	background-color: #dbeeff;}
-.bottom_btn {margin: auto;}
-</style> 
+
 </head>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -64,39 +55,103 @@ function cscontrol(chk,imgPath){
 //     $('#selectPhoto').removeClass("visited");
 }
 </script>
+<style type="text/css">
+input, button {
+    font-family: "Malgun Gothic", "맑은 고딕", Dotum, 돋움, AppleGothic, sans-serif;
+    font-size: 16px;
+    display: inline-block;
+}
+.subtitle {
+	font: 20px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
+	font-weight: bold;
+	color: #2A120A;
+	letter-spacing: -1px;
+}
+button {
+	width:100px;
+    background-color: #5882FA;
+    border: none;
+    color:#fff;
+    padding: 10px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    cursor: pointer;
+    position: relative;
+    top: 28px;
+}
+button:hover {
+    background-color: #2E9AFE;
+}
+table {
+	table-layout:fixed;
+	border-collapse: collapse;
+	margin: auto;
+	width: 420px;
+	height: 220px;
+}
+#selectPhoto:hover {
+	cursor: pointer;
+	border-color: red;
+}
 
+#tumbnail {
+	max-width: 120px;
+	height: 170px;
+	margin: 7px 0px 0px 10px;
+}
+#user_title {
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+    position: relative;
+    left: 1px;
+    padding: inherit;
+    width: 120px;
+    margin: auto;
+}
+a {
+    display: inline-block;
+    margin-right: 1px;
+    padding-top: 5px;
+    width: 30px;
+    height: 25px;
+    border: 1px solid #dfdfdf;
+    color: #888;
+    font-family: "Malgun Gothic","맑은 고딕", dotum,"돋움",sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    vertical-align: middle;
+    background: #fff;
+    position: relative;
+    top: 13px;
+}
+.page .current_pg a:hover {
+    border: 1px solid #444;
+    color: #444;
+}
+</style> 
 <body>
-<h4>내 사진 목록</h4> 
-<!-- <input type='hidden' id='imgValue2' name = 'imgValue2' value=''/> -->
-<div> 
-	<div>   
-		<table>  	     
-			<c:forEach var='imageDTO' items="${list }" varStatus="i">            
-				<tr id="selectPhoto${i.index}" onclick="cscontrol('${i.index}','img/storage/${imageDTO.rsim_Name}');" style="border: 1px solid #000000;">    
-<!-- 					<td>   -->
-<%-- <%-- 						<a href="javascript:profileImgSave('img/storage/${imageDTO.rsim_Name}');"> --%> 
-<%-- 							<input type="checkbox" class="radio" value="1" name="fooby[${i.index }][]" /> --%>
-<!-- <!-- 						</a> --> 
-<!-- 					</td>  -->
-					<td>  
-<%-- 						<a href="javascript:profileImgSave('img/storage/${imageDTO.rsim_Name}');"> --%>
-							<img id="thumnail" src="img/storage/${imageDTO.rsim_Name}"/>
-<!-- 						</a> -->
-					</td>
-						<input type='hidden' id='imgValue' name = 'imgValue' value='img/storage/${imageDTO.rsim_Name}'/>       
-					<td id="titleSize" align="center">
-						${imageDTO.rsim_Usertitle}
-					</td> 
-				</tr>
-			</c:forEach> 		
+<p class="subtitle">내 사진 목록</p>
+		<table>
+		 	<tr class="sss">     
+				<c:forEach var='imageDTO' items="${list }" varStatus="i">            
+				<td id="selectPhoto${i.index}" onclick="cscontrol('${i.index}','img/storage/${imageDTO.rsim_Name}');" style="border: 1px solid #e6e6e6;"> 
+					<div class="imgsize"><img id="tumbnail" src="img/storage/${imageDTO.rsim_Name}"/></div>
+					<input type='hidden' id='imgValue' name = 'imgValue' value='img/storage/${imageDTO.rsim_Name}'/>
+					<p id="user_title">${imageDTO.rsim_Usertitle}</p>
+					<img src="">
+				</td>   
+				</c:forEach>
+			</tr>
 			<tr>
-				<td colspan="2" align="center">
+				<td colspan="3" align="center" class="page">
 				<c:if test="${startPage > 3}">
 					<a href="imageList.do?pg=${startPage-1}">◀</a>
 				</c:if>
 				<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
 					<c:if test="${pg==i}">
-						<a id="" href="imageList.do?pg=${i}">${i}</a>
+						<a class="current_pg" href="imageList.do?pg=${i}">${i}</a>
 					</c:if>
 					<c:if test="${pg !=i }">
 					<a href="imageList.do?pg=${i}">${i}</a>
@@ -108,11 +163,9 @@ function cscontrol(chk,imgPath){
 				</td>
 			</tr>
 		</table>	 
+	<div class="bottom_btn" align="center">
+		<button type="button" onclick="javascript:profileImgSave('img/storage/${imageDTO.rsim_Name}');">등록</button>
+		<button type="button"  onclick="window.close();">취소</button>
 	</div>
-	<div class="bottom_btn">
-		<input type="button" value="등록"  onclick="javascript:profileImgSave('img/storage/${imageDTO.rsim_Name}');">
-		<input type="button" value="취소" onclick="window.close();">
-	</div>
-</div>
 </body>
 </html>

@@ -37,9 +37,9 @@ public class RS_portfolioController {
 //		String memId = request.getParameter(memId);
 		String memId = "num1";
 		
-		List <RS_portfolioDTO> list =portfolioService.selectPortfolioList(memId); 
-		System.out.println( "list" + list);
-		model.addAttribute("list", list);
+//		List <RS_portfolioDTO> list =portfolioService.selectPortfolioList(memId); 
+//		System.out.println( "list" + list);
+//		model.addAttribute("list", list);
 				
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("portfolioList.jsp");
@@ -142,14 +142,14 @@ public class RS_portfolioController {
 	}
 	
 	@RequestMapping(value="/job/resume/portfolio/portfolioLoad.do")
-	public ModelAndView selectPortfolioList(HttpServletRequest request,HttpServletResponse response) throws IOException {
+	public ModelAndView viewportfolioOfId(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("타주세요 제발");
 		/** Session으로 넘어오는 memID값 임시 지정 */
 		String memId = "num1";
 		
-		List<RS_portfolioDTO> portfolioList = portfolioService.selectPortfolioList(memId);
+		List<RS_portfolioDTO> portfolioList = portfolioService.viewportfolioOfId(memId);
 		System.out.println("떠라좀"+portfolioList);
 		JSONObject jsonObject = new JSONObject();
 		JSONArray items = new JSONArray();
@@ -158,9 +158,10 @@ public class RS_portfolioController {
 			RS_portfolioDTO portfolioDTO = portfolioList.get(i);
 			
 			System.out.println("rs_pfType::" +portfolioDTO.getRs_pfType());
+			System.out.println("rs_pfFileorurl::" +portfolioDTO.getRs_pfFileorurl());
 			
 			JSONObject temp = new JSONObject();
-			temp.put("rs_pfType", 		portfolioDTO.getRs_pfType());
+			temp.put("rs_pfType", 		portfolioDTO.getRs_pfFile());
 			temp.put("rs_pfFileorurl", 		portfolioDTO.getRs_pfFileorurl());
 			temp.put("rs_pfUrl",	portfolioDTO.getRs_pfUrl());
 			temp.put("rs_pfFile", 			portfolioDTO.getRs_pfFile());
