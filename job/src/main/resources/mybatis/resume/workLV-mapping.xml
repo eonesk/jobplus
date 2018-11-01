@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.workLVMapper">
+	<insert id="rswSave" parameterType="workLVDTO">
+		insert into RS_workLV values(RS_workLV_SEQ.nextval,#{rsw_company}, 
+		#{rsw_dept},#{rsw_startDate},#{rsw_endDate},#{rsw_isNow},#{rsw_position}, 
+		#{rsw_job},#{rsw_pay},#{rsw_part},#{rsw_career},#{m_id},#{rsw_userTitle})
+	</insert>
+</mapper>
