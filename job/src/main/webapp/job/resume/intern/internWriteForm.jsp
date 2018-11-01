@@ -7,7 +7,8 @@
 <title>internWriteForm</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">	
-	$(function() {
+var count = 0;
+/* 	$(function() {
 		$("#internsave").click(function() {
 		if($("#rsitType option:selected").val() == "활동구분"){
 			alert("활동구분 선택하세요.");
@@ -31,17 +32,52 @@
 		$("#internload").click(function() {
 			window.open("internLoad.jsp", "", "width=500px height=500px");
 		});		
-	});		
+	});	 */	
 	$(function() {
-		var count = 0;
+		$("#internsave").click(function() {
+		if($("#rsitType").val() == "활동구분"){
+			alert("활동구분 선택하세요.");
+			$("#rsitType").focus();	
+			return false;
+		}
+		if(!$("#rsitCompany").val()){
+			alert("회사,기관명을 입력하세요.");
+			$("#rsitCompany").focus();	
+			return false;
+		}
+		if(!$("#rsitStartdate").val()){
+			alert("시작년월을 입력하세요.");
+			$("#rsitStartdate").focus();
+			return false;
+		}
+		if(!$("#rsitEnddate").val()){
+			alert("종료년월을 입력하세요.");
+			$("#rsitEnddate").focus();	
+			return false;
+		}
+		if(!$("#rsitContent").val()){
+			alert("활동내용을 입력하세요.");
+			$("#rsitContent").focus();	
+			return false;
+		}
+		window.open("internWrite.jsp", "", "width=500px height=500px");
+		});
+	});
+	$(function() {
+		$("#internload").click(function() {
+			window.open("internLoad.jsp", "", "width=500px height=500px");
+		});
+	});		
+		
+	$(function() {		
 		$("#internplus").click(function() {
 			count++;
-			alert("추가다 시발놈아"+count);
+			alert("추가"+count);
 			if(count >= 3){
 				alert("항목추가는 최대 3개까지만 추가가능합니다.")
 				return false;
 			}
-			var clone = $("#t").clone();
+			var clone = $("#t").clone(true);
 			clone.find('*[id]').each(function () {					
 				$(this).attr("id",$(this).attr("id") + count);
 			});
@@ -63,11 +99,11 @@
 			count++;
 		}); */
 		$(function() {
-			$("#interndelete").on("click", function() {	
-				alert("삭제시발~~"+conut);
-				$("#t").remove();
-				count--;
+			$(".interndelete").on("click", function() {	
+				alert("삭제"+conut);
+				$(".interndelete").parents(".t").remove();				
 				alert("삭제됨?"+conut);
+				count--;
 			});
 		});	
 	});			
@@ -143,7 +179,7 @@ fieldset {
 <body class="write">
 	<fieldset>
 		<p class="title">인턴&middot;대외활동</p>
-		<div id="t">
+		<div id="t" class="t">
 			<br>
 			<select name="rsitType" id="rsitType" class="rsitType" >				
 				<option value="활동구분">---활동구분---</option>
@@ -152,7 +188,7 @@ fieldset {
 				<option value="동아리">동아리</option>
 				<option value="자원봉사">자원봉사</option>
 			</select>
-						
+			<input type="hidden" id="#rsitSeq">			
 			<input type="text" id="rsitCompany" name="rsitCompany" class="rsitCompany" placeholder="회사/기관/단체명">
 			<input type="date" id="rsitStartdate" name="rsitStartdate" class="rsitStartdate">
 			<input type="date" id="rsitEnddate" name="rsitEnddate" class="rsitEnddate">
