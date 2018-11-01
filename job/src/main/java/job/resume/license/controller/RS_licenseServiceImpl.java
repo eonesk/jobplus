@@ -28,6 +28,11 @@ public class RS_licenseServiceImpl implements RS_licenseService {
 	public List<RS_licenseDTO> selectLicenseUserTitleList(String memId) {
 		return licenseDAO.selectLicenseUserTitleList(memId);
 	}
+
+	@Override
+	public RS_licenseDTO selectLicenseDTO(int rsls_Seq) {
+		return licenseDAO.selectLicenseDTO(rsls_Seq);
+	}
 	
 	
 }

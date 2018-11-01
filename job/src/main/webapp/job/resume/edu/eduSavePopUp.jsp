@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
+		alert("[savePopUp] eduPlusButtonCnt : " + ${param.eduPlusButtonCnt});
 		var rse_Name = $("#rse_Name", opener.document).val();
 		var rse_Company = $("#rse_Company", opener.document).val();
 		var rse_Startdate = $("#rse_Startdate", opener.document).val();

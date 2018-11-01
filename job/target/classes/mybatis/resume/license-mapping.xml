@@ -15,4 +15,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectLicenseUserTitleList" parameterType="String" resultType="licenseDTO">
 		select * from RS_license where M_id = #{memId}
 	</select>
+	
+	<select id="selectLicenseDTO" parameterType="int" resultType="licenseDTO">
+		select * from RS_license where rsls_Seq = #{rsls_Seq}
+	</select>
 </mapper>

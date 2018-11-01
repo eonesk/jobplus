@@ -30,102 +30,119 @@
 						dataType: "json",
 						cache: false,
 						success: function(data) {
-							alert(data.licenseUserTitleList);							
+							alert("성공");
+			              	//var testDTO =  data.items;
+							//alert(testDTO[0].rse_UserTitle);					
+							
+							var trTitle = $("<tr>").addClass("licenseLoadListLabelTr");
+							var tdTitle = $("<td>").addClass("licenseLoadListLabelTd").html("제목");
+							
+							trTitle.append(tdTitle);
+							$("#licenseLoadListTable").append(trTitle);
+							
+							$.each(data.items, function(index, item) {
+								var dto = item;
+								var tr = $("<tr>").addClass("licenseLoadListLabelTr");
+								var td = $("<td>").addClass("licenseLoadListLabelTd");
+ 								var checkbox = $("<input>").attr({
+									"id": "rsls_UserTitleR",
+									"type": "checkbox",
+									"value": item.rsls_Seq
+								});
+								var a = $("<a>").attr({
+									"id": "rsls_UserTitleA",
+									"href": "#"
+								}).html(item.rsls_UserTitle).bind('click', {param: dto}, add_event);
+								
+								td.append(checkbox);
+								td.append(a);
+								tr.append(td);
+								$("#licenseLoadListTable").append(tr);	
+								 
+																			 
+							});							
+
+							$("#licenseLoadSubmit").click(function() {
+								//var eduSeqList = new Array();
+								var accumSeq = "";
+								
+				                $("#rsls_UserTitleR:checked").each(function() {
+				                	alert($(this).val());
+				                	//eduSeqList.push($(this).val());
+				                	accumSeq += $(this).val() + "/";
+				                });
+				                
+				                alert(accumSeq);
+				                
+				                if(accumSeq == "") {
+				                	alert("체크해주셍ㅂ");
+				                } else {
+				                	alert("체크됨");
+				                	if(confirm("불러오기를 진행하시겠습니까?")) {
+				                		opener.parent.selected(accumSeq);
+					                	self.close();
+				                	}
+				                	
+				                }
+							});
+							
+							function add_event(event) {
+								alert(event.data.param.rsls_UserTitle + " // " + event.data.param.m_Id);
+								$("#licenseLoadViewInit").hide();
+								$("#licenseLoadView").html("");
+
+								var userTitle = $("<h3>").html("[ " + event.data.param.rsls_UserTitle + " ]");
+								var table = $("<table>").attr("border", "1");
+								var indexTr = $("<tr>");
+								var indexTd1 = $("<td>").html("자격증이름");
+								var indexTd2 = $("<td>").html("발행처");
+								var indexTd3 = $("<td>").html("취득년월");
+// 								var indexTd4 = $("<td>").html("종료년월");
+// 								var indexTd5 = $("<td>").html("교육내용");
+								
+								indexTr.append(indexTd1).append(indexTd2).append(indexTd3)/* .append(indexTd4).append(indexTd5) */;
+								table.append(indexTr);
+								
+								var contentTr = $("<tr>");
+								var contentTd1 = $("<td>").html(event.data.param.rsls_Name);
+								var contentTd2 = $("<td>").html(event.data.param.rsls_Company);								
+								var contentTd3 = $("<td>").html(event.data.param.rsls_Date);
+// 								var contentTd4 = $("<td>").html(event.data.param.rse_Enddate);
+// 								var contentTd5 = $("<td>").html(event.data.param.rse_Content);
+								
+								contentTr.append(contentTd1).append(contentTd2).append(contentTd3)/* .append(contentTd4).append(contentTd5) */;
+								table.append(contentTr);
+								
+								$("#licenseLoadView").append(userTitle);
+								$("#licenseLoadView").append(table);
+				                
+// 				                $("#eduLoadSubmit").click(function() {
+// 				                	alert(event.data.param.rse_Name);
+// 				                	$("#rsprTitle", opener.document).val("");
+// 				                	$("#rsprContent", opener.document).val("");
+// 				                	$("#rsprSeq", opener.document).val("");
+// 				                	$("#rsprTitle", opener.document).val(event.data.param.rspr_Title);
+// 				                	$("#rsprContent", opener.document).val(event.data.param.rspr_Content);
+// 				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
+// 				                	self.close();
+// 				                });
+				                
+				                
+				                
+							}
+							
+							
+							alert("종료");
+							
 						},
 						error : function(e) {
-			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+							alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
 			         	}
-					});
-					
-					
-					/** json으로 넘어 온 데이터를 $.each();를 통해 table에 구현해 줘야 함 : 위 ajax문 success에 들어가야 함 */
-					// 임의로 rsprDTO값을 정해서 table에 구현..
-	/* 					
-					var rsprUserTitleList = [{ 
-						    "rspr_Seq": 5,
-						    "rspr_Title": "제목입니다1",
-						    "rspr_Content": "내용입니다",
-						    "m_Id": "num1",
-						    "rspr_UserTitle": "usertitle입니다."
-					},
-					{
-						    "rspr_Seq": 6,
-						    "rspr_Title": "제목",
-						    "rspr_Content": "내용",
-						    "m_Id": "num1",
-						    "rspr_UserTitle": "usertitle"
-					}];
-					
-					// Table 첫번째 행
-					$("<tr>").addClass("rsprLoadListLabelTr").appendTo("#rsprLoadListTable");
-					$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo("#rsprLoadListTable");
-					
-					// List Content
-					
-					$.each(rsprUserTitleList, function(index, item) {
-						
-						var listTr = $("<tr>");
-						listTr.addClass("rsprLoadListContentTr");
-						var listTd = $("<td>");
-						listTd.addClass("rsprLoadListContentTd");
-						var listA = $("<a>");
-						listA.addClass("rsprLoadListContentA");
-						listA.attr("href", "#");
-						listA.html(rsprUserTitleList.rspr_UserTitle);
-						
-						listTd.append(listA);
-						listTr.append(listTd);
-						
-						$("#rsprLoadListTable").append(listTr);
-					});
-					
-					/* 
-					
-					// ex
-					var listTr1 = $("<tr>");
-					listTr.addClass("rsprLoadListContentTr");
-					var listTd1 = $("<td>");
-					listTd.addClass("rsprLoadListContentTd");
-					var listA1 = $("<a>");
-					listA1.addClass("rsprLoadListContentA");
-					listA1.attr("href", "#");
-					listA1.html(rsprUserTitleList1.rspr_UserTitle);
-					
-					listTd1.append(listA1);
-					listTr1.append(listTd1);
-					
-					$("#rsprLoadListTable").append(listTr1);
-					 */
-					/** usertitle을 클릭했을 때  *//*
-					$(".rsprLoadListContentA").click(function() {
-						alert($(this).text());
-					});
-			 */		
-					/* 
-					
-						$.each(data.memberlist, function(index, memberlist) { // 이치를 써서 모든 데이터들을 배열에 넣음					
-	
-						var items = [];
-	
-						items.push("<td>" + memberlist.id + "</td>"); // 여기에 id pw addr tel의 값을 배열에 넣은뒤
-	
-						items.push("<td>" + memberlist.pw + "</td>");
-	
-						items.push("<td>" + memberlist.addr + "</td>");
-	
-						items.push("<td>" + memberlist.tel + "</td>");
-	
-						$("<tr/>", {
-	
-							html : items // 티알에 붙임,
-	
-						}).appendTo("table"); // 그리고 그 tr을 테이블에 붙임
-	
-					});	 */				
+					});				
 				}
 			},
 			error : function(e) {
-	            alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+				alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
 	     	}
 		});	
 	});	

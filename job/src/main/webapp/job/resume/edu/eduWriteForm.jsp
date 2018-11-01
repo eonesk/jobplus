@@ -15,309 +15,141 @@
 
 <script type="text/javascript">
 	$(function() {
-
-		function test() {
-
-			alert("부모창 할롱");
-
-		}
-
-		var eduPlusButtonCnt = 2;
-
-		// 		$("#internplus").click(function() {
-
-		// 			count++;
-
-		// 			alert("추가다 시발놈아"+count);
-
-		// 			if(count >= 3){
-
-		// 				alert("항목추가는 최대 3개까지만 추가가능합니다.")
-
-		// 				return false;
-
-		// 			}
-
-		// 			var clone = $("#t").clone();
-
-		// 			clone.find('*[id]').each(function () {					
-
-		// 				$(this).attr("id",$(this).attr("id") + count);
-
-		// 			});
-
-		// 			clone.insertAfter("#t");
-
-		// 		});
-
-		/** div clone */
-
+var eduPlusButtonCnt = 0;
+		
+		$("#eduPlus").hide();
+		
 		$("#plusButton").click(function() {
-
-			if (eduPlusButtonCnt <= 3) {
-
-				alert(eduPlusButtonCnt);
-
-				var clone = $("#eduPlus1").clone(true, true);
-
-				clone.find("*[id]").each(function() {
-
-					//var $id = $(this).attr("id");
-
-					$(this).attr("id", $(this).attr("id") + eduPlusButtonCnt);
-
-				});
-
-				//				clone.attr("id", "eduPlus" + eduPlusButtonCnt);
-
-				clone.appendTo($("#eduPlusField"));
-
-				// 			    var selector1 = "#eduPlus" + eduPlusButtonCnt;
-
-				// 			    alert(selector1);
-
-				// 			    $(selector1 + " #rse_Name").val("");
-
-				// 			    $(selector1 + " #rse_Company").val("");
-
-				// 			    $(selector1 + " #rse_Startdate").val("");
-
-				// 			    $(selector1 + " #rse_Enddate").val("");
-
-				// 			    $(selector1 + " #rse_Content").val("");
-
-				//$(selector1 + " #RSE_saveA1")attr("id", "RSE_saveA2");
-
-				//$("#eduPlus2 #RSE_saveA1")attr("id", "RSE_saveA2");
-
-				eduPlusButtonCnt++;
-
-			} else if (eduPlusButtonCnt > 3 || eduPlusButtonCnt < 1) {
-
-				alert("더이상 추가할 수 없습니다.");
-
-			}
-
-		});
-
-		// 		$(function() {
-
-		// 			$("#interndelete").on("click", function() {	
-
-		// 				alert("삭제시발~~"+conut);
-
-		// 				$("#t").remove();
-
-		// 				count--;
-
-		// 				alert("삭제됨?"+conut);
-
-		// 			});
-
-		// 		});	
-
-		/** 'X'표 눌렀을 때 닫기 */
-
-		$("#eduPlusCancel1").click(function() {
-
-			$(this).parent("div").hide();
-
-			eduPlusButtonCnt--;
-
-		});
-
-		$("#eduPlusCancel12").click(function() {
-
-			$(this).parent("div").hide();
-
-			eduPlusButtonCnt--;
-
-			alert(eduPlusButtonCnt);
-
-		});
-
-		$("#eduPlusCancel13").click(function() {
-
-			$(this).parent("div").hide();
-
-			eduPlusButtonCnt--;
-
-		});
-
+			eduPlusButtonCnt++;
+			var numbering = "_" + eduPlusButtonCnt;
+			var clone = $("#eduPlus").clone().attr("id", "eduPlus" + numbering);
+			
+			// id&name 넘버링 변경 작업
+			clone.find("*[id]").each(function() {
+				$(this).attr("id", $(this).attr("id") + numbering);
+			});
+			
+			clone.find("*[name]").each(function() {
+				$(this).attr("name", $(this).attr("name") + numbering);
+			});
+			
+			clone.insertAfter("#eduPlus");
+			
+			$("#eduPlus" + numbering).show();
+			
+			/** 이벤트 바인딩 */
+			// 'X'표 눌렀을 때 닫기
+			$("#eduPlusCancel" + numbering).on("click", function() {
+				$(this).parent("#eduPlus" + numbering).remove();
+				eduPlusButtonCnt--;
+			});
+			
+			// 저장버튼 눌렀을 때
+			$("#RSE_saveA" + numbering).on("click", function() {
+				if(!$("#rse_Name" + numbering).val()) {
+					alert("교육명을 입력해주세요.");
+					$("#rse_Name" + numbering).focus();
+				} else if(!$("#rse_Company" + numbering).val()){
+					alert("교육기관을 입력해주세요.");
+					$("#rse_Company" + numbering).focus();
+				} else if(!$("#rse_Startdate" + numbering).val()){
+					alert("시작년월을 입력해주세요.");
+					$("#rse_Startdate" + numbering).focus();
+				} else if(!$("#rse_Enddate" + numbering).val()){
+					alert("종료년월을 입력해주세요.");
+					$("#rse_Enddate" + numbering).focus();
+				} else {
+					alert("[검사 후 eduPlusButtonCnt] eduPlusButtonCnt : " + eduPlusButtonCnt);
+					window.open("./eduSavePopUp.jsp?eduPlusButtonCnt=" + eduPlusButtonCnt, "", "width=500px height=500px");
+				}
+			});
+			
+		});			
+		
 		/** 내 교육이수사항 불러오기 */
 
 		$("#RSE_loadA").click(function() {
-
-			window.open("./eduLoadPopUp.jsp", "", "width=500px height=500px");
-
+			window.open("./eduLoadPopUp.jsp?eduPlusButtonCnt=" + eduPlusButtonCnt, "", "width=500px height=500px");
 		});
-
-		/** 교육이수관리에 저장 */
-
-		// 		$(".RSE_saveA").click(function() {
-		// 			var parent = $(this).parent("#test");
-		// 			parent.hide();
-		// 			alert($(parent + " #rse_Name").val());
-
-		// 			if(!$(parent + " > #rse_Name").val()) {
-		// 				alert("교육명을 입력해주세요.");
-		// 				$(parent + " > #rse_Name").focus();
-		// 			} else if(!$("#rse_Company").val()){
-		// 				alert("교육기관을 입력해주세요.");
-		// 				$(parent + " > #rse_Company").focus();
-		// 			} else if(!$("#rse_Startdate").val()){
-		// 				alert("시작년월을 입력해주세요.");
-		// 				$(parent + " > #rse_Startdate").focus();
-		// 			} else if(!$("#rse_Enddate").val()){
-		// 				alert("종료년월을 입력해주세요.");
-		// 				$(parent + " > #rse_Enddate").focus();
-		// 			} else {
-		// 				window.open("./eduSavePopUp.jsp", "", "width=500px height=500px");
-		// 			}
-
-		//		});
-		/* 
-
-		$("#RSE_saveA").click(function() {
-
-			//alert("클릭Save");
-
-			if(!$("#rse_Name").val()) {
-
-				alert("교육명을 입력해주세요.");
-
-				$("#rse_Name").focus();
-
-			} else if(!$("#rse_Company").val()){
-
-				alert("교육기관을 입력해주세요.");
-
-				$("#rse_Company").focus();
-
-			} else if(!$("#rse_Startdate").val()){
-
-				alert("시작년월을 입력해주세요.");
-
-				$("#rse_Startdate").focus();
-
-			} else if(!$("#rse_Enddate").val()){
-
-				alert("종료년월을 입력해주세요.");
-
-				$("#rse_Enddate").focus();
-
-			} else {
-
-				window.open("./eduSavePopUp.jsp", "", "width=500px height=500px");
-
-			}
-
-		});
-
-		 */
-
 	});
-
-	function selected(accumSeq) {
-
+	
+	function selected(accumSeq, eduPlusButtonCnt_Delivered) {
 		$(function() {
 
 			alert("부모창 할롱");
-
-			alert(accumSeq);
-
-			$
-					.ajax({
-
-						type : 'POST',
-
-						url : 'rseLoadView.do',
-
-						dataType : 'json',
-
-						data : {
-
-							"accumSeq" : accumSeq
-
-						},
-
-						success : function(data) {
-
-							alert("부모창 성공");
-
-							var testDTO = data.items;
-
-							$("#eduPlus2").hide();
-
-							$("#eduPlus3").hide();
-
-							var cnt = 1;
-
-							//alert(testDTO[0].rse_UserTitle);	
-
-							for (var i = 0; i < testDTO.length; i++) {
-
-								if (i == 0) {
-
-									alert(testDTO[i].rse_UserTitle);
-
-									$("#eduPlus1  #rse_Name").val(
-											testDTO[i].rse_Name);
-
-									$("#eduPlus1  #rse_Company").val(
-											testDTO[i].rse_Company);
-
-									$("#eduPlus1  #rse_Startdate").val(
-											testDTO[i].rse_Startdate);
-
-									$("#eduPlus1  #rse_Enddate").val(
-											testDTO[i].rse_Enddate);
-
-									$("#eduPlus1  #rse_Content").val(
-											testDTO[i].rse_Content);
-
-								} else {
-
-									cnt++;
-
-									var selector = "#eduPlus" + cnt;
-
-									alert(cnt);
-
-									alert(testDTO[i].rse_UserTitle);
-
-									$(selector).show();
-
-									$(selector + " #rse_Name").val(
-											testDTO[i].rse_Name);
-
-									$(selector + " #rse_Company").val(
-											testDTO[i].rse_Company);
-
-									$(selector + " #rse_Startdate").val(
-											testDTO[i].rse_Startdate);
-
-									$(selector + " #rse_Enddate").val(
-											testDTO[i].rse_Enddate);
-
-									$(selector + " #rse_Content").val(
-											testDTO[i].rse_Content);
-
-								}
-
+			eduPlusButtonCnt = eduPlusButtonCnt_Delivered;
+			alert("[selected] accumSeq : " + accumSeq);
+			alert("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
+			$.ajax({
+				type: 'POST',
+				url: 'rseLoadView.do',
+				dataType: 'json',
+				data: {
+					"accumSeq": accumSeq
+				},
+				success: function(data) {
+					alert("부모창 성공");
+					alert("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
+					var testDTO =  data.items;
+					
+					
+					for(var i = 0; i < testDTO.length; i++) {						
+						eduPlusButtonCnt++;
+						
+						var numbering = "_" + eduPlusButtonCnt;
+						var clone = $("#eduPlus").clone().attr("id", "eduPlus" + numbering);
+						
+						// id&name 넘버링 변경 작업
+						clone.find("*[id]").each(function() {
+							$(this).attr("id", $(this).attr("id") + numbering);
+						});
+						
+						clone.find("*[name]").each(function() {
+							$(this).attr("name", $(this).attr("name") + numbering);
+						});
+						
+						clone.insertAfter("#eduPlus");
+						
+						$("#eduPlus" + numbering).show();
+						
+						/** 이벤트 바인딩 */
+						// 'X'표 눌렀을 때 닫기
+						$("#eduPlusCancel" + numbering).on("click", function() {
+							$(this).parent("#eduPlus" + numbering).remove();
+							eduPlusButtonCnt--;
+						});
+						
+						// 저장버튼 눌렀을 때
+						$("#RSE_saveA" + numbering).on("click", function() {
+							if(!$("#rse_Name" + numbering).val()) {
+								alert("교육명을 입력해주세요.");
+								$("#rse_Name" + numbering).focus();
+							} else if(!$("#rse_Company" + numbering).val()){
+								alert("교육기관을 입력해주세요.");
+								$("#rse_Company" + numbering).focus();
+							} else if(!$("#rse_Startdate" + numbering).val()){
+								alert("시작년월을 입력해주세요.");
+								$("#rse_Startdate" + numbering).focus();
+							} else if(!$("#rse_Enddate" + numbering).val()){
+								alert("종료년월을 입력해주세요.");
+								$("#rse_Enddate" + numbering).focus();
+							} else {
+								window.open("./eduSavePopUp.jsp?eduPlusButtonCnt"+eduPlusButtonCnt, "", "width=500px height=500px");
 							}
-
-						},
-
-						error : function(e) {
-
-							alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: '
-									+ e.status);
-
-						}
-
-					});
-
+						});
+							alert(testDTO[i].rse_UserTitle);
+							$("#rse_Name" + numbering).val(testDTO[i].rse_Name);
+							$("#rse_Company" + numbering).val(testDTO[i].rse_Company);
+							$("#rse_Startdate" + numbering).val(testDTO[i].rse_Startdate);
+							$("#rse_Enddate" + numbering).val(testDTO[i].rse_Enddate);
+							$("#rse_Content" + numbering).val(testDTO[i].rse_Content);
+												
+					}				
+				},
+				error: function(e) {
+					 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+				}
+			});
 		});
 
 	}
@@ -363,24 +195,11 @@
 
 
 		<!-- input영역 1번째 줄 -->
-
-
-
-
-
-		<div id="eduPlusField"
-			style="background-color: white; padding: 0px; padding-bottom: 20px; border-bottom: 0px; border: 1px solid rgba(86, 111, 237, 0.3); width: 90%; height: auto;">
-
-
-
-			<div id="eduPlus1" class="eduPlus"
-				style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
-
-				<a id="eduPlusCancel1" href="#" style="text-decoration: none;">
-
-					<div id="closeButton"
-						style="border: 1px solid rgba(86, 111, 237, 0.3); border-top: 0px; border-right: 0px; background-color: white; margin: 0px; position: relative; left: 875px; width: 30px; height: 30px;">X</div>
-
+<div id="eduPlusField" style="background-color: white; padding: 0px; padding-bottom: 20px; border-bottom: 0px; border: 1px solid rgba(86, 111, 237, 0.3); width: 90%; height: auto;">
+			<!-- <input id="hiddenCnt" type="hidden"> -->
+			<div id="eduPlus" class="eduPlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
+				<a id="eduPlusCancel" href="#" style="text-decoration: none;">
+					<div id="eduCloseButton" style="border: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
 				</a>
 
 
@@ -401,10 +220,7 @@
 
 
 				<!-- 시작일데이터  -->
-
-				<fieldset id="" class="" name=""
-					style="margin-right: 0px; float: left; border: 1px solid lightgray; background-color: white; height: 42px; width: 142px;">
-
+<fieldset style="margin-right: 0px; float: left; border: 1px solid lightgray; background-color: white; height: 42px; width: 142px;">
 					<legend style="font-size: 12px;">&nbsp;&nbsp;시작년월</legend>
 
 					<input id="rse_Startdate" name="rse_Startdate" type="date"
@@ -415,10 +231,7 @@
 
 
 				<!-- 종료일데이터 -->
-
-				<fieldset id="" class="" name=""
-					style="margin-left: 0px; margin-right: 0px; float: left; border: 1px solid lightgray; background-color: white; height: 42px;">
-
+<fieldset style="margin-left: 0px; margin-right: 0px; float: left; border: 1px solid lightgray; background-color: white; height: 42px;">
 					<legend style="font-size: 12px;">&nbsp;&nbsp;종료년월</legend>
 
 					<input id="rse_Enddate" name="rse_Enddate" type="date"
@@ -436,7 +249,15 @@
 
 
 				<!-- 교육과정 -->
-
+<div style="margin-left: 10px;width: 855px; border: 1px solid rgba(86, 111, 237, 0.3); background-color: white;">
+					<a href="#" style="text-decoration: none;">내용</a><br>
+					<textarea id="rse_Content" class="rse_Content" name="rse_Content" rows="3" cols="119" placeholder="이수하신 교육과정에 대해 적어주세요."
+								style="resize: none; border: 0px;"></textarea>
+				</div>
+				<br style="clear:both;">
+				
+				<div style="float: right; background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block;">
+					<a id="RSE_saveA" class="RSE_saveA" name="RSE_saveA" href="#">교육이수관리에 저장</a>
 				<div
 					style="margin-left: 10px; width: 855px; border: 1px solid rgba(86, 111, 237, 0.3); background-color: white;">
 

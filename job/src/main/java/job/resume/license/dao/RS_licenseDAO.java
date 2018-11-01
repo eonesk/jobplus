@@ -25,4 +25,8 @@ public class RS_licenseDAO {
 	public List<RS_licenseDTO> selectLicenseUserTitleList(String memId) {
 		return sqlSession.selectList("mybatis.licenseMapper.selectLicenseUserTitleList", memId);
 	}
+	
+	public RS_licenseDTO selectLicenseDTO(int rsls_Seq) {
+		return sqlSession.selectOne("mybatis.licenseMapper.selectLicenseDTO", rsls_Seq);
+	}
 }

@@ -11,10 +11,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import job.resume.edu.bean.RS_eduDTO;
 import job.resume.license.bean.RS_licenseDTO;
@@ -77,7 +80,7 @@ public class RS_licenseController {
 		PrintWriter out = response.getWriter();
 
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num5";
+		String memId = "num1";
 		
 		// DB작업 : memID가 가지고 있는 자소서의 개수를 구함
 		int numberOfLicense = licenseService.selectNumberOfLicense(memId);		
@@ -87,34 +90,84 @@ public class RS_licenseController {
 	}
 	
 	@RequestMapping(value="/job/resume/license/licenseLoad.do", method=RequestMethod.POST)
-	public void licenseLoad(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public ModelAndView licenseLoad(HttpServletRequest request) throws IOException {
 		System.out.println("[RS_licenseLVController] licenseLoad");
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
+		ModelAndView modelAndView = new ModelAndView();
+				
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num5";
+		String memId = "num1";
 		
 		// memId가 가지고 있는 자소서의 licenseUserTitle을 select해서 list에 추가
 		List<RS_licenseDTO> licenseUserTitleList = licenseService.selectLicenseUserTitleList(memId);
 		
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
 		// licenseUserTitleList 리스트값 확인
 		for(int i = 0; i < licenseUserTitleList.size(); i++) {
-			RS_licenseDTO testDTO = licenseUserTitleList.get(i);
-			System.out.println("[RS_licenseLVController] testDTO 출력 : " + testDTO.toString());
+			RS_licenseDTO licenseDTO = licenseUserTitleList.get(i);
+			System.out.println("[RS_licenseLVController] licenseDTO 출력 : " + licenseDTO.toString());
+			JSONObject temp = new JSONObject();
+			temp.put("rsls_Seq", licenseDTO.getRsls_Seq());
+			temp.put("rsls_Name", licenseDTO.getRsls_Name());
+			temp.put("rsls_Company", licenseDTO.getRsls_Company());
+			temp.put("rsls_Date", licenseDTO.getRsls_Date());
+			temp.put("m_Id", licenseDTO.getM_Id());
+			temp.put("rsls_UserTitle", licenseDTO.getRsls_UserTitle());
+			items.put(i, temp);
 		}
-/*		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("licenseUserTitleList", licenseUserTitleList);
-		System.out.println("[RS_licenseLVController] map 출력 : " + map);
+
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/license/licenseLoadJson.jsp");
+		
+		System.out.println("[RS_eduLVController] jsonObject 출력 : " + jsonObject);
+		
+		return modelAndView;
+	}
+	@RequestMapping(value="/job/resume/license/rslsLoadView.do", method=RequestMethod.POST)
+	public ModelAndView rslsLoadView(HttpServletRequest request) {
+		System.out.println("[RS_licenseLVController] rseLoadView");		
+		
+		ModelAndView modelAndView = new ModelAndView();
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.putAll(map);
+		JSONArray items = new JSONArray();
+		
+		String accumSeq = request.getParameter("accumSeq");
+		System.out.println("[RS_licenseLVController] accumSeq : " + accumSeq);
+		
+		int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");
+		System.out.println("[RS_licenseLVController] accumSeqLastIndexOf : " + accumSeqLastIndexOf);
+		
+		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);
+		System.out.println("[RS_licenseLVController] accumSeqSubstring : " + accumSeqSubstring);
+		
+		String[] accumSeqSplit = accumSeq.split("/"); 
+		for(int i = 0; i < accumSeqSplit.length; i++) {
+			System.out.println("[RS_licenseLVController] accumSeqSplit[" + i + "] : " + accumSeqSplit[i]);
+			int rsls_Seq = Integer.parseInt(accumSeqSplit[i]);
+			RS_licenseDTO licenseDTO = licenseService.selectLicenseDTO(rsls_Seq);
+			System.out.println("[RS_licenseLVController] licenseDTO : " + licenseDTO.toString());
+			JSONObject temp = new JSONObject();
+			temp.put("rsls_Seq", licenseDTO.getRsls_Seq());
+			temp.put("rsls_Name", licenseDTO.getRsls_Name());
+			temp.put("rsls_Company", licenseDTO.getRsls_Company());
+			temp.put("rsls_Date", licenseDTO.getRsls_Date());
+			temp.put("m_Id", licenseDTO.getM_Id());
+			temp.put("rsls_UserTitle", licenseDTO.getRsls_UserTitle());
+			items.put(i, temp);
+		}
+		
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/license/selectedDTOJson.jsp");
+		
 		System.out.println("[RS_licenseLVController] jsonObject 출력 : " + jsonObject);
 		
-		String jsonObject_str = jsonObject.toString();
-		System.out.println("[RS_licenseLVController] jsonObject_str 출력 : " + jsonObject_str);
-		
-		out.print(jsonObject_str);*/
+		return modelAndView;
 	}
+	
 }
