@@ -14,9 +14,9 @@
 		$("#internplus").click(function() {		
 			count++;
 			var num = count;	
-			if (count >= 4) {	
-				alert("항목추가는 최대 3개까지만 추가가능합니다.")
+			if (count >= 4) {
 				count--;
+				alert("항목추가는 최대 3개까지 입력가능합니다.");
 				return false;
 			}
 			var clone = $("#t").clone().attr('id', 't' + count);
@@ -29,9 +29,7 @@
 			$("#interndelete" + num).on("click", function() {
 				/*$("#t" + count).remove();*/
 				$(this).parent().remove();
-				alert("삭제버튼 누르고 감산 전"+count);
 				count--;
-				alert("삭제버튼 누르고 감산 후"+count);
 			});
 			
 			$("#internsave" + num).on("click", function() {
@@ -60,10 +58,10 @@
 					$("#rsitContent" + num).focus();
 					return false;
 				}
-				window.open("internWrite.jsp?num=" + num, "", "width=500px height=500px");
+				window.open("/job/job/resume/intern/internWrite.jsp?num=" + num, "", "width=500px height=500px");
 			});
 			$("#internload" + num).click(function() {
-				window.open("internLoad.jsp?num=" + num, "", "width=500px height=500px");
+				window.open("/job/job/resume/intern/internLoad.jsp?num=" + num, "", "width=500px height=500px");
 			});
 		});
 	});			
