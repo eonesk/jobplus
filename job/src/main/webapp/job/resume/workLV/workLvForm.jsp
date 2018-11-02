@@ -215,6 +215,11 @@ body {
 		
 		$("#workLvContent").hide();
 		
+		/** 내 교육이수사항 불러오기 */
+		$("#loadBtn").click(function() {
+			window.open("workLvLoadForm.jsp?addCount=" + addCount, "", "width=500px height=500px");
+		});
+		
 		$("#addBtn").click(function() {
 			addCount++;
 			var numberRing = "_" + addCount;

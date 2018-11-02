@@ -43,9 +43,7 @@
 							$.each(data.items, function(index, item) {
 								var dto = item;
 								var tr = $("<tr>").addClass("eduLoadListLabelTr");
-								var td = $("<td>").addClass("eduLoadListLabelTd");
-								
-								
+								var td = $("<td>").addClass("eduLoadListLabelTd");								
  								var checkbox = $("<input>").attr({
 									"id": "rse_UserTitleR",
 									"type": "checkbox",
@@ -59,11 +57,9 @@
 								td.append(checkbox);
 								td.append(a);
 								tr.append(td);
-								$("#eduLoadListTable").append(tr);	
-								 
-																			 
+								$("#eduLoadListTable").append(tr);											 
 							});							
-
+							
 							/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
 							// {부모창+checkbox선택값 >3}이 되면 checkbox값이 disabled됨.
 							alert("eduPlusButtonCnt[eduLoadSubmit click] : " + ${param.eduPlusButtonCnt});
@@ -78,10 +74,11 @@
 										isOverflow++;
 										alert("isOverflow[rse_UserTitleR change] : " + isOverflow);
 										if(isOverflow == 3) {
-											$(".rse_UserTitleR").attr("disabled", "true");
+											$(".rse_UserTitleR").not($(".rse_UserTitleR:checked")).attr("disabled", "true");
 										}
 									} else {
 										isOverflow--;
+										$(".rse_UserTitleR").removeAttr("disabled");
 										alert("isOverflow[rse_UserTitleR change] : " + isOverflow);
 									}
 								});
@@ -98,7 +95,7 @@
 				                	accumSeq += $(this).val() + "/";
 				                });
 				                
-				                alert(accumSeq);
+				                alert("accumSeq : " + accumSeq);
 				                
 				                if(accumSeq == "") {
 				                	alert("체크해주셍ㅂ");

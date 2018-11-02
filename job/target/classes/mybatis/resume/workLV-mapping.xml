@@ -9,4 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{rsw_dept},#{rsw_startDate},#{rsw_endDate},#{rsw_isNow},#{rsw_position}, 
 		#{rsw_job},#{rsw_pay},#{rsw_part},#{rsw_career},#{m_id},#{rsw_userTitle})
 	</insert>
+	
+	<select id="rswCounting" parameterType="String" resultType="int">
+		select count (*) from RS_workLV where M_id = #{m_Id}
+	</select>
+	
+	<select id="rswGetList" parameterType="String" resultType="workLVDTO">
+		select * from RS_workLV where M_id = #{memId}
+	</select>
 </mapper>

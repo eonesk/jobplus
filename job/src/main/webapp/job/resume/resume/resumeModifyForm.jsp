@@ -9,42 +9,36 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 	body{
-		background: aqua; 
 		margin: 0; padding: 0;
 	}
-	#header{
+	body #header{
 		background: lightgray; 
 		width: 100%; height: 50px;
 	}
 	#section{
-		background: orange; 
+		background: white; 
 		margin:50px auto; width: 1000px; text-align: left;
 	}
 	#nav{
-		background: lightblue;
+		background: white;
 		position: fixed; top: 100px; right : 80px;
-		width: 300px; float: right;
+		width: 250px; float: right;
 	}
 	#section tr, td{
 		padding: 5px;
 	}
-	#modifyBtn{
-		width: 100%; height: 50px; bottom: 0px;
-	}
+	
 	#test{
 		background-color: white; width: 180px;
 	}
 	#section > div{
-		background:	pink;
+		background:	white;
 	}
 	#section input{
 		height: 50px;
 	}
 	#section select{
 		height: 56px;
-	}
-	#rs_title{
-		width: 100%;
 	}
 	#nav_menu tr td{
 		height: 36px;
@@ -76,6 +70,30 @@
 	}
 	#rs_job_select3 select{
 		left:300px;
+	}
+	#rs_title{
+		width: 996px;
+	}
+	.button{
+		width:80px;
+	    background-color: #5882FA;
+	    border: none;
+	    color:#fff;
+	    padding: 10px 0;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 15px;
+	    margin: 4px;
+	    cursor: pointer;
+	}
+	.button_widthFree{
+		width: auto;
+		padding: 10px;
+	}
+	.button_resumeWrite{
+		width: 97%;
+		bottom: 0px;
 	}
 </style>
 <script type="text/javascript">
@@ -604,7 +622,7 @@ $(function() {
 <body>
 <form action="resumeWrite.do" method="post" name="resumeWriteForm">
 <input type="hidden" id="rs_seq">
-<div id="header">
+<div class="header">
 	<a href="#">JOBPLUS</a>
 	<a href="#">이력서 관리</a>
 </div>
@@ -663,12 +681,12 @@ $(function() {
 				<td colspan="2">
 					<div class="header">
 						<div class="left"><font>희망근무지</font><span class="rs_workspace_cnt"></span>/3</div>
-						<div class="right"><input type="button" id="rs_workspace_btn" value="추가하기"></div>
+						<div class="right"><input type="button" id="rs_workspace_btn" class="button" value="추가하기"></div>
 						<span id="rs_workspace_select1"></span>
 						<span id="rs_workspace_select2"></span>
 					</div>
 					<div class="section" id="rs_workspace_result">
-						<input type="button" id="rs_workspace">
+						<input type="button" id="rs_workspace" class="button button_widthFree">
 					</div>
 				</td>
 			</tr>
@@ -676,13 +694,13 @@ $(function() {
 				<td colspan="2">
 					<div class="header">
 						<div class="left"><font>직무 산업 키워드</font><span class="rs_job_cnt"></span>/3</div>
-						<div class="right"><input type="button" id="rs_job_btn" value="추가하기"></div>
+						<div class="right"><input type="button" id="rs_job_btn" class="button" value="추가하기"></div>
 						<div id="rs_job_select1"></div>
 						<div id="rs_job_select2"></div>
 						<div id="rs_job_select3"></div>
 					</div>
 					<div class="section" id="rs_job_result">
-						<input type="button" id="rs_job">
+						<input type="button" id="rs_job" class="button button_widthFree">
 					</div>                          
 				</td>
 			</tr>
@@ -770,7 +788,7 @@ $(function() {
 				<td><input type="checkbox" id="prCheck"></td>
 			</tr>
 		</table>
-		<input type="button" value="작성완료" id="modifyBtn">
+		<input type="button" value="작성완료" id="modifyBtn" class="button button_resumeWrite">
 </div>
 </form>
 </body>
