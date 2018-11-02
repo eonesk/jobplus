@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import job.resume.edu.bean.RS_eduDTO;
 import job.resume.intern.bean.RS_internDTO;
 
 @Controller
@@ -121,6 +122,47 @@ public class RS_internController {
 		modelAndView.addObject("jsonObject", jsonObject);
 		modelAndView.setViewName("/job/resume/intern/internJson.jsp");		
 
+		return modelAndView;
+	}	
+	@RequestMapping(value="/job/resume/intern/LoadView.do", method=RequestMethod.POST)
+	public ModelAndView LoadView(HttpServletRequest request) {		
+		ModelAndView modelAndView = new ModelAndView();
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		String rsit_Startdate = "";
+		String rsit_Enddate = "";
+		
+		String accumSeq = request.getParameter("accumSeq");		
+		int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");
+		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);
+		System.out.println("accumSeqSubstring : " + accumSeqSubstring);
+
+		String[] accumSeqSplit = accumSeq.split("/"); 
+		for(int i = 0; i < accumSeqSplit.length; i++) {
+			int rsit_Seq = Integer.parseInt(accumSeqSplit[i]);
+			RS_internDTO internDTO = internService.selectinternDTO(rsit_Seq);
+			DateFormat Format = new SimpleDateFormat("yyyy-MM-dd");
+			rsit_Startdate = Format.format(internDTO.getRsit_Startdate());
+			rsit_Enddate = Format.format(internDTO.getRsit_Enddate());
+			JSONObject temp = new JSONObject();
+			temp.put("rsit_Seq", internDTO.getRsit_Seq());
+			temp.put("rsit_Type", internDTO.getRsit_Type());
+			temp.put("rsit_Company", internDTO.getRsit_Company());
+			// date값 넘기는법 
+			temp.put("rsit_Startdate", rsit_Startdate);			
+			temp.put("rsit_Enddate", rsit_Enddate);
+			temp.put("rsit_Content", internDTO.getRsit_Content());
+			temp.put("m_Id", internDTO.getM_Id());
+			temp.put("rsit_UserTitle", internDTO.getRsit_UserTitle());
+			System.out.println("internDTO = " + internDTO.toString());
+			items.put(i, temp);
+		}
+		
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/intern/selectedDTOJson.jsp");
+				
 		return modelAndView;
 	}
 }

@@ -7,7 +7,6 @@
 <title>교육이수작성폼</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-
 	var eduPlusButtonCnt = 0;
 	
 	$(function() {	

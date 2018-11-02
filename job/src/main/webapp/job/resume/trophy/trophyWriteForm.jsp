@@ -23,7 +23,7 @@
 			clone.find('*[id]').each(function() {
 				$(this).attr("id", $(this).attr("id") + count);
 			});
-			clone.insertBefore("#t");
+			clone.insertAfter("#t");
 			$("#t" + count).show();
 			
 		$("#trophydelete" + num).on("click", function() {

@@ -13,6 +13,8 @@ public interface RS_internService {
 	List<RS_internDTO> selectTitleList(String memId);
 	// 삭제
 	int Delete(int rsit_Seq);
+	// seq검색
+	RS_internDTO selectinternDTO(int rsit_Seq);
 	
 	int selectLastSeq();
 }

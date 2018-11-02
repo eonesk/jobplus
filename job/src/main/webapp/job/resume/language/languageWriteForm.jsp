@@ -13,17 +13,19 @@
 		
 		$("#langplus").click(function() {		
 			count++;
-			var num = count;	
-			if (count >= 4) {
-				count--;
+			var num = count;
+			var clone = $("#t").clone().attr('id', 't' + count);
+			if (count >= 4) {				
 				alert("항목추가는 최대 3개까지 입력가능합니다.");
+				count--;
 				return false;
 			}
-			var clone = $("#t").clone().attr('id', 't' + count);
+			
 			clone.find('*[id]').each(function() {
 				$(this).attr("id", $(this).attr("id") + count);
 			});
-			clone.insertBefore("#t");
+			
+			clone.insertAfter("#t");
 			$("#t" + count).show();
 			
 			$("#langdelete" + num).on("click", function() {

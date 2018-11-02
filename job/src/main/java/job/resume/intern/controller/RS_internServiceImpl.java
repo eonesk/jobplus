@@ -29,9 +29,15 @@ public class RS_internServiceImpl implements RS_internService {
 	public int Delete(int rsit_Seq) {
 		return internDAO.Delete(rsit_Seq);
 	}
+	
+	@Override
+	public RS_internDTO selectinternDTO(int rsit_Seq) {		
+		return internDAO.selectinternDTO(rsit_Seq);
+	}
+	
 	@Override
 	public int selectLastSeq() {
 		return internDAO.selectLastSeq();
-	}	
+	}
 	
 }
