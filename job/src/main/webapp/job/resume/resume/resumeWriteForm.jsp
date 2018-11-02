@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
+	hr{
+		text-align: center;
+		width: 95%;
+	}
 	body{
 		margin: 0; padding: 0;
 	}
@@ -22,7 +26,7 @@
 	#nav{
 		background: white;
 		position: fixed; top: 100px; right : 80px;
-		width: 250px; float: right;
+		width: 200px; float: right;
 	}
 	#section tr, td{
 		padding: 5px;
@@ -53,17 +57,14 @@
 		width: 320px;
 	}
 	#working_conditions .header .right{
-		width: 100px;
 		background: white;
+		vertical-align: center;
 	}
 	#rs_workspace_select1, #rs_workspace_select2, #rs_job_select1, #rs_job_select2, #rs_job_select3{
 		display: none;
-		position: absolute;
 	}
 	#rs_workspace_select1 select, #rs_workspace_select2 select, #rs_job_select1 select, #rs_job_select2 select, #rs_job_select3 select{
-		width: 150px;
-		height: 200px;
-		position: relative;
+		width: auto;
 	}
 	#rs_workspace_select2 select, #rs_job_select2 select{
 		left: 150px;
@@ -94,6 +95,28 @@
 	.button_resumeWrite{
 		width: 97%;
 		bottom: 0px;
+	}
+	.working_conditions_item1{
+		padding-left: 8px;
+		vertical-align: center;
+	}
+	.rs_type{
+		margin-right: 75px;
+	}
+	.rs_email{
+		width: 390px;
+	}
+	.rs_address{
+		width: 480px;
+	}
+	.rs_birth{
+		width: 170px;
+	}
+	.checkbox{
+		width: 20px;
+		height: 20px;
+		border: 2px solid gray;
+		vertical-align: -20px;
 	}
 </style>
 <script type="text/javascript">
@@ -245,10 +268,10 @@
 		
 		$("#rs_pay_no").change(function() {
 			if($(this).is(":checked")){
+				$("#rs_pay").val("");
 				$("#rs_pay").attr("placeholder", "면접 후 결정");
 				$("#rs_pay").attr("disabled", true);
 			}else{
-				$("#rs_pay").val("");
 				$("#rs_pay").attr("placeholder", "희망연봉");
 				$("#rs_pay").attr("disabled", false);
 			}
@@ -423,6 +446,7 @@
 			var rsw_Seq1 = null;
 			var rsw_Seq2 = null;
 			var rsw_Seq3 = null;
+			alert($("#rsitSeq").val());
 			var rsit_Seq1 = $("#rsitSeq1").val();
 			var rsit_Seq2 = $("#rsitSeq2").val();
 			var rsit_Seq3 = $("#rsitSeq3").val();
@@ -520,7 +544,7 @@
 		<table>
 			<tr>
 				<td><input type="text" name="rs_name" id="rs_name" value="${memberDTO.m_name }" placeholder="이름"></td>
-				<td><input type="date" name="rs_birth" id="rs_birth" value="${m_birth }" placeholder="생년월일"></td>
+				<td><input type="date" name="rs_birth" id="rs_birth" class="rs_birth" value="${m_birth }" placeholder="생년월일"></td>
 				<td>
 					<select name="rs_gender" id="rs_gender">
 						<option value="error">---성별---</option>
@@ -534,43 +558,44 @@
 					</c:if>
 					</select>
 				</td>
-				<td><input type="text" name="rs_email" id="rs_email" value="${memberDTO.m_email }" placeholder="이메일"></td>
+				<td><input type="text" name="rs_email" id="rs_email" class="rs_email" value="${memberDTO.m_email }" placeholder="이메일"></td>
 				<td rowspan="2"><img src="./img/IDphoto_103x132.jpg" onclick="alert('오')"></td>
 			</tr>
 			<tr>
 				<td><input type="text" name="rs_homenum" id="rs_homenum" value="${memberDTO.m_homenum }" placeholder="전화번호"></td>
 				<td><input type="text" name="rs_phone" id="rs_phone" value="${memberDTO.m_phone }" placeholder="휴대폰번호"></td>
-				<td colspan="2"><input type="text" name="rs_address" id="rs_address" value="${memberDTO.m_address }" placeholder="주소"></td>
+				<td colspan="2"><input type="text" name="rs_address" id="rs_address" class="rs_address" value="${memberDTO.m_address }" placeholder="주소"></td>
 			</tr>
 		</table>
 	</div>
+	<hr>
 	<div id="working_conditions">
 	<h2>희망근무조건</h2>
+		<div class="working_conditions_item1">
+			<select id="rs_type" name="rs_type" class="rs_type">
+				<option value="error">---고용형태---</option>
+				<option value="정규직">정규직</option>
+				<option value="계약직">계약직</option>
+				<option value="병역특례">병역특례</option>
+				<option value="프리랜서">프리랜서</option>
+				<option value="파견대행">파견대행</option>
+				<option value="인턴직">인턴직</option>
+			</select>
+			<span class="rs_pay">	
+				<input type="number" placeholder="희망연봉" id="rs_pay" name="rs_pay"><font>만원이상&nbsp;&nbsp;&nbsp;&nbsp;</font> 
+				<input type="checkbox" value="면접 후 결정" id="rs_pay_no" name="rs_pay_no" class="checkbox rs_pay_no"><label for="rs_pay_no">면접 후 결정</label>
+			</span>
+		</div>		
 		<table>
-			<tr>
-				<td width="50%">
-					<select id="rs_type" name="rs_type">
-						<option value="error">---고용형태---</option>
-						<option value="정규직">정규직</option>
-						<option value="계약직">계약직</option>
-						<option value="병역특례">병역특례</option>
-						<option value="프리랜서">프리랜서</option>
-						<option value="파견대행">파견대행</option>
-						<option value="인턴직">인턴직</option>
-					</select>
-				</td>
-				<td>
-					<input type="number" placeholder="희망연봉" id="rs_pay" name="rs_pay"><font>만원이상</font> 
-					<input type="checkbox" value="면접 후 결정" id="rs_pay_no" name="rs_pay_no"><font>면접 후 결정</font>
-				</td>
-			</tr>
 			<tr>
 				<td colspan="2">
 					<div class="header">
 						<div class="left"><font>희망근무지</font><span class="rs_workspace_cnt"></span>/3</div>
-						<div class="right"><input type="button" id="rs_workspace_btn" class="button" value="추가하기"></div>
-						<span id="rs_workspace_select1"></span>
-						<span id="rs_workspace_select2"></span>
+						<div class="right">
+							<input type="button" id="rs_workspace_btn" class="button rs_workspace_btn" value="추가하기">
+							<span id="rs_workspace_select1"></span>
+							<span id="rs_workspace_select2"></span>
+						</div>		
 					</div>
 					<div class="section" id="rs_workspace_result">
 						<input type="button" id="rs_workspace" class="button button_widthFree">
@@ -581,10 +606,12 @@
 				<td colspan="2">
 					<div class="header">
 						<div class="left"><font>직무 산업 키워드</font><span class="rs_job_cnt"></span>/3</div>
-						<div class="right"><input type="button" id="rs_job_btn" class="button" value="추가하기"></div>
-						<div id="rs_job_select1"></div>
-						<div id="rs_job_select2"></div>
-						<div id="rs_job_select3"></div>
+						<div class="right">
+							<input type="button" id="rs_job_btn" class="button" value="추가하기">
+							<span id="rs_job_select1"></span>
+							<span id="rs_job_select2"></span>
+							<span id="rs_job_select3"></span>
+						</div>
 					</div>
 					<div class="section" id="rs_job_result">
 						<input type="button" id="rs_job" class="button button_widthFree">
@@ -631,48 +658,48 @@
 		<h2>이력서 항목</h2>
 		<table id="nav_menu">
 			<tr>
-				<td id="test">학력</td>
-				<td><input type="checkbox" id="studyLVCheck"></td>
+				<td id="test"><label for="studyLVCheck">학력</label></td>
+				<td><input type="checkbox" id="studyLVCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>경력</td>
-				<td><input type="checkbox" id="workLVCheck"></td>
+				<td><label for="workLVCheck">경력</label></td>
+				<td><input type="checkbox" id="workLVCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>인턴,대외활동</td>
-				<td><input type="checkbox" id="internCheck"></td>
+				<td><label for="internCheck">인턴, 대외활동</label></td>
+				<td><input type="checkbox" id="internCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>교육이수</td>
-				<td><input type="checkbox" id="eduCheck"></td>
+				<td><label for="eduCheck">교육이수</label></td>
+				<td><input type="checkbox" id="eduCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>자격증</td>
-				<td><input type="checkbox" id="licenseCheck"></td>
+				<td><label for="licenseCheck">자격증</label></td>
+				<td><input type="checkbox" id="licenseCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>수상</td>
-				<td><input type="checkbox" id="trophyCheck"></td>
+				<td><label for="trophyCheck">수상</label></td>
+				<td><input type="checkbox" id="trophyCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>해외경험</td>
-				<td><input type="checkbox" id="foreignCheck"></td>
+				<td><label for="foreignCheck">해외경험</label></td>
+				<td><input type="checkbox" id="foreignCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>어학</td>
-				<td><input type="checkbox" id="languageCheck"></td>
+				<td><label for="languageCheck">어학</label></td>
+				<td><input type="checkbox" id="languageCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>포트폴리오</td>
-				<td><input type="checkbox" id="portfolioCheck"></td>
+				<td><label for="portfolioCheck">포트폴리오</label></td>
+				<td><input type="checkbox" id="portfolioCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>취업우대</td>
-				<td><input type="checkbox" id="vipCheck"></td>
+				<td><label for="vipCheck">취업우대</label></td>
+				<td><input type="checkbox" id="vipCheck" class="checkbox"></td>
 			</tr>
 			<tr>
-				<td>자기소개서</td>
-				<td><input type="checkbox" id="prCheck"></td>
+				<td><label for="prCheck">자기소개서</label></td>
+				<td><input type="checkbox" id="prCheck" class="checkbox"></td>
 			</tr>
 		</table>
 		<input type="button" value="작성완료" id="writeBtn" class="button button_resumeWrite">

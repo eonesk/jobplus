@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <form action="resumeWriteForm.do" method="post">
 	<input type="submit" value="이력서작성">
 </form>
