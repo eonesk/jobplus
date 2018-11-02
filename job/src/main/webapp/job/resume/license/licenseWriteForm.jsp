@@ -20,7 +20,7 @@
 			var clone = $("#licensePlus").clone().attr("id", "licensePlus" + numbering);
 			
 			if(licensePlusButtonCnt >=4){
-				console.log("항목추가는 최대 3개까지만 추가가능 합니다.")
+				alert("항목추가는 최대 3개까지만 추가가능 합니다.")
 				licensePlusButtonCnt--;
 				return false;
 			}
@@ -38,7 +38,7 @@
 			clone.insertAfter("#licensePlus");
 			
 			$("#licensePlus" + numbering).show();
-	
+			
 			/** 이벤트 바인딩 */
 			// 'X'표 눌렀을 때 닫기
 			$("#licensePlusCancel" + numbering).on("click", function() {
@@ -168,7 +168,8 @@
 		
 		<!-- input영역 1번째 줄 -->
 		<div id="licensePlusField" style="padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); height: auto;">
-			<div id="licensePlus" class="licensePlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">				
+			<div id="licensePlus" class="licensePlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
+				<!-- SEQ값 : hidden -->				
 				<input id="rsls_Seq" name="rsls_Seq" class="rsls_Seq" type="hidden">
 				<a id="licensePlusCancel" name="licensePlusCancel" href="#" style="text-decoration: none;">
 					<div id="licenseCloseButton" style="bo rder: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
