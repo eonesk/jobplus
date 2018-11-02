@@ -58,6 +58,18 @@ public class companyInfoDTO {
     // 기타정보 
     private String cpi_Etc;
 
+    // 자본금 
+    private String cpi_Moneybase;
+
+    // 매출액 
+    private String cpi_Moneysell;
+
+    // 당기손익금액 
+    private String cpi_Palmoney;
+
+    // 당기손익기준 
+    private String cpi_Paldate;
+
 	public Integer getCpi_Seq() {
 		return cpi_Seq;
 	}
@@ -201,6 +213,38 @@ public class companyInfoDTO {
 	public void setCpi_Etc(String cpi_Etc) {
 		this.cpi_Etc = cpi_Etc;
 	}
-    
+
+	public String getCpi_Moneybase() {
+		return cpi_Moneybase;
+	}
+
+	public void setCpi_Moneybase(String cpi_Moneybase) {
+		this.cpi_Moneybase = cpi_Moneybase;
+	}
+
+	public String getCpi_Moneysell() {
+		return cpi_Moneysell;
+	}
+
+	public void setCpi_Moneysell(String cpi_Moneysell) {
+		this.cpi_Moneysell = cpi_Moneysell;
+	}
+
+	public String getCpi_Palmoney() {
+		return cpi_Palmoney;
+	}
+
+	public void setCpi_Palmoney(String cpi_Palmoney) {
+		this.cpi_Palmoney = cpi_Palmoney;
+	}
+
+	public String getCpi_Paldate() {
+		return cpi_Paldate;
+	}
+
+	public void setCpi_Paldate(String cpi_Paldate) {
+		this.cpi_Paldate = cpi_Paldate;
+	}
+
     
 }

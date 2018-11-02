@@ -10,51 +10,9 @@
 </head>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-
-// function fileLoad(imgPath){
-// 	alert("사진이 등록되었습니다.");
-// // 	window.opener.document.getElementById("fromInput").value=document.getElementById("imgValue").value
-// 	var imgData = $('#imgValue').val(); 
-// 	$(opener.document).find("#aaa").attr("src",imgData);
-// 	window.close(); 
-// // 	$("#img_form_url").attr("src", imgurl);
-// //////////////////////////////////////////////////여기 다시봐줘
-// // 	window.colse();
-// }
-// $( document ).ready(function() {
-// // 	$('#selectPhoto').click(function() { 
-// // 		alert("11");
-// // 	    $('#selectPhoto').addClass("active");
-// // 	    $('#selectPhoto').removeClass("visited");
-// // 	});     
-// });
-
-
-// $("input:checkbox").on('click', function() {
-// 	var $box = $(this);
-// 		if ($box.is(":checked")) {
-// 			cscontrol(); 
-// 			var group = "input:checkbox[name='" + $box.attr("name") + "']";
-// 				$(group).prop("checked", false);
-// 				$box.prop("checked", true);
-// 		} else {
-// 			$box.prop("checked", false);
-// 		}
-// 	});
- 
-// function cscontrol(chk,imgPath){ 
-// // 	$('#selectPhoto').addClass("active");
-// 	if($("#selectPhoto"+chk).css("background-color") == "rgb(219, 238, 255)"){
-// 		$('#selectPhoto'+chk).css("background-color","");
-// 	}else{  
-// 		$('#selectPhoto'+chk).css("background-color","#dbeeff"); 
-// 		$('#imgValue').val(imgPath);
-// 	}  
-// //     $('#selectPhoto').removeClass("visited");
-// }
 $(function() {
 	$("#fileLoad").click(function() {
-		alert("체크");
+		alert("파일을 불러옵니다.");
 		//선택박스 클릭시 체크된 ROW값을 가져옴
 		var checkbox = $("input[name=file_check]:checked");
 		var rowData = new Array();
@@ -64,46 +22,9 @@ $(function() {
 		var filename;
 		var type;
 		var uorf;
-		var title;
-			
-// 		$("#selectBtn").click(function(){ 
-			
-// 			var rowData = new Array();
-// 			var tdArr = new Array();
-// 			var checkbox = $("input[name=user_CheckBox]:checked");
-			
-// 			// 체크된 체크박스 값을 가져온다
-// 			checkbox.each(function(i) {
-	
-// 				// checkbox.parent() : checkbox의 부모는 <td>이다.
-// 				// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
-// 				var tr = checkbox.parent().parent().eq(i);
-// 				var td = tr.children();
-				
-// 				// 체크된 row의 모든 값을 배열에 담는다.
-// 				rowData.push(tr.text());
-				
-// 				// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-// 				var no = td.eq(1).text()+", "
-// 				var userid = td.eq(2).text()+", ";
-// 				var name = td.eq(3).text()+", ";
-// 				var email = td.eq(4).text()+", ";
-				
-// 				// 가져온 값을 배열에 담는다.
-// 				tdArr.push(no);
-// 				tdArr.push(userid);
-// 				tdArr.push(name);
-// 				tdArr.push(email);
-				
-// 				//console.log("no : " + no);
-// 				//console.log("userid : " + userid);
-// 				//console.log("name : " + name);
-// 				//console.log("email : " + email);
-// 			});
-		
-		
-		
-		
+		var title;		
+		var fileData;
+					
 		checkbox.each(function(i) {
 			var tr = checkbox.parent().parent().eq(i);
 			var td = tr.children();
@@ -111,12 +32,12 @@ $(function() {
 			rowData.push(tr.text());
 
 			//td.eq(0)은 체크박스 이므로 td.eq(1)의 값부터 가져옴
-			seq = td.eq(1).val()+",";
-			urlname = td.eq(2).val()+",";
-			filename = td.eq(3).val()+",";
-			type = td.eq(4).text()+",";
-			uorf = td.eq(5).val()+",";
-			title = td.eq(6).text()+",";
+			seq = 		"/"+ td.eq(1).val();   
+			urlname = 	"/"+ td.eq(2).val();   
+			filename = 	"/"+ td.eq(3).val();   
+			type = 		"/"+ td.eq(4).text();  
+			uorf = 		"/"+ td.eq(5).val();   
+			title = 	"/"+ td.eq(6).text();  
 			
 			tdArr.push(seq);
 			tdArr.push(urlname);
@@ -125,28 +46,17 @@ $(function() {
 			tdArr.push(uorf);
 			tdArr.push(title);
 			
-			
-			
+			fileData += seq + urlname + filename + type + uorf + title;
+			alert("fileData111::" + fileData);
+// 			$("#file_type").html(fileData);
 // 			$("#file_type").html(seq + " // " + urlname+ " // " +filename+ " // " +type+ " // " +uorf + " // " +title);
 // 			$("#rsprTitle", opener.document).val(title);
 		});
-		
-		opener.parent.test(rowData);
+		opener.parent.load_list(fileData);
 		self.close();
-		
-
-	});
+	});	
 });
-// function fileLoad(type) {
-// 	alert("등록되었습니다");
-	
-// }
 
-// function cscontrol(chk,imgPath){ 
-// 		$('#file_check'+chk).css("background-color","#dbeeff"); 
-// 		$('#fileValue').val(imgPath);
-// 	}  
-// }
 
 
 </script>
@@ -231,7 +141,6 @@ a {
 	<div id="file_type"></div>
 		<table>
 			<c:forEach var='portfolioDTO' items="${list }" varStatus="i">  
-			${portfolioDTO.rspf_Seq } 
 			<tr class="pf_table">
 				<td><input type="checkbox" name="file_check" id="file_check" class="file_check"></td>
 				<input type="hidden" id="seq" name="seq" value="${portfolioDTO.rspf_Seq }">

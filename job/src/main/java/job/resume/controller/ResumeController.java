@@ -56,7 +56,7 @@ public class ResumeController {
 		String memId = (String) session.getAttribute("memId");
 		
 		//수정해야됨!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		int rs_seq = 16;
+		int rs_seq = 19;
 		
 		ResumeDTO resumeDTO = resumeService.selectResume(memId, rs_seq);
 		
@@ -83,7 +83,7 @@ public class ResumeController {
 			"1", "2", "3", "1", "2", "3",
 			"1", "2", "3", "1", "2", "3",
 			"", "", ""};
-		Integer[] seq = new Integer[tableName.length];
+		int[] seq = new int[tableName.length];
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
@@ -91,10 +91,12 @@ public class ResumeController {
 		}
 
 		for (int i = 0; i < seq.length; i++) {
-			if (request.getParameter(tableName[i] + "Seq") != null) {
-				seq[i] = Integer.parseInt(request.getParameter(tableName[i] + "_seq" + tableNum[i]));
+			if (request.getParameter(tableName[i] + "_Seq").equals("")) {
+				System.out.println("널 일때 : "+request.getParameter(tableName[i] + "seq" + tableNum[i]));
+				seq[i] = (Integer) null;
 			} else {
-				seq[i] = null;
+				System.out.println("널이 아닐 때 : "+request.getParameter(tableName[i] + "seq" + tableNum[i]));
+				seq[i] = Integer.parseInt(request.getParameter(tableName[i] + "seq" + tableNum[i]));
 			}
 		}
 		Date date = null;
