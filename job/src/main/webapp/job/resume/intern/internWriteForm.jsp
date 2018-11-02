@@ -99,7 +99,8 @@ fieldset {
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
-    margin: 4px;
+    margin: 5px;
+    margin-left : 0;
     cursor: pointer;
 }
 .internsave:hover, .internload:hover {

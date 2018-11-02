@@ -90,7 +90,7 @@ public class RS_internController {
 		ModelAndView modelAndView = new ModelAndView();		
 		// Session으로 넘어오는 ID값 임시 지정
 		String memId = "ID";		
-		// memId가 가지고 있는 자소서의 rsprUserTitle을 select해서 list에 추가
+		// memId가 가지고 있는 자소서의 UserTitleList을 select해서 list에 추가
 		List<RS_internDTO> UserTitleList = internService.selectTitleList(memId);
 		JSONObject jsonObject = new JSONObject();
 		JSONArray items = new JSONArray();
