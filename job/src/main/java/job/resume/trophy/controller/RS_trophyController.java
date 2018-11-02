@@ -2,6 +2,7 @@ package job.resume.trophy.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,11 +12,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import job.resume.trophy.bean.RS_trophyDTO;
 @Controller
@@ -70,25 +73,39 @@ public class RS_trophyController {
 		out.print(num);
 	}
 	@RequestMapping(value="/job/resume/trophy/Load.do", method=RequestMethod.POST)
-	public void Load(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
+	public ModelAndView Load(HttpServletRequest request) throws IOException {
+		ModelAndView modelAndView = new ModelAndView();		
 		// Session으로 넘어오는 ID값 임시 지정
-		String memId = "ID";
-		
-		// memId가 가지고 있는 자소서의 rsprUserTitle을 select해서 list에 추가
+		String memId = "ID";		
+		// memId가 가지고 있는 자소서의 UserTitleList을 select해서 list에 추가
 		List<RS_trophyDTO> UserTitleList = trophyService.selectTitleList(memId);	
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("UserTitleList", UserTitleList);
 		JSONObject jsonObject = new JSONObject();
-		//jsonObject.putAll(map);
-		
-		out.println(jsonObject);
-	}
-	
-	
+		JSONArray items = new JSONArray();
+		String rst_Date = "";
+		for(int i=0; i < UserTitleList.size(); i++) {
+			RS_trophyDTO trophyDTO = UserTitleList.get(i);
+			System.out.println("trophyDTO 출력 : " + trophyDTO.toString());
+			DateFormat Format = new SimpleDateFormat("yyyy-MM-dd");
+			rst_Date = Format.format(trophyDTO.getRst_Date());
+			JSONObject temp = new JSONObject();
+			temp.put("rst_Seq", trophyDTO.getRst_Seq());
+			temp.put("rst_Name", trophyDTO.getRst_Name());
+			temp.put("rst_Company", trophyDTO.getRst_Company());
+			temp.put("rst_Date", rst_Date);
+			temp.put("rst_Content", trophyDTO.getRst_Content());
+			temp.put("m_Id", trophyDTO.getM_Id());
+			temp.put("RST_UserTitle", trophyDTO.getRST_UserTitle());
+			
+			items.put(i, temp);
+		}
+
+		jsonObject.put("items", items);
+		// date		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/trophy/trophyJson.jsp");		
+
+		return modelAndView;
+	}	
 }
 
 

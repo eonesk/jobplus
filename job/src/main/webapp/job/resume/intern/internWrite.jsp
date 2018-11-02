@@ -63,7 +63,7 @@
 	font-weight: bold;
 	color: #2A120A;
 }
-#save, #cancle {
+.save, .cancle {
 	width:70px;
     background-color: #5882FA;
     border: none;
@@ -76,7 +76,7 @@
     margin: 4px;
     cursor: pointer;
 }
-#save:hover, #cancle:hover {
+.save:hover, .cancle:hover {
     background-color: #2E9AFE;
 }
 </style>
@@ -86,8 +86,8 @@
 		<p class="title">제목 저장하기</p>		
 		<div>			
 			<input type="text" id="rsitUserTitle" name="rsitUserTitle" style="width:280px;height:30px;">
-			<input type="button" value="저장하기" id="save">
-			<input type="button" value="취소" id="cancle">		
+			<input type="button" value="저장하기" id="save" class="save">
+			<input type="button" value="취소" id="cancle" class="save">		
 		</div>				
 	</fieldset>
 </body>
