@@ -10,33 +10,33 @@
 $(function() {
 	var num = ${param.num};
 	alert("num의 수 = " + num);
-	var rstName = $("#rstName" + num, opener.document).val();
-	var rstCompany = $("#rstCompany" + num, opener.document).val();
-	var rstDate = $("#rstDate" + num, opener.document).val();
-	var rstContent = $("#rstContent" + num, opener.document).val();
-	alert(rstName + " // " + rstCompany+ " // " + rstDate
-			+ " // " + rstContent);
+	var rst_Name = $("#rst_Name" + num, opener.document).val();
+	var rst_Company = $("#rst_Company" + num, opener.document).val();
+	var rst_Date = $("#rst_Date" + num, opener.document).val();
+	var rst_Content = $("#rst_Content" + num, opener.document).val();
+	alert(rst_Name + " // " + rst_Company+ " // " + rst_Date
+			+ " // " + rst_Content);
 	
 	$("#save").click(function() {
-		if(!$("#rstuserTitle").val()) {
+		if(!$("#rst_UserTitle").val()) {
 			alert("수상 제목을 입력해주세요");
-			$("#rstuserTitle").focus();
+			$("#rst_UserTitle").focus();
 			return false;
 		} /**else {
 			$("form[name='internWrite']").submit();
 		}	*/			
-		var rstuserTitle = $("#rstuserTitle").val();
+		var rst_UserTitle = $("#rst_UserTitle").val();
 		
 		$.ajax({
 			type: 'POST',
 			url: 'Write.do',
 			dataType: 'text',
 			data: {
-				"rstName": rstName,
-				"rstCompany": rstCompany,
-				"rstDate": rstDate,
-				"rstContent": rstContent,
-				"rstuserTitle": rstuserTitle
+				"rst_Name": rst_Name,
+				"rst_Company": rst_Company,
+				"rst_Date": rst_Date,
+				"rst_Content": rst_Content,
+				"rst_UserTitle": rst_UserTitle
 			},
 			success: function(data) {
 				if(data > 0) {
@@ -81,7 +81,7 @@ $(function() {
 	<fieldset>		
 		<p class="title">제목 저장하기</p>		
 		<div>			
-			<input type="text" id="rstuserTitle" name="rstuserTitle"  style="width:280px;height:30px;">
+			<input type="text" id="rst_UserTitle" name="rst_UserTitle"  style="width:280px;height:30px;">
 			<input type="button" value="저장하기" id="save">
 			<input type="button" value="취소" id="cancle">			
 		</div>		
