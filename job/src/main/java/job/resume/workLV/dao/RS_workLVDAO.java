@@ -27,4 +27,8 @@ public class RS_workLVDAO {
 	public List<RS_workLVDTO> rswGetList(String memId){
 		return sqlSession.selectList("mybatis.workLVMapper.rswGetList", memId);
 	}
+	
+	public RS_workLVDTO rswGetDTO(int rsw_seq) {
+		return sqlSession.selectOne("mybatis.workLVMapper.rswGetDTO", rsw_seq);
+	}
 }

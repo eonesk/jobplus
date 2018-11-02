@@ -42,15 +42,15 @@ $(function() {
 							
 							
 							var checkbox = $("<input>").attr({
-								"id": "rsw_UserTitleR",
+								"id": "rsw_userTitleR",
 								"type": "checkbox",
 								"value": item.rsw_seq
-							}).addClass("rsw_UserTitleR");
+							}).addClass("rsw_userTitleR");
 							
 							var a = $("<a>").attr({
-								"id": "rsw_UserTitleA",
+								"id": "rsw_userTitleA",
 								"href": "#"
-							}).html(item.rsw_userTitle);
+							}).html(item.rsw_userTitle).bind('click', {param: dto}, add_event);;
 							
 							li.append(checkbox);
 							li.append(a);
@@ -67,14 +67,14 @@ $(function() {
 						
 						
 						if(isOverflow == 3) {
-							$(".rsw_UserTitleR").attr("disabled", "true");
+							$(".rsw_userTitleR").attr("disabled", "true");
 						} else if(isOverflow < 3 || isOverflow >= 0) {
-							$(".rsw_UserTitleR").on("change", function() {
+							$(".rsw_userTitleR").on("change", function() {
 								if($(this).is(":checked")){
 									isOverflow++;
 									/* alert("isOverflow[rsw_UserTitleR change] : " + isOverflow); */
 									if(isOverflow == 3) {
-										$(".rsw_UserTitleR").attr("disabled", "true");
+										$(".rsw_userTitleR").attr("disabled", "true");
 									}
 								} else {
 									isOverflow--;
@@ -88,7 +88,8 @@ $(function() {
 							
 							var accumSeq = "";
 							
-			                $(".rsw_UserTitleR:checked").each(function() {
+			                //체크한값의 
+							$(".rsw_userTitleR:checked").each(function() {
 			                	alert($(this).val());
 			                	//eduSeqList.push($(this).val());
 			                	accumSeq += $(this).val() + "/";
@@ -97,48 +98,52 @@ $(function() {
 			                alert(accumSeq);
 			                
 			                if(accumSeq == "") {
-			                	alert("체크해주셍ㅂ");
+			                	alert("체크해주세요");
 			                } else {
 			                	alert("체크됨");
 			                	if(confirm("불러오기를 진행하시겠습니까?")) {
-			                		opener.parent.selected(accumSeq, ${param.eduPlusButtonCnt});
+			                		opener.parent.selected(accumSeq, ${param.addCount});
 				                	self.close();
 			                	}
 			                	
 			                }
 						});
 						
-						/* function add_event(event) {
-							alert(event.data.param.rse_UserTitle + " // " + event.data.param.m_Id);
-							$("#eduLoadViewInit").hide();
-							$("#eduLoadView").html("");
+											
+						function add_event(event) {
+						alert(event.data.param.rsw_userTitle + " // " + event.data.param.m_id);
+						
+						$("#loadSelectList").html("");
 
-							var userTitle = $("<h3>").html("[ " + event.data.param.rse_UserTitle + " ]");
-							var table = $("<table>").attr("border", "1");
-							var indexTr = $("<tr>");
-							var indexTd1 = $("<td>").html("교육명");
-							var indexTd2 = $("<td>").html("교육기관");
-							var indexTd3 = $("<td>").html("시작년월");
-							var indexTd4 = $("<td>").html("종료년월");
-							var indexTd5 = $("<td>").html("교육내용");
-							
-							indexTr.append(indexTd1).append(indexTd2).append(indexTd3).append(indexTd4).append(indexTd5);
-							table.append(indexTr);
-							
-							var contentTr = $("<tr>");
-							var contentTd1 = $("<td>").html(event.data.param.rse_Name);
-							var contentTd2 = $("<td>").html(event.data.param.rse_Company);								
-							var contentTd3 = $("<td>").html(event.data.param.rse_Startdate);
-							var contentTd4 = $("<td>").html(event.data.param.rse_Enddate);
-							var contentTd5 = $("<td>").html(event.data.param.rse_Content);
-							
-							contentTr.append(contentTd1).append(contentTd2).append(contentTd3).append(contentTd4).append(contentTd5);
-							table.append(contentTr);
-							
-							$("#eduLoadView").append(userTitle);
-							$("#eduLoadView").append(table);
-						} */
-						/* alert("종료"); */					
+						var userTitle = $("<legend>").html(event.data.param.rsw_userTitle);
+						
+						/* var table = $("<table>").attr("border", "1"); */
+						var ul = $("<ul>").addClass("selectListUl");
+						
+						var span1 = $("<span>").html(event.data.param.rsw_company);
+						var span2 = $("<span>").html(event.data.param.rsw_dept);
+						var span3 = $("<span>").html(event.data.param.rsw_startDate);
+						var span4 = $("<span>").html(event.data.param.rsw_endDate);
+						var span5 = $("<span>").html(event.data.param.rsw_position);
+						var span6 = $("<span>").html(event.data.param.rsw_job);
+						var span7 = $("<span>").html(event.data.param.rsw_pay);
+						var span8 = $("<span>").html(event.data.param.rsw_part);
+						
+						var li1 = $("<li>").html("회사명 : ").append(span1);
+						var li2 = $("<li>").html("부서명 : ").append(span2);
+						var li3 = $("<li>").html("입사년월 : ").append(span3);
+						var li4 = $("<li>").html("퇴사년월 : ").append(span4);
+						var li5 = $("<li>").html("직급/직책 : ").append(span5);
+						var li6 = $("<li>").html("직무 : ").append(span6);
+						var li7 = $("<li>").html("연봉 : ").append(span7);
+						var li8 = $("<li>").html("담당업무 : ").append(span8);
+						
+						ul.append(li1).append(li2).append(li3).append(li4).append(li5).append(li6)
+						.append(li7).append(li8);
+						$("#loadSelectList").append(userTitle);
+						$("#loadSelectList").append(ul);
+						$("#loadSelectList").show();
+						}				
 					},
 					error : function(e) {
 		                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
@@ -146,16 +151,17 @@ $(function() {
 				});			
 			}
 		},
+	
 		error : function(e) {
             alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
      	}
 	});	
 });
-	$(function() {		
-		$("#cancle").click(function() {
-			window.close();
-		});
+$(function() {		
+	$("#cancle").click(function() {
+		window.close();
 	});
+});
 </script>
 
 <style type="text/css">
@@ -184,7 +190,7 @@ $(function() {
 #loadSection {
 	margin-bottom: 20px;
 	text-align: center;
-	height: 350px;
+	height: auto;
 }
 
 #loadSection p {
@@ -192,22 +198,59 @@ $(function() {
 }
 
 #loadSection input {
-	width: 60%;
-	height: 40px;
+	
 }
 
 .loadList {
 	width: 80%;
 	height: 250px;
+	overflow:hidden;
 	margin-left: 30px;
-	overflow: auto;
 	-ms-overflow-style: none; /* IE에서 스크롤바 감춤 */
 	text-align: left;
+}
+
+.loadList .list_ul{
+	list-style: none;
+	height:100%;
+	overflow: auto;
+	-ms-overflow-style: none; /* IE에서 스크롤바 감춤 */
+	
+}
+
+.list_li{
+	list-style: none; 
+	border:1px solid gray;
+	
+}
+
+
+.list_li a{
+	/* font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	color:black; */
 }
 
 .loadList legend {
 	
 }
+
+.loadSelectList{
+	width: 80%;
+	margin-left: 30px;
+	overflow: auto;
+	-ms-overflow-style: none; /* IE에서 스크롤바 감춤 */
+	text-align: left;
+	font-weight: bold;
+	display: none;
+}
+
+/**집에서 확인할곳 */
+.loadSelectList ul{
+	line-height: 30px;
+}
+
 
 .listDiv{
 	border-bottom: 1px solid lightgray;
@@ -219,11 +262,11 @@ $(function() {
 	font-weight: bold;
 }
 .listTitle:nth-child(1){
-	padding-left: 20px;
+	padding-left: 30px;
 }
 
 .listTitle:nth-child(2){
-	padding-left: 100px;
+	padding-left: 120px;
 }
 #loadFooter {
 	height: 80px;
@@ -241,19 +284,7 @@ $(function() {
 	border-radius: 1.0em;
 }
 
-.list_li{
-	width:200px;
-	height:20px;
-	list-style: none; 
-	
-	border:1px solid gray;
-}
-.list_li a{
-	font-size: 20px;
-	font-weight: bold;
-	text-decoration: none;
-	color:black;
-}
+
 </style>
 
 
@@ -276,6 +307,9 @@ $(function() {
 				<ul id="list_ul" class="list_ul">
 					
 				</ul>
+			</fieldset>
+			<fieldset class="loadSelectList" id="loadSelectList">
+			
 			</fieldset>
 		</div>
 		<div id="loadFooter">
