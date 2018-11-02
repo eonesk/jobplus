@@ -84,7 +84,7 @@
 	font-weight: bold;
 	color: #2A120A;
 }
-#load, #cancle {
+.load, .cancle {
 	width:70px;
     background-color: #5882FA;
     border: none;
@@ -97,7 +97,7 @@
     margin: 4px;
     cursor: pointer;
 }
-#load:hover, #cancle:hover {
+.load:hover, .cancle:hover {
     background-color: #2E9AFE;
 }
 </style>
@@ -110,8 +110,8 @@
 			<table border="1" name="LoadList" id="LoadList">				
 			</table>			
 		</div>
-		<input type="button" value="불러오기" id="load">
-		<input type="button" value="취소" id="cancle">	
+		<input type="button" value="불러오기" id="load" class="load">
+		<input type="button" value="취소" id="cancle" class="cancle">	
 	</fieldset>
 </body>
 </html>

@@ -16,8 +16,14 @@ public class RS_trophyDTO {
     // 회원 아이디 
     private String m_Id;
     // 사용자정의 아이디
-    private String RST_UserTitle;
+    private String RST_UserTitle;    
     
+	@Override
+	public String toString() {
+		return "RS_trophyDTO [rst_Seq=" + rst_Seq + ", rst_Name=" + rst_Name + ", rst_Company=" + rst_Company
+				+ ", rst_Date=" + rst_Date + ", rst_Content=" + rst_Content + ", m_Id=" + m_Id + ", RST_UserTitle="
+				+ RST_UserTitle + "]";
+	}
 	public Integer getRst_Seq() {
 		return rst_Seq;
 	}

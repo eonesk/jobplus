@@ -8,90 +8,75 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		
-	});
 		function load_list(fileData) {
-			alert("fileData ::22 " + fileData);
-			var flieList = fileData;
-		
-			function view_list(fileList) {
-				var file_parts = list.split('/');
-				document.write(file_parts.join('::'));
-				for(var i in file_parts) {
+			$(function() {
+				alert("부모창");
+				console.log(fileData);
+				var fileList = fileData.split('%');
+				console.log("공백날리기~" +fileList[0]);
+				//한 줄씩 가져오기
+				for (var i = 1; i < fileList.length; i++) {
+					console.log('fileList[' +i+ '] = ' + fileList[i]);	
+					var file_parts = fileList[i].split('/');					
+
+					var type;
+					var filename;
+					var urlname;
+					var title; 
 					
-					document.write(file_parts[i]);
+					var type_li = $("<li>");					
+					var type_p = $("<p>");
+					type_p.addClass("file_item");					
+					var type_span = $("<span>");
+					type_span.attr("id","type"+i );
+					var title_span = $("<span>");
+					title_span.attr("id","title"+i );
+					var type_a = $("<a>");
+					type_a.attr("id","pf_name"+j);
+					type_a.attr("href",)
+					var type_btn = $("<button>");
+					type_btn.attr("type","button");	
+					type_btn.addClass("remove");
+					type_btn.attr("id","delete_btn"+i);
+					type_btn.html("삭제");
+					
+					//리스트 내용 하나씩 자르기
+					for (var j = 1; j < file_parts.length; j++) {
+						console.log('file_parts[' +j+ '] = ' + file_parts[j]);							
 
-// 					parts_seq = file_parts[0];
-// 					alert("seq ::" + seq);
+						
+						switch (j) {
+						case 4: 							
+							type = file_parts[4];													
+						case 6:
+							title = file_parts[6];
+						case 3:
+							filename = file_parts[3];
+// 							alert(filename);
+						case 2:
+							urlname = file_parts[2];
+						default:
+							break;
+						}
+					}					
 
-					}
-				}	
-			}
-		
-/////////////////////////
-// 		function load_list(fileData) {
-// 			alert("부모창 ");
-// 			alert("fileData : " + fileData);
-// 			var list = fileData;
-// 			var file_parts = list.split('/');
-// 			//파일 구분 가져오기
-// 			for (i=4; i<file_parts.length; i+=6) {
-			
-// 				function addList(file_parts[i]) {
-// 					var new_li = $("<li>");
-// 					new_li.attr("list_num", num);
-// 					new_li.addClass("file");
-// 					//<p>넣기
-// 					var type_p = $("<p>");
-// 					type_p.addClass("file_item");
-// 					//<span>넣기
-// 					var type_span = $("<span>");
-// 					type_span.html("[" + file_parts[i] + "]");
-// 					//조립
-// 					type_p.append(type_span);
-// 					new_li.append(type_p);
-// 					$("ul#portfolio_list").append(new_li);
-//  			}
-// 		}
-// 	}
+					type_span.html(type);
+					title_span.html(title);
+					type_a.html(urlname);
+					type_a.html(filename);																	
+					type_p.append(type_span);
+					type_p.append(title_span);
+					type_p.append(type_a);
+					type_p.append(type_btn);
+					type_li.append(type_p);
+					$("#portfolio_list").append(type_li);
+				}
+				$(".remove").click(function() {
+					$(this).parents('li').remove();
+				});
+			});
+		}
 
-// 	function addList(type, tilte, urlname, filename) {
-// 		var a = $('#파일구분').val();
-// 		var b = $('#파일 라디오박스').val();
-// 		var c = $('#파일 이름').val();
-// 		//새로 리스트 작성되는 li태그 객체
-// 		var new_li = $("<li>");
-// 		new_li.attr("file_num", num);
-// 		new_li.addClass("file");
-// 		//<p>태그 
-// 		var type_p = $("<p>");
-// 		type_p.addClass("file_item");
-// 		//<span>태그 - 파일구분  2
-// 		var type_span = $("<span>");
-// 		type_span.addClass("type");
-// 		type_span.html("[" + type + "]");
-// 		//<span>태그 - 포트폴리오 타이틀  3
-// 		var title_span = $("<span>");
-// 		title_span.html(title);
-// 		//삭제버튼  4
-// 		var del_input = $("<input>");
-// 		del_input.attr({
-// 			"type" : "button",
-// 			"value" : "삭제"
-// 		});
-// 		del_input.addClass("delete_btn");
-// 		//
-// 		var filename_a = $("<a>");
-// 		filename_a.html(filename); 
-		
-// 		//조립하기
-// 		type_p.append(type_span).append(title_span).append(del_input);
-// 		new_li.append(type_p).append(filename_a);
-// 		$("ul#portfolio_list").append(new_li);
-// 	}
-	/**내용넣기*/
-	
 </script>
 <style type="text/css">
 .subtitle {
@@ -161,28 +146,13 @@ a.pf_name {
 	<li file-num="4" class="file"> 
 		<p class="comment_item"> 
 			<span class="type">[구분]</span>  
-			<span></span>
-			<a class="pf_name"> 파일이름 및 URL 주소 </a>
+			<span>타이틀</span>
+			<a class="pf_name"> 파일이름 및 URL 주소 </a>			
 			<button type="button" id="delete_btn">삭제</button>			
 		</p>		
 	</li>
 		
-<%-- 			<c:forEach var ='ls' items="${list }"> --%>
-<!-- 			<li file-num="4" class="file">  -->
-<!-- 				<p class="comment_item">  -->
-<!-- 					<span class="type">[이력서 구분]</span>   -->
-<%-- 					<span>${ls.rspf_Usertitle}</span> --%>
-<!-- 					<input type="button" value="삭제하기" class="delete_btn"> -->
-<!-- 				</p> -->
-<!-- 				<a> 파일이름 및 URL 주소 </a> -->
-<!-- 			</li>  -->
-<%-- 			</c:forEach> --%>
-<!-- 			<div diplay:none> -->
-<!-- 				<input type='text' id='파일구분' value = '' /> -->
-<!-- 				<input type='text' id='파일 라디오박스' value = '' /> -->
-<!-- 				<input type='text' id='파일이름' value = '' /> -->
-<!-- 				<button onclick="addList();">버튼입네당</button> -->
-<!-- 			</div> -->
+
 		</ul>
 	</div>
 </div>
