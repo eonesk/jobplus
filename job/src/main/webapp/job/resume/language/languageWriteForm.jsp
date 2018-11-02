@@ -32,7 +32,7 @@
 				count--;
 			});
 			
-			$("#rslgCategory" + num).change(function() {
+			$("#rslgCategory" + num).on("change", function() {
 				if($("#rslgCategory" + num).val() == "공인시험"){
 					document.getElementById("test" + num).style.display = "inline";
 					document.getElementById("lv" + num).style.display = "none";

@@ -54,6 +54,18 @@ $(function() {
 			                	$("#rslgScore"+num, opener.document).val(event.data.param.rslg_Score);
 			                	$("#rslgTest"+num, opener.document).val(event.data.param.rslg_Test);
 			                	$("#rslgUserTitle"+num, opener.document).val(event.data.param.RSLG_UserTitle);
+			                	
+			                	
+			                		alert("if진입전");
+			        				if($("#rslgCategory" + num, opener.document).val() == "공인시험"){
+			        					alert("if진입후");
+			        					$("#test"+num, opener.document).style.display = "inline";
+			        					$("#lv"+num, opener.document).style.display = "none";
+			        				}else{
+			        					$("#test"+num, opener.document).style.display = "none";
+			        					$("#lv"+num, opener.document).style.display = "inline";
+			        				}		
+			        				                	
 			                	self.close();
 			                });				                
 						}
