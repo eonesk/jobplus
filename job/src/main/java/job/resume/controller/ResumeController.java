@@ -91,6 +91,7 @@ public class ResumeController {
 		}
 		for (int i=0; i < seq.length; i++) {
 			System.out.println(i);
+			
 			if (request.getParameter(tableName[i] + "_Seq" + tableNum[i]).equals("")) {
 				System.out.println("널 일때 : "+request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
 				seq[i] = null;
