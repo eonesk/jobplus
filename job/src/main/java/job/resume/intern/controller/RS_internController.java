@@ -64,9 +64,10 @@ public class RS_internController {
 		internDTO.setRsit_UserTitle(rsitUserTitle);		
 		// (2) DB			
 		int su = internService.Write(internDTO);
-		
-		int rsit_Seq = internService.selectLastSeq();
-		
+		int rsit_Seq = 0;
+		if(su>0) {
+			rsit_Seq = internService.selectLastSeq();
+		}
 		// (3) 화면네비게이션	
 		out.print(rsit_Seq);
 	}
@@ -98,7 +99,6 @@ public class RS_internController {
 		String rsit_Enddate = "";
 		for(int i = 0; i < UserTitleList.size(); i++) {
 			RS_internDTO internDTO = UserTitleList.get(i);
-			System.out.println("internDTO 출력 : " + internDTO.toString());
 			DateFormat Format = new SimpleDateFormat("yyyy-MM-dd");
 			rsit_Startdate = Format.format(internDTO.getRsit_Startdate());
 			rsit_Enddate = Format.format(internDTO.getRsit_Enddate());
