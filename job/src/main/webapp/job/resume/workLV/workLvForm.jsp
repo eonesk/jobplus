@@ -180,50 +180,52 @@ body {
 	$(function() {
  		
 
-		$(".payAdd").click(function() {
+		/* $(".payAdd").click(function() {
 			$("#rsw_pay").show();
+			$(this).html("연봉-");
 			$(this).removeClass("payAdd").addClass("payDelete");
 
-			$(this).html("연봉-");
+			
 		});
 
 		$(".partAdd").click(function() {
 			$("#rsw_part").show();
-			$(this).removeClass("partAdd").addClass("partDelete");
 			$(this).html("담당업무-");
+			$(this).removeClass("partAdd").addClass("partDelete");
+			
 		});
 
 		$(".payDelete").click(function() {
 			$("#rsw_pay").hide();
-			$(this).removeClass("payDelete").addClass("payAdd");
 			$(this).html("연봉+");
+			$(this).removeClass("payDelete").addClass("payAdd");
+			
 		});
 
 		$(".partDelete").click(function() {
 			$("#rsw_part").hide();
-			$(this).removeClass("partDelete").addClass("partAdd");
 			$(this).html("담당업무+");
-		});
+			$(this).removeClass("partDelete").addClass("partAdd");
+		}); */
 
 		
 
 		
 	});
+	var addCount = 0;
 	
 	$(function() {
-		var addCount = 0;
-		
 		$("#workLvContent").hide();
 		
 		/** 내 교육이수사항 불러오기 */
 		$("#loadBtn").click(function() {
-			window.open("workLvLoadForm.jsp?addCount=" + addCount, "", "width=500px height=500px");
+			window.open("workLvLoadForm.jsp?addCount=" + addCount, "", "width=420px height=520px");
 		});
 		
 		$("#addBtn").click(function() {
 			addCount++;
 			var numberRing = "_" + addCount;
-			var clone = $("#workLvContent").clone().attr('id','workLvCount'+numberRing);
+			var clone = $("#workLvContent").clone().attr('id','workLvContent'+numberRing);
 			
 			if(addCount >=4){
 				alert("항목추가는 최대 3개까지만 추가가능 합니다.")
@@ -246,11 +248,11 @@ body {
 				
 			
 			
-			/* $("#rsw_pay"+numberRing).hide();
-			$("#rsw_part"+numberRing).hide(); */
+			$("#rsw_pay"+numberRing).hide();
+			$("#rsw_part"+numberRing).hide();
 			$("#position_list"+numberRing).hide();
 			
-			$("#workLvCount"+numberRing).show();
+			$("#workLvContent"+numberRing).show();
 			
 			
 			//이벤트 바인딩
@@ -335,8 +337,216 @@ body {
 					$(this).val("n");
 				}
 			});
+			
+			$("#payBtn"+numberRing).on("click",function() {
+				if($("#rsw_pay"+numberRing).css("display") == "none" ) { 
+				    $("#rsw_pay"+numberRing).show();
+				    $(this).html("연봉-");
+				} else { 
+				    $("#rsw_pay"+numberRing).hide()  
+				    $(this).html("연봉+");
+				} 
+			});
+			
+			$("#partBtn"+numberRing).on("click",function() {
+				if($("#rsw_part"+numberRing).css("display") == "none" ) { 
+				    $("#rsw_part"+numberRing).show();
+				    $(this).html("담당업무-");
+				} else { 
+				    $("#rsw_part"+numberRing).hide()  
+				    $(this).html("담당업무+");
+				} 
+			});
 		});
 	});
+	
+	
+	
+	/** Load 함수 */
+	function selected(accumSeq, addCount_Delivered) {
+		$(function() {
+			
+			addCount = addCount_Delivered;
+			
+			$.ajax({
+				type: 'POST',
+				url: 'rswLoadView.do',
+				dataType: 'json',
+				data: {
+					"accumSeq": accumSeq
+				},
+				success: function(data) {
+
+					$.each(data.items, function(index, item) {
+						var testDTO = item;
+						
+						addCount++;
+						
+						var numberRing = "_" + addCount;
+						var clone = $("#workLvContent").clone().attr('id','workLvContent'+numberRing);
+						
+						if(addCount >=4){
+							alert("항목추가는 최대 3개까지만 추가가능 합니다.")
+							addCount--;
+							return false;
+						}
+						
+						//ID&NAME 넘버링 변경 작업
+						clone.find('*[id]').each(function() {
+							$(this).attr("id",$(this).attr("id") + numberRing);
+						});
+						clone.find('*[name]').each(function () {					
+							$(this).attr("name",$(this).attr("name") + numberRing);
+						});
+						
+					
+						clone.insertBefore("#workLvContent");	
+					
+						$("#rsw_pay"+numberRing).hide();
+						$("#rsw_part"+numberRing).hide();
+						$("#position_list"+numberRing).hide();
+						$("#workLvContent"+numberRing).show();
+						
+						
+						if($("#rsw_pay"+numberRing).val()){
+							$("#rsw_pay"+numberRing).show();
+							$("#payBtn"+numberRing).html("연봉-");
+						}
+						
+						if($("#rsw_part"+numberRing).val()){
+							$("#rsw_part"+numberRing).show();
+							$("#partBtn"+numberRing).html("연봉-");
+						}
+						
+						
+						
+						
+						//이벤트 바인딩
+						$("#closeBtn"+numberRing).on("click", function() {
+							/* $("#workLvContent"+numberRing).remove(); */
+							$(this).parent().remove();
+							addCount--;
+						});
+						
+						$("#saveBtn"+numberRing).on("click", function() {
+							if (!$("#rsw_company"+numberRing).val()) {
+								alert("회사명을 입력하세요.");
+								$("#rsw_company"+numberRing).focus();
+								return false;
+							}
+
+							if (!$("#rsw_dept"+numberRing).val()) {
+								alert("부서명을 입력하세요.");
+								$("#rsw_dept"+numberRing).focus();
+								return false;
+							}
+							if (!$("#rsw_startDate"+numberRing).val()) {
+								alert("입사년월을 입력하세요.");
+								$("#rsw_startDate"+numberRing).focus();
+								return false;
+							}
+
+							if (!$("#rsw_endDate"+numberRing).val()) {
+								alert("퇴사년월을 입력하세요.");
+								$("#rsw_endDate"+numberRing).focus();
+								return false;
+							}
+
+							if (!$("#rsw_position"+numberRing).val()) {
+								alert("직급/직책을 입력하세요.");
+								$("#rsw_position"+numberRing).focus();
+								return false;
+							}
+
+							if (!$("#rsw_job"+numberRing).val()) {
+								alert("직무를 입력하세요.");
+								$("#rsw_job"+numberRing).focus();
+								return false;
+							}
+							window.open("workLvSaveForm.jsp?numberRing="+numberRing, "", "width=410px height=360px");
+						});
+						
+						$("#rsw_position"+numberRing).on("click", function() {
+							$("#position_list"+numberRing).show();
+						});
+						
+						$("#cancle"+numberRing).on("click", function() {
+							$("#position_list"+numberRing).hide();
+							$("#position_list"+numberRing + " input[type=radio]").prop('checked', false);
+						});
+						
+						$("#ok"+numberRing).on("click", function() {
+							$("#position_list"+numberRing).hide();
+							var positionLeft = $(
+									"input:radio[name=positionLeft" + numberRing +"]:checked").val();
+							var positionRight = $(
+									"input:radio[name=positionRight"+ numberRing +"]:checked").val();
+							
+							if(positionLeft == undefined){
+								positionLeft = "";
+							}else if(positionRight == undefined){
+								positionRight ="";
+							}
+							
+							$("#rsw_position"+numberRing).val(positionLeft + " " + positionRight);
+						});
+						
+						$("#free"+numberRing).on("click", function() {
+							$("#position_list"+numberRing).hide();
+							$("#rsw_position"+numberRing).val($("#free"+numberRing).html());
+						});
+						
+						$("#rsw_isNow"+numberRing).on("change", function() {
+							if($(this).is(":checked")){
+								$(this).val("y");	
+							}else{
+								$(this).val("n");
+							}
+						});
+						
+						$("#payBtn"+numberRing).on("click",function() {
+							if($("#rsw_pay"+numberRing).css("display") == "none" ) { 
+							    $("#rsw_pay"+numberRing).show();
+							    $(this).html("연봉-");
+							} else { 
+							    $("#rsw_pay"+numberRing).hide()  
+							    $(this).html("연봉+");
+							} 
+						});
+						
+						$("#partBtn"+numberRing).on("click",function() {
+							if($("#rsw_part"+numberRing).css("display") == "none" ) { 
+							    $("#rsw_part"+numberRing).show();
+							    $(this).html("담당업무-");
+							} else { 
+							    $("#rsw_part"+numberRing).hide()  
+							    $(this).html("담당업무+");
+							} 
+						});
+						
+						console.log("[selected] rsw_userTitle : " + testDTO.rsw_userTitle);
+						$("#rsw_seq" +numberRing).val(testDTO.rsw_seq);
+						$("#rsw_company" +numberRing).val(testDTO.rsw_company);
+						$("#rsw_dept" +numberRing).val(testDTO.rsw_dept);
+						$("#rsw_startDate" +numberRing).val(testDTO.rsw_startDate);
+						$("#rsw_endDate" +numberRing).val(testDTO.rsw_endDate);
+						$("#rsw_isNow" +numberRing).val(testDTO.rsw_isNow);
+						$("#rsw_position" +numberRing).val(testDTO.rsw_position);
+						$("#rsw_job" +numberRing).val(testDTO.rsw_job);
+						$("#rsw_pay" +numberRing).val(testDTO.rsw_pay);
+						$("#rsw_part" +numberRing).val(testDTO.rsw_part);
+						$("#rsw_career" +numberRing).val(testDTO.rsw_career);
+							
+					});
+					
+				},
+				error: function(e) {
+					 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+				}
+			});
+			
+		});
+	}
 </script>
 </head>
 <body>
