@@ -12,149 +12,196 @@
 
 	$(function() {
 		
-		$("#RSS_saveA").click(function() {
-			alert("진입");
+		$("#studyLVPlus").hide();
+		
+		$("#plusButton").click(function() {
+			studyLVPlusButtonCnt++;
+			var numbering = "_" + studyLVPlusButtonCnt;
+			var clone = $("#studyLVPlus").clone().attr("id", "studyLVPlus" + numbering);
 			
-			var is_check = $("#isHighSchoolCheck").is(":checked");
+			if(studyLVPlusButtonCnt >= 4) {
+				alert("항목추가는 최대 3개까지만 추가가능 합니다.")
+				studyLVPlusButtonCnt--;
+				return false;
+			}			
+
+			// id&name 넘버링 변경 작업
+			clone.find("*[id]").each(function() {
+				$(this).attr("id", $(this).attr("id") + numbering);
+			});
 			
-			if(is_check){
-				alert(is_check);
-				window.open("./studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px resizable=0");
-			} else {
-				alert(is_check);
-				alert($("#rssStartDateValue").val());
-				alert($("#rssTypeValue").val());
+			clone.find("*[name]").each(function() {
+				$(this).attr("name", $(this).attr("name") + numbering);
+			});
+			
+			clone.find("*[class]").each(function() {
+				$(this).attr("class", $(this).attr("class") + numbering);
+			});
+			
+			clone.insertAfter("#studyLVPlus");
+			
+			$("#studyLVPlus" + numbering).show();
+
+			/** 이벤트 바인딩 */
+			// 'X'표 눌렀을 때 닫기
+			$("#studyLVPlusCancel" + numbering).on("click", function() {
+				console.log("[eventBindingInit] #studyLVPlusCancel" + numbering + "(X표) : 닫기");
+				$(this).parent("#studyLVPlus" + numbering).remove();
+				studyLVPlusButtonCnt--;
+			});
+			
+			
+			$("#RSS_saveA" + numbering).on("click", function() {
+				alert("진입");
 				
-				if($("#rssTypeValue").val() == "") {
-					alert("학교구분을 설정해주세요.");
-				} else if($("#rssNameFirst").val() == "") {
-					alert("학교명을 입력해주세요.");
-				} else if(!$("#rssStartDateValue").val()) {
-					alert("입학년월을 입력해주세요.");
-				} else if($("#rssEndDateValue").val() == "") {
-					alert("졸업년월을 입력해주세요.");
+				var is_check = $("#isHighSchoolCheck" + numbering).is(":checked");
+				
+				if(is_check){
+					alert(is_check);
+					window.open("./studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px resizable=0");
 				} else {
-					window.open("./studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px");
-				}				
-			}
+					alert(is_check);
+					alert($("#rssStartDateValue" + numbering).val());
+					alert($("#rssTypeValue" + numbering).val());
+					
+					if($("#rssTypeValue" + numbering).val() == "") {
+						alert("학교구분을 설정해주세요.");
+						$("#rssTypeValue" + numbering).focus();
+					} else if($("#rssNameFirst" + numbering).val() == "") {
+						alert("학교명을 입력해주세요.");
+						$("#rssNameFirst" + numbering).focus();
+					} else if(!$("#rssStartDateValue" + numbering).val()) {
+						alert("입학년월을 입력해주세요.");
+						$("#rssStartDateValue" + numbering).focus();
+					} else if($("#rssEndDateValue" + numbering).val() == "") {
+						alert("졸업년월을 입력해주세요.");
+						$("#rssEndDateValue" + numbering).focus();
+					} else {
+						window.open("./studyLVSavePopUp.jsp?is_check="+is_check+"$numbering="+numbering, "", "width=500px height=500px");
+					}				
+				}
+					
+			});
+			
+			$("#isHighSchoolCheck" + numbering).on("change", function() {
+				var is_check = $(this).is(":checked");
+				if(is_check) {
+					$("#isHighSchoolHide" + numbering).hide();
+					alert(is_check);
+				} else {
+					$("#isHighSchoolHide" + numbering).show();
+					alert(is_check);
+				}
+			});
+			
+			$(".hideAndShow" + numbering).hide();							// 하위 list 숨기기
+			$(".rssTypeClass" + numbering).hide();							// 기본항목빼고 숨기기
+
+			/** 학력구분 */
+			$("#rssTypeFirst" + numbering).on("click", function(){ 				// 학력구분을 누르면
 				
+				$("#rssTypeSecond" + numbering).slideToggle();				// 숨겨진 하위항목이 보이고(Toggle로 보였다가 안 보였다가..)
+				
+				$(".rssTypeList" + numbering).hover(function() {			// 하위 list에 hover효과 줌			
+					$(this).css("border", "3px solid blue");	// 하위항목의  div에 border가 생기고					
+				}, function() {
+					$(this).css("border", "0px");				// blur되면 border 사라짐
+				});
+				
+				$(".rssTypeList" + numbering).on("click", function(){			// 하위항목을 클릭하면
+					alert($(this).val());
+					var rssTypeValue;							// input태그에 넣어 줄 value
+					
+					switch($(this).val()) {						// 하위 List에서 눌려진 항목에 따라 value값이 정해짐
+						case 0 : rssTypeValue = "고등학교"; 			// 보여지는 항목이 다름
+								 $(".rssTypeClass" + numbering).hide();
+								 $("#rssStartDateFirst" + numbering).show();
+								 $("#rssEndDateFirst" + numbering).show();
+								 $("#rssGraduateFirst" + numbering).show();
+								 break;
+						case 1 : rssTypeValue = "대학(2,3년)"; 
+								 $(".rssTypeClass" + numbering).hide();
+								 $("#rssStartDateFirst" + numbering).show();
+								 $("#rssEndDateFirst" + numbering).show();
+								 $("#rssGraduateFirst" + numbering).show();
+								 $("#rssMajorFirst" + numbering).show();
+								 $("#rssScoreFirst" + numbering).show();
+								 $("#rssTotScoreFirst" + numbering).show();
+								 break;
+						case 2 : rssTypeValue = "대학교(4년)";  
+								 $(".rssTypeClass" + numbering).hide();
+								 $("#rssStartDateFirst" + numbering).show();
+								 $("#rssEndDateFirst" + numbering).show();
+								 $("#rssGraduateFirst" + numbering).show();
+								 $("#rssMajorFirst" + numbering).show();
+								 $("#rssScoreFirst" + numbering).show();
+								 $("#rssTotScoreFirst" + numbering).show();
+								 break;
+						case 3 : rssTypeValue = "대학원";  
+								 $(".rssTypeClass" + numbering).hide();
+								 $("#rssStartDateFirst" + numbering).show();
+								 $("#rssEndDateFirst" + numbering).show();
+								 $("#rssGraduateFirst" + numbering).show();
+								 $("#rssMajorFirst" + numbering).show();
+								 $("#rssScoreFirst" + numbering).show();
+								 $("#rssTotScoreFirst" + numbering).show();
+								 break;
+						default : break;
+					}
+						
+					$("#rssTypeTitle" + numbering).html("");	// 학력구분칸이 reset된후
+					$("#rssTypeTitle" + numbering).html(rssTypeValue + "&nbsp;&nbsp;&nbsp;").css("font-size", "13px");	// 학력구분칸에 하위항목의 값이 들어간다. 
+					$("#rssTypeSecond" + numbering).slideUp();
+					$("#rssTypeValue" + numbering).attr("value", rssTypeValue);	// input값에 저장
+						/* alert("마짐ㄱ" + $("#rssTypeValue" + numbering).val()); */
+				});
+			});
+			
+
+			/** 총점 */
+			$("#rssTotScoreFirst" + numbering).on("click", function() {
+				$("#rssTotScoreSecond" + numbering).slideToggle();
+				$(".rssTotScoreList" + numbering).hover(function() {
+					$(this).css("border", "3px solid blue");
+				}, function() {
+					$(this).css("border", "0px");
+			});
+				
+			$(".rssTotScoreList" + numbering).on("click", function() {
+				var rssTotScoreValue;
+				
+				switch($(this).val()){
+					case 0: rssTotScoreValue = "4.5"; break;
+					case 1: rssTotScoreValue = "4.3"; break;
+					case 2: rssTotScoreValue = "4.0"; break;
+					case 3: rssTotScoreValue = "100"; break;
+					default: break;
+				}
+						
+					/* alert(rssTotScoreValue);				 */	
+						 
+				$("#rssTotScoreTitle" + numbering).html("");
+				$("#rssTotScoreTitle" + numbering).html(rssTotScoreValue + "&nbsp;&nbsp;&nbsp;").css("font-size", "16px");
+				$("#rssTotScoreSecond" + numbering).slideUp();
+				$("#rssTotScoreValue" + numbering).attr("value", rssTotScoreValue);
+					/* alert(rssTotScoreValue); */
+						
+			});
+			});
+			
 		});
 		
+		/** 내 학력정보 불러오기 */
 		$("#RSS_loadA").click(function() {
 			window.open("./studyLVLoadPopUp.jsp", "", "width=500px height=500px");
 		});
 		
-		$("#isHighSchoolCheck").change(function() {			// 고등학교 미만 졸업에 따른 화면 변화
-			var is_check = $(this).is(":checked");
-			if(is_check) {
-				$("#isHighSchoolHide").hide();
-				alert(is_check);
-			} else {
-				$("#isHighSchoolHide").show();
-				alert(is_check);
-			}
-		});
-		
-		$(".hideAndShow").hide();							// 하위 list 숨기기
-		$(".rssTypeClass").hide();							// 기본항목빼고 숨기기
-		
-		/** 학력구분 */
-		$("#rssTypeFirst").click(function() { 				// 학력구분을 누르면
-			$("#rssTypeSecond").slideToggle();				// 숨겨진 하위항목이 보이고(Toggle로 보였다가 안 보였다가..)
-			$(".rssTypeList").hover(function() {			// 하위 list에 hover효과 줌
-				$(this).css("border", "3px solid blue");	// 하위항목의  div에 border가 생기고					
-			}, function() {
-				$(this).css("border", "0px");				// blur되면 border 사라짐
-			});
-			$(".rssTypeList").click(function() {			// 하위항목을 클릭하면
-				
-				var rssTypeValue;							// input태그에 넣어 줄 value
-				
-				switch($(this).val()) {						// 하위 List에서 눌려진 항목에 따라 value값이 정해짐
-				case 0 : rssTypeValue = "고등학교"; 			// 보여지는 항목이 다름
-						 $(".rssTypeClass").hide();
-						 $("#rssStartDateFirst").show();
-						 $("#rssEndDateFirst").show();
-						 $("#rssGraduateFirst").show();
-						 break;
-				case 1 : rssTypeValue = "대학(2,3년)"; 
-						 $(".rssTypeClass").hide();
-						 $("#rssStartDateFirst").show();
-						 $("#rssEndDateFirst").show();
-						 $("#rssGraduateFirst").show();
-						 $("#rssMajorFirst").show();
-						 $("#rssScoreFirst").show();
-						 $("#rssTotScoreFirst").show();
-						 break;
-				case 2 : rssTypeValue = "대학교(4년)";  
-						 $(".rssTypeClass").hide();
-						 $("#rssStartDateFirst").show();
-						 $("#rssEndDateFirst").show();
-						 $("#rssGraduateFirst").show();
-						 $("#rssMajorFirst").show();
-						 $("#rssScoreFirst").show();
-						 $("#rssTotScoreFirst").show();
-						 break;
-				case 3 : rssTypeValue = "대학원";  
-						 $(".rssTypeClass").hide();
-						 $("#rssStartDateFirst").show();
-						 $("#rssEndDateFirst").show();
-						 $("#rssGraduateFirst").show();
-						 $("#rssMajorFirst").show();
-						 $("#rssScoreFirst").show();
-						 $("#rssTotScoreFirst").show();
-						 break;
-				default : break;
-				}
-				
-				$("#rssTypeTitle").html("");	// 학력구분칸이 reset된후
-				$("#rssTypeTitle").html(rssTypeValue + "&nbsp;&nbsp;&nbsp;").css("font-size", "13px");	// 학력구분칸에 하위항목의 값이 들어간다. 
-				$("#rssTypeSecond").slideUp();
-				$("#rssTypeValue").attr("value", rssTypeValue);	// input값에 저장
-				/* alert($("#rssTypeValue").val()); */
-			});
-			
-			
-			/** 총점 */
-			$("#rssTotScoreFirst").click(function() {
-				$("#rssTotScoreSecond").slideToggle();
-				$(".rssTotScoreList").hover(function() {
-					$(this).css("border", "3px solid blue");
-				}, function() {
-					$(this).css("border", "0px");
-				});
-				
-				$(".rssTotScoreList").click(function() {
-					var rssTotScoreValue;
-
-					switch($(this).val()){
-						case 0: rssTotScoreValue = "4.5"; break;
-						case 1: rssTotScoreValue = "4.3"; break;
-						case 2: rssTotScoreValue = "4.0"; break;
-						case 3: rssTotScoreValue = "100"; break;
-					default: break;
-					}
-					
-					/* alert(rssTotScoreValue);				 */	
-					 
-					$("#rssTotScoreTitle").html("");
-					$("#rssTotScoreTitle").html(rssTotScoreValue + "&nbsp;&nbsp;&nbsp;").css("font-size", "16px");
-					$("#rssTotScoreSecond").slideUp();
-					$("#rssTotScoreValue").attr("value", rssTotScoreValue);
-					/* alert(rssTotScoreValue); */
-					
-				});				
-				
-			});
-			
-		});
-		/*  */
 	});
 </script>
 </head>
 <body>
 	<div id="studyLV_div"
-		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
+		style="display: inline-block; position: relative; margin: 15px; width: 80%; background-color: #f5f7fb;">
 		
 		<!-- Title -->
 		<h3 style="font-weight: bold;">학력</h3>
@@ -171,7 +218,11 @@
 		<!-- input영역 1번째 줄 -->
 		<div style="padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); height: auto;">
 			<div id="studyLVPlus" class="studyLVPlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
+			
 				<input id="rss_Seq" name="rss_Seq" class="rss_Seq" type="hidden">
+				<a id="studyLVPlusCancel" name="studyLVPlusCancel" href="#" style="text-decoration: none;">
+					<div id="studyLVCloseButton" style="border: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
+				</a>
 				<div style="padding-top: 10px;">
 					<input id="isHighSchoolCheck" name="rss_Ishighschool" 
 							type="checkbox" style="float: left; padding-top: 50px;" value="true">고등학교 미만 졸업
@@ -238,15 +289,15 @@
 					
 					
 					<!-- 두번째줄 : z-index: 50px; : hide&show돼야할부분 -->
-					<span id="rssTypeSecond" class="hideAndShow" style="position: absolute; left: 34px; top: 235px; display: inline-block; background-color:white; padding: 0px; border: 1px solid gray; width: 110px; z-index: 50px;">
+					<span id="rssTypeSecond" class="hideAndShow" style="position: absolute; left: 34px; top: 280px; display: inline-block; background-color:white; padding: 0px; border: 1px solid gray; width: 110px; z-index: 50px;">
 						<ul class="sub" style="padding: 0px; list-style: none;">
-							<li class="rssTypeList" value="0" style="padding: 5px 0px 5px 0px; height: 25%;">고등학교</li>
-							<li class="rssTypeList" value="1" style="padding: 5px 0px 5px 0px; height: 25%;">대학(2,3년)</li>
-							<li class="rssTypeList" value="2" style="padding: 5px 0px 5px 0px; height: 25%;">대학교(4년)</li>
-							<li class="rssTypeList" value="3" style="padding: 5px 0px 5px 0px; height: 25%;">대학원</li>
+							<li id="rssTypeList[1]" class="rssTypeList" value="0" style="padding: 5px 0px 5px 0px; height: 25%;">고등학교</li>
+							<li id="rssTypeList[2]" class="rssTypeList" value="1" style="padding: 5px 0px 5px 0px; height: 25%;">대학(2,3년)</li>
+							<li id="rssTypeList[3]" class="rssTypeList" value="2" style="padding: 5px 0px 5px 0px; height: 25%;">대학교(4년)</li>
+							<li id="rssTypeList[4]" class="rssTypeList" value="3" style="padding: 5px 0px 5px 0px; height: 25%;">대학원</li>
 						</ul>
 					</span>
-					<span class="hideAndShow" style="position: absolute; left: 146px; top: 235px; display: inline-block; background-color:white; border: 1px solid lightgray; height: 164px; width:250px; z-index: 60px;">
+					<span id="rssNameSecond" class="hideAndShow" style="position: absolute; left: 146px; top: 235px; display: inline-block; background-color:white; border: 1px solid lightgray; height: 164px; width:250px; z-index: 60px;">
 						학교검색..? 일단 폼은 만들어 놓고 기능추가../....ㅇ..ㅇ...ㅇ아아아ㅏ// 학위도 추가되는건데 이건 시간남으면 해야지.. 일단 숨겨놓고..
 					</span>
 		<!-- 			
@@ -267,12 +318,12 @@
 						</ul>
 					</span>
 		 -->			
-					<span id="rssTotScoreSecond" class="hideAndShow" style="position: absolute; left: 492px; top: 296px; display: inline-block; background-color:white; border: 1px solid lightgray; height: 165px; width:85px; z-index: 60px;">
+					<span id="rssTotScoreSecond" class="hideAndShow" style="position: absolute; left: 492px; top: 350px; display: inline-block; background-color:white; border: 1px solid lightgray; height: 165px; width:85px; z-index: 60px;">
 						<ul class="sub" style="padding: 0px; list-style: none;">
-							<li class="rssTotScoreList" value="0" style="padding: 5px 0px 5px 0px; height: 33%;">4.5</li>
-							<li class="rssTotScoreList" value="1" style="padding: 5px 0px 5px 0px; height: 33%;">4.3</li>
-							<li class="rssTotScoreList" value="2" style="padding: 5px 0px 5px 0px; height: 33%;">4.0</li>
-							<li class="rssTotScoreList" value="3" style="padding: 5px 0px 5px 0px; height: 33%;">100</li>
+							<li id="rssTotScoreList[1]" class="rssTotScoreList" value="0" style="padding: 5px 0px 5px 0px; height: 33%;">4.5</li>
+							<li id="rssTotScoreList[2]" class="rssTotScoreList" value="1" style="padding: 5px 0px 5px 0px; height: 33%;">4.3</li>
+							<li id="rssTotScoreList[3]" class="rssTotScoreList" value="2" style="padding: 5px 0px 5px 0px; height: 33%;">4.0</li>
+							<li id="rssTotScoreList[4]" class="rssTotScoreList" value="3" style="padding: 5px 0px 5px 0px; height: 33%;">100</li>
 						</ul>
 					</span>
 				<br style="clear:both;">
@@ -282,6 +333,7 @@
 				</div>
 				<br><br>
 				</div>
+				
 			</div>
 		</div>
 		<a id="plusButton" href="#" style="text-decoration: none;">
