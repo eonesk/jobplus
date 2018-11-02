@@ -17,4 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="rswGetList" parameterType="String" resultType="workLVDTO">
 		select * from RS_workLV where M_id = #{memId}
 	</select>
+	
+	<select id="rswGetDTO" parameterType="int" resultType="workLVDTO">
+		select * from RS_workLV where rsw_seq = #{rsw_seq}
+	</select>
 </mapper>

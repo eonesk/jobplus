@@ -141,4 +141,48 @@ public class RS_workLVController {
 		return modelAndView;
 		
 	}
+	
+	@RequestMapping(value="/job/resume/workLV/rswLoadView.do", method=RequestMethod.POST)
+	public ModelAndView rswLoadView(HttpServletRequest request) {
+			
+		
+		ModelAndView modelAndView = new ModelAndView();
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
+		String accumSeq = request.getParameter("accumSeq");
+		
+		
+		int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");
+		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);
+		System.out.println("[RS_eduLVController] accumSeqSubstring : " + accumSeqSubstring);
+		
+		String[] accumSeqSplit = accumSeq.split("/"); 
+		for(int i = 0; i < accumSeqSplit.length; i++) {
+			int rsw_seq = Integer.parseInt(accumSeqSplit[i]);
+			RS_workLVDTO rsw_dto = rs_workLVService.rswGetDTO(rsw_seq);
+			JSONObject temp = new JSONObject();
+			temp.put("rsw_seq", rsw_dto.getRsw_seq());
+			temp.put("rsw_company", rsw_dto.getRsw_company());
+			temp.put("rsw_dept", rsw_dto.getRsw_dept());
+			temp.put("rsw_startDate", rsw_dto.getRsw_startDate());
+			temp.put("rsw_endDate", rsw_dto.getRsw_endDate());
+			temp.put("rsw_isNow", rsw_dto.getRsw_isNow());
+			temp.put("rsw_position", rsw_dto.getRsw_position());
+			temp.put("rsw_job", rsw_dto.getRsw_job());
+			temp.put("rsw_pay", rsw_dto.getRsw_pay());
+			temp.put("rsw_part", rsw_dto.getRsw_part());
+			temp.put("rsw_career", rsw_dto.getRsw_career());
+			temp.put("rsw_userTitle", rsw_dto.getRsw_userTitle());
+			temp.put("m_Id", rsw_dto.getM_id());
+			items.put(i, temp);
+		}
+		
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("json", jsonObject);
+		modelAndView.setViewName("/job/resume/workLV/workLvDTOJson.jsp");
+
+		return modelAndView;
+	}
 }

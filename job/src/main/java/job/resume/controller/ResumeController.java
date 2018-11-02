@@ -83,7 +83,7 @@ public class ResumeController {
 			"1", "2", "3", "1", "2", "3",
 			"1", "2", "3", "1", "2", "3",
 			"", "", ""};
-		Integer[] seq = new Integer[tableName.length];
+		int[] seq = new int[tableName.length];
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
@@ -91,10 +91,12 @@ public class ResumeController {
 		}
 
 		for (int i = 0; i < seq.length; i++) {
-			if (request.getParameter(tableName[i] + "Seq") != null) {
-				seq[i] = Integer.parseInt(request.getParameter(tableName[i] + "_seq" + tableNum[i]));
+			if (request.getParameter(tableName[i] + "_Seq").equals("")) {
+				System.out.println("널 일때 : "+request.getParameter(tableName[i] + "seq" + tableNum[i]));
+				seq[i] = (Integer) null;
 			} else {
-				seq[i] = null;
+				System.out.println("널이 아닐 때 : "+request.getParameter(tableName[i] + "seq" + tableNum[i]));
+				seq[i] = Integer.parseInt(request.getParameter(tableName[i] + "seq" + tableNum[i]));
 			}
 		}
 		Date date = null;
@@ -135,9 +137,6 @@ public class ResumeController {
 		resumeDTO.setRsit_Seq1(seq[7]);
 		resumeDTO.setRsit_Seq2(seq[8]);
 		resumeDTO.setRsit_Seq3(seq[9]);
-		System.out.println(resumeDTO.getRsit_Seq1());
-		System.out.println(resumeDTO.getRsit_Seq2());
-		System.out.println(resumeDTO.getRsit_Seq3());
 		resumeDTO.setRse_Seq1(seq[10]);
 		resumeDTO.setRse_Seq2(seq[11]);
 		resumeDTO.setRse_Seq3(seq[12]);

@@ -11,7 +11,13 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
+	
 	$("#fileLoad").click(function() {
+//	이걸 어떻게 쓰면 될거같은데......
+// 		if (this.$el.find("#portfolio_list").find("li").size() >= 2) {
+//             alert("포트폴리오는 2개까지 첨부 가능합니다.");
+//             return;
+        }
 		alert("파일을 불러옵니다.");
 		//선택박스 클릭시 체크된 ROW값을 가져옴
 		var checkbox = $("input[name=file_check]:checked");
@@ -27,8 +33,7 @@ $(function() {
 					
 		checkbox.each(function(i) {
 			var tr = checkbox.parent().parent().eq(i);
-			var td = tr.children();
-			
+			var td = tr.children();		
 			rowData.push(tr.text());
 
 			//td.eq(0)은 체크박스 이므로 td.eq(1)의 값부터 가져옴
@@ -46,8 +51,8 @@ $(function() {
 			tdArr.push(uorf);
 			tdArr.push(title);
 			
-			fileData += seq + urlname + filename + type + uorf + title;
-			alert("fileData111::" + fileData);
+			fileData += "%" + seq + urlname + filename + type + uorf + title;
+			alert("fileData통채로 넘어갑니당::" + fileData);
 // 			$("#file_type").html(fileData);
 // 			$("#file_type").html(seq + " // " + urlname+ " // " +filename+ " // " +type+ " // " +uorf + " // " +title);
 // 			$("#rsprTitle", opener.document).val(title);

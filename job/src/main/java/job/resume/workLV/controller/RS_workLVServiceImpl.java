@@ -27,4 +27,9 @@ public class RS_workLVServiceImpl implements RS_workLVService {
 		return rs_workLVDAO.rswGetList(memId);
 	}
 
+	@Override
+	public RS_workLVDTO rswGetDTO(int rsw_seq) {
+		return rs_workLVDAO.rswGetDTO(rsw_seq);
+	}
+
 }

@@ -378,7 +378,7 @@
 		});
 		
 		
-		$("#writeBtn").click(function() {
+		$("#writeBtn").on("click", function() {
 			if($("#rs_name").val() == ""){
 				alert("이름을 입력하세요.");
 				return false;
@@ -446,7 +446,7 @@
 			var rsw_Seq1 = null;
 			var rsw_Seq2 = null;
 			var rsw_Seq3 = null;
-			alert($("#rsitSeq").val());
+			alert($("#rsitSeq1").val());
 			var rsit_Seq1 = $("#rsitSeq1").val();
 			var rsit_Seq2 = $("#rsitSeq2").val();
 			var rsit_Seq3 = $("#rsitSeq3").val();
@@ -522,9 +522,11 @@
 				cache: false,
 				success: function() {
 					alert("입력성공");
+					$("#writeBtn").off("click", this);
 				},
 				error: function() {
 					alert("입력실패");
+					$("#writeBtn").off("click", this);
 				}
 			});
 		});
