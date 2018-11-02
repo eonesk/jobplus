@@ -83,20 +83,23 @@ public class ResumeController {
 			"1", "2", "3", "1", "2", "3",
 			"1", "2", "3", "1", "2", "3",
 			"", "", ""};
-		int[] seq = new int[tableName.length];
+		Integer[] seq = new Integer[tableName.length];
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-
-		for (int i = 0; i < seq.length; i++) {
-			if (request.getParameter(tableName[i] + "_Seq").equals("")) {
-				System.out.println("널 일때 : "+request.getParameter(tableName[i] + "seq" + tableNum[i]));
-				seq[i] = (Integer) null;
-			} else {
-				System.out.println("널이 아닐 때 : "+request.getParameter(tableName[i] + "seq" + tableNum[i]));
-				seq[i] = Integer.parseInt(request.getParameter(tableName[i] + "seq" + tableNum[i]));
+		for (int i=0; i < seq.length; i++) {
+			System.out.println(i);
+			if (request.getParameter(tableName[i] + "_Seq" + tableNum[i]).equals("")) {
+				System.out.println("널 일때 : "+request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
+				seq[i] = null;
+			}else if(request.getParameter(tableName[i] + "_Seq" + tableNum[i]) == null) {
+				System.out.println("널 일때 : "+request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
+				seq[i] = null;
+			}else {
+				System.out.println("널이 아닐 때 : "+request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
+				seq[i] = Integer.valueOf(request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
 			}
 		}
 		Date date = null;

@@ -57,7 +57,6 @@
 		width: 320px;
 	}
 	#working_conditions .header .right{
-		background: white;
 		vertical-align: center;
 	}
 	#rs_workspace_select1, #rs_workspace_select2, #rs_job_select1, #rs_job_select2, #rs_job_select3{
@@ -446,10 +445,12 @@
 			var rsw_Seq1 = null;
 			var rsw_Seq2 = null;
 			var rsw_Seq3 = null;
-			alert($("#rsitSeq1").val());
 			var rsit_Seq1 = $("#rsitSeq1").val();
 			var rsit_Seq2 = $("#rsitSeq2").val();
 			var rsit_Seq3 = $("#rsitSeq3").val();
+			alert(rsit_Seq1);
+			alert(rsit_Seq2);
+			alert(rsit_Seq3);
 			var rse_Seq1 = null;
 			var rse_Seq2 = null;
 			var rse_Seq3 = null;
