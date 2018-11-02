@@ -109,15 +109,13 @@ public class RS_portfolioController {
 		String rspf_File = fileName;
 		System.out.println("rspf_File>>>>" + rspf_File);
 		
-		if(fileName == "") {
-			fileName="파일없음";
-		}
-		if(request.getParameter("rspf_Url")==null) {
-			rspf_Url="URL없음";
-		}
-		System.out.println("다시~~rspf_Url>>>" + rspf_Url);
-////////////////
-	
+//		if(fileName == "") {
+//			fileName="파일없음";
+//		}
+//		if(request.getParameter("rspf_Url")==null) {
+//			rspf_Url="URL없음";
+//		}
+//		System.out.println("다시~~rspf_Url>>>" + rspf_Url);
 			
 		// 데이터
 		portfolioDTO.setM_Id(memId);
