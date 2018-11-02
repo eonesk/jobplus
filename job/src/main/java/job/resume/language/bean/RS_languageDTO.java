@@ -22,6 +22,12 @@ public class RS_languageDTO {
     // 공인시험
     private String rslg_Test;
     
+	@Override
+	public String toString() {
+		return "RS_languageDTO [rslg_Seq=" + rslg_Seq + ", rslg_Category=" + rslg_Category + ", rslg_Name=" + rslg_Name
+				+ ", rslg_Lv=" + rslg_Lv + ", m_Id=" + m_Id + ", RSLG_UserTitle=" + RSLG_UserTitle + ", rslg_Score="
+				+ rslg_Score + ", rslg_Date=" + rslg_Date + ", rslg_Test=" + rslg_Test + "]";
+	}
 	public Integer getRslg_Seq() {
 		return rslg_Seq;
 	}

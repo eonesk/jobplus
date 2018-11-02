@@ -96,7 +96,8 @@ fieldset {
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
-    margin: 4px;
+    margin: 5px;
+    margin-left : 0;
     cursor: pointer;
 }
 .trophysave:hover, .trophyload:hover {
@@ -136,7 +137,7 @@ fieldset {
 			<input type="date" id="rstDate" name="rstDate" class="rstDate" placeholder="수상연도" size="7">
 		</div>
 		<div class="content">			
-			<textarea id="rstContent" name="rstContent" class="rstContent" placeholder="수여내용" cols="74" rows="7"></textarea>
+			<textarea id="rstContent" name="rstContent" class="rstContent" placeholder="수여내용" cols="81" rows="8"></textarea>
 		</div>		
 		<div>
 			<input type="button" value="저장하기" id="trophysave" class="trophysave">
