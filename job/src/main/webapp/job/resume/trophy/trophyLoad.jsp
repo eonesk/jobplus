@@ -8,7 +8,8 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		var num = ${param.num};
+		var count = ${param.count};
+		alert("count숫자 = " + count);
 		// 총 개수
 		$.ajax({
 			type: 'POST',
@@ -21,11 +22,14 @@
 					alert("수상이력 없음");
 				} else {
 					alert("수상이력");
+					
 					$.ajax({
 						type: 'POST',
 						url: 'Load.do',
 						dataType: "json",
+						cache: false,
 						success: function(data) {
+							alert("성공");
 							var trTitle = $("<tr>").addClass("LoadListTr");
 							var tdTitle = $("<td>").addClass("LoadListTd").html("제목");
 							
@@ -36,15 +40,91 @@
 								var dto = item;
 								var tr = $("<tr>").addClass("LoadListTr");
 								var td = $("<td>").addClass("LoadListTd");
+								var checkbox = $("<input>").attr({
+									"id": "RST_UserTitleR",
+									"type": "checkbox",
+									"value": item.rst_Seq
+								}).addClass("RST_UserTitleR");
 								var a = $("<a>").attr({
 									"id": "RST_UserTitle1",
 									"href": "#"
 								}).html(item.RST_UserTitle).bind('click', {param: dto}, add_event);								
+								
+								td.append(checkbox);
 								td.append(a);
 								tr.append(td);
 								$("#LoadList").append(tr);	
 							});
-							function add_event(event) { 			                
+							
+							var num = ${param.count};
+							
+							if(num == 3) {
+								$(".RST_UserTitleR").attr("disabled", "true");
+							} else if(num < 3 || num >= 0) {
+								$(".RST_UserTitleR").on("change", function() {
+									if($(this).is(":checked")){
+										num++;
+										if(num == 3) {
+											$(".RST_UserTitleR").not($(".RST_UserTitleR")).attr("disabled", "true");
+										}
+									} else {
+										num--;
+										$(".RST_UserTitleR").removeAttr("disabled");
+									}
+								});
+							}
+							
+							$("#load").click(function() {
+								
+								var accumSeq = "";
+								
+				                $(".RST_UserTitleR:checked").each(function() {
+				                	alert($(this).val());
+				                	accumSeq += $(this).val() + "/";
+				                });
+				                
+				                alert("accumSeq : " + accumSeq);
+				                
+				                if(accumSeq == "") {
+				                	alert("체크해주세요.");
+				                } else {
+				                	alert("체크확인");
+				                	if(confirm("불러오기를 진행하시겠습니까?")) {
+				                		// 2개가 되야함. 확인해야할부분
+				                		 alert("test accumSeq : " + accumSeq);
+				                		 alert("test count : " + count);
+				                		opener.parent.selected(accumSeq, ${param.count});
+					                	self.close();
+				                	}
+				                	
+				                }
+							});
+							
+							function add_event(event) { 	
+								var userTitle = $("<h3>").html("[ " + event.data.param.rst_UserTitle + " ]");
+								var table = $("<table>").attr("border", "1");
+								var indexTr = $("<tr>");
+								var indexTd1 = $("<td>").html("수상명");
+								var indexTd2 = $("<td>").html("수여기관");
+								var indexTd3 = $("<td>").html("수상연도");
+								var indexTd4 = $("<td>").html("수여내용");
+								
+								indexTr.append(indexTd1).append(indexTd2).append(indexTd3).append(indexTd4);
+								table.append(indexTr);
+								
+								var contentTr = $("<tr>");
+								var contentTd1 = $("<td>").html(event.data.param.rst_Name);
+								var contentTd2 = $("<td>").html(event.data.param.rst_Company);								
+								var contentTd3 = $("<td>").html(event.data.param.rst_Date);
+								var contentTd4 = $("<td>").html(event.data.param.rst_Content);
+								
+								contentTr.append(contentTd1).append(contentTd2).append(contentTd3).append(contentTd4);
+								table.append(contentTr);
+								
+								$("#loadView").append(userTitle);
+								$("#loadView").append(table);
+								
+								/*
 				                $("#load").click(function() {
 				                	$("#rstSeq"+num, opener.document).val(event.data.param.rst_Seq);
 				                	$("#rstName"+num, opener.document).val(event.data.param.rst_Name);
@@ -53,8 +133,10 @@
 				                	$("#rstContent"+num, opener.document).val(event.data.param.rst_Content);
 				                	$("#rstuserTitle"+num, opener.document).val(event.data.param.RST_UserTitle);
 				                	self.close();
-				                });				                
+				                });	
+								*/
 							}
+							alert("종료");		
 						},
 						error : function(e) {
 			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
@@ -104,6 +186,8 @@
 		<div>
 			<table border="1" name="LoadList" id="LoadList">
 			</table>
+		</div>
+		<div id="loadView" class="loadView">
 		</div>
 		<input type="button" value="불러오기" id="load" class="load">
 		<input type="button" value="취소" id="cancle" class="cancle">	

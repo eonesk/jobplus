@@ -28,5 +28,9 @@ public class RS_trophyServiceImpl implements RS_trophyService {
 	public int Delete(int rst_Seq) {
 		return trophyDAO.Delete(rst_Seq);
 	}
+	@Override
+	public RS_trophyDTO selectTrophyDTO(int rst_Seq) {		
+		return trophyDAO.selectTrophyDTO(rst_Seq);
+	}
 
 }

@@ -12,5 +12,7 @@ public interface RS_trophyService {
 	// 리스트
 	List<RS_trophyDTO> selectTitleList(String memId);
 	// 삭제
-	int Delete(int rst_Seq);	
+	int Delete(int rst_Seq);
+	// seq검색
+	RS_trophyDTO selectTrophyDTO(int rst_Seq);
 }

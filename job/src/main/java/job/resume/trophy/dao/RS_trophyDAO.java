@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import job.resume.edu.bean.RS_eduDTO;
 import job.resume.trophy.bean.RS_trophyDTO;
 
 
@@ -29,5 +30,9 @@ public class RS_trophyDAO {
 	// 글 삭제
 	public int Delete(int rst_Seq) {	
 		return sqlSession.delete("mybatis.trophyMapper.Delete", rst_Seq);
+	}
+	// 검색
+	public RS_trophyDTO selectTrophyDTO(int rst_Seq) {
+		return sqlSession.selectOne("mybatis.trophyMapper.selectTrophyDTO", rst_Seq);
 	}
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import job.resume.edu.bean.RS_eduDTO;
 import job.resume.trophy.bean.RS_trophyDTO;
 @Controller
 public class RS_trophyController {
@@ -35,24 +36,24 @@ public class RS_trophyController {
 		PrintWriter out = response.getWriter();
 		
 		// 넘어오는 변수값 콘솔 확인
-		String rstName = request.getParameter("rstName");
-		String rstCompany = request.getParameter("rstCompany");
-		String rstDate = request.getParameter("rstDate");
-		String rstContent = request.getParameter("rstContent");
-		String RSTUserTitle = request.getParameter("rstuserTitle");
+		String rst_Name = request.getParameter("rst_Name");
+		String rst_Company = request.getParameter("rst_Company");
+		String rst_Date = request.getParameter("rst_Date");
+		String rst_Content = request.getParameter("rst_Content");
+		String RST_UserTitle = request.getParameter("rst_UserTitle");
 		Date date=null;
 		try {
-			date = new SimpleDateFormat("yyyy-MM-dd").parse(rstDate);
+			date = new SimpleDateFormat("yyyy-MM-dd").parse(rst_Date);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		// DTO에 변수 저장
 		RS_trophyDTO trophyDTO = new RS_trophyDTO();		
-		trophyDTO.setRst_Name(rstName);
-		trophyDTO.setRst_Company(rstCompany);
+		trophyDTO.setRst_Name(rst_Name);
+		trophyDTO.setRst_Company(rst_Company);
 		trophyDTO.setRst_Date(date);
-		trophyDTO.setRst_Content(rstContent);
-		trophyDTO.setRST_UserTitle(RSTUserTitle);
+		trophyDTO.setRst_Content(rst_Content);
+		trophyDTO.setRST_UserTitle(RST_UserTitle);
 		trophyDTO.setM_Id(mId);
 		// DB작업
 		int su = trophyService.Write(trophyDTO);		
@@ -106,6 +107,39 @@ public class RS_trophyController {
 
 		return modelAndView;
 	}	
+	@RequestMapping(value="/job/resume/intern/LoadView.do", method=RequestMethod.POST)
+	public ModelAndView LoadView(HttpServletRequest request) {		
+		ModelAndView modelAndView = new ModelAndView();
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
+		String accumSeq = request.getParameter("accumSeq");		
+		int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");		
+		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);		
+		String[] accumSeqSplit = accumSeq.split("/"); 
+		
+		for(int i = 0; i < accumSeqSplit.length; i++) {
+			System.out.println("[RS_eduLVController] accumSeqSplit[" + i + "] : " + accumSeqSplit[i]);
+			int rst_Seq = Integer.parseInt(accumSeqSplit[i]);
+			RS_trophyDTO trophyDTO = trophyService.selectTrophyDTO(rst_Seq);
+			JSONObject temp = new JSONObject();
+			temp.put("rst_Seq", trophyDTO.getRst_Seq());
+			temp.put("rst_Name", trophyDTO.getRst_Name());
+			temp.put("rst_Company", trophyDTO.getRst_Company());
+			temp.put("rst_Date", trophyDTO.getRst_Date());
+			temp.put("rst_Content", trophyDTO.getRst_Content());
+			temp.put("m_Id", trophyDTO.getM_Id());
+			temp.put("rst_UserTitle", trophyDTO.getRST_UserTitle());
+			items.put(i, temp);
+		}
+		
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/trophy/selectedDTOJson.jsp");
+				
+		return modelAndView;
+	}
 }
 
 
