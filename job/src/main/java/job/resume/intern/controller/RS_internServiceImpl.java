@@ -32,6 +32,10 @@ public class RS_internServiceImpl implements RS_internService {
 	@Override
 	public int selectLastSeq() {
 		return internDAO.selectLastSeq();
+	}
+	@Override
+	public RS_internDTO selectInternDTO(int rsit_Seq) {
+		return internDAO.selectInternDTO(rsit_Seq);
 	}	
 	
 }
