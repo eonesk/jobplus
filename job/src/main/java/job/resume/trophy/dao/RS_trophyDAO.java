@@ -35,4 +35,8 @@ public class RS_trophyDAO {
 	public RS_trophyDTO selectTrophyDTO(int rst_Seq) {
 		return sqlSession.selectOne("mybatis.trophyMapper.selectTrophyDTO", rst_Seq);
 	}
+	
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.trophyMapper.selectLastSeq");
+	}
 }

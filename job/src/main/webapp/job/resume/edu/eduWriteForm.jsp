@@ -62,7 +62,7 @@
 					$("#rse_Enddate" + numbering).focus();
 				} else {
 					console.log("[saveButtonInit] numbering : " + numbering);
-					window.open("./eduSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
+					window.open("/job/job/resume/edu/eduSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
 				}
 			});
 			
@@ -71,7 +71,7 @@
 		/** 내 교육이수사항 불러오기 */
 		$("#RSE_loadA").click(function() {
 			console.log("[load] eduPlusButtonCnt : " + eduPlusButtonCnt);
-			window.open("./eduLoadPopUp.jsp?eduPlusButtonCnt=" + eduPlusButtonCnt, "", "width=500px height=500px");
+			window.open("/job/job/resume/edu/eduLoadPopUp.jsp?eduPlusButtonCnt=" + eduPlusButtonCnt, "", "width=500px height=500px");
 		});
 	});
 	
@@ -84,7 +84,7 @@
 			console.log("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
 			$.ajax({
 				type: 'POST',
-				url: 'rseLoadView.do',
+				url: '/job/resume/edu/rseLoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -139,7 +139,7 @@
 								$("#rse_Enddate" + numbering).focus();
 							} else {
 								console.log("[saveButtonSelected] numbering : " + numbering);
-								window.open("./eduSavePopUp.jsp?numbering="+numbering, "", "width=500px height=500px");
+								window.open("/job/job/resume/edu/eduSavePopUp.jsp?numbering="+numbering, "", "width=500px height=500px");
 							}
 						});
 						

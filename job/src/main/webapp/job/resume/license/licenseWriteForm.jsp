@@ -60,7 +60,7 @@
 					$("#rsls_Date" + numbering).focus();
 				} else {
 					console.log("[saveButtonInit] numbering : " + numbering);
-					window.open("./licenseSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
+					window.open("/job/job/resume/license/licenseSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
 				}
 			});
 		
@@ -68,7 +68,7 @@
 		/** 내 자격증 불러오기 */
 		$("#RSLS_loadA").click(function() {
 			console.log("[load] licensePlusButtonCnt : " + licensePlusButtonCnt);
-			window.open("./licenseLoadPopUp.jsp?licensePlusButtonCnt=" + licensePlusButtonCnt, "", "width=500px height=500px");
+			window.open("/job/job/resume/license/licenseLoadPopUp.jsp?licensePlusButtonCnt=" + licensePlusButtonCnt, "", "width=500px height=500px");
 		});
 	});
 	
@@ -80,7 +80,7 @@
 			console.log("[selected] licensePlusButtonCnt : " + licensePlusButtonCnt);
 			$.ajax({
 				type: 'POST',
-				url: 'rslsLoadView.do',
+				url: '/job/resume/edu/rslsLoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -130,7 +130,7 @@
 								$("#rsls_Date" + numbering).focus();
 							} else {
 								console.log("[saveButtonInit] numbering : " + numbering);
-								window.open("./licenseSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
+								window.open("/job/job/resume/license/licenseSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
 							}
 						});
 							console.log("[selected] rsls_UserTitle : " + testDTO.rsls_UserTitle);

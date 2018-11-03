@@ -33,4 +33,8 @@ public class RS_trophyServiceImpl implements RS_trophyService {
 		return trophyDAO.selectTrophyDTO(rst_Seq);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return trophyDAO.selectLastSeq();
+	}	
 }

@@ -32,6 +32,7 @@
 		$("#trophydelete" + num).on("click", function() {
 			/*$("#t" + count).remove();*/
 			$(this).parent("#t" + num).remove();
+			$("#rst__Seq"+num).val("");
 			count--;
 		});
 		
@@ -56,11 +57,11 @@
 					$("#rst_Content" + num).focus();
 					return false;
 				} 
-				window.open("trophyWrite.jsp?num=" + num, "","width=500px height=500px");
+				window.open("/job/job/resume/trophy/trophyWrite.jsp?num=" + num, "","width=500px height=500px");
 			});		
 		});
 		$("#trophyload").click(function() {
-			window.open("trophyLoad.jsp?count=" + count, "", "width=500px height=500px");
+			window.open("/job/job/resume/trophy/trophyLoad.jsp?count=" + count, "", "width=500px height=500px");
 		});
 	});
 	
@@ -73,7 +74,7 @@
 			alert("selected함수 실행 count값 = " + count);
 			$.ajax({
 				type: 'POST',
-				url: 'LoadView.do',
+				url: '/job/job/resume/trophy/LoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -104,6 +105,7 @@
 						// 'X'표 눌렀을 때 닫기
 						$("#trophydelete" + num).on("click", function() {
 							$(this).parent("#t" + num).remove();
+							$("#rst__Seq"+num).val("");
 							count--;
 						});
 						
@@ -129,9 +131,9 @@
 								$("#rst_Content" + num).focus();
 								return false;
 							} 
-							window.open("trophyWrite.jsp?num=" + num, "","width=500px height=500px");
+							window.open("/job/job/resume/trophy/trophyWrite.jsp?num=" + num, "","width=500px height=500px");
 						});
-						
+						$("#rst__Seq" + num).val(testDTO.rst_Seq);
 						$("#rst_Seq" + num).val(testDTO.rst_Seq);
 						$("#rst_Name" + num).val(testDTO.rst_Name);
 						$("#rst_Company" + num).val(testDTO.rst_Company);
@@ -215,6 +217,9 @@ fieldset {
 </style>
 </head>
 <body class="write">
+<input type="hidden" id="rst__Seq1">
+<input type="hidden" id="rst__Seq2">
+<input type="hidden" id="rst__Seq3">
 <div id="trophydiv" class="trophydiv">	
 		<p class="title">수상내역</p>		
 		<!-- Load -->		 

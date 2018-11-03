@@ -25,5 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="Delete" parameterType="int">
 		delete RS_trophy where RST_seq=#{rst_Seq}
 	</delete>
-
+	
+	<select id="selectLastSeq" resultType="int">
+		select max(rst_seq) from rs_trophy
+	</select>
 </mapper>

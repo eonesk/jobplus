@@ -15,4 +15,6 @@ public interface RS_trophyService {
 	int Delete(int rst_Seq);
 	// seq검색
 	RS_trophyDTO selectTrophyDTO(int rst_Seq);
+	
+	int selectLastSeq();
 }

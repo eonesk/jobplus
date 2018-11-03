@@ -61,8 +61,12 @@ public class RS_languageController {
 		languageDTO.setM_Id(mId);
 		// (2) DB			
 		int su = languageService.Write(languageDTO);
+		int rslg_Seq = 0;
+		if(su>0) {
+			rslg_Seq = languageService.selectLastSeq();
+		}
 		// (3) 화면네비게이션	
-		out.print(su);
+		out.print(rslg_Seq);
 	}	
 	@RequestMapping(value="/job/resume/language/LoadCount.do", method=RequestMethod.POST)
 	public void  LoadCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
