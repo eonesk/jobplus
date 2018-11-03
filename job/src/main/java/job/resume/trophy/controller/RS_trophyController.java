@@ -107,7 +107,7 @@ public class RS_trophyController {
 
 		return modelAndView;
 	}	
-	@RequestMapping(value="/job/resume/intern/LoadView.do", method=RequestMethod.POST)
+	@RequestMapping(value="/job/resume/trophy/LoadView.do", method=RequestMethod.POST)
 	public ModelAndView LoadView(HttpServletRequest request) {		
 		ModelAndView modelAndView = new ModelAndView();
 		JSONObject jsonObject = new JSONObject();
@@ -115,18 +115,21 @@ public class RS_trophyController {
 		
 		String accumSeq = request.getParameter("accumSeq");		
 		int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");		
-		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);		
+		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);	
+		System.out.println("accumSeqSubstring = " + accumSeqSubstring);
 		String[] accumSeqSplit = accumSeq.split("/"); 
+		String rst_Date = "";
 		
 		for(int i = 0; i < accumSeqSplit.length; i++) {
-			System.out.println("[RS_eduLVController] accumSeqSplit[" + i + "] : " + accumSeqSplit[i]);
 			int rst_Seq = Integer.parseInt(accumSeqSplit[i]);
 			RS_trophyDTO trophyDTO = trophyService.selectTrophyDTO(rst_Seq);
+			DateFormat Format = new SimpleDateFormat("yyyy-MM-dd");
+			rst_Date = Format.format(trophyDTO.getRst_Date());
 			JSONObject temp = new JSONObject();
 			temp.put("rst_Seq", trophyDTO.getRst_Seq());
 			temp.put("rst_Name", trophyDTO.getRst_Name());
 			temp.put("rst_Company", trophyDTO.getRst_Company());
-			temp.put("rst_Date", trophyDTO.getRst_Date());
+			temp.put("rst_Date", rst_Date);
 			temp.put("rst_Content", trophyDTO.getRst_Content());
 			temp.put("m_Id", trophyDTO.getM_Id());
 			temp.put("rst_UserTitle", trophyDTO.getRST_UserTitle());

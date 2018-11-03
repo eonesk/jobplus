@@ -13,4 +13,6 @@ public interface RS_languageService {
 	List<RS_languageDTO> selectTitleList(String memId);
 	// 삭제
 	int Delete(int rslg_Seq);
+	// seq검색
+	RS_languageDTO selectLangDTO(int rslg_Seq);
 }
