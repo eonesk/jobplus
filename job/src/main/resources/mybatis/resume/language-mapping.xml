@@ -17,7 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectTitleList" parameterType="String" resultType="languageDTO">
 		select * from RS_language where M_id = #{memId}
 	</select>
-	 			
+	
+	<select id="selectLangDTO" parameterType="int" resultType="languageDTO">
+		select * from RS_language where rslg_Seq = #{rslg_Seq}
+	</select>  	
+			
 	<delete id="Delete" parameterType="int">
 		delete RS_language where rslg_Seq=#{rslg_Seq}
 	</delete>

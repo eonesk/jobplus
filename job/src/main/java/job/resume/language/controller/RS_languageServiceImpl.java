@@ -28,5 +28,9 @@ public class RS_languageServiceImpl implements RS_languageService {
 	public int Delete(int rslg_Seq) {
 		return languageDAO.Delete(rslg_Seq);
 	}
+	@Override
+	public RS_languageDTO selectLangDTO(int rslg_Seq) {
+		return languageDAO.selectLangDTO(rslg_Seq);
+	}
 
 }
