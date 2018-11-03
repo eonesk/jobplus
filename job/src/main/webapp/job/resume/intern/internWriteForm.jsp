@@ -6,29 +6,32 @@
 <meta charset="UTF-8">
 <title>internWriteForm</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">		
-	$(function() {
-		var count = 0;		
+<script type="text/javascript">	
+	var count = 0;		
+	$(function() {	
 		$("#t").hide();
 		
 		$("#internplus").click(function() {		
 			count++;
 			var num = count;	
+			var clone = $("#t").clone().attr('id', 't' + count);
+			
 			if (count >= 4) {
 				count--;
 				alert("항목추가는 최대 3개까지 입력가능합니다.");
 				return false;
 			}
-			var clone = $("#t").clone().attr('id', 't' + count);
+			
 			clone.find('*[id]').each(function() {
 				$(this).attr("id", $(this).attr("id") + count);
 			});
-			clone.insertBefore("#t");
-			$("#t" + count).show();
+			
+			clone.insertAfter("#t");
+			$("#t" + num).show();
 			
 			$("#interndelete" + num).on("click", function() {
 				/*$("#t" + count).remove();*/
-				$(this).parent().remove();
+				$(this).parent("#t" + num).remove();
 				$("#rsit_Seq"+num).val("");
 				count--;
 			});
@@ -60,12 +63,101 @@
 					return false;
 				}
 				window.open("/job/job/resume/intern/internWrite.jsp?num=" + num, "", "width=500px height=500px");
-			});
-			$("#internload" + num).click(function() {
-				window.open("/job/job/resume/intern/internLoad.jsp?num=" + num, "", "width=500px height=500px");
-			});
+			});			
 		});
-	});			
+		$("#internload").click(function() {
+			window.open("/job/job/resume/intern/internLoad.jsp?count=" + count, "", "width=500px height=500px");
+		});
+	});
+	
+	/** Load 함수 */
+	function selected(accumSeq, num) {
+		$(function() {
+			alert("selected함수 실행 num값 = " + num);
+			count = num;
+			alert("selected함수 실행 count값 = " + count);
+			$.ajax({
+				type: 'POST',
+				url: 'LoadView.do',
+				dataType: 'json',
+				data: {
+					"accumSeq": accumSeq
+				},
+				success: function(data) {					
+					$.each(data.items, function(index, item) {
+						var testDTO = item;
+						
+						count++;
+						
+						var num = count;
+						var clone = $("#t").clone().attr("id", "t" + num);
+						
+						// id&name 넘버링 변경 작업
+						clone.find("*[id]").each(function() {
+							$(this).attr("id", $(this).attr("id") + num);
+						});
+						
+						clone.find("*[name]").each(function() {
+							$(this).attr("name", $(this).attr("name") + num);
+						});
+						
+						clone.insertAfter("#t");
+						
+						$("#t" + num).show();
+						
+						/** 이벤트 바인딩 */
+						// 'X'표 눌렀을 때 닫기
+						$("#interndelete" + num).on("click", function() {
+							$(this).parent("#t" + num).remove();
+							count--;
+						});
+						
+						// 저장버튼 눌렀을 때
+						$("#internsave" + num).on("click", function() {
+							if ($("#rsitType" + num).val() == "활동구분") {
+								alert("활동구분 선택하세요.");
+								$("#rsitType" + num).focus();
+								return false;
+							}
+							if (!$("#rsitCompany" + num).val()) {
+								alert("회사,기관명을 입력하세요.");
+								$("#rsitCompany" + num).focus();
+								return false;
+							}
+							if (!$("#rsitStartdate" + num).val()) {
+								alert("시작년월을 입력하세요.");
+								$("#rsitStartdate" + num).focus();
+								return false;
+							}
+							if (!$("#rsitEnddate" + num).val()) {
+								alert("종료년월을 입력하세요.");
+								$("#rsitEnddate" + num).focus();
+								return false;
+							}
+							if (!$("#rsitContent" + num).val()) {
+								alert("활동내용을 입력하세요.");
+								$("#rsitContent" + num).focus();
+								return false;
+							}
+							window.open("/job/job/resume/intern/internWrite.jsp?num=" + num, "", "width=500px height=500px");
+						});	
+
+						$("#rsit_Seq" + num).val(testDTO.rsit_Seq);
+						$("#rsitSeq" + num).val(testDTO.rsit_Seq);
+						$("#rsitType" + num).val(testDTO.rsit_Type);
+						$("#rsitCompany" + num).val(testDTO.rsit_Company);
+						$("#rsitStartdate" + num).val(testDTO.rsit_Startdate);
+						$("#rsitEnddate" + num).val(testDTO.rsit_Enddate);
+						$("#rsitContent" + num).val(testDTO.rsit_Content);
+							
+					});					
+				},
+				error: function(e) {
+					 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+				}
+			});			
+		});
+	}
 </script>
 <style type="text/css">
 .write {
@@ -135,14 +227,23 @@ fieldset {
 	width: 120px;
 	height: 30px;
 }
+.interndiv {
+	width: 100%;
+	background-color: #f5f7fb;	
+    margin: 0px 5px;
+}
 </style>
 </head>
 <body class="write">
 	<input type="hidden" id="rsit_Seq1" name="rsit_Seq">
 	<input type="hidden" id="rsit_Seq2" name="rsit_Seq">
 	<input type="hidden" id="rsit_Seq3" name="rsit_Seq">
-	<fieldset>
+<div id="interndiv" class="interndiv">	
 		<p class="title">인턴&middot;대외활동</p>
+		<!-- Load -->		 
+		<input type="button" value="불러오기" id="internload" class="internload">
+</div>
+	<fieldset>
 		<div id="t" class="t">
 			<br>
 			<select name="rsitType" id="rsitType" class="rsitType" >				
@@ -162,7 +263,6 @@ fieldset {
 			</div>		
 			<div>
 				<input type="button" value="저장하기" id="internsave" class="internsave">
-				<input type="button" value="불러오기" id="internload" class="internload">
 			</div>				
 			<input type="button" value="삭제" id="interndelete" class="interndelete">	
 		</div>
