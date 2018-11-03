@@ -9,12 +9,12 @@
 <script type="text/javascript">
 	$(function() {
 		var save = "${param.numbering}";
-		alert("[savePopUp] numbering : " + save);
+		console.log("[savePopUp] numbering : " + save);
 		var rsls_Name = $("#rsls_Name"+save, opener.document).val();
 		var rsls_Company = $("#rsls_Company"+save, opener.document).val();
 		var rsls_Date = $("#rsls_Date"+save, opener.document).val();
 		
-		alert(rsls_Name + " // " + rsls_Company + " // " + rsls_Date);
+		console.log(rsls_Name + " // " + rsls_Company + " // " + rsls_Date);
 		
 		$("#RSLS_save_submit").click(function() {
 			if(!$("#rsls_UserTitle").val()) {

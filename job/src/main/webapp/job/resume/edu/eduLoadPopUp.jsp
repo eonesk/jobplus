@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		alert("eduPlusButtonCnt : " + ${param.eduPlusButtonCnt});
+		console.log("eduPlusButtonCnt : " + ${param.eduPlusButtonCnt});
 		/* 자기소개서의 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -18,11 +18,11 @@
 			success: function(data) {
 				$("#numberOfEdu").append(data);
 				if(data == "0") {
-					alert("교육이수데이터 없음");
+					alert("저장하신 교육이수가 없습니다.");
 					$("<tr>").addClass("eduLoadListLabelTr").appendTo("#eduLoadListTable");
 					$("<td>").addClass("eduLoadListLabelTd").html("제목").appendTo("#eduLoadListTable");
 				} else {
-					alert("교육이수데이터 있음");
+					console.log("교육이수데이터 있음");
 					/* Json 하는 거 어떻게 하지 ㅠㅠ */
 					$.ajax({
 						type: 'POST',
@@ -30,7 +30,7 @@
 						dataType: "json",
 						cache: false,
 						success: function(data) {
-							alert("성공");
+							console.log("성공");
 			              	//var testDTO =  data.items;
 							//alert(testDTO[0].rse_UserTitle);					
 							
@@ -62,9 +62,9 @@
 							
 							/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
 							// {부모창+checkbox선택값 >3}이 되면 checkbox값이 disabled됨.
-							alert("eduPlusButtonCnt[eduLoadSubmit click] : " + ${param.eduPlusButtonCnt});
+							console.log("eduPlusButtonCnt[eduLoadSubmit click] : " + ${param.eduPlusButtonCnt});
 							var isOverflow = ${param.eduPlusButtonCnt};
-							alert("var = isOverflow[eduLoadSubmit click] : " + isOverflow);
+							console.log("var = isOverflow[eduLoadSubmit click] : " + isOverflow);
 							
 							if(isOverflow == 3) {
 								$(".rse_UserTitleR").attr("disabled", "true");
@@ -72,35 +72,33 @@
 								$(".rse_UserTitleR").on("change", function() {
 									if($(this).is(":checked")){
 										isOverflow++;
-										alert("isOverflow[rse_UserTitleR change] : " + isOverflow);
+										console.log("isOverflow[rse_UserTitleR change] : " + isOverflow);
 										if(isOverflow == 3) {
 											$(".rse_UserTitleR").not($(".rse_UserTitleR:checked")).attr("disabled", "true");
 										}
 									} else {
 										isOverflow--;
 										$(".rse_UserTitleR").removeAttr("disabled");
-										alert("isOverflow[rse_UserTitleR change] : " + isOverflow);
+										console.log("isOverflow[rse_UserTitleR change] : " + isOverflow);
 									}
 								});
 							}
 							
 							$("#eduLoadSubmit").click(function() {
-								//var eduSeqList = new Array();
 								
 								var accumSeq = "";
 								
 				                $(".rse_UserTitleR:checked").each(function() {
-				                	alert($(this).val());
-				                	//eduSeqList.push($(this).val());
+				                	console.log($(this).val());
 				                	accumSeq += $(this).val() + "/";
 				                });
 				                
-				                alert("accumSeq : " + accumSeq);
+				                console.log("accumSeq : " + accumSeq);
 				                
 				                if(accumSeq == "") {
-				                	alert("체크해주셍ㅂ");
+				                	alert("불러올 교육이수를 선택해 주세요.");
 				                } else {
-				                	alert("체크됨");
+				                	console.log("체크됨");
 				                	if(confirm("불러오기를 진행하시겠습니까?")) {
 				                		opener.parent.selected(accumSeq, ${param.eduPlusButtonCnt});
 					                	self.close();
@@ -110,7 +108,7 @@
 							});
 							
 							function add_event(event) {
-								alert(event.data.param.rse_UserTitle + " // " + event.data.param.m_Id);
+								console.log(event.data.param.rse_UserTitle + " // " + event.data.param.m_Id);
 								$("#eduLoadViewInit").hide();
 								$("#eduLoadView").html("");
 
@@ -149,108 +147,17 @@
 // 				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
 // 				                	self.close();
 // 				                });
-				                
-				                
-				                
 							}
-							
-							
-							alert("종료");					
+							console.log("종료");					
 						},
 						error : function(e) {
-			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
 			         	}
-					});
-					
-					
-					/** json으로 넘어 온 데이터를 $.each();를 통해 table에 구현해 줘야 함 : 위 ajax문 success에 들어가야 함 */
-					// 임의로 rsprDTO값을 정해서 table에 구현..
-/* 					
-					var rsprUserTitleList = [{ 
-						    "rspr_Seq": 5,
-						    "rspr_Title": "제목입니다1",
-						    "rspr_Content": "내용입니다",
-						    "m_Id": "num1",
-						    "rspr_UserTitle": "usertitle입니다."
-					},
-					{
-						    "rspr_Seq": 6,
-						    "rspr_Title": "제목",
-						    "rspr_Content": "내용",
-						    "m_Id": "num1",
-						    "rspr_UserTitle": "usertitle"
-					}];
-					
-					// Table 첫번째 행
-					$("<tr>").addClass("rsprLoadListLabelTr").appendTo("#rsprLoadListTable");
-					$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo("#rsprLoadListTable");
-					
-					// List Content
-					
-					$.each(rsprUserTitleList, function(index, item) {
-						
-						var listTr = $("<tr>");
-						listTr.addClass("rsprLoadListContentTr");
-						var listTd = $("<td>");
-						listTd.addClass("rsprLoadListContentTd");
-						var listA = $("<a>");
-						listA.addClass("rsprLoadListContentA");
-						listA.attr("href", "#");
-						listA.html(rsprUserTitleList.rspr_UserTitle);
-						
-						listTd.append(listA);
-						listTr.append(listTd);
-						
-						$("#rsprLoadListTable").append(listTr);
-					});
-					
-					/* 
-					
-					// ex
-					var listTr1 = $("<tr>");
-					listTr.addClass("rsprLoadListContentTr");
-					var listTd1 = $("<td>");
-					listTd.addClass("rsprLoadListContentTd");
-					var listA1 = $("<a>");
-					listA1.addClass("rsprLoadListContentA");
-					listA1.attr("href", "#");
-					listA1.html(rsprUserTitleList1.rspr_UserTitle);
-					
-					listTd1.append(listA1);
-					listTr1.append(listTd1);
-					
-					$("#rsprLoadListTable").append(listTr1);
-					 */
-					/** usertitle을 클릭했을 때  *//*
-					$(".rsprLoadListContentA").click(function() {
-						alert($(this).text());
-					});
-			 */		
-					/* 
-					
-						$.each(data.memberlist, function(index, memberlist) { // 이치를 써서 모든 데이터들을 배열에 넣음					
-
-						var items = [];
-
-						items.push("<td>" + memberlist.id + "</td>"); // 여기에 id pw addr tel의 값을 배열에 넣은뒤
-
-						items.push("<td>" + memberlist.pw + "</td>");
-
-						items.push("<td>" + memberlist.addr + "</td>");
-
-						items.push("<td>" + memberlist.tel + "</td>");
-
-						$("<tr/>", {
-
-							html : items // 티알에 붙임,
-
-						}).appendTo("table"); // 그리고 그 tr을 테이블에 붙임
-
-					});	 */				
+					});				
 				}
 			},
 			error : function(e) {
-                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
          	}
 		});	
 	});

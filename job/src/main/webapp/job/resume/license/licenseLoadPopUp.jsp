@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		alert("licensePlusButtonCnt : " + ${param.licensePlusButtonCnt});
+		console.log("licensePlusButtonCnt : " + ${param.licensePlusButtonCnt});
 		/* 자기소개서의 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -18,11 +18,11 @@
 			success: function(data) {
 				$("#numberOfLicense").append(data);
 				if(data == "0") {
-					alert("자격증데이터 없음");
+					alert("저장하신 자격증이 없습니다.");
 					$("<tr>").addClass("licenseLoadListLabelTr").appendTo("#licenseLoadListTable");
 					$("<td>").addClass("licenseLoadListLabelTd").html("제목").appendTo("#licenseLoadListTable");
 				} else {
-					alert("자격증데이터 있음");
+					console.log("자격증데이터 있음");
 					/* Json 하는 거 어떻게 하지 ㅠㅠ */
 					$.ajax({
 						type: 'POST',
@@ -30,7 +30,7 @@
 						dataType: "json",
 						cache: false,
 						success: function(data) {
-							alert("성공");
+							console.log("성공");
 			              	//var testDTO =  data.items;
 							//alert(testDTO[0].rse_UserTitle);					
 							
@@ -62,9 +62,9 @@
 
 							/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
 							// {부모창+checkbox선택값 >3}이 되면 checkbox값이 disabled됨.
-							alert("licensePlusButtonCnt[eduLoadSubmit click] : " + ${param.licensePlusButtonCnt});
+							console.log("licensePlusButtonCnt[eduLoadSubmit click] : " + ${param.licensePlusButtonCnt});
 							var isOverflow = ${param.licensePlusButtonCnt};
-							alert("var = isOverflow[eduLoadSubmit click] : " + isOverflow);
+							console.log("var = isOverflow[eduLoadSubmit click] : " + isOverflow);
 							
 							if(isOverflow == 3) {
 								$(".rsls_UserTitleR").attr("disabled", "true");
@@ -72,34 +72,32 @@
 								$(".rsls_UserTitleR").on("change", function() {
 									if($(this).is(":checked")){
 										isOverflow++;
-										alert("isOverflow[rsls_UserTitleR change] : " + isOverflow);
+										console.log("isOverflow[rsls_UserTitleR change] : " + isOverflow);
 										if(isOverflow == 3) {
 											$(".rsls_UserTitleR").not($(".rsls_UserTitleR:checked")).attr("disabled", "true");
 										}
 									} else {
 										isOverflow--;
 										$(".rsls_UserTitleR").removeAttr("disabled");
-										alert("isOverflow[rsls_UserTitleR change] : " + isOverflow);
+										console.log("isOverflow[rsls_UserTitleR change] : " + isOverflow);
 									}
 								});
 							}
 							
 							$("#licenseLoadSubmit").click(function() {
-								//var eduSeqList = new Array();
 								var accumSeq = "";
 								
 				                $("#rsls_UserTitleR:checked").each(function() {
-				                	alert($(this).val());
-				                	//eduSeqList.push($(this).val());
+				                	console.log($(this).val());
 				                	accumSeq += $(this).val() + "/";
 				                });
 				                
-				                alert("accumSeq : " + accumSeq);
+				                console.log("accumSeq : " + accumSeq);
 				                
 				                if(accumSeq == "") {
-				                	alert("체크해주셍ㅂ");
+				                	alert("불러올 자격증을 선택해주세요.");
 				                } else {
-				                	alert("체크됨");
+				                	console.log("체크됨");
 				                	if(confirm("불러오기를 진행하시겠습니까?")) {
 				                		opener.parent.selected(accumSeq, ${param.licensePlusButtonCnt});
 					                	self.close();
@@ -109,7 +107,7 @@
 							});
 							
 							function add_event(event) {
-								alert(event.data.param.rsls_UserTitle + " // " + event.data.param.m_Id);
+								console.log(event.data.param.rsls_UserTitle + " // " + event.data.param.m_Id);
 								$("#licenseLoadViewInit").hide();
 								$("#licenseLoadView").html("");
 
@@ -119,8 +117,6 @@
 								var indexTd1 = $("<td>").html("자격증이름");
 								var indexTd2 = $("<td>").html("발행처");
 								var indexTd3 = $("<td>").html("취득년월");
-// 								var indexTd4 = $("<td>").html("종료년월");
-// 								var indexTd5 = $("<td>").html("교육내용");
 								
 								indexTr.append(indexTd1).append(indexTd2).append(indexTd3)/* .append(indexTd4).append(indexTd5) */;
 								table.append(indexTr);
@@ -129,8 +125,6 @@
 								var contentTd1 = $("<td>").html(event.data.param.rsls_Name);
 								var contentTd2 = $("<td>").html(event.data.param.rsls_Company);								
 								var contentTd3 = $("<td>").html(event.data.param.rsls_Date);
-// 								var contentTd4 = $("<td>").html(event.data.param.rse_Enddate);
-// 								var contentTd5 = $("<td>").html(event.data.param.rse_Content);
 								
 								contentTr.append(contentTd1).append(contentTd2).append(contentTd3)/* .append(contentTd4).append(contentTd5) */;
 								table.append(contentTr);
@@ -147,15 +141,9 @@
 // 				                	$("#rsprContent", opener.document).val(event.data.param.rspr_Content);
 // 				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
 // 				                	self.close();
-// 				                });
-				                
-				                
-				                
+// 				                }); 
 							}
-							
-							
-							alert("종료");
-							
+							console.log("종료");							
 						},
 						error : function(e) {
 							alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
