@@ -562,24 +562,33 @@ $("#rs_seq").val(null);
 			var rsw_Seq1 = null;
 			var rsw_Seq2 = null;
 			var rsw_Seq3 = null;
-			var rsit_Seq1 = $("#rsit_Seq1").val();
+			var rsit_Seq1 = null; 
+			var rsit_Seq2 = null; 
+			var rsit_Seq3 = null;
+			/* var rsit_Seq1 = $("#rsit_Seq1").val();
 			var rsit_Seq2 = $("#rsit_Seq2").val();
-			var rsit_Seq3 = $("#rsit_Seq3").val();
+			var rsit_Seq3 = $("#rsit_Seq3").val(); */
 			var rse_Seq1 = null;
 			var rse_Seq2 = null;
 			var rse_Seq3 = null;
 			var rsls_Seq1 = null;
 			var rsls_Seq2 = null;
 			var rsls_Seq3 = null;
-			var rst_Seq1 = null;
-			var rst_Seq2 = null;
-			var rst_Seq3 = null;
+			var rst_Seq1 =null; 
+			var rst_Seq2 =null; 
+			var rst_Seq3 =null;
+			/* var rst_Seq1 =$("#rst__Seq1").val(); 
+			var rst_Seq2 =$("#rst__Seq2").val(); 
+			var rst_Seq3 =$("#rst__Seq3").val(); */
 			var rsf_Seq1 = null;
 			var rsf_Seq2 = null;
 			var rsf_Seq3 = null;
-			var rslg_Seq1 = null;
+			/* var rslg_Seq1 = null;
 			var rslg_Seq2 = null;
-			var rslg_Seq3 = null;
+			var rslg_Seq3 = null; */
+			var rslg_Seq1 = $("#rslg__Seq1").val();
+			var rslg_Seq2 = $("#rslg__Seq2").val();
+			var rslg_Seq3 = $("#rslg__Seq3").val();
 			var rspf_Seq = null;
 			var rsv_Seq = null;
 			var rspr_Seq = null;
@@ -763,22 +772,22 @@ $("#rs_seq").val(null);
 		<h2>경력</h2>
 	</div>
 	<div id="internDiv">
-		<jsp:include page="../intern/internWriteForm.jsp"></jsp:include>
+		<%-- <jsp:include page="../intern/internWriteForm.jsp"></jsp:include> --%>
 	</div>
 	<div id="eduDiv">
-		<h2>교육이수</h2>
+		<%-- <jsp:include page="../edu/eduWriteForm.jsp"></jsp:include> --%>
 	</div>
 	<div id="licenseDiv">
-		<h2>자격증</h2>
+		<%-- <jsp:include page="../license/licenseWriteForm.jsp"></jsp:include> --%>
 	</div>
 	<div id="trophyDiv">
-		<h2>수상</h2>
+		<%-- <jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include> --%>
 	</div>
 	<div id="foreignDiv">
 		<h2>해외경험</h2>
 	</div>
 	<div id="languageDiv">
-		<h2>어학</h2>
+		<jsp:include page="../language/languageWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="portfolioDiv">
 		<h2>포트폴리오</h2>

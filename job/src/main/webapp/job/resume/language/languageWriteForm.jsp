@@ -32,6 +32,7 @@
 			$("#langdelete" + num).on("click", function() {
 				/*$("#t" + count).remove();*/
 				$(this).parent("#t" + num).remove();
+				$("#rslg__Seq"+num).val("");
 				count--;
 			});
 			
@@ -67,7 +68,7 @@
 						$("#rslg_Date" + num).focus();
 						return false;
 					}
-					window.open("languageWrite.jsp?num=" + num, "", "width=500px height=500px");
+					window.open("/job/job/resume/language/languageWrite.jsp?num=" + num, "", "width=500px height=500px");
 				}
 				if($("#rslg_Category" + num).val() == "회화능력"){	
 					if($("#rslg_Name" + num).val() == "외국어명"){
@@ -80,12 +81,12 @@
 						$("#rslg_Lv" + num).focus();
 						return false;
 					}
-					window.open("languageWrite.jsp?num=" + num, "", "width=500px height=500px");
+					window.open("/job/job/resume/language/languageWrite.jsp?num=" + num, "", "width=500px height=500px");
 				}
 			});					
 		});
 		$("#langload").click(function() {
-			window.open("languageLoad.jsp?count=" + count, "", "width=500px height=500px");
+			window.open("/job/job/resume/language/languageLoad.jsp?count=" + count, "", "width=500px height=500px");
 		});	
 	});
 	
@@ -97,7 +98,7 @@
 			alert("selected함수 실행 count값 = " + count);
 			$.ajax({
 				type: 'POST',
-				url: 'LoadView.do',
+				url: '/job/job/resume/language/LoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -128,6 +129,7 @@
 						// 'X'표 눌렀을 때 닫기
 						$("#langdelete" + num).on("click", function() {
 							$(this).parent("#t" + num).remove();
+							$("#rslg__Seq"+num).val("");
 							count--;
 						});
 						
@@ -154,7 +156,7 @@
 									$("#rslg_Date" + num).focus();
 									return false;
 								}
-								window.open("languageWrite.jsp?num=" + num, "", "width=500px height=500px");
+								window.open("/job/job/resume/languange/languageWrite.jsp?num=" + num, "", "width=500px height=500px");
 							}
 							if($("#rslg_Category" + num).val() == "회화능력"){	
 								if($("#rslg_Name" + num).val() == "외국어명"){
@@ -167,10 +169,11 @@
 									$("#rslg_Lv" + num).focus();
 									return false;
 								}
-								window.open("languageWrite.jsp?num=" + num, "", "width=500px height=500px");
+								window.open("/job/job/resume/languange/languageWrite.jsp?num=" + num, "", "width=500px height=500px");
 							}
 						});
 						
+						$("#rslg__Seq" + num).val(testDTO.rst_Seq);
 						$("#rslg_Seq" + num).val(testDTO.rst_Seq);						
 						$("#rslg_Category" + num).val(testDTO.rslg_Category);
 						if($("#rslg_Category" + num).val() == "공인시험"){
@@ -280,6 +283,9 @@ fieldset {
 </style>
 </head>
 <body class="write">
+<input type="hidden" id="rslg__Seq1">
+<input type="hidden" id="rslg__Seq2">
+<input type="hidden" id="rslg__Seq3">
 <div id="langdiv" class="langdiv">			
 		<p class="title">어학</p>
 		<!-- Load -->		 

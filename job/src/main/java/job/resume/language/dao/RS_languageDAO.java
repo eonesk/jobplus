@@ -34,4 +34,8 @@ public class RS_languageDAO {
 	public RS_languageDTO selectLangDTO(int rslg_Seq) {
 		return sqlSession.selectOne("mybatis.languageMapper.selectLangDTO", rslg_Seq);
 	}
+	
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.languageMapper.selectLastSeq");
+	}
 }

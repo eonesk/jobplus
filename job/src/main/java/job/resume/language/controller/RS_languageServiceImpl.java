@@ -32,5 +32,9 @@ public class RS_languageServiceImpl implements RS_languageService {
 	public RS_languageDTO selectLangDTO(int rslg_Seq) {
 		return languageDAO.selectLangDTO(rslg_Seq);
 	}
+	@Override
+	public int selectLastSeq() {
+		return languageDAO.selectLastSeq();
+	}
 
 }
