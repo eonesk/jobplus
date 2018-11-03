@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+body {
+	background-color: white;
+	
+	margin: 0 auto;
+	padding: 0 auto;
+	
+	width: 955px;
+}
+
+	div#studyLV_div {
+		background-color: #f5f7fb;
+		
+		width: 955px;
+	}
+	
+	h3#studyLV_Title {
+		font-weight: bold;
+	}
+	
+	div#studyLV_Load {
+		background-color: white; 
+		
+		border: 1px solid gray; 
+		
+		padding: 5px; 
+		margin: 3px; 
+		display: inline-block; 
+		
+		float: left;
+	}
+	
+	div#studyLV_Load:hover {border: 2px solid blue;}
+	
+	a#RSS_loadA:link {text-decoration: none; color: black;}
+	a#RSS_loadA:visited {text-decoration: none; color: black;}
+	a#RSS_loadA:acheive {text-decoration: none; color: black;}
+	a#RSS_loadA:hover {text-decoration: none; color: black;}
+	
+	
+	
+	
+	
+	

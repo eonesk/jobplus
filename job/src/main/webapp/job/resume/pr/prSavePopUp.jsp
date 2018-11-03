@@ -10,16 +10,14 @@
 	$(function() {
 		var rsprTitle = $("#rsprTitle", opener.document).val();
 		var rsprContent = $("#rsprContent", opener.document).val();
-		alert(rsprTitle + " // " + rsprContent);
+		console.log(rsprTitle + " // " + rsprContent);
 		
 		$("#RSPR_save_submit").click(function() {
 			if(!$("#rsprUserTitle").val()) {
 				alert("자기소개서 제목을 입력해주세요");
 				$("#rsprUserTitle").focus();
 				return false;
-			}/*  else {
-				$("form[name='rsprSaveForm']").submit();
-			} */
+			}
 			 
 			var rsprUserTitle = $("#rsprUserTitle").val();
 			

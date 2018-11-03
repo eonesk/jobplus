@@ -94,7 +94,8 @@
 				}
 			});
 			
-			$(".hideAndShow" + numbering).hide();							// 하위 list 숨기기
+			/* $(".hideAndShow" + numbering).hide();							// 하위 list 숨기기 */
+			$("#rssTypeSecond" + numbering).hide();
 			$(".rssTypeClass" + numbering).hide();							// 기본항목빼고 숨기기
 
 			/** 학력구분 */
@@ -198,15 +199,51 @@
 		
 	});
 </script>
+<style type="text/css">
+	@import url('./css/studyLVWriteForm.css');
+</style>
 </head>
 <body>
+	<div id="studyLV_div" name="studyLV_div" class="studyLV_div"><!-- 전체틀 -->
+	
+		<!-- Content_Top -->
+		<div id="Content_top" name="Content_top" class="Content_top">
+		
+			<!-- Title -->
+			<h3 id="studyLV_Title" name="studyLV_Title" class="studyLV_Title">학력</h3>
+			
+			<!-- Load -->
+			<div id="studyLV_Load" style="">
+				<a id="RSS_loadA" name="RSS_loadA" class="RSS_loadA" href="#">내 학력사항 불러오기</a>
+			</div>
+			<p id="studyLV_" style="clear: both; font-size: 12px; margin: 3px;">
+			각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. 고치거나 빼야함ㅎ</p>
+			
+			<br>
+		
+		</div>
+		
+		<!-- Content_Middle -->
+		<div id="Content_middle" name="Content_middle" class="Content_middle">
+		
+		</div>
+		
+		<!-- Content_Bottom -->
+		<div id="Content_bottom" name="Content_bottom" class="Content_bottom">
+		
+		</div>
+		
+	</div><!-- 전체틀 -->
+
+
+<!-- 
 	<div id="studyLV_div"
 		style="display: inline-block; position: relative; margin: 15px; width: 80%; background-color: #f5f7fb;">
 		
-		<!-- Title -->
+		Title
 		<h3 style="font-weight: bold;">학력</h3>
 		
-		<!-- Load / isHighScool -->
+		Load
 		<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
 			<a href="#" id="RSS_loadA">내 학력사항 불러오기</a>
 		</div>
@@ -215,69 +252,88 @@
 		
 		<br>
 		
-		<!-- input영역 1번째 줄 -->
+		input영역 1번째 줄
 		<div style="padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); height: auto;">
 			<div id="studyLVPlus" class="studyLVPlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
 			
+				SEQ : hidden
 				<input id="rss_Seq" name="rss_Seq" class="rss_Seq" type="hidden">
+				
+				'X'버튼
 				<a id="studyLVPlusCancel" name="studyLVPlusCancel" href="#" style="text-decoration: none;">
 					<div id="studyLVCloseButton" style="border: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
 				</a>
+				
+				isHighScool
 				<div style="padding-top: 10px;">
 					<input id="isHighSchoolCheck" name="rss_Ishighschool" 
 							type="checkbox" style="float: left; padding-top: 50px;" value="true">고등학교 미만 졸업
 				</div>
-				<div id="isHighSchoolHide">
 				
-					<!-- 학력구분데이터 -->
-					<span id="rssTypeFirst" style="margin-top: 8px; float: left; background-color:white; padding-left: 5px; padding-top: 13px; border: 1px solid lightgray; display: inline-block; width: 105px; height: 37px;">
-						<p id="rssTypeTitle" style="display: inline;">학교구분</p><span style="text-align: right;">&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</span>
-						<input id="rssTypeValue" name="rss_Type" type="hidden">
+				고등학교미만졸업일 때 숨겨지는 부분
+				<div id="isHighSchoolHide">
+					
+					기본데이터
+					<div id="rssBasic" name="rssBasic" class="rssBasic">
+						학력구분데이터
+						<span id="rssTypeFirst" style="margin-top: 8px; float: left; background-color:white; padding-left: 5px; padding-top: 13px; border: 1px solid lightgray; display: inline-block; width: 105px; height: 37px;">
+							<p id="rssTypeTitle" style="display: inline;">학교구분</p><span style="text-align: right;">&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</span>
+							<input id="rssTypeValue" name="rss_Type" type="hidden">
+						</span>
+						
+						학교명데이터
+						<input id="rssNameFirst"; name="rss_Name" 
+								type="text" placeholder="학교명" style="margin-top: 8px; margin-right: 10px; float: left; width: 250px; height: 48px; border: 1px solid lightgray;">
+						
+						학력구분하위		
+						<span id="rssTypeSecond" class="hideAndShow" style="position: absolute; left: 34px; top: 280px; display: inline-block; background-color:white; padding: 0px; border: 1px solid gray; width: 110px; z-index: 50px;">
+						<ul class="sub" style="padding: 0px; list-style: none;">
+							<li id="rssTypeList[1]" class="rssTypeList" value="0" style="padding: 5px 0px 5px 0px; height: 25%;">고등학교</li>
+							<li id="rssTypeList[2]" class="rssTypeList" value="1" style="padding: 5px 0px 5px 0px; height: 25%;">대학(2,3년)</li>
+							<li id="rssTypeList[3]" class="rssTypeList" value="2" style="padding: 5px 0px 5px 0px; height: 25%;">대학교(4년)</li>
+							<li id="rssTypeList[4]" class="rssTypeList" value="3" style="padding: 5px 0px 5px 0px; height: 25%;">대학원</li>
+						</ul>
 					</span>
-					
-					<!-- 학교명데이터 -->
-					<input id="rssNameFirst"; name="rss_Name" 
-							type="text" placeholder="학교명" style="margin-top: 8px; margin-right: 10px; float: left; width: 250px; height: 48px; border: 1px solid lightgray;">
-					
-				<!---------------------------------------------------------- 여기까지 기본항목 ------------------------------------------------------------------------>	
-				<!-- 
+					</div>
+				-------------------------------------------------------- 여기까지 기본항목 ----------------------------------------------------------------------	
+				
 					학위데이터
 					<span id="rssDegreeFirst" class="rssTypeClass" style="margin-top: 8px; float: left; background-color:white; padding-left: 5px; padding-top: 13px; border: 1px solid lightgray; display: inline-block; width: 80px; height: 37px;">
 						학위&nbsp;&nbsp;&nbsp;<span>ㅎ</span>
 					</span>
-				-->
-					<!-- 입학일데이터  -->
+				
+					입학일데이터 
 					<fieldset id="rssStartDateFirst" class="rssTypeClass" name="rss_Startdate" 
 								style="margin-right: 0px; float: left; border: 1px solid lightgray; background-color: white; height: 42px; width: 142px;">
 						<legend style="font-size: 12px;">&nbsp;&nbsp;입학년도</legend>
 						<input id="rssStartDateValue" name="rssStartDateValue" type="month" style="text-align:center; float: left; background-color:white; border: 0px solid lightgray; display: inline-block; width: 135px; height: 21px;">
 					</fieldset>
 					
-					<!-- 졸업일데이터 -->
+					졸업일데이터
 					<fieldset id="rssEndDateFirst" class="rssTypeClass" name="rss_Enddate" 
 								style="margin-left: 0px; margin-right: 0px; float: left; border: 1px solid lightgray; background-color: white; height: 42px;">
 						<legend style="font-size: 12px;">&nbsp;&nbsp;졸업년도</legend>
 						<input id="rssEndDateValue" name="rssEndDateValue" type="month" style="text-align:center; float: left; background-color:white; border: 0px solid lightgray; display: inline-block; width: 135px; height: 21px;">
 					</fieldset>
-				<!-- 	
+					
 					졸업상태데이터
 					<span id="rssGraduateFirst" class="rssTypeClass" style="margin-left: 0px; margin-top: 8px; float: left; background-color:white; padding-left: 5px; padding-top: 13px; border: 1px solid lightgray; display: inline-block; width: 105px; height: 37px;">
 						졸업상태&nbsp;&nbsp;&nbsp;<span>ㅎ</span>
 					</span>
-				 -->	
+					
 					<br style="clear:both;">
 					
-					<!-- input영역 두번째 줄 -->
+					input영역 두번째 줄
 					
-					<!-- 전공명데이터 -->
+					전공명데이터
 					<input id="rssMajorFirst" class="rssTypeClass" name="rss_Major" 
 							type="text" placeholder="전공명" style="margin-top: 10px; float: left; position: relative; left: 0px; top: 0px; border: 1px solid lightgray; height: 48px; width: 362px;">
 					
-					<!-- 학점데이터 -->
+					학점데이터
 					<input id="rssScoreFirst" class="rssTypeClass" name="rss_Score" 
 							type="number" max="4.5" placeholder="학점" style="margin-top: 10px; margin-left: 12px; float: left; position: relative; left: 0px; top: 0px; border: 1px solid lightgray; height: 48px; width: 80px;">
 					
-					<!-- 총점데이터 -->
+					총점데이터
 					<span id="rssTotScoreFirst" class="rssTypeClass" name="rssTotScoreFirst" style="margin-top: 10px; float: left; background-color:white; padding-left: 5px; padding-top: 13px; border: 1px solid lightgray; display: inline-block; width: 80px; height: 37px;">
 						<p id="rssTotScoreTitle" style="display: inline;">총점</p><span style="text-align: right;">ㅎ</span>
 						<input id="rssTotScoreValue" name="rss_Totscore" type="hidden">
@@ -288,19 +344,14 @@
 					
 					
 					
-					<!-- 두번째줄 : z-index: 50px; : hide&show돼야할부분 -->
-					<span id="rssTypeSecond" class="hideAndShow" style="position: absolute; left: 34px; top: 280px; display: inline-block; background-color:white; padding: 0px; border: 1px solid gray; width: 110px; z-index: 50px;">
-						<ul class="sub" style="padding: 0px; list-style: none;">
-							<li id="rssTypeList[1]" class="rssTypeList" value="0" style="padding: 5px 0px 5px 0px; height: 25%;">고등학교</li>
-							<li id="rssTypeList[2]" class="rssTypeList" value="1" style="padding: 5px 0px 5px 0px; height: 25%;">대학(2,3년)</li>
-							<li id="rssTypeList[3]" class="rssTypeList" value="2" style="padding: 5px 0px 5px 0px; height: 25%;">대학교(4년)</li>
-							<li id="rssTypeList[4]" class="rssTypeList" value="3" style="padding: 5px 0px 5px 0px; height: 25%;">대학원</li>
-						</ul>
-					</span>
+					두번째줄 : z-index: 50px; : hide&show돼야할부분
+					
+					
 					<span id="rssNameSecond" class="hideAndShow" style="position: absolute; left: 146px; top: 235px; display: inline-block; background-color:white; border: 1px solid lightgray; height: 164px; width:250px; z-index: 60px;">
 						학교검색..? 일단 폼은 만들어 놓고 기능추가../....ㅇ..ㅇ...ㅇ아아아ㅏ// 학위도 추가되는건데 이건 시간남으면 해야지.. 일단 숨겨놓고..
 					</span>
-		<!-- 			
+					
+					
 					<span class="hideAndShow" style="position: absolute; left: 398px; top: 235px; display: inline-block; background-color:white; border: 1px solid lightgray; height: 140px; width:85px; z-index: 60px;">
 						<ul class="sub" style="padding: 0px; list-style: none;">
 							<li style="padding: 5px 0px 5px 0px; border: 1px solid gray; height: 33%;">석사</li>
@@ -317,7 +368,7 @@
 							<li style="padding: 5px 0px 5px 0px;border: 1px solid gray; height: 25%;">중퇴</li>
 						</ul>
 					</span>
-		 -->			
+					
 					<span id="rssTotScoreSecond" class="hideAndShow" style="position: absolute; left: 492px; top: 350px; display: inline-block; background-color:white; border: 1px solid lightgray; height: 165px; width:85px; z-index: 60px;">
 						<ul class="sub" style="padding: 0px; list-style: none;">
 							<li id="rssTotScoreList[1]" class="rssTotScoreList" value="0" style="padding: 5px 0px 5px 0px; height: 33%;">4.5</li>
@@ -342,5 +393,6 @@
 			</div>
 		</a>
 	</div>
+ -->	
 </body>
 </html>
