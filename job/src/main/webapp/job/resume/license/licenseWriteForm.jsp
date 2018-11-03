@@ -14,7 +14,7 @@
 
 		$("#licensePlus").hide();
 		
-		$("#plusButton").click(function() {
+		$("#licenseplusButton").click(function() {
 			licensePlusButtonCnt++;
 			var numbering = "_" + licensePlusButtonCnt;
 			var clone = $("#licensePlus").clone().attr("id", "licensePlus" + numbering);
@@ -203,8 +203,8 @@
 		</div>
 		
 		<!-- PlusButton -->
-		<a id="plusButton" href="#" style="text-decoration: none;">
-			<div id="plusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
+		<a id="licenseplusButton" href="#" style="text-decoration: none;">
+			<div id="licenseplusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
 							+ 자격증 추가
 			</div>
 		</a>

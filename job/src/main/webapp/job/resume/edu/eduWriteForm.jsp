@@ -14,7 +14,7 @@
 		
 		$("#eduPlus").hide();
 		
-		$("#plusButton").click(function() {
+		$("#eduplusButton").click(function() {
 			eduPlusButtonCnt++;
 			var numbering = "_" + eduPlusButtonCnt;
 			var clone = $("#eduPlus").clone().attr("id", "eduPlus" + numbering);
@@ -232,8 +232,8 @@
 			</div>
 <!-- ------------------------------------------------------Footer----------------------------------------------------------------------- -->
 		</div>
-		<a id="plusButton" href="#" style="text-decoration: none;">
-			<div id="plusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
+		<a id="eduplusButton" href="#" style="text-decoration: none;">
+			<div id="eduplusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
 							+ 교육 추가
 			</div>
 		</a>
