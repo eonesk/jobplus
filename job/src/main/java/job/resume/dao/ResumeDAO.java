@@ -60,4 +60,8 @@ public class ResumeDAO {
 		MemberDTO memberDTO = sqlSession.selectOne("mybatis.resumeMapper.selectMember", memId);
 		return memberDTO;
 	}
+	
+	public int selectLastSeq(String memId) {
+		return sqlSession.selectOne("mybatis.resumeMapper.selectLastSeq", memId);
+	}
 }

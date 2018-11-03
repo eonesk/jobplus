@@ -19,8 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{rst_Seq1,	jdbcType=INTEGER},#{rst_Seq2, jdbcType=INTEGER},#{rst_Seq3,	jdbcType=INTEGER},
 		#{rsf_Seq1, jdbcType=INTEGER},#{rsf_Seq2, jdbcType=INTEGER},#{rsf_Seq3, jdbcType=INTEGER},
 		#{rslg_Seq1, jdbcType=INTEGER},#{rslg_Seq2, jdbcType=INTEGER},#{rslg_Seq3, jdbcType=INTEGER},
-		#{rspf_Seq, jdbcType=INTEGER}, #{rsv_Seq, jdbcType=INTEGER}, #{rspr_Seq, jdbcType=INTEGER}, sysdate
-		)
+		#{rspf_Seq, jdbcType=INTEGER}, #{rsv_Seq, jdbcType=INTEGER}, #{rspr_Seq, jdbcType=INTEGER}, sysdate)
 	</insert>
 
 	<select id="selectResume" parameterType="java.util.Map" resultType="resumeDTO">
@@ -57,4 +56,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from resume where
 		RS_SEQ=#{rs_Seq} and M_ID=#{m_Id}
 	</delete>
+	
+	<select id="selectLastSeq" parameterType="String" resultType="int">
+		select max(rs_seq) from resume where m_Id=#{m_Id}
+	</select>
 </mapper>

@@ -43,4 +43,9 @@ public class ResumeServiceImpl implements ResumeService {
 		return resumeDAO.selectResume(memId, rs_seq);
 	}
 
+	@Override
+	public int selectLastSeq(String memId) {
+		return resumeDAO.selectLastSeq(memId);
+	}
+
 }

@@ -20,4 +20,6 @@ public interface ResumeService {
 	public MemberDTO selectMember(String memId);
 	
 	public ResumeDTO selectResume(String memId, int rs_seq);
+	
+	public int selectLastSeq(String memId);
 }

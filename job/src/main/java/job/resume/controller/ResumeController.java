@@ -1,5 +1,7 @@
 package job.resume.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -7,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -39,6 +42,7 @@ public class ResumeController {
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String m_birth_string = sdFormat.format(memberDTO.getM_birth());
 
+		modelAndView.addObject("modify", false);
 		modelAndView.addObject("m_birth", m_birth_string);
 		modelAndView.addObject("memberDTO", memberDTO);
 		modelAndView.setViewName("resumeWriteForm.jsp");
@@ -63,9 +67,10 @@ public class ResumeController {
 		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String rs_birth_string = sdFormat.format(resumeDTO.getRs_Birth());
 		
+		modelAndView.addObject("modify", true);
 		modelAndView.addObject("rs_Birth", rs_birth_string);
 		modelAndView.addObject("resumeDTO", resumeDTO);
-		modelAndView.setViewName("resumeModifyForm.jsp");
+		modelAndView.setViewName("resumeWriteForm.jsp");
 
 		return modelAndView;
 	}
@@ -89,17 +94,12 @@ public class ResumeController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		for (int i=0; i < seq.length; i++) {
-			System.out.println(i);
-			
+		for (int i=0; i < seq.length; i++) {			
 			if (request.getParameter(tableName[i] + "_Seq" + tableNum[i]).equals("")) {
-				System.out.println("널 일때 : "+request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
 				seq[i] = null;
 			}else if(request.getParameter(tableName[i] + "_Seq" + tableNum[i]) == null) {
-				System.out.println("널 일때 : "+request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
 				seq[i] = null;
 			}else {
-				System.out.println("널이 아닐 때 : "+request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
 				seq[i] = Integer.valueOf(request.getParameter(tableName[i] + "_Seq" + tableNum[i]));
 			}
 		}
@@ -176,15 +176,18 @@ public class ResumeController {
 	}
 
 	@RequestMapping(value = "/job/resume/resume/resumeWrite.do")
-	public ModelAndView resumeWrite(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
+	public void resumeWrite(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		
+		HttpSession session = request.getSession();
 		
 		int su = resumeService.insertResume(resumeSetting(request, false));
-
-		modelAndView.addObject("su", su);
-		modelAndView.setViewName("resumeWrite.jsp");
-
-		return modelAndView;
+		int rs_Seq = 0;
+		if(su>0) {
+			rs_Seq = resumeService.selectLastSeq((String) session.getAttribute("memId"));
+		}
+		
+		out.print(rs_Seq);
 	}
 	
 	@RequestMapping(value="/job/resume/resume/resumeDelete.do")
