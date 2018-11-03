@@ -47,6 +47,7 @@
 							function add_event(event) { 			                
 				                $("#load").click(function() {
 				                	$("#rsitSeq"+num, opener.document).val(event.data.param.rsit_Seq);
+				                	$("#rsit_Seq"+num, opener.document).val(event.data.param.rsit_Seq);
 				                	$("#rsitType"+num, opener.document).val(event.data.param.rsit_Type);
 				                	$("#rsitCompany"+num, opener.document).val(event.data.param.rsit_Company);
 				                	/*

@@ -29,6 +29,7 @@
 			$("#interndelete" + num).on("click", function() {
 				/*$("#t" + count).remove();*/
 				$(this).parent().remove();
+				$("#rsit_Seq"+num).val("");
 				count--;
 			});
 			
@@ -137,9 +138,9 @@ fieldset {
 </style>
 </head>
 <body class="write">
-	<input type="hidden" id="rsitSeq1" name="rsitSeq" class="rsitSeq">
-	<input type="hidden" id="rsitSeq2" name="rsitSeq" class="rsitSeq">
-	<input type="hidden" id="rsitSeq3" name="rsitSeq" class="rsitSeq">
+	<input type="hidden" id="rsit_Seq1" name="rsit_Seq">
+	<input type="hidden" id="rsit_Seq2" name="rsit_Seq">
+	<input type="hidden" id="rsit_Seq3" name="rsit_Seq">
 	<fieldset>
 		<p class="title">인턴&middot;대외활동</p>
 		<div id="t" class="t">
@@ -151,7 +152,8 @@ fieldset {
 				<option value="동아리">동아리</option>
 				<option value="자원봉사">자원봉사</option>
 			</select>
-			<input type="hidden" id="count" name="count" class="count">			
+			<input type="hidden" id="count" name="count" class="count">		
+			<input type="hidden" id="rsitSeq" name="rsitSeq" class="rsitSeq">	
 			<input type="text" id="rsitCompany" name="rsitCompany" class="rsitCompany" placeholder="회사/기관/단체명">
 			<input type="date" id="rsitStartdate" name="rsitStartdate" class="rsitStartdate">
 			<input type="date" id="rsitEnddate" name="rsitEnddate" class="rsitEnddate">

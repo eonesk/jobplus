@@ -87,6 +87,9 @@
 	    margin: 4px;
 	    cursor: pointer;
 	}
+	.button:hover{
+		 background-color: #2E9AFE;
+	}
 	.button_widthFree{
 		width: auto;
 		padding: 10px;
@@ -119,6 +122,9 @@
 	}
 </style>
 <script type="text/javascript">
+var newResume = true;
+var modifyResume = false;
+$("#rs_seq").val(null);
 	$(function() {
 		/* rs_workspace */
 		var rs_workspace_btn_ck = false;
@@ -375,7 +381,116 @@
 				$("#prDiv").hide();
 			}
 		});
+		var modifyCk = ${modify};
+		if(modifyCk){
+			alert("수정실행");
+			modifyResume = true;
+			$("#rs_seq").val("${resumeDTO.rs_Seq}");
+			$("#rs_name").val("${resumeDTO.rs_Name}");
+			$("#rs_birth").val("${rs_Birth}");
+			$("#rs_email").val("${resumeDTO.rs_Email}");
+			$("#rs_homenum").val("${resumeDTO.rs_Homenum}");
+			$("#rs_title").val("${resumeDTO.rs_Title}");
+			$("#rs_phone").val("${resumeDTO.rs_Phone}");
+			$("#rs_address").val("${resumeDTO.rs_Address}");
+			$("#rs_type").val("${resumeDTO.rs_Type}");
+			
+			if("${resumeDTO.rs_Pay}" == "면접 후 결정"){
+				$("#rs_pay_no").prop("checked", true);
+				$("#rs_pay").val("");
+				$("#rs_pay").attr("placeholder", "면접 후 결정");
+				$("#rs_pay").attr("disabled", true);
+			}else{
+				$("#rs_pay").val("${resumeDTO.rs_Pay}");
+			}
+			
+			var rs_workspace_create_cnt = 0;
+			var rs_workspace_array = new Array("${resumeDTO.rs_Workspace1}", "${resumeDTO.rs_Workspace2}", "${resumeDTO.rs_Workspace3}");
+			
+			for(var i=0; i<3; i++){
+				if(rs_workspace_array[i] != ""){
+					rs_workspace_create_cnt++;
+				}
+			}
+			for(var i=0; i<rs_workspace_create_cnt; i++){
+				var result = rs_workspace_array[i];
+				var clone_workspace = $("#rs_workspace").clone().attr('id', 'rs_workspace'+(i+1));
+				clone_workspace.insertBefore("#rs_workspace");
+				$("#rs_workspace"+(i+1)).val(result);
+				$("#rs_workspace"+(i+1)).show();
+				
+				$("#rs_workspace"+(i+1)).on("click",function() {
+					var rs_workspace_number = $(this).attr('id').substring(12);
+					$(this).remove();
+					rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+					$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+					for(var k=rs_workspace_cnt; k>rs_workspace_number; k--){
+						$("#rs_workspace"+i).attr('id','rs_workspace'+(k-1));
+					}
+				});
+			}
+			rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+			$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+			
+			var rs_job_create_cnt = 0;
+			var rs_job_array = new Array("${resumeDTO.rs_Job1}", "${resumeDTO.rs_Job2}", "${resumeDTO.rs_Job3}");
+			
+			for(var i=0; i<3; i++){
+				if(rs_job_array[i] != ""){
+					rs_job_create_cnt++;
+				}
+			}
+			for(var i=0; i<rs_job_create_cnt; i++){
+				var result = rs_job_array[i];
+				var clone_job = $("#rs_job").clone().attr('id', 'rs_job'+(i+1));
+				clone_job.insertBefore("#rs_job");
+				$("#rs_job"+(i+1)).val(result);
+				$("#rs_job"+(i+1)).show();
+				
+				$("#rs_job"+(i+1)).on("click",function() {
+					var rs_job_number = $(this).attr('id').substring(6);
+					$(this).remove();
+					rs_job_cnt = $("#rs_job_result input[type=button]").length;
+					$(".rs_job_cnt").html(rs_job_cnt-1);
+					for(var k=rs_job_cnt; k>rs_job_number; k--){
+						$("#rs_job"+k).attr('id','rs_job'+(k-1));
+					}
+				});
+			}
+			rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+			$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
+			 
+			/* $("#RSIM_seq").val(${resumeDTO.rsim_Seq});
+			$("#RSS_seq1").val(${resumeDTO.rss_Seq1});
+			$("#RSS_seq2").val(${resumeDTO.rss_Seq2});
+			$("#RSS_seq3").val(${resumeDTO.rss_Seq3});
+			$("#RSW_seq1").val(${resumeDTO.rsw_Seq1});
+			$("#RSW_seq2").val(${resumeDTO.rsw_Seq2});
+			$("#RSW_seq3").val(${resumeDTO.rsw_Seq3});
+			
+			$("#rsit_Seq1").val("${resumeDTO.rsit_Seq1}");
+			$("#rsit_Seq2").val("${resumeDTO.rsit_Seq2}");
+			$("#rsit_Seq3").val("${resumeDTO.rsit_Seq3}");
 		
+			$("#RSE_seq1").val(${resumeDTO.rse_Seq1});
+			$("#RSE_seq2").val(${resumeDTO.rse_Seq2});
+			$("#RSE_seq3").val(${resumeDTO.rse_Seq3});
+			$("#RSLS_seq1").val(${resumeDTO.rsls_Seq1});
+			$("#RSLS_seq2").val(${resumeDTO.rsls_Seq2});
+			$("#RSLS_seq3").val(${resumeDTO.rsls_Seq3});
+			$("#RST_seq1").val(${resumeDTO.rst_Seq1});
+			$("#RST_seq2").val(${resumeDTO.rst_Seq2});
+			$("#RST_seq3").val(${resumeDTO.rst_Seq3});
+			$("#RSF_seq1").val(${resumeDTO.rsf_Seq1});
+			$("#RSF_seq2").val(${resumeDTO.rsf_Seq2});
+			$("#RSF_seq3").val(${resumeDTO.rsf_Seq3});
+			$("#RSLG_seq1").val(${resumeDTO.rslg_Seq1});
+			$("#RSLG_seq2").val(${resumeDTO.rslg_Seq2});
+			$("#RSLG_seq3").val(${resumeDTO.rslg_Seq3});
+			$("#RSPF_seq").val(${resumeDTO.rspf_Seq});
+			$("#RSV_seq").val(${resumeDTO.rsv_Seq});
+			$("#RSPR_seq").val(${resumeDTO.rspr_Seq}); */
+		}
 		
 		$("#writeBtn").on("click", function() {
 			if($("#rs_name").val() == ""){
@@ -411,13 +526,15 @@
 			if($("#rs_title").val() == ""){
 				alert("이력서 제목을 입력하세요.");
 				return false;
-			}else if($("#rs_workspace1").val() == ""){
-				alert("희망 근무지를 선택하세요.");
+			}else if($("#rs_workspace_result input[type=button]").length < 2){
+				alert("최소 1개의 희망 근무지를 선택하세요.");
 				return false;
-			}else if($("#rs_job1").val() == ""){
-				alert("직무 산업 키워드를 선택하세요.");
+			}else if($("#rs_job_result input[type=button]").length < 2){
+				alert("최소 1개의 직무 산업 키워드를 선택하세요.");
 				return false;
 			}
+			
+			var rs_seq = $("#rs_seq").val();
 			var rs_name = $("#rs_name").val();
 			var rs_birth = $("#rs_birth").val();
 			var rs_gender = $("#rs_gender").val();
@@ -445,12 +562,9 @@
 			var rsw_Seq1 = null;
 			var rsw_Seq2 = null;
 			var rsw_Seq3 = null;
-			var rsit_Seq1 = $("#rsitSeq1").val();
-			var rsit_Seq2 = $("#rsitSeq2").val();
-			var rsit_Seq3 = $("#rsitSeq3").val();
-			alert(rsit_Seq1);
-			alert(rsit_Seq2);
-			alert(rsit_Seq3);
+			var rsit_Seq1 = $("#rsit_Seq1").val();
+			var rsit_Seq2 = $("#rsit_Seq2").val();
+			var rsit_Seq3 = $("#rsit_Seq3").val();
 			var rse_Seq1 = null;
 			var rse_Seq2 = null;
 			var rse_Seq3 = null;
@@ -469,10 +583,8 @@
 			var rspf_Seq = null;
 			var rsv_Seq = null;
 			var rspr_Seq = null;
-			$.ajax({
-				url: 'resumeWrite.do',
-				type: 'post',
-				data: {
+			var allData = {
+					"rs_seq" : rs_seq,
 					"rs_name" : rs_name,
 					"rs_birth": rs_birth,
 					"rs_gender": rs_gender,
@@ -517,16 +629,28 @@
 					"rspf_Seq": rspf_Seq,
 					"rsv_Seq": rsv_Seq,
 					"rspr_Seq": rspr_Seq
-				},
+			};
+			var ajaxUrl;
+			if(newResume && (!modifyResume)){
+				ajaxUrl = "resumeWrite.do";
+			}else{
+				ajaxUrl = "resumeModify.do";
+			}
+			$.ajax({
+				url: ajaxUrl,
+				type: 'post',
+				data: allData,
 				dataType: 'text',
 				timeout: 30000,
 				cache: false,
-				success: function() {
-					alert("입력성공");
+				success: function(data) {
+					alert("이력서가 저장되었습니다.");
+					newResume = false;
 					$("#writeBtn").off("click", this);
+					$("#rs_seq").val(data);
 				},
 				error: function() {
-					alert("입력실패");
+					alert("통신 중 장애가 발생했습니다! 잠시 후 다시 시도해주세요.");
 					$("#writeBtn").off("click", this);
 				}
 			});
@@ -536,6 +660,7 @@
 </head>
 <body>
 <form action="resumeWrite.do" method="post" name="resumeWriteForm">
+<input type="hidden" id="rs_seq">
 <div id="header">
 	<a href="#">JOBPLUS</a>
 	<a href="#">이력서 관리</a>
@@ -556,6 +681,14 @@
 						<option value="여자">여자</option>
 					</c:if>
 					<c:if test="${memberDTO.m_gender == '여자' }">
+						<option value="남자">남자</option>
+						<option value="여자" selected="selected">여자</option>
+					</c:if>
+					<c:if test="${resumeDTO.rs_Gender == '남자' }">
+						<option value="남자" selected="selected">남자</option>
+						<option value="여자">여자</option>
+					</c:if>
+					<c:if test="${resumeDTO.rs_Gender == '여자' }">
 						<option value="남자">남자</option>
 						<option value="여자" selected="selected">여자</option>
 					</c:if>

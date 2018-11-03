@@ -43,8 +43,7 @@
 				success: function(data) {
 					if(data > 0) {
 						alert("성공");
-						alert("seq값"+data);
-						$("#rsitSeq"+num, opener.document).val(data);
+						$("#rsit_Seq"+num, opener.document).val(data);
 						window.close();
 					} else {
 						alert("실패");
