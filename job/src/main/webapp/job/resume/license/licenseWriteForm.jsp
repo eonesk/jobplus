@@ -171,9 +171,12 @@
 			<div id="licensePlus" class="licensePlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
 				<!-- SEQ값 : hidden -->				
 				<input id="rsls_Seq" name="rsls_Seq" class="rsls_Seq" type="hidden">
+				
+				<!-- 'X'버튼 -->
 				<a id="licensePlusCancel" name="licensePlusCancel" href="#" style="text-decoration: none;">
-					<div id="licenseCloseButton" style="bo rder: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
+					<div id="licenseCloseButton" style="border: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
 				</a>
+				
 				<!-- 자격증명 -->
 				<input id="rsls_Name"; name="rsls_Name" 
 						type="text" placeholder="자격증명" style="margin-top: 8px; margin-right: 10px; float: left; width: 250px; height: 48px; border: 1px solid lightgray;">
@@ -188,14 +191,18 @@
 					<input id="rsls_Date" name="rsls_Date" type="date" 
 							style="text-align:center; float: left; background-color:white; border: 0px solid lightgray; display: inline-block; width: 135px; height: 21px;">
 				</fieldset>
+				
 				<br style="clear:both;">
 				
+				<!-- Save -->
 				<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
 					<a href="#" id="RSLS_saveA" name="RSLS_saveA">자격증관리에 저장</a>
 				</div>
 				<br><br>
 			</div>
 		</div>
+		
+		<!-- PlusButton -->
 		<a id="plusButton" href="#" style="text-decoration: none;">
 			<div id="plusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
 							+ 자격증 추가

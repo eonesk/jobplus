@@ -9,14 +9,14 @@
 <script type="text/javascript">
 	$(function() {
 		var save = "${param.numbering}";
-		alert("[savePopUp] numbering : " + save);
+		console.log("[savePopUp] numbering : " + save);
 		var rse_Name = $("#rse_Name"+save, opener.document).val();
 		var rse_Company = $("#rse_Company"+save, opener.document).val();
 		var rse_Startdate = $("#rse_Startdate"+save, opener.document).val();
 		var rse_Enddate = $("#rse_Enddate"+save, opener.document).val();
 		var rse_Content = $("#rse_Content"+save, opener.document).val();
 		
-		alert(rse_Name + " // " + rse_Company + " // " + rse_Startdate + " // "
+		console.log(rse_Name + " // " + rse_Company + " // " + rse_Startdate + " // "
 				+ rse_Enddate + " // " + rse_Content);
 		
 		$("#RSE_save_submit").click(function() {

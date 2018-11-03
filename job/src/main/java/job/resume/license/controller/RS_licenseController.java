@@ -2,6 +2,7 @@ package job.resume.license.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -103,16 +104,21 @@ public class RS_licenseController {
 		
 		JSONObject jsonObject = new JSONObject();
 		JSONArray items = new JSONArray();
+		String rsls_Date = "";
 		
 		// licenseUserTitleList 리스트값 확인
 		for(int i = 0; i < licenseUserTitleList.size(); i++) {
 			RS_licenseDTO licenseDTO = licenseUserTitleList.get(i);
 			System.out.println("[RS_licenseLVController] licenseDTO 출력 : " + licenseDTO.toString());
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			rsls_Date = dateFormat.format(licenseDTO.getRsls_Date());
+			
 			JSONObject temp = new JSONObject();
 			temp.put("rsls_Seq", licenseDTO.getRsls_Seq());
 			temp.put("rsls_Name", licenseDTO.getRsls_Name());
 			temp.put("rsls_Company", licenseDTO.getRsls_Company());
-			temp.put("rsls_Date", licenseDTO.getRsls_Date());
+			temp.put("rsls_Date", rsls_Date);
 			temp.put("m_Id", licenseDTO.getM_Id());
 			temp.put("rsls_UserTitle", licenseDTO.getRsls_UserTitle());
 			items.put(i, temp);
@@ -144,17 +150,23 @@ public class RS_licenseController {
 		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);
 		System.out.println("[RS_licenseLVController] accumSeqSubstring : " + accumSeqSubstring);
 		
-		String[] accumSeqSplit = accumSeq.split("/"); 
+		String[] accumSeqSplit = accumSeq.split("/");
+		String rsls_Date = "";
+		
 		for(int i = 0; i < accumSeqSplit.length; i++) {
 			System.out.println("[RS_licenseLVController] accumSeqSplit[" + i + "] : " + accumSeqSplit[i]);
 			int rsls_Seq = Integer.parseInt(accumSeqSplit[i]);
 			RS_licenseDTO licenseDTO = licenseService.selectLicenseDTO(rsls_Seq);
 			System.out.println("[RS_licenseLVController] licenseDTO : " + licenseDTO.toString());
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			rsls_Date = dateFormat.format(licenseDTO.getRsls_Date());
+			
 			JSONObject temp = new JSONObject();
 			temp.put("rsls_Seq", licenseDTO.getRsls_Seq());
 			temp.put("rsls_Name", licenseDTO.getRsls_Name());
 			temp.put("rsls_Company", licenseDTO.getRsls_Company());
-			temp.put("rsls_Date", licenseDTO.getRsls_Date());
+			temp.put("rsls_Date", rsls_Date);
 			temp.put("m_Id", licenseDTO.getM_Id());
 			temp.put("rsls_UserTitle", licenseDTO.getRsls_UserTitle());
 			items.put(i, temp);
