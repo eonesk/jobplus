@@ -8,8 +8,8 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		var count = ${param.count};
-		alert("count숫자 = " + count);
+		//var count = ${param.count};
+		alert("count = " + ${param.count});
 		// 총 개수
 		$.ajax({
 			type: 'POST',
@@ -91,8 +91,8 @@
 				                	alert("체크확인");
 				                	if(confirm("불러오기를 진행하시겠습니까?")) {
 				                		// 2개가 되야함. 확인해야할부분
-				                		 alert("test accumSeq : " + accumSeq);
-				                		 alert("test count : " + count);
+				                		 alert("selected accumSeq : " + accumSeq);
+				                		 alert("selected 보내기전 count : " + ${param.count});
 				                		opener.parent.selected(accumSeq, ${param.count});
 					                	self.close();
 				                	}
@@ -101,7 +101,7 @@
 							});
 							
 							function add_event(event) { 	
-								var userTitle = $("<h3>").html("[ " + event.data.param.rst_UserTitle + " ]");
+								var userTitle = $("<h3>").html("[ " + event.data.param.RST_UserTitle + " ]");
 								var table = $("<table>").attr("border", "1");
 								var indexTr = $("<tr>");
 								var indexTd1 = $("<td>").html("수상명");

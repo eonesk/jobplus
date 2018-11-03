@@ -7,33 +7,36 @@
 <title>languageWriteForm</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">	
-	$(function() {
-		var count = 0;		
+	var count = 0;
+	$(function() {		
 		$("#t").hide();
 		
 		$("#langplus").click(function() {		
 			count++;
 			var num = count;	
-			if (count >= 4) {
-				count--;
+			var clone = $("#t").clone().attr('id', 't' + num);
+			
+			if (count >= 4) {				
 				alert("항목추가는 최대 3개까지 입력가능합니다.");
+				count--;
 				return false;
 			}
-			var clone = $("#t").clone().attr('id', 't' + count);
+			
 			clone.find('*[id]').each(function() {
-				$(this).attr("id", $(this).attr("id") + count);
+				$(this).attr("id", $(this).attr("id") + num);
 			});
-			clone.insertBefore("#t");
-			$("#t" + count).show();
+			
+			clone.insertAfter("#t");
+			$("#t" + num).show();
 			
 			$("#langdelete" + num).on("click", function() {
 				/*$("#t" + count).remove();*/
-				$(this).parent().remove();
+				$(this).parent("#t" + num).remove();
 				count--;
 			});
 			
-			$("#rslgCategory" + num).on("change", function() {
-				if($("#rslgCategory" + num).val() == "공인시험"){
+			$("#rslg_Category" + num).on("change", function() {
+				if($("#rslg_Category" + num).val() == "공인시험"){
 					document.getElementById("test" + num).style.display = "inline";
 					document.getElementById("lv" + num).style.display = "none";
 				}else{
@@ -43,48 +46,155 @@
 			});
 			
 			$("#langsave" + num).on("click", function() {
-				if($("#rslgCategory" + num).val() == "공인시험"){					
-					if($("#rslgName" + num).val() == "외국어명"){
+				if($("#rslg_Category" + num).val() == "공인시험"){					
+					if($("#rslg_Name" + num).val() == "외국어명"){
 						alert("외국어명을 입력하세요.");
-						$("#rslgName" + num).focus();	
+						$("#rslg_Name" + num).focus();	
 						return false;
 					}
-					if(!$("#rslgTest" + num).val()){
+					if(!$("#rslg_Test" + num).val()){
 						alert("공인시험을 입력하세요.");
-						$("#rslgTest" + num).focus();
+						$("#rslg_Test" + num).focus();
 						return false;
 					}
-					if(!$("#rslgScore" + num).val()){
+					if(!$("#rslg_Score" + num).val()){
 						alert("급수/점수를 입력하세요.");
-						$("#rslgScore" + num).focus();
+						$("#rslg_Score" + num).focus();
 						return false;
 					}
-					if(!$("#rslgDate" + num).val()){
+					if(!$("#rslg_Date" + num).val()){
 						alert("취득년월을 입력하세요.");
-						$("#rslgDate" + num).focus();
+						$("#rslg_Date" + num).focus();
 						return false;
 					}
 					window.open("languageWrite.jsp?num=" + num, "", "width=500px height=500px");
 				}
-				if($("#rslgCategory" + num).val() == "회화능력"){	
-					if($("#rslgName" + num).val() == "외국어명"){
+				if($("#rslg_Category" + num).val() == "회화능력"){	
+					if($("#rslg_Name" + num).val() == "외국어명"){
 						alert("외국어명을 입력하세요.");
-						$("#rslgName" + num).focus();
+						$("#rslg_Name" + num).focus();
 						return false;
 					}
-					if($("#rslgLv" + num).val() == "회화능력"){
+					if($("#rslg_Lv" + num).val() == "회화능력"){
 						alert("회화능력을 입력하세요.");
-						$("#rslgLv" + num).focus();
+						$("#rslg_Lv" + num).focus();
 						return false;
 					}
 					window.open("languageWrite.jsp?num=" + num, "", "width=500px height=500px");
 				}
-			});
-			$("#langload" + num).click(function() {
-				window.open("languageLoad.jsp?num=" + num, "", "width=500px height=500px");
+			});					
+		});
+		$("#langload").click(function() {
+			window.open("languageLoad.jsp?count=" + count, "", "width=500px height=500px");
+		});	
+	});
+	
+	// load 함수
+	function selected(accumSeq, num) {
+		$(function() {
+			alert("selected함수 실행 num값 = " + num);
+			count = num;
+			alert("selected함수 실행 count값 = " + count);
+			$.ajax({
+				type: 'POST',
+				url: 'LoadView.do',
+				dataType: 'json',
+				data: {
+					"accumSeq": accumSeq
+				},
+				success: function(data) {					
+					$.each(data.items, function(index, item) {
+						var testDTO = item;
+						
+						count++;
+						
+						var num = count;
+						var clone = $("#t").clone().attr("id", "t" + num);
+						
+						// id&name 넘버링 변경 작업
+						clone.find("*[id]").each(function() {
+							$(this).attr("id", $(this).attr("id") + num);
+						});
+						
+						clone.find("*[name]").each(function() {
+							$(this).attr("name", $(this).attr("name") + num);
+						});
+						
+						clone.insertAfter("#t");
+						
+						$("#t" + num).show();
+						
+						/** 이벤트 바인딩 */
+						// 'X'표 눌렀을 때 닫기
+						$("#langdelete" + num).on("click", function() {
+							$(this).parent("#t" + num).remove();
+							count--;
+						});
+						
+						// 저장버튼 눌렀을 때
+						$("#trophysave" + num).on("click", function() {
+							if($("#rslg_Category" + num).val() == "공인시험"){					
+								if($("#rslg_Name" + num).val() == "외국어명"){
+									alert("외국어명을 입력하세요.");
+									$("#rslg_Name" + num).focus();	
+									return false;
+								}
+								if(!$("#rslg_Test" + num).val()){
+									alert("공인시험을 입력하세요.");
+									$("#rslg_Test" + num).focus();
+									return false;
+								}
+								if(!$("#rslg_Score" + num).val()){
+									alert("급수/점수를 입력하세요.");
+									$("#rslg_Score" + num).focus();
+									return false;
+								}
+								if(!$("#rslg_Date" + num).val()){
+									alert("취득년월을 입력하세요.");
+									$("#rslg_Date" + num).focus();
+									return false;
+								}
+								window.open("languageWrite.jsp?num=" + num, "", "width=500px height=500px");
+							}
+							if($("#rslg_Category" + num).val() == "회화능력"){	
+								if($("#rslg_Name" + num).val() == "외국어명"){
+									alert("외국어명을 입력하세요.");
+									$("#rslg_Name" + num).focus();
+									return false;
+								}
+								if($("#rslg_Lv" + num).val() == "회화능력"){
+									alert("회화능력을 입력하세요.");
+									$("#rslg_Lv" + num).focus();
+									return false;
+								}
+								window.open("languageWrite.jsp?num=" + num, "", "width=500px height=500px");
+							}
+						});
+						
+						$("#rslg_Seq" + num).val(testDTO.rst_Seq);						
+						$("#rslg_Category" + num).val(testDTO.rslg_Category);
+						if($("#rslg_Category" + num).val() == "공인시험"){
+							alert("if진입후");
+							$("#test"+num).css("display", "inline");
+							$("#lv"+ num).css("display", "none");
+						}else{
+							$("#test"+num).css("display", "none");
+							$("#lv"+num).css("display", "inline");
+						}
+						$("#rslg_Name" + num).val(testDTO.rslg_Name);
+						$("#rslg_Test" + num).val(testDTO.rslg_Test);
+						$("#rslg_Date" + num).val(testDTO.rslg_Date);
+						$("#rslg_Score" + num).val(testDTO.rslg_Score);
+						$("#rslg_Lv" + num).val(testDTO.rslg_Lv);
+							
+					});					
+				},
+				error: function(e) {
+					 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+				}
 			});			
 		});
-	});
+	}	
 </script>
 <style type="text/css">
 .write {
@@ -138,42 +248,52 @@ fieldset {
     display: inline-block;
     cursor: pointer;
 }
-.rslgCategory {
+.rslg_Category {
 	width:100px;
 	height:36px;
 }
-.rslgName {
+.rslg_Name {
 	width:150px;
 	height:36px;
 }
-.rslgLv {
+.rslg_Lv {
 	width: 150px;
 	height: 36px;
 }
-.rslgTest {
+.rslg_Test {
 	width: 120px;
 	height: 30px;
 }
-.rslgScore {
+.rslg_Score {
 	width: 120px;
 	height: 30px;
 }
-.rslgDate {
+.rslg_Date {
 	width: 120px;
 	height: 33px;
+}
+.langdiv {
+	width: 100%;
+	background-color: #f5f7fb;	
+    margin: 0px 5px;
 }
 </style>
 </head>
 <body class="write">
-	<fieldset>
+<div id="langdiv" class="langdiv">			
 		<p class="title">어학</p>
+		<!-- Load -->		 
+		<input type="button" value="불러오기" id="langload" class="langload">			 
+</div>
+	<fieldset>
 		<div id="t" class="t">
 		<br>
-		<input type="hidden" id="rslgSeq" class="rslgSeq">
-			<select name="rslgCategory" id="rslgCategory" class="rslgCategory">
+		<input type="hidden" id="rslg_Seq" class="rslg_Seq">
+			<select name="rslg_Category" id="rslg_Category" class="rslg_Category">
 				<option value="회화능력">회화능력</option>
 				<option value="공인시험">공인시험</option>
-			</select> <select id="rslgName" name="rslgName" class="rslgName">
+			</select> 
+			<select id="rslg_Name" name="rslg_Name" class="rslg_Name">
 				<option value="외국어명">---외국어명---</option>
 				<option value="영어">영어</option>
 				<option value="일본어">일본어</option>
@@ -208,7 +328,7 @@ fieldset {
 				<option value="한국어">한국어</option>
 			</select>
 			<div id="lv" class="lv" style="display: inline;">
-				<select id="rslgLv" name="rslgLv" class="rslgLv">
+				<select id="rslg_Lv" name="rslg_Lv" class="rslg_Lv">
 					<option value="회화능력">---회화능력---</option>
 					<option value="일상회화 가능">일상회화 가능</option>
 					<option value="비즈니스 회화가능">비즈니스 회화가능</option>
@@ -216,13 +336,12 @@ fieldset {
 				</select>
 			</div>
 			<div id="test" class="test" style="display: none;">
-				<input type="text" id="rslgTest" name="rslgTest" class="rslgTest"  placeholder="공인시험">
-				<input type="text" id="rslgScore" name="rslgScore" class="rslgScore"	placeholder="급수/점수"> 
-				<input type="date" id="rslgDate" name="rslgDate" class="rslgDate" placeholder="취득년월">
+				<input type="text" id="rslg_Test" name="rslg_Test" class="rslg_Test"  placeholder="공인시험">
+				<input type="text" id="rslg_Score" name="rslg_Score" class="rslg_Score"	placeholder="급수/점수"> 
+				<input type="date" id="rslg_Date" name="rslg_Date" class="rslg_Date" placeholder="취득년월">
 			</div>
 			<div>
-				<input type="button" value="저장하기" id="langsave" class="langsave"> 
-				<input type="button" value="불러오기" id="langload" class="langload">
+				<input type="button" value="저장하기" id="langsave" class="langsave">
 			</div>
 			<input type="button" value="삭제" id="langdelete" class="langdelete">	
 		</div>	

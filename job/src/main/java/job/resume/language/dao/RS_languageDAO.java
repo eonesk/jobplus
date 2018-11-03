@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import job.resume.language.bean.RS_languageDTO;
+import job.resume.trophy.bean.RS_trophyDTO;
 
 @Repository
 public class RS_languageDAO {
@@ -28,5 +29,9 @@ public class RS_languageDAO {
 	// 글 삭제
 	public int Delete(int rslg_Seq) {	
 		return sqlSession.delete("mybatis.languageMapper.Delete", rslg_Seq);
+	}
+	// 검색
+	public RS_languageDTO selectLangDTO(int rslg_Seq) {
+		return sqlSession.selectOne("mybatis.languageMapper.selectLangDTO", rslg_Seq);
 	}
 }

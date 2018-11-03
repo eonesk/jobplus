@@ -31,7 +31,7 @@
 			
 		$("#trophydelete" + num).on("click", function() {
 			/*$("#t" + count).remove();*/
-			$(this).parent().remove();
+			$(this).parent("#t" + num).remove();
 			count--;
 		});
 		
@@ -70,6 +70,7 @@
 		$(function() {
 			alert("selected함수 실행 num값 = " + num);
 			count = num;
+			alert("selected함수 실행 count값 = " + count);
 			$.ajax({
 				type: 'POST',
 				url: 'LoadView.do',

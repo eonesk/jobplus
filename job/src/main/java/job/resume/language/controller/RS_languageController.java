@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import job.resume.intern.bean.RS_internDTO;
 import job.resume.language.bean.RS_languageDTO;
+import job.resume.trophy.bean.RS_trophyDTO;
 
 @Controller
 public class RS_languageController {
@@ -45,7 +46,7 @@ public class RS_languageController {
 		// String m_Id = request.getParameter("m_Id");
 		Date date = null;
 		try {
-			date = new SimpleDateFormat("yyyyMMdd").parse(rslgDate);
+			date = new SimpleDateFormat("yyyy-MM-dd").parse(rslgDate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -112,6 +113,44 @@ public class RS_languageController {
 		modelAndView.addObject("jsonObject", jsonObject);
 		modelAndView.setViewName("/job/resume/language/languageJson.jsp");		
 
+		return modelAndView;
+	}
+	@RequestMapping(value="/job/resume/language/LoadView.do", method=RequestMethod.POST)
+	public ModelAndView LoadView(HttpServletRequest request) {		
+		ModelAndView modelAndView = new ModelAndView();
+		JSONObject jsonObject = new JSONObject();
+		JSONArray items = new JSONArray();
+		
+		String accumSeq = request.getParameter("accumSeq");		
+		int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");		
+		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);	
+		System.out.println("accumSeqSubstring = " + accumSeqSubstring);
+		String[] accumSeqSplit = accumSeq.split("/"); 
+		String rslg_Date = "";
+		
+		for(int i = 0; i < accumSeqSplit.length; i++) {
+			int rslg_Seq = Integer.parseInt(accumSeqSplit[i]);
+			RS_languageDTO languageDTO = languageService.selectLangDTO(rslg_Seq);
+			DateFormat Format = new SimpleDateFormat("yyyy-MM-dd");
+			rslg_Date = Format.format(languageDTO.getRslg_Date());
+			JSONObject temp = new JSONObject();
+			temp.put("rslg_Seq", languageDTO.getRslg_Seq());
+			temp.put("rslg_Category", languageDTO.getRslg_Category());
+			temp.put("rslg_Name", languageDTO.getRslg_Name());
+			temp.put("rslg_Lv", languageDTO.getRslg_Lv());
+			temp.put("rslg_Score", languageDTO.getRslg_Score());
+			temp.put("rslg_Date", rslg_Date);
+			temp.put("rslg_Test", languageDTO.getRslg_Test());
+			temp.put("m_Id", languageDTO.getM_Id());
+			temp.put("RSLG_UserTitle", languageDTO.getRSLG_UserTitle());
+			items.put(i, temp);
+		}
+		
+		jsonObject.put("items", items);
+		
+		modelAndView.addObject("jsonObject", jsonObject);
+		modelAndView.setViewName("/job/resume/language/selectedDTOJson.jsp");
+				
 		return modelAndView;
 	}
 }
