@@ -2,6 +2,7 @@ package job.resume.edu.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -109,17 +110,24 @@ public class RS_eduController {
 		
 		JSONObject jsonObject = new JSONObject();
 		JSONArray items = new JSONArray();
+		String rse_Startdate = "";
+		String rse_Enddate = "";
 		
 		// rsprUserTitleList 리스트값 확인
 		for(int i = 0; i < eduUserTitleList.size(); i++) {
 			RS_eduDTO eduDTO = eduUserTitleList.get(i);
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			rse_Startdate = dateFormat.format(eduDTO.getRse_Startdate());
+			rse_Enddate = dateFormat.format(eduDTO.getRse_Enddate());
+			
 			System.out.println("[RS_eduLVController] eduDTO 출력 : " + eduDTO.toString());
 			JSONObject temp = new JSONObject();
 			temp.put("rse_Seq", eduDTO.getRse_Seq());
 			temp.put("rse_Name", eduDTO.getRse_Name());
 			temp.put("rse_Company", eduDTO.getRse_Company());
-			temp.put("rse_Startdate", eduDTO.getRse_Startdate());
-			temp.put("rse_Enddate", eduDTO.getRse_Enddate());
+			temp.put("rse_Startdate", rse_Startdate);
+			temp.put("rse_Enddate", rse_Enddate);
 			temp.put("rse_Content", eduDTO.getRse_Content());
 			temp.put("m_Id", eduDTO.getM_Id());
 			temp.put("rse_UserTitle", eduDTO.getRse_UserTitle());
@@ -155,17 +163,25 @@ public class RS_eduController {
 		System.out.println("[RS_eduLVController] accumSeqSubstring : " + accumSeqSubstring);
 		
 		String[] accumSeqSplit = accumSeq.split("/"); 
+		String rse_Startdate = "";
+		String rse_Enddate = "";
+		
 		for(int i = 0; i < accumSeqSplit.length; i++) {
 			System.out.println("[RS_eduLVController] accumSeqSplit[" + i + "] : " + accumSeqSplit[i]);
 			int rse_Seq = Integer.parseInt(accumSeqSplit[i]);
 			RS_eduDTO eduDTO = eduService.selectEduDTO(rse_Seq);
 			System.out.println("[RS_eduLVController] eduDTO : " + eduDTO.toString());
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			rse_Startdate = dateFormat.format(eduDTO.getRse_Startdate());
+			rse_Enddate = dateFormat.format(eduDTO.getRse_Enddate());
+			
 			JSONObject temp = new JSONObject();
 			temp.put("rse_Seq", eduDTO.getRse_Seq());
 			temp.put("rse_Name", eduDTO.getRse_Name());
 			temp.put("rse_Company", eduDTO.getRse_Company());
-			temp.put("rse_Startdate", eduDTO.getRse_Startdate());
-			temp.put("rse_Enddate", eduDTO.getRse_Enddate());
+			temp.put("rse_Startdate", rse_Startdate);
+			temp.put("rse_Enddate", rse_Enddate);
 			temp.put("rse_Content", eduDTO.getRse_Content());
 			temp.put("m_Id", eduDTO.getM_Id());
 			temp.put("rse_UserTitle", eduDTO.getRse_UserTitle());
