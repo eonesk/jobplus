@@ -8,32 +8,27 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	alert("addCount : " + ${param.addCount});
 	/* 자기소개서의 총 개수 구함 */
 	$.ajax({
 		type: 'POST',
-		url: 'rswLoadCount.do',
+		url: 'rsvLoadCount.do',
 		dataType: 'text',
 		cache: false,
 		success: function(data) {
 			if(data == "0") {
-				alert("경력데이터 "+ data +"건 검색");
+				alert("우대데이터 "+ data +"건 검색");
 				
 			} else {
-				alert("경력데이터"+data +"건 검색");
+				alert("우대데이터"+ data +"건 검색");
 				$.ajax({
 					type: 'POST',
-					url: 'rswLoad.do',
+					url: 'rsvLoad.do',
 					dataType: "json",
 					cache: false,
 					success: function(data) {
 						alert("성공");				
 						
-						/* var trTitle = $("<tr>").addClass("eduLoadListLabelTr");
-						var tdTitle = $("<td>").addClass("eduLoadListLabelTd").html("제목");
 						
-						trTitle.append(tdTitle);
-						$("#eduLoadListTable").append(trTitle); */
 						
 						$.each(data.items, function(index, item) {
 							var dto = item;
@@ -43,52 +38,31 @@ $(function() {
 							var li = $("<li>").addClass("list_li");
 							
 							var checkbox = $("<input>").attr({
-								"id": "rsw_userTitleR"+count,
+								"id": "rsv_userTitleR"+count,
 								"type": "checkbox",
-								"value": item.rsw_seq
-							}).addClass("rsw_userTitleR");
+								"value": item.rsv_seq
+							}).addClass("rsv_userTitleR");
 							
 							var label = $("<label>").attr({
-								"for" : "rsw_userTitleR"+count
+								"for" : "rsv_userTitleR"+count
 							}).addClass("checkOff");
 							
 							var a = $("<a>").attr({
-								"id": "rsw_userTitleA",
+								"id": "rsv_userTitleA",
 								"href": "#"
-							}).html(item.rsw_userTitle).bind('click', {param: dto}, add_event);
+							}).html(item.rsv_userTitle).bind('click', {param: dto}, add_event);
 							
 							var div_checkbox = $("<div>").addClass("div_checkbox").append(checkbox).append(label);
 							var div_a = $("<div>").addClass("div_a").append(a);
 							li.append(div_checkbox);
 							li.append(div_a);
 							$("#list_ul").append(li);
-			                /*$("#eduLoadListTable").append(tr); */	
+			                
 							 
 							count++;																		 
 						});							
 
-						/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
-						// {부모창+checkbox선택값 >3}이 되면 checkbox값이 disabled됨.
 						
-						var isOverflow = ${param.addCount};
-						
-						
-						if(isOverflow == 3) {
-							$(".rsw_userTitleR").attr("disabled", "true");
-						} else if(isOverflow < 3 || isOverflow >= 0) {
-							$(".rsw_userTitleR").on("change", function() {
-								if($(this).is(":checked")){
-									isOverflow++;
-									/* alert("isOverflow[rsw_UserTitleR change] : " + isOverflow); */
-									if(isOverflow == 3) {
-										$(".rsw_userTitleR").attr("disabled", "true");
-									}
-								} else {
-									isOverflow--;
-									/* alert("isOverflow[rsw_UserTitleR change] : " + isOverflow); */
-								}
-							});
-						}
 						
 						$("#loadOk").click(function() {
 							//var eduSeqList = new Array();
@@ -96,7 +70,7 @@ $(function() {
 							var accumSeq = "";
 							
 			                //체크한값의 
-							$(".rsw_userTitleR:checked").each(function() {
+							$(".rsv_userTitleR:checked").each(function() {
 			                	alert($(this).val());
 			                	//eduSeqList.push($(this).val());
 			                	accumSeq += $(this).val() + "/";
@@ -109,7 +83,7 @@ $(function() {
 			                } else {
 			                	alert("체크됨");
 			                	if(confirm("불러오기를 진행하시겠습니까?")) {
-			                		opener.parent.selected(accumSeq, ${param.addCount});
+			                		opener.parent.selected(accumSeq);
 				                	self.close();
 			                	}
 			                	
@@ -118,32 +92,32 @@ $(function() {
 						
 											
 						function add_event(event) {
-						alert(event.data.param.rsw_userTitle + " // " + event.data.param.m_id);
+						alert(event.data.param.rsv_userTitle + " // " + event.data.param.m_id);
 						
 						$("#loadSelectList").html("");
 
-						var userTitle = $("<legend>").html(event.data.param.rsw_userTitle);
+						var userTitle = $("<legend>").html(event.data.param.rsv_userTitle);
 						
 						/* var table = $("<table>").attr("border", "1"); */
 						var ul = $("<ul>").addClass("selectListUl");
 						
-						var span1 = $("<span>").html(event.data.param.rsw_company);
-						var span2 = $("<span>").html(event.data.param.rsw_dept);
-						var span3 = $("<span>").html(event.data.param.rsw_startDate);
-						var span4 = $("<span>").html(event.data.param.rsw_endDate);
-						var span5 = $("<span>").html(event.data.param.rsw_position);
-						var span6 = $("<span>").html(event.data.param.rsw_job);
-						var span7 = $("<span>").html(event.data.param.rsw_pay);
-						var span8 = $("<span>").html(event.data.param.rsw_part);
+						var span1 = $("<span>").html(event.data.param.rsv_isMedal);
+						var span2 = $("<span>").html(event.data.param.rsv_isProtect);
+						var span3 = $("<span>").html(event.data.param.rsv_isMoney);
+						var span4 = $("<span>").html(event.data.param.rsv_isDisable);
+						var span5 = $("<span>").html(event.data.param.rsv_military);
+						var span6 = $("<span>").html(event.data.param.rsv_startDate);
+						var span7 = $("<span>").html(event.data.param.rsv_endDate);
+						var span8 = $("<span>").html(event.data.param.rsv_position);
 						
-						var li1 = $("<li>").html("회사명 : ").append(span1);
-						var li2 = $("<li>").html("부서명 : ").append(span2);
-						var li3 = $("<li>").html("입사년월 : ").append(span3);
-						var li4 = $("<li>").html("퇴사년월 : ").append(span4);
-						var li5 = $("<li>").html("직급/직책 : ").append(span5);
-						var li6 = $("<li>").html("직무 : ").append(span6);
-						var li7 = $("<li>").html("연봉 : ").append(span7);
-						var li8 = $("<li>").html("담당업무 : ").append(span8);
+						var li1 = $("<li>").html("보훈대상 : ").append(span1);
+						var li2 = $("<li>").html("취업보호대상: ").append(span2);
+						var li3 = $("<li>").html("고용지원금대상 : ").append(span3);
+						var li4 = $("<li>").html("장애여부 : ").append(span4);
+						var li5 = $("<li>").html("병역여부 : ").append(span5);
+						var li6 = $("<li>").html("입대일 : ").append(span6);
+						var li7 = $("<li>").html("전역일 : ").append(span7);
+						var li8 = $("<li>").html("군별/제대계급 : ").append(span8);
 						
 						ul.append(li1).append(li2).append(li3).append(li4).append(li5).append(li6)
 						.append(li7).append(li8);
