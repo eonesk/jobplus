@@ -9,4 +9,5 @@ public interface RS_licenseService {
 	int selectNumberOfLicense(String memId);
 	List<RS_licenseDTO> selectLicenseUserTitleList(String memId);
 	RS_licenseDTO selectLicenseDTO(int rsls_Seq);
+	int selectLastSeq();
 }

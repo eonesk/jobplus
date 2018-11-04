@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="Write" parameterType="languageDTO">
 	 	insert into RS_language values  
-		(RS_language_SEQ.nextval,#{rslg_Category},#{rslg_Name},#{rslg_Lv},#{m_Id},#{RSLG_UserTitle},#{rslg_Score},#{rslg_Date},#{rslg_Test}) 
+		(RS_language_SEQ.nextval,#{rslg_Category},#{rslg_Name},#{rslg_Lv, jdbcType=VARCHAR},#{m_Id},#{RSLG_UserTitle},#{rslg_Score, jdbcType=VARCHAR},#{rslg_Date, jdbcType=DATE},#{rslg_Test, jdbcType=VARCHAR}) 
 	</insert>
 	
 	<select id="selectNumlanguage" parameterType="String" resultType="int">
