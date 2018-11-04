@@ -68,9 +68,13 @@ public class RS_licenseController {
 
 		// DB 저장
 		int saveCount = licenseService.rslsSave(licenseDTO);
+		int rsls_Seq = 0;
+		if(saveCount>0) {
+			rsls_Seq = licenseService.selectLastSeq();
+		}
 		System.out.println("[RS_licenseController] saveCount : " + saveCount);
 		
-		out.print(saveCount);
+		out.print(rsls_Seq);
 	}
 
 	@RequestMapping(value="/job/resume/license/licenseLoadCount.do", method=RequestMethod.POST)

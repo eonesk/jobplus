@@ -48,7 +48,7 @@ public class RS_languageController {
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(rslgDate);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 		}
 		RS_languageDTO languageDTO = new RS_languageDTO();
 		languageDTO.setRslg_Category(rslgCategory);

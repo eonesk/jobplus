@@ -43,6 +43,7 @@
 			$("#eduPlusCancel" + numbering).on("click", function() {
 				console.log("[eventBindingInit] #eduPlusCancel" + numbering + "(X표) : 닫기");
 				$(this).parent("#eduPlus" + numbering).remove();
+				$("#rse__Seq"+numbering).val("");
 				eduPlusButtonCnt--;
 			});
 			
@@ -84,7 +85,7 @@
 			console.log("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
 			$.ajax({
 				type: 'POST',
-				url: '/job/resume/edu/rseLoadView.do',
+				url: '/job/job/resume/edu/rseLoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -120,6 +121,7 @@
 						$("#eduPlusCancel" + numbering).on("click", function() {
 							console.log("[eventBindingSelected] #eduPlusCancel" + numbering + "(X표) : 닫기");
 							$(this).parent("#eduPlus" + numbering).remove();
+							$("#rse__Seq"+numbering).val("");
 							eduPlusButtonCnt--;
 						});
 						
@@ -144,6 +146,7 @@
 						});
 						
 						console.log("[selected] rse_UserTitle : " + testDTO.rse_UserTitle);
+						$("#rse__Seq" + numbering).val(testDTO.rse_Seq);
 						$("#rse_Seq" + numbering).val(testDTO.rse_Seq);
 						$("#rse_Name" + numbering).val(testDTO.rse_Name);
 						$("#rse_Company" + numbering).val(testDTO.rse_Company);
@@ -164,6 +167,9 @@
 </script>
 </head>
 <body>
+<input id="rse__Seq_1" type="hidden">
+<input id="rse__Seq_2" type="hidden">
+<input id="rse__Seq_3" type="hidden">
 	<div id="edu_div"
 		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
 		

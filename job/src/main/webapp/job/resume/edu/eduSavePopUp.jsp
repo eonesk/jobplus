@@ -43,6 +43,7 @@
 				success: function(data) {
 					if(data > 0) {
 						alert("성공");
+						$("#rse__Seq"+save, opener.document).val(data);
 						window.close();
 					} else {
 						alert("실패");
