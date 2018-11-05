@@ -6,121 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="./css/resume.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
-<style type="text/css">
-	hr{
-		text-align: center;
-		width: 95%;
-	}
-	body{
-		margin: 0; padding: 0;
-	}
-	body #header{
-		background: lightgray; 
-		width: 100%; height: 50px;
-	}
-	#section{
-		background: white; 
-		margin:50px auto; width: 1000px; text-align: left;
-	}
-	#nav{
-		background: white;
-		position: fixed; top: 100px; right : 80px;
-		width: 200px; float: right;
-	}
-	#section tr, td{
-		padding: 5px;
-	}
-	
-	#test{
-		background-color: white; width: 180px;
-	}
-	#section > div{
-		background:	white;
-	}
-	#section input{
-		height: 50px;
-	}
-	#section select{
-		height: 56px;
-	}
-	#nav_menu tr td{
-		height: 36px;
-	}
-	#working_conditions .header{
-		width: 1000px;
-	}
-	#working_conditions .aside{
-		width: 120px;
-	}
-	#working_conditions .header .left{
-		width: 320px;
-	}
-	#working_conditions .header .right{
-		vertical-align: center;
-	}
-	#rs_workspace_select1, #rs_workspace_select2, #rs_job_select1, #rs_job_select2, #rs_job_select3{
-		display: none;
-	}
-	#rs_workspace_select1 select, #rs_workspace_select2 select, #rs_job_select1 select, #rs_job_select2 select, #rs_job_select3 select{
-		width: auto;
-	}
-	#rs_workspace_select2 select, #rs_job_select2 select{
-		left: 150px;
-	}
-	#rs_job_select3 select{
-		left:300px;
-	}
-	#rs_title{
-		width: 996px;
-	}
-	.button{
-		width:80px;
-	    background-color: #5882FA;
-	    border: none;
-	    color:#fff;
-	    padding: 10px 0;
-	    text-align: center;
-	    text-decoration: none;
-	    display: inline-block;
-	    font-size: 15px;
-	    margin: 4px;
-	    cursor: pointer;
-	}
-	.button:hover{
-		 background-color: #2E9AFE;
-	}
-	.button_widthFree{
-		width: auto;
-		padding: 10px;
-	}
-	.button_resumeWrite{
-		width: 97%;
-		bottom: 0px;
-	}
-	.working_conditions_item1{
-		padding-left: 8px;
-		vertical-align: center;
-	}
-	.rs_type{
-		margin-right: 75px;
-	}
-	.rs_email{
-		width: 390px;
-	}
-	.rs_address{
-		width: 480px;
-	}
-	.rs_birth{
-		width: 170px;
-	}
-	.checkbox{
-		width: 20px;
-		height: 20px;
-		border: 2px solid gray;
-		vertical-align: -20px;
-	}
-</style>
 <script type="text/javascript">
 var newResume = true;
 var modifyResume = false;
@@ -533,7 +420,6 @@ $("#rs_seq").val(null);
 				alert("최소 1개의 직무 산업 키워드를 선택하세요.");
 				return false;
 			}
-			
 			var rs_seq = $("#rs_seq").val();
 			var rs_name = $("#rs_name").val();
 			var rs_birth = $("#rs_birth").val();
@@ -571,9 +457,15 @@ $("#rs_seq").val(null);
 			var rse_Seq1 = null;
 			var rse_Seq2 = null;
 			var rse_Seq3 = null;
-			var rsls_Seq1 = null;
+			/* var rse_Seq1 = $("#rse__Seq_1").val();
+			var rse_Seq2 = $("#rse__Seq_2").val();
+			var rse_Seq3 = $("#rse__Seq_3").val(); */
+			/* var rsls_Seq1 = null;
 			var rsls_Seq2 = null;
-			var rsls_Seq3 = null;
+			var rsls_Seq3 = null; */
+			var rsls_Seq1 = $("#rsls__Seq_1").val();
+			var rsls_Seq2 = $("#rsls__Seq_2").val();
+			var rsls_Seq3 = $("#rsls__Seq_3").val();
 			var rst_Seq1 =null; 
 			var rst_Seq2 =null; 
 			var rst_Seq3 =null;
@@ -583,12 +475,12 @@ $("#rs_seq").val(null);
 			var rsf_Seq1 = null;
 			var rsf_Seq2 = null;
 			var rsf_Seq3 = null;
-			/* var rslg_Seq1 = null;
+			var rslg_Seq1 = null;
 			var rslg_Seq2 = null;
-			var rslg_Seq3 = null; */
-			var rslg_Seq1 = $("#rslg__Seq1").val();
+			var rslg_Seq3 = null;
+			/* var rslg_Seq1 = $("#rslg__Seq1").val();
 			var rslg_Seq2 = $("#rslg__Seq2").val();
-			var rslg_Seq3 = $("#rslg__Seq3").val();
+			var rslg_Seq3 = $("#rslg__Seq3").val(); */
 			var rspf_Seq = null;
 			var rsv_Seq = null;
 			var rspr_Seq = null;
@@ -778,7 +670,7 @@ $("#rs_seq").val(null);
 		<%-- <jsp:include page="../edu/eduWriteForm.jsp"></jsp:include> --%>
 	</div>
 	<div id="licenseDiv">
-		<%-- <jsp:include page="../license/licenseWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../license/licenseWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="trophyDiv">
 		<%-- <jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include> --%>
@@ -787,7 +679,7 @@ $("#rs_seq").val(null);
 		<h2>해외경험</h2>
 	</div>
 	<div id="languageDiv">
-		<jsp:include page="../language/languageWriteForm.jsp"></jsp:include>
+		<%-- <jsp:include page="../language/languageWriteForm.jsp"></jsp:include> --%>
 	</div>
 	<div id="portfolioDiv">
 		<h2>포트폴리오</h2>
