@@ -207,7 +207,7 @@ input[type=text], input[type=password], input[type=email],[type=tel] {
 }
 
 input[type=checkbox] {
-	/* display: none; */
+	 display: none;
 }
 
 #joinContent #consent li label {

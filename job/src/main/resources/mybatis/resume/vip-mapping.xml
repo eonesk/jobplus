@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.vipMapper">
+	<insert id="rsvSave" parameterType="vipDTO">
+		insert into RS_vip values(RS_workLV_SEQ.nextval,#{rsv_isMedal}, 
+		#{rsv_isProtect},#{rsv_isMoney},#{rsv_isDisable},#{rsv_military},#{rsv_startDate}, 
+		#{rsv_endDate},#{rsv_position},#{m_id},#{rsv_userTitle})
+	</insert>
+	
+	<select id="rsvCounting" parameterType="String" resultType="int">
+		select count (*) from RS_vip where M_id = #{m_Id}
+	</select>
+	
+	<select id="rsvGetList" parameterType="String" resultType="vipDTO">
+		select * from RS_vip where M_id = #{memId}
+	</select>
+	
+	<select id="rsvGetDTO" parameterType="int" resultType="vipDTO">
+		select * from RS_vip where rsv_seq = #{rsv_seq}
+	</select>
+</mapper>
