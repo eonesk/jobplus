@@ -121,3 +121,59 @@ body{
 	.money{
 		width: 95px;
 	}
+	#cpi_Type_div{
+		position: relative;
+		display: none;
+	}
+	#cpi_Type_div .cpi_Type_item{
+		position: absolute;
+		width: 600px;
+		top: -300px;
+		left: -100px;
+	}
+	#cpi_Type_div .cpi_Type_item .header{
+		width: auto;
+		padding: 9px 10px 0px 10px;
+		height: 30px;
+		background: #5858FA;
+		color: white;
+	}
+	#cpi_Type_item_x{
+		border: 0.8px solid white;
+		margin-top: -1px;
+		text-align: center;
+		background-color: #5858FA;
+		font-size: 1.2em;
+		float: right;
+		color: white;
+		outline: none;
+	}
+	#cpi_Type_div .cpi_Type_item .content{
+		border: 1.5px solid #5858FA;
+		padding: 20px 15px 20px 15px;
+		height: 410px;
+		background-color: white;
+	}
+	#cpi_Type_div .cpi_Type_item .content .table{
+		border-top: 1px solid #CECEF6;
+		border-collapse: collapse;
+	}
+	#cpi_Type_div .cpi_Type_item .content .table th{
+		width: 150px;
+	}
+	#cpi_Type_div .cpi_Type_item .content .table td{
+		padding: 13px 10px 13px 10px;
+		font-size: 0.9em;
+	}
+	#cpi_Type_item_write{
+		width: 150px;
+		height: 50px;
+	}
+	#cpi_Type_item_cancle{
+		width: 150px;
+		height: 50px;
+	}
+	#cpi_Type_item_underBtn{
+		margin-left: 120px;
+		margin-top: 30px;
+	}

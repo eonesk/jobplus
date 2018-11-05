@@ -31,4 +31,8 @@ public class RS_workLVDAO {
 	public RS_workLVDTO rswGetDTO(int rsw_seq) {
 		return sqlSession.selectOne("mybatis.workLVMapper.rswGetDTO", rsw_seq);
 	}
+	
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.workLVMapper.selectLastSeq");
+	}
 }

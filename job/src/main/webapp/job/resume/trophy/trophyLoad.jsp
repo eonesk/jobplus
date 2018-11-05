@@ -34,7 +34,7 @@
 							var tdTitle = $("<td>").addClass("LoadListTd").html("제목");
 							
 							trTitle.append(tdTitle);
-							$("#LoadList").append(trTitle);
+							$("#RST_LoadList").append(trTitle);
 							
 							$.each(data.items, function(index, item) {
 								var dto = item;
@@ -53,7 +53,7 @@
 								td.append(checkbox);
 								td.append(a);
 								tr.append(td);
-								$("#LoadList").append(tr);	
+								$("#RST_LoadList").append(tr);	
 							});
 							
 							var num = ${param.count};
@@ -74,7 +74,7 @@
 								});
 							}
 							
-							$("#load").click(function() {
+							$("#RST_load").click(function() {
 								
 								var accumSeq = "";
 								
@@ -121,8 +121,8 @@
 								contentTr.append(contentTd1).append(contentTd2).append(contentTd3).append(contentTd4);
 								table.append(contentTr);
 								
-								$("#loadView").append(userTitle);
-								$("#loadView").append(table);
+								$("#RST_loadView").append(userTitle);
+								$("#RST_loadView").append(table);
 								
 								/*
 				                $("#load").click(function() {
@@ -184,10 +184,10 @@
 		<p class="title">수상내역 불러오기</p>
 		내 수상내역 보관함 총&nbsp;<span id="number">&nbsp;</span>건
 		<div>
-			<table border="1" name="LoadList" id="LoadList">
+			<table border="1" name="RST_LoadList" id="RST_LoadList">
 			</table>
 		</div>
-		<div id="loadView" class="loadView">
+		<div id="RST_loadView" class="RST_loadView">
 		</div>
 		<input type="button" value="불러오기" id="load" class="load">
 		<input type="button" value="취소" id="cancle" class="cancle">	

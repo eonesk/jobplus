@@ -3,11 +3,18 @@ package job.company.info.bean;
 import java.util.Date;
 
 public class companyInfoDTO {
-	   // 기업정보seq 
+
+    // 기업정보seq 
     private Integer cpi_Seq;
 
     // 기업아이디 
     private String cpm_Id;
+
+    // 기업명 
+    private String cpi_Companyname;
+
+    // 대표자명 
+    private String cpi_Firstname;
 
     // 업종 
     private String cpi_Industry;
@@ -89,6 +96,22 @@ public class companyInfoDTO {
 
 	public void setCpm_Id(String cpm_Id) {
 		this.cpm_Id = cpm_Id;
+	}
+
+	public String getCpi_Companyname() {
+		return cpi_Companyname;
+	}
+
+	public void setCpi_Companyname(String cpi_Companyname) {
+		this.cpi_Companyname = cpi_Companyname;
+	}
+
+	public String getCpi_Firstname() {
+		return cpi_Firstname;
+	}
+
+	public void setCpi_Firstname(String cpi_Firstname) {
+		this.cpi_Firstname = cpi_Firstname;
 	}
 
 	public String getCpi_Industry() {
