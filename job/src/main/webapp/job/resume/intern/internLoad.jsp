@@ -32,7 +32,7 @@
 							var tdTitle = $("<td>").addClass("LoadListTd").html("제목");
 							
 							trTitle.append(tdTitle);
-							$("#LoadList").append(trTitle);
+							$("#rsit_LoadList").append(trTitle);
 							
 							$.each(data.items, function(index, item) {
 								var dto = item;
@@ -51,7 +51,7 @@
 								td.append(checkbox);							
 								td.append(a);
 								tr.append(td);
-								$("#LoadList").append(tr);	
+								$("#rsit_LoadList").append(tr);	
 							});
 							
 							var num = ${param.count};
@@ -119,8 +119,8 @@
 								contentTr.append(contentTd1).append(contentTd2).append(contentTd3).append(contentTd4).append(contentTd5);
 								table.append(contentTr);
 								
-								$("#loadView").append(userTitle);
-								$("#loadView").append(table);
+								$("#rsit_loadView").append(userTitle);
+								$("#rsit_loadView").append(table);
 							/*
 							function add_event(event) { 			                
 				                $("#load").click(function() {
@@ -184,10 +184,10 @@
 		<p class="title">인턴이력 불러오기</p>
 		내 인턴이력 보관함 총&nbsp;<span id="number">&nbsp;</span>건
 		<div>
-			<table border="1" name="LoadList" id="LoadList">				
+			<table border="1" name="rsit_LoadList" id="rsit_LoadList">				
 			</table>			
 		</div>
-		<div id="loadView" class="loadView">
+		<div id="rsit_loadView" class="rsit_loadView">
 		</div>
 		<input type="button" value="불러오기" id="load" class="load">
 		<input type="button" value="취소" id="cancle" class="cancle">	

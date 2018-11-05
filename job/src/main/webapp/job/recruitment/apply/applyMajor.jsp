@@ -1,0 +1,375 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#btn_reset").on("click", function() {			
+		$('input:checkbox[name="major[]"]').prop("checked", false);
+	});
+	
+	$('input:checkbox[class="chk"]').click(function() {
+		var num = $('input:checkbox[class="chk"]:checked').length;   //체크갯수 확인
+		if(num>3){
+			alert("최대 3개까지 선택가능합니다.");
+			$('input:checkbox[class="chk"]').prop("checked", false);
+		 }
+	}); 
+	
+	$("#btn_OK").on("click", function() {
+		var items=[];
+		$('input[class="chk"]:checkbox:checked').each(function(){
+			items.push($(this).val());
+		});			 
+		var tmp = items.join('/');
+		alert(tmp);
+		$("#rma_Major", opener.document).val(tmp);
+		self.close();
+	});
+	
+	$("#btn_close").click(function() {
+		window.close();
+	});
+});
+</script>
+<style type="text/css">
+th {
+	height: 50px;
+}
+.tbl_typ_reg02.down_typ th, .tbl_typ_reg02.down_typ td {
+    border-left: 1px solid #e1e1e1;
+}
+.tbl_typ_reg02 th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    line-height: 18px;
+    text-align: center;
+}
+.tbl_typ_reg02 th, .tbl_typ_reg02 td {
+    border-bottom: 1px solid #e0e0e0;
+    box-sizing: border-box;
+}
+table.tbl_common {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    font-size: 14px;
+    letter-spacing: -1px;
+    color: #101010;
+    table-layout: fixed;
+}
+.lpop_wrap {
+    position: fixed;
+    z-index: 1200;
+    padding: 58px 60px 60px;
+    border: 1px solid #4c4c4c;
+    box-sizing: border-box;
+    font-family: "Malgun Gothic",gulim,dotum,sans-serif;
+    background-color: #fff;
+}
+.chk_list {
+   	list-style: none;   	
+   	position: relative;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    text-align: left;
+    margin: 10 10 10 10px;
+}
+.lpop_major_select {
+    display: none;
+    left: 50%;
+    top: 50px;
+    margin-left: -50%;
+    margin-top: -10%;
+    width: 1024px;
+    height: 614px;
+    border: 0;
+}
+.btn_wrap {
+	margin-left: 200px;
+	margin-top: 20px;
+	padding: 10px;
+}
+.btn_OK, .btn_close {
+	width: 180px;
+	height: 60px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.btn_OK {
+	background-color: #2E2E2E;
+	color: white;
+	border: 0;
+}
+.btn_OK:hover {
+	background: #000000;
+}
+.btn_close {
+	background-color: white;
+	border: 1px solid #E6E6E6;
+}
+.btn_close:hover {
+	border: 1px solid #6E6E6E;
+}
+.btn_reset {
+	position: relative;
+	left: 80%;
+	width: 120px;
+	height: 30px;
+	background-color: white;
+	border: 1px solid #E6E6E6;	
+	margin-bottom: 10px;
+}
+.btn_reset:hover {
+	border: 1px solid #6E6E6E;	
+}
+</style>
+</head>
+<body>
+<div id="lpop_major" class="lpop_wrap lpop_major_select" style="display: block;">
+    <h2>필수전공 선택</h2>
+    <div class="tbl_btn_area">
+        <button type="button" class="btn_reset" id="btn_reset">전체선택 초기화</button>
+    </div>
+    <div class="tbl_typ_reg02 down_typ scroll">
+        <table class="tbl_common">
+            <colgroup>
+                <col style="width:180px">
+                <col style="width:180px">
+                <col style="width:180px">
+                <col style="width:180px">
+            </colgroup>
+            <tbody>
+            <tr>
+                <th>상경/계열</th>
+                <th>어학계열</th>
+                <th>사범계열</th>
+                <th>공학계열</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="chk_list">
+	                    <li class="chk_item">
+	                    	<label for="major_maj1">
+	                    		<input type="checkbox" name="major[]" id="major_maj1" class="chk" value="경영학"><span>경영학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                   	 	<label for="major_maj2">
+	                    		<input type="checkbox" name="major[]" id="major_maj2" class="chk" value="경제학"><span>경제학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj3">
+	                    		<input type="checkbox" name="major[]" id="major_maj3" class="chk" value="회계학"><span>회계학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj4">
+	                   		 	<input type="checkbox" name="major[]" id="major_maj4" class="chk" value="광고홍보학"><span>광고홍보학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj5">
+	                    		<input type="checkbox" name="major[]" id="major_maj5" class="chk" value="유통/무역학"><span>유통/무역학</span>
+	                    	</label>
+	                    </li>
+	                </ul>	                
+                </td>
+                <td>
+                    <ul class="chk_list">
+                    	<li class="chk_item">
+                    		<label for="major_maj1">
+                    			<input type="checkbox" name="major[]" id="major_maj1" class="chk" value="영어영문학"><span>영어영문학</span>
+                    		</label>
+                    	</li>
+                    	<li class="chk_item">
+                    		<label for="major_maj2">
+                    			<input type="checkbox" name="major[]" id="major_maj2" class="chk" value="중어중문학"><span>중어중문학</span>
+                    		</label>
+                    	</li>
+                    	<li class="chk_item">
+                    		<label for="major_maj3">
+                    			<input type="checkbox" name="major[]" id="major_maj3" class="chk" value="일어일문학"><span>일어일문학</span>
+                    		</label>
+                    	</li>
+                    	<li class="chk_item">
+                    		<label for="major_maj4">
+                    			<input type="checkbox" name="major[]" id="major_maj4" class="chk" value="국어국문학"><span>국어국문학</span>
+                    		</label>
+                    	</li>
+                    	<li class="chk_item">
+                    		<label for="major_maj5">
+                    			<input type="checkbox" name="major[]" id="major_maj5" class="chk" value="불어불문학"><span>불어불문학</span>
+                    		</label>
+                    	</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="chk_list">
+	                    <li class="chk_item">
+	                    	<label for="major_maj1">
+	                    		<input type="checkbox" name="major[]" id="major_maj1" class="chk" value="특수교육학"><span>특수교육학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj2">
+	                    		<input type="checkbox" name="major[]" id="major_maj2" class="chk" value="유아교육학"><span>유아교육학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj3">
+	                    		<input type="checkbox" name="major[]" id="major_maj3" class="chk" value="교육심리학"><span>교육심리학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj4">
+	                    		<input type="checkbox" name="major[]" id="major_maj4" class="chk" value="교육공학"><span>교육공학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj5">
+	                    		<input type="checkbox" name="major[]" id="major_maj5" class="chk" value="초등교육"><span>초등교육</span>
+	                    	</label>
+	                    </li>
+                    </ul>
+                </td>
+                <td rowspan="3">
+                    <ul class="chk_list">
+	                    <li class="chk_item">
+	                    	<label for="major_maj1">
+	                    		<input type="checkbox" name="major[]" id="major_maj1" class="chk" value="컴퓨터/시스템공학"><span>컴퓨터/시스템공학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj2">
+	                    		<input type="checkbox" name="major[]" id="major_maj2" class="chk" value="금속/비금속공학"><span>금속/비금속공학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj3">
+	                    		<input type="checkbox" name="major[]" id="major_maj3" class="chk" value="생명/환경공학"><span>생명/환경공학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj4">
+	                    		<input type="checkbox" name="major[]" id="major_maj4" class="chk" value="화학공학"><span>화학공학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj5">
+	                    		<input type="checkbox" name="major[]" id="major_maj5" class="chk" value="전기/전자공학"><span>전기/전자공학</span>
+	                    	</label>
+	                    </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>인문/사회</th>
+                <th>자연계열</th>
+                <th>의학/예체능</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="chk_list">
+	                    <li class="chk_item">
+	                    	<label for="major_maj003">
+	                    		<input type="checkbox" name="major[]" id="major_maj003" class="chk" value="인문과학계열"><span>인문과학계열</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj004">
+	                    		<input type="checkbox" name="major[]" id="major_maj004" class="chk" value="사회과학계열"><span>사회과학계열</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj009">
+	                    		<input type="checkbox" name="major[]" id="major_maj009" class="chk" value="법학계열"><span>법학계열</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj032">
+	                    		<input type="checkbox" name="major[]" id="major_maj032" class="chk" value="심리학"><span>심리학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj033">
+	                    		<input type="checkbox" name="major[]" id="major_maj033" class="chk" value="국사/세계사"><span>국사/세계사</span>
+	                    	</label>
+	                    </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="chk_list">
+	                    <li class="chk_item">
+	                    	<label for="major_maj013">
+	                    		<input type="checkbox" name="major[]" id="major_maj013" class="chk" value="농수산/해양학"><span>농수산/해양학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj046">
+	                    		<input type="checkbox" name="major[]" id="major_maj046" class="chk" value="임학/임예학"><span>임학/임예학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj047">
+	                    		<input type="checkbox" name="major[]" id="major_maj047" class="chk" value="수학/통계학"><span>수학/통계학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj048">
+	                    		<input type="checkbox" name="major[]" id="major_maj048" class="chk" value="물리"><span>물리</span>
+	                    	</label>
+	                    </li>
+						<li class="chk_item">
+							<label for="major_maj049">
+								<input type="checkbox" name="major[]" id="major_maj049" class="chk"	value="화학"><span>화학</span>
+							</label>
+						</li>
+					</ul>
+                </td>
+                <td>
+                    <ul class="chk_list">
+	                    <li class="chk_item">
+	                    	<label for="major_maj012">
+	                    		<input type="checkbox" name="major[]" id="major_maj012" class="chk" value="의/약학"><span>의/약학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj071">
+	                    		<input type="checkbox" name="major[]" id="major_maj071" class="chk" value="간호학"><span>간호학</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj072">
+	                    		<input type="checkbox" name="major[]" id="major_maj072" class="chk" value="방사선과"><span>방사선과</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj073">
+	                    		<input type="checkbox" name="major[]" id="major_maj073" class="chk" value="안경학과"><span>안경학과</span>
+	                    	</label>
+	                    </li>
+	                    <li class="chk_item">
+	                    	<label for="major_maj074">
+	                    		<input type="checkbox" name="major[]" id="major_maj074" class="chk" value="임상병리학"><span>임상병리학</span>
+	                    	</label>
+	                    </li>
+                    </ul>
+                </td>
+            </tr></tbody>
+        </table>
+    </div>
+    <div class="btn_wrap">
+        <button type="button" class="btn_OK" id="btn_OK">선택완료</button>
+        <button type="button" class="btn_close" id="btn_close">닫기</button>
+    </div>
+</div>
+</body>
+</html>
