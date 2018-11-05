@@ -6,17 +6,35 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript"> 
-function checkImageInsert() {
-	if(document.imageWriteForm.Rsim_Usertitle.value=="") {
-		alert("제목을 입력해주세요.");  
-		document.imageWriteForm.Rsim_Usertitle.focus();
-	} else if(document.imageWriteForm.img.value == "") {
-		alert("사진 파일을 등록해주세요.")    
-		document.imageWriteForm.img.focus();
-	} else {  
+$(function() {
+	$("#save").click(function() {
+		if(!$("#user_title").val()) {
+			alert("저장할 제목을 입력해주세요.");
+			$("#user_title").focus();
+			return false;
+		}
+		if(!$("#photo_upload").val()) {
+			alert("사진을 등록해주세요."); 
+			$("#photo_upload").focus();
+			return false;
+		}
+		function readImg(input) {
+			if(input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$(opener.document).find("#aaa").val("src",e.target.result);
+				}
+				reader.readAsDataURL(value.files[0]);
+			}
+		}
 		document.imageWriteForm.submit();
-	}
-}
+	});
+	$("#cancle").click(function() {
+		window.close();
+	});
+});
+
+
 </script>
 <style type="text/css">
 input, button {
@@ -88,8 +106,8 @@ button:hover {
 		</div>
 	</form>		
 	<div align="center">
-		<button type="button" onclick="checkImageInsert()">저장</button>
-		<button type="button"  onclick="window.close();">취소</button>
+		<button type="button" id="save">저장</button>
+		<button type="button" id="cancle">취소</button>
 	</div>
 </div>
 

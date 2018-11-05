@@ -9,10 +9,11 @@
 <script type="text/javascript">
 	if(${su > 0}) {
 		alert("사진이 목록에 저장되었습니다.");
+		opener.location.href="imageWriteForm.do";
 		self.close();
 	} else {
 		alert("등록에 실패하였습니다.");
-		location.href="imageForm.jsp";
+		self.close();
 	}
 </script>
 </head>
