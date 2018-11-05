@@ -22,19 +22,17 @@
 			success: function(data) {
 				$("#numberOfPr").append(data);
 				if(data == "0") {
-					alert("자기소개서 없음");
+					alert("저장하신 자기소개서가 없습니다.");
 					$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo($("<tr>")).addClass("rsprLoadListLabelTr").appendTo("#rsprLoadListTable");
 					//$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo("#rsprLoadListTable");
-				} else {
-				
-					alert("자기소개서 있을 때");
-					/* Json 하는 거 어떻게 하지 ㅠㅠ */
+				} else {				
+					console.log("자기소개서 있을 때");
 					$.ajax({
 						type: 'POST',
 						url: 'rsprLoad.do',
 						dataType: "json",
 						success: function(data) {//rsprLoadListTable  item.rspr_UserTitle
-							alert("성공");
+							console.log("성공");
 							
 							var trTitle = $("<tr>").addClass("rsprLoadListLabelTr");
 							var tdTitle = $("<td>").addClass("rsprLoadListLabelTd").html("제목");
@@ -58,7 +56,7 @@
 							});
 							
 							function add_event(event) {
-								alert(event.data.param.rspr_UserTitle + " // " + event.data.param.m_Id);
+								console.log(event.data.param.rspr_UserTitle + " // " + event.data.param.m_Id);
 				                $("#rsprLoadViewInit").hide();
 				                var title = $("<h3>").html("[ " + event.data.param.rspr_Title + " ]");
 				                var content = $("<p>").html(" " + event.data.param.rspr_Content);
@@ -67,7 +65,7 @@
 				                $("#rsprLoadView").append(content);
 				                
 				                $("#rsprLoadSubmit").click(function() {
-				                	alert(event.data.param.rspr_Title);
+				                	console.log(event.data.param.rspr_Title);
 				                	$("#rsprTitle", opener.document).val("");
 				                	$("#rsprContent", opener.document).val("");
 				                	$("#rsprSeq", opener.document).val("");
@@ -75,14 +73,9 @@
 				                	$("#rsprContent", opener.document).val(event.data.param.rspr_Content);
 				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
 				                	self.close();
-				                });
-				                
+				                });				                
 							}
-							
-							alert("종료");
-							
-							
-							
+							console.log("종료");
 						},
 						error : function(e) {
 			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
@@ -91,7 +84,7 @@
 				}
 			},
 			error : function(e) {
-                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
          	}
 		});		
 	});

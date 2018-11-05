@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="job.resume.edu.bean.RS_eduDTO" alias="eduDTO"/>
 		<typeAlias type="job.resume.license.bean.RS_licenseDTO" alias="licenseDTO"/>
 		<typeAlias type="job.resume.portfolio.bean.RS_portfolioDTO" alias="portfolioDTO"/>
+		<typeAlias type="job.resume.vip.bean.RS_vipDTO" alias="vipDTO"/>
 	</typeAliases>	
 	
 	<!-- SQL Mapper 설정  -->
@@ -41,5 +42,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/resume/foreign-mapping.xml"/>
 		<mapper resource="mybatis/resume/image-mapping.xml"/>
 		<mapper resource="mybatis/resume/portfolio-mapping.xml"/>
+		<mapper resource="mybatis/resume/vip-mapping.xml"/>
 	</mappers>
 </configuration>

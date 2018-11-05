@@ -1,0 +1,123 @@
+body{
+		margin: 0 auto;
+		padding: 30px 50px 30px 50px;
+		width: 920px;
+	}
+	input{
+		border: 1px solid lightgray;
+	}
+	textarea{
+		border: 1px solid lightgray;
+		resize: none;
+	}
+	fieldset{
+		width: 830px;
+		border: 1px solid #CECEF6;
+		padding: 5px 10px 5px 10px;
+	}
+	.div{
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.buttonDiv{
+		padding-top: 30px;
+	}
+	.p{
+		padding-bottom: 0;
+		margin-bottom: 5px;
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+	.must{
+		color: red;
+	}
+	.font .CPM_companyName{
+		color: blue;
+		font-weight: bold;
+	}
+	.table{
+		border-top: 1px solid #CECEF6;
+		border-collapse: collapse;
+	}
+	.table tr, td, th{
+		border-bottom: 1px solid #CECEF6;
+		padding: 13px 30px 13px 30px;
+	}
+	.table tr{
+		text-align: left;
+	}
+	.table th{
+		background-color: #EFEFFB;
+		width: 125px;
+		color: #5858FA;
+		border-right: 1px solid #CECEF6;
+	}
+	.table td{
+		width: 610px;
+	}
+	
+	.companyInfoTable tr{
+		text-align: left;
+	}
+	.companyInfoTable{
+		border-top: 1px solid #CECEF6;
+		border-collapse: collapse;
+	}
+	.companyInfoTable tr .lineTh{
+		background-color: #EFEFFB;
+		width: 150px;
+		color: #5858FA;
+		border-right: 1px solid #CECEF6;
+	}
+	.companyInfoTable tr .innerThl{
+		width: 100px;
+		background-color: #EFEFFB;
+		color: #5858FA;
+		border-right: 1px solid #CECEF6;
+		font-size: 0.8em;
+	}
+	.companyInfoTable tr .innerTh{
+		width: 100px;
+		background-color: #EFEFFB;
+		color: #5858FA;
+		font-size: 0.8em;
+	}
+	.companyInfoTable .innerTd{
+		border-right: 1px solid #CECEF6;
+	}
+	.companyInfoTable tr .innerTh .10000{
+		font-weight: lighter;
+		font-size: 0.7em;
+	}
+	.button{
+		background-color: #5882FA;
+		border: none;
+		padding: 3px 3px;
+		text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+		color:#fff;
+		cursor: pointer;
+	}
+	.button:hover{
+		background-color: #2E9AFE;
+	}
+	.writeBtn{
+		width:200px;
+	    background-color: #5882FA;
+	    border: none;
+	    color:#fff;
+	    padding: 10px 0;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 30px;
+	    margin: 4px;
+	    cursor: pointer;
+	}
+	.writeBtn:hover{
+		 background-color: #2E9AFE;
+	}
+	.money{
+		width: 95px;
+	}

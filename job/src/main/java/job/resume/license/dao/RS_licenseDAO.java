@@ -29,4 +29,8 @@ public class RS_licenseDAO {
 	public RS_licenseDTO selectLicenseDTO(int rsls_Seq) {
 		return sqlSession.selectOne("mybatis.licenseMapper.selectLicenseDTO", rsls_Seq);
 	}
+	
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.licenseMapper.selectLastSeq");
+	}
 }

@@ -14,7 +14,7 @@
 		
 		$("#eduPlus").hide();
 		
-		$("#plusButton").click(function() {
+		$("#eduplusButton").click(function() {
 			eduPlusButtonCnt++;
 			var numbering = "_" + eduPlusButtonCnt;
 			var clone = $("#eduPlus").clone().attr("id", "eduPlus" + numbering);
@@ -43,6 +43,7 @@
 			$("#eduPlusCancel" + numbering).on("click", function() {
 				console.log("[eventBindingInit] #eduPlusCancel" + numbering + "(X표) : 닫기");
 				$(this).parent("#eduPlus" + numbering).remove();
+				$("#rse__Seq"+numbering).val("");
 				eduPlusButtonCnt--;
 			});
 			
@@ -62,7 +63,7 @@
 					$("#rse_Enddate" + numbering).focus();
 				} else {
 					console.log("[saveButtonInit] numbering : " + numbering);
-					window.open("./eduSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
+					window.open("/job/job/resume/edu/eduSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
 				}
 			});
 			
@@ -71,7 +72,7 @@
 		/** 내 교육이수사항 불러오기 */
 		$("#RSE_loadA").click(function() {
 			console.log("[load] eduPlusButtonCnt : " + eduPlusButtonCnt);
-			window.open("./eduLoadPopUp.jsp?eduPlusButtonCnt=" + eduPlusButtonCnt, "", "width=500px height=500px");
+			window.open("/job/job/resume/edu/eduLoadPopUp.jsp?eduPlusButtonCnt=" + eduPlusButtonCnt, "", "width=500px height=500px");
 		});
 	});
 	
@@ -84,7 +85,7 @@
 			console.log("[selected] eduPlusButtonCnt : " + eduPlusButtonCnt);
 			$.ajax({
 				type: 'POST',
-				url: 'rseLoadView.do',
+				url: '/job/job/resume/edu/rseLoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -120,6 +121,7 @@
 						$("#eduPlusCancel" + numbering).on("click", function() {
 							console.log("[eventBindingSelected] #eduPlusCancel" + numbering + "(X표) : 닫기");
 							$(this).parent("#eduPlus" + numbering).remove();
+							$("#rse__Seq"+numbering).val("");
 							eduPlusButtonCnt--;
 						});
 						
@@ -139,11 +141,12 @@
 								$("#rse_Enddate" + numbering).focus();
 							} else {
 								console.log("[saveButtonSelected] numbering : " + numbering);
-								window.open("./eduSavePopUp.jsp?numbering="+numbering, "", "width=500px height=500px");
+								window.open("/job/job/resume/edu/eduSavePopUp.jsp?numbering="+numbering, "", "width=500px height=500px");
 							}
 						});
 						
 						console.log("[selected] rse_UserTitle : " + testDTO.rse_UserTitle);
+						$("#rse__Seq" + numbering).val(testDTO.rse_Seq);
 						$("#rse_Seq" + numbering).val(testDTO.rse_Seq);
 						$("#rse_Name" + numbering).val(testDTO.rse_Name);
 						$("#rse_Company" + numbering).val(testDTO.rse_Company);
@@ -164,6 +167,9 @@
 </script>
 </head>
 <body>
+<input id="rse__Seq_1" type="hidden">
+<input id="rse__Seq_2" type="hidden">
+<input id="rse__Seq_3" type="hidden">
 	<div id="edu_div"
 		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
 		
@@ -232,8 +238,8 @@
 			</div>
 <!-- ------------------------------------------------------Footer----------------------------------------------------------------------- -->
 		</div>
-		<a id="plusButton" href="#" style="text-decoration: none;">
-			<div id="plusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
+		<a id="eduplusButton" href="#" style="text-decoration: none;">
+			<div id="eduplusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
 							+ 교육 추가
 			</div>
 		</a>

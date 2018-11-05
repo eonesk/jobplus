@@ -9,10 +9,6 @@
 <script type="text/javascript">
 	$(function() {
 		
-		
-		
-		
-		
 		$("#RSPR_saveA").click(function() {
 			if(!$("#rsprTitle").val()) {
 				alert("자기소개서의 제목을 입력해주세요.");
@@ -28,9 +24,6 @@
 		$("#RSPR_loadA").click(function() {
 			window.open("./prLoadPopUp.jsp", "", "width=570px height=600px");
 		});
-		
-		
-		
 	});
 	
 </script>
@@ -54,10 +47,14 @@
 		<br>		
 		
 		<div style="padding: 3px;">
+			<!-- SEQ : hidden -->
 			<input type="hidden" id="rsprSeq">
+			
+			<!-- 제목 -->
 			<input type="text" placeholder="제목을 입력하세요."
 				style="float: left; width: 539px; height: 30px;" id="rsprTitle">
-			<!-- <div style="text-align: center; border: 1px solid gray; width: 30px; height: 34px; float: left; font-size: 30px;">X</div> -->
+				
+			<!-- 내용 -->
 			<div style="clear: both;">
 				<textarea class="autosize" cols="65" style="min-height: 150px;" id="rsprContent"></textarea>
 			</div>

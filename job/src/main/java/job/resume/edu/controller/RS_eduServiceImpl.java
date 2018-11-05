@@ -34,4 +34,9 @@ public class RS_eduServiceImpl implements RS_eduService {
 		return eduDAO.selectEduDTO(rse_Seq);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return eduDAO.selectLastSeq();
+	}
+
 }

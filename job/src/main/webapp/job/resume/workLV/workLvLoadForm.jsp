@@ -37,27 +37,34 @@ $(function() {
 						
 						$.each(data.items, function(index, item) {
 							var dto = item;
+							var count = 1; 
+							
 							
 							var li = $("<li>").addClass("list_li");
 							
-							
 							var checkbox = $("<input>").attr({
-								"id": "rsw_userTitleR",
+								"id": "rsw_userTitleR"+count,
 								"type": "checkbox",
 								"value": item.rsw_seq
 							}).addClass("rsw_userTitleR");
 							
+							var label = $("<label>").attr({
+								"for" : "rsw_userTitleR"+count
+							}).addClass("checkOff");
+							
 							var a = $("<a>").attr({
 								"id": "rsw_userTitleA",
 								"href": "#"
-							}).html(item.rsw_userTitle).bind('click', {param: dto}, add_event);;
+							}).html(item.rsw_userTitle).bind('click', {param: dto}, add_event);
 							
-							li.append(checkbox);
-							li.append(a);
+							var div_checkbox = $("<div>").addClass("div_checkbox").append(checkbox).append(label);
+							var div_a = $("<div>").addClass("div_a").append(a);
+							li.append(div_checkbox);
+							li.append(div_a);
 							$("#list_ul").append(li);
 			                /*$("#eduLoadListTable").append(tr); */	
 							 
-																		 
+							count++;																		 
 						});							
 
 						/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
@@ -157,8 +164,18 @@ $(function() {
      	}
 	});	
 });
-$(function() {		
-	$("#cancle").click(function() {
+$(function() {
+	$("input[type=checkbox]").change(function() {
+		var is_check = $(this).is(":checked");
+		if(is_check){
+			$(this).next().addClass("checkOn");
+			$(this).next().removeClass("checkOff");
+		}else{
+			$(this).next().addClass("checkOff");
+			$(this).next().removeClass("checkOn");
+		}
+	});
+	$("#loadCancle").click(function() {
 		window.close();
 	});
 });
@@ -167,6 +184,11 @@ $(function() {
 <style type="text/css">
 ::-webkit-scrollbar {
 	display: none;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
 }
 
 #loadContainer {
@@ -215,25 +237,49 @@ $(function() {
 	height:100%;
 	overflow: auto;
 	-ms-overflow-style: none; /* IE에서 스크롤바 감춤 */
-	
+	line-height: 50px;
 }
 
 .list_li{
 	list-style: none; 
-	border:1px solid gray;
+	text-align: center;
+	width: 100%;
 	
 }
+.div_checkbox{
+	display:inline-block;
+	width: 20%;
+}
 
+.checkOff {
+	background: url('//www.saraminimage.co.kr/ui/join/bg_check_bullet.png')
+		no-repeat 0 0px;
+}
 
-.list_li a{
-	/* font-size: 20px;
-	font-weight: bold;
+.checkOn {
+	background: url('//www.saraminimage.co.kr/ui/join/bg_check_bullet.png')
+		no-repeat 0 -30px;
+}
+
+.div_checkbox label {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+}
+
+.div_a{
+	display:inline-block;
+	width: 70%;
+}
+
+.div_a a{
 	text-decoration: none;
-	color:black; */
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .loadList legend {
-	
+	font-weight: bold;
 }
 
 .loadSelectList{
@@ -241,32 +287,30 @@ $(function() {
 	margin-left: 30px;
 	overflow: auto;
 	-ms-overflow-style: none; /* IE에서 스크롤바 감춤 */
-	text-align: left;
+	text-align: center;
 	font-weight: bold;
 	display: none;
 }
 
-/**집에서 확인할곳 */
-.loadSelectList ul{
-	line-height: 30px;
-}
 
 
 .listDiv{
 	border-bottom: 1px solid lightgray;
-	
-}
-
-.listTitle{
 	font-size: 20px;
 	font-weight: bold;
-}
-.listTitle:nth-child(1){
-	padding-left: 30px;
+	width: 100%;
 }
 
-.listTitle:nth-child(2){
-	padding-left: 120px;
+.listTitle1{
+	display:inline-block;
+	text-align: center;
+	width:30%;
+}
+
+.listTitle2{
+	display:inline-block;
+	text-align: center;
+	width:60%;
 }
 #loadFooter {
 	height: 80px;
@@ -301,8 +345,8 @@ $(function() {
 			<fieldset class="loadList">
 				<legend>목록</legend>
 				<div class="listDiv">
-					<span class="listTitle">선택</span>
-					<span class="listTitle">제목</span><br>
+					<div class="listTitle1">선택</div>
+					<div class="listTitle2">제목</div>
 				</div>
 				<ul id="list_ul" class="list_ul">
 					
