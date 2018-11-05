@@ -22,6 +22,7 @@
 
 <!-- Controller 어노테이션 등록준비 -->
 	
+	<context:component-scan base-package="job.recruitment.introduction.controller"/>
 	<context:component-scan base-package="job.resume.workLV.controller"/>
 	<context:component-scan base-package="job.resume.intern.controller"/>
 	<context:component-scan base-package="job.resume.trophy.controller"/>	
@@ -36,7 +37,7 @@
 	<context:component-scan base-package="job.resume.portfolio.controller"/>
 	<context:component-scan base-package="job.resume.controller"/>
 	<context:component-scan base-package="job.member.controller"/>
-	
+	<context:component-scan base-package="job.resume.vip.controller"/>
 <!-- 반드시 id="multipartResolver" 를 사용해야한다. -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

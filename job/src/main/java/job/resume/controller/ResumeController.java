@@ -60,7 +60,7 @@ public class ResumeController {
 		String memId = (String) session.getAttribute("memId");
 		
 		//수정해야됨!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		int rs_seq = 19;
+		int rs_seq = 64;
 		
 		ResumeDTO resumeDTO = resumeService.selectResume(memId, rs_seq);
 		
@@ -164,15 +164,12 @@ public class ResumeController {
 	}
 	
 	@RequestMapping(value = "/job/resume/resume/resumeModify.do")
-	public ModelAndView resumeModify(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
+	public void resumeModify(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		int rs_Seq = Integer.parseInt(request.getParameter("rs_seq"));
+		resumeService.updateResume(resumeSetting(request, true));
 		
-		int su = resumeService.updateResume(resumeSetting(request, true));
-		
-		modelAndView.addObject("su",su);
-		modelAndView.setViewName("resumeModify.jsp");
-		
-		return modelAndView;
+		out.print(rs_Seq);
 	}
 
 	@RequestMapping(value = "/job/resume/resume/resumeWrite.do")

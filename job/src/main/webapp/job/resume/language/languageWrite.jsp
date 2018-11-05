@@ -10,15 +10,15 @@
 	$(function() {
 		var num = ${param.num};
 		alert("num의 수 = " + num);
-		var rslgCategory = $("#rslgCategory" + num, opener.document).val();	
+		var rslgCategory = $("#rslg_Category" + num, opener.document).val();	
 		if(rslgCategory == "공인시험"){
-			var rslgName = $("#rslgName" + num, opener.document).val();			
-			var rslgTest = $("#rslgTest" + num, opener.document).val();
-			var rslgScore = $("#rslgScore" + num, opener.document).val();
-			var rslgDate = $("#rslgDate" + num, opener.document).val();
+			var rslgName = $("#rslg_Name" + num, opener.document).val();			
+			var rslgTest = $("#rslg_Test" + num, opener.document).val();
+			var rslgScore = $("#rslg_Score" + num, opener.document).val();
+			var rslgDate = $("#rslg_Date" + num, opener.document).val();
 			var rslgLv = null;
 		}else{
-			var rslgName = $("#rslgName" + num, opener.document).val();
+			var rslgName = $("#rslg_Name" + num, opener.document).val();
 			var rslgLv = $("#rslgLv" + num, opener.document).val();
 			var rslgTest = null;
 			var rslgScore = null;
@@ -54,6 +54,7 @@
 				success: function(data) {
 					if(data > 0) {
 						alert("성공");
+						$("#rslg__Seq"+num, opener.document).val(data);
 						window.close();
 					} else {
 						alert("실패");

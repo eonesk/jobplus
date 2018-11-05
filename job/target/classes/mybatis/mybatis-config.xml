@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 클래스에 별명 설정 -->
 	<typeAliases>
+		<typeAlias type="job.recruitment.introduction.bean.RM_introductionDTO" alias="introductionDTO"/>
 		<typeAlias type="job.resume.workLV.bean.RS_workLVDTO" alias="workLVDTO"/>
 		<typeAlias type="job.resume.intern.bean.RS_internDTO" alias="internDTO"/>
 		<typeAlias type="job.resume.trophy.bean.RS_trophyDTO" alias="trophyDTO"/>
@@ -18,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="job.resume.edu.bean.RS_eduDTO" alias="eduDTO"/>
 		<typeAlias type="job.resume.license.bean.RS_licenseDTO" alias="licenseDTO"/>
 		<typeAlias type="job.resume.portfolio.bean.RS_portfolioDTO" alias="portfolioDTO"/>
+		<typeAlias type="job.resume.vip.bean.RS_vipDTO" alias="vipDTO"/>
 	</typeAliases>	
 	
 	<!-- SQL Mapper 설정  -->
@@ -28,6 +30,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		
 
 		<!-- SQL문장이 기술되는 Mapper파일 / resume 하위 테이블들 -->
+		<mapper resource="mybatis/recruitment/introduction-mapping.xml"/>
 		<mapper resource="mybatis/resume/workLV-mapping.xml"/>
 		<mapper resource="mybatis/resume/intern-mapping.xml"/>
 		<mapper resource="mybatis/resume/trophy-mapping.xml"/>	
@@ -39,5 +42,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/resume/foreign-mapping.xml"/>
 		<mapper resource="mybatis/resume/image-mapping.xml"/>
 		<mapper resource="mybatis/resume/portfolio-mapping.xml"/>
+		<mapper resource="mybatis/resume/vip-mapping.xml"/>
 	</mappers>
 </configuration>

@@ -1,31 +1,22 @@
 package job.recruitment.apply.bean;
 
 public class RM_applyDTO {
-
     // 채용공고seq 
     private Integer rm_Seq;
-
     // 학력조건 
     private String rma_Studylv;
-
     // 졸업여부 
     private String rma_Isfinish;
-
     // 전공학과 
     private String rma_Major;
-
     // 우대조건 
     private String rma_Vip;
-
     // 외국어 
     private String rma_Foreign;
-
     // 자격증 
     private String rma_License;
-
     // 성별 
     private String rma_Gender;
-
     // 연령 
     private String rma_Age;
 

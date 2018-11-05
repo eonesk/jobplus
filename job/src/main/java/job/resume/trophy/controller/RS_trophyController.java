@@ -56,9 +56,13 @@ public class RS_trophyController {
 		trophyDTO.setRST_UserTitle(RST_UserTitle);
 		trophyDTO.setM_Id(mId);
 		// DB작업
-		int su = trophyService.Write(trophyDTO);		
+		int su = trophyService.Write(trophyDTO);	
+		int rst_Seq = 0;
+		if(su>0) {
+			rst_Seq = trophyService.selectLastSeq();
+		}
 		// (3) 화면네비게이션		
-		out.print(su);
+		out.print(rst_Seq);
 	}
 	@RequestMapping(value="/job/resume/trophy/LoadCount.do", method=RequestMethod.POST)
 	public void LoadCount(HttpServletRequest request, HttpServletResponse response) throws IOException {

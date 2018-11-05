@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import job.resume.intern.bean.RS_internDTO;
+import job.resume.trophy.bean.RS_trophyDTO;
 
 @Repository
 public class RS_internDAO {
@@ -29,7 +30,10 @@ public class RS_internDAO {
 	public int Delete(int rsit_Seq) {	
 		return sqlSession.delete("mybatis.internMapper.Delete", rsit_Seq);
 	}
-	
+	// 검색
+	public RS_internDTO selectInternDTO(int rsit_Seq) {
+		return sqlSession.selectOne("mybatis.internMapper.selectInternDTO", rsit_Seq);
+	}
 	// 최근 저장된 글 seq 가져오기
 	public int selectLastSeq() {
 		return sqlSession.selectOne("mybatis.internMapper.selectLastSeq");

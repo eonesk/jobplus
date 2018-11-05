@@ -33,6 +33,11 @@ public class RS_licenseServiceImpl implements RS_licenseService {
 	public RS_licenseDTO selectLicenseDTO(int rsls_Seq) {
 		return licenseDAO.selectLicenseDTO(rsls_Seq);
 	}
+
+	@Override
+	public int selectLastSeq() {
+		return licenseDAO.selectLastSeq();
+	}
 	
 	
 }

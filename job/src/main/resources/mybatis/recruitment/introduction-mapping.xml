@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.introductionMapper">
+
+	<insert id="Write" parameterType="introductionDTO">	
+	 	insert into RM_introduction values  
+		(RM_introduction_SEQ.nextval,#{rmi_Personnel},#{rmi_Type},#{rmi_Work1},#{rmi_Work2},#{rmi_Department},#{rmi_Official}, #{rmi_Work3}) 
+	</insert>	
+	
+</mapper>

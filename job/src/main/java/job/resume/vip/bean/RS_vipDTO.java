@@ -5,113 +5,125 @@ import java.util.Date;
 public class RS_vipDTO {
 
     // 취업우대seq 
-    private Integer rsvSeq;
+    private Integer rsv_seq;
 
     // 보훈대상 여부 
-    private String rsvIsmedal;
+    private String rsv_isMedal;
 
     // 취업보호대상 여부 
-    private String rsvIsprotect;
+    private String rsv_isProtect;
 
     // 고용지원금대상 여부 
-    private String rsvIsmoney;
+    private String rsv_isMoney;
 
     // 장애 여부 
-    private String rsvIsdisable;
+    private String rsv_isDisable;
 
     // 병역 
-    private String rsvMilitary;
+    private String rsv_military;
 
     // 입대일 
-    private Date rsvStartdate;
+    private Date rsv_startDate;
 
     // 제대일 
-    private Date rsvEnddate;
+    private Date rsv_endDate;
 
     // 군별, 제대 계급 
-    private String rsvPosition;
+    private String rsv_position;
 
     // 회원 아이디 
-    private String mId;
+    private String m_id;
 
-    public Integer getRsvSeq() {
-        return rsvSeq;
-    }
+	private String rsv_userTitle;
+   
+	public Integer getRsv_seq() {
+		return rsv_seq;
+	}
 
-    public void setRsvSeq(Integer rsvSeq) {
-        this.rsvSeq = rsvSeq;
-    }
+	public void setRsv_seq(Integer rsv_seq) {
+		this.rsv_seq = rsv_seq;
+	}
 
-    public String getRsvIsmedal() {
-        return rsvIsmedal;
-    }
+	public String getRsv_isMedal() {
+		return rsv_isMedal;
+	}
 
-    public void setRsvIsmedal(String rsvIsmedal) {
-        this.rsvIsmedal = rsvIsmedal;
-    }
+	public void setRsv_isMedal(String rsv_isMedal) {
+		this.rsv_isMedal = rsv_isMedal;
+	}
 
-    public String getRsvIsprotect() {
-        return rsvIsprotect;
-    }
+	public String getRsv_isProtect() {
+		return rsv_isProtect;
+	}
 
-    public void setRsvIsprotect(String rsvIsprotect) {
-        this.rsvIsprotect = rsvIsprotect;
-    }
+	public void setRsv_isProtect(String rsv_isProtect) {
+		this.rsv_isProtect = rsv_isProtect;
+	}
 
-    public String getRsvIsmoney() {
-        return rsvIsmoney;
-    }
+	public String getRsv_isMoney() {
+		return rsv_isMoney;
+	}
 
-    public void setRsvIsmoney(String rsvIsmoney) {
-        this.rsvIsmoney = rsvIsmoney;
-    }
+	public void setRsv_isMoney(String rsv_isMoney) {
+		this.rsv_isMoney = rsv_isMoney;
+	}
 
-    public String getRsvIsdisable() {
-        return rsvIsdisable;
-    }
+	public String getRsv_isDisable() {
+		return rsv_isDisable;
+	}
 
-    public void setRsvIsdisable(String rsvIsdisable) {
-        this.rsvIsdisable = rsvIsdisable;
-    }
+	public void setRsv_isDisable(String rsv_isDisable) {
+		this.rsv_isDisable = rsv_isDisable;
+	}
 
-    public String getRsvMilitary() {
-        return rsvMilitary;
-    }
+	public String getRsv_military() {
+		return rsv_military;
+	}
 
-    public void setRsvMilitary(String rsvMilitary) {
-        this.rsvMilitary = rsvMilitary;
-    }
+	public void setRsv_military(String rsv_military) {
+		this.rsv_military = rsv_military;
+	}
 
-    public Date getRsvStartdate() {
-        return rsvStartdate;
-    }
+	public Date getRsv_startDate() {
+		return rsv_startDate;
+	}
 
-    public void setRsvStartdate(Date rsvStartdate) {
-        this.rsvStartdate = rsvStartdate;
-    }
+	public void setRsv_startDate(Date rsv_startDate) {
+		this.rsv_startDate = rsv_startDate;
+	}
 
-    public Date getRsvEnddate() {
-        return rsvEnddate;
-    }
+	public Date getRsv_endDate() {
+		return rsv_endDate;
+	}
 
-    public void setRsvEnddate(Date rsvEnddate) {
-        this.rsvEnddate = rsvEnddate;
-    }
+	public void setRsv_endDate(Date rsv_endDate) {
+		this.rsv_endDate = rsv_endDate;
+	}
 
-    public String getRsvPosition() {
-        return rsvPosition;
-    }
+	public String getRsv_position() {
+		return rsv_position;
+	}
 
-    public void setRsvPosition(String rsvPosition) {
-        this.rsvPosition = rsvPosition;
-    }
+	public void setRsv_position(String rsv_position) {
+		this.rsv_position = rsv_position;
+	}
 
-    public String getMId() {
-        return mId;
-    }
+	public String getM_id() {
+		return m_id;
+	}
 
-    public void setMId(String mId) {
-        this.mId = mId;
-    }
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+
+	public String getRsv_userTitle() {
+		return rsv_userTitle;
+	}
+
+	public void setRsv_userTitle(String rsv_userTitle) {
+		this.rsv_userTitle = rsv_userTitle;
+	}
+
+    
 
 }
