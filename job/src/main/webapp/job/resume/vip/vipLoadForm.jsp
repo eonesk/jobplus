@@ -56,7 +56,7 @@ $(function() {
 							var div_a = $("<div>").addClass("div_a").append(a);
 							li.append(div_checkbox);
 							li.append(div_a);
-							$("#list_ul").append(li);
+							$("#rsvList_ul").append(li);
 			                
 							 
 							count++;																		 
@@ -64,7 +64,7 @@ $(function() {
 
 						
 						
-						$("#loadOk").click(function() {
+						$("#rsvLoadOk").click(function() {
 							//var eduSeqList = new Array();
 							
 							var accumSeq = "";
@@ -94,7 +94,7 @@ $(function() {
 						function add_event(event) {
 						alert(event.data.param.rsv_userTitle + " // " + event.data.param.m_id);
 						
-						$("#loadSelectList").html("");
+						$("#rsvLoadSelectList").html("");
 
 						var userTitle = $("<legend>").html(event.data.param.rsv_userTitle);
 						
@@ -121,9 +121,9 @@ $(function() {
 						
 						ul.append(li1).append(li2).append(li3).append(li4).append(li5).append(li6)
 						.append(li7).append(li8);
-						$("#loadSelectList").append(userTitle);
-						$("#loadSelectList").append(ul);
-						$("#loadSelectList").show();
+						$("#rsvLoadSelectList").append(userTitle);
+						$("#rsvLoadSelectList").append(ul);
+						$("#rsvLoadSelectList").show();
 						}				
 					},
 					error : function(e) {
@@ -149,7 +149,7 @@ $(function() {
 			$(this).next().removeClass("checkOn");
 		}
 	});
-	$("#loadCancle").click(function() {
+	$("#rsvLoadCancle").click(function() {
 		window.close();
 	});
 });
@@ -169,11 +169,11 @@ ul{
 	width: 400px;
 }
 
-#loadHeader, #loadSection, #loadFooter {
+#rsvLoadHeader, #rsvLoadSection, #rsvLoadFooter {
 	
 }
 
-#loadHeader {
+#rsvLoadHeader {
 	height: 40px;
 	background-color: #3C53AF;
 	text-align: center;
@@ -183,21 +183,21 @@ ul{
 	padding-top: 15px;
 }
 
-#loadSection {
+#rsvLoadSection {
 	margin-bottom: 20px;
 	text-align: center;
 	height: auto;
 }
 
-#loadSection p {
+#rsvLoadSection p {
 	color: lightgray;
 }
 
-#loadSection input {
+#rsvLoadSection input {
 	
 }
 
-.loadList {
+.rsvLoadList {
 	width: 80%;
 	height: 250px;
 	overflow:hidden;
@@ -206,7 +206,7 @@ ul{
 	text-align: left;
 }
 
-.loadList .list_ul{
+.rsvLoadList .list_ul{
 	list-style: none;
 	height:100%;
 	overflow: auto;
@@ -214,7 +214,7 @@ ul{
 	line-height: 50px;
 }
 
-.list_li{
+.rsvList_li{
 	list-style: none; 
 	text-align: center;
 	width: 100%;
@@ -252,11 +252,11 @@ ul{
 	font-weight: bold;
 }
 
-.loadList legend {
+.rsvLoadList legend {
 	font-weight: bold;
 }
 
-.loadSelectList{
+.rsvLoadSelectList{
 	width: 80%;
 	margin-left: 30px;
 	overflow: auto;
@@ -268,33 +268,33 @@ ul{
 
 
 
-.listDiv{
+.rsvListDiv{
 	border-bottom: 1px solid lightgray;
 	font-size: 20px;
 	font-weight: bold;
 	width: 100%;
 }
 
-.listTitle1{
+.rsvListTitle1{
 	display:inline-block;
 	text-align: center;
 	width:30%;
 }
 
-.listTitle2{
+.rsvListTitle2{
 	display:inline-block;
 	text-align: center;
 	width:60%;
 }
-#loadFooter {
+#rsvLoadFooter {
 	height: 80px;
 	text-align: center;
 }
-#loadOk {
+#rsvLoadOk {
 	color: #607CEA;
 	/* border-color : #607CEA; */
 }
-#loadFooter button {
+#rsvLoadFooter button {
 	width: 180px;
 	height: 50px;
 	background-color: white;
@@ -311,28 +311,28 @@ ul{
 
 </head>
 <body>
-	<div id="loadContainer">
-		<div id="loadHeader">불러오기</div>
-		<div id="loadSection">
+	<div id="rsvLoadContainer">
+		<div id="rsvLoadHeader">불러오기</div>
+		<div id="rsvLoadSection">
 			<h3>불러오기 하는 방법</h3>
 			<p>불러올 아이템들을 선택후 확인버튼을 클릭하세요</p>
-			<fieldset class="loadList">
+			<fieldset class="rsvLoadList">
 				<legend>목록</legend>
-				<div class="listDiv">
-					<div class="listTitle1">선택</div>
-					<div class="listTitle2">제목</div>
+				<div class="rsvListDiv">
+					<div class="rsvListTitle1">선택</div>
+					<div class="rsvListTitle2">제목</div>
 				</div>
-				<ul id="list_ul" class="list_ul">
+				<ul id="rsvList_ul" class="rsvList_ul">
 					
 				</ul>
 			</fieldset>
-			<fieldset class="loadSelectList" id="loadSelectList">
+			<fieldset class="rsvLoadSelectList" id="rsvLoadSelectList">
 			
 			</fieldset>
 		</div>
-		<div id="loadFooter">
-			<button type="button" id="loadCancle">취소</button>
-			<button type="button" id="loadOk">확인</button>
+		<div id="rsvLoadFooter">
+			<button type="button" id="rsvLoadCancle">취소</button>
+			<button type="button" id="rsvLoadOk">확인</button>
 		</div>
 	</div>
 </body>

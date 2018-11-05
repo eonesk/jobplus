@@ -61,7 +61,7 @@ $(function() {
 							var div_a = $("<div>").addClass("div_a").append(a);
 							li.append(div_checkbox);
 							li.append(div_a);
-							$("#list_ul").append(li);
+							$("#rswList_ul").append(li);
 			                /*$("#eduLoadListTable").append(tr); */	
 							 
 							count++;																		 
@@ -120,7 +120,7 @@ $(function() {
 						function add_event(event) {
 						alert(event.data.param.rsw_userTitle + " // " + event.data.param.m_id);
 						
-						$("#loadSelectList").html("");
+						$("#rswLoadSelectList").html("");
 
 						var userTitle = $("<legend>").html(event.data.param.rsw_userTitle);
 						
@@ -147,9 +147,9 @@ $(function() {
 						
 						ul.append(li1).append(li2).append(li3).append(li4).append(li5).append(li6)
 						.append(li7).append(li8);
-						$("#loadSelectList").append(userTitle);
-						$("#loadSelectList").append(ul);
-						$("#loadSelectList").show();
+						$("#rswLoadSelectList").append(userTitle);
+						$("#rswLoadSelectList").append(ul);
+						$("#rswLoadSelectList").show();
 						}				
 					},
 					error : function(e) {
@@ -191,15 +191,15 @@ ul{
 	padding: 0;
 }
 
-#loadContainer {
+#rswLoadContainer {
 	width: 400px;
 }
 
-#loadHeader, #loadSection, #loadFooter {
+#rswLoadHeader, #rswLoadSection, #rswLoadFooter {
 	
 }
 
-#loadHeader {
+#rswLoadHeader {
 	height: 40px;
 	background-color: #3C53AF;
 	text-align: center;
@@ -209,21 +209,21 @@ ul{
 	padding-top: 15px;
 }
 
-#loadSection {
+#rswLoadSection {
 	margin-bottom: 20px;
 	text-align: center;
 	height: auto;
 }
 
-#loadSection p {
+#rswLoadSection p {
 	color: lightgray;
 }
 
-#loadSection input {
+#rswLoadSection input {
 	
 }
 
-.loadList {
+.rswLoadList {
 	width: 80%;
 	height: 250px;
 	overflow:hidden;
@@ -232,7 +232,7 @@ ul{
 	text-align: left;
 }
 
-.loadList .list_ul{
+.rswLoadList .list_ul{
 	list-style: none;
 	height:100%;
 	overflow: auto;
@@ -240,7 +240,7 @@ ul{
 	line-height: 50px;
 }
 
-.list_li{
+.rswList_li{
 	list-style: none; 
 	text-align: center;
 	width: 100%;
@@ -278,11 +278,11 @@ ul{
 	font-weight: bold;
 }
 
-.loadList legend {
+.rswLoadList legend {
 	font-weight: bold;
 }
 
-.loadSelectList{
+.rswLoadSelectList{
 	width: 80%;
 	margin-left: 30px;
 	overflow: auto;
@@ -294,33 +294,33 @@ ul{
 
 
 
-.listDiv{
+.rswListDiv{
 	border-bottom: 1px solid lightgray;
 	font-size: 20px;
 	font-weight: bold;
 	width: 100%;
 }
 
-.listTitle1{
+.rswListTitle1{
 	display:inline-block;
 	text-align: center;
 	width:30%;
 }
 
-.listTitle2{
+.rswListTitle2{
 	display:inline-block;
 	text-align: center;
 	width:60%;
 }
-#loadFooter {
+#rswLoadFooter {
 	height: 80px;
 	text-align: center;
 }
-#loadOk {
+#rswLoadOk {
 	color: #607CEA;
 	/* border-color : #607CEA; */
 }
-#loadFooter button {
+#rswLoadFooter button {
 	width: 180px;
 	height: 50px;
 	background-color: white;
@@ -337,28 +337,28 @@ ul{
 
 </head>
 <body>
-	<div id="loadContainer">
-		<div id="loadHeader">불러오기</div>
-		<div id="loadSection">
+	<div id="rswLoadContainer">
+		<div id="rswLoadHeader">불러오기</div>
+		<div id="rswLoadSection">
 			<h3>불러오기 하는 방법</h3>
 			<p>불러올 아이템들을 선택후 확인버튼을 클릭하세요</p>
-			<fieldset class="loadList">
+			<fieldset class="rswLoadList">
 				<legend>목록</legend>
-				<div class="listDiv">
-					<div class="listTitle1">선택</div>
-					<div class="listTitle2">제목</div>
+				<div class="rswListDiv">
+					<div class="rswListTitle1">선택</div>
+					<div class="rswListTitle2">제목</div>
 				</div>
-				<ul id="list_ul" class="list_ul">
+				<ul id="rswList_ul" class="list_ul">
 					
 				</ul>
 			</fieldset>
-			<fieldset class="loadSelectList" id="loadSelectList">
+			<fieldset class="rswLoadSelectList" id="rswLoadSelectList">
 			
 			</fieldset>
 		</div>
-		<div id="loadFooter">
-			<button type="button" id="loadCancle">취소</button>
-			<button type="button" id="loadOk">확인</button>
+		<div id="rswLoadFooter">
+			<button type="button" id="rswLoadCancle">취소</button>
+			<button type="button" id="rswLoadOk">확인</button>
 		</div>
 	</div>
 </body>
