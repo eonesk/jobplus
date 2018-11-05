@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 <style type="text/css">
 body {
-	background-color: gainsboro;
-	
+	background-color: gainsboro;	
 }
+
 
 .workLvContainer {
 	position : relative;
@@ -177,41 +177,7 @@ body {
 </style>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	$(function() {
- 		
 
-		/* $(".payAdd").click(function() {
-			$("#rsw_pay").show();
-			$(this).html("연봉-");
-			$(this).removeClass("payAdd").addClass("payDelete");
-
-			
-		});
-
-		$(".partAdd").click(function() {
-			$("#rsw_part").show();
-			$(this).html("담당업무-");
-			$(this).removeClass("partAdd").addClass("partDelete");
-			
-		});
-
-		$(".payDelete").click(function() {
-			$("#rsw_pay").hide();
-			$(this).html("연봉+");
-			$(this).removeClass("payDelete").addClass("payAdd");
-			
-		});
-
-		$(".partDelete").click(function() {
-			$("#rsw_part").hide();
-			$(this).html("담당업무+");
-			$(this).removeClass("partDelete").addClass("partAdd");
-		}); */
-
-		
-
-		
-	});
 	var addCount = 0;
 	
 	$(function() {
