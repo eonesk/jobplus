@@ -90,7 +90,7 @@ $(function() {
 							});
 						}
 						
-						$("#loadOk").click(function() {
+						$("#rswLoadOk").click(function() {
 							//var eduSeqList = new Array();
 							
 							var accumSeq = "";
