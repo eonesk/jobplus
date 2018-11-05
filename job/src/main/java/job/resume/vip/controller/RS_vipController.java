@@ -2,6 +2,7 @@ package job.resume.vip.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -109,6 +110,10 @@ public class RS_vipController {
 		for(int i = 0; i < rsv_list.size(); i++) {
 			RS_vipDTO rsv_dto = rsv_list.get(i);
 			
+			DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String rsv_startDate_str = sdFormat.format(rsv_dto.getRsv_startDate());
+			String rsv_endDate_str = sdFormat.format(rsv_dto.getRsv_startDate());
+			
 			JSONObject temp = new JSONObject();
 			temp.put("rsv_seq", rsv_dto.getRsv_seq());
 			temp.put("rsv_isMedal", rsv_dto.getRsv_isMedal());
@@ -116,8 +121,8 @@ public class RS_vipController {
 			temp.put("rsv_isMoney", rsv_dto.getRsv_isMoney());
 			temp.put("rsv_isDisable", rsv_dto.getRsv_isDisable());
 			temp.put("rsv_military", rsv_dto.getRsv_military());
-			temp.put("rsv_startDate", rsv_dto.getRsv_startDate());
-			temp.put("rsv_endDate", rsv_dto.getRsv_endDate());
+			temp.put("rsv_startDate", rsv_startDate_str);
+			temp.put("rsv_endDate", rsv_endDate_str);
 			temp.put("rsv_position", rsv_dto.getRsv_position());
 			temp.put("rsv_userTitle", rsv_dto.getRsv_userTitle());
 			temp.put("m_Id", rsv_dto.getM_id());
@@ -155,6 +160,9 @@ public class RS_vipController {
 		for(int i = 0; i < accumSeqSplit.length; i++) {
 			int rsv_seq = Integer.parseInt(accumSeqSplit[i]);
 			RS_vipDTO rsv_dto = rs_vipService.rsvGetDTO(rsv_seq);
+			DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String rsv_startDate_str = sdFormat.format(rsv_dto.getRsv_startDate());
+			String rsv_endDate_str = sdFormat.format(rsv_dto.getRsv_startDate());
 			JSONObject temp = new JSONObject();
 			temp.put("rsv_seq", rsv_dto.getRsv_seq());
 			temp.put("rsv_isMedal", rsv_dto.getRsv_isMedal());
@@ -162,8 +170,8 @@ public class RS_vipController {
 			temp.put("rsv_isMoney", rsv_dto.getRsv_isMoney());
 			temp.put("rsv_isDisable", rsv_dto.getRsv_isDisable());
 			temp.put("rsv_military", rsv_dto.getRsv_military());
-			temp.put("rsv_startDate", rsv_dto.getRsv_startDate());
-			temp.put("rsv_endDate", rsv_dto.getRsv_endDate());
+			temp.put("rsv_startDate", rsv_startDate_str);
+			temp.put("rsv_endDate", rsv_endDate_str);
 			temp.put("rsv_position", rsv_dto.getRsv_position());
 			temp.put("rsv_userTitle", rsv_dto.getRsv_userTitle());
 			temp.put("m_Id", rsv_dto.getM_id());
