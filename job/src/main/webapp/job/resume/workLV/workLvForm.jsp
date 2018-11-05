@@ -185,7 +185,7 @@ body {
 		
 		/** 내 교육이수사항 불러오기 */
 		$("#loadBtn").click(function() {
-			window.open("workLvLoadForm.jsp?addCount=" + addCount, "", "width=420px height=520px");
+			window.open("/job/job/resume/workLV/workLvLoadForm.jsp?addCount=" + addCount, "", "width=420px height=520px");
 		});
 		
 		$("#addBtn").click(function() {
@@ -194,7 +194,7 @@ body {
 			var clone = $("#workLvContent").clone().attr('id','workLvContent'+numberRing);
 			
 			if(addCount >=4){
-				alert("항목추가는 최대 3개까지만 추가가능 합니다.")
+				alert("항목추가는 최대 3개까지만 추가가능 합니다.");
 				addCount--;
 				return false;
 			}
@@ -225,6 +225,7 @@ body {
 			$("#closeBtn"+numberRing).on("click", function() {
 				/* $("#workLvContent"+numberRing).remove(); */
 				$(this).parent().remove();
+				$("#rsw__Seq"+numberRing).val("");
 				addCount--;
 			});
 			
@@ -263,7 +264,7 @@ body {
 					$("#rsw_job"+numberRing).focus();
 					return false;
 				}
-				window.open("workLvSaveForm.jsp?numberRing="+numberRing, "", "width=410px height=360px");
+				window.open("/job/job/resume/workLV/workLvSaveForm.jsp?numberRing="+numberRing, "", "width=410px height=360px");
 			});
 			
 			$("#rsw_position"+numberRing).on("click", function() {
@@ -336,7 +337,7 @@ body {
 			
 			$.ajax({
 				type: 'POST',
-				url: 'rswLoadView.do',
+				url: '/job/job/resume/workLV/rswLoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -391,6 +392,7 @@ body {
 						$("#closeBtn"+numberRing).on("click", function() {
 							/* $("#workLvContent"+numberRing).remove(); */
 							$(this).parent().remove();
+							$("#rsw__Seq"+numberRing).val("");
 							addCount--;
 						});
 						
@@ -429,7 +431,7 @@ body {
 								$("#rsw_job"+numberRing).focus();
 								return false;
 							}
-							window.open("workLvSaveForm.jsp?numberRing="+numberRing, "", "width=410px height=360px");
+							window.open("/job/job/resume/workLV/workLvSaveForm.jsp?numberRing="+numberRing, "", "width=410px height=360px");
 						});
 						
 						$("#rsw_position"+numberRing).on("click", function() {
@@ -491,6 +493,7 @@ body {
 						});
 						
 						console.log("[selected] rsw_userTitle : " + testDTO.rsw_userTitle);
+						$("#rsw__Seq" +numberRing).val(testDTO.rsw_seq);
 						$("#rsw_seq" +numberRing).val(testDTO.rsw_seq);
 						$("#rsw_company" +numberRing).val(testDTO.rsw_company);
 						$("#rsw_dept" +numberRing).val(testDTO.rsw_dept);
@@ -516,6 +519,9 @@ body {
 </script>
 </head>
 <body>
+<input type="hidden" id="rsw__Seq_1">
+<input type="hidden" id="rsw__Seq_2">
+<input type="hidden" id="rsw__Seq_3">
 	<div id="workLvHeader" class="workLvHeader">
 		경력
 		<button type="button" id="loadBtn" class="loadBtn">불러오기</button>

@@ -21,4 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="rswGetDTO" parameterType="int" resultType="workLVDTO">
 		select * from RS_workLV where rsw_seq = #{rsw_seq}
 	</select>
+	
+	<select id="selectLastSeq" resultType="int">
+		select max(rsw_seq) from rs_workLv
+	</select>
 </mapper>
