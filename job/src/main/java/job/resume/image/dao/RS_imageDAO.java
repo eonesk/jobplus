@@ -25,8 +25,12 @@ public class RS_imageDAO {
 	}
 	
 	//쓴 글 확인하기
-	public RS_imageDTO viewImageOfId(String m_Id) {
-		return sqlSession.selectOne("mybatis.imageMapper.viewImageOfId", m_Id);
+	public RS_imageDTO viewImageOfId(String memId) {
+		return sqlSession.selectOne("mybatis.imageMapper.viewImageOfId", memId);
+	}
+	//최근사진
+	public RS_imageDTO ImageTopList(String m_Id) {
+		return sqlSession.selectOne("mybatis.imageMapper.ImageTopList", m_Id);
 	}
 	
 	//쓴 목록 보기
@@ -39,8 +43,4 @@ public class RS_imageDAO {
 		return sqlSession.selectList("mybatis.imageMapper.ImageListOfId", map);				
 	}
 
-//	//이력서 이미지 삭제
-//	public int imageDelete(int rsim_Seq) {
-//		return sqlSession.delete("mybatis.imageMapper.imageDelete", rsim_Seq);		
-//	}
 }

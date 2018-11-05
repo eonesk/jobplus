@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
@@ -11,11 +11,56 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
+// 	$(function() {
+// 		$a.jax({
+// 			type: 'POST',
+// 			url: 'imageCount.do',
+// 			dataType: 'text',
+// 			cache: false,
+// 			success: function(data) {
+// // 				$("#numberOfpf").append(data);
+// 				if(data =="0") {
+// 					alert("저장하신 사진이 없습니다.");
+// 					window.close();
+// 				} else {
+// 					console.log("사진이 들어있네");
+// 					$.ajax({
+// 						type: 'POST',
+// 						url: 'imageLoad.do',
+// 						dataType: "json",
+// 						cache: false,
+// 						success: function(data) {
+// 							console.log("성공");
+						
+// 							$.each(data.items, function index, item) {
+// 								var dto = item;
+// 								var tr = $("<tr>").addClass("imageTable_tr");
+// 								var td = $("<td>").addClass("imageTable_td");
+// 								var checkbox = $("<input>").atrr({
+// 									"id": "rsim_UsertitleR",
+// 									"type": "checkbox",
+// 									"value": item.rsim_Seq									
+// 								}).addClass("rsim_UsertitleR");
+								
+// 								}
+// 							}
+// 					}
+// 				}
+// 			},
+// 			error : function(e) {
+// 				alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+// 	     	}
+// 		});
+		
+// 	});
+
+
 function profileImgSave(imgPath){
 	alert("사진이 등록되었습니다.");
 // 	window.opener.document.getElementById("fromInput").value=document.getElementById("imgValue").value
 	var imgData = $('#imgValue').val(); 
 	$(opener.document).find("#aaa").attr("src",imgData);
+	document.imageWriteForm.submit();
 	window.close(); 
 // 	$("#img_form_url").attr("src", imgurl);
 //////////////////////////////////////////////////여기 다시봐줘
@@ -54,6 +99,17 @@ function cscontrol(chk,imgPath){
 	}  
 //     $('#selectPhoto').removeClass("visited");
 }
+
+/*
+function checkImageInsert(imgPath) {
+	alert(imgPath);     
+	alert($('#photo_upload').val());  
+		document.imageWriteForm.submit();
+}
+document.getElementById("tumbnail").click = function () { 
+    document.getElementById("photo_upload").value = this.value;
+ };
+ */
 </script>
 <style type="text/css">
 input, button {
@@ -130,20 +186,26 @@ a {
     border: 1px solid #444;
     color: #444;
 }
-</style> 
-<body>
+</style>   
+<body>   
+<form action="imageWrite.do" id='imageWriteForm' name="imageWriteForm"  enctype="multipart/form-data" method="post">
+<input type="file" name="img" id="photo_upload" style="display:none" value=''>
 <p class="subtitle">내 사진 목록</p>
 		<table>
 		 	<tr class="sss">     
 				<c:forEach var='imageDTO' items="${list }" varStatus="i">            
 				<td id="selectPhoto${i.index}" onclick="cscontrol('${i.index}','img/storage/${imageDTO.rsim_Name}');" style="border: 1px solid #e6e6e6;"> 
-					<div class="imgsize"><img id="tumbnail" src="img/storage/${imageDTO.rsim_Name}"/></div>
-					<input type='hidden' id='imgValue' name = 'imgValue' value='img/storage/${imageDTO.rsim_Name}'/>
+					<div class="imgsize"><img id="tumbnail" src="img/storage/${imageDTO.rsim_Name}"/></div>  
+					    
+					<input type='hidden' id='imgValue' name = 'imgValue' value='img/storage/${imageDTO.rsim_Name}'/>   
+					<input type='hidden' name='user_title' value = '${imageDTO.rsim_Usertitle}'/>
 					<p id="user_title">${imageDTO.rsim_Usertitle}</p>
+					<div align="center"><input type="checkbox" name="image_check" id="image_check" class="image_check"></div>
 					<img src="">
-				</td>   
+				</td>
 				</c:forEach>
 			</tr>
+				
 			<tr>
 				<td colspan="3" align="center" class="page">
 				<c:if test="${startPage > 3}">
@@ -163,9 +225,11 @@ a {
 				</td>
 			</tr>
 		</table>	 
-	<div class="bottom_btn" align="center">
-		<button type="button" onclick="javascript:profileImgSave('img/storage/${imageDTO.rsim_Name}');">등록</button>
+	<div class="bottom_btn" align="center">    
+		<button type="button" id="imgload" onclick="javascript:profileImgSave('img/storage/${imageDTO.rsim_Name}');">등록</button>
+<%-- <button type="button" onclick="checkImageInsert(${imageDTO.rsim_Name})">저장</button>  --%>
 		<button type="button"  onclick="window.close();">취소</button>
 	</div>
+</form>
 </body>
 </html>

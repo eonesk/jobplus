@@ -10,59 +10,89 @@
 </head>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-$(function() {
-	
+$(function() {	
+	$.ajax({
+		type: 'POST',
+		url: 'portfolioCount.do',
+		dataType: 'text',
+		chache: false,
+		success: function(data) {
+			$("#numberOfpf").append(data);
+			if(data =="0") {
+				alert("저장하신 파일이 없습니다.");
+				window.close();
+			}
+		},
+		error : function(e) {
+			alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+     	}
+	});
 	$("#fileLoad").click(function() {
-//	이걸 어떻게 쓰면 될거같은데......
-// 		if (this.$el.find("#portfolio_list").find("li").size() >= 2) {
-//             alert("포트폴리오는 2개까지 첨부 가능합니다.");
-//             return;
-        }
-		alert("파일을 불러옵니다.");
-		//선택박스 클릭시 체크된 ROW값을 가져옴
 		var checkbox = $("input[name=file_check]:checked");
 		var rowData = new Array();
 		var tdArr = new Array();
-		var seq;
-		var urlname;
-		var filename;
-		var type;
-		var uorf;
-		var title;		
-		var fileData;
-					
-		checkbox.each(function(i) {
-			var tr = checkbox.parent().parent().eq(i);
-			var td = tr.children();		
-			rowData.push(tr.text());
+		var seq, urlname, filename, type, uorf, title, fileData;
+		var view_list = $($(opener.document).find("#portfolio_list > li")).length;
+		var chklength = checkbox.length;
+		//체크박스 3개이상 선택못함
+		if(chklength >3) {
+			alert("파일은 3개까지 추가 가능합니다.");
+			return false;
+		}
+		if(view_list >= 3 && chklength >= '1'){   
+			alert("더이상 파일을 추가할 수 없습니다.");
+			return false;
+		}
+		//리스트 2개 있을때 체크 1개 이상하면 안됨
+		if(view_list >= 2 && chklength >= '2'){   
+			alert("파일이 이미 2개 등록되어있습니다.");
+			return false;
+		}
+		//리스트 1개 있을때 체크 2개 이상 하면안됨
+		if(view_list >= 1 && chklength >= '3'){   
+			alert("파일이 이미 1개 등록되어있습니다.");
+			return false;
+		}				
+		if (confirm('불러오시겠습니까?')) {
+           	
+// 			alert("view_list :: " + view_list);  
+// 			alert("chklength :: " + chklength); 
 
-			//td.eq(0)은 체크박스 이므로 td.eq(1)의 값부터 가져옴
-			seq = 		"/"+ td.eq(1).val();   
-			urlname = 	"/"+ td.eq(2).val();   
-			filename = 	"/"+ td.eq(3).val();   
-			type = 		"/"+ td.eq(4).text();  
-			uorf = 		"/"+ td.eq(5).val();   
-			title = 	"/"+ td.eq(6).text();  
-			
-			tdArr.push(seq);
-			tdArr.push(urlname);
-			tdArr.push(filename);
-			tdArr.push(type);
-			tdArr.push(uorf);
-			tdArr.push(title);
-			
-			fileData += "%" + seq + urlname + filename + type + uorf + title;
-			alert("fileData통채로 넘어갑니당::" + fileData);
-// 			$("#file_type").html(fileData);
-// 			$("#file_type").html(seq + " // " + urlname+ " // " +filename+ " // " +type+ " // " +uorf + " // " +title);
-// 			$("#rsprTitle", opener.document).val(title);
-		});
-		opener.parent.load_list(fileData);
-		self.close();
+			//리스트 3개 있을때 체크 1개 이상 하면안됨
+				
+			checkbox.each(function(i) {
+				var tr = checkbox.parent().parent().eq(i);
+				var td = tr.children();		
+				rowData.push(tr.text());
+	
+				//td.eq(0)은 체크박스 이므로 td.eq(1)의 값부터 가져옴
+				seq = 		"&"+ td.eq(1).val();   
+				urlname = 	"&"+ td.eq(2).val();   
+				filename = 	"&"+ td.eq(3).val();   
+				type = 		"&"+ td.eq(4).text();  
+				uorf = 		"&"+ td.eq(5).val();   
+				title = 	"&"+ td.eq(6).text();  
+				
+				tdArr.push(seq);
+				tdArr.push(urlname);
+				tdArr.push(filename);
+				tdArr.push(type);
+				tdArr.push(uorf);
+				tdArr.push(title);
+				
+				fileData += "%" + seq + urlname + filename + type + uorf + title;
+				alert("fileData통채로 넘어갑니당::" + fileData);
+	// 			$("#file_type").html(fileData);
+	// 			$("#file_type").html(seq + " // " + urlname+ " // " +filename+ " // " +type+ " // " +uorf + " // " +title);
+	// 			$("#rsprTitle", opener.document).val(title);
+			});
+			opener.parent.load_list(fileData);
+			self.close();
+		} else {   
+	        // no click
+		}
 	});	
 });
-
-
 
 </script>
 <style type="text/css">
@@ -77,6 +107,7 @@ input, button {
 	color: #2A120A;
 	letter-spacing: -1px;
 }
+
 button {
 	width:100px;
     background-color: #5882FA;
@@ -144,7 +175,7 @@ a {
 <body>
 <p class="subtitle">내 포트폴리오 목록</p>	
 	<div id="file_type"></div>
-		<table>
+		<table border="1">
 			<c:forEach var='portfolioDTO' items="${list }" varStatus="i">  
 			<tr class="pf_table">
 				<td><input type="checkbox" name="file_check" id="file_check" class="file_check"></td>
@@ -177,12 +208,8 @@ a {
 		</table>
 <%-- 		onclick="javascript:fileLoad('${imageDTO.rspf_Type}');	  --%>
 	<div class="bottom_btn" align="center">
-
-
 		<button type="button" id="fileLoad">등록</button>
-		<button type="button"  onclick="window.close();">취소</button>
-		
-		
+		<button type="button"  onclick="window.close();">취소</button>		
 	</div>
 </body>
 </html>

@@ -36,9 +36,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  				 WHERE RN >= #{startNum} AND RN <= #{endNum} ]]>
 	</select>
 	
-<!-- 
-	<delete id="foreignDelete" parameterType="int">
-		delete RS_foreign where RSF_seq = #{rsf_Seq}
-	</delete>
- -->	
+	<select id="selectPortfolioDTO" parameterType="int" resultType="portfolioDTO">
+		SELECT * FROM RS_PORTFOLIO WHERE rspf_Seq = #{rspf_Seq}
+	</select>
+	
 </mapper>

@@ -18,15 +18,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM RS_IMAGE WHERE M_ID = #{m_Id}
 	</select>
 	
-	<select id="ImageListOfId" parameterType="java.util.Map" resultType="imageDTO">
-		<![CDATA[ SELECT * FROM 
-				 (SELECT ROWNUM RN,TT.*FROM
-				 (SELECT * FROM RS_IMAGE WHERE M_ID = #{m_Id} ORDER BY RSIM_SEQ DESC) TT)
-				 WHERE RN >= #{startNum} AND RN <= #{endNum} ]]>
+ 	<select id="ImageListOfId" parameterType="java.util.Map" resultType="imageDTO">
+ 		<![CDATA[ SELECT * FROM 
+ 				 (SELECT ROWNUM RN,TT.*FROM 
+ 				 (SELECT * FROM RS_IMAGE WHERE M_ID = #{m_Id} ORDER BY RSIM_SEQ DESC) TT)
+ 				 WHERE RN >= #{startNum} AND RN <= #{endNum} ]]>
+ 	</select> 
+	
+	<select id="ImageTopList" parameterType="String" resultType="imageDTO">
+		SELECT 
+			RSIM_SEQ,
+			RSIM_NAME,
+			M_ID,
+			RSIM_USERTITLE 
+		FROM 
+		RS_IMAGE 
+		WHERE ROWNUM <![CDATA[<]]> 2 AND M_ID = 'num1' ORDER BY RSIM_SEQ DESC
 	</select>
-<!--
-	<delete id="imageDelete" parameterType="int">
-		delete RS_image where RSIM_seq = #{rsim_Seq};
-	</delete>
- -->
 </mapper>

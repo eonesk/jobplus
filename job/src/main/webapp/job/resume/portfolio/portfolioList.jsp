@@ -8,74 +8,82 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-		function load_list(fileData) {
-			$(function() {
-				alert("부모창");
-				console.log(fileData);
-				var fileList = fileData.split('%');
-				console.log("공백날리기~" +fileList[0]);
-				//한 줄씩 가져오기
-				for (var i = 1; i < fileList.length; i++) {
-					console.log('fileList[' +i+ '] = ' + fileList[i]);	
-					var file_parts = fileList[i].split('/');					
+function load_list(fileData) {
+	var listcount = 0;
+	$(function() {
+// 		alert("부모창");
+		var fileList = fileData.split('%');
+		console.log("공백날리기~" +fileList[0]);
+		//한 줄씩 가져오기
+		for (var i = 1; i < fileList.length; i++) {
+			console.log('fileList[' +i+ '] = ' + fileList[i]);	
+			var file_parts = fileList[i].split('&');					
 
-					var type;
-					var filename;
-					var urlname;
-					var title; 
-					
-					var type_li = $("<li>");					
-					var type_p = $("<p>");
-					type_p.addClass("file_item");					
-					var type_span = $("<span>");
-					type_span.attr("id","type"+i );
-					var title_span = $("<span>");
-					title_span.attr("id","title"+i );
-					var type_a = $("<a>");
-					type_a.attr("id","pf_name"+j);
-					type_a.attr("href",)
-					var type_btn = $("<button>");
-					type_btn.attr("type","button");	
-					type_btn.addClass("remove");
-					type_btn.attr("id","delete_btn"+i);
-					type_btn.html("삭제");
-					
-					//리스트 내용 하나씩 자르기
-					for (var j = 1; j < file_parts.length; j++) {
-						console.log('file_parts[' +j+ '] = ' + file_parts[j]);							
-
-						
-						switch (j) {
-						case 4: 							
-							type = file_parts[4];													
-						case 6:
-							title = file_parts[6];
-						case 3:
-							filename = file_parts[3];
-// 							alert(filename);
-						case 2:
-							urlname = file_parts[2];
-						default:
-							break;
-						}
-					}					
-
-					type_span.html(type);
-					title_span.html(title);
-					type_a.html(urlname);
-					type_a.html(filename);																	
-					type_p.append(type_span);
-					type_p.append(title_span);
-					type_p.append(type_a);
-					type_p.append(type_btn);
-					type_li.append(type_p);
-					$("#portfolio_list").append(type_li);
+			var type, filename, urlname, title;					
+			listcount++;
+			var numbering = "_" + listcount;
+// 			alert(listcount); 
+// 			var findul = $( '#portfolio_list > li' ).length;
+// 			alert("findul :: " + findul); 
+		
+			var type_li = $("<li>");
+			type_li.attr("id", "list_num" + numbering);
+			var type_p = $("<p>");
+			type_p.addClass("file_item");					
+			var type_span = $("<span>");
+			type_span.attr("id","type");
+			var title_span = $("<span>");
+			title_span.attr("id","title");
+			var type_a = $("<a>");
+			type_a.attr("id","pf_name");
+			type_a.attr("href","#");
+			var type_aa = $("<a>");
+			type_aa.attr("id","url_name");
+			type_aa.attr("href","#");
+			var type_btn = $("<button>");
+			type_btn.attr("type","button");	
+			type_btn.addClass("remove");
+			type_btn.attr("id","delete_btn"+i);
+			type_btn.html("삭제");
+			//리스트 내용 하나씩 자르기
+			for (var j = 1; j < file_parts.length; j++) {
+				console.log('file_parts[' +j+ '] = ' + file_parts[j]);							
+		
+				switch (j) {
+				case 2:
+					urlname = file_parts[2];
+				case 3:
+					filename = file_parts[3];
+				case 4: 							
+					type = file_parts[4];	
+				case 6:
+					title = file_parts[6];			
+				default:
+					break;
 				}
-				$(".remove").click(function() {
-					$(this).parents('li').remove();
-				});
-			});
+			}					
+			type_span.html(type);
+			title_span.html(title);
+			type_a.html(filename);
+			type_aa.html(urlname);
+			type_p.append(type_span);
+			type_p.append(title_span);
+			type_p.append(type_aa);
+			type_p.append(type_a);
+			type_p.append(type_btn);
+			type_li.append(type_p);
+			
+// 			if(findul > 2){ 
+// 				alert("3개가 넘어요");
+// 				return false;
+// 			}
+			$("#portfolio_list").append(type_li);
 		}
+		$(".remove").click(function() {
+			$(this).parents('li').remove();
+		});
+	});
+}
 
 </script>
 <style type="text/css">
@@ -137,20 +145,19 @@ a.pf_name {
 <div id="portfolio_area">
 	<p class="subtitle">포트폴리오 및 기타문서</p>
 	<div>
-		<button type="button" class="button" onclick="window.open('portfolioWriteForm.jsp','portfolioWriteForm','width=500, height=350, left=300, top=200')">등록</button>
 		<button type="button" class="button" onclick="window.open('portfolioLoad.do','portfolioLoad','width=500, height=700, left=300, top=200')">내 파일함</button>
+		<button type="button" class="button" onclick="window.open('portfolioWriteForm.jsp','portfolioWriteForm','width=460, height=300, left=300, top=200')">등록</button>		
 	</div>	
 		<ul id="portfolio_list">
-	<!-- 	동적요소 생성 -->
-	
-	<li file-num="4" class="file"> 
-		<p class="comment_item"> 
-			<span class="type">[구분]</span>  
-			<span>타이틀</span>
-			<a class="pf_name"> 파일이름 및 URL 주소 </a>			
-			<button type="button" id="delete_btn">삭제</button>			
-		</p>		
-	</li>
+	<!-- 	동적요소 생성 --> 
+<!-- 			<li> -->
+<!-- 				<p class="file_item"> -->
+<!-- 					<span id="type">[샘플입니당]</span> -->
+<!-- 					<span id="title" >애폴</span> -->
+<!-- 					<a id="pf_name" href="#">apple.png</a> -->
+<!-- 					<button type="button" class="remove" id="delete_btn1">삭제</button> -->
+<!-- 				</p> -->
+<!-- 			</li> -->
 		
 
 		</ul>
