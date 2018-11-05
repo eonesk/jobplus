@@ -171,6 +171,7 @@ li{
 .rsv_header{
 	font-weight:bold;
 	font-size: 20px;
+	margin-bottom: 15px;
 }
 .rsv_container{
 	background-color: white;
