@@ -448,6 +448,9 @@ $("#rs_seq").val(null);
 			var rsw_Seq1 = null;
 			var rsw_Seq2 = null;
 			var rsw_Seq3 = null;
+			var rsw_Seq1 = $("#rsw__Seq_1").val();
+			var rsw_Seq2 = $("#rsw__Seq_2").val();
+			var rsw_Seq3 = $("#rsw__Seq_3").val();
 			var rsit_Seq1 = null; 
 			var rsit_Seq2 = null; 
 			var rsit_Seq3 = null;
@@ -460,12 +463,12 @@ $("#rs_seq").val(null);
 			/* var rse_Seq1 = $("#rse__Seq_1").val();
 			var rse_Seq2 = $("#rse__Seq_2").val();
 			var rse_Seq3 = $("#rse__Seq_3").val(); */
-			/* var rsls_Seq1 = null;
+			var rsls_Seq1 = null;
 			var rsls_Seq2 = null;
-			var rsls_Seq3 = null; */
-			var rsls_Seq1 = $("#rsls__Seq_1").val();
+			var rsls_Seq3 = null;
+			/* var rsls_Seq1 = $("#rsls__Seq_1").val();
 			var rsls_Seq2 = $("#rsls__Seq_2").val();
-			var rsls_Seq3 = $("#rsls__Seq_3").val();
+			var rsls_Seq3 = $("#rsls__Seq_3").val(); */
 			var rst_Seq1 =null; 
 			var rst_Seq2 =null; 
 			var rst_Seq3 =null;
@@ -661,7 +664,7 @@ $("#rs_seq").val(null);
 		<h2>학력</h2>
 	</div>
 	<div id="workLVDiv">
-		<h2>경력</h2>
+		<jsp:include page="../workLV/workLvForm.jsp"></jsp:include>
 	</div>
 	<div id="internDiv">
 		<%-- <jsp:include page="../intern/internWriteForm.jsp"></jsp:include> --%>
