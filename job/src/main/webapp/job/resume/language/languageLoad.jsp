@@ -30,7 +30,7 @@ $(function() {
 						var tdTitle = $("<td>").addClass("LoadListTd").html("제목");
 						
 						trTitle.append(tdTitle);
-						$("#LoadList").append(trTitle);
+						$("#RSLG_LoadList").append(trTitle);
 						
 						$.each(data.items, function(index, item) {
 							var dto = item;
@@ -49,7 +49,7 @@ $(function() {
 							td.append(checkbox);
 							td.append(a);
 							tr.append(td);
-							$("#LoadList").append(tr);	
+							$("#RSLG_LoadList").append(tr);	
 						});
 						
 						var num = ${param.count};
@@ -70,7 +70,7 @@ $(function() {
 							});
 						}
 						
-						$("#load").click(function() {
+						$("#RSLG_load").click(function() {
 							
 							var accumSeq = "";
 							
@@ -121,8 +121,8 @@ $(function() {
 							contentTr.append(contentTd1).append(contentTd2).append(contentTd3).append(contentTd4).append(contentTd5).append(contentTd6);
 							table.append(contentTr);
 							
-							$("#loadView").append(userTitle);
-							$("#loadView").append(table);
+							$("#RSLG_loadView").append(userTitle);
+							$("#RSLG_loadView").append(table);
 							/*
 			                $("#load").click(function() {
 			                	$("#rslgSeq"+num, opener.document).val(event.data.param.rslg_Seq);
@@ -196,10 +196,10 @@ $(function() {
 		<p class="title">어학이력 불러오기</p>
 		내 어학이력 보관함 총&nbsp;<span id="number">&nbsp;</span>건
 		<div>
-			<table border="1" name="LoadList" id="LoadList" class="LoadList">				
+			<table border="1" name="RSLG_LoadList" id="RSLG_LoadList" class="RSLG_LoadList">				
 			</table>			
 		</div>
-		<div id="loadView" class="loadView">
+		<div id="RSLG_loadView" class="RSLG_loadView">
 		</div>
 		<input type="button" value="불러오기" id="load" class="load">
 		<input type="button" value="취소" id="cancle" class="cancle">	

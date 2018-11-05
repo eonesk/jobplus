@@ -16,7 +16,7 @@
 		});
 		
 		$("#rmi_Official").on("click", function() {			
-			window.open("/job/job/recruitment/introduction/introOfficial.jsp", "", 'width=650px, height=650px, left=450, top=30');
+			window.open("/job/job/recruitment/introduction/introOfficial.jsp", "", 'width=650px, height=650px, left=450, top=30, toolbar=no');
 		});
 		
 		$("#next").on("click", function() {
