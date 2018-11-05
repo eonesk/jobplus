@@ -26,7 +26,7 @@
 			window.open("/job/job/recruitment/apply/applyMajor.jsp", "", 'width=1000px, height=650px, left=450, top=100');
 		});
 		$("#rma_Vip").on("click", function() {			
-			window.open("/job/job/recruitment/apply/applyVip.jsp", "", 'width=650px, height=650px, left=450, top=30');
+			window.open("/job/job/recruitment/apply/applyVip.jsp", "", 'width=1000px, height=450px, left=450, top=100');
 		});
 		$("#rma_Foreign").on("click", function() {			
 			window.open("/job/job/recruitment/apply/applyForeign.jsp", "", 'width=650px, height=650px, left=450, top=30');
