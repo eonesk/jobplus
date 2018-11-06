@@ -10,7 +10,7 @@
 </style>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a53bec574b485a84379763c4375ce50f&libraries=services"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=289fc6538397e54215bb3d26d1485e7e&libraries=services"></script>
 <script type="text/javascript">
 	$(function() {
 		
@@ -39,8 +39,10 @@
 			case 1: $("#workspace2_0").hide(); $("#workspace2_1").show(); break;
 			}
 		});
-///////////// 업종부분해야함 ㅜㅜ		
+///////////// 업종부분해야함 ㅜㅜ	
+////////////////////////// 3개이상 선택 못하는 거 
 		var conditionWorkspaceCnt = 0;
+		var chbId;
 		
 		if(conditionWorkspaceCnt == 3) {
 			$("input[name='workspace3']").attr("disabled", "true");
@@ -48,8 +50,12 @@
 			$("input[name='workspace3']").on("change", function() {
 				if($(this).is(":checked")){
 					conditionWorkspaceCnt++;
+					chbId = $(this).attr("id");
+					console.log("chbId : " + chbId);
 					console.log("conditionWorkspaceCnt[input[name='workspace3'] change] : " + conditionWorkspaceCnt);
 					var li = $("<li>");
+					li.attr("id", "list" + chbId);
+					console.log("list_id : " + li.attr("id"));
 					li.addClass("conditionBusinessInputLi").css("width", "100px");
 					li.html($(this).val());
 					$("#conditionBusinessInputUl").append(li);
@@ -60,37 +66,119 @@
 					conditionWorkspaceCnt--;
 					$("input[name='workspace3']").removeAttr("disabled");
 					console.log("conditionWorkspaceCnt[input[name='workspace3'] change] : " + conditionWorkspaceCnt);
+					chbId = $(this).attr("id");
+					var list_id = "list" + chbId;
+					$("#" + list_id).remove();
 				}
 			});
 		}
-///////////////////////////////////////////////////////////
+		
+		$("#workspaceDivCancel").click(function() {
+			alert($("#conditionBusinessInputDiv > ul > li").val());
+			$("#conditionPopUp").hide();
+		});
+		
+/////////////////////////////////////////////////////////// In/Out checkbox
 		$("#conditionWorkspaceOut").hide();
 		
 		$("input[name='conditionWorkspaceR']").on("change", function() {
 			if($("#radioIn").is(":checked")) {
 				$("#conditionWorkspaceMap").show();
 				$("#conditionWorkspaceOut").hide();
+				$("#addrFirst").attr("name", "rmc_Workspace");
+				$("#conditionWorkspaceOutInput").removeAttr("name");
 			} else if ($("#radioOut").is(":checked")) {
 				$("#conditionWorkspaceMap").hide();
 				$("#conditionWorkspaceOut").show();
+				$("#conditionWorkspaceOutInput").attr("name", "rmc_Workspace");
+				$("#addrFirst").removeAttr("name");
 			}
 		});
 //////////////////////////////////// map 부분
 
 
-$("#addrFirst").click(function() {
-	sample5_execDaumPostcode();
-});
+		$("#addrFirst").click(function() {
+			var mapContainer = document.getElementById('conditionAddrMapValue'), // 지도를 표시할 div
+		    mapOption = {
+		        center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+		        level: 5 // 지도의 확대 레벨
+		    };
+		
+			//지도를 미리 생성
+			var map = new daum.maps.Map(mapContainer, mapOption);
+			//주소-좌표 변환 객체를 생성
+			var geocoder = new daum.maps.services.Geocoder();
+			//마커를 미리 생성
+			var marker = new daum.maps.Marker({
+			    position: new daum.maps.LatLng(37.537187, 127.005476),
+			    map: map
+			});
+		
+		
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+		        	console.log("daum.postcode 진입");
+		            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+		            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+		            var fullAddr = data.address; // 최종 주소 변수
+		            console.log("1:" + fullAddr);
+		            var extraAddr = ''; // 조합형 주소 변수
+		
+		            // 기본 주소가 도로명 타입일때 조합한다.
+		            if(data.addressType === 'R'){
+		                //법정동명이 있을 경우 추가한다.
+		                if(data.bname !== ''){
+		                    extraAddr += data.bname;
+		                }
+		                // 건물명이 있을 경우 추가한다.
+		                if(data.buildingName !== ''){
+		                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		                }
+		                // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+		                fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+		            }
+		            console.log("2:" + fullAddr);
+		            // 주소 정보를 해당 필드에 넣는다.
+		            document.getElementById("addrFirst").value = data.address;
+		            //document.getElementById("addrSecond").value = data.buildingName;
+		            //document.getElementById("sample5_address").value = fullAddr;
+		            // 주소로 상세 정보를 검색
+		            console.log("여기까지");
+		            geocoder.addressSearch(data.address, function(results, status) {
+		                // 정상적으로 검색이 완료됐으면
+		                console.log("제발ㅜㅜ");
+		                if (status === daum.maps.services.Status.OK) {
+		
+		                    var result = results[0]; //첫번째 결과의 값을 활용
+		
+		                    // 해당 주소에 대한 좌표를 받아서
+		                    var coords = new daum.maps.LatLng(result.y, result.x);
+		                    // 지도를 보여준다.
+		                    mapContainer.style.display = "block";
+		                    map.relayout();
+		                    // 지도 중심을 변경한다.
+		                    map.setCenter(coords);
+		                    // 마커를 결과값으로 받은 위치로 옮긴다.
+		                    marker.setPosition(coords)
+		                }
+		            });
+		        }
+		    }).open();
+		});
+	
+//////////////////////////////////////////////map 끝///////////////
 
+		$("#conditionNextButton").click(function() {
+			alert($("input[name='workspace3']:checked"));
+		});
 
-
-/////////////////////////////////////////////////////////////
 	});
 </script>
 </head>
 <body>
 <form action="conditionWriteFormNext.do" method="POST" name="timeWriteForm">
 	<div id="conditionWrap">
+		<input id="rm_Seq" type="hidden">
 		<div id="conditionTitle">
 			<h2>근무조건</h2>
 		</div>		
@@ -151,7 +239,7 @@ $("#addrFirst").click(function() {
 				</div>
 				<div id="conditionWorkspaceMap">
 					<input id="addrFirst" type="text">
-					<input id="addrSecond" type="text">
+					<!-- <input id="addrSecond" type="text"> -->
 					<input id="addrButton" type="button" onclick="sample5_execDaumPostcode()" value="위치확인">
 					<br><br>
 					<div id="conditionAddrMap">
@@ -160,71 +248,7 @@ $("#addrFirst").click(function() {
 						<div id="conditionAddrMapValue"></div>
 					</div>
 					<script>
-					    var mapContainer = document.getElementById('conditionAddrMapValue'), // 지도를 표시할 div
-					        mapOption = {
-					            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-					            level: 5 // 지도의 확대 레벨
-					        };
-					
-					    //지도를 미리 생성
-					    var map = new daum.maps.Map(mapContainer, mapOption);
-					    //주소-좌표 변환 객체를 생성
-					    var geocoder = new daum.maps.services.Geocoder();
-					    //마커를 미리 생성
-					    var marker = new daum.maps.Marker({
-					        position: new daum.maps.LatLng(37.537187, 127.005476),
-					        map: map
-					    });
-					
-					
-					    function sample5_execDaumPostcode() {
-					        new daum.Postcode({
-					            oncomplete: function(data) {
-					                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-					                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-					                var fullAddr = data.address; // 최종 주소 변수
-					                var extraAddr = ''; // 조합형 주소 변수
-					
-					                // 기본 주소가 도로명 타입일때 조합한다.
-					                if(data.addressType === 'R'){
-					                    //법정동명이 있을 경우 추가한다.
-					                    if(data.bname !== ''){
-					                        extraAddr += data.bname;
-					                    }
-					                    // 건물명이 있을 경우 추가한다.
-					                    if(data.buildingName !== ''){
-					                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-					                    }
-					                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-					                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
-					                }
-					
-					                // 주소 정보를 해당 필드에 넣는다.
-					                document.getElementById("addrFirst").value = data.address;
-					                document.getElementById("addrSecond").value = extraAddr;
-					                document.getElementById("sample5_address").value = fullAddr;
-					                // 주소로 상세 정보를 검색
-					                alert(data.address);
-					                geocoder.addressSearch(data.address, function(results, status) {
-					                    // 정상적으로 검색이 완료됐으면
-					                    if (status === daum.maps.services.Status.OK) {
-					
-					                        var result = results[0]; //첫번째 결과의 값을 활용
-					
-					                        // 해당 주소에 대한 좌표를 받아서
-					                        var coords = new daum.maps.LatLng(result.y, result.x);
-					                        // 지도를 보여준다.
-					                        mapContainer.style.display = "block";
-					                        map.relayout();
-					                        // 지도 중심을 변경한다.
-					                        map.setCenter(coords);
-					                        // 마커를 결과값으로 받은 위치로 옮긴다.
-					                        marker.setPosition(coords)
-					                    }
-					                });
-					            }
-					        }).open();
-					    }
+					    
 					</script>
 					<br>
 				</div>
@@ -297,7 +321,7 @@ $("#addrFirst").click(function() {
 		<br style="clear: both;">
 		<div id="conditionWeek">
 			<div id="conditionWeekLeft">				
-				<p>*근무요일</p>
+				<p>근무요일</p>
 			</div>
 			<div id="conditionWeekRight">
 				<div id="conditionWeekSelectDiv">				
@@ -318,7 +342,7 @@ $("#addrFirst").click(function() {
 		<br style="clear: both;">
 		<div id="conditionTime">
 			<div id="conditionTimeLeft">				
-				<p>*근무시간</p>
+				<p>근무시간</p>
 			</div>
 			<div id="conditionTimeRight">
 				<div id="conditionTimeSelectDiv">				
@@ -399,36 +423,37 @@ $("#addrFirst").click(function() {
 						<input id="RMC_business3" type="text">
 						<div style="padding: 0; height: 150px; border: 1px solid lightgray; overflow-y: scroll; overflow-x: hidden;">
 							<ul id="workspace3_0_0" style="padding: 0; margin: 0;">
-								<li><input name="workspace3" type="checkbox" value="호텔">호텔</li>
-								<li><input name="workspace3" type="checkbox" value="콘도">콘도</li>
-								<li><input name="workspace3" type="checkbox" value="카지노">카지노</li>
-								<li><input name="workspace3" type="checkbox" value="여행사">여행사</li>
-								<li><input name="workspace3" type="checkbox" value="항공사">항공사</li>
-								<li><input name="workspace3" type="checkbox" value="관광">관광</li>
-								<li><input name="workspace3" type="checkbox" value="관광통역">관광통역</li>
-								<li><input name="workspace3" type="checkbox" value="면세점">면세점</li>
-								<li><input name="workspace3" type="checkbox" value="유학.이민">유학.이민</li>
+								<li><input id="_worksapce_0" name="workspace3" type="checkbox" value="호텔">호텔</li>
+								<li><input id="_worksapce_1" name="workspace3" type="checkbox" value="콘도">콘도</li>
+								<li><input id="_worksapce_2" name="workspace3" type="checkbox" value="카지노">카지노</li>
+								<li><input id="_worksapce_3" name="workspace3" type="checkbox" value="여행사">여행사</li>
+								<li><input id="_worksapce_4" name="workspace3" type="checkbox" value="항공사">항공사</li>
+								<li><input id="_worksapce_5" name="workspace3" type="checkbox" value="관광">관광</li>
+								<li><input id="_worksapce_6" name="workspace3" type="checkbox" value="관광통역">관광통역</li>
+								<li><input id="_worksapce_7" name="workspace3" type="checkbox" value="면세점">면세점</li>
+								<li><input id="_worksapce_8" name="workspace3" type="checkbox" value="유학.이민">유학.이민</li>
 							</ul>
 							<ul id="workspace3_0_1" style="padding: 0; margin: 0;">
-								<li><input name="workspace3" type="checkbox" value="음식료">음식료</li>
-								<li><input name="workspace3" type="checkbox" value="식품.푸드">식품.푸드</li>
-								<li><input name="workspace3" type="checkbox" value="한식당">한식당</li>
-								<li><input name="workspace3" type="checkbox" value="일식당">일식당</li>
-								<li><input name="workspace3" type="checkbox" value="양식당">양식당</li>
-								<li><input name="workspace3" type="checkbox" value="중식당">중식당</li>
-								<li><input name="workspace3" type="checkbox" value="제과제빵점">제과제빵점</li>
-								<li><input name="workspace3" type="checkbox" value="출장요리">출장요리</li>
-								<li><input name="workspace3" type="checkbox" value="케이터링">케이터링</li>
-								<li><input name="workspace3" type="checkbox" value="프랜차이즈">프랜차이즈</li>
-								<li><input name="workspace3" type="checkbox" value="횟집.초밥.스시">횟집.초밥.스시</li>
-								<li><input name="workspace3" type="checkbox" value="뷔페">뷔페</li>
-								<li><input name="workspace3" type="checkbox" value="퓨전푸드">퓨전푸드</li>
-								<li><input name="workspace3" type="checkbox" value="구내식당">구내식당</li>
+								<li><input id="_worksapce_9" name="workspace3" type="checkbox" value="음식료">음식료</li>
+								<li><input id="_worksapce_10" name="workspace3" type="checkbox" value="식품.푸드">식품.푸드</li>
+								<li><input id="_worksapce_11" name="workspace3" type="checkbox" value="한식당">한식당</li>
+								<li><input id="_worksapce_12" name="workspace3" type="checkbox" value="일식당">일식당</li>
+								<li><input id="_worksapce_13" name="workspace3" type="checkbox" value="양식당">양식당</li>
+								<li><input id="_worksapce_14" name="workspace3" type="checkbox" value="중식당">중식당</li>
+								<li><input id="_worksapce_15" name="workspace3" type="checkbox" value="제과제빵점">제과제빵점</li>
+								<li><input id="_worksapce_16" name="workspace3" type="checkbox" value="출장요리">출장요리</li>
+								<li><input id="_worksapce_17" name="workspace3" type="checkbox" value="케이터링">케이터링</li>
+								<li><input id="_worksapce_18" name="workspace3" type="checkbox" value="프랜차이즈">프랜차이즈</li>
+								<li><input id="_worksapce_19" name="workspace3" type="checkbox" value="횟집.초밥.스시">횟집.초밥.스시</li>
+								<li><input id="_worksapce_20" name="workspace3" type="checkbox" value="뷔페">뷔페</li>
+								<li><input id="_worksapce_21" name="workspace3" type="checkbox" value="퓨전푸드">퓨전푸드</li>
+								<li><input id="_worksapce_22" name="workspace3" type="checkbox" value="구내식당">구내식당</li>
 							</ul>
 						</div>
 					</td>
 				</tr>
 			</table>
+			<a id="workspaceDivCancel" href="#">닫기x</a>
 		</div>
 	</div>
 </form>
