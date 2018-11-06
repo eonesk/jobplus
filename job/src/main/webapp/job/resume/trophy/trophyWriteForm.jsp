@@ -9,12 +9,12 @@
 <script type="text/javascript">
 	var count = 0;		
 	$(function() {		
-		$("#t").hide();
+		$("#rst_t").hide();
 		
 		$("#trophyplus").click(function() {		
 			count++;
 			var num = count;				
-			var clone = $("#t").clone().attr('id', 't' + num);
+			var clone = $("#rst_t").clone().attr('id', 'rst_t' + num);
 			
 			if (count >= 4) {	
 				alert("항목추가는 최대 3개까지만 추가가능합니다.")
@@ -26,12 +26,12 @@
 				$(this).attr("id", $(this).attr("id") + num);
 			});
 			
-			clone.insertAfter("#t");
-			$("#t" + num).show();
+			clone.insertAfter("#rst_t");
+			$("#rst_t" + num).show();
 			
 		$("#trophydelete" + num).on("click", function() {
 			/*$("#t" + count).remove();*/
-			$(this).parent("#t" + num).remove();
+			$(this).parent("#rst_t" + num).remove();
 			$("#rst__Seq"+num).val("");
 			count--;
 		});
@@ -86,7 +86,7 @@
 						count++;
 						
 						var num = count;
-						var clone = $("#t").clone().attr("id", "t" + num);
+						var clone = $("#rst_t").clone().attr("id", "rst_t" + num);
 						
 						// id&name 넘버링 변경 작업
 						clone.find("*[id]").each(function() {
@@ -97,14 +97,14 @@
 							$(this).attr("name", $(this).attr("name") + num);
 						});
 						
-						clone.insertAfter("#t");
+						clone.insertAfter("#rst_t");
 						
-						$("#t" + num).show();
+						$("#rst_t" + num).show();
 						
 						/** 이벤트 바인딩 */
 						// 'X'표 눌렀을 때 닫기
 						$("#trophydelete" + num).on("click", function() {
-							$(this).parent("#t" + num).remove();
+							$(this).parent("#rst_t" + num).remove();
 							$("#rst__Seq"+num).val("");
 							count--;
 						});

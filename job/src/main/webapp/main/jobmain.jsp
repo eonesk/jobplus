@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+/**레이어 팝업*/
 $(document).ready(function() {
 	var headerOffset = $('.top_menu').offset();
 	$(window).scroll(function() {
@@ -17,10 +18,14 @@ $(document).ready(function() {
 		}
 	});
 });
+/**레이어팝업 사진첨부*/
+
 </script>
 <style type="text/css">
 body {
-    min-width: 1260px;
+    min-width: 1800px;
+    width: 2000px;
+    background-color: #dde6f9;
 }
 ol, ul, li {
     list-style: none;
@@ -48,25 +53,28 @@ ol, ul, li {
     position: relative;
     z-index: 20;
     margin: 0 auto;
-    width: 100%;
+    width: 2000px;
     height: inherit;
-    background-color: #88b8ff;
     padding: 0px 0px 0px 0px;
 }
 #header .user_info {
-    background-color: #e6c2c2;
     font-size: 13px;
-    width: 1260px;
-    height: 15px;
+    width: 1173px;
+    height: 17px;
     margin: 0 auto 7px auto;
-    padding: 19px 0 2px 0;
+    padding: 17px 0px 2px 0px;
     text-align: right;
     letter-spacing: -1px;
+	position: relative;
+}
+#user_info #corp_name {
+    position: relative;
+    right: 24px;
 }
 #header .area_logo {
     position: absolute;
     top: 0;
-    left: 50%;
+	left: 773px;
     z-index: 20;
     margin-left: -630px;
     max-width: 226px;
@@ -99,19 +107,20 @@ a.logo_cm_service {
 #header .gnb {
     display: block;
     margin: 0 auto;
-    width: 1260px;
+    width: 1275px;
+    float: left;
+    position: relative;
+    left: 311px;
 }
 #header .gnb .list_gnb {
-    padding-left: 225px;
-    height: 42px;
-    /* background-color: #ece2e2; */
-    position: relative;
-    top: 15px;
-    margin: auto;
+	position: relative;
+    left: 246px;
+    padding-left: 0px;
 }
 #header .gnb .list_gnb.pos_right {
-    float: right;
-    padding-left: 0;
+	left: 579px;
+    position: relative;
+    display: block;
 }
 ul.list_gnb li {
     float: left;
@@ -131,8 +140,12 @@ ul.list_gnb li {
     letter-spacing: -2px;
     word-spacing: -1px;
     line-height: 1;
+    text-decoration: none;
 }
-
+#header .gnb .list_gnb li > a:hover {
+    color: #5d97ff;
+    text-decoration-line: underline;
+}
 /* #menu .list_gnb li { */
 /* 	display: inline; */
 /* 	position: relative; */
@@ -146,13 +159,6 @@ ul.list_gnb li {
 /* 	background-color: #ffa7a7; */
 /* 	float: right; */
 /* } */
-#header .user_info {
-	background-color: #e6c2c2;
-	padding-right: 30px;
-	position: relative;
-	float: right;
-	font-size: 13px;
-}
 .box_withshadow {
     position: absolute;
     top: 0;
@@ -167,8 +173,8 @@ ul.list_gnb li {
 #cm_contents {
     display: block;
     margin: 25px auto 58px;
-    width: 1260px;
-    max-width: 1260px;
+    width: 100%;
+    max-width: 1800px;
     text-align: center;
     vertical-align: top;
 }
@@ -226,30 +232,30 @@ ul.list_gnb li {
 #cm_contents .wrap_contents {
     float: left;
     position: relative;
-    padding-top: 70px;
-    width: 1034px;
+    width: 1500px;
     border: 1px solid #dedede;
     text-align: center;
     background-color: #fff;
     box-sizing: border-box;
     margin: 0 auto;
 }
-#cm_contents .wrap_contents .cm_inner {
-    display: inline-block;
-    position: relative;
-    margin-left: -150px;
-    max-width: 774px;
-    min-height: 528px;
-    vertical-align: top;
-}
+/* #cm_contents .wrap_contents .cm_inner { */
+/*     display: inline-block; */
+/*     position: relative; */
+/*     margin-left: -150px; */
+/*     max-width: 774px; */
+/*     min-height: 528px; */
+/*     vertical-align: top; */
+/* } */
 /*레이어 팝업 CSS*/
 #user_corp_popup {
     height: 250px;
     border: 1px solid #757575;
     position: absolute;
-    left: 968px;
+    left: 860px;
     top: 45px;
     background: #fff;
+    z-index: 100;
 }
 #user_corp_popup button{
   cursor:pointer;
@@ -260,6 +266,7 @@ ul.list_gnb li {
 .area_corp_logo {
     margin-top: 18px;
     margin-bottom: 13px;
+    text-align: center;
 }
 .area_corp_logo .corp_thum {
     padding: 5px;
@@ -270,15 +277,14 @@ ul.list_gnb li {
     border: 1px solid #e0e0e0;
     vertical-align: middle;
     margin-left: 75px;
-    margin-bottom: 4px;
+    margin-bottom: 12px;
 }
 .area_corp_logo a.logo_modify {
-    margin-top: 13px;
+	margin-top: 13px;
     border: 1px dotted red;
     font-size: 13px;
     line-height: 10px;
     height: 14px;
-    margin-left: 120px;
 }
 #user_corp_popup .area_bottom {
     position: relative;
@@ -297,13 +303,13 @@ ul.list_gnb li {
     box-sizing: border-box;
     vertical-align: top;
     color: #303030;
+    text-decoration: none;
     background: #fff;
     line-height: 26px;
     font-size: 14px;
 }
 </style>
 <script type="text/javascript">
-
 /*레이어 팝업*/
 $(document).ready(function() {
 	$("#user_corp_popup").hide();
@@ -312,6 +318,9 @@ $(document).ready(function() {
 		$("#user_corp_popup").show();
 		$("#user_corp_popup a").focus();
 	    return false;
+	});
+	$("#logo_modify").click(function() {
+		window.open("/company/logo/corpImageForm.jsp","","width=460, height=250, left=700, top=100");
 	});
 	$(document).mouseup(function(e) {
 		var container = $("#user_corp_popup");
@@ -335,13 +344,17 @@ $(document).ready(function() {
 					  		</div>
 					  		<div class="user_corp_info">
 					  			<div class="area_corp_logo">
-					  				<div class="corp_thum"><img src=""></div>
-					  				<a class="logo_modify" href="#"><span>로고변경</span></a>
+					  				<div class="corp_thum">
+					  					<img src="" id="corp_thumnail">
+					  				</div>
+					  				<a class="logo_modify" id="logo_modify" href="#">
+					  					<span>로고 변경</span>
+					  				</a>
 					  			</div>
 					  		</div>
 					  		<div class="area_bottom">
-						  		<a>기업정보관리</a>
-						  		<a>로그아웃</a>
+						  		<a href="#">기업정보관리</a>
+						  		<a href="#">로그아웃</a>
 					  		</div>
 					  </div>		
 					  						

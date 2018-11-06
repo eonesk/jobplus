@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	$("#btn_reset").on("click", function() {			
+	$("#ap_btn_reset").on("click", function() {			
 		$('input:checkbox[name="major[]"]').prop("checked", false);
 	});
 	
@@ -20,7 +20,7 @@ $(function() {
 		 }
 	}); 
 	
-	$("#btn_OK").on("click", function() {
+	$("#ap_btn_OK").on("click", function() {
 		var items=[];
 		$('input[class="chk"]:checkbox:checked').each(function(){
 			items.push($(this).val());
@@ -31,29 +31,29 @@ $(function() {
 		self.close();
 	});
 	
-	$("#btn_close").click(function() {
+	$("#ap_btn_close").click(function() {
 		window.close();
 	});
 });
 </script>
 <style type="text/css">
-th {
+.ap_th {
 	height: 50px;
 }
-.tbl_typ_reg02.down_typ th, .tbl_typ_reg02.down_typ td {
+.tbl_typ_reg02, .down_typ, .ap_th, .ap_td {
     border-left: 1px solid #e1e1e1;
 }
-.tbl_typ_reg02 th {
+.tbl_typ_reg02 .ap_th {
     background-color: #f7f7f7;
     font-weight: bold;
     line-height: 18px;
     text-align: center;
 }
-.tbl_typ_reg02 th, .tbl_typ_reg02 td {
+.tbl_typ_reg02, .ap_th, .ap_td {
     border-bottom: 1px solid #e0e0e0;
     box-sizing: border-box;
 }
-table.tbl_common {
+.tbl_common {
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
@@ -61,6 +61,7 @@ table.tbl_common {
     letter-spacing: -1px;
     color: #101010;
     table-layout: fixed;
+    background-color: white;
 }
 .lpop_wrap {
     position: fixed;
@@ -71,7 +72,7 @@ table.tbl_common {
     font-family: "Malgun Gothic",gulim,dotum,sans-serif;
     background-color: #fff;
 }
-.chk_list {
+.ap_chk_list {
    	list-style: none;   	
    	position: relative;
     width: auto;
@@ -91,33 +92,33 @@ table.tbl_common {
     height: 614px;
     border: 0;
 }
-.btn_wrap {
+.ap_btn_wrap {
 	margin-left: 200px;
 	margin-top: 20px;
 	padding: 10px;
 }
-.btn_OK, .btn_close {
+.ap_btn_OK, .ap_btn_close {
 	width: 180px;
 	height: 60px;
 	font-size: 15px;
 	font-weight: bold;
 }
-.btn_OK {
+.ap_btn_OK {
 	background-color: #2E2E2E;
 	color: white;
 	border: 0;
 }
-.btn_OK:hover {
+.ap_btn_OK:hover {
 	background: #000000;
 }
-.btn_close {
+.ap_btn_close {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
-.btn_close:hover {
+.ap_btn_close:hover {
 	border: 1px solid #6E6E6E;
 }
-.btn_reset {
+.ap_btn_reset {
 	position: relative;
 	left: 80%;
 	width: 120px;
@@ -126,7 +127,7 @@ table.tbl_common {
 	border: 1px solid #E6E6E6;	
 	margin-bottom: 10px;
 }
-.btn_reset:hover {
+.ap_btn_reset:hover {
 	border: 1px solid #6E6E6E;	
 }
 </style>
@@ -135,7 +136,7 @@ table.tbl_common {
 <div id="lpop_major" class="lpop_wrap lpop_major_select" style="display: block;">
     <h2>필수전공 선택</h2>
     <div class="tbl_btn_area">
-        <button type="button" class="btn_reset" id="btn_reset">전체선택 초기화</button>
+        <input type="button" class="ap_btn_reset" id="ap_btn_reset" value="전체선택 초기화">
     </div>
     <div class="tbl_typ_reg02 down_typ scroll">
         <table class="tbl_common">
@@ -147,14 +148,14 @@ table.tbl_common {
             </colgroup>
             <tbody>
             <tr>
-                <th>상경/계열</th>
-                <th>어학계열</th>
-                <th>사범계열</th>
-                <th>공학계열</th>
+                <th class="ap_th">상경/계열</th>
+                <th class="ap_th">어학계열</th>
+                <th class="ap_th">사범계열</th>
+                <th class="ap_th">공학계열</th>
             </tr>
             <tr>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="major_maj1">
 	                    		<input type="checkbox" name="major[]" id="major_maj1" class="chk" value="경영학"><span>경영학</span>
@@ -177,13 +178,13 @@ table.tbl_common {
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="major_maj5">
-	                    		<input type="checkbox" name="major[]" id="major_maj5" class="chk" value="유통/무역학"><span>유통/무역학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj5" class="chk" value="유통.무역학"><span>유통.무역학</span>
 	                    	</label>
 	                    </li>
 	                </ul>	                
                 </td>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
                     	<li class="chk_item">
                     		<label for="major_maj6">
                     			<input type="checkbox" name="major[]" id="major_maj6" class="chk" value="영어영문학"><span>영어영문학</span>
@@ -211,8 +212,8 @@ table.tbl_common {
                     	</li>
                     </ul>
                 </td>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="major_maj11">
 	                    		<input type="checkbox" name="major[]" id="major_maj11" class="chk" value="특수교육학"><span>특수교육학</span>
@@ -240,21 +241,21 @@ table.tbl_common {
 	                    </li>
                     </ul>
                 </td>
-                <td rowspan="3">
-                    <ul class="chk_list">
+                <td rowspan="3" class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="major_maj16">
-	                    		<input type="checkbox" name="major[]" id="major_maj16" class="chk" value="컴퓨터/시스템공학"><span>컴퓨터/시스템공학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj16" class="chk" value="컴퓨터.시스템공학"><span>컴퓨터.시스템공학</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="major_maj17">
-	                    		<input type="checkbox" name="major[]" id="major_maj17" class="chk" value="금속/비금속공학"><span>금속/비금속공학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj17" class="chk" value="금속.비금속공학"><span>금속.비금속공학</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="major_maj18">
-	                    		<input type="checkbox" name="major[]" id="major_maj18" class="chk" value="생명/환경공학"><span>생명/환경공학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj18" class="chk" value="생명.환경공학"><span>생명.환경공학</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
@@ -264,20 +265,20 @@ table.tbl_common {
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="major_maj20">
-	                    		<input type="checkbox" name="major[]" id="major_maj20" class="chk" value="전기/전자공학"><span>전기/전자공학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj20" class="chk" value="전기.전자공학"><span>전기.전자공학</span>
 	                    	</label>
 	                    </li>
                     </ul>
                 </td>
             </tr>
             <tr>
-                <th>인문/사회</th>
-                <th>자연계열</th>
-                <th>의학/예체능</th>
+                <th class="ap_th">인문/사회</th>
+                <th class="ap_th">자연계열</th>
+                <th class="ap_th">의학/예체능</th>
             </tr>
             <tr>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="major_maj21">
 	                    		<input type="checkbox" name="major[]" id="major_maj21" class="chk" value="인문과학계열"><span>인문과학계열</span>
@@ -300,26 +301,26 @@ table.tbl_common {
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="major_maj25">
-	                    		<input type="checkbox" name="major[]" id="major_maj25" class="chk" value="국사/세계사"><span>국사/세계사</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj25" class="chk" value="국사.세계사"><span>국사.세계사</span>
 	                    	</label>
 	                    </li>
                     </ul>
                 </td>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="major_maj26">
-	                    		<input type="checkbox" name="major[]" id="major_maj26" class="chk" value="농수산/해양학"><span>농수산/해양학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj26" class="chk" value="농수산.해양학"><span>농수산.해양학</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="major_maj27">
-	                    		<input type="checkbox" name="major[]" id="major_maj27" class="chk" value="임학/임예학"><span>임학/임예학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj27" class="chk" value="임학.임예학"><span>임학.임예학</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="major_maj28">
-	                    		<input type="checkbox" name="major[]" id="major_maj28" class="chk" value="수학/통계학"><span>수학/통계학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj28" class="chk" value="수학.통계학"><span>수학.통계학</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
@@ -334,11 +335,11 @@ table.tbl_common {
 						</li>
 					</ul>
                 </td>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="major_maj31">
-	                    		<input type="checkbox" name="major[]" id="major_maj31" class="chk" value="의/약학"><span>의/약학</span>
+	                    		<input type="checkbox" name="major[]" id="major_maj31" class="chk" value="의.약학"><span>의.약학</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
@@ -366,9 +367,9 @@ table.tbl_common {
             </tr></tbody>
         </table>
     </div>
-    <div class="btn_wrap">
-        <button type="button" class="btn_OK" id="btn_OK">선택완료</button>
-        <button type="button" class="btn_close" id="btn_close">닫기</button>
+    <div class="ap_btn_wrap">
+        <input type="button" class="ap_btn_OK" id="ap_btn_OK" value="선택완료">
+        <input type="button" class="ap_btn_close" id="ap_btn_close" value="닫기">
     </div>
 </div>
 </body>

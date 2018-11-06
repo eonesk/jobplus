@@ -112,10 +112,15 @@ public class RS_studyLVController {
 		studyLVDTO.setRss_UserTitle(rss_UserTitle);
 		
 		// DB저장
-		int saveCount = studyLVService.rssSave(studyLVDTO);		
+		int saveCount = studyLVService.rssSave(studyLVDTO);
+		int rss_Seq = 0;
+		if(saveCount > 0) {
+			rss_Seq = studyLVService.selectLastSeq();
+		}
+		
 		System.out.println("[RS_studyLVController] saveCount : " + saveCount);
 		
-		out.print(saveCount);
+		out.print(rss_Seq);
 	}
 	
 	@RequestMapping(value="/job/resume/studyLV/studyLVLoadCount.do", method=RequestMethod.POST)

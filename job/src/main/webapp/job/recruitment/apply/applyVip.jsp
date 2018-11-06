@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	$("#btn_reset").on("click", function() {			
+	$("#ap_btn_reset").on("click", function() {			
 		$('input:checkbox[name="Vip[]"]').prop("checked", false);
 	});
 	
@@ -20,7 +20,7 @@ $(function() {
 		 }
 	}); 
 	
-	$("#btn_OK").on("click", function() {
+	$("#ap_btn_OK").on("click", function() {
 		var items=[];
 		$('input[class="chk"]:checkbox:checked').each(function(){
 			items.push($(this).val());
@@ -31,29 +31,29 @@ $(function() {
 		self.close();
 	});
 	
-	$("#btn_close").click(function() {
+	$("#ap_btn_close").click(function() {
 		window.close();
 	});
 });
 </script>
 <style type="text/css">
-th {
+.ap_th {
 	height: 50px;
 }
-.tbl_typ_reg02.down_typ th, .tbl_typ_reg02.down_typ td {
+.tbl_typ_reg02, .down_typ, .ap_th, .ap_td {
     border-left: 1px solid #e1e1e1;
 }
-.tbl_typ_reg02 th {
+.tbl_typ_reg02 .ap_th {
     background-color: #f7f7f7;
     font-weight: bold;
     line-height: 18px;
     text-align: center;
 }
-.tbl_typ_reg02 th, .tbl_typ_reg02 td {
+.tbl_typ_reg02, .ap_th, .ap_td {
     border-bottom: 1px solid #e0e0e0;
     box-sizing: border-box;
 }
-table.tbl_common {
+.tbl_common {
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
@@ -61,6 +61,7 @@ table.tbl_common {
     letter-spacing: -1px;
     color: #101010;
     table-layout: fixed;
+    background-color: white;    
 }
 .lpop_wrap {
     position: fixed;
@@ -71,7 +72,7 @@ table.tbl_common {
     font-family: "Malgun Gothic",gulim,dotum,sans-serif;
     background-color: #fff;
 }
-.chk_list {
+.ap_chk_list {
    	list-style: none;   	
    	position: relative;
     width: auto;
@@ -91,33 +92,33 @@ table.tbl_common {
     height: 614px;
     border: 0;
 }
-.btn_wrap {
+.ap_btn_wrap {
 	margin-left: 200px;
 	margin-top: 20px;
 	padding: 10px;
 }
-.btn_OK, .btn_close {
+.ap_btn_OK, .ap_btn_close {
 	width: 180px;
 	height: 60px;
 	font-size: 15px;
 	font-weight: bold;
 }
-.btn_OK {
+.ap_btn_OK {
 	background-color: #2E2E2E;
 	color: white;
 	border: 0;
 }
-.btn_OK:hover {
+.ap_btn_OK:hover {
 	background: #000000;
 }
-.btn_close {
+.ap_btn_close {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
-.btn_close:hover {
+.ap_btn_close:hover {
 	border: 1px solid #6E6E6E;
 }
-.btn_reset {
+.ap_btn_reset {
 	position: relative;
 	left: 80%;
 	width: 120px;
@@ -126,7 +127,7 @@ table.tbl_common {
 	border: 1px solid #E6E6E6;	
 	margin-bottom: 10px;
 }
-.btn_reset:hover {
+.ap_btn_reset:hover {
 	border: 1px solid #6E6E6E;	
 }
 </style>
@@ -135,7 +136,7 @@ table.tbl_common {
 <div id="lpop_major" class="lpop_wrap lpop_major_select" style="display: block;">
     <h2>우대조건 선택</h2>
     <div class="tbl_btn_area">
-        <button type="button" class="btn_reset" id="btn_reset">전체선택 초기화</button>
+        <input type="button" class="ap_btn_reset" id="ap_btn_reset" value="전체선택 초기화">
     </div>
     <div class="tbl_typ_reg02 down_typ scroll">
         <table class="tbl_common">
@@ -148,15 +149,15 @@ table.tbl_common {
             </colgroup>
             <tbody>
             <tr>
-                <th>기본우대</th>
-                <th>외국어 능력</th>
-                <th>활동/경험</th>
-                <th>자격/능력</th>
-                <th>근무조건</th>
+                <th class="ap_th">기본우대</th>
+                <th class="ap_th">외국어 능력</th>
+                <th class="ap_th">활동/경험</th>
+                <th class="ap_th">자격/능력</th>
+                <th class="ap_th">근무조건</th>
             </tr>
             <tr>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="vip1">
 	                    		<input type="checkbox" name="Vip[]" id="vip1" class="chk" value="국가유공자"><span>국가유공자</span>
@@ -184,8 +185,8 @@ table.tbl_common {
 	                    </li>
 	                </ul>	                
                 </td>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
                     	<li class="chk_item">
                     		<label for="vip6">
                     			<input type="checkbox" name="Vip[]" id="vip6" class="chk" value="영어가능자"><span>영어가능자</span>
@@ -213,8 +214,8 @@ table.tbl_common {
                     	</li>
                     </ul>
                 </td>
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="vip11">
 	                    		<input type="checkbox" name="Vip[]" id="vip11" class="chk" value="공모전 입상자"><span>공모전 입상자</span>
@@ -242,8 +243,8 @@ table.tbl_common {
 	                    </li>
                     </ul>
                 </td>
-                <td rowspan="3">
-                    <ul class="chk_list">
+                <td rowspan="3" class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="vip16">
 	                    		<input type="checkbox" name="Vip[]" id="vip16" class="chk" value="학점4.0이상"><span>공모전 입상자</span>
@@ -271,8 +272,8 @@ table.tbl_common {
 	                    </li>
                     </ul>
                 </td>            
-                <td>
-                    <ul class="chk_list">
+                <td class="ap_td">
+                    <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="vip21">
 	                    		<input type="checkbox" name="Vip[]" id="vip21" class="chk" value="인근거주자"><span>인근거주자</span>
@@ -304,9 +305,9 @@ table.tbl_common {
             </tbody>
         </table>
     </div>
-    <div class="btn_wrap">
-        <button type="button" class="btn_OK" id="btn_OK">선택완료</button>
-        <button type="button" class="btn_close" id="btn_close">닫기</button>
+    <div class="ap_btn_wrap">
+        <input type="button" class="ap_btn_OK" id="ap_btn_OK" value="선택완료">
+        <input type="button" class="ap_btn_close" id="ap_btn_close" value="닫기">
     </div>
 </div>
 </body>

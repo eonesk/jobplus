@@ -1,1 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.companyInfoMapper">
+	<insert id="insertCompanyInfo" parameterType="companyInfoDTO">
+		insert into companyInfo values
+		(CPI_SEQ.nextval, #{cpm_Id}, #{cpi_Companyname}, 
+		#{cpi_Firstname}, #{cpi_INDUSTRY}, #{cpi_Content, jdbcType=VARCHAR}, 
+		#{cpi_Brand, jdbcType=VARCHAR}, #{cpi_Address}, 
+		#{cpi_Type, jdbcType=VARCHAR}, #{cpi_Birth, jdbcType=DATE}, 
+		#{cpi_Homepage, jdbcType=VARCHAR}, #{cpi_Blog}, #{cpi_Sns1, jdbcType=VARCHAR}, 
+		#{cpi_Sns2, jdbcType=VARCHAR}, #{cpi_Sns3, jdbcType=VARCHAR}, #{cpi_Tel}, 
+		#{cpi_Moneyyear, jdbcType=INTEGER}, #{cpi_Moneybase, jdbcType=INTEGER}, 
+		#{cpi_Moneysell, jdbcType=INTEGER}, #{cpi_Moneygain, jdbcType=INTEGER}, 
+		#{cpl_Seq, jdbcType=INTEGER}, #{cpi_Vision, jdbcType=VARCHAR}, 
+		#{cpi_History, jdbcType=VARCHAR}, #{cpi_Welfare, jdbcType=VARCHAR}, 
+		#{cpi_Cafe, jdbcType=VARCHAR}, #{cpi_Etc, jdbcType=VARCHAR} )
+	</insert>
+	
+	<select id="selectCompanyInfo" parameterType="java.util.Map" resultType="companyInfoDTO">
+		select * from companyInfo where CPM_id=#{comId} and CPI_seq=#{cpi_Seq}
+	</select>
+	
+	<select id="selectLastSeq" parameterType="String" resultType="int">
+		select max(CPI_seq) from resume where CPM_id=#{comId}
+	</select>
+</mapper>
