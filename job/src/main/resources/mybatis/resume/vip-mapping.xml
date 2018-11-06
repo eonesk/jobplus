@@ -21,4 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="rsvGetDTO" parameterType="int" resultType="vipDTO">
 		select * from RS_vip where rsv_seq = #{rsv_seq}
 	</select>
+	
+	<select id="selectLastSeq" resultType="int">
+		select max(rsv_seq) from rs_vip
+	</select>
 </mapper>
