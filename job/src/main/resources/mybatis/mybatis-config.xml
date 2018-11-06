@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 클래스에 별명 설정 -->
 	<typeAliases>
+		<typeAlias type="job.recruitment.job.bean.RM_jobDTO" alias="jobDTO"/>
 		<typeAlias type="job.recruitment.introduction.bean.RM_introductionDTO" alias="introductionDTO"/>
 		<typeAlias type="job.resume.workLV.bean.RS_workLVDTO" alias="workLVDTO"/>
 		<typeAlias type="job.resume.intern.bean.RS_internDTO" alias="internDTO"/>
@@ -30,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		
 
 		<!-- SQL문장이 기술되는 Mapper파일 / resume 하위 테이블들 -->
+		<mapper resource="mybatis/recruitment/job-mapping.xml"/>
 		<mapper resource="mybatis/recruitment/introduction-mapping.xml"/>
 		<mapper resource="mybatis/resume/workLV-mapping.xml"/>
 		<mapper resource="mybatis/resume/intern-mapping.xml"/>
