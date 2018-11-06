@@ -15,4 +15,6 @@ public interface RS_languageService {
 	int Delete(int rslg_Seq);
 	// seq검색
 	RS_languageDTO selectLangDTO(int rslg_Seq);
+	
+	int selectLastSeq();
 }

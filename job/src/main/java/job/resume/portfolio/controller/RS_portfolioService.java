@@ -19,5 +19,7 @@ public interface RS_portfolioService {
 	//목록보기
 	List<RS_portfolioDTO> portfolioListOfId(int startNum, int endNum, String memId);
 	
-//	//삭제
+	RS_portfolioDTO selectPortfolioDTO(int rspf_Seq);
+	
+	
 }

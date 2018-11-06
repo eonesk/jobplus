@@ -63,9 +63,9 @@ public class RS_portfolioController {
 	        multipartFile = multipartHttpServletRequest.getFile(iterator.next());
 	        if(multipartFile.isEmpty() == false){
 	            System.out.println("------------- file start -------------");
-	            System.out.println("name"  + multipartFile.getName());
-	            System.out.println("filename"  + multipartFile.getOriginalFilename());
-	            System.out.println("size"  + multipartFile.getSize());
+	            System.out.println("name :: "  + multipartFile.getName());
+	            System.out.println("filename :: "  + multipartFile.getOriginalFilename());
+	            System.out.println("size :: "  + multipartFile.getSize());
 	            System.out.println("-------------- file end --------------");
 	        }
 	    }
@@ -75,9 +75,9 @@ public class RS_portfolioController {
 		
 		String filePath = 
 				// 학원 컴퓨터 경로
-				"C:/Users/user/git/jobplus655/job/src/main/webapp/job/resume/portfolio/img/storage";
+//				"C:/Users/user/git/jobplus655/job/src/main/webapp/job/resume/portfolio/img/storage";
 				// 집 컴퓨터 경로
-//				"c:/Java/spring/workspace/job/src/main/webapp/job/resume/portfolio/img/storage";
+				"C:/Users/jo2ri/git/jobplus8866/job/src/main/webapp/job/resume/portfolio/img/storage";
 		String fileName = pfFile.getOriginalFilename();
 		File file = new File(filePath, fileName);
 
@@ -151,27 +151,7 @@ public class RS_portfolioController {
 		System.out.println("[RS_portfolioCon] numberOfportfolio : " + numberOfportfolio);
 		out.print(numberOfportfolio);
 	}
-	
-//	@RequestMapping(value="")
-//	public ModelAndView viewportfolioOfId(HttpServletRequest request) {
-//		// 임의로 아이디 지정 (session값)
-//		String memId = "num1";
-//		int getFileOfId = portfolioService.getportfolioOfId(memId);
-//		// 데이터
-//		String m_Id = request.getParameter(memId);
-//		int pg = Integer.parseInt(request.getParameter("pg"));
-//		// DB
-//		RS_portfolioDTO portfolioDTO = new RS_portfolioDTO();
-//		portfolioDTO.setM_Id(memId);
-//		portfolioDTO = portfolioService.viewportfolioOfId(memId);
-//		//
-//		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.addObject("portfolioDTO",portfolioDTO);
-//		modelAndView.addObject("m_Id", m_Id);
-//		modelAndView.addObject("pg", pg);
-//		modelAndView.setViewName("");
-//		return modelAndView;
-//	}
+
 	@RequestMapping(value="/job/resume/portfolio/portfolioLoad.do")
 	public ModelAndView portfolioListOfId(HttpServletRequest request) {
 		try {
@@ -182,6 +162,17 @@ public class RS_portfolioController {
 		String path = RS_portfolioController.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
 	    System.out.println(path); //--> 절대 경로가 출력됨
 		//데이터
+	    
+//	    String accumSeq = request.getParameter("accumSeq");
+//	    System.out.println("[PF_controller] accumSeq : " + accumSeq);
+//	    
+//	    int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");
+//	    System.out.println("[PF_controller] accumSeqLastIndexOf : " + accumSeqLastIndexOf);
+//	    
+//	    String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);
+//		System.out.println("[PF_controller] accumSeqSubstring : " + accumSeqSubstring);
+//		
+	    
 		String memId = "num1";
 		String m_Id = request.getParameter(memId);
 		String str = request.getParameter("pg");
@@ -193,13 +184,13 @@ public class RS_portfolioController {
 		}
 		  // Value of counter to be checked
 
-		//목록 수 : 3개씩
+		//목록 수 : 10개씩
 		int endNum = pg * 10;
 		int startNum = endNum - 9;
 //		int endNum = 10;
 //		int startNum = 1;
 		List<RS_portfolioDTO> list = portfolioService.portfolioListOfId(startNum, endNum, memId);
-		System.out.println("list :: " + list);
+		System.out.println("list :: " + list.toString());
 		//페이징 처리
 		int totalA = portfolioService.getportfolioOfId(memId);
 		int totalP = (totalA + 9) / 10;		// 총페이지수 = 9
@@ -215,6 +206,7 @@ public class RS_portfolioController {
 		modelAndView.addObject("endPage", endPage);
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.setViewName("portfolioLoad.jsp");
+
 		return modelAndView;		
 	}
 	

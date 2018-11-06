@@ -32,4 +32,9 @@ public class RS_workLVServiceImpl implements RS_workLVService {
 		return rs_workLVDAO.rswGetDTO(rsw_seq);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return rs_workLVDAO.selectLastSeq();
+	}
+
 }

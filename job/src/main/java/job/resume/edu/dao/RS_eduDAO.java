@@ -29,4 +29,8 @@ public class RS_eduDAO {
 	public RS_eduDTO selectEduDTO(int rse_Seq) {
 		return sqlSession.selectOne("mybatis.eduMapper.selectEduDTO", rse_Seq);
 	}
+	
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.eduMapper.selectLastSeq");
+	}
 }

@@ -36,4 +36,8 @@ public class RS_portfolioDAO {
 		System.out.println("map >>>>>>>>>>> " + map);
 		return sqlSession.selectList("mybatis.portfolioMapper.portfolioListOfId", map);
 	}
+	
+	public RS_portfolioDTO selectPortfolioDTO(int rspf_Seq) {
+		return sqlSession.selectOne("mybatis.portfolioMapper.selectPortfolioDTO", rspf_Seq);
+	}
 }

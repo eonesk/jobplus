@@ -33,5 +33,10 @@ public class RS_portfolioServiceImpl implements RS_portfolioService {
 		return portfolioDAO.portfolioListOfId(startNum, endNum, memId);
 	}
 
+	@Override
+	public RS_portfolioDTO selectPortfolioDTO(int rspf_Seq) {
+		return portfolioDAO.selectPortfolioDTO(rspf_Seq);
+	}
+
 
 }

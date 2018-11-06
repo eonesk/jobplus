@@ -9,4 +9,5 @@ public interface RS_eduService {
 	int selectNumberOfEdu(String memId);
 	List<RS_eduDTO> selectEduUserTitleList(String memId);
 	RS_eduDTO selectEduDTO(int rse_Seq);
+	int selectLastSeq();
 }

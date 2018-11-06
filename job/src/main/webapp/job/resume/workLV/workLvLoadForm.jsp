@@ -37,27 +37,34 @@ $(function() {
 						
 						$.each(data.items, function(index, item) {
 							var dto = item;
+							var count = 1; 
+							
 							
 							var li = $("<li>").addClass("list_li");
 							
-							
 							var checkbox = $("<input>").attr({
-								"id": "rsw_userTitleR",
+								"id": "rsw_userTitleR"+count,
 								"type": "checkbox",
 								"value": item.rsw_seq
 							}).addClass("rsw_userTitleR");
 							
+							var label = $("<label>").attr({
+								"for" : "rsw_userTitleR"+count
+							}).addClass("checkOff");
+							
 							var a = $("<a>").attr({
 								"id": "rsw_userTitleA",
 								"href": "#"
-							}).html(item.rsw_userTitle).bind('click', {param: dto}, add_event);;
+							}).html(item.rsw_userTitle).bind('click', {param: dto}, add_event);
 							
-							li.append(checkbox);
-							li.append(a);
-							$("#list_ul").append(li);
+							var div_checkbox = $("<div>").addClass("div_checkbox").append(checkbox).append(label);
+							var div_a = $("<div>").addClass("div_a").append(a);
+							li.append(div_checkbox);
+							li.append(div_a);
+							$("#rswList_ul").append(li);
 			                /*$("#eduLoadListTable").append(tr); */	
 							 
-																		 
+							count++;																		 
 						});							
 
 						/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
@@ -83,7 +90,7 @@ $(function() {
 							});
 						}
 						
-						$("#loadOk").click(function() {
+						$("#rswLoadOk").click(function() {
 							//var eduSeqList = new Array();
 							
 							var accumSeq = "";
@@ -113,7 +120,7 @@ $(function() {
 						function add_event(event) {
 						alert(event.data.param.rsw_userTitle + " // " + event.data.param.m_id);
 						
-						$("#loadSelectList").html("");
+						$("#rswLoadSelectList").html("");
 
 						var userTitle = $("<legend>").html(event.data.param.rsw_userTitle);
 						
@@ -140,9 +147,9 @@ $(function() {
 						
 						ul.append(li1).append(li2).append(li3).append(li4).append(li5).append(li6)
 						.append(li7).append(li8);
-						$("#loadSelectList").append(userTitle);
-						$("#loadSelectList").append(ul);
-						$("#loadSelectList").show();
+						$("#rswLoadSelectList").append(userTitle);
+						$("#rswLoadSelectList").append(ul);
+						$("#rswLoadSelectList").show();
 						}				
 					},
 					error : function(e) {
@@ -157,8 +164,18 @@ $(function() {
      	}
 	});	
 });
-$(function() {		
-	$("#cancle").click(function() {
+$(function() {
+	$("input[type=checkbox]").change(function() {
+		var is_check = $(this).is(":checked");
+		if(is_check){
+			$(this).next().addClass("checkOn");
+			$(this).next().removeClass("checkOff");
+		}else{
+			$(this).next().addClass("checkOff");
+			$(this).next().removeClass("checkOn");
+		}
+	});
+	$("#loadCancle").click(function() {
 		window.close();
 	});
 });
@@ -169,15 +186,20 @@ $(function() {
 	display: none;
 }
 
-#loadContainer {
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+#rswLoadContainer {
 	width: 400px;
 }
 
-#loadHeader, #loadSection, #loadFooter {
+#rswLoadHeader, #rswLoadSection, #rswLoadFooter {
 	
 }
 
-#loadHeader {
+#rswLoadHeader {
 	height: 40px;
 	background-color: #3C53AF;
 	text-align: center;
@@ -187,21 +209,21 @@ $(function() {
 	padding-top: 15px;
 }
 
-#loadSection {
+#rswLoadSection {
 	margin-bottom: 20px;
 	text-align: center;
 	height: auto;
 }
 
-#loadSection p {
+#rswLoadSection p {
 	color: lightgray;
 }
 
-#loadSection input {
+#rswLoadSection input {
 	
 }
 
-.loadList {
+.rswLoadList {
 	width: 80%;
 	height: 250px;
 	overflow:hidden;
@@ -210,73 +232,95 @@ $(function() {
 	text-align: left;
 }
 
-.loadList .list_ul{
+.rswLoadList .list_ul{
 	list-style: none;
 	height:100%;
 	overflow: auto;
 	-ms-overflow-style: none; /* IE에서 스크롤바 감춤 */
-	
+	line-height: 50px;
 }
 
-.list_li{
+.rswList_li{
 	list-style: none; 
-	border:1px solid gray;
+	text-align: center;
+	width: 100%;
 	
 }
+.div_checkbox{
+	display:inline-block;
+	width: 20%;
+}
 
+.checkOff {
+	background: url('//www.saraminimage.co.kr/ui/join/bg_check_bullet.png')
+		no-repeat 0 0px;
+}
 
-.list_li a{
-	/* font-size: 20px;
-	font-weight: bold;
+.checkOn {
+	background: url('//www.saraminimage.co.kr/ui/join/bg_check_bullet.png')
+		no-repeat 0 -30px;
+}
+
+.div_checkbox label {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+}
+
+.div_a{
+	display:inline-block;
+	width: 70%;
+}
+
+.div_a a{
 	text-decoration: none;
-	color:black; */
+	font-size: 20px;
+	font-weight: bold;
 }
 
-.loadList legend {
-	
+.rswLoadList legend {
+	font-weight: bold;
 }
 
-.loadSelectList{
+.rswLoadSelectList{
 	width: 80%;
 	margin-left: 30px;
 	overflow: auto;
 	-ms-overflow-style: none; /* IE에서 스크롤바 감춤 */
-	text-align: left;
+	text-align: center;
 	font-weight: bold;
 	display: none;
 }
 
-/**집에서 확인할곳 */
-.loadSelectList ul{
-	line-height: 30px;
-}
 
 
-.listDiv{
+.rswListDiv{
 	border-bottom: 1px solid lightgray;
-	
-}
-
-.listTitle{
 	font-size: 20px;
 	font-weight: bold;
-}
-.listTitle:nth-child(1){
-	padding-left: 30px;
+	width: 100%;
 }
 
-.listTitle:nth-child(2){
-	padding-left: 120px;
+.rswListTitle1{
+	display:inline-block;
+	text-align: center;
+	width:30%;
 }
-#loadFooter {
+
+.rswListTitle2{
+	display:inline-block;
+	text-align: center;
+	width:60%;
+}
+#rswLoadFooter {
 	height: 80px;
 	text-align: center;
 }
-#loadOk {
+#rswLoadOk {
 	color: #607CEA;
 	/* border-color : #607CEA; */
 }
-#loadFooter button {
+#rswLoadFooter button {
 	width: 180px;
 	height: 50px;
 	background-color: white;
@@ -293,28 +337,28 @@ $(function() {
 
 </head>
 <body>
-	<div id="loadContainer">
-		<div id="loadHeader">불러오기</div>
-		<div id="loadSection">
+	<div id="rswLoadContainer">
+		<div id="rswLoadHeader">불러오기</div>
+		<div id="rswLoadSection">
 			<h3>불러오기 하는 방법</h3>
 			<p>불러올 아이템들을 선택후 확인버튼을 클릭하세요</p>
-			<fieldset class="loadList">
+			<fieldset class="rswLoadList">
 				<legend>목록</legend>
-				<div class="listDiv">
-					<span class="listTitle">선택</span>
-					<span class="listTitle">제목</span><br>
+				<div class="rswListDiv">
+					<div class="rswListTitle1">선택</div>
+					<div class="rswListTitle2">제목</div>
 				</div>
-				<ul id="list_ul" class="list_ul">
+				<ul id="rswList_ul" class="list_ul">
 					
 				</ul>
 			</fieldset>
-			<fieldset class="loadSelectList" id="loadSelectList">
+			<fieldset class="rswLoadSelectList" id="rswLoadSelectList">
 			
 			</fieldset>
 		</div>
-		<div id="loadFooter">
-			<button type="button" id="loadCancle">취소</button>
-			<button type="button" id="loadOk">확인</button>
+		<div id="rswLoadFooter">
+			<button type="button" id="rswLoadCancle">취소</button>
+			<button type="button" id="rswLoadOk">확인</button>
 		</div>
 	</div>
 </body>

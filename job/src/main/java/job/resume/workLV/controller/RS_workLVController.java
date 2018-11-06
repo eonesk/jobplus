@@ -78,7 +78,12 @@ public class RS_workLVController {
 		
 		//DB 저장
 		int saveCount = rs_workLVService.rswSave(rs_workLVDTO);
-		out.print(saveCount);
+		int rsw_Seq = 0;
+		if(saveCount>0) {
+			rsw_Seq = rs_workLVService.selectLastSeq();
+		}
+		
+		out.print(rsw_Seq);
 	}
 	
 	@RequestMapping(value="/job/resume/workLV/rswLoadCount.do", method=RequestMethod.POST)

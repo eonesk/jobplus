@@ -10,26 +10,29 @@ public class companyInfoDTO {
     // 기업아이디 
     private String cpm_Id;
 
-    // 주요사업내용 
-    private String cpi_Businesscontent;
+    // 기업명 
+    private String cpi_Companyname;
+
+    // 대표자명 
+    private String cpi_Firstname;
+
+    // 업종 
+    private String cpi_Industry;
+
+    // 사업내용 
+    private String cpi_Content;
 
     // 브랜드명 
-    private String cpi_Brandname;
+    private String cpi_Brand;
 
     // 회사주소 
     private String cpi_Address;
 
-    // 해외여부 
-    private String cpi_Isforeign;
-
     // 기업형태 
     private String cpi_Type;
 
-    // 대표전화 
-    private String cpi_Phone;
-
     // 설립일 
-    private Date cpi_Opendate;
+    private Date cpi_Birth;
 
     // 홈페이지 
     private String cpi_Homepage;
@@ -37,16 +40,37 @@ public class companyInfoDTO {
     // 블로그 
     private String cpi_Blog;
 
-    // 기업SNS 
-    private String cpi_Sns;
+    // 기업SNS1 
+    private String cpi_Sns1;
+
+    // 기업SNS2 
+    private String cpi_Sns2;
+
+    // 기업SNS3 
+    private String cpi_Sns3;
+
+    // 대표전화 
+    private String cpi_Tel;
+
+    // 재무정보 기준년도 
+    private Integer cpi_Moneyyear;
+
+    // 자본금 
+    private Integer cpi_Moneybase;
+
+    // 매출액 
+    private Integer cpi_Moneysell;
+
+    // 영업이익 
+    private Integer cpi_Moneygain;
 
     // 기업로고seq 
     private Integer cpl_Seq;
 
-    // 개요및비전 
+    // 개요 및 비전 
     private String cpi_Vision;
 
-    // 연혁및실적 
+    // 역혁 및 실적 
     private String cpi_History;
 
     // 복리후생 
@@ -57,18 +81,6 @@ public class companyInfoDTO {
 
     // 기타정보 
     private String cpi_Etc;
-
-    // 자본금 
-    private String cpi_Moneybase;
-
-    // 매출액 
-    private String cpi_Moneysell;
-
-    // 당기손익금액 
-    private String cpi_Palmoney;
-
-    // 당기손익기준 
-    private String cpi_Paldate;
 
 	public Integer getCpi_Seq() {
 		return cpi_Seq;
@@ -86,20 +98,44 @@ public class companyInfoDTO {
 		this.cpm_Id = cpm_Id;
 	}
 
-	public String getCpi_Businesscontent() {
-		return cpi_Businesscontent;
+	public String getCpi_Companyname() {
+		return cpi_Companyname;
 	}
 
-	public void setCpi_Businesscontent(String cpi_Businesscontent) {
-		this.cpi_Businesscontent = cpi_Businesscontent;
+	public void setCpi_Companyname(String cpi_Companyname) {
+		this.cpi_Companyname = cpi_Companyname;
 	}
 
-	public String getCpi_Brandname() {
-		return cpi_Brandname;
+	public String getCpi_Firstname() {
+		return cpi_Firstname;
 	}
 
-	public void setCpi_Brandname(String cpi_Brandname) {
-		this.cpi_Brandname = cpi_Brandname;
+	public void setCpi_Firstname(String cpi_Firstname) {
+		this.cpi_Firstname = cpi_Firstname;
+	}
+
+	public String getCpi_Industry() {
+		return cpi_Industry;
+	}
+
+	public void setCpi_Industry(String cpi_Industry) {
+		this.cpi_Industry = cpi_Industry;
+	}
+
+	public String getCpi_Content() {
+		return cpi_Content;
+	}
+
+	public void setCpi_Content(String cpi_Content) {
+		this.cpi_Content = cpi_Content;
+	}
+
+	public String getCpi_Brand() {
+		return cpi_Brand;
+	}
+
+	public void setCpi_Brand(String cpi_Brand) {
+		this.cpi_Brand = cpi_Brand;
 	}
 
 	public String getCpi_Address() {
@@ -110,14 +146,6 @@ public class companyInfoDTO {
 		this.cpi_Address = cpi_Address;
 	}
 
-	public String getCpi_Isforeign() {
-		return cpi_Isforeign;
-	}
-
-	public void setCpi_Isforeign(String cpi_Isforeign) {
-		this.cpi_Isforeign = cpi_Isforeign;
-	}
-
 	public String getCpi_Type() {
 		return cpi_Type;
 	}
@@ -126,20 +154,12 @@ public class companyInfoDTO {
 		this.cpi_Type = cpi_Type;
 	}
 
-	public String getCpi_Phone() {
-		return cpi_Phone;
+	public Date getCpi_Birth() {
+		return cpi_Birth;
 	}
 
-	public void setCpi_Phone(String cpi_Phone) {
-		this.cpi_Phone = cpi_Phone;
-	}
-
-	public Date getCpi_Opendate() {
-		return cpi_Opendate;
-	}
-
-	public void setCpi_Opendate(Date cpi_Opendate) {
-		this.cpi_Opendate = cpi_Opendate;
+	public void setCpi_Birth(Date cpi_Birth) {
+		this.cpi_Birth = cpi_Birth;
 	}
 
 	public String getCpi_Homepage() {
@@ -158,12 +178,68 @@ public class companyInfoDTO {
 		this.cpi_Blog = cpi_Blog;
 	}
 
-	public String getCpi_Sns() {
-		return cpi_Sns;
+	public String getCpi_Sns1() {
+		return cpi_Sns1;
 	}
 
-	public void setCpi_Sns(String cpi_Sns) {
-		this.cpi_Sns = cpi_Sns;
+	public void setCpi_Sns1(String cpi_Sns1) {
+		this.cpi_Sns1 = cpi_Sns1;
+	}
+
+	public String getCpi_Sns2() {
+		return cpi_Sns2;
+	}
+
+	public void setCpi_Sns2(String cpi_Sns2) {
+		this.cpi_Sns2 = cpi_Sns2;
+	}
+
+	public String getCpi_Sns3() {
+		return cpi_Sns3;
+	}
+
+	public void setCpi_Sns3(String cpi_Sns3) {
+		this.cpi_Sns3 = cpi_Sns3;
+	}
+
+	public String getCpi_Tel() {
+		return cpi_Tel;
+	}
+
+	public void setCpi_Tel(String cpi_Tel) {
+		this.cpi_Tel = cpi_Tel;
+	}
+
+	public Integer getCpi_Moneyyear() {
+		return cpi_Moneyyear;
+	}
+
+	public void setCpi_Moneyyear(Integer cpi_Moneyyear) {
+		this.cpi_Moneyyear = cpi_Moneyyear;
+	}
+
+	public Integer getCpi_Moneybase() {
+		return cpi_Moneybase;
+	}
+
+	public void setCpi_Moneybase(Integer cpi_Moneybase) {
+		this.cpi_Moneybase = cpi_Moneybase;
+	}
+
+	public Integer getCpi_Moneysell() {
+		return cpi_Moneysell;
+	}
+
+	public void setCpi_Moneysell(Integer cpi_Moneysell) {
+		this.cpi_Moneysell = cpi_Moneysell;
+	}
+
+	public Integer getCpi_Moneygain() {
+		return cpi_Moneygain;
+	}
+
+	public void setCpi_Moneygain(Integer cpi_Moneygain) {
+		this.cpi_Moneygain = cpi_Moneygain;
 	}
 
 	public Integer getCpl_Seq() {
@@ -212,38 +288,6 @@ public class companyInfoDTO {
 
 	public void setCpi_Etc(String cpi_Etc) {
 		this.cpi_Etc = cpi_Etc;
-	}
-
-	public String getCpi_Moneybase() {
-		return cpi_Moneybase;
-	}
-
-	public void setCpi_Moneybase(String cpi_Moneybase) {
-		this.cpi_Moneybase = cpi_Moneybase;
-	}
-
-	public String getCpi_Moneysell() {
-		return cpi_Moneysell;
-	}
-
-	public void setCpi_Moneysell(String cpi_Moneysell) {
-		this.cpi_Moneysell = cpi_Moneysell;
-	}
-
-	public String getCpi_Palmoney() {
-		return cpi_Palmoney;
-	}
-
-	public void setCpi_Palmoney(String cpi_Palmoney) {
-		this.cpi_Palmoney = cpi_Palmoney;
-	}
-
-	public String getCpi_Paldate() {
-		return cpi_Paldate;
-	}
-
-	public void setCpi_Paldate(String cpi_Paldate) {
-		this.cpi_Paldate = cpi_Paldate;
 	}
 
     

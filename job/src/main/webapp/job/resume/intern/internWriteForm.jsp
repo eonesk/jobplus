@@ -78,7 +78,7 @@
 			alert("selected함수 실행 count값 = " + count);
 			$.ajax({
 				type: 'POST',
-				url: 'LoadView.do',
+				url: '/job/job/resume/intern/LoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -109,6 +109,7 @@
 						// 'X'표 눌렀을 때 닫기
 						$("#interndelete" + num).on("click", function() {
 							$(this).parent("#t" + num).remove();
+							$("#rsit_Seq"+num).val("");
 							count--;
 						});
 						
@@ -235,9 +236,9 @@ fieldset {
 </style>
 </head>
 <body class="write">
-	<input type="hidden" id="rsit_Seq1" name="rsit_Seq">
-	<input type="hidden" id="rsit_Seq2" name="rsit_Seq">
-	<input type="hidden" id="rsit_Seq3" name="rsit_Seq">
+	<input type="hidden" id="rsit_Seq1">
+	<input type="hidden" id="rsit_Seq2">
+	<input type="hidden" id="rsit_Seq3">
 <div id="interndiv" class="interndiv">	
 		<p class="title">인턴&middot;대외활동</p>
 		<!-- Load -->		 

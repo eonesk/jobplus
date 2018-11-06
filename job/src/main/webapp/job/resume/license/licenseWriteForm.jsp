@@ -44,6 +44,7 @@
 			$("#licensePlusCancel" + numbering).on("click", function() {
 				console.log("[eventBindingInit] #licensePlusCancel" + numbering + "(X표) : 닫기");
 				$(this).parent("#licensePlus" + numbering).remove();
+				$("#rsls__Seq"+numbering).val("");
 				licensePlusButtonCnt--;
 			});
 	
@@ -60,7 +61,7 @@
 					$("#rsls_Date" + numbering).focus();
 				} else {
 					console.log("[saveButtonInit] numbering : " + numbering);
-					window.open("./licenseSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
+					window.open("/job/job/resume/license/licenseSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
 				}
 			});
 		
@@ -68,7 +69,7 @@
 		/** 내 자격증 불러오기 */
 		$("#RSLS_loadA").click(function() {
 			console.log("[load] licensePlusButtonCnt : " + licensePlusButtonCnt);
-			window.open("./licenseLoadPopUp.jsp?licensePlusButtonCnt=" + licensePlusButtonCnt, "", "width=500px height=500px");
+			window.open("/job/job/resume/license/licenseLoadPopUp.jsp?licensePlusButtonCnt=" + licensePlusButtonCnt, "", "width=500px height=500px");
 		});
 	});
 	
@@ -80,7 +81,7 @@
 			console.log("[selected] licensePlusButtonCnt : " + licensePlusButtonCnt);
 			$.ajax({
 				type: 'POST',
-				url: 'rslsLoadView.do',
+				url: '/job/job/resume/license/rslsLoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -115,6 +116,7 @@
 						$("#licensePlusCancel" + numbering).on("click", function() {
 							console.log("[eventBindingSelected] #licensePlusCancel" + numbering + "(X표) : 닫기");
 							$(this).parent("#licensePlus" + numbering).remove();
+							$("#rsls__Seq"+numbering).val("");
 							licensePlusButtonCnt--;
 						});
 						
@@ -130,10 +132,11 @@
 								$("#rsls_Date" + numbering).focus();
 							} else {
 								console.log("[saveButtonInit] numbering : " + numbering);
-								window.open("./licenseSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
+								window.open("/job/job/resume/license/licenseSavePopUp.jsp?numbering=" + numbering, "", "width=500px height=500px");
 							}
 						});
 							console.log("[selected] rsls_UserTitle : " + testDTO.rsls_UserTitle);
+							$("#rsls__Seq" + numbering).val(testDTO.rsls_Seq);
 							$("#rsls_Seq" + numbering).val(testDTO.rsls_Seq);
 							$("#rsls_Name" + numbering).val(testDTO.rsls_Name);
 							$("#rsls_Company" + numbering).val(testDTO.rsls_Company);
@@ -151,6 +154,9 @@
 </script>
 </head>
 <body>
+<input id="rsls__Seq_1" type="hidden">
+<input id="rsls__Seq_2" type="hidden">
+<input id="rsls__Seq_3" type="hidden">
 	<div id="license_div"
 		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
 		

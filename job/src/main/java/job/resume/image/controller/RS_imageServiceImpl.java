@@ -23,17 +23,23 @@ public class RS_imageServiceImpl implements RS_imageService {
 	@Override
 	public int getImageOfId(String memId) {
 		return imageDAO.getImageOfId(memId);
-	}
-
+	}	
+	/**
+	 * 최근사진
+	 */
 	@Override
-	public RS_imageDTO viewImageOfId(String memId) {
-		return imageDAO.viewImageOfId(memId);
+	public RS_imageDTO ImageTopList(String memId) {
+		return imageDAO.ImageTopList(memId);
 	}
 
 	@Override
 	public List<RS_imageDTO> ImageListOfId(int startNum, int endNum,String m_Id) {
 		return imageDAO.ImageListOfId(startNum, endNum, m_Id);
 	}
+	@Override
+	public RS_imageDTO viewImageOfId(String memId) {
+		return imageDAO.viewImageOfId(memId);
+	}
 
-	
+
 }

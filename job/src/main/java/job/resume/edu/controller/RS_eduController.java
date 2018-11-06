@@ -74,9 +74,13 @@ public class RS_eduController {
 
 		// DB 저장
 		int saveCount = eduService.rseSave(eduDTO);
+		int rse_Seq = 0;
+		if(saveCount>0){
+			rse_Seq = eduService.selectLastSeq();
+		}
 		System.out.println("[RS_eduLVController] saveCount : " + saveCount);
 		
-		out.print(saveCount);
+		out.print(rse_Seq);
 	}
 	
 	@RequestMapping(value="/job/resume/edu/eduLoadCount.do", method=RequestMethod.POST)

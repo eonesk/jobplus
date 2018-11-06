@@ -70,7 +70,7 @@
 		var rsw_isNow = $("#rsw_isNow"+"${param.numberRing}",opener.document).val();
 		var rsw_career = $("#rsw_career", opener.document).val();
 		
-		alert(rsw_company + " // " + rsw_dept + " // " + rsw_startDate + " // "
+		alert(rsw_company + " /!!!!!!!!!!!!!!!!!!!!/ " + rsw_dept + " // " + rsw_startDate + " // "
 				+ rsw_endDate + " // " + rsw_position + " // " + rsw_job 
 				+ " // " + rsw_pay + " // " + rsw_part + " // " + rsw_career + " // " + rsw_isNow); 
 		
@@ -104,6 +104,7 @@
 				success: function(data) {
 					if(data > 0) {
 						alert("성공");
+						$("#rsw__Seq"+"${param.numberRing}", opener.document).val(data);
 						window.close();
 					} else {
 						alert("실패");
