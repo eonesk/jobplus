@@ -41,10 +41,10 @@
 					return false;
 				}  
 		    	if(!$("#rspf_Url").val()  && radioValue == "U") {
-					alert("URL을 입력하세요"); 
-					$("#rspf_Url").focus();
-					return false;
-				}
+					alert("URL을 입력하세요");
+					$("#rspf_Url").focus();			
+				} 
+		    	
 		    	document.pf_form.submit();
 			});			
 			$("#cancle").click(function() {
@@ -138,10 +138,10 @@ button:hover {
 			<td>
 				<div style="margin-right: 210px;">
 					<label><input class="fileType" type="radio" name="rspf_Fileorurl" value="F" checked="checked"/> 파일</label>
-					<label><input class="fileType" type="radio" name="rspf_Fileorurl" value="U"/> URL</label> 
+					<label><input class="fileType" type="radio" name="rspf_Fileorurl" value="U"/>URL</label> 
 				</div>
 				<div><input type="file" id='rspf_File' name="pfFile"/></div>
-				<div><input type="text" id='rspf_Url' name="rspf_Url" placeholder="http://" style="font-size: 13px; width: 303px;"/></div>
+				<div><input type="text" id='rspf_Url' name="rspf_Url" value="http://" style="font-size: 13px; width: 303px;"/></div>
 			</td>
 		</tr>
 	</table>
