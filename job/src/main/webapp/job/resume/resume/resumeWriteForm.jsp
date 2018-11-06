@@ -470,13 +470,11 @@ $("#rs_seq").val(null);
 			var rslg_Seq2 = $("#rslg__Seq2").val();
 			var rslg_Seq3 = $("#rslg__Seq3").val();
 			var rspf_Seq = null;
-			var rsv_Seq = $("#rsv__Seq").val();
-			var rspr_Seq = null;
+			var rsv_Seq = null;
+			/* var rsv_Seq = $("#rsv__Seq").val(); */
+			var rspr_Seq = $("#rspr_Seq").val();
 			
-			if(!($("#vipCheck").prop("checked"))){
-				rsv_Seq = null;
-			}
-			
+						
 			var allData = {
 					"rs_seq" : rs_seq,
 					"rs_name" : rs_name,
@@ -681,7 +679,7 @@ $("#rs_seq").val(null);
 		<jsp:include page="../vip/vipForm.jsp"></jsp:include>
 	</div>
 	<div id="prDiv">
-		<h2>자기소개서</h2>
+		<jsp:include page="../pr/prWriteForm.jsp"></jsp:include>
 	</div>
 </div>
 <div id="nav">
