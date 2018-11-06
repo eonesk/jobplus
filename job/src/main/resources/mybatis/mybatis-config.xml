@@ -5,7 +5,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 클래스에 별명 설정 -->
 	<typeAliases>
-		<typeAlias type="job.recruitment.apply.bean.RM_applyDTO" alias="applyDTO"/>
+    <typeAlias type="job.recruitment.apply.bean.RM_applyDTO" alias="applyDTO"/>
+    <typeAlias type="job.recruitment.job.bean.RM_jobDTO" alias="jobDTO"/>
+		<typeAlias type="job.company.info.bean.companyInfoDTO" alias="companyInfoDTO"/>
 		<typeAlias type="job.recruitment.introduction.bean.RM_introductionDTO" alias="introductionDTO"/>
 		<typeAlias type="job.resume.workLV.bean.RS_workLVDTO" alias="workLVDTO"/>
 		<typeAlias type="job.resume.intern.bean.RS_internDTO" alias="internDTO"/>
@@ -32,12 +34,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 		<!-- SQL문장이 기술되는 Mapper파일 / resume 하위 테이블들 -->
 		<mapper resource="mybatis/recruitment/apply-mapping.xml"/>
-		<mapper resource="mybatis/recruitment/introduction-mapping.xml"/>
+		<mapper resource="mybatis/recruitment/job-mapping.xml"/>
 		<mapper resource="mybatis/resume/workLV-mapping.xml"/>
 		<mapper resource="mybatis/resume/intern-mapping.xml"/>
 		<mapper resource="mybatis/resume/trophy-mapping.xml"/>	
 		<mapper resource="mybatis/resume/language-mapping.xml"/>	
-  		<mapper resource="mybatis/resume/license-mapping.xml"/>
+  	<mapper resource="mybatis/resume/license-mapping.xml"/>
 		<mapper resource="mybatis/resume/edu-mapping.xml"/>
 		<mapper resource="mybatis/resume/studyLV-mapping.xml"/>
 		<mapper resource="mybatis/resume/pr-mapping.xml"/>
@@ -45,5 +47,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/resume/image-mapping.xml"/>
 		<mapper resource="mybatis/resume/portfolio-mapping.xml"/>
 		<mapper resource="mybatis/resume/vip-mapping.xml"/>
+		
+		<!-- SQL문장이 기술되는 Mapper파일 / recruitment 하위 테이블들 -->
+		<mapper resource="mybatis/recruitment/introduction-mapping.xml"/>
+		
+		
+		<!-- SQL문장이 기술되는 Mapper파일 / company 하위 테이블들 -->
+		<mapper resource="mybatis/company/companyInfo-mapping.xml"/>		
 	</mappers>
 </configuration>

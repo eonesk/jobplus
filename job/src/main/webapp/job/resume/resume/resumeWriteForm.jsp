@@ -442,12 +442,9 @@ $("#rs_seq").val(null);
 			var rs_job2 = $("#rs_job2").val();
 			var rs_job3 = $("#rs_job3").val();
 			var rsim_Seq = null;
-			var rss_Seq1 = null;
-			var rss_Seq2 = null;
-			var rss_Seq3 = null;
-			var rsw_Seq1 = null;
-			var rsw_Seq2 = null;
-			var rsw_Seq3 = null;
+			var rss_Seq1 = $("#rss__Seq_1").val();
+			var rss_Seq2 = $("#rss__Seq_2").val();
+			var rss_Seq3 = $("#rss__Seq_3").val();
 			var rsw_Seq1 = $("#rsw__Seq_1").val();
 			var rsw_Seq2 = $("#rsw__Seq_2").val();
 			var rsw_Seq3 = $("#rsw__Seq_3").val();
@@ -474,7 +471,56 @@ $("#rs_seq").val(null);
 			/* var rsv_Seq = $("#rsv__Seq").val(); */
 			var rspr_Seq = $("#rspr_Seq").val();
 			
-						
+			if(!($("#studyLVCheck").prop("checked"))){
+				rss_Seq1 = null;
+			    rss_Seq2 = null;
+				rss_Seq3 = null;
+			}
+			if(!($("#workLVCheck").prop("checked"))){
+				rsw_Seq1 = null;
+			    rsw_Seq2 = null;
+				rsw_Seq3 = null;
+			}
+			if(!($("#internCheck").prop("checked"))){
+				rsit_Seq1 = null;
+			    rsit_Seq2 = null;
+				rsit_Seq3 = null;
+			}
+			if(!($("#eduCheck").prop("checked"))){
+				rse_Seq1 = null;
+			    rse_Seq2 = null;
+				rse_Seq3 = null;
+			}
+			if(!($("#licenseCheck").prop("checked"))){
+				rsls_Seq1 = null;
+			    rsls_Seq2 = null;
+				rsls_Seq3 = null;
+			}
+			if(!($("#trophyCheck").prop("checked"))){
+				rst_Seq1 = null;
+			    rst_Seq2 = null;
+				rst_Seq3 = null;
+			}
+			if(!($("#foreignCheck").prop("checked"))){
+				rsf_Seq1 = null;
+			    rsf_Seq2 = null;
+				rsf_Seq3 = null;
+			}
+			if(!($("#languageCheck").prop("checked"))){
+				rslg_Seq1 = null;
+			    rslg_Seq2 = null;
+				rslg_Seq3 = null;
+			}
+			if(!($("#portfolioCheck").prop("checked"))){
+				rspf_Seq = null;
+			}
+			if(!($("#vipCheck").prop("checked"))){
+				rsv_Seq = null;
+			}
+			if(!($("#prCheck").prop("checked"))){
+				rspr_Seq = null;
+			}
+			
 			var allData = {
 					"rs_seq" : rs_seq,
 					"rs_name" : rs_name,
@@ -649,28 +695,28 @@ $("#rs_seq").val(null);
 		</table>
 	</div>
 	<div id="studyLVDiv">
-		<h2>학력</h2>
+		<jsp:include page="../studyLV/studyLVWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="workLVDiv">
-		<%-- <jsp:include page="../workLV/workLvForm.jsp"></jsp:include> --%>
+		<jsp:include page="../workLV/workLvForm.jsp"></jsp:include>
 	</div>
 	<div id="internDiv">
-		<%-- <jsp:include page="../intern/internWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../intern/internWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="eduDiv">
 		<jsp:include page="../edu/eduWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="licenseDiv">
-		<%-- <jsp:include page="../license/licenseWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../license/licenseWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="trophyDiv">
-		<%-- <jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="foreignDiv">
 		<h2>해외경험</h2>
 	</div>
 	<div id="languageDiv">
-		<%-- <jsp:include page="../language/languageWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../language/languageWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="portfolioDiv">
 		<h2>포트폴리오</h2>
