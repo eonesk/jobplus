@@ -466,9 +466,9 @@
 </style>
 </head>
 <body>
-<input id="rss__Seq1" type="hidden">
-<input id="rss__Seq2" type="hidden">
-<input id="rss__Seq3" type="hidden">				
+<input id="rss__Seq_1" type="hidden">
+<input id="rss__Seq_2" type="hidden">
+<input id="rss__Seq_3" type="hidden">				
 	<div id="studyLV_div" name="studyLV_div" class="studyLV_div"><!-- 전체틀 -->
 	
 		<!-- Content_Top -->

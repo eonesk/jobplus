@@ -445,9 +445,6 @@ $("#rs_seq").val(null);
 			var rss_Seq1 = $("#rss__Seq_1").val();
 			var rss_Seq2 = $("#rss__Seq_2").val();
 			var rss_Seq3 = $("#rss__Seq_3").val();
-			var rsw_Seq1 = null;
-			var rsw_Seq2 = null;
-			var rsw_Seq3 = null;
 			var rsw_Seq1 = $("#rsw__Seq_1").val();
 			var rsw_Seq2 = $("#rsw__Seq_2").val();
 			var rsw_Seq3 = $("#rsw__Seq_3").val();
@@ -474,7 +471,56 @@ $("#rs_seq").val(null);
 			/* var rsv_Seq = $("#rsv__Seq").val(); */
 			var rspr_Seq = $("#rspr_Seq").val();
 			
-						
+			if(!($("#studyLVCheck").prop("checked"))){
+				rss_Seq1 = null;
+			    rss_Seq2 = null;
+				rss_Seq3 = null;
+			}
+			if(!($("#workLVCheck").prop("checked"))){
+				rsw_Seq1 = null;
+			    rsw_Seq2 = null;
+				rsw_Seq3 = null;
+			}
+			if(!($("#internCheck").prop("checked"))){
+				rsit_Seq1 = null;
+			    rsit_Seq2 = null;
+				rsit_Seq3 = null;
+			}
+			if(!($("#eduCheck").prop("checked"))){
+				rse_Seq1 = null;
+			    rse_Seq2 = null;
+				rse_Seq3 = null;
+			}
+			if(!($("#licenseCheck").prop("checked"))){
+				rsls_Seq1 = null;
+			    rsls_Seq2 = null;
+				rsls_Seq3 = null;
+			}
+			if(!($("#trophyCheck").prop("checked"))){
+				rst_Seq1 = null;
+			    rst_Seq2 = null;
+				rst_Seq3 = null;
+			}
+			if(!($("#foreignCheck").prop("checked"))){
+				rsf_Seq1 = null;
+			    rsf_Seq2 = null;
+				rsf_Seq3 = null;
+			}
+			if(!($("#languageCheck").prop("checked"))){
+				rslg_Seq1 = null;
+			    rslg_Seq2 = null;
+				rslg_Seq3 = null;
+			}
+			if(!($("#portfolioCheck").prop("checked"))){
+				rspf_Seq = null;
+			}
+			if(!($("#vipCheck").prop("checked"))){
+				rsv_Seq = null;
+			}
+			if(!($("#prCheck").prop("checked"))){
+				rspr_Seq = null;
+			}
+			
 			var allData = {
 					"rs_seq" : rs_seq,
 					"rs_name" : rs_name,

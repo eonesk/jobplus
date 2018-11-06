@@ -2,7 +2,7 @@ package job.company.info.bean;
 
 import java.util.Date;
 
-public class companyInfoDTO {
+public class CompanyInfoDTO {
 
     // 기업정보seq 
     private Integer cpi_Seq;
