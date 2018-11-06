@@ -171,11 +171,11 @@ hr {
 	<div>
 		<p class="p1">바쁘시더라도 필수는 꼭 입력하세요. (<span>&lowast;</span>표시)</p>	
 		<p class="p2">모집요강</p>
-		<hr>
+	<hr>
 	</div>
 	<p><span>&lowast;모집인원</span>
 		<input type="number" min="0" max="100" id="rmi_Personnel" class="rmi_Personnel"> 명</p>
-		<hr>
+	<hr>
 	<p class="p3">모집분야	
 		<input type="radio" id="Type_radio_x" class="Type_radio" name="Type_radio" value="0" checked> 미입력 
   		<input type="radio" id="Type_radio_o" class="Type_radio" name="Type_radio" value="1"> 입력  </p>
@@ -185,15 +185,15 @@ hr {
   	</div>
 	<hr>
 	<p class="p5">담당업무	
-	<input type="text" id="rmi_Work1" class="rmi_Work" placeholder="예)홍보프로그램 운영 및 관리"><br> 
-	<input type="text" id="rmi_Work2" class="rmi_Work" placeholder="예)입금 관리 및 정산"><br>
-	<input type="text" id="rmi_Work3" class="rmi_Work" placeholder="예)구체적인 업무를 작성하시면, 허수지원자가 줄어듭니다."></p>
+		<input type="text" id="rmi_Work1" class="rmi_Work" placeholder="예)홍보프로그램 운영 및 관리"><br> 
+		<input type="text" id="rmi_Work2" class="rmi_Work" placeholder="예)입금 관리 및 정산"><br>
+		<input type="text" id="rmi_Work3" class="rmi_Work" placeholder="예)구체적인 업무를 작성하시면, 허수지원자가 줄어듭니다."></p>
 	<hr>
 	<p class="p6">근무부서
-	<input type="text" id="rmi_Department" class="rmi_Department" placeholder="근무부서명이 명확하면, 적합한 인재와의 만남이 빨라집니다."></p>
+		<input type="text" id="rmi_Department" class="rmi_Department" placeholder="근무부서명이 명확하면, 적합한 인재와의 만남이 빨라집니다."></p>
 	<hr>
 	<p class="p7">직급/직책
-	<input type="text" id="rmi_Official" class="rmi_Official"> </p>
-	<input type="button" id="next" class="next" value="다음">
+		<input type="text" id="rmi_Official" class="rmi_Official"> </p>
+		<input type="button" id="next" class="next" value="다음">
 </body>
 </html>

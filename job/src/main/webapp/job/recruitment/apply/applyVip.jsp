@@ -135,7 +135,7 @@ table.tbl_common {
 <div id="lpop_major" class="lpop_wrap lpop_major_select" style="display: block;">
     <h2>우대조건 선택</h2>
     <div class="tbl_btn_area">
-        <button type="button" class="btn_reset" id="btn_reset">전체선택 초기화</button>
+        <input type="button" class="btn_reset" id="btn_reset" value="전체선택 초기화">
     </div>
     <div class="tbl_typ_reg02 down_typ scroll">
         <table class="tbl_common">
@@ -305,8 +305,8 @@ table.tbl_common {
         </table>
     </div>
     <div class="btn_wrap">
-        <button type="button" class="btn_OK" id="btn_OK">선택완료</button>
-        <button type="button" class="btn_close" id="btn_close">닫기</button>
+        <input type="button" class="btn_OK" id="btn_OK" value="선택완료">
+        <input type="button" class="btn_close" id="btn_close" value="닫기">
     </div>
 </div>
 </body>
