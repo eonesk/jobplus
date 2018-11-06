@@ -442,9 +442,9 @@ $("#rs_seq").val(null);
 			var rs_job2 = $("#rs_job2").val();
 			var rs_job3 = $("#rs_job3").val();
 			var rsim_Seq = null;
-			var rss_Seq1 = null;
-			var rss_Seq2 = null;
-			var rss_Seq3 = null;
+			var rss_Seq1 = $("#rss__Seq_1").val();
+			var rss_Seq2 = $("#rss__Seq_2").val();
+			var rss_Seq3 = $("#rss__Seq_3").val();
 			var rsw_Seq1 = null;
 			var rsw_Seq2 = null;
 			var rsw_Seq3 = null;
@@ -649,28 +649,28 @@ $("#rs_seq").val(null);
 		</table>
 	</div>
 	<div id="studyLVDiv">
-		<h2>학력</h2>
+		<jsp:include page="../studyLV/studyLVWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="workLVDiv">
-		<%-- <jsp:include page="../workLV/workLvForm.jsp"></jsp:include> --%>
+		<jsp:include page="../workLV/workLvForm.jsp"></jsp:include>
 	</div>
 	<div id="internDiv">
-		<%-- <jsp:include page="../intern/internWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../intern/internWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="eduDiv">
 		<jsp:include page="../edu/eduWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="licenseDiv">
-		<%-- <jsp:include page="../license/licenseWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../license/licenseWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="trophyDiv">
-		<%-- <jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="foreignDiv">
 		<h2>해외경험</h2>
 	</div>
 	<div id="languageDiv">
-		<%-- <jsp:include page="../language/languageWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../language/languageWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="portfolioDiv">
 		<h2>포트폴리오</h2>

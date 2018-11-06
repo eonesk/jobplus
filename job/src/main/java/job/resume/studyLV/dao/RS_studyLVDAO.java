@@ -29,4 +29,7 @@ public class RS_studyLVDAO {
 	public RS_studyLVDTO selectStudyLVDTO(int rss_Seq) {
 		return sqlSession.selectOne("mybatis.studyLVMapper.selectStudyLVDTO", rss_Seq);
 	}
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.studyLVMapper.selectLastSeq");
+	}
 }

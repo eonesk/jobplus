@@ -19,4 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectStudyLVDTO" parameterType="int" resultType="studyLVDTO">
 		select * from RS_studyLV where rss_Seq = #{rss_Seq}
 	</select>
+	
+	<select id="selectLastSeq" resultType="int">
+		select max(rss_seq) from rs_studyLv
+	</select>
 </mapper>

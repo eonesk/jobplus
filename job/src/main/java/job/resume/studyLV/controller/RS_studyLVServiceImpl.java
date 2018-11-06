@@ -34,5 +34,10 @@ public class RS_studyLVServiceImpl implements RS_studyLVService {
 		return studyLVDAO.selectStudyLVDTO(rss_Seq);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return studyLVDAO.selectLastSeq();
+	}
+
 	
 }
