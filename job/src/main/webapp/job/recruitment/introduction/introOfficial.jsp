@@ -99,7 +99,7 @@
 <div class="lpop_job_select" id="lpop_job_select" style="display: block;">
     <h2 class="title">직급/직책 선택</h2>
     <div class="btn_area">
-        <button type="button" class="btn_reset" id="btn_reset">전체선택 초기화</button>        
+        <input type="button" class="btn_reset" id="btn_reset" value="전체선택 초기화">      
         <hr>  
     </div>
     <div class="intro_list">
