@@ -29,4 +29,9 @@ public class RS_prServiceImpl implements RS_prService {
 		return rsprDAO.selectRsprUserTitleList(memId);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return rsprDAO.selectLastSeq();
+	}
+
 }

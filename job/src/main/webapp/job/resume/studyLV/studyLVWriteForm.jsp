@@ -47,6 +47,7 @@
 			$("#studyLVPlusCancel" + numbering).on("click", function() {
 				console.log("[eventBindingInit] #studyLVPlusCancel" + numbering + "(X표) : 닫기");
 				$(this).parent("#studyLVPlus" + numbering).remove();
+				$("#rss__Seq"+numbering).val("");
 				studyLVPlusButtonCnt--;
 			});
 			
@@ -57,7 +58,7 @@
 				
 				if(is_check){
 					alert(is_check);
-					window.open("./studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px resizable=0");
+					window.open("/job/job/resume/studyLV/studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px resizable=0");
 				} else {
 					alert(is_check);
 					alert($("#rssStartDateValue" + numbering).val());
@@ -77,7 +78,7 @@
 						$("#rssEndDateValue" + numbering).focus();
 					} else {
 						alert("[진입전]numbering="+numbering);
-						window.open("./studyLVSavePopUp.jsp?is_check="+is_check+"&numbering="+numbering, "", "width=500px height=500px");
+						window.open("/job/job/resume/studyLV/studyLVSavePopUp.jsp?is_check="+is_check+"&numbering="+numbering, "", "width=500px height=500px");
 					}				
 				}
 					
@@ -194,14 +195,14 @@
 		
 		/** 내 학력정보 불러오기 */
 		$("#RSS_loadA").click(function() {
-			window.open("./studyLVLoadPopUp.jsp?studyLVPlusButtonCnt="+studyLVPlusButtonCnt, "", "width=500px height=500px");
+			window.open("/job/job/resume/studyLV/studyLVLoadPopUp.jsp?studyLVPlusButtonCnt="+studyLVPlusButtonCnt, "", "width=500px height=500px");
 		});
 		
 	});	// function
 	
 
 	/** Load 함수 */
-	function selected(accumSeq, studyLVPlusButtonCnt_Delivered) {
+	function selected_rss(accumSeq, studyLVPlusButtonCnt_Delivered) {
 		$(function() {
 			console.log("[selected]----------부모창 시작----------");
 			studyLVPlusButtonCnt = studyLVPlusButtonCnt_Delivered;
@@ -209,7 +210,7 @@
 			console.log("[selected] studyLVPlusButtonCnt : " + studyLVPlusButtonCnt);
 			$.ajax({
 				type: 'POST',
-				url: 'rssLoadView.do',
+				url: '/job/job/resume/studyLV/rssLoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -255,6 +256,7 @@
 						$("#studyLVPlusCancel" + numbering).on("click", function() {
 							console.log("[eventBindingInit] #studyLVPlusCancel" + numbering + "(X표) : 닫기");
 							$(this).parent("#studyLVPlus" + numbering).remove();
+							$("#rss__Seq"+numbering).val("");
 							studyLVPlusButtonCnt--;
 						});
 						
@@ -265,7 +267,7 @@
 							
 							if(is_check){
 								alert(is_check);
-								window.open("./studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px resizable=0");
+								window.open("/job/job/resume/studyLV/studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px resizable=0");
 							} else {
 								alert(is_check);
 								alert($("#rssStartDateValue" + numbering).val());
@@ -285,7 +287,7 @@
 									$("#rssEndDateValue" + numbering).focus();
 								} else {
 									alert("[진입전]numbering="+numbering);
-									window.open("./studyLVSavePopUp.jsp?is_check="+is_check+"&numbering="+numbering, "", "width=500px height=500px");
+									window.open("/job/job/resume/studyLV/studyLVSavePopUp.jsp?is_check="+is_check+"&numbering="+numbering, "", "width=500px height=500px");
 								}				
 							}
 								
@@ -400,7 +402,8 @@
 						
 						alert("!!!!!!!!!!!!!!!!!!!!!!" + testDTO.rss_Ishighschool);
 						if(testDTO.rss_Ishighschool == "Y"){
-							$("#rss_Seq").attr("value", testDTO.rss_Seq);
+							$("#rss_Seq" + numbering).attr("value", testDTO.rss_Seq);
+							$("#rss__Seq" + numbering).attr("value", testDTO.rss_Seq);
 							$("#isHighSchoolCheck" + numbering).attr("checked", "true");
 							$("#isHighSchoolHide" + numbering).hide();
 						} else {
@@ -433,7 +436,8 @@
 							}
 							
 							/* alert("testDTO.rss_Startdate : " + testDTO.rss_Startdate); */
-							$("#rss_Seq").attr("value", testDTO.rss_Seq);
+							$("#rss_Seq" + numbering).attr("value", testDTO.rss_Seq);
+							$("#rss__Seq" + numbering).attr("value", testDTO.rss_Seq);
 	 						$("#rssTypeTitle" + numbering).html("");
 	 						$("#rssTypeTitle" + numbering).html(testDTO.rss_Type + "&nbsp;&nbsp;&nbsp;").css("font-size", "13px");
 	 						$("#rssTypeValue" + numbering).attr("value", testDTO.rss_Type);	 						
@@ -462,6 +466,9 @@
 </style>
 </head>
 <body>
+<input id="rss__Seq1" type="hidden">
+<input id="rss__Seq2" type="hidden">
+<input id="rss__Seq3" type="hidden">				
 	<div id="studyLV_div" name="studyLV_div" class="studyLV_div"><!-- 전체틀 -->
 	
 		<!-- Content_Top -->

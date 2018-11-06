@@ -9,12 +9,12 @@
 <script type="text/javascript">	
 	var count = 0;
 	$(function() {		
-		$("#t").hide();
+		$("#rslg_t").hide();
 		
 		$("#langplus").click(function() {		
 			count++;
 			var num = count;	
-			var clone = $("#t").clone().attr('id', 't' + num);
+			var clone = $("#rslg_t").clone().attr('id', 'rslg_t' + num);
 			
 			if (count >= 4) {				
 				alert("항목추가는 최대 3개까지 입력가능합니다.");
@@ -26,12 +26,12 @@
 				$(this).attr("id", $(this).attr("id") + num);
 			});
 			
-			clone.insertAfter("#t");
-			$("#t" + num).show();
+			clone.insertAfter("#rslg_t");
+			$("#rslg_t" + num).show();
 			
 			$("#langdelete" + num).on("click", function() {
 				/*$("#t" + count).remove();*/
-				$(this).parent("#t" + num).remove();
+				$(this).parent("#rslg_t" + num).remove();
 				$("#rslg__Seq"+num).val("");
 				count--;
 			});
@@ -91,7 +91,7 @@
 	});
 	
 	// load 함수
-	function selected(accumSeq, num) {
+	function selected_rslg(accumSeq, num) {
 		$(function() {
 			alert("selected함수 실행 num값 = " + num);
 			count = num;
@@ -110,7 +110,7 @@
 						count++;
 						
 						var num = count;
-						var clone = $("#t").clone().attr("id", "t" + num);
+						var clone = $("#rslg_t").clone().attr("id", "rslg_t" + num);
 						
 						// id&name 넘버링 변경 작업
 						clone.find("*[id]").each(function() {
@@ -121,14 +121,14 @@
 							$(this).attr("name", $(this).attr("name") + num);
 						});
 						
-						clone.insertAfter("#t");
+						clone.insertAfter("#rslg_t");
 						
-						$("#t" + num).show();
+						$("#rslg_t" + num).show();
 						
 						/** 이벤트 바인딩 */
 						// 'X'표 눌렀을 때 닫기
 						$("#langdelete" + num).on("click", function() {
-							$(this).parent("#t" + num).remove();
+							$(this).parent("#rslg_t" + num).remove();
 							$("#rslg__Seq"+num).val("");
 							count--;
 						});

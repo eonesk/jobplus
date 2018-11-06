@@ -29,51 +29,43 @@
 			window.open("/job/job/recruitment/apply/applyVip.jsp", "", 'width=1000px, height=450px, left=450, top=100');
 		});
 		$("#rma_Foreign").on("click", function() {			
-			window.open("/job/job/recruitment/apply/applyForeign.jsp", "", 'width=650px, height=650px, left=450, top=30');
-		});
-		$("#rma_License").on("click", function() {			
-			window.open("/job/job/recruitment/apply/applyLicense.jsp", "", 'width=650px, height=650px, left=450, top=30');
-		});
+			window.open("/job/job/recruitment/apply/applyForeign.jsp", "", 'width=550px, height=600px, left=600, top=100');
+		});		
 		
-		$("#next").on("click", function() {
-			if (!$("#rmi_Personnel").val()) {
-				alert("모집인원을 입력하세요.");
-				$("#rmi_Personnel").focus();
+		$("#next").on("click", function() {								
+			if (!$("#rma_Major").val()) {
+				alert("전공/학과를 입력하세요.");
+				$("#rma_Major").focus();
 				return false;
 			}
-			if($("#Type_radio_o").is(":checked")) { 
-				if (!$("#rmi_Type").val()) { 			
-				alert("모집분야를 입력하세요.");
-				$("#rmi_Type").focus();
+			if (!$("#rma_Vip").val()) {
+				alert("우대조건을 입력하세요.");
+				$("#rma_Vip").focus();
 				return false;
+			}
+			if (!$("#rma_Foreign").val()) {
+				alert("어학사항을 입력하세요.");
+				$("#rma_Foreign").focus();
+				return false;
+			}
+			if (!$("#rma_License").val()) {
+				alert("자격증사항을 입력하세요.");
+				$("#rma_License").focus();
+				return false;
+			}
+			if($("#rma_Age_Btn_o").is(":checked")) { 
+				if (!$("#rma_Age").val()) {
+					alert("연령제한을 설정하세요.");
+					$("#rma_Age").focus();
+					return false;
 				}
-			}				
-			if (!$("#rmi_Work1").val()) {
-				alert("담당업무를 입력하세요.");
-				$("#rmi_Work1").focus();
-				return false;
-			}
-			if (!$("#rmi_Work2").val()) {
-				alert("담당업무를 입력하세요.");
-				$("#rmi_Work2").focus();
-				return false;
-			}
-			if (!$("#rmi_Work3").val()) {
-				alert("담당업무를 입력하세요.");
-				$("#rmi_Work3").focus();
-				return false;
-			}
-			if (!$("#rmi_Department").val()) {
-				alert("근무부서를 입력하세요.");
-				$("#rmi_Department").focus();
-				return false;
-			}
-			if (!$("#rmi_Official").val()) {
-				alert("직급/직책을 입력하세요.");
-				$("#rmi_Official").focus();
-				return false;
-			}
-			window.open("/job/job/recruitment/introduction/introWrite.jsp", "", "width=500px height=500px");
+				if (!$("#rma_Age2").val()) {
+					alert("연령제한을 설정하세요.");
+					$("#rma_Age2").focus();
+					return false;
+				}
+			}			
+			window.open("/job/job/recruitment/apply/applyWrite.jsp", "", "width=500px height=500px");
 		});
 	});
 </script>
@@ -115,6 +107,7 @@ hr {
 	width: 30px;
 	height: 30px;
 	margin-top: 10px;
+	top: 40px;
 }
 .Type_radio {
 	margin-top: 0px;
@@ -140,7 +133,7 @@ hr {
 	height:65px;
 }
 .rma_License {
-	margin-left: 74px;
+	margin-left: 145px;
 	width:400px;
 	height:65px;
 }
@@ -197,6 +190,8 @@ hr {
 </head>
 <body class="write">
 	<input type="hidden" id="rm_Seq" class="rm_Seq">
+	<!-- 여기서부터 앞페이지에서 정보넘어온값 -->
+	<input type="hidden" id="rmi_Seq" class="rmi_Seq">
 	<input type="hidden" id="rmi_Personnel" class="rmi_Personnel">
 	<input type="hidden" id="rmi_Type" class="rmi_Type">
 	<input type="hidden" id="rmi_Work1" class="rmi_Work1">
@@ -209,9 +204,9 @@ hr {
 		<hr>
 	</div>
 	<p><span>&lowast;학력</span>
-		<input type="radio" id="Type_radio_x" class="Type_radio" name="Type_radio" value="0" checked> 학력무관 
-  		<input type="radio" id="Type_radio_o" class="Type_radio" name="Type_radio" value="1"> 제한</p>
-  		<div id="Type" style="display: none;">
+		<input type="radio" id="Type_radio_x" class="Type_radio" name="Type_radio" value="학력무관" checked> 학력무관 
+  		<input type="radio" id="Type_radio_o" class="Type_radio" name="Type_radio" value="제한"> 제한</p>
+  		<div id="Type" class="Type" style="display: none;">
   		<select id="rma_Studylv" class="rma_Studylv" name="rma_Studylv">
   			<option value="고등학교졸업이상">고등학교졸업이상</option>
   			<option value="대학졸업(2,3년)이상">대학졸업(2,3년)이상</option>
@@ -223,16 +218,16 @@ hr {
   		</div>
 		<hr>
 	<p class="p3">전공/학과 (최대3개)	
-  		<input type="text" id="rma_Major" class="rma_Major" name="rma_Major" ></p>  	
+  		<input type="text" id="rma_Major" class="rma_Major" name="rma_Major" placeholder="전공/학과를 선택하세요."></p>  	
 	<hr>
 	<p class="p5">우대조건 	(최대10개)
-		<input type="text" id="rma_Vip" class="rma_Vip"></p>
+		<input type="text" id="rma_Vip" class="rma_Vip" placeholder="우대조건을 선택하세요."></p>
 	<hr>
 	<p class="p6">외국어 (최대3개)
-		<input type="text" id="rma_Foreign" class="rma_Foreign"></p>
+		<input type="text" id="rma_Foreign" class="rma_Foreign" placeholder="어학조건을 선택하세요."></p>
 	<hr>
-	<p class="p7">자격증 (최대3개)
-		<input type="text" id="rma_License" class="rma_License"></p>
+	<p class="p7">자격증
+		<input type="text" id="rma_License" class="rma_License" placeholder="자격증명을 작성하세요."></p>
 	<hr>
 	<p class="p8">성별  
 		<input type="radio" id="rma_Gender1" class="rma_Gender" name="rma_Gender" value="성별무관" checked> 성별무관 

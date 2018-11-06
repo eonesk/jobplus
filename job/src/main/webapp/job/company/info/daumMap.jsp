@@ -29,7 +29,7 @@
 	}
 </style>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a83477129827a8b78e5727b2058a47c6&&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a83477129827a8b78e5727b2058a47c6&libraries=services"></script>
 <script type="text/javascript">
 	$(function() {
 		var location = "${param.location}";

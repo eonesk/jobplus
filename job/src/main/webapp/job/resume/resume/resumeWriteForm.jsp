@@ -442,51 +442,39 @@ $("#rs_seq").val(null);
 			var rs_job2 = $("#rs_job2").val();
 			var rs_job3 = $("#rs_job3").val();
 			var rsim_Seq = null;
-			var rss_Seq1 = null;
-			var rss_Seq2 = null;
-			var rss_Seq3 = null;
+			var rss_Seq1 = $("#rss__Seq_1").val();
+			var rss_Seq2 = $("#rss__Seq_2").val();
+			var rss_Seq3 = $("#rss__Seq_3").val();
 			var rsw_Seq1 = null;
 			var rsw_Seq2 = null;
 			var rsw_Seq3 = null;
 			var rsw_Seq1 = $("#rsw__Seq_1").val();
 			var rsw_Seq2 = $("#rsw__Seq_2").val();
 			var rsw_Seq3 = $("#rsw__Seq_3").val();
-			var rsit_Seq1 = null; 
-			var rsit_Seq2 = null; 
-			var rsit_Seq3 = null;
-			/* var rsit_Seq1 = $("#rsit_Seq1").val();
+			var rsit_Seq1 = $("#rsit_Seq1").val();
 			var rsit_Seq2 = $("#rsit_Seq2").val();
-			var rsit_Seq3 = $("#rsit_Seq3").val(); */
-			var rse_Seq1 = null;
-			var rse_Seq2 = null;
-			var rse_Seq3 = null;
-			/* var rse_Seq1 = $("#rse__Seq_1").val();
+			var rsit_Seq3 = $("#rsit_Seq3").val();
+			var rse_Seq1 = $("#rse__Seq_1").val();
 			var rse_Seq2 = $("#rse__Seq_2").val();
-			var rse_Seq3 = $("#rse__Seq_3").val(); */
-			var rsls_Seq1 = null;
-			var rsls_Seq2 = null;
-			var rsls_Seq3 = null;
-			/* var rsls_Seq1 = $("#rsls__Seq_1").val();
+			var rse_Seq3 = $("#rse__Seq_3").val();
+			var rsls_Seq1 = $("#rsls__Seq_1").val();
 			var rsls_Seq2 = $("#rsls__Seq_2").val();
-			var rsls_Seq3 = $("#rsls__Seq_3").val(); */
-			var rst_Seq1 =null; 
-			var rst_Seq2 =null; 
-			var rst_Seq3 =null;
-			/* var rst_Seq1 =$("#rst__Seq1").val(); 
+			var rsls_Seq3 = $("#rsls__Seq_3").val();
+			var rst_Seq1 =$("#rst__Seq1").val(); 
 			var rst_Seq2 =$("#rst__Seq2").val(); 
-			var rst_Seq3 =$("#rst__Seq3").val(); */
+			var rst_Seq3 =$("#rst__Seq3").val();
 			var rsf_Seq1 = null;
 			var rsf_Seq2 = null;
 			var rsf_Seq3 = null;
-			var rslg_Seq1 = null;
-			var rslg_Seq2 = null;
-			var rslg_Seq3 = null;
-			/* var rslg_Seq1 = $("#rslg__Seq1").val();
+			var rslg_Seq1 = $("#rslg__Seq1").val();
 			var rslg_Seq2 = $("#rslg__Seq2").val();
-			var rslg_Seq3 = $("#rslg__Seq3").val(); */
+			var rslg_Seq3 = $("#rslg__Seq3").val();
 			var rspf_Seq = null;
 			var rsv_Seq = null;
-			var rspr_Seq = null;
+			/* var rsv_Seq = $("#rsv__Seq").val(); */
+			var rspr_Seq = $("#rspr_Seq").val();
+			
+						
 			var allData = {
 					"rs_seq" : rs_seq,
 					"rs_name" : rs_name,
@@ -661,37 +649,37 @@ $("#rs_seq").val(null);
 		</table>
 	</div>
 	<div id="studyLVDiv">
-		<h2>학력</h2>
+		<jsp:include page="../studyLV/studyLVWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="workLVDiv">
 		<jsp:include page="../workLV/workLvForm.jsp"></jsp:include>
 	</div>
 	<div id="internDiv">
-		<%-- <jsp:include page="../intern/internWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../intern/internWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="eduDiv">
-		<%-- <jsp:include page="../edu/eduWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../edu/eduWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="licenseDiv">
 		<jsp:include page="../license/licenseWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="trophyDiv">
-		<%-- <jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="foreignDiv">
 		<h2>해외경험</h2>
 	</div>
 	<div id="languageDiv">
-		<%-- <jsp:include page="../language/languageWriteForm.jsp"></jsp:include> --%>
+		<jsp:include page="../language/languageWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="portfolioDiv">
 		<h2>포트폴리오</h2>
 	</div>
 	<div id="vipDiv">
-		<h2>취업우대</h2>
+		<jsp:include page="../vip/vipForm.jsp"></jsp:include>
 	</div>
 	<div id="prDiv">
-		<h2>자기소개서</h2>
+		<jsp:include page="../pr/prWriteForm.jsp"></jsp:include>
 	</div>
 </div>
 <div id="nav">

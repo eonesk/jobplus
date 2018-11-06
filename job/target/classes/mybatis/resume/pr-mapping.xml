@@ -15,4 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectRsprUserTitleList" parameterType="String" resultType="rsprDTO">
 		select * from RS_pr where M_id = #{memId}
 	</select>
+	
+	<select id="selectLastSeq" resultType="int">
+		select max(rspr_seq) from rs_pr
+	</select>
+	
 </mapper>
