@@ -23,8 +23,8 @@
     height: 140px;
     box-sizing: border-box;
 	background: #fafafa
-	url(img/bg_photo_add.png)
-	50% 50% no-repeat;
+				url(img/bg_photo_add.png)
+				50% 50% no-repeat;
 }
 #btn_imageload {
 	width:115px;

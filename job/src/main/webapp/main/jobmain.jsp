@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var headerOffset = $('.top_menu').offset();
@@ -23,10 +24,11 @@ body {
 }
 ol, ul, li {
     list-style: none;
-    list-style-type: none;
-    list-style-position: initial;
-    list-style-image: initial;
+/*     list-style-type: none; 
+/*     list-style-position: initial; */
+/*     list-style-image: initial; *////
 }
+
 #container {
     position: relative;
     padding-top: 100px;
@@ -75,10 +77,24 @@ ol, ul, li {
     font-size: 100%;
     font-weight: normal;
 }
-.area_logo .all_menu {
-    float: left;
+a.logo_cm_service {
+    margin: 10px;
     position: relative;
-    margin: 51px 0 0 10px;
+    left: 75px;
+}
+.area_logo .all_menu {
+    position: relative;
+    left: 170px;
+    bottom: 23px;
+}
+.area_logo .btn_menu {
+    display: block;
+    width: 23px;
+    height: 21px;
+    text-indent: -9999px;
+    background: url(../img/btn_menu.png) no-repeat 0 0;
+    border: none;
+    cursor: pointer;
 }
 #header .gnb {
     display: block;
@@ -86,10 +102,8 @@ ol, ul, li {
     width: 1260px;
 }
 #header .gnb .list_gnb {
-    list-style: none;
     padding-left: 225px;
     height: 42px;
-    float: left;
     /* background-color: #ece2e2; */
     position: relative;
     top: 15px;
@@ -99,19 +113,39 @@ ol, ul, li {
     float: right;
     padding-left: 0;
 }
-#menu .list_gnb li {
-	display: inline;
-	position: relative;
-	padding: 0px 8px 20px 8px;
-	background-color: #ffa7a7;
+ul.list_gnb li {
+    float: left;
+    border: 1px dotted red;
+    margin-left: 3px;
 }
-#menu .pos_right li {
-	display: inline;
-	position: relative;
-	padding: 0px 8px 20px 8px;
-	background-color: #ffa7a7;
-	float: right;
+#header .gnb .list_gnb li > a {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 0 10px -2px 10px;
+    padding: 10px 5px 0 3px;
+    height: 42px;
+    box-sizing: border-box;
+    color: #0d0d0d;
+    font-size: 15px;
+    letter-spacing: -2px;
+    word-spacing: -1px;
+    line-height: 1;
 }
+
+/* #menu .list_gnb li { */
+/* 	display: inline; */
+/* 	position: relative; */
+/* 	padding: 0px 8px 20px 8px; */
+/* 	background-color: #ffa7a7; */
+/* } */
+/* #menu .pos_right li { */
+/* 	display: inline; */
+/* 	position: relative; */
+/* 	padding: 0px 8px 20px 8px; */
+/* 	background-color: #ffa7a7; */
+/* 	float: right; */
+/* } */
 #header .user_info {
 	background-color: #e6c2c2;
 	padding-right: 30px;
@@ -129,6 +163,7 @@ ol, ul, li {
     border-bottom: 1px solid #cacaca;
     box-shadow: 0 1px 3px rgba(0,0,0,.1);
 }
+/*사이드 메뉴*/
 #cm_contents {
     display: block;
     margin: 25px auto 58px;
@@ -207,36 +242,119 @@ ol, ul, li {
     min-height: 528px;
     vertical-align: top;
 }
+/*레이어 팝업 CSS*/
+#user_corp_popup {
+    height: 250px;
+    border: 1px solid #757575;
+    position: absolute;
+    left: 968px;
+    top: 45px;
+    background: #fff;
+}
+#user_corp_popup button{
+  cursor:pointer;
+}
+.user_corp_name {
+    padding-top: 33px;
+}
+.area_corp_logo {
+    margin-top: 18px;
+    margin-bottom: 13px;
+}
+.area_corp_logo .corp_thum {
+    padding: 5px;
+    width: 130px;
+    max-width: 130px;
+    height: 70px;
+    max-height: 70px;
+    border: 1px solid #e0e0e0;
+    vertical-align: middle;
+    margin-left: 75px;
+    margin-bottom: 4px;
+}
+.area_corp_logo a.logo_modify {
+    margin-top: 13px;
+    border: 1px dotted red;
+    font-size: 13px;
+    line-height: 10px;
+    height: 14px;
+    margin-left: 120px;
+}
+#user_corp_popup .area_bottom {
+    position: relative;
+    padding: 13px 60px;
+    height: 58px;
+    box-sizing: border-box;
+    letter-spacing: -1px;
+    text-align: right;
+    background: #f1f1f1;
+}
+.area_bottom a {
+    padding: 5px 10px 7px 10px;
+    height: 100%;
+    border: 1px solid #b8b8b8;
+    border-radius: 2px;
+    box-sizing: border-box;
+    vertical-align: top;
+    color: #303030;
+    background: #fff;
+    line-height: 26px;
+    font-size: 14px;
+}
 </style>
 <script type="text/javascript">
-/*
-$(document).ready(function(){
-	  $("#layerPop_company").hide();
-	  $("#corp_name").click(function(){
-	    $("#layerPop_company").blur();
-	    $("#layerPop_company").show();
-	    $("#layerPop_company").focus();
+
+/*레이어 팝업*/
+$(document).ready(function() {
+	$("#user_corp_popup").hide();
+	$("#user_info > a").click(function() {
+		$("#user_info > a").blur();
+		$("#user_corp_popup").show();
+		$("#user_corp_popup a").focus();
 	    return false;
-	  });	  
-	  $("#corp_name").click(function(){
-	    $("#layerPop_company").hide();
-	  });
 	});
-*/
+	$(document).mouseup(function(e) {
+		var container = $("#user_corp_popup");
+		if(container.has(e.target).length =='0')
+			container.hide();
+	});	
+});
 </script>
 </head>
 <body id="topBar">
 	<div id="container">
 		<header id="header">
 			<div class="inner">
-				<div class="user_info">
-					<p class="company_user"></p>
-					<a href="#layerPop_company" id="corp_name">기업이름</a>
-					<!-- 레이어 팝업 기업 정보 -->				
+				<div class="user_info" id="user_info">
+					<a href="#user_corp_popup" id="corp_name">기업이름</a>
+					
+						<!-- 레이어 팝업 기업 정보 -->
+						<div id="user_corp_popup" class="user_corp_popup">
+					  		<div class="user_corp_name" align="center">
+					  			<a>기업이름</a>
+					  		</div>
+					  		<div class="user_corp_info">
+					  			<div class="area_corp_logo">
+					  				<div class="corp_thum"><img src=""></div>
+					  				<a class="logo_modify" href="#"><span>로고변경</span></a>
+					  			</div>
+					  		</div>
+					  		<div class="area_bottom">
+						  		<a>기업정보관리</a>
+						  		<a>로그아웃</a>
+					  		</div>
+					  </div>		
+					  						
 				</div>
 				<div class="area_logo">
 					<div class="title_logo">메인로고</div>
-					<div class="all_menu">all</div>
+						<a></a>
+						<a href="../main/jobmain.jsp" class="logo_cm_service" title="기업서비스">
+							<img alt="기업서비스" src="../img/logo_cm_service.png">
+						</a>
+					<div class="all_menu">
+						<button type="button" id="layer_all_menu_toggle_btn" class="btn_menu">메뉴 전체보기</button>
+					</div>
 				</div>
 				<nav id="gnb" class="gnb">
 					<ul class="list_gnb">
@@ -259,11 +377,11 @@ $(document).ready(function(){
 			<nav id="lnb" class="lnb">
 				<a href="#" class="btn_write_job"><span>공고 등록하기</span></a>
 				<ul class="list_lnb">
-					<li><a>전체공고</a></li>
-					<li><a class="second_depth">진행중공고</a></li>
-					<li><a class="second_depth">대기중공고</a></li>
-					<li><a class="second_depth">마감된공고</a></li>
-					<li><a class="second_depth">미완성공고</a></li>
+					<li><a href="#">전체공고</a></li>
+					<li><a class="second_depth" href="#">진행중공고</a></li>
+					<li><a class="second_depth" href="#">대기중공고</a></li>
+					<li><a class="second_depth" href="#">마감된공고</a></li>
+					<li><a class="second_depth" href="#">미완성공고</a></li>
 				</ul>			
 			</nav>
 			<div class="wrap_contents control_margin ">
