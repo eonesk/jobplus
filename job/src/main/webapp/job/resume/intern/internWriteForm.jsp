@@ -71,9 +71,9 @@
 	});
 	
 	/** Load 함수 */
-	function selected(accumSeq, num) {
+	function selected_rsit(accumSeq, num) {
 		$(function() {
-			alert("selected함수 실행 num값 = " + num);
+			alert("selected_rsit함수 실행 num값 = " + num);
 			count = num;
 			alert("selected함수 실행 count값 = " + count);
 			$.ajax({

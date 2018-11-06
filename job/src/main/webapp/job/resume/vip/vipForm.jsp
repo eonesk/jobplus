@@ -18,6 +18,7 @@ $(function() {
 	$(".rsv_listBtn").click(function() {
 		$(".rsv_list").hide();
 		$(this).next().show();
+		alert("!");
 	});
 	
 	$(".rsv_listCheckBtn").click(function() {
@@ -69,7 +70,7 @@ $(function() {
 			$("#rsv_militaryList").show();
 			return false;
 		}
-		window.open("vipSaveForm.jsp", "", "width=410px height=360px");
+		window.open("/job/job/resume/vip/vipSaveForm.jsp", "", "width=410px height=360px");
 		/* 
 		if(!$("#rsv_position").html()){
 			alert("취업보호대상 여부를 체크하세요.");
@@ -101,7 +102,7 @@ $(function() {
 	});
 	
 	$("#rsv_loadBtn").click(function() {
-		window.open("vipLoadForm.jsp", "", "width=420px height=520px");
+		window.open("/job/job/resume/vip/vipLoadForm.jsp", "", "width=420px height=520px");
 	});
 	
 	//쓰레기
@@ -118,12 +119,12 @@ $(function() {
 });
 
 	
-	function selected(accumSeq) {
+	function selected_rsv(accumSeq) {
 		$(function() {
 			
 			$.ajax({
 				type: 'POST',
-				url: 'rsvLoadView.do',
+				url: '/job/job/resume/vip/rsvLoadView.do',
 				dataType: 'json',
 				data: {
 					"accumSeq": accumSeq
@@ -132,7 +133,7 @@ $(function() {
 
 					$.each(data.items, function(index, item) {
 						var testDTO = item;
-						
+						$("#rsv__seq").val(testDTO.rsv_seq);
 						$("#rsv_seq").html(testDTO.rsv_seq);
 						$("#rsv_isMedal").html(testDTO.rsv_isMedal);
 						$("#rsv_isProtect").html(testDTO.rsv_isProtect);
@@ -429,7 +430,7 @@ input:checked + label{
 		<div id="rsv_content" class="rsv_content">
 			<div id="rsv_lineOne" class="rsv_lineOne rsv_lineDiv">
 				<div id="rsv_isMedalDiv" class="rsv_isMedalDiv rsv_lineOneDiv">
-					<button class="rsv_listBtn">
+					<button class="rsv_listBtn" id="rsv_listBtn">
 						<span class="rsv_titleSpan">보훈대상</span>
 						<span id="rsv_isMedal" class="rsv_valueSpan"></span>
 					</button>

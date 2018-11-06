@@ -73,7 +73,7 @@
 		});
 	});
 	
-	function selected(accumSeq, licensePlusButtonCnt_Delivered) {
+	function selected_rsls(accumSeq, licensePlusButtonCnt_Delivered) {
 		$(function() {
 			console.log("[selected]----------부모창 시작----------");
 			licensePlusButtonCnt = licensePlusButtonCnt_Delivered;

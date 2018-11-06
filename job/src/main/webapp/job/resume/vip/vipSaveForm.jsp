@@ -121,6 +121,7 @@
 				success: function(data) {
 					if(data > 0) {
 						alert("성공");
+						$("#rsv__Seq", opener.document).val(data);
 						window.close();
 					} else {
 						alert("실패");
