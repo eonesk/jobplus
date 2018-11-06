@@ -33,4 +33,9 @@ public class RS_vipServiceImpl implements RS_vipService {
 		return rs_vipDAO.rsvGetDTO(rsv_seq);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return rs_vipDAO.selectLastSeq();
+	}
+
 }

@@ -93,7 +93,7 @@
 				                		// 2개가 되야함. 확인해야할부분
 				                		 alert("selected accumSeq : " + accumSeq);
 				                		 alert("selected 보내기전 count : " + ${param.count});
-				                		opener.parent.selected(accumSeq, ${param.count});
+				                		opener.parent.selected_rst(accumSeq, ${param.count});
 					                	self.close();
 				                	}
 				                	

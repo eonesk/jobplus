@@ -21,7 +21,6 @@ public class RM_introductionController {
 	@RequestMapping(value="/job/recruitment/introduction/Write.do", method=RequestMethod.POST)
 	public void Write(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 데이터
-
 		response.setContentType("text/html; charset=UTF-8");		
 		PrintWriter out = response.getWriter();
 		

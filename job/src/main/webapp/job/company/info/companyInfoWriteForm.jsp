@@ -12,7 +12,7 @@
 	$(function() {
 		$("#map_open").on("click", function() {
 			var title = "기업 위치 확인";
-			var location = $("#CPI_address").val();
+			var location = $("#cpi_Address").val();
 			var cw=720;
 			var ch=600;
 			var sw = screen.availWidth;

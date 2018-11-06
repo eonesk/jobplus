@@ -75,7 +75,11 @@ public class RS_vipController {
 		
 		//DB 저장
 		int saveCount = rs_vipService.rsvSave(rs_vipDTO);
-		out.print(saveCount);
+		int rsv_Seq = 0;
+		if(saveCount>0) {
+			rsv_Seq = rs_vipService.selectLastSeq();
+		}
+		out.print(rsv_Seq);
 	}
 	
 	@RequestMapping(value="/job/resume/vip/rsvLoadCount.do", method=RequestMethod.POST)

@@ -77,7 +77,7 @@
 	});
 	
 	/** Load 함수 */
-	function selected(accumSeq, eduPlusButtonCnt_Delivered) {
+	function selected_rse(accumSeq, eduPlusButtonCnt_Delivered) {
 		$(function() {
 			console.log("[selected]----------부모창 시작----------");
 			eduPlusButtonCnt = eduPlusButtonCnt_Delivered;

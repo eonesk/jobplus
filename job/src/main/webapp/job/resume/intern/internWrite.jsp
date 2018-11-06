@@ -86,7 +86,7 @@
 		<div>			
 			<input type="text" id="rsitUserTitle" name="rsitUserTitle" style="width:280px;height:30px;">
 			<input type="button" value="저장하기" id="save" class="save">
-			<input type="button" value="취소" id="cancle" class="save">		
+			<input type="button" value="취소" id="cancle" class="cancle">		
 		</div>				
 	</fieldset>
 </body>

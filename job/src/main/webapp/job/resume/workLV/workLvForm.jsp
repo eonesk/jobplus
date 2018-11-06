@@ -330,7 +330,7 @@ body {
 	
 	
 	/** Load 함수 */
-	function selected(accumSeq, addCount_Delivered) {
+	function selected_rsw(accumSeq, addCount_Delivered) {
 		$(function() {
 			
 			addCount = addCount_Delivered;

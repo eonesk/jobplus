@@ -9,12 +9,12 @@
 <script type="text/javascript">	
 	var count = 0;		
 	$(function() {	
-		$("#t").hide();
+		$("#rsit_t").hide();
 		
 		$("#internplus").click(function() {		
 			count++;
 			var num = count;	
-			var clone = $("#t").clone().attr('id', 't' + count);
+			var clone = $("#rsit_t").clone().attr('id', 'rsit_t' + count);
 			
 			if (count >= 4) {
 				count--;
@@ -26,12 +26,12 @@
 				$(this).attr("id", $(this).attr("id") + count);
 			});
 			
-			clone.insertAfter("#t");
-			$("#t" + num).show();
+			clone.insertAfter("#rsit_t");
+			$("#rsit_t" + num).show();
 			
 			$("#interndelete" + num).on("click", function() {
 				/*$("#t" + count).remove();*/
-				$(this).parent("#t" + num).remove();
+				$(this).parent("#rsit_t" + num).remove();
 				$("#rsit_Seq"+num).val("");
 				count--;
 			});
@@ -71,9 +71,9 @@
 	});
 	
 	/** Load 함수 */
-	function selected(accumSeq, num) {
+	function selected_rsit(accumSeq, num) {
 		$(function() {
-			alert("selected함수 실행 num값 = " + num);
+			alert("selected_rsit함수 실행 num값 = " + num);
 			count = num;
 			alert("selected함수 실행 count값 = " + count);
 			$.ajax({
@@ -90,7 +90,7 @@
 						count++;
 						
 						var num = count;
-						var clone = $("#t").clone().attr("id", "t" + num);
+						var clone = $("#rsit_t").clone().attr("id", "rsit_t" + num);
 						
 						// id&name 넘버링 변경 작업
 						clone.find("*[id]").each(function() {
@@ -101,9 +101,9 @@
 							$(this).attr("name", $(this).attr("name") + num);
 						});
 						
-						clone.insertAfter("#t");
+						clone.insertAfter("#rsit_t");
 						
-						$("#t" + num).show();
+						$("#rsit_t" + num).show();
 						
 						/** 이벤트 바인딩 */
 						// 'X'표 눌렀을 때 닫기
@@ -245,7 +245,7 @@ fieldset {
 		<input type="button" value="불러오기" id="internload" class="internload">
 </div>
 	<fieldset>
-		<div id="t" class="t">
+		<div id="rsit_t" class="rsit_t">
 			<br>
 			<select name="rsitType" id="rsitType" class="rsitType" >				
 				<option value="활동구분">---활동구분---</option>

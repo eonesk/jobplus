@@ -7,15 +7,73 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-
+$(function() {
+	$("#ap_btn_reset").on("click", function() {			
+		$('input:checkbox[name="language[]"]').prop("checked", false);
+	});
+	
+	$('input:checkbox[class="chk"]').click(function() {
+		var num = $('input:checkbox[class="chk"]:checked').length;   //체크갯수 확인
+		if(num>3){
+			alert("최대 3개까지 선택가능합니다.");
+			$('input:checkbox[class="chk"]').prop("checked", false);
+		 }
+	}); 
+	
+	$("#btn_typ_1").on("click", function() {	
+		$('label[class="language1"]').show();	
+		$('label[class="language2"]').hide();	
+		$('label[class="language3"]').hide();	
+		$('label[class="language4"]').hide();	
+		$('label[class="language5"]').hide();	
+	});
+	$("#btn_typ_2").on("click", function() {	
+		$('label[class="language1"]').hide();		
+		$('label[class="language2"]').show();	
+		$('label[class="language3"]').hide();	
+		$('label[class="language4"]').hide();	
+		$('label[class="language5"]').hide();	
+	});
+	$("#btn_typ_3").on("click", function() {	
+		$('label[class="language1"]').hide();		
+		$('label[class="language2"]').hide();	
+		$('label[class="language3"]').show();	
+		$('label[class="language4"]').hide();	
+		$('label[class="language5"]').hide();	
+	});
+	$("#btn_typ_4").on("click", function() {	
+		$('label[class="language1"]').hide();		
+		$('label[class="language2"]').hide();	
+		$('label[class="language3"]').hide();	
+		$('label[class="language4"]').show();	
+		$('label[class="language5"]').hide();	
+	});
+	$("#btn_typ_5").on("click", function() {	
+		$('label[class="language1"]').hide();		
+		$('label[class="language2"]').hide();	
+		$('label[class="language3"]').hide();	
+		$('label[class="language4"]').hide();	
+		$('label[class="language5"]').show();	
+	});
+	
+	$("#ap_btn_OK").on("click", function() {
+		var items=[];
+		$('input[class="chk"]:checkbox:checked').each(function(){
+			items.push($(this).val());
+		});			 
+		var tmp = items.join('/');
+		alert(tmp);
+		$("#rma_Foreign", opener.document).val(tmp);
+		self.close();
+	});
+	
+	$("#ap_btn_close").click(function() {
+		window.close();
+	});
+});
 </script>
 <style type="text/css">
-.btn_typ_c3 {
-    width: 130px;
-    height: 31px;
-    margin: -120px;
-}
-.chk_list {
+.ap_chk_list {
    	list-style: none;   	
    	position: relative;
     width: auto;
@@ -23,11 +81,14 @@
     text-align: center;
     vertical-align: top;
     text-align: left;
-    margin: 10 10 10 10px;
+    margin: 0 10 10 10px;
+    padding: 0 0 0 15px;
 }
-button.btn_typ_c3 {
-    padding: 0 12px 2px;
-    height: 40px;
+.btn_typ_c3 {
+    padding: 0 12px 2px;  
+    margin: 2px 2px 2px 2px;  
+    width: 130px;
+    height: 30px;
     border: 1px solid #b8b8b8;
     border-radius: 2px;
     box-sizing: border-box;
@@ -39,23 +100,61 @@ button.btn_typ_c3 {
     text-align: center;
     background-color: #fff;
 }
-button:hover {
-	border: 1px solid #151515;
+.btn_typ_c3:hover {
+	border: 1px solid #151515;	
 }
-.title {
+.btn_typ_c3:focus {
+	background-color: gray;
+}
+.ap_title {
 	background-color: #F2F2F2;
 	height: 40px;
+	border-top: 1px solid black;
 }
 .point_color {
 	color: #FF8000;
+}
+.ap_btn_reset {
+	position: relative;
+	left: 65%;
+	width: 120px;
+	height: 30px;
+	background-color: white;
+	border: 1px solid #E6E6E6;	
+	margin-bottom: 10px;
+}
+.ap_btn_reset:hover {
+	border: 1px solid #6E6E6E;	
+}
+.ap_btn_OK, .ap_btn_close {
+	width: 150px;
+	height: 50px;
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 65px;
+}
+.ap_btn_OK {
+	background-color: #2E2E2E;
+	color: white;
+	border: 0;
+}
+.ap_btn_OK:hover {
+	background: #000000;
+}
+.ap_btn_close {
+	background-color: white;
+	border: 1px solid #E6E6E6;
+}
+.ap_btn_close:hover {
+	border: 1px solid #6E6E6E;
 }
 </style>
 </head>
 <body>
 <div id="lpop_language" class="lpop_wrap lpop_exam" style="display: block;">
-    <h3>외국어 시험 선택</h3>
+    <h2>외국어 시험 선택</h2>
     <div class="tbl_btn_area">
-        <button type="button" class="btn_reset">전체선택 초기화</button>
+        <input type="button" class="ap_btn_reset" id="ap_btn_reset" value="전체선택 초기화">
     </div>
 		<div class="tbl_typ_reg02 down_typ">
 			<table class="tbl_common">
@@ -64,279 +163,172 @@ button:hover {
 					<col style="">
 				</colgroup>
 				<thead>
-					<tr class="title">
-						<th>언어선택</th>
-						<th>외국어시험선택 <span class="point_color">(최대3개)</span></th>
+					<tr class="ap_title">
+						<th width="200">언어선택</th>
+						<th width="300">외국어시험선택 <span class="point_color">(최대3개)</span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th class="first_item">
-							<button type="button" class="btn_typ_c3 on" value="1">영어</button>
+							<input type="button" class="btn_typ_c3" id="btn_typ_1" value="영어">
 						</th>
-						<td rowspan="8">
-							<div class="chk_exam">
-								<ul class="chk_list" style="padding: 10px 0 0 15px;">
+						<td rowspan="16">
+							<div class="chk_exam" id="list1">
+								<ul class="ap_chk_list" id="ap_chk_list">
 									<li class="chk_item">
-										<label for="language_7453">
-											<input type="checkbox" name="language[]" id="language_7453"	value="7453"><span>TOEIC</span>
+										<label for="language1" class="language1">
+											<input type="checkbox" name="language[]" id="language_1" class="chk" value="TOEIC"><span>TOEIC</span>
 										</label>
 									</li>
 									<li class="chk_item">
-										<label for="language_7454">
-											<input type="checkbox" name="language[]" id="language_7454"	value="7454"><span>S-ETAT2급</span>
+										<label for="language2" class="language1">
+											<input type="checkbox" name="language[]" id="language_2" class="chk" value="S-ETAT2급"><span>S-ETAT2급</span>
 										</label>
 									</li>
 									<li class="chk_item">
-										<label for="language_7455">
-											<input type="checkbox" name="language[]" id="language_7455" value="7455"><span>TOED</span>
+										<label for="language3" class="language1">
+											<input type="checkbox" name="language[]" id="language_3" class="chk" value="TOED"><span>TOED</span>
 										</label>
 									</li>
 									<li class="chk_item">
-										<label for="language_7456">
-											<input type="checkbox" name="language[]" id="language_7456" value="7456"><span>S-TOED</span>
+										<label for="language4" class="language1">
+											<input type="checkbox" name="language[]" id="language_4" class="chk" value="S-TOED"><span>S-TOED</span>
 										</label>
 									</li>
 									<li class="chk_item">
-										<label for="language_7457">
-											<input type="checkbox" name="language[]" id="language_7457" value="7457"><span>EPQT</span>
+										<label for="language5" class="language1">
+											<input type="checkbox" name="language[]" id="language_5" class="chk" value="EPQT"><span>EPQT</span>
 										</label>
-									</li>									
-									<li class="chk_item"><label for="language_7758"><input
-											type="checkbox" name="language[]" id="language_7758"
-											value="7758"><span>공무원영어</span></label></li>
-									<li class="chk_item"><label for="language_7759"><input
-											type="checkbox" name="language[]" id="language_7759"
-											value="7759"><span>관광통역안내사 영어</span></label></li>
-									<li class="chk_item"><label for="language_7760"><input
-											type="checkbox" name="language[]" id="language_7760"
-											value="7760"><span>무역영어</span></label></li>
-									<li class="chk_item"><label for="language_7761"><input
-											type="checkbox" name="language[]" id="language_7761"
-											value="7761"><span>영어 교원자격증</span></label></li>
-									<li class="chk_item"><label for="language_7762"><input
-											type="checkbox" name="language[]" id="language_7762"
-											value="7762"><span>AP</span></label></li>
-									<li class="chk_item"><label for="language_7763"><input
-											type="checkbox" name="language[]" id="language_7763"
-											value="7763"><span>Cambridge Certification CAE</span></label></li>
-									<li class="chk_item"><label for="language_7764"><input
-											type="checkbox" name="language[]" id="language_7764"
-											value="7764"><span>Cambridge Certification CPE</span></label></li>
-									<li class="chk_item"><label for="language_7765"><input
-											type="checkbox" name="language[]" id="language_7765"
-											value="7765"><span>Cambridge Certification FCE</span></label></li>
-									<li class="chk_item"><label for="language_7766"><input
-											type="checkbox" name="language[]" id="language_7766"
-											value="7766"><span>EFB</span></label></li>
-									<li class="chk_item"><label for="language_7767"><input
-											type="checkbox" name="language[]" id="language_7767"
-											value="7767"><span>ESPT</span></label></li>
-									<li class="chk_item"><label for="language_7768"><input
-											type="checkbox" name="language[]" id="language_7768"
-											value="7768"><span>FLEX 영어</span></label></li>
-									<li class="chk_item"><label for="language_7769"><input
-											type="checkbox" name="language[]" id="language_7769"
-											value="7769"><span>GMAT</span></label></li>
-									<li class="chk_item"><label for="language_7770"><input
-											type="checkbox" name="language[]" id="language_7770"
-											value="7770"><span>GRE</span></label></li>
-									<li class="chk_item"><label for="language_7771"><input
-											type="checkbox" name="language[]" id="language_7771"
-											value="7771"><span>iB-SET</span></label></li>
-									<li class="chk_item"><label for="language_7772"><input
-											type="checkbox" name="language[]" id="language_7772"
-											value="7772"><span>IELTS</span></label></li>
-									<li class="chk_item"><label for="language_7773"><input
-											type="checkbox" name="language[]" id="language_7773"
-											value="7773"><span>IET</span></label></li>
-									<li class="chk_item"><label for="language_7774"><input
-											type="checkbox" name="language[]" id="language_7774"
-											value="7774"><span>JET</span></label></li>
-									<li class="chk_item"><label for="language_7775"><input
-											type="checkbox" name="language[]" id="language_7775"
-											value="7775"><span>JET Speaking</span></label></li>
-									<li class="chk_item"><label for="language_7776"><input
-											type="checkbox" name="language[]" id="language_7776"
-											value="7776"><span>J-TOED</span></label></li>
-									<li class="chk_item"><label for="language_7777"><input
-											type="checkbox" name="language[]" id="language_7777"
-											value="7777"><span>LSAT</span></label></li>
-									<li class="chk_item"><label for="language_7778"><input
-											type="checkbox" name="language[]" id="language_7778"
-											value="7778"><span>OPIC</span></label></li>
-									<li class="chk_item"><label for="language_7779"><input
-											type="checkbox" name="language[]" id="language_7779"
-											value="7779"><span>PELT</span></label></li>
-									<li class="chk_item"><label for="language_7780"><input
-											type="checkbox" name="language[]" id="language_7780"
-											value="7780"><span>PELT Jr</span></label></li>
-									<li class="chk_item"><label for="language_7781"><input
-											type="checkbox" name="language[]" id="language_7781"
-											value="7781"><span>PELT kids</span></label></li>
-									<li class="chk_item"><label for="language_7782"><input
-											type="checkbox" name="language[]" id="language_7782"
-											value="7782"><span>PELT main</span></label></li>
-									<li class="chk_item"><label for="language_7783"><input
-											type="checkbox" name="language[]" id="language_7783"
-											value="7783"><span>PELT plus</span></label></li>
-									<li class="chk_item"><label for="language_7784"><input
-											type="checkbox" name="language[]" id="language_7784"
-											value="7784"><span>PELT standard</span></label></li>
-									<li class="chk_item"><label for="language_7785"><input
-											type="checkbox" name="language[]" id="language_7785"
-											value="7785"><span>PET(Preliminary English
-												Test)</span></label></li>
-									<li class="chk_item"><label for="language_7786"><input
-											type="checkbox" name="language[]" id="language_7786"
-											value="7786"><span>SAT</span></label></li>
-									<li class="chk_item"><label for="language_7787"><input
-											type="checkbox" name="language[]" id="language_7787"
-											value="7787"><span>SEPT</span></label></li>
-									<li class="chk_item"><label for="language_7788"><input
-											type="checkbox" name="language[]" id="language_7788"
-											value="7788"><span>SLEP</span></label></li>
-									<li class="chk_item"><label for="language_7789"><input
-											type="checkbox" name="language[]" id="language_7789"
-											value="7789"><span>SNULT 영어</span></label></li>
-									<li class="chk_item"><label for="language_7790"><input
-											type="checkbox" name="language[]" id="language_7790"
-											value="7790"><span>SSAT</span></label></li>
-									<li class="chk_item"><label for="language_7791"><input
-											type="checkbox" name="language[]" id="language_7791"
-											value="7791"><span>TCT 번역능력인정시험 영어</span></label></li>
-									<li class="chk_item"><label for="language_7792"><input
-											type="checkbox" name="language[]" id="language_7792"
-											value="7792"><span>TESOL</span></label></li>
-									<li class="chk_item"><label for="language_7793"><input
-											type="checkbox" name="language[]" id="language_7793"
-											value="7793"><span>TOEFL(CBT)</span></label></li>
-									<li class="chk_item"><label for="language_7794"><input
-											type="checkbox" name="language[]" id="language_7794"
-											value="7794"><span>TOEFL(iBT)</span></label></li>
-									<li class="chk_item"><label for="language_7795"><input
-											type="checkbox" name="language[]" id="language_7795"
-											value="7795"><span>TOEFL(PBT)</span></label></li>
-									<li class="chk_item"><label for="language_7796"><input
-											type="checkbox" name="language[]" id="language_7796"
-											value="7796"><span>TOEIC Bridge</span></label></li>
-									<li class="chk_item"><label for="language_7797"><input
-											type="checkbox" name="language[]" id="language_7797"
-											value="7797"><span>TOEIC Speaking and Writing
-												Tests</span></label></li>
-									<li class="chk_item"><label for="language_7798"><input
-											type="checkbox" name="language[]" id="language_7798"
-											value="7798"><span>TOEIC Speaking Test</span></label></li>
-									<li class="chk_item"><label for="language_7799"><input
-											type="checkbox" name="language[]" id="language_7799"
-											value="7799"><span>TOP</span></label></li>
-									<li class="chk_item"><label for="language_7800"><input
-											type="checkbox" name="language[]" id="language_7800"
-											value="7800"><span>TOSEL</span></label></li>
-									<li class="chk_item"><label for="language_7801"><input
-											type="checkbox" name="language[]" id="language_7801"
-											value="7801"><span>TSE</span></label></li>
-									<li class="chk_item"><label for="language_7802"><input
-											type="checkbox" name="language[]" id="language_7802"
-											value="7802"><span>TWP</span></label></li>
-									<li class="chk_item"><label for="language_7803"><input
-											type="checkbox" name="language[]" id="language_7803"
-											value="7803"><span>Y-TOED</span></label></li>
-									<li class="chk_item"><label for="language_23573"><input
-											type="checkbox" name="language[]" id="language_23573"
-											value="23573"><span>TOEIC Writing Test</span></label></li>
-									<li class="chk_item"><label for="language_26876"><input
-											type="checkbox" name="language[]" id="language_26876"
-											value="26876"><span>BEC Preliminary</span></label></li>
-									<li class="chk_item"><label for="language_26877"><input
-											type="checkbox" name="language[]" id="language_26877"
-											value="26877"><span>BEC Vantage</span></label></li>
-									<li class="chk_item"><label for="language_26878"><input
-											type="checkbox" name="language[]" id="language_26878"
-											value="26878"><span>BEC Higher</span></label></li>
-									<li class="chk_item"><label for="language_28897"><input
-											type="checkbox" name="language[]" id="language_28897"
-											value="28897"><span>Versant</span></label></li>
-									<li class="chk_item"><label for="language_30481"><input
-											type="checkbox" name="language[]" id="language_30481"
-											value="30481"><span>WPT(Writing Proficiency
-												Test)</span></label></li>
-									<li class="chk_item"><label for="language_36439"><input
-											type="checkbox" name="language[]" id="language_36439"
-											value="36439"><span>SPA(Speaking Proficiency
-												Assessment) </span></label></li>
-									<li class="chk_item"><label for="language_36441"><input
-											type="checkbox" name="language[]" id="language_36441"
-											value="36441"><span>NEAT</span></label></li>
-									<li class="chk_item"><label for="language_36442"><input
-											type="checkbox" name="language[]" id="language_36442"
-											value="36442"><span>TESL</span></label></li>
-									<li class="chk_item"><label for="language_36669"><input
-											type="checkbox" name="language[]" id="language_36669"
-											value="36669"><span>ITT 특별통역 자격증</span></label></li>
-									<li class="chk_item"><label for="language_36670"><input
-											type="checkbox" name="language[]" id="language_36670"
-											value="36670"><span>ITT 전문통역 자격증</span></label></li>
-									<li class="chk_item"><label for="language_36671"><input
-											type="checkbox" name="language[]" id="language_36671"
-											value="36671"><span>ITT 비즈니스통역 자격증</span></label></li>
-									<li class="chk_item"><label for="language_36672"><input
-											type="checkbox" name="language[]" id="language_36672"
-											value="36672"><span>ITT 특별번역 자격증</span></label></li>
-									<li class="chk_item"><label for="language_36673"><input
-											type="checkbox" name="language[]" id="language_36673"
-											value="36673"><span>ITT 전문번역 자격증</span></label></li>
-									<li class="chk_item"><label for="language_36674"><input
-											type="checkbox" name="language[]" id="language_36674"
-											value="36674"><span>ITT 비즈니스번역 자격증</span></label></li>
-									<li class="chk_item"><label for="language_39181"><input
-											type="checkbox" name="language[]" id="language_39181"
-											value="39181"><span>TEPS Speaking</span></label></li>
-									<li class="chk_item"><label for="language_39445"><input
-											type="checkbox" name="language[]" id="language_39445"
-											value="39445"><span>OPI</span></label></li>
-									<li class="chk_item"><label for="language_39474"><input
-											type="checkbox" name="language[]" id="language_39474"
-											value="39474"><span>OPic Writing</span></label></li>
-									<li class="chk_item"><label for="language_39488"><input
-											type="checkbox" name="language[]" id="language_39488"
-											value="39488"><span>PTE Professional</span></label></li>
-									<li class="chk_item"><label for="language_39515"><input
-											type="checkbox" name="language[]" id="language_39515"
-											value="39515"><span>NEW TEPS</span></label></li>
-								</ul>
+									</li>																		
+									<li class="chk_item">
+										<label for="language1" class="language2" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_6" class="chk" value="JLPT"><span>JLPT</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language2" class="language2" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_7" class="chk" value="JPT"><span>JPT</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language3" class="language2" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_8" class="chk" value="JTRA"><span>JTRA</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language4" class="language2" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_9" class="chk" value="일본어 교원자격증"><span>일본어 교원자격증</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language5" class="language2" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_10" class="chk" value="EJU"><span>EJU</span>
+										</label>
+									</li>
+									
+									<li class="chk_item">
+										<label for="language1" class="language3" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_11" class="chk" value="HSK"><span>HSK</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language2" class="language3" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_12" class="chk" value="BCT"><span>BCT</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language3" class="language3" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_13" class="chk" value="C.TEST"><span>C.TEST</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language4" class="language3" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_14" class="chk" value="CPT"><span>CPT</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language5" class="language3" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_15" class="chk" value="FLEX중국어"><span>FLEX중국어</span>
+										</label>
+									</li>
+									
+									<li class="chk_item">
+										<label for="language1" class="language4" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_16" class="chk" value="DSH"><span>DSH</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language2" class="language4" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_17" class="chk" value="FLEX독일어"><span>FLEX독일어</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language3" class="language4" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_18" class="chk" value="GDS"><span>GDS</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language4" class="language4" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_19" class="chk" value="KDS"><span>KDS</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language5" class="language4" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_20" class="chk" value="PWD"><span>PWD</span>
+										</label>
+									</li>
+									
+									<li class="chk_item">
+										<label for="language1" class="language5" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_21" class="chk" value="국어능력인증시험"><span>국어능력인증시험</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language2" class="language5" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_22" class="chk" value="한국어 교원자격증"><span>한국어 교원자격증</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language3" class="language5" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_23" class="chk" value="KBS 한국어능력시험"><span>KBS 한국어능력시험</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language4" class="language5" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_24" class="chk" value="TOPIK"><span>TOPIK</span>
+										</label>
+									</li>
+									<li class="chk_item">
+										<label for="language5" class="language5" style="display: none;">
+											<input type="checkbox" name="language[]" id="language_25" class="chk" value="한자능력검정"><span>한자능력검정</span>
+										</label>
+									</li>																				
+								</ul>								
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<th><button type="button" class="btn_typ_c3 " value="2">일본어</button></th>
+						<th><input type="button" class="btn_typ_c3" id="btn_typ_2" value="일본어"></th>
 					</tr>
 					<tr>
-						<th><button type="button" class="btn_typ_c3 " value="3">중국어</button></th>
+						<th><input type="button" class="btn_typ_c3" id="btn_typ_3" value="중국어"></th>
 					</tr>
 					<tr>
-						<th><button type="button" class="btn_typ_c3 " value="4">독일어</button></th>
-					</tr>
+						<th><input type="button" class="btn_typ_c3" id="btn_typ_4" value="독일어"></th>
+					</tr>					
 					<tr>
-						<th><button type="button" class="btn_typ_c3 " value="5">불어</button></th>
-					</tr>
-					<tr>
-						<th><button type="button" class="btn_typ_c3 " value="6">스페인어</button></th>
-					</tr>
-					<tr>
-						<th><button type="button" class="btn_typ_c3 " value="7">러시아어</button></th>
-					</tr>
-					<tr>
-						<th><button type="button" class="btn_typ_c3 " value="9">한국어/한자/기타</button></th>
+						<th><input type="button" class="btn_typ_c3" id="btn_typ_5" value="한국어/한자/기타"></th>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="btn_wrap">
-        <button type="button" class="btn_typ_a1">확인</button>
-        <button type="button" class="btn_typ_a2">취소</button>
-    </div>
-    <button type="button" class="btn_close_lpop01">닫기</button>
+		<hr>
+		<br>
+		<div class="ap_btn_wrap">
+        <input type="button" class="ap_btn_OK" id="ap_btn_OK" value="확인">
+        <input type="button" class="ap_btn_close" id="ap_btn_close" value="취소">       
+    </div>    
 </div>
 </body>
 </html>
