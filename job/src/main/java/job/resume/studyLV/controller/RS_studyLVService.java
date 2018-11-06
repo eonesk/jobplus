@@ -9,4 +9,5 @@ public interface RS_studyLVService {
 	int selectNumberOfStudyLV(String memId);
 	List<RS_studyLVDTO> selectStudyLVUserTitleList(String memId);
 	RS_studyLVDTO selectStudyLVDTO(int rss_Seq);
+	int selectLastSeq();
 }

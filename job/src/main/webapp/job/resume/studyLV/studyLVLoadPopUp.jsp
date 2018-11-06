@@ -104,7 +104,7 @@
 				                } else {
 				                	console.log("체크됨");
 				                	if(confirm("불러오기를 진행하시겠습니까?")) {
-				                		opener.parent.selected(accumSeq, ${param.studyLVPlusButtonCnt});
+				                		opener.parent.selected_rss(accumSeq, ${param.studyLVPlusButtonCnt});
 					                	self.close();
 				                	}
 				                	
