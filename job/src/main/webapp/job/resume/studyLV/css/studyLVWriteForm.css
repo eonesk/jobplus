@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
+
+
 body {
 	background-color: white;
-	
-	margin: 0 auto;
-	padding: 0 auto;
+
 	
 	width: 955px;
 }
@@ -14,32 +14,86 @@ body {
 		
 		width: 955px;
 	}
+
+/* -------------------------------------- TOP -------------------------------------- */
 	
-	h3#studyLV_Title {
-		font-weight: bold;
-	}
-	
-	div#studyLV_Load {
-		background-color: white; 
+		h3#studyLV_Title {
+			font-weight: bold;
+		}
 		
-		border: 1px solid gray; 
+		div#studyLV_Load {
+			background-color: white; 
+			
+			border: 1px solid gray; 
+			
+			padding: 5px; 
+			margin: 3px; 
+			display: inline-block; 
+			
+			float: left;
+		}
 		
-		padding: 5px; 
-		margin: 3px; 
-		display: inline-block; 
+		div#studyLV_Load:hover {border: 1px solid blue;}
 		
-		float: left;
-	}
+		a#RSS_loadA:link {text-decoration: none; color: black;}
+		a#RSS_loadA:visited {text-decoration: none; color: black;}
+		a#RSS_loadA:acheive {text-decoration: none; color: black;}
+		a#RSS_loadA:hover {text-decoration: none; color: black;}
+		
+		p#studyLV_Guide {
+			clear: both; 
+			
+			font-size: 12px; 
+			margin: 3px;
+		}
+		
+		div#studyLVTopBorder {border-bottom: 1px solid rgba(86, 111, 237, 0.3);}
 	
-	div#studyLV_Load:hover {border: 2px solid blue;}
+/* -------------------------------------- Middle -------------------------------------- */
+
+		div#Content_middle {
+			border-left: 1px solid rgba(86, 111, 237, 0.3);
+			border-right: 1px solid rgba(86, 111, 237, 0.3);
+		}
+		
+		div#studyLVPlus {
+			border-bottom: 1px solid rgba(86, 111, 237, 0.3); 
+		}
+			
+		.studyLVCloseButton {
+			
+		}
+					
+		input#isHighSchoolCheck {
+			float: left; 
+			padding-top: 50px;
+		}
+		
+		#rssTypeFirst { 
+			float: left; display: inline-block; background-color:white; margin-top: 8px; padding-left: 5px;padding-top: 13px; border: 1px solid lightgray; 
+			width: 105px; height: 37px;
+		}
+
+/* -------------------------------------- Bottom -------------------------------------- */	
+		
+		div#studyLVBottomBorder {border-top: 1px solid rgba(86, 111, 237, 0.3);}
+		
+		a#studyLVplusButton {text-decoration: none;}
+		a#studyLVplusButton:active {color: rgba(86, 111, 237, 1);}
 	
-	a#RSS_loadA:link {text-decoration: none; color: black;}
-	a#RSS_loadA:visited {text-decoration: none; color: black;}
-	a#RSS_loadA:acheive {text-decoration: none; color: black;}
-	a#RSS_loadA:hover {text-decoration: none; color: black;}
-	
-	
-	
+			div#studyLVplusButtonDiv { 
+				background-color: white; 
+				
+				text-align:center;
+				padding: 10px; 
+				padding-bottom: 20px; 
+				
+				border: 1px solid rgba(86, 111, 237, 0.3);; 
+				
+				width: 933px; 
+				height: auto;
+			}
+			div#studyLVplusButtonDiv:hover {border: 1px solid rgba(86, 111, 237, 1);}
 	
 	
 	

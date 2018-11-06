@@ -13,6 +13,7 @@
 		var memId = "num1";
 
 		var is_check = ${ param.is_check };
+		var numbering = "${ param.numbering }";
 		var rss_Type;
 		var rss_Name;
 		var rss_Startdate;
@@ -23,19 +24,22 @@
 		var rss_Totscore;
 		var rss_UserTitle;
 		
+		alert("[save] is_check : " + is_check);
+		alert("[save] numbering : " + numbering);
+		
 		if(is_check) {
 			alert("고등학교 미만 졸업");
 			rss_Ishighschool = "Y";
 		} else {
 			alert("고등학교 이상 졸업");
-			rss_Type = $("#rssTypeValue", opener.document).val();
-			rss_Name = $("#rssNameFirst", opener.document).val();
-			rss_Startdate = $("#rssStartDateValue", opener.document).val();
-			rss_Enddate = $("#rssEndDateValue", opener.document).val();
+			rss_Type = $("#rssTypeValue" + numbering, opener.document).val();
+			rss_Name = $("#rssNameFirst" + numbering, opener.document).val();
+			rss_Startdate = $("#rssStartDateValue" + numbering, opener.document).val();
+			rss_Enddate = $("#rssEndDateValue" + numbering, opener.document).val();
 			rss_Ishighschool = "N";
-			rss_Major = $("#rssMajorFirst", opener.document).val();
-			rss_Score = $("#rssScoreFirst", opener.document).val();
-			rss_Totscore = $("#rssTotScoreValue", opener.document).val();
+			rss_Major = $("#rssMajorFirst" + numbering, opener.document).val();
+			rss_Score = $("#rssScoreFirst" + numbering, opener.document).val();
+			rss_Totscore = $("#rssTotScoreValue" + numbering, opener.document).val();
 			
 			alert("[SavePopUp]" + rss_Type + " // " + rss_Name + " // " + rss_Startdate + " // " + rss_Enddate
 					 + " // " + rss_Ishighschool + " // " + rss_Major + " // " + rss_Score + " // " + rss_Totscore);

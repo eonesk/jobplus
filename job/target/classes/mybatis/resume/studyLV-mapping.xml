@@ -15,4 +15,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectStudyLVUserTitleList" parameterType="String" resultType="studyLVDTO">
 		select * from RS_studyLV where M_id = #{memId}
 	</select>
+	
+	<select id="selectStudyLVDTO" parameterType="int" resultType="studyLVDTO">
+		select * from RS_studyLV where rss_Seq = #{rss_Seq}
+	</select>
 </mapper>

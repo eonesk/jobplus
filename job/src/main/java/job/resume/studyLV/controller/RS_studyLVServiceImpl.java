@@ -29,5 +29,10 @@ public class RS_studyLVServiceImpl implements RS_studyLVService {
 		return studyLVDAO.selectStudyLVUserTitleList(memId);
 	}
 
+	@Override
+	public RS_studyLVDTO selectStudyLVDTO(int rss_Seq) {
+		return studyLVDAO.selectStudyLVDTO(rss_Seq);
+	}
+
 	
 }
