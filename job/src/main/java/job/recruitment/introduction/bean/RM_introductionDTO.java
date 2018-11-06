@@ -1,7 +1,7 @@
 package job.recruitment.introduction.bean;
 
 public class RM_introductionDTO {
-	  // 채용정보 모집요강seq 
+	// 채용정보 모집요강seq 
     private Integer rmi_Seq;
     // 모집인원 
     private Integer rmi_Personnel;
