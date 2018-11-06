@@ -170,10 +170,11 @@ body{
 			}else{
 				$("#rmj_career1").prop("checked", false);
 				$("#rmj_career2").prop("checked", false);
-				$("#rmj_hideDiv").hide();
 			}
 			if($(this).val() == "경력"){
 				$("#rmj_hideDiv").show();
+			}else if(){
+				$("#rmj_hideDiv").hide();
 			}
 		});
 		
