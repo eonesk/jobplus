@@ -26,7 +26,7 @@ ol, ul, li {
     list-style: none;
 /*     list-style-type: none; 
 /*     list-style-position: initial; */
-/*     list-style-image: initial; */
+/*     list-style-image: initial; *////
 }
 
 #container {

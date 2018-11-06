@@ -94,7 +94,7 @@ $(document).ready(function() {
 	  		</div>
 	  		<div class="user_corp_info">
 	  			<div class="area_corp_logo">
-	  				<div class="corp_thum"><img src=""></div>
+	  				<div class="corp_thum"><img src="g"></div>
 	  				<a class="logo_modify" href="#"><span>로고변경</span></a>
 	  			</div>
 	  		</div>
