@@ -25,26 +25,7 @@ function load_list(fileData) {
 // 			alert(listcount); 
 // 			var findul = $( '#portfolio_list > li' ).length;
 // 			alert("findul :: " + findul); 
-		
-			var type_li = $("<li>");
-			type_li.attr("id", "list_num" + numbering);
-			var type_p = $("<p>");
-			type_p.addClass("file_item");					
-			var type_span = $("<span>");
-			type_span.attr("id","type");
-			var title_span = $("<span>");
-			title_span.attr("id","title");
-			var type_a = $("<a>");
-			type_a.attr("id","pf_name");
-			type_a.attr("href","#");
-			var type_aa = $("<a>");
-			type_aa.attr("id","url_name");
-			type_aa.attr("href","#");
-			var type_btn = $("<button>");
-			type_btn.attr("type","button");	
-			type_btn.addClass("remove");
-			type_btn.attr("id","delete_btn"+i);
-			type_btn.html("삭제");
+
 			//리스트 내용 하나씩 자르기
 			for (var j = 1; j < file_parts.length; j++) {
 				console.log('file_parts[' +j+ '] = ' + file_parts[j]);							
@@ -61,7 +42,29 @@ function load_list(fileData) {
 				default:
 					break;
 				}
-			}					
+			}
+			
+			var type_li = $("<li>");
+			type_li.attr("id", "list_num" + numbering);
+			var type_p = $("<p>");
+			type_p.addClass("file_item");					
+			var type_span = $("<span>");
+			type_span.attr("id","type");
+			var title_span = $("<span>");
+			title_span.attr("id","title");
+			var type_a = $("<a>");
+			type_a.attr("id","pf_name");
+			type_a.attr("href", filename);
+			var type_aa = $("<a>");
+			type_aa.attr("id","url_name");
+			type_aa.attr("href","#");
+			type_aa.attr("onclick","window.open('"+urlname+"')");
+			var type_btn = $("<button>");
+			type_btn.attr("type","button");	
+			type_btn.addClass("remove");
+			type_btn.attr("id","delete_btn"+i);
+			type_btn.html("삭제");
+			
 			type_span.html(type);
 			title_span.html(title);
 			type_a.html(filename);
@@ -158,8 +161,6 @@ a.pf_name {
 <!-- 					<button type="button" class="remove" id="delete_btn1">삭제</button> -->
 <!-- 				</p> -->
 <!-- 			</li> -->
-		
-
 		</ul>
 	</div>
 </div>
