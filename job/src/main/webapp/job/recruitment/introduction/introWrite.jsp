@@ -19,7 +19,7 @@
 		alert("write값 확인 = " + rmi_Personnel + "/"+ rmi_Type + "/"+ rmi_Work1 + "/"+ rmi_Work2 
 				+ "/"+ rmi_Work3 + "/"+ rmi_Department + "/"+ rmi_Official);
 		
-		$("#save").click(function() {
+		$("#in_save").click(function() {
 			$.ajax({
 				type: 'POST',
 				url: 'Write.do',
@@ -43,18 +43,18 @@
 				}				
 			});					
 		});				
-		$("#cancle").click(function() {
+		$("#in_cancle").click(function() {
 			window.close();
 		});
 	});
 </script>
 <style type="text/css">
-.title {
+.in_title {
 	font: 20px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
 	font-weight: bold;
 	color: #2A120A;
 }
-.save, .cancle {
+.in_save, .in_cancle {
 	width:70px;
     background-color: #5882FA;
     border: none;
@@ -67,17 +67,17 @@
     margin: 4px;
     cursor: pointer;
 }
-.save:hover, .cancle:hover {
+.in_save:hover, .in_cancle:hover {
     background-color: #2E9AFE;
 }
 </style>
 </head>
 <body>
 	<fieldset>	
-		<p class="title">저장하기</p>		
+		<p class="in_title">저장하기</p>		
 		<div>			
-			<input type="button" value="저장하기" id="save" class="save">
-			<input type="button" value="취소" id="cancle" class="save">		
+			<input type="button" value="저장하기" id="in_save" class="in_save">
+			<input type="button" value="취소" id="in_cancle" class="in_cancle">		
 		</div>				
 	</fieldset>
 </body>

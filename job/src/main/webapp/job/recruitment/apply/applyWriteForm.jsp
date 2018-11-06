@@ -8,18 +8,18 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {	
-		$("#Type_radio_o").on("click", function() {
-			document.getElementById("Type").style.display = "inline";	
+		$("#ap_Type_radio_o").on("click", function() {
+			document.getElementById("ap_Type").style.display = "inline";	
 		});
-		$("#Type_radio_x").on("click", function() {
-			document.getElementById("Type").style.display = "none";							
+		$("#ap_Type_radio_x").on("click", function() {
+			document.getElementById("ap_Type").style.display = "none";							
 		});
 		
 		$("#rma_Age_Btn_o").on("click", function() {
-			document.getElementById("display").style.display = "inline";	
+			document.getElementById("ap_display").style.display = "inline";	
 		});
 		$("#rma_Age_Btn_x").on("click", function() {
-			document.getElementById("display").style.display = "none";							
+			document.getElementById("ap_display").style.display = "none";							
 		});
 		
 		$("#rma_Major").on("click", function() {			
@@ -31,8 +31,11 @@
 		$("#rma_Foreign").on("click", function() {			
 			window.open("/job/job/recruitment/apply/applyForeign.jsp", "", 'width=550px, height=600px, left=600, top=100');
 		});		
+		/** 히든인 rma_Gender값에 체크된 값을 넣어주는것 구현해야함. */
+		var Gender = $('input:radio[class="rma_Gender"]:checked').val();
+		document.getElementById("rma_Gender").val(Gender);
 		
-		$("#next").on("click", function() {								
+		$("#ap_next").on("click", function() {								
 			if (!$("#rma_Major").val()) {
 				alert("전공/학과를 입력하세요.");
 				$("#rma_Major").focus();
@@ -70,28 +73,20 @@
 	});
 </script>
 <style type="text/css">
-.write {
+.ap_write {
 	position: absolute; 
     margin: -150px 0 0 -75px;
     top: 25%;
     left: 30%;
     overflow: scroll;
 }
-.p1 {
-	text-align: center;
-	font: 30px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
-	font-weight: 500;
-}
-.p2 {
+.ap_p2 {
 	text-align: left;
 	font: 22px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
 	font-weight: bold;
 }
-span {
+.ap_span {
 	color: #FF8000;
-}
-hr {
-	width: 800px;
 }
 .rma_Studylv {
 	margin-left: 135px;
@@ -109,7 +104,7 @@ hr {
 	margin-top: 10px;
 	top: 40px;
 }
-.Type_radio {
+.ap_Type_radio {
 	margin-top: 0px;
 	margin-left: 70px;
 	width:55px;
@@ -149,7 +144,7 @@ hr {
 	height:20px;
 	text-align: center;
 }
-.display {
+.ap_display {
 	margin-left: 130px;
 }
 .rma_AgeSelect {
@@ -157,10 +152,10 @@ hr {
 	width:120px;
 	height:40px;
 }
-.p3, .p5, .p6, .p7, .p8, .p9 {
+.ap_p3, .ap_p5, .ap_p6, .ap_p7, .ap_p8, .ap_p9 {
 	margin-left: 10px;
 }
-.p4 {
+.ap_p4 {
 	margin-left: 170px;
 	color: #A4A4A4;
 }
@@ -171,7 +166,7 @@ hr {
 	background-color: #e8ecef;
 	margin: 5px;
 }
-.next {
+.ap_next {
 	margin-top: 10px;
 	margin-left:580px;
 	margin-bottom: 30px;
@@ -183,12 +178,12 @@ hr {
 	color: white;
 	border: 0;
 }
-.next:hover {
+.ap_next:hover {
 	background-color: black;
 }
 </style>
 </head>
-<body class="write">
+<body class="ap_write">
 	<input type="hidden" id="rm_Seq" class="rm_Seq">
 	<!-- 여기서부터 앞페이지에서 정보넘어온값 -->
 	<input type="hidden" id="rmi_Seq" class="rmi_Seq">
@@ -200,13 +195,13 @@ hr {
 	<input type="hidden" id="rmi_Department" class="rmi_Department">
 	<input type="hidden" id="rmi_Official" class="rmi_Official">
 	<div>
-		<p class="p2">자격요건 및 우대조건</p>
+		<p class="ap_p2">자격요건 및 우대조건</p>
 		<hr>
 	</div>
-	<p><span>&lowast;학력</span>
-		<input type="radio" id="Type_radio_x" class="Type_radio" name="Type_radio" value="학력무관" checked> 학력무관 
-  		<input type="radio" id="Type_radio_o" class="Type_radio" name="Type_radio" value="제한"> 제한</p>
-  		<div id="Type" class="Type" style="display: none;">
+	<p><span class="ap_span">&lowast;학력</span>
+		<input type="radio" id="ap_Type_radio_x" class="ap_Type_radio" name="ap_Type_radio" value="학력무관" checked> 학력무관 
+  		<input type="radio" id="ap_Type_radio_o" class="ap_Type_radio" name="ap_Type_radio" value="제한"> 제한</p>
+  		<div id="ap_Type" class="ap_Type" style="display: none;">
   		<select id="rma_Studylv" class="rma_Studylv" name="rma_Studylv">
   			<option value="고등학교졸업이상">고등학교졸업이상</option>
   			<option value="대학졸업(2,3년)이상">대학졸업(2,3년)이상</option>
@@ -217,27 +212,28 @@ hr {
   		<input type="checkbox" id="rma_Isfinish" class="rma_Isfinish" value="졸업예정자 가능">졸업예정자 가능
   		</div>
 		<hr>
-	<p class="p3">전공/학과 (최대3개)	
+	<p class="ap_p3">전공/학과 (최대3개)	
   		<input type="text" id="rma_Major" class="rma_Major" name="rma_Major" placeholder="전공/학과를 선택하세요."></p>  	
 	<hr>
-	<p class="p5">우대조건 	(최대10개)
+	<p class="ap_p5">우대조건 	(최대10개)
 		<input type="text" id="rma_Vip" class="rma_Vip" placeholder="우대조건을 선택하세요."></p>
 	<hr>
-	<p class="p6">외국어 (최대3개)
+	<p class="ap_p6">외국어 (최대3개)
 		<input type="text" id="rma_Foreign" class="rma_Foreign" placeholder="어학조건을 선택하세요."></p>
 	<hr>
-	<p class="p7">자격증
+	<p class="ap_p7">자격증
 		<input type="text" id="rma_License" class="rma_License" placeholder="자격증명을 작성하세요."></p>
 	<hr>
-	<p class="p8">성별  
+	<p class="ap_p8">성별  
 		<input type="radio" id="rma_Gender1" class="rma_Gender" name="rma_Gender" value="성별무관" checked> 성별무관 
   		<input type="radio" id="rma_Gender2" class="rma_Gender" name="rma_Gender" value="남자"> 남자
   		<input type="radio" id="rma_Gender3" class="rma_Gender" name="rma_Gender" value="여자"> 여자</p>  		
+  		<input type="hidden" id="rma_Gender">
 	<hr>
-	<p class="p9">연령 
+	<p class="ap_p9">연령 
 		<input type="radio" id="rma_Age_Btn_x" class="rma_Age_Btn" name="rma_Age_Btn" value="연령무관" checked> 연령무관
 		<input type="radio" id="rma_Age_Btn_o" class="rma_Age_Btn" name="rma_Age_Btn" value="제한"> 제한</p>
-		<div id="display" class="display" style="display: none;">
+		<div id="ap_display" class="ap_display" style="display: none;">
 		<select id="rma_Age" class="rma_AgeSelect" name="rma_AgeSelect">
   			<option value="">전체</option>
   			<option value="2001">18세(2001)년생</option>
@@ -353,6 +349,6 @@ hr {
   		</select>
   		</div>
 	<hr>
-	<input type="button" id="next" class="next" value="다음">
+	<input type="button" id="ap_next" class="ap_next" value="다음">
 </body>
 </html>

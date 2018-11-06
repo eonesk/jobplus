@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	$("#btn_reset").on("click", function() {			
+	$("#ap_btn_reset").on("click", function() {			
 		$('input:checkbox[name="language[]"]').prop("checked", false);
 	});
 	
@@ -56,7 +56,7 @@ $(function() {
 		$('label[class="language5"]').show();	
 	});
 	
-	$("#btn_OK").on("click", function() {
+	$("#ap_btn_OK").on("click", function() {
 		var items=[];
 		$('input[class="chk"]:checkbox:checked').each(function(){
 			items.push($(this).val());
@@ -67,13 +67,13 @@ $(function() {
 		self.close();
 	});
 	
-	$("#btn_close").click(function() {
+	$("#ap_btn_close").click(function() {
 		window.close();
 	});
 });
 </script>
 <style type="text/css">
-.chk_list {
+.ap_chk_list {
    	list-style: none;   	
    	position: relative;
     width: auto;
@@ -106,7 +106,7 @@ $(function() {
 .btn_typ_c3:focus {
 	background-color: gray;
 }
-.title {
+.ap_title {
 	background-color: #F2F2F2;
 	height: 40px;
 	border-top: 1px solid black;
@@ -114,7 +114,7 @@ $(function() {
 .point_color {
 	color: #FF8000;
 }
-.btn_reset {
+.ap_btn_reset {
 	position: relative;
 	left: 65%;
 	width: 120px;
@@ -123,29 +123,29 @@ $(function() {
 	border: 1px solid #E6E6E6;	
 	margin-bottom: 10px;
 }
-.btn_reset:hover {
+.ap_btn_reset:hover {
 	border: 1px solid #6E6E6E;	
 }
-.btn_OK, .btn_close {
+.ap_btn_OK, .ap_btn_close {
 	width: 150px;
 	height: 50px;
 	font-size: 15px;
 	font-weight: bold;
 	margin-left: 65px;
 }
-.btn_OK {
+.ap_btn_OK {
 	background-color: #2E2E2E;
 	color: white;
 	border: 0;
 }
-.btn_OK:hover {
+.ap_btn_OK:hover {
 	background: #000000;
 }
-.btn_close {
+.ap_btn_close {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
-.btn_close:hover {
+.ap_btn_close:hover {
 	border: 1px solid #6E6E6E;
 }
 </style>
@@ -154,7 +154,7 @@ $(function() {
 <div id="lpop_language" class="lpop_wrap lpop_exam" style="display: block;">
     <h2>외국어 시험 선택</h2>
     <div class="tbl_btn_area">
-        <input type="button" class="btn_reset" id="btn_reset" value="전체선택 초기화">
+        <input type="button" class="ap_btn_reset" id="ap_btn_reset" value="전체선택 초기화">
     </div>
 		<div class="tbl_typ_reg02 down_typ">
 			<table class="tbl_common">
@@ -163,7 +163,7 @@ $(function() {
 					<col style="">
 				</colgroup>
 				<thead>
-					<tr class="title">
+					<tr class="ap_title">
 						<th width="200">언어선택</th>
 						<th width="300">외국어시험선택 <span class="point_color">(최대3개)</span></th>
 					</tr>
@@ -175,7 +175,7 @@ $(function() {
 						</th>
 						<td rowspan="16">
 							<div class="chk_exam" id="list1">
-								<ul class="chk_list" id="chk_list">
+								<ul class="ap_chk_list" id="ap_chk_list">
 									<li class="chk_item">
 										<label for="language1" class="language1">
 											<input type="checkbox" name="language[]" id="language_1" class="chk" value="TOEIC"><span>TOEIC</span>
@@ -325,9 +325,9 @@ $(function() {
 		</div>
 		<hr>
 		<br>
-		<div class="btn_wrap">
-        <input type="button" class="btn_OK" id="btn_OK" value="확인">
-        <input type="button" class="btn_close" id="btn_close" value="취소">       
+		<div class="ap_btn_wrap">
+        <input type="button" class="ap_btn_OK" id="ap_btn_OK" value="확인">
+        <input type="button" class="ap_btn_close" id="ap_btn_close" value="취소">       
     </div>    
 </div>
 </body>

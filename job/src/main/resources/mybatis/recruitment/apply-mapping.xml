@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.applyMapper">
+
+	<insert id="Write" parameterType="applyDTO">	
+	 	insert into RM_apply values  
+		(RM_apply_SEQ.nextval,#{rma_Studylv},#{rma_Isfinish},#{rma_Major},#{rma_Vip},#{rma_Foreign},#{rma_License}, #{rma_Gender}, #{rma_Age}, #{rma_Age2}) 
+	</insert>	
+	
+</mapper>
