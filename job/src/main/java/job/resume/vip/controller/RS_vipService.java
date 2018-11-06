@@ -10,4 +10,5 @@ public interface RS_vipService {
 	int rsvCounting(String memId);
 	List<RS_vipDTO> rsvGetList(String memId);
 	RS_vipDTO rsvGetDTO(int rsw_seq);
+	int selectLastSeq();
 }

@@ -83,7 +83,7 @@ $(function() {
 			                } else {
 			                	alert("체크됨");
 			                	if(confirm("불러오기를 진행하시겠습니까?")) {
-			                		opener.parent.selected(accumSeq);
+			                		opener.parent.selected_rsv(accumSeq);
 				                	self.close();
 			                	}
 			                	

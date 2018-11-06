@@ -91,7 +91,7 @@
 	});
 	
 	// load 함수
-	function selected(accumSeq, num) {
+	function selected_rslg(accumSeq, num) {
 		$(function() {
 			alert("selected함수 실행 num값 = " + num);
 			count = num;

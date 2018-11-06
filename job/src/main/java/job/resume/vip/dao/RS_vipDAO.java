@@ -29,4 +29,8 @@ public class RS_vipDAO {
 	public RS_vipDTO rsvGetDTO(int rsw_seq) {
 		return sqlSession.selectOne("mybatis.vipMapper.rsvGetDTO", rsw_seq);
 	}
+	
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.vipMapper.selectLastSeq");
+	}
 }
