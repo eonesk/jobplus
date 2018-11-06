@@ -8,7 +8,8 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
+		studyLVPlusButtonCnt = ${param.studyLVPlusButtonCnt};
+		alert("studyLVPlusButtonCnt : " + studyLVPlusButtonCnt);
 		$("#studyLVLoadCancel").click(function() {
 			window.close();
 		});
@@ -48,149 +49,118 @@
 								var dto = item;
 								var tr = $("<tr>").addClass("studyLVLoadListLabelTr");
 								var td = $("<td>").addClass("studyLVLoadListLabelTd");
-/* 								var radio = $("<input>").attr({
+ 								var radio = $("<input>").attr({
 									"id": "rss_UserTitleR",
 									"type": "checkbox",
 									"value": item.rss_Seq
-								}); */
+								}).addClass("rss_UserTitleR");;
 								var a = $("<a>").attr({
 									"id": "rss_UserTitleA",
 									"href": "#"
 								}).html(item.rss_UserTitle).bind('click', {param: dto}, add_event);
 								
-								//td.append(radio);
+								td.append(radio);
 								td.append(a);
 								tr.append(td);
-								$("#studyLVLoadListTable").append(tr);	
-								 
-								$("#studyLVLoadSubmit").click(function() {
-									var studyLVSeqList = new Array();
-					                $("#rss_UserTitleR:checked").each(function() {
-					                	alert($(this).val());
-					                	studyLVSeqList.push($(this).val());
-					                });
-					                alert(studyLVSeqList);
-								});											 
+								$("#studyLVLoadListTable").append(tr);												 
+							});							
+
+							/** 부모창 입력폼의 최대값을 맞춰주기 위해서 {부모창+checkbox선택값 <=3}이 되도록 해주는... */
+							// {부모창+checkbox선택값 >3}이 되면 checkbox값이 disabled됨.//
+							console.log("studyLVPlusButtonCnt[studyLVLoadSubmit click] : " + ${param.studyLVPlusButtonCnt});
+							var isOverflow = ${param.studyLVPlusButtonCnt};
+							console.log("var = isOverflow[studyLVLoadSubmit click] : " + isOverflow);
+							
+							if(isOverflow == 3) {
+								$(".rss_UserTitleR").attr("disabled", "true");
+							} else if(isOverflow < 3 || isOverflow >= 0) {
+								$(".rss_UserTitleR").on("change", function() {
+									if($(this).is(":checked")){
+										isOverflow++;
+										console.log("isOverflow[rss_UserTitleR change] : " + isOverflow);
+										if(isOverflow == 3) {
+											$(".rss_UserTitleR").not($(".rss_UserTitleR:checked")).attr("disabled", "true");
+										}
+									} else {
+										isOverflow--;
+										$(".rss_UserTitleR").removeAttr("disabled");
+										console.log("isOverflow[rss_UserTitleR change] : " + isOverflow);
+									}
+								});
+							} 
+							$("#studyLVLoadSubmit").click(function() {								
+
+								var accumSeq = "";
+								
+				                $(".rss_UserTitleR:checked").each(function() {
+				                	console.log($(this).val());
+				                	accumSeq += $(this).val() + "/";
+				                });
+				                
+				                console.log("accumSeq : " + accumSeq);
+				                
+				                if(accumSeq == "") {
+				                	alert("불러올 학력정보를 선택해 주세요.");
+				                } else {
+				                	console.log("체크됨");
+				                	if(confirm("불러오기를 진행하시겠습니까?")) {
+				                		opener.parent.selected(accumSeq, ${param.studyLVPlusButtonCnt});
+					                	self.close();
+				                	}
+				                	
+				                }
 							});
 							
+							
+							
 							function add_event(event) {
-							/* 	alert(event.data.param.rss_UserTitle + " // " + event.data.param.m_Id);
-				                $("#studyLVLoadViewInit").hide();
-				                var title = $("<h3>").html("[ " + event.data.param.rss_Title + " ]");
-				                var content = $("<p>").html(" " + event.data.param.rss_Content);
-				                
-				                $("#rsprLoadView").append(title);
-				                $("#rsprLoadView").append(content);
-				                
-				                $("#rsprLoadSubmit").click(function() {
-				                	alert(event.data.param.rspr_Title);
-				                	$("#rsprTitle", opener.document).val("");
-				                	$("#rsprContent", opener.document).val("");
-				                	$("#rsprSeq", opener.document).val("");
-				                	$("#rsprTitle", opener.document).val(event.data.param.rspr_Title);
-				                	$("#rsprContent", opener.document).val(event.data.param.rspr_Content);
-				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
-				                	self.close();
-				                }); */
-				                
-				                
-				                
-							}
-							
-							
-							alert("종료");
-							
+								console.log(event.data.param.rss_UserTitle + " // " + event.data.param.m_Id);
+								$("#studyLVLoadViewInit").hide();
+								$("#studyLVLoadView").html("");
+								
+								if(event.data.param.rss_Ishighschool == "Y"){
+									var h3 = $("<h3>").html("[ " + event.data.param.rss_UserTitle + " ]");
+									var p = $("<p>");
+									p.html("고등학교 미만 졸업");
+									$("#studyLVLoadView").append(h3).append(p);
+								} else {
+									var userTitle = $("<h3>").html("[ " + event.data.param.rss_UserTitle + " ]");
+									var table = $("<table>").attr("border", "1");
+									var indexTr = $("<tr>");
+									var indexTd1 = $("<td>").html("학교구분");
+									var indexTd2 = $("<td>").html("학교명");
+									var indexTd3 = $("<td>").html("입학년월");
+									var indexTd4 = $("<td>").html("졸업년월");
+									var indexTd5 = $("<td>").html("전공명");
+									var indexTd6 = $("<td>").html("학점");
+									var indexTd7 = $("<td>").html("총점");
+									
+									indexTr.append(indexTd1).append(indexTd2).append(indexTd3).append(indexTd4).append(indexTd5).append(indexTd6).append(indexTd7);
+									table.append(indexTr);									
+									
+									var contentTr = $("<tr>");
+									var contentTd1 = $("<td>").html(event.data.param.rss_Type);
+									var contentTd2 = $("<td>").html(event.data.param.rss_Name);								
+									var contentTd3 = $("<td>").html(event.data.param.rss_Startdate);
+									var contentTd4 = $("<td>").html(event.data.param.rss_Enddate);
+									var contentTd5 = $("<td>").html(event.data.param.rss_Major);
+									var contentTd6 = $("<td>").html(event.data.param.rss_Score);
+									var contentTd7 = $("<td>").html(event.data.param.rss_Totscore);
+									
+									contentTr.append(contentTd1).append(contentTd2).append(contentTd3).append(contentTd4).append(contentTd5).append(contentTd6).append(contentTd7);
+									table.append(contentTr);
+									
+									$("#studyLVLoadView").append(userTitle);
+									$("#studyLVLoadView").append(table);
+								}
+								
+							}	
+							alert("종료");							
 						},
 						error : function(e) {
 			                alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
 			         	}
-					});
-					
-					
-					/** json으로 넘어 온 데이터를 $.each();를 통해 table에 구현해 줘야 함 : 위 ajax문 success에 들어가야 함 */
-					// 임의로 rsprDTO값을 정해서 table에 구현..
-	/* 					
-					var rsprUserTitleList = [{ 
-						    "rspr_Seq": 5,
-						    "rspr_Title": "제목입니다1",
-						    "rspr_Content": "내용입니다",
-						    "m_Id": "num1",
-						    "rspr_UserTitle": "usertitle입니다."
-					},
-					{
-						    "rspr_Seq": 6,
-						    "rspr_Title": "제목",
-						    "rspr_Content": "내용",
-						    "m_Id": "num1",
-						    "rspr_UserTitle": "usertitle"
-					}];
-					
-					// Table 첫번째 행
-					$("<tr>").addClass("rsprLoadListLabelTr").appendTo("#rsprLoadListTable");
-					$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo("#rsprLoadListTable");
-					
-					// List Content
-					
-					$.each(rsprUserTitleList, function(index, item) {
-						
-						var listTr = $("<tr>");
-						listTr.addClass("rsprLoadListContentTr");
-						var listTd = $("<td>");
-						listTd.addClass("rsprLoadListContentTd");
-						var listA = $("<a>");
-						listA.addClass("rsprLoadListContentA");
-						listA.attr("href", "#");
-						listA.html(rsprUserTitleList.rspr_UserTitle);
-						
-						listTd.append(listA);
-						listTr.append(listTd);
-						
-						$("#rsprLoadListTable").append(listTr);
-					});
-					
-					/* 
-					
-					// ex
-					var listTr1 = $("<tr>");
-					listTr.addClass("rsprLoadListContentTr");
-					var listTd1 = $("<td>");
-					listTd.addClass("rsprLoadListContentTd");
-					var listA1 = $("<a>");
-					listA1.addClass("rsprLoadListContentA");
-					listA1.attr("href", "#");
-					listA1.html(rsprUserTitleList1.rspr_UserTitle);
-					
-					listTd1.append(listA1);
-					listTr1.append(listTd1);
-					
-					$("#rsprLoadListTable").append(listTr1);
-					 */
-					/** usertitle을 클릭했을 때  *//*
-					$(".rsprLoadListContentA").click(function() {
-						alert($(this).text());
-					});
-			 */		
-					/* 
-					
-						$.each(data.memberlist, function(index, memberlist) { // 이치를 써서 모든 데이터들을 배열에 넣음					
-	
-						var items = [];
-	
-						items.push("<td>" + memberlist.id + "</td>"); // 여기에 id pw addr tel의 값을 배열에 넣은뒤
-	
-						items.push("<td>" + memberlist.pw + "</td>");
-	
-						items.push("<td>" + memberlist.addr + "</td>");
-	
-						items.push("<td>" + memberlist.tel + "</td>");
-	
-						$("<tr/>", {
-	
-							html : items // 티알에 붙임,
-	
-						}).appendTo("table"); // 그리고 그 tr을 테이블에 붙임
-	
-					});	 */				
+					});			
 				}
 			},
 			error : function(e) {

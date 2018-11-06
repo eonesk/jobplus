@@ -22,6 +22,7 @@
 
 <!-- Controller 어노테이션 등록준비 -->
 	
+	<context:component-scan base-package="job.recruitment.time.RM_timeController"/>
 	<context:component-scan base-package="job.resume.workLV.controller"/>
 	<context:component-scan base-package="job.resume.intern.controller"/>
 	<context:component-scan base-package="job.resume.trophy.controller"/>	

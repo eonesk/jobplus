@@ -25,4 +25,8 @@ public class RS_studyLVDAO {
 	public List<RS_studyLVDTO> selectStudyLVUserTitleList(String memId) {
 		return sqlSession.selectList("mybatis.studyLVMapper.selectStudyLVUserTitleList", memId);
 	}
+	
+	public RS_studyLVDTO selectStudyLVDTO(int rss_Seq) {
+		return sqlSession.selectOne("mybatis.studyLVMapper.selectStudyLVDTO", rss_Seq);
+	}
 }

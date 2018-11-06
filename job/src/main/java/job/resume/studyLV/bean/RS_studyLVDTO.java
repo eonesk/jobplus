@@ -26,10 +26,10 @@ public class RS_studyLVDTO {
     private String rss_Major;
 
     // 학점 
-    private Integer rss_Score;
+    private Double rss_Score;
 
     // 총점 
-    private Integer rss_Totscore;
+    private Double rss_Totscore;
 
     // 회원 아이디 
     private String m_Id;
@@ -101,19 +101,19 @@ public class RS_studyLVDTO {
 		this.rss_Major = rss_Major;
 	}
 
-	public Integer getRss_Score() {
+	public double getRss_Score() {
 		return rss_Score;
 	}
 
-	public void setRss_Score(Integer rss_Score) {
+	public void setRss_Score(double rss_Score) {
 		this.rss_Score = rss_Score;
 	}
 
-	public Integer getRss_Totscore() {
+	public double getRss_Totscore() {
 		return rss_Totscore;
 	}
 
-	public void setRss_Totscore(Integer rss_Totscore) {
+	public void setRss_Totscore(double rss_Totscore) {
 		this.rss_Totscore = rss_Totscore;
 	}
 
