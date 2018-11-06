@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
     <typeAlias type="job.recruitment.apply.bean.RM_applyDTO" alias="applyDTO"/>
     <typeAlias type="job.recruitment.job.bean.RM_jobDTO" alias="jobDTO"/>
-		<typeAlias type="job.company.info.bean.companyInfoDTO" alias="companyInfoDTO"/>
+		<typeAlias type="job.company.info.bean.CompanyInfoDTO" alias="companyInfoDTO"/>
 		<typeAlias type="job.recruitment.introduction.bean.RM_introductionDTO" alias="introductionDTO"/>
 		<typeAlias type="job.resume.workLV.bean.RS_workLVDTO" alias="workLVDTO"/>
 		<typeAlias type="job.resume.intern.bean.RS_internDTO" alias="internDTO"/>
