@@ -13,9 +13,6 @@ import job.company.info.bean.CompanyInfoDTO;
 @Controller
 public class CompanyInfoController {
 	
-	@Autowired
-	private CompanyInfoService companyInfoService;
-	
 	@RequestMapping(value = "/job/company/info/companyInfoWrite.do")
 	public ModelAndView insertCompanyInfo(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
