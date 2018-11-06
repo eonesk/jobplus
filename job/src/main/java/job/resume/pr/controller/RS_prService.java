@@ -8,4 +8,5 @@ public interface RS_prService {
 	int rsprSave(RS_prDTO rsprDTO);
 	int selectNumberOfPr(String memId);
 	List<RS_prDTO> selectRsprUserTitleList(String memId);
+	int selectLastSeq();
 }

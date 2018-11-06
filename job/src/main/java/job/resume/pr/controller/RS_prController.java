@@ -53,10 +53,15 @@ public class RS_prController {
 		rsprDTO.setRspr_UserTitle(rsprUserTitle);
 		
 		// DB작업
-		int saveCount = rsprService.rsprSave(rsprDTO);		
+		int saveCount = rsprService.rsprSave(rsprDTO);
+		int rspr_Seq = 0;
+		if(saveCount > 0) {
+			rspr_Seq = rsprService.selectLastSeq();
+		}
+		
 		System.out.println("[RS_prController] saveCount : " + saveCount);
 				
-		out.print(saveCount);
+		out.print(rspr_Seq);
 	}
 	
 	@RequestMapping(value="/job/resume/pr/rsprLoadCount.do", method=RequestMethod.POST)

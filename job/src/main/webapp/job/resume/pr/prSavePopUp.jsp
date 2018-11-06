@@ -33,6 +33,7 @@
 				success: function(data) {
 					if(data > 0) {
 						alert("성공");
+						$("#rspr_Seq", opener.document).val(data);
 						window.close();
 					} else {
 						alert("실패");

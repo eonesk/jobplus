@@ -25,4 +25,7 @@ public class RS_prDAO {
 	public List<RS_prDTO> selectRsprUserTitleList(String memId){
 		return sqlSession.selectList("mybatis.prMapper.selectRsprUserTitleList", memId);
 	}
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.prMapper.selectLastSeq");
+	}
 }

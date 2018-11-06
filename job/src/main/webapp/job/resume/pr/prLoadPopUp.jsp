@@ -72,6 +72,7 @@
 				                	$("#rsprTitle", opener.document).val(event.data.param.rspr_Title);
 				                	$("#rsprContent", opener.document).val(event.data.param.rspr_Content);
 				                	$("#rsprSeq", opener.document).val(event.data.param.rspr_Seq);
+				                	$("#rspr_Seq", opener.document).val(event.data.param.rspr_Seq);
 				                	self.close();
 				                });				                
 							}

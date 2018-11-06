@@ -8,7 +8,6 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
 		$("#RSPR_saveA").click(function() {
 			if(!$("#rsprTitle").val()) {
 				alert("자기소개서의 제목을 입력해주세요.");
@@ -17,18 +16,19 @@
 				alert("자기소개서의 내용을 입력해주세요.");
 				$("#rsprContent").focus();
 			} else {
-				window.open("./prSavePopUp.jsp", "", "width=500px height=500px");
+				window.open("/job/job/resume/pr/prSavePopUp.jsp", "", "width=500px height=500px");
 			}			
 		});
 		
 		$("#RSPR_loadA").click(function() {
-			window.open("./prLoadPopUp.jsp", "", "width=570px height=600px");
+			window.open("/job/job/resume/pr/prLoadPopUp.jsp", "", "width=570px height=600px");
 		});
 	});
 	
 </script>
 </head>
 <body>
+<input type="hidden" id="rspr_Seq">
 	<!-- jQuery로 생성할 부분.. 자기소개서 누르면 나타남 -->
 	<div id="PR_div"
 		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
