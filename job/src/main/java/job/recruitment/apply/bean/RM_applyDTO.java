@@ -20,8 +20,16 @@ public class RM_applyDTO {
     // 연령 
     private String rma_Age;
     // 연령2
-    private String rma_Age2;
+    private String rma_Age2;    
     
+	@Override
+	public String toString() {
+		return "RM_applyDTO [rm_Seq=" + rm_Seq + ", rma_Studylv=" + rma_Studylv + ", rma_Isfinish=" + rma_Isfinish
+				+ ", rma_Major=" + rma_Major + ", rma_Vip=" + rma_Vip + ", rma_Foreign=" + rma_Foreign
+				+ ", rma_License=" + rma_License + ", rma_Gender=" + rma_Gender + ", rma_Age=" + rma_Age + ", rma_Age2="
+				+ rma_Age2 + "]";
+	}
+
 	public Integer getRm_Seq() {
 		return rm_Seq;
 	}
