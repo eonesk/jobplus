@@ -175,6 +175,7 @@ body{
 				$("#rmj_hideDiv").show();
 			}else if(){
 				$("#rmj_hideDiv").hide();
+				/** ㅇㅁㄴㅇ*/
 			}
 		});
 		
