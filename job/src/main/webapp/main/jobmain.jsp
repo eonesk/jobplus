@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,6 +49,7 @@ a.logo_cm_service {
     border: none;
     cursor: pointer;
 }
+.
 #header .gnb {
     display: block;
     margin: 0 auto;
@@ -182,10 +184,14 @@ ul.list_gnb li {
 #cm_contents .wrap_contents .cm_inner {
     display: inline-block;
     position: relative;
-    margin-left: -150px;
-    max-width: 774px;
+    /* margin-left: -150px; */
+    max-width: 100%;
     min-height: 600px;
     vertical-align: top;
+}
+.wrap_contents.control_margin #content {
+    margin-bottom: 50px !important;
+    float: left;
 }
 /*레이어 팝업 CSS*/
 #user_corp_popup {
@@ -265,6 +271,7 @@ ul.list_gnb li {
     position: relative;
     z-index: 10;
     min-width: 960px;
+    text-align: center;
 }
 .sri_footer .wrap_footer {
     border: solid #37404e;
@@ -312,7 +319,22 @@ ul.list_gnb li {
     font-size: 12px;
     letter-spacing: -1px;
     line-height: 18px;
-} 
+}
+.left_wing {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    left: -16.5%;
+    float: left;   
+}
+.right_wing {
+    display: block;
+    cursor: pointer;
+    right: -16.5%;
+    position: absolute;
+    float: left; 
+}
+
 </style>
    
 <script type="text/javascript">
@@ -332,8 +354,18 @@ $(document).ready(function() {
 		var container = $("#user_corp_popup");
 		if(container.has(e.target).length =='0')
 			container.hide();
-	});	
+	});
+///////////////////////////////////////////////
+	$("#studyLVDiv").hide();
+	$("#next_btn").hide();
+	$("#prev_btn").hide();
+	$("#recruitment_insert").click(function() {
+		$("#studyLVDiv").show();			
+		$("#next_btn").show();			
+		$("#prev_btn").show();			
+	});
 });
+
 </script>
 </head>
 <body id="topBar">
@@ -395,7 +427,7 @@ $(document).ready(function() {
 		
 		<section id="cm_contents">
 			<nav id="lnb" class="lnb">
-				<a href="#" class="btn_write_job"><span>공고 등록하기</span></a>
+				<a href="#" class="btn_write_job" id="recruitment_insert"><span>공고 등록하기</span></a>
 				<ul class="list_lnb">
 					<li><a href="#">전체공고</a></li>
 					<li><a class="second_depth" href="#">진행중공고</a></li>
@@ -406,9 +438,25 @@ $(document).ready(function() {
 			</nav>
 			<div class="wrap_contents control_margin ">
 				<div id="wrap_contents_inner" class="cm_inner">
+					
+						<div class="left_wing">
+							<a href="#" id="prev_btn" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
+						</div>
+										
+					<!-- ~~~~~~~~~~~~~~~~인클루드 내용물~~~~~~~~~~~~~~~ -->
 					<div id="content" class="content_typea sub-content">
-
-					</div> 
+											
+						<div id="studyLVDiv">
+							<hr id="hr_resume">
+							<jsp:include page="/job/resume/studyLV/studyLVWriteForm.jsp"></jsp:include>
+						</div>
+											
+					</div>
+					<!-- paging -->
+					<div class="right_wing">
+							<a href="#" id="next_btn" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
+					</div>	
+					
 				</div>
 			</div>
 		</section>
