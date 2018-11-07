@@ -18,7 +18,7 @@ $(function() {
 		}
 		/**비밀번호 입력 검사 */
 		if(!$("input[name='m_Pw']").val()){
-			alert("비밀번호를 입력하세요.");
+			alert("비밀번호를 입력하세요."); 
 			$("input[name='m_Pw']").focus();
 			return false;
 		}
