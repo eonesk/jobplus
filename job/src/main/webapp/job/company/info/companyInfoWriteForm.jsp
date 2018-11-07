@@ -126,7 +126,7 @@
 				var cpi_Moneybase = $("#cpi_Moneybase").val();
 				var cpi_Moneysell = $("#cpi_Moneysell").val();
 				var cpi_Moneygain = $("#cpi_Moneygain").val();
-				var cpl_Seq = "";
+				var cpl_Seq = null;
 				var cpi_Vision = $("#cpi_Vision").val();
 				var cpi_History = $("#cpi_History").val();
 				var cpi_Welfare = $("#cpi_Welfare").val();
@@ -170,7 +170,12 @@
 					timeout: 30000,
 					cache: false,
 					success: function(data) {
-						alert("기업정보가 저장되었습니다.");
+						if(data>0){
+							alert("기업정보가 저장되었습니다.");	
+						}else{
+							alert("기업정보 저장에 실패했습니다. 다시 시도해주세요.");
+						}
+						
 						$("#companyInfoWriteBtn").off("click", this);
 					},
 					error: function() {
