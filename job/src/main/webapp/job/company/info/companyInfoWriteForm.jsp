@@ -59,12 +59,136 @@
 			$("#cpi_Type_font").html(cpi_Type_font);
 			$("#cpi_Type_div").hide();
 		});
+		
+		if($("#cpm_InfoTime").val() == "1년"){
+			$("#cpm_InfoTime_1year").prop("checked", true);
+		}else if($("#cpm_InfoTime").val() == "3년"){
+			$("#cpm_InfoTime_3year").prop("checked", true);
+		}else if($("#cpm_InfoTime").val() == "5년"){
+			$("#cpm_InfoTime_5year").prop("checked", true);
+		}else{
+			$("#cpm_InfoTime_out").prop("checked", true);
+		}
+		
+		$("#companyInfoWriteBtn").on("click", function() {
+			if($("#rmp_Name").val() == ""){
+				alert("인사담당자 성함 입력은 필수 사항입니다.");
+				$("#rmp_Name").focus();
+				return false;
+			}else if($("#rmp_Phone1").val() == ""){
+				alert("인사담당자 휴대폰번호 입력은 필수 사항입니다.");
+				$("#rmp_Phone1").focus();
+				return false;
+			}else if($("#rmp_Email").val() == ""){
+				alert("인사담당자 이메일 입력은 필수 사항입니다.");
+				$("#rmp_Email").focus();
+				return false;
+			}else if($("#cpm_Companyname").val() == ""){
+				alert("기업명 입력은 필수 사항입니다.");
+				$("#cpm_Companyname").focus();
+				return false;
+			}else if($("#cpm_Firstname").val() == ""){
+				alert("대표자명 입력은 필수 사항입니다.");
+				$("#cpm_Firstname").focus();
+				return false;
+			}else if($("#cpi_Industry").val() == ""){
+				alert("업종 입력은 필수 사항입니다.");
+				$("#cpi_Industry").focus();
+				return false;
+			}else if($("#cpi_Address").val() == ""){
+				alert("회사주소 입력은 필수 사항입니다.");
+				$("#cpi_Address").focus();
+				return false;
+			}else if($("#cpi_Tel").val() == ""){
+				alert("대표전화 입력은 필수 사항입니다.");
+				$("#cpi_Tel").focus();
+				return false;
+			}else{
+				var cpm_Id = $("#cpm_Id").val();
+				var cpi_Pname = $("#rmp_Name").val();
+				var cpi_Pphone = $("#rmp_Phone1").val();
+				var cpi_Pemail = $("#rmp_Email").val();
+				var cpi_Companyname = $("#cpm_Companyname").val();
+				var cpi_Firstname = $("#cpm_Firstname").val();
+				var cpi_Industry = $("#cpi_Industry").val();
+				var cpi_Content = $("#cpi_Content").val();
+				var cpi_Brand = $("#cpi_Brand").val();
+				var cpi_Address = $("#cpi_Address").val();
+				var cpi_Type = $("#cpi_Type").val();
+				var cpi_Birth = $("#cpi_Birth").val();
+				var cpi_Homepage = $("#cpi_Homepage").val();
+				var cpi_Blog = $("#cpi_Blog").val();
+				var cpi_Sns1 = $("#cpi_Sns1").val();
+				var cpi_Sns2 = $("#cpi_Sns2").val();
+				var cpi_Sns3 = $("#cpi_Sns3").val();
+				var cpi_Tel = $("#cpi_Tel").val();
+				var cpi_Moneyyear = $("#cpi_Moneyyear").val();
+				var cpi_Moneybase = $("#cpi_Moneybase").val();
+				var cpi_Moneysell = $("#cpi_Moneysell").val();
+				var cpi_Moneygain = $("#cpi_Moneygain").val();
+				var cpl_Seq = "";
+				var cpi_Vision = $("#cpi_Vision").val();
+				var cpi_History = $("#cpi_History").val();
+				var cpi_Welfare = $("#cpi_Welfare").val();
+				var cpi_Cafe = $("#cpi_Cafe").val();
+				var cpi_Etc = $("#cpi_Etc").val();
+				
+				var allData = {
+						"cpm_Id" : cpm_Id,
+						"cpi_Pname" : cpi_Pname,
+						"cpi_Pphone" : cpi_Pphone,
+						"cpi_Pemail" : cpi_Pemail,
+						"cpi_Companyname" : cpi_Companyname,
+						"cpi_Firstname" : cpi_Firstname,
+						"cpi_Industry" : cpi_Industry,
+						"cpi_Content" : cpi_Content,
+						"cpi_Brand" : cpi_Brand,
+						"cpi_Address" : cpi_Address,
+						"cpi_Type" : cpi_Type,
+						"cpi_Birth" : cpi_Birth,
+						"cpi_Homepage" : cpi_Homepage,
+						"cpi_Blog" : cpi_Blog,
+						"cpi_Sns1" : cpi_Sns1,
+						"cpi_Sns2" : cpi_Sns2,
+						"cpi_Sns3" : cpi_Sns3,
+						"cpi_Tel" : cpi_Tel,
+						"cpi_Moneyyear" : cpi_Moneyyear,
+						"cpi_Moneybase" : cpi_Moneybase,
+						"cpi_Moneysell" : cpi_Moneysell,
+						"cpi_Moneygain" : cpi_Moneygain,
+						"cpl_Seq" : cpl_Seq,
+						"cpi_Vision" : cpi_Vision,
+						"cpi_History" : cpi_History,
+						"cpi_Welfare" : cpi_Welfare,
+						"cpi_Cafe" : cpi_Cafe,
+						"cpi_Etc" : cpi_Etc
+				};
+				$.ajax({
+					url: 'companyInfoWrite.do',
+					type: 'post',
+					data: allData,
+					timeout: 30000,
+					cache: false,
+					success: function(data) {
+						alert("기업정보가 저장되었습니다.");
+						$("#companyInfoWriteBtn").off("click", this);
+					},
+					error: function() {
+						alert("통신 중 장애가 발생했습니다! 잠시 후 다시 시도해주세요.");
+						$("#companyInfoWriteBtn").off("click", this);
+					}
+				});
+			}
+			
+			
+		});
 	});
 </script>
 </head>
 <body>
+<input type="hidden" id="cpm_Id" value="">
 	<h1>기업정보 관리</h1>
-	<h4 class="h4 CPM_companyName"><font class="font CPM_companyName">${companyMemberDTO.cpm_CompanyName }</font>님, 안녕하세요</h4>
+	<h4 class="h4 CPM_companyName"><font class="font CPM_companyName">${sessionScope.comId }</font>님, 안녕하세요</h4>
 	<div class="div companyMember">
 		<p class="p companyMember">계정 정보</p>
 		<table class="table companyMember">
@@ -74,15 +198,16 @@
 			</tr>
 			<tr>
 				<th>&nbsp;사업자등록번호</th>
-				<td>${companyMemberDTO.cpm_Num }</td>
+				<td>${companyMemberDTO.cpm_num }</td>
 			</tr>
 			<tr>
 				<th><font class="must">*</font>기업구분</th>
-				<td>${companyMemberDTO.cpm_Type }</td>
+				<td>${companyMemberDTO.cpm_type }</td>
 			</tr>
 			<tr>
 				<th>&nbsp;개인정보보유기간</th>
 				<td>
+					<input type="hidden" id="cpm_InfoTime" value="${companyMemberDTO.cpm_infotime }">
 					<input type="radio" value="1년" id="cpm_InfoTime_1year" name="cpm_InfoTime"><label for="cpm_InfoTime_1year">1년</label>
 					<input type="radio" value="3년" id="cpm_InfoTime_3year" name="cpm_InfoTime"><label for="cpm_InfoTime_3year">3년</label>
 					<input type="radio" value="5년" id="cpm_InfoTime_5year" name="cpm_InfoTime"><label for="cpm_InfoTime_5year">5년</label>
@@ -117,7 +242,7 @@
 			</tr>
 			<tr>
 				<th class="lineTh"><font class="must">*</font>대표자명</th>
-				<td colspan="4"><input type="text" value="${companyInfoDTO.cpi_Firstname }" name="cpm_Ceoname" id="cpm_Ceoname"></td>
+				<td colspan="4"><input type="text" value="${companyInfoDTO.cpi_Firstname }" name="cpm_Firstname" id="cpm_Firstname"></td>
 			</tr>
 			<tr>
 				<th class="lineTh"><font class="must">*</font>업종</th>
@@ -288,7 +413,7 @@
 		</fieldset>
 	</div>
 	<div class="buttonDiv" align="center">
-		<input type="button" value="수정하기" class="writeBtn">
+		<input type="button" value="수정하기" class="writeBtn" id="companyInfoWriteBtn">
 	</div>
 </body>
 </html>
