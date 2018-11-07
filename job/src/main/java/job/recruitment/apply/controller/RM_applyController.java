@@ -35,8 +35,7 @@ public class RM_applyController {
 		String rma_Age = request.getParameter("rma_Age");		
 		String rma_Age2 = request.getParameter("rma_Age2");
 				
-		RM_applyDTO applyDTO = new RM_applyDTO();
-		System.out.println(applyDTO.toString());
+		RM_applyDTO applyDTO = new RM_applyDTO();		
 		applyDTO.setRma_Studylv(rma_Studylv);
 		applyDTO.setRma_Isfinish(rma_Isfinish);
 		applyDTO.setRma_Major(rma_Major);
@@ -46,6 +45,7 @@ public class RM_applyController {
 		applyDTO.setRma_Gender(rma_Gender);
 		applyDTO.setRma_Age(rma_Age);
 		applyDTO.setRma_Age2(rma_Age2);
+		System.out.println(applyDTO.toString());
 		// (2) DB			
 		int su = applyService.Write(applyDTO);
 		// (3) 화면네비게이션	
