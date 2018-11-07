@@ -173,9 +173,8 @@ body{
 			}
 			if($(this).val() == "경력"){
 				$("#rmj_hideDiv").show();
-			}else if(){
+			}else{
 				$("#rmj_hideDiv").hide();
-				/** ㅇㅁㄴㅇ*/
 			}
 		});
 		
