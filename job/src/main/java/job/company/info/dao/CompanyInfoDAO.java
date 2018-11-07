@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import job.company.info.bean.CompanyInfoDTO;
+import job.company.member.bean.CompanyMemberDTO;
 
 @Repository
 public class CompanyInfoDAO {
@@ -30,4 +31,8 @@ public class CompanyInfoDAO {
 	public int selectLastSeq(String memId) {
 		return sqlSession.selectOne("mybatis.companyInfoMapper.selectLastSeq", memId);
 	} 
+	
+	public CompanyMemberDTO selectCompanyMember(String comId) {
+		return sqlSession.selectOne("mybatis.companyInfoMapper.selectCompanyMember", comId);
+	}
 }

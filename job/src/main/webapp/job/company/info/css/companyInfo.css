@@ -46,9 +46,15 @@ body{
 	.table tr{
 		text-align: left;
 	}
-	.table th{
+	.companyMember th{
 		background-color: #EFEFFB;
-		width: 125px;
+		width: 150px;
+		color: #5858FA;
+		border-right: 1px solid #CECEF6;
+	}
+	.RM_personnel th{
+		background-color: #EFEFFB;
+		width: 150px;
 		color: #5858FA;
 		border-right: 1px solid #CECEF6;
 	}
