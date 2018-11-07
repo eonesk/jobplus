@@ -16,8 +16,9 @@ public class CompanyInfoController {
 	@Autowired
 	private CompanyInfoService companyInfoService;
 	
-	@RequestMapping(value = "/job/company/info/companyInfoWrite.do")
+	@RequestMapping(value = "/job/company/info/companyInfoWriteForm1.do")
 	public ModelAndView insertCompanyInfo(HttpServletRequest request) {
+		System.out.println("??");
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession session = request.getSession();
 		
