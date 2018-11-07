@@ -176,8 +176,8 @@ h2 {
 
 
 #timePopUp{
-  width: 955px; height: 600px; background:white; color:#fff; 
-  position:absolute; top:115px; left:100px; text-align:center; 
+  width: 750px; height: 600px; background:white; color:black; 
+  position:absolute; top:115px; left: 20%; padding: 50px;
   border:1px solid #666666; overflow: scroll; z-index: 100px;
 }
 
