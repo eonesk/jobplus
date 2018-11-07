@@ -8,9 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import job.company.info.bean.CompanyInfoDTO;
-import job.company.member.bean.companyMemberDTO;
-
 @Controller
 public class CompanyInfoController {
 	
