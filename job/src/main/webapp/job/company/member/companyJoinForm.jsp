@@ -342,13 +342,12 @@ input[type=checkbox] {
 			<ul class="joinCategory">
 				<li class="">
 					<h2 class="tab01">
-						<a href="#" class="tabBtn"><strong>개인회원가입</strong>만 15세 이상 가능
-						</a>
+						<a href="../../member/joinForm.do" class="tabBtn"><strong>개인회원가입</strong>만 15세 이상 가능</a>
 					</h2>
 				</li>
 				<li class="on">
 					<h2 class="tab02">
-						<a href="CompanyJoinForm.do" class="tabBtn"><strong>기업회원가입</strong></a>
+						<a href="#" class="tabBtn"><strong>기업회원가입</strong></a>
 					</h2>
 				</li>
 			</ul>
@@ -408,8 +407,8 @@ input[type=checkbox] {
 					<label class="cpm_infotimeLabel infotimeCheckOff" for="cpm_infotime2"></label><span class="cmp_infoContentSpan">3년</span>
 					<input type="radio" id="cpm_infotime3" name="cpm_infotime" class="cpm_infotime" value="5년">
 					<label class="cpm_infotimeLabel infotimeCheckOff" for="cpm_infotime3"></label><span class="cmp_infoContentSpan">5년</span>
-					<input type="radio" id="cpm_infotime4" name="cpm_infotime" class="cpm_infotime" value="탈퇴시">
-					<label class="cpm_infotimeLabel infotimeCheckOff" for="cpm_infotime4"></label><span class="cmp_infoContentSpan">탈퇴시</span>
+					<input type="radio" id="cpm_infotime4" name="cpm_infotime" class="cpm_infotime" value="탈퇴시 삭제">
+					<label class="cpm_infotimeLabel infotimeCheckOff" for="cpm_infotime4"></label><span class="cmp_infoContentSpan">탈퇴시 삭제</span>
 				</div>
 				
 				<div class="joinDiv">

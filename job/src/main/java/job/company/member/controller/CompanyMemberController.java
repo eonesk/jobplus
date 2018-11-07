@@ -1,5 +1,49 @@
 package job.company.member.controller;
 
-public class CompanyMemberController {
 
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import job.company.member.bean.CompanyMemberDTO;
+
+
+@Controller
+public class CompanyMemberController {
+	@Autowired
+	private CompanyMemberService companyMemberService;
+
+	@RequestMapping(value ="/job/company/member/companyJoinForm.do")
+	public ModelAndView index() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/job/company/member/companyJoinForm.jsp");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/job/company/member/joinResult.do")
+	public ModelAndView join(HttpServletRequest request, CompanyMemberDTO companyMemberDTO) {
+		ModelAndView modelAndView = new ModelAndView();
+		String cpm_id = request.getParameter("cpm_id");
+		String cpm_pw = request.getParameter("cpm_pw");
+		String cpm_num = request.getParameter("cpm_num");
+		String cpm_type = request.getParameter("cpm_type");
+		String cpm_infotime = request.getParameter("cpm_infotime");
+		
+		companyMemberDTO.setCpm_id(cpm_id);
+		companyMemberDTO.setCpm_pw(cpm_pw);
+		companyMemberDTO.setCpm_num(cpm_num);
+		companyMemberDTO.setCpm_type(cpm_type);
+		companyMemberDTO.setCpm_infotime(cpm_infotime);
+		
+		
+		int resultCount = companyMemberService.companyMemberInsert(companyMemberDTO);
+
+		modelAndView.addObject("resultCount", resultCount);
+		modelAndView.setViewName("companyJoinResult.jsp");
+		return modelAndView;
+	}
 }
