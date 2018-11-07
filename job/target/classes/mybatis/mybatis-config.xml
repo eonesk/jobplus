@@ -24,6 +24,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="job.recruitment.apply.bean.RM_applyDTO" alias="applyDTO"/>
 		<typeAlias type="job.recruitment.introduction.bean.RM_introductionDTO" alias="introductionDTO"/>
 		<typeAlias type="job.company.info.bean.CompanyInfoDTO" alias="companyInfoDTO"/>
+		<typeAlias type="job.company.member.bean.CompanyMemberDTO" alias="companyMemberDTO"/>
+		
 		
 		<!-- 클래스에 별명 설정 / recruitment 하위테이블 -->
 		<typeAlias type="job.recruitment.job.bean.RM_jobDTO" alias="jobDTO"/>

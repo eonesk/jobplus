@@ -1,10 +1,12 @@
 package job.company.info.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import job.company.info.bean.CompanyInfoDTO;
 import job.company.info.dao.CompanyInfoDAO;
 
+@Service
 public class CompanyInfoServiceImpl implements CompanyInfoService {
 
 	@Autowired

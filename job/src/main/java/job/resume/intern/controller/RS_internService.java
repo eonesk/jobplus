@@ -3,7 +3,6 @@ package job.resume.intern.controller;
 import java.util.List;
 
 import job.resume.intern.bean.RS_internDTO;
-import job.resume.trophy.bean.RS_trophyDTO;
 
 public interface RS_internService {	
 	// 등록

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import job.resume.language.bean.RS_languageDTO;
-import job.resume.trophy.bean.RS_trophyDTO;
 
 @Repository
 public class RS_languageDAO {

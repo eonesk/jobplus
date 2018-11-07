@@ -11,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CompanyInfoController {
 	
+	@Autowired
+	private CompanyInfoService companyInfoService;
+	
 	@RequestMapping(value = "/job/company/info/companyInfoWrite.do")
 	public ModelAndView insertCompanyInfo(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -19,6 +22,7 @@ public class CompanyInfoController {
 		session.setAttribute("comId", "test");
 		
 		String comId = (String) session.getAttribute("comId");
+		/*CompanyMemberDTO companyMemberDTO = companyInfoService.selec*/
 		
 		return modelAndView;
 	}

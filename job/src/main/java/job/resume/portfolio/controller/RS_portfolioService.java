@@ -1,8 +1,6 @@
 package job.resume.portfolio.controller;
 
 import java.util.List;
-import java.util.Map;
-
 import job.resume.portfolio.bean.RS_portfolioDTO;
 
 public interface RS_portfolioService {
