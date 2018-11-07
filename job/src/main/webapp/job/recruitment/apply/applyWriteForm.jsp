@@ -13,8 +13,7 @@
 		});
 		$("#ap_Type_radio_x").on("click", function() {
 			document.getElementById("ap_Type").style.display = "none";							
-		});
-		
+		});		
 		$("#rma_Age_Btn_o").on("click", function() {
 			document.getElementById("ap_display").style.display = "inline";	
 		});
@@ -30,24 +29,31 @@
 		});
 		$("#rma_Foreign").on("click", function() {			
 			window.open("/job/job/recruitment/apply/applyForeign.jsp", "", 'width=550px, height=600px, left=600, top=100');
-		});		
-		/** 히든인 rma_Gender값에 체크된 값을 넣어주는것 구현해야함. */
-		var Gender = $('input:radio[class="rma_Gender"]:checked').val();
-		document.getElementById("rma_Gender").val(Gender);
+		});			 
+		
+		/* 연령 제한 함수 손봐야함 */
+		$("#rma_Age2").on("change", function changeVal() {
+			var Age1 = $("#rma_Age option:selected").val();
+			var Age2 = $("#rma_Age2 option:selected").val();
+			if(Age1 < Age2){
+				alert("연령제한 설정이 잘못되었습니다.");	
+				$("#rma_Age2").focus();				
+			}	
+		});
 		
 		$("#ap_next").on("click", function() {								
 			if (!$("#rma_Major").val()) {
-				alert("전공/학과를 입력하세요.");
+				alert("전공/학과를 선택하세요.");
 				$("#rma_Major").focus();
 				return false;
 			}
 			if (!$("#rma_Vip").val()) {
-				alert("우대조건을 입력하세요.");
+				alert("우대조건을 선택하세요.");
 				$("#rma_Vip").focus();
 				return false;
 			}
 			if (!$("#rma_Foreign").val()) {
-				alert("어학사항을 입력하세요.");
+				alert("어학사항을 선택하세요.");
 				$("#rma_Foreign").focus();
 				return false;
 			}
@@ -66,8 +72,11 @@
 					alert("연령제한을 설정하세요.");
 					$("#rma_Age2").focus();
 					return false;
-				}
-			}			
+				}	
+			}
+			/** 히든인 rma_Gender값에 체크된 값을 넣어주는것  */
+			var Gender = $('input:radio[class="rma_Gender"]:checked').val();
+			$("#rma_Gender").val(Gender);			
 			window.open("/job/job/recruitment/apply/applyWrite.jsp", "", "width=500px height=500px");
 		});
 	});
@@ -219,7 +228,7 @@
 		<input type="text" id="rma_Vip" class="rma_Vip" placeholder="우대조건을 선택하세요."></p>
 	<hr>
 	<p class="ap_p6">외국어 (최대3개)
-		<input type="text" id="rma_Foreign" class="rma_Foreign" placeholder="어학조건을 선택하세요."></p>
+		<input type="text" id="rma_Foreign" class="rma_Foreign" placeholder="어학사항을 선택하세요."></p>
 	<hr>
 	<p class="ap_p7">자격증
 		<input type="text" id="rma_License" class="rma_License" placeholder="자격증명을 작성하세요."></p>
