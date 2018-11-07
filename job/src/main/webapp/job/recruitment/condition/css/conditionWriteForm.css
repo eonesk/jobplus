@@ -29,11 +29,11 @@ body {
 
 #conditionSalaryRight {padding-top: 10px;}
 
-#conditionPayDiv , #conditionExtraPayDiv, #conditionExtraPayLabel, #conditionPayValue, #conditionPayHidden {display: inline-block;}
+#rmc_Salary1 , #conditionExtraPayDiv, #conditionExtraPayLabel, #conditionPayValue, #conditionPayHidden {display: inline-block;}
 
-#conditionPayDiv {border: 1px solid #b0b0b0; border-radius: 3px; padding: 10px; width: 180px;}
+#rmc_Salary1 {border: 1px solid #b0b0b0; border-radius: 3px; padding: 13px; width: 180px;}
 #conditionPayValue {position: relative; bottom: 2px; border: 1px solid #b0b0b0; border-radius: 3px; padding: 12px; width: 80px;}
-#conditionExtraPay {position: relative; bottom: 2px; border: 1px solid #b0b0b0; border-radius: 3px; background-color: #eaeff2; width: 180px; height: 38px;}
+#rmc_Salary2 {position: relative; bottom: 2px; border: 1px solid #b0b0b0; border-radius: 3px; background-color: #eaeff2; width: 180px; height: 38px;}
 #conditionExtraPayLabel {font-size: 14px;}
 
 #conditionPayNoticeDiv {padding-top: 10px;}
@@ -59,6 +59,7 @@ body {
 #conditionBusinessButton {margin-left: 50px;}
 #conditionBusinessButton a:link {color: black;}
 #conditionBusinessButton a:visited {color: black;}
+
 #conditionWorkspaceLeft {
 	float: left;
 	padding: 10px;
@@ -70,7 +71,10 @@ body {
 	font-weight: bold;
 }
 
-##conditionWorkspaceRight {padding-top: 10pxl}
+#conditionWorkspaceRight {padding-top: 10px; padding-bottom: 10px;}
+#workspaceDivCancel {float: right; margin-top: 10px; text-decoration: none;}
+#workspaceDivCancel:link {color: black;}
+#workspaceDivCancel:visited {color: black;}
 
 #radioIn, #radioOut {width: 25px; height: 25px;}
 #conditionWorkspaceRadio > label {position:relative; top:-5px}
@@ -116,7 +120,7 @@ body {
 	color: #757575;	
 }
 #conditionWeekSelectDiv {margin-bottom: 6px; display: inline-block; text-align: center; padding-top: 15px; border: 1px solid #b0b0b0; border-radius: 3px; width: 250px; height: 35px; background: white;}
-#conditionWeekSelect {border: 0; font-size: 16px;}
+#rmc_Week {border: 0; font-size: 16px;}
 
 #conditionWeekRight {padding-top: 10px;}
 
@@ -134,7 +138,7 @@ body {
 #conditionTimeRight { padding-bottom: 10px;}
 
 #conditionTimeSelectDiv {margin-bottom: 6px; display: inline-block; text-align: center; padding-top: 10px; border: 1px solid #b0b0b0; border-radius: 3px; width: 250px; height: 35px; background: white;}
-#conditionTimeSelect {border: 0; font-size: 16px; appearance: none;}
+#rmc_Time {border: 0; font-size: 16px; appearance: none;}
 
 #conditionNextButtonDiv {margin-top: 5px; margin-right: 10px; float: right;}
 
@@ -152,7 +156,7 @@ body {
 
 
 #conditionPopUp{
-  width: 570px; height: 300px; background:white; color:black; 
+  width: 620px; height: 300px; background:white; color:black; 
   position:relative; top:-833px; left:248px; padding:0px 20px 0px 20px;
   border:1px solid #666666; z-index: 500px;
 }

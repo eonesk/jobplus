@@ -144,7 +144,7 @@
 		});
 		
 		
- 		
+ ///////////////////////// 유효성 검사		
 		$("#timeNextButton").click(function() {
 			alert($("input[name='rmt_How']").eq(0).is(":checked"));
 			rmt_HowValidation = ($("input[name='rmt_How']").eq(0).is(":checked")) || ($("input[name='rmt_How']").eq(0).is(":checked")) 
@@ -161,7 +161,7 @@
 				document.timeWriteForm.submit();
 			}
 		});
-		
+/////////////////////////////////////////////////////////		
 	});
 	
 	function calcEndDate(startDate, month) {
@@ -202,22 +202,21 @@
 		
 		return yyyy_month + "-" + MM_month + "-" + dd_month;
 	}
-	
+	////////////////// 무시해도 됨
     window.onload = function(){
-        //전체주소
+        //전체주소 
         console.log("url : "+$(location).attr('href'));
  
         //http:, localhost:port번호, index.html ?test=tttt 순으로 나누어져 있습니다.
         console.log("url : "+$(location).attr('protocol')+"//"+$(location).attr('host')+""+$(location).attr('pathname')+""+$(location).attr('search'));
     }
-	
 </script>
 <style type="text/css">
 	@import url('./css/timeWriteForm.css');
 </style>
 </head>
 <body>
-<form action="timeWriteFormNext.do" method="POST" name="timeWriteForm">
+<form action="timeWriteFormNext.do" method="post" name="timeWriteForm">
 	<div id="timeWrap">
 		<div id="timeTitle">
 			<h2>접수기간 및 방법</h2>
@@ -311,7 +310,32 @@
 			<button id="timeNextButton" type="button">다음</button>
 		</div>
 		<div id="timeDeem"></div>
-		<div id="timePopUp">GI</div>
+		<div id="timePopUp">
+			<h1>채용절차법 준수 안심보장 시스템 안내</h1>
+			<div id="popUpDiv1" style="padding: 24px 28px 28px; background-color: #f4f4f4">
+				'채용절차법'에 따르면 구인자는 구직자에게 채용 서류 접수 사실을 알려야 합니다.<br>
+				그 밖에도 '채용일정 및 심사 지연에 대한 고지', '지원 서류 반환 및 파기의 의무' 등<br>
+				구인업체가 직접 개별적으로 처리하기에는 번거로운 준수사항이 많습니다.<br><br>
+				이에 사람인에서는 인사담당자 여러분이 오직 채용에만 집중할 수 있도록,<br>
+				채용절차법 준수사항을 자동 관리할 수 있는 시스템을 구축하게 되었습니다.
+			</div>
+			<div style="padding-top: 20px; padding-bottom: 20px;">
+				<img src="./img/sri.png">
+			</div>
+			<br><br>
+			<h4>2.한 눈에 보는 '채용절차의 공정화에 관한 법률'준수 가이드</h4>
+			<p>
+			시행일자<br>
+			-상시 근로자 300명 이상 사업장, 공공기관, 국가 및 자치단체:'15년 1월 1일<br>
+			-상시 근로자 100명 이상 300명 미만 사업장:'16년 1월 1일<br>
+			-상시 근로자 30명 이상 100명 미만 사업장:'17년 1월 1일<br>
+			</p>
+			<div>
+				<img src="./img/info1.png" style="margin:0; padding: 0;">
+				<img src="./img/info2.png" style="margin:0; padding: 0;">
+			</div>
+			<br><br>
+		</div>
 	</div>
 </form>
 </body>
