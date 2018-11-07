@@ -274,7 +274,7 @@ input[type=checkbox] {
 				</li>
 				<li class="">
 					<h2 class="tab02">
-						<a href="CompanyJoinForm.do" class="tabBtn"><strong>기업회원가입</strong></a>
+						<a href="../company/member/companyJoinForm.do" class="tabBtn"><strong>기업회원가입</strong></a>
 					</h2>
 				</li>
 			</ul>

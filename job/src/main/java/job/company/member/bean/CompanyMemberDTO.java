@@ -56,6 +56,4 @@ public class CompanyMemberDTO {
 	public void setCpm_infotime(String cpm_infotime) {
 		this.cpm_infotime = cpm_infotime;
 	}
-
-
 }
