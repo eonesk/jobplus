@@ -33,18 +33,12 @@
 	<div id="PR_div"
 		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
 		
-		<h3>자기소개서</h3>		
+		<h1>자기소개서</h1>		
 		<p style="clear: both; font-size: 12px; margin: 3px;">
 		각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. ㅇ아아앙ㅇㅇㅇㅇㅇ아아ㅏ아아</p>		
 		
-		<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
-			<a href="#" id="RSPR_loadA">내 자소서 불러오기</a>
-		</div>			
-		<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block;">
-			<a href="#" id="RSPR_saveA">자소서관리에 저장</a>
-		</div>	
-		
-		<br>		
+		<input type="button" id="RSPR_loadA" class="button button_widthFree" value="내 자소서 불러오기">		
+		<input type="button" id="RSPR_saveA" class="button button_widthFree" value="내 자소서 저장하기">
 		
 		<div style="padding: 3px;">
 			<!-- SEQ : hidden -->
@@ -52,11 +46,11 @@
 			
 			<!-- 제목 -->
 			<input type="text" placeholder="제목을 입력하세요."
-				style="float: left; width: 539px; height: 30px;" id="rsprTitle">
+				style="float: left; width: 952px; height: 30px;" id="rsprTitle">
 				
 			<!-- 내용 -->
 			<div style="clear: both;">
-				<textarea class="autosize" cols="65" style="min-height: 150px;" id="rsprContent"></textarea>
+				<textarea class="autosize" cols="134" style="min-height: 250px; resize: none;" id="rsprContent" placeholder="내용을 입력하세요"></textarea>
 			</div>
 		</div>		
 	</div>

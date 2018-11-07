@@ -15,8 +15,8 @@ body {
 	position : relative;
 	background-color: white;
 	border: 1px solid lightgray;
-	width: 955px;
-	
+	width: 950px;
+	left: 24px;
 }
 
 .workLvHeader{
@@ -140,20 +140,36 @@ body {
 }
 
 .lineFour button,.loadBtn {
-	background-color: white;
-	border: 1px solid dodgerblue;
-	color: dodgerblue;
-	width: 80px;
-	height: 40px;
+		width: auto;
+		height: 50px;
+	    background-color: #5882FA;
+	    border: none;
+	    color:#fff;
+	    padding: 10px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 15px;
+	    margin: 4px;
+	    cursor: pointer;
+}
+.lineFour button:hover,.loadBtn:hover {
+	background-color: #2E9AFE;
 }
 
 .addBtn {
 	width: 100%;
 	height: 50px;
-	background-color: white;
-	border: 1px solid lightgray;
-	font-size: 25px;
-	font-weight: bold;
+	background-color: #5882FA;
+	font-size: 15px;
+	color:#fff;
+	border: none;
+	text-decoration: none;
+	cursor: pointer;
+	outline: 0;
+}
+.addBtn:hover{
+	background-color: #2E9AFE;
 }
 
 .lineSix textarea {
@@ -524,7 +540,7 @@ body {
 <input type="hidden" id="rsw__Seq_3">
 	<div id="workLvHeader" class="workLvHeader">
 		경력<br>
-		<button type="button" id="loadBtn" class="button button_widthFree">불러오기</button>
+		<button type="button" id="loadBtn" class="loadBtn">내 경력 불러오기</button>
 	</div>
 	<div id="workLvContainer" class="workLvContainer">
 		<div id="workLvContent" class="workLvContent">
@@ -714,7 +730,7 @@ body {
 		</div>
 		<div id="lineFive" class="lineFive">
 			<button id="addBtn" class="addBtn" type="button">
-				<span>+추가</span>
+				<span>추가하기</span>
 			</button>
 		</div>
 		<div id="lineSix" class="lineSix">

@@ -479,7 +479,7 @@
 			
 			<!-- Load -->
 			<div id="studyLV_Load">
-				<input type="button" id="RSS_loadA" name="RSS_loadA" class="button button_widthFree" value="내 학력사항 불러오기">
+				<input type="button" id="RSS_loadA" name="RSS_loadA" class="button button_widthFree" value="내 학력 불러오기">
 			</div>
 			<p id="studyLV_Guide">
 				각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. 고치거나 빼야함ㅎ
@@ -504,7 +504,7 @@
 				<!-- 'X'버튼 -->			
 				<!-- isHighScool -->
 				<input id="isHighSchoolCheck" name="rss_Ishighschool" class="isHighSchoolCheck" type="checkbox"value="true" style="width: 20px; height: 20px; border: 2px solid gray; vertical-align: -6px;">고등학교 미만 졸업
-				<input type="button" value="X" id="studyLVPlusCancel" name="studyLVPlusCancel" style="width: 50px; margin-left: 786px;">
+				<input type="button" value="X" id="studyLVPlusCancel" name="studyLVPlusCancel" style="width: 35px; height:35px; margin-left: 801px;">
 				
 				<!-- 고등학교미만졸업일 때 숨겨지는 부분 -->
 				<div id="isHighSchoolHide" name="isHighSchoolHide" class="isHighSchoolHide">
