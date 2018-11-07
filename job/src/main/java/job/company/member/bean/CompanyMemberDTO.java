@@ -1,6 +1,6 @@
 package job.company.member.bean;
 
-public class companyMemberDTO {
+public class CompanyMemberDTO {
 
 	// 기업아이디
 	private String cpm_id;
