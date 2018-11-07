@@ -292,7 +292,7 @@ fieldset {
 		<input type="button" value="불러오기" id="langload" class="langload">			 
 </div>
 	<fieldset>
-		<div id="t" class="t">
+		<div id="rslg_t" class="rslg_t">
 		<br>
 		<input type="hidden" id="rslg_Seq" class="rslg_Seq">
 			<select name="rslg_Category" id="rslg_Category" class="rslg_Category">

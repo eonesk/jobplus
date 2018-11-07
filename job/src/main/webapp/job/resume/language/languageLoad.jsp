@@ -61,7 +61,7 @@ $(function() {
 								if($(this).is(":checked")){
 									num++;
 									if(num == 3) {
-										$(".RSLG_UserTitle1").not($(".RSLG_UserTitle1")).attr("disabled", "true");
+										$(".RSLG_UserTitle1").not($(".RSLG_UserTitle1:checked")).attr("disabled", "true");
 									}
 								} else {
 									num--;
@@ -70,7 +70,7 @@ $(function() {
 							});
 						}
 						
-						$("#RSLG_load").click(function() {
+						$("#load").click(function() {
 							
 							var accumSeq = "";
 							
