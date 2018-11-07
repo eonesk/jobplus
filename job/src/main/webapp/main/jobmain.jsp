@@ -9,7 +9,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 /* HEADER */
-body			{min-width: 1600px;	margin: 0px; }
+body			{min-width: 1600px;	margin: 0px;}
 ol, ul, li		{list-style: none;}
 #container		{position: relative;	padding-top: 90px;			text-align: center;	background-color: #eef2f7;}
 #header			{position: fixed;		text-align: left;			top: 0;	left: 0;	z-index: 100;	width: 100%;	height: 90px;	}
@@ -192,6 +192,7 @@ ul.list_gnb li {
 .wrap_contents.control_margin #content {
     margin-bottom: 50px !important;
     float: left;
+    text-align: left;
 }
 /*레이어 팝업 CSS*/
 #user_corp_popup {
@@ -325,14 +326,16 @@ ul.list_gnb li {
     cursor: pointer;
     position: absolute;
     left: -16.5%;
-    float: left;   
+    float: left;  
+    bottom: 40%;
 }
 .right_wing {
     display: block;
     cursor: pointer;
     right: -16.5%;
     position: absolute;
-    float: left; 
+    float: left;
+    bottom: 40%;
 }
 
 </style>
@@ -355,20 +358,69 @@ $(document).ready(function() {
 		if(container.has(e.target).length =='0')
 			container.hide();
 	});
-///////////////////////////////////////////////
-	$("#studyLVDiv").hide();
-	$("#next_btn").hide();
-	$("#prev_btn").hide();
+/////////////////////////////////////다 숨어있는거
+
+							$("#next_btn1").hide();	
+	$("#prev_btn2").hide();	$("#next_btn2").hide();	
+	$("#prev_btn3").hide();	$("#next_btn3").hide();	
+	$("#prev_btn4").hide();	$("#next_btn4").hide();	
+	$("#prev_btn5").hide();	$("#next_btn5").hide();	
+	$("#prev_btn6").hide();	$("#next_btn6").hide();	
+	$("#prev_btn7").hide();	$("#next_btn7").hide();	
+
+// 	$("#1").hide();
+	$("#introductionDiv").hide();
+	$("#applyDiv").hide();
+// 	$("#4").hide();
+// 	$("#5").hide();
+// 	$("#6").hide();
+// 	$("#7").hide();
+
 	$("#recruitment_insert").click(function() {
-		$("#studyLVDiv").show();			
-		$("#next_btn").show();			
-		$("#prev_btn").show();			
+		$("#1번").show();			
+		$("#next_btn1").show();				
+	});	
+	$("#next_btn1").click(function() {
+		$("#1번").hide();	
+		$("#introductionDiv").show();
+		$("#next_btn1").hide();	
+		$("#prev_btn2").show();
+		$("#next_btn2").show();
 	});
+	$("#prev_btn2").click(function() {
+		$("#introductionDiv").hide();	
+		$("#1번").show();
+		$("#prev_btn2").hide();
+		$("#next_btn2").hide();
+		$("#next_btn1").show();	
+	});
+	$("#next_btn2").click(function() {
+		$("#introductionDiv").hide();	
+		$("#applyDiv").show();
+		$("#prev_btn2").hide();
+		$("#next_btn2").hide();
+		$("#prev_btn3").show();
+		$("#next_btn3").show();
+	});
+	$("#prev_btn3").click(function() {
+		$("#applyDiv").hide();	
+		$("#introductionDiv").show();
+		$("#prev_btn3").hide();
+		$("#next_btn3").hide();
+		$("#prev_btn2").show();	
+		$("#next_btn2").show();	
+	});
+// 	$("left_wing").click(function() {
+// 		$("#introductionDiv").show();
+// 		$("#applyDiv").hide();
+		
+// 	});
+	////다음으로 넘어감
 });
 
 </script>
 </head>
-<body id="topBar">
+<body id="topBar" style="left: 0px; right: 0px;">
 	<div id="container">
 		<header id="header">
 			<div class="inner">
@@ -439,22 +491,38 @@ $(document).ready(function() {
 			<div class="wrap_contents control_margin ">
 				<div id="wrap_contents_inner" class="cm_inner">
 					
-						<div class="left_wing">
-							<a href="#" id="prev_btn" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
+						<div class="left_wing" id="left_wing">
+							<a href="#" id="prev_btn2" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
+							<a href="#" id="prev_btn3" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
+							<a href="#" id="prev_btn4" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
+							<a href="#" id="prev_btn5" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
+							<a href="#" id="prev_btn6" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
+							<a href="#" id="prev_btn7" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
 						</div>
 										
 					<!-- ~~~~~~~~~~~~~~~~인클루드 내용물~~~~~~~~~~~~~~~ -->
 					<div id="content" class="content_typea sub-content">
-											
-						<div id="studyLVDiv">
-							<hr id="hr_resume">
-							<jsp:include page="/job/resume/studyLV/studyLVWriteForm.jsp"></jsp:include>
+						<!-- 2번 -->					
+						<div id="introductionDiv">
+							<hr id="hr_recruitment">
+							<jsp:include page="/job/recruitment/introduction/introWriteForm.jsp"></jsp:include>
 						</div>
+						<!-- 3번 -->
+						<div id="applyDiv">
+							<hr id="hr_recruitment">
+							<jsp:include page="/job/recruitment/apply/applyWriteForm.jsp"></jsp:include>
+						</div>					
 											
 					</div>
 					<!-- paging -->
-					<div class="right_wing">
-							<a href="#" id="next_btn" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
+					<div class="right_wing" id="right_wing">
+							<a href="#" id="next_btn1" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
+							<a href="#" id="next_btn2" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
+							<a href="#" id="next_btn3" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
+							<a href="#" id="next_btn4" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
+							<a href="#" id="next_btn5" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
+							<a href="#" id="next_btn6" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
+							<a href="#" id="next_btn7" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
 					</div>	
 					
 				</div>
