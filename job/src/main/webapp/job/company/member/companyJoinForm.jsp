@@ -8,77 +8,70 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
+	$(".cpm_hideSpan").hide();
 	//id 속성이 join인 <form>태그 안의 submit 버튼을 누른 경우
 	$("form[name='joinForm']").submit(function() {
-		//$(input요소).val() 는 사용자가 입력한 값을 리턴한다.
-		if(!$("input[name='cpm_Id']").val()){
-			$(this).next().html("아이디를 입력하세요.");
-			$("input[name='cpm_Id']").focus();
+		var idReg = /^[A-za-z0-9]{5,15}$/g;
+		var pwReg = /^[A-za-z0-9]{5,15}$/g;
+		var numReg = /^[0-9]{5,15}$/g;
+
+		if(!$("input[name='cpm_id']").val()){
+			$("#cpm_hideIdSpan").css("color","red").html("아이디를 입력하세요.").show();
+			$("input[name='cpm_id']").focus();
 			return false;
+		}else if(!idReg.test($("input[name='cpm_id']").val())){
+			$("#cpm_hideIdSpan").css("color","red").html("아이디는 영문자로 시작하는 5~15자 영문자 또는 숫자이어야 합니다").show();
+			$("input[name='cpm_id']").focus();
+			return false;
+		}else{
+			$("#cpm_hideIdSpan").css("color","green").html("사용가능한 아이디 입니다.").show();
 		}
+		
+		
+		
 		/**비밀번호 입력 검사 */
-		if(!$("input[name='m_Pw']").val()){
-			alert("비밀번호를 입력하세요."); 
-			$("input[name='m_Pw']").focus();
+		if(!$("input[name='cpm_pw']").val()){
+			$("#cpm_hidePwSpan").css("color","red").html("비밀번호를 입력하세요.").show(); 
+			$("input[name='cpm_pw']").focus();
 			return false;
-		}
-		if(!$("input[name='m_Name']").val()){
-			alert("이름을 입력하세요.");
-			$("input[name='m_Name']").focus();
+		}else if(!pwReg.test($("input[name='cpm_pw']").val())){
+			$("#cpm_hidePwSpan").css("color","red").html("비밀번호는 영문자로 시작하는 5~15자 영문자 또는 숫자이어야 합니다").show();
+			$("input[name='cpm_pw']").focus();
 			return false;
+		}else{
+			$("#cpm_hidePwSpan").css("color","green").html("사용가능한 비밀번호 입니다.").show();
 		}
+		
+		//기업 사업자 번호
+		if(!$("input[name='cpm_num']").val()){
+			$("#cpm_hideNumSpan").css("color","red").html("사업자등록번호를 입력하세요.").show(); 
+			$("input[name='cpm_num']").focus();
+			return false;
+		}else if(!numReg.test($("input[name='cpm_num']").val())){
+			$("#cpm_hideNumSpan").css("color","red").html("올바른 값을 입력해 주십시오").show();
+			$("input[name='cpm_num']").focus();
+			return false;
+		}else{
+			$("#cpm_hideNumSpan").hide();
+		}
+		
+		if($("#cpm_type").val() == "기업 분류"){
+			$("#cpm_hideTypeSpan").css("color","red").html("사업자등록번호를 입력하세요.").show(); 
+			$("input[name='cpm_type']").focus();
+			return false;
+		}else{
+			$("#cpm_hideTypeSpan").hide();
+		}
+		
+		
 		/**라디오버튼 선택여부 검사 */
 		//!$("라디오버튼CSS셀렉터").is("checked") --> 체크일 경우 : true
-		if(!$("input[name='m_Gender']").is(":checked")){
-			alert("성별을 입력하세요.");
-			$("input[name='m_Gender']:eq(0)").focus();
-			return false;
-		}
-		/**이메일주소 입력여부 검사 */
-		if(!$("input[name='m_Email']").val()){
-			alert("이메일주소를 입력하세요.");
-			$("input[name='m_Email']").focus();
+		if(!$("input[name='cpm_infotime']").is(":checked")){
+			alert("정보보유 기간을 체크하세요.");
+			$("input[name='cpm_infotime']:eq(0)").focus();
 			return false;
 		}
 		
-		if(!$("input[name='m_Address1']").val()){
-			alert("주소를 입력하세요.");
-			$("input[name='m_Address1']").focus();
-			return false;
-		}
-		
-		if(!$("input[name='m_Address2']").val()){
-			alert("주소를 입력하세요.");
-			$("input[name='m_Address2']").focus();
-			return false;
-		}
-		
-		if(!$("input[name='m_Homenum']").val()){
-			alert("상세주소를 입력하세요.");
-			$("input[name='m_Homenum']").focus();
-			return false;
-		}
-		
-		/**핸드폰번호 입력여부 검사 */
-		if(!$("input[name='m_Phone']").val()){
-			alert("핸드폰번호를 입력하세요.");
-			$("input[name='m_Phone']").focus();
-			return false;
-		}
-		
-		/**핸드폰번호 입력여부 검사 */
-		if(!$("input[name='m_Phone']").val()){
-			alert("핸드폰번호를 입력하세요.");
-			$("input[name='m_Phone']").focus();
-			return false;
-		}
-		
-		/**핸드폰번호 입력여부 검사 */
-		if(!$("input[name='m_Birth']").val()){
-			alert("핸드폰번호를 입력하세요.");
-			$("input[name='m_Birth']").focus();
-			return false;
-		}
 		
 		/**체크박스 선택여부 검사 */
 		if(!$("li.must .consent").is(":checked")){
@@ -328,10 +321,16 @@ input[type=checkbox] {
 	
 }
 
-
 .cpm_infotime{
 	display: none;
 }
+
+.cpm_hideSpan{
+	display: inline-block;
+	height:30px;
+}
+
+
 </style>
 </head>
 <body>
@@ -343,13 +342,12 @@ input[type=checkbox] {
 			<ul class="joinCategory">
 				<li class="">
 					<h2 class="tab01">
-						<a href="#" class="tabBtn"><strong>개인회원가입</strong>만 15세 이상 가능
-						</a>
+						<a href="../../member/joinForm.do" class="tabBtn"><strong>개인회원가입</strong>만 15세 이상 가능</a>
 					</h2>
 				</li>
 				<li class="on">
 					<h2 class="tab02">
-						<a href="CompanyJoinForm.do" class="tabBtn"><strong>기업회원가입</strong></a>
+						<a href="#" class="tabBtn"><strong>기업회원가입</strong></a>
 					</h2>
 				</li>
 			</ul>
@@ -359,20 +357,24 @@ input[type=checkbox] {
 				<h3>
 					<span>ID/PW</span>
 				</h3>
-				<input name="cpm_Id" id="cpm_Id" type="text" placeholder="아이디">
-				<div class="cpm_hidDiv"><span class="cpm_hideSpan"></span></div>
-				<input name="cpm_Pw" id="cpm_Pw" type="password" placeholder="비밀번호">
-
+				<input name="cpm_id" id="cpm_id" type="text" placeholder="아이디">
+				<span id="cpm_hideIdSpan" class="cpm_hideSpan"></span>
+				<input name="cpm_pw" id="cpm_pw" type="password" placeholder="비밀번호">
+				<span id="cpm_hidePwSpan" class="cpm_hideSpan"></span>
+				
 				<h3>
 					<span>기업인증</span>
 				</h3>
-				<input name="cpm_num" id="cpm_num" class="cpm_num" type="text" placeholder="주소지"> 
+				<input name="cpm_num" id="cpm_num" class="cpm_num" type="text" placeholder="사업자 등록 번호">
+				<span id="cpm_hideNumSpan" class="cpm_hideSpan"></span> 
+				
 				<select id="cpm_type" name="cpm_type" class="cpm_type">
+					<option>기업 분류</option>
 					<option>일반</option>
 					<option>인재파견</option>
 					<option>헤드헌팅</option>
 				</select>
-				
+				<span id="cpm_hideTypeSpan" class="cpm_hideSpan"></span>
 				
 				<h3>
 					<span>약관동의</span>
@@ -405,8 +407,8 @@ input[type=checkbox] {
 					<label class="cpm_infotimeLabel infotimeCheckOff" for="cpm_infotime2"></label><span class="cmp_infoContentSpan">3년</span>
 					<input type="radio" id="cpm_infotime3" name="cpm_infotime" class="cpm_infotime" value="5년">
 					<label class="cpm_infotimeLabel infotimeCheckOff" for="cpm_infotime3"></label><span class="cmp_infoContentSpan">5년</span>
-					<input type="radio" id="cpm_infotime4" name="cpm_infotime" class="cpm_infotime" value="탈퇴시">
-					<label class="cpm_infotimeLabel infotimeCheckOff" for="cpm_infotime4"></label><span class="cmp_infoContentSpan">탈퇴시</span>
+					<input type="radio" id="cpm_infotime4" name="cpm_infotime" class="cpm_infotime" value="탈퇴시 삭제">
+					<label class="cpm_infotimeLabel infotimeCheckOff" for="cpm_infotime4"></label><span class="cmp_infoContentSpan">탈퇴시 삭제</span>
 				</div>
 				
 				<div class="joinDiv">

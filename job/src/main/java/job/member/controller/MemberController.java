@@ -19,10 +19,10 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value="/main/index.do")
+	@RequestMapping(value="/job/member/joinForm.do")
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index.jsp");
+		modelAndView.setViewName("/job/member/joinForm.jsp");
 		return modelAndView;
 	}
 	@RequestMapping(value="/job/member/joinResult.do")
