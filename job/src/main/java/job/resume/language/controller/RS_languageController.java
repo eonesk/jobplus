@@ -106,7 +106,6 @@ public class RS_languageController {
 			temp.put("rslg_Test", languageDTO.getRslg_Test());
 			temp.put("m_Id", languageDTO.getM_Id());
 			temp.put("RSLG_UserTitle", languageDTO.getRSLG_UserTitle());
-			
 			items.put(i, temp);
 		}
 		
