@@ -65,7 +65,7 @@
 									if($(this).is(":checked")){
 										num++;
 										if(num == 3) {
-											$(".RST_UserTitleR").not($(".RST_UserTitleR")).attr("disabled", "true");
+											$(".RST_UserTitleR").not($(".RST_UserTitleR:checked")).attr("disabled", "true");
 										}
 									} else {
 										num--;
