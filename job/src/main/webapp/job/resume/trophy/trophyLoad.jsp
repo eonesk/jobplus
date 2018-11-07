@@ -65,7 +65,7 @@
 									if($(this).is(":checked")){
 										num++;
 										if(num == 3) {
-											$(".RST_UserTitleR").not($(".RST_UserTitleR")).attr("disabled", "true");
+											$(".RST_UserTitleR").not($(".RST_UserTitleR:checked")).attr("disabled", "true");
 										}
 									} else {
 										num--;
@@ -150,7 +150,7 @@
 		});
 	});
 	$(function() {		
-		$("#cancle").click(function() {
+		$("#RST_cancle").click(function() {
 			window.close();
 		});
 	});
@@ -189,8 +189,8 @@
 		</div>
 		<div id="RST_loadView" class="RST_loadView">
 		</div>
-		<input type="button" value="불러오기" id="load" class="load">
-		<input type="button" value="취소" id="cancle" class="cancle">	
+		<input type="button" value="불러오기" id="RST_load" class="RST_load">
+		<input type="button" value="취소" id="RST_cancle" class="RST_cancle">	
 	</fieldset>
 </body>
 </html>

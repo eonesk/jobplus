@@ -10,7 +10,8 @@
 	$(function() {
 		var num = ${param.num};
 		alert("num의 수 = " + num);
-		var rslgCategory = $("#rslg_Category" + num, opener.document).val();	
+		var rslgCategory = $("#rslg_Category" + num, opener.document).val();
+		alert("rslgCategory의 값 = " + rslgCategory);
 		if(rslgCategory == "공인시험"){
 			var rslgName = $("#rslg_Name" + num, opener.document).val();			
 			var rslgTest = $("#rslg_Test" + num, opener.document).val();
@@ -19,7 +20,7 @@
 			var rslgLv = null;
 		}else{
 			var rslgName = $("#rslg_Name" + num, opener.document).val();
-			var rslgLv = $("#rslgLv" + num, opener.document).val();
+			var rslgLv = $("#rslg_Lv" + num, opener.document).val();
 			var rslgTest = null;
 			var rslgScore = null;
 			var rslgDate = null;

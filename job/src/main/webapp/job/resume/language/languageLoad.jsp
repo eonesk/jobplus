@@ -21,17 +21,20 @@ $(function() {
 				alert("어학이력 없음");
 			} else {
 				alert("어학이력");
+				
 				$.ajax({
 					type: 'POST',
 					url: 'Load.do',
 					dataType: "json",
+					cache: false,
 					success: function(data) {
+						alert("성공");
 						var trTitle = $("<tr>").addClass("LoadListTr");
 						var tdTitle = $("<td>").addClass("LoadListTd").html("제목");
 						
 						trTitle.append(tdTitle);
 						$("#RSLG_LoadList").append(trTitle);
-						
+						alert("36줄 통과");
 						$.each(data.items, function(index, item) {
 							var dto = item;
 							var tr = $("<tr>").addClass("LoadListTr");
@@ -41,11 +44,12 @@ $(function() {
 								"type": "checkbox",
 								"value": item.rslg_Seq
 							}).addClass("RSLG_UserTitle1");
+							alert("46줄통과");
 							var a = $("<a>").attr({
 								"id": "RSLG_UserTitle2",
 								"href": "#"
 							}).html(item.RSLG_UserTitle).bind('click', {param: dto}, add_event);								
-							
+							alert("51줄통과");
 							td.append(checkbox);
 							td.append(a);
 							tr.append(td);
@@ -61,7 +65,7 @@ $(function() {
 								if($(this).is(":checked")){
 									num++;
 									if(num == 3) {
-										$(".RSLG_UserTitle1").not($(".RSLG_UserTitle1")).attr("disabled", "true");
+										$(".RSLG_UserTitle1").not($(".RSLG_UserTitle1:checked")).attr("disabled", "true");
 									}
 								} else {
 									num--;
@@ -162,7 +166,7 @@ $(function() {
 	});		
 });
 $(function() {		
-	$("#cancle").click(function() {
+	$("#RSLG_cancle").click(function() {
 		window.close();
 	});
 });
@@ -173,7 +177,7 @@ $(function() {
 	font-weight: bold;
 	color: #2A120A;
 }
-.load, .cancle {
+.RSLG_load, .RSLG_cancle {
 	width:70px;
     background-color: #5882FA;
     border: none;
@@ -186,7 +190,7 @@ $(function() {
     margin: 4px;
     cursor: pointer;
 }
-.load:hover, .cancle:hover {
+.RSLG_load:hover, .RSLG_cancle:hover {
     background-color: #2E9AFE;
 }
 </style>
@@ -201,8 +205,8 @@ $(function() {
 		</div>
 		<div id="RSLG_loadView" class="RSLG_loadView">
 		</div>
-		<input type="button" value="불러오기" id="load" class="load">
-		<input type="button" value="취소" id="cancle" class="cancle">	
+		<input type="button" value="불러오기" id="RSLG_load" class="RSLG_load">
+		<input type="button" value="취소" id="RSLG_cancle" class="RSLG_cancle">	
 	</fieldset>
 </body>
 </html>

@@ -193,7 +193,7 @@
 					});					
 				},
 				error: function(e) {
-					 alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
+					 alert('(writeForm)서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.: ' + e.status);
 				}
 			});			
 		});
@@ -292,7 +292,7 @@ fieldset {
 		<input type="button" value="불러오기" id="langload" class="langload">			 
 </div>
 	<fieldset>
-		<div id="t" class="t">
+		<div id="rslg_t" class="rslg_t">
 		<br>
 		<input type="hidden" id="rslg_Seq" class="rslg_Seq">
 			<select name="rslg_Category" id="rslg_Category" class="rslg_Category">

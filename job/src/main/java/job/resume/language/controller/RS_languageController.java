@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import job.resume.intern.bean.RS_internDTO;
 import job.resume.language.bean.RS_languageDTO;
-import job.resume.trophy.bean.RS_trophyDTO;
 
 @Controller
 public class RS_languageController {
@@ -98,6 +96,7 @@ public class RS_languageController {
 			DateFormat Format = new SimpleDateFormat("yyyy-MM-dd");
 			rslg_Date = Format.format(languageDTO.getRslg_Date());
 			JSONObject temp = new JSONObject();
+			System.out.println("컨트롤러 101줄");
 			temp.put("rslg_Seq", languageDTO.getRslg_Seq());
 			temp.put("rslg_Category", languageDTO.getRslg_Category());
 			temp.put("rslg_Name", languageDTO.getRslg_Name());
@@ -108,7 +107,7 @@ public class RS_languageController {
 			temp.put("rslg_Test", languageDTO.getRslg_Test());
 			temp.put("m_Id", languageDTO.getM_Id());
 			temp.put("RSLG_UserTitle", languageDTO.getRSLG_UserTitle());
-			
+			System.out.println("컨트롤러 112줄");
 			items.put(i, temp);
 		}
 		
