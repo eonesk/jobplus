@@ -17,7 +17,6 @@ $("#rs_seq").val(null);
 		var rs_workspace_btn_ck = false;
 		var rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
 		$(".rs_workspace_cnt").html(rs_workspace_cnt-1);
-		$("#rs_workspace").hide();
 		
 		$("#rs_workspace_btn").click(function() {
 			if(rs_workspace_cnt > 3){
@@ -81,7 +80,6 @@ $("#rs_seq").val(null);
 		var rs_job_btn_ck = false;
 		var rs_job_cnt = $("#rs_job_result input[type=button]").length;
 		$(".rs_job_cnt").html(rs_job_cnt-1);
-		$("#rs_job").hide();
 		
 		$("#rs_job_btn").on("click", function() {
 			if(rs_job_cnt > 3){
@@ -170,7 +168,6 @@ $("#rs_seq").val(null);
 		});
 		
 		/* rs_studyLV */
-		$("#studyLVDiv").hide();
 		$("#studyLVCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#studyLVDiv").show();
@@ -179,7 +176,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_workLV */
-		$("#workLVDiv").hide();
 		$("#workLVCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#workLVDiv").show();
@@ -188,7 +184,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_intern */
-		$("#internDiv").hide();
 		$("#internCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#internDiv").show();
@@ -197,7 +192,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_edu */
-		$("#eduDiv").hide();
 		$("#eduCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#eduDiv").show();
@@ -206,7 +200,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_license */
-		$("#licenseDiv").hide();
 		$("#licenseCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#licenseDiv").show();
@@ -215,7 +208,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_trophy */
-		$("#trophyDiv").hide();
 		$("#trophyCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#trophyDiv").show();
@@ -224,7 +216,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_foreign */
-		$("#foreignDiv").hide();
 		$("#foreignCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#foreignDiv").show();
@@ -233,7 +224,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_language */
-		$("#languageDiv").hide();
 		$("#languageCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#languageDiv").show();
@@ -242,7 +232,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_portfolio */
-		$("#portfolioDiv").hide();
 		$("#portfolioCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#portfolioDiv").show();
@@ -251,7 +240,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_vip */
-		$("#vipDiv").hide();
 		$("#vipCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#vipDiv").show();
@@ -260,7 +248,6 @@ $("#rs_seq").val(null);
 			}
 		});
 		/* rs_pr */
-		$("#prDiv").hide();
 		$("#prCheck").change(function() {
 			if($(this).is(":checked")){
 				$("#prDiv").show();
@@ -599,6 +586,7 @@ $("#rs_seq").val(null);
 <body>
 <form action="resumeWrite.do" method="post" name="resumeWriteForm">
 <input type="hidden" id="rs_seq">
+<input type="hidden" id="memId" value="${sessionScope.memId }">
 <div id="header">
 	<a href="#">JOBPLUS</a>
 	<a href="#">이력서 관리</a>
@@ -606,7 +594,7 @@ $("#rs_seq").val(null);
 <div id="section">
 	<input type="text" name="rs_title" id="rs_title" placeholder="이력서 제목"><br>
 	<div id="member_info">
-	<h2>인적사항</h2>
+	<h1>인적사항</h1>
 		<table>
 			<tr>
 				<td><input type="text" name="rs_name" id="rs_name" value="${memberDTO.m_name }" placeholder="이름"></td>
@@ -642,9 +630,9 @@ $("#rs_seq").val(null);
 			</tr>
 		</table>
 	</div>
-	<hr>
+	<hr id="hr_resume">
 	<div id="working_conditions">
-	<h2>희망근무조건</h2>
+	<h1>희망근무조건</h1>
 		<div class="working_conditions_item1">
 			<select id="rs_type" name="rs_type" class="rs_type">
 				<option value="error">---고용형태---</option>
@@ -664,8 +652,8 @@ $("#rs_seq").val(null);
 			<tr>
 				<td colspan="2">
 					<div class="header">
-						<div class="left"><font>희망근무지</font><span class="rs_workspace_cnt"></span>/3</div>
-						<div class="right">
+						<div class="left_workspace"><font>희망근무지</font><span class="rs_workspace_cnt"></span>/3</div>
+						<div class="right_workspace">
 							<input type="button" id="rs_workspace_btn" class="button rs_workspace_btn" value="추가하기">
 							<span id="rs_workspace_select1"></span>
 							<span id="rs_workspace_select2"></span>
@@ -679,8 +667,8 @@ $("#rs_seq").val(null);
 			<tr>
 				<td colspan="2">
 					<div class="header">
-						<div class="left"><font>직무 산업 키워드</font><span class="rs_job_cnt"></span>/3</div>
-						<div class="right">
+						<div class="left_job"><font>직무 산업 키워드</font><span class="rs_job_cnt"></span>/3</div>
+						<div class="right_job">
 							<input type="button" id="rs_job_btn" class="button" value="추가하기">
 							<span id="rs_job_select1"></span>
 							<span id="rs_job_select2"></span>
@@ -695,36 +683,47 @@ $("#rs_seq").val(null);
 		</table>
 	</div>
 	<div id="studyLVDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../studyLV/studyLVWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="workLVDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../workLV/workLvForm.jsp"></jsp:include>
 	</div>
 	<div id="internDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../intern/internWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="eduDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../edu/eduWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="licenseDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../license/licenseWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="trophyDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../trophy/trophyWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="foreignDiv">
+		<hr id="hr_resume">
 		<h2>해외경험</h2>
 	</div>
 	<div id="languageDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../language/languageWriteForm.jsp"></jsp:include>
 	</div>
 	<div id="portfolioDiv">
+		<hr id="hr_resume">
 		<h2>포트폴리오</h2>
 	</div>
 	<div id="vipDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../vip/vipForm.jsp"></jsp:include>
 	</div>
 	<div id="prDiv">
+		<hr id="hr_resume">
 		<jsp:include page="../pr/prWriteForm.jsp"></jsp:include>
 	</div>
 </div>

@@ -1,6 +1,6 @@
 @charset "UTF-8";
-hr{
-		text-align: center;
+	#hr_resume{
+		margin: 10px auto 10px auto;
 		width: 95%;
 	}
 	body{
@@ -44,10 +44,10 @@ hr{
 	#working_conditions .aside{
 		width: 120px;
 	}
-	#working_conditions .header .left{
+	#working_conditions .header .left_workspace{
 		width: 320px;
 	}
-	#working_conditions .header .right{
+	#working_conditions .header .right_workspace{
 		vertical-align: center;
 	}
 	#rs_workspace_select1, #rs_workspace_select2, #rs_job_select1, #rs_job_select2, #rs_job_select3{
@@ -89,6 +89,19 @@ hr{
 		width: 97%;
 		bottom: 0px;
 	}
+	.addButton_css{
+		width:300px;
+	    background-color: #5882FA;
+	    border: none;
+	    color:#fff;
+	    padding: 10px 0;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 15px;
+	    margin: 4px;
+	    cursor: pointer;
+	}
 	.working_conditions_item1{
 		padding-left: 8px;
 		vertical-align: center;
@@ -110,4 +123,43 @@ hr{
 		height: 20px;
 		border: 2px solid gray;
 		vertical-align: -20px;
+	}
+	#studyLVDiv{
+		display: none;
+	}
+	#workLVDiv{
+		display: none;
+	}
+	#internDiv{
+		display: none;
+	}
+	#eduDiv{
+		display: none;
+	}
+	#licenseDiv{
+		display: none;
+	}
+	#trophyDiv{
+		display: none;
+	}
+	#foreignDiv{
+		display: none;
+	}
+	#languageDiv{
+		display: none;
+	}
+	#portfolioDiv{
+		display: none;
+	}
+	#vipDiv{
+		display: none;
+	}
+	#prDiv{
+		display: none;
+	}
+	#rs_workspace{
+		display: none;
+	}
+	#rs_job{
+		display: none;
 	}

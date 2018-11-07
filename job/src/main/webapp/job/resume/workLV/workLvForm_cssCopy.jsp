@@ -523,8 +523,8 @@ body {
 <input type="hidden" id="rsw__Seq_2">
 <input type="hidden" id="rsw__Seq_3">
 	<div id="workLvHeader" class="workLvHeader">
-		경력<br>
-		<button type="button" id="loadBtn" class="button button_widthFree">불러오기</button>
+		경력
+		<button type="button" id="loadBtn" class="loadBtn">불러오기</button>
 	</div>
 	<div id="workLvContainer" class="workLvContainer">
 		<div id="workLvContent" class="workLvContent">

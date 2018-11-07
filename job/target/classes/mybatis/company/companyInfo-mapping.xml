@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.companyInfoMapper">
 	<insert id="insertCompanyInfo" parameterType="companyInfoDTO">
 		insert into companyInfo values
-		(CPI_SEQ.nextval, #{cpm_Id}, #{cpi_Companyname}, 
-		#{cpi_Firstname}, #{cpi_INDUSTRY}, #{cpi_Content, jdbcType=VARCHAR}, 
-		#{cpi_Brand, jdbcType=VARCHAR}, #{cpi_Address}, 
+		(CPI_SEQ.nextval, #{cpm_Id}, #{cpm_Pname}, #{cpm_Pphone}, #{cpm_Pemail}, 
+		#{cpi_Companyname}, #{cpi_Firstname}, #{cpi_INDUSTRY}, 
+		#{cpi_Content, jdbcType=VARCHAR}, #{cpi_Brand, jdbcType=VARCHAR}, #{cpi_Address}, 
 		#{cpi_Type, jdbcType=VARCHAR}, #{cpi_Birth, jdbcType=DATE}, 
 		#{cpi_Homepage, jdbcType=VARCHAR}, #{cpi_Blog}, #{cpi_Sns1, jdbcType=VARCHAR}, 
 		#{cpi_Sns2, jdbcType=VARCHAR}, #{cpi_Sns3, jdbcType=VARCHAR}, #{cpi_Tel}, 
