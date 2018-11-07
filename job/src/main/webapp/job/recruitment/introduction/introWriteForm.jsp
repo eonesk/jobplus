@@ -11,6 +11,7 @@
 		$("#in_Type_radio_o").on("click", function() {
 			document.getElementById("in_Type").style.display = "inline";						
 		});
+		
 		$("#in_Type_radio_x").on("click", function() {
 			document.getElementById("in_Type").style.display = "none";						
 		});
