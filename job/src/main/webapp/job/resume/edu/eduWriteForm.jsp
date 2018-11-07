@@ -171,15 +171,13 @@
 <input id="rse__Seq_2" type="hidden">
 <input id="rse__Seq_3" type="hidden">
 	<div id="edu_div"
-		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
+		style="display: inline-block; margin: 15px; width: 80%; background-color: white;">
 		
 		<!-- Title -->
-		<h3 style="font-weight: bold;">교육</h3>
+		<h1 style="font-weight: bold;">교육</h1>
 		
 		<!-- Load -->
-		<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
-			<a href="#" id="RSE_loadA">내 교육이수사항 불러오기</a>
-		</div>
+		<input type="button" value="내 교육이수 불러오기" id="RSE_loadA" class="button button_widthFree">
 		<p style="clear: both; font-size: 12px; margin: 3px;">
 		각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. 고치거나 빼야함ㅎ</p>
 		
@@ -191,13 +189,10 @@
 		<!-- input영역 1번째 줄 -->
 		
 		
-		<div id="eduPlusField" style="background-color: white; padding: 0px; padding-bottom: 20px; border-bottom: 0px; border: 1px solid rgba(86, 111, 237, 0.3); width: 90%; height: auto;">
+		<div id="eduPlusField" style="background-color: white; padding: 0px; padding-bottom: 20px; border-bottom: 0px; border: 1px solid lightgray; width: 962px; height: auto;">
 			<div id="eduPlus" class="eduPlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
 				<input id="rse_Seq" name="rse_Seq" class="rse_Seq" type="hidden">
-				<a id="eduPlusCancel" name="eduPlusCancel" href="#" style="text-decoration: none;">
-					<div id="eduCloseButton" style="border: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
-				</a>
-							
+				<input type="button" value="X" id="eduPlusCancel" name="eduPlusCancel" style="width: 35px; height: 35px; margin-left: 112px;">	
 				<!-- 교육명 -->
 				<input id="rse_Name"; name="rse_Name"
 						type="text" placeholder="교육명" style="margin-left: 10px; margin-top: 8px; margin-right: 10px; float: left; width: 250px; height: 48px; border: 1px solid lightgray;">
@@ -231,18 +226,11 @@
 				</div>
 				<br style="clear:both;">
 				
-				<div style="float: right; background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block;">
-					<a id="RSE_saveA" class="RSE_saveA" name="RSE_saveA" href="#">교육이수관리에 저장</a>
-				</div>
-				<br><br>
+				<input type="button" value="저장하기" id="RSE_saveA" name="RSE_saveA" class="button">
 			</div>
 <!-- ------------------------------------------------------Footer----------------------------------------------------------------------- -->
 		</div>
-		<a id="eduplusButton" href="#" style="text-decoration: none;">
-			<div id="eduplusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
-							+ 교육 추가
-			</div>
-		</a>
+		<input type="button" value="추가하기" id="eduplusButton" class="addButton_css" style="width: 962px;"> 
 	</div>
 </body>
 </html>

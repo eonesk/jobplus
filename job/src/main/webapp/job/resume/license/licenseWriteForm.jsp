@@ -158,30 +158,26 @@
 <input id="rsls__Seq_2" type="hidden">
 <input id="rsls__Seq_3" type="hidden">
 	<div id="license_div"
-		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
+		style="display: inline-block; margin: 15px; width: 80%; background-color: white;">
 		
 		<!-- Title -->
-		<h3 style="font-weight: bold;">자격증</h3>
+		<h1 style="font-weight: bold;">자격증</h1>
 		
 		<!-- Load -->
-		<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
-			<a href="#" id="RSLS_loadA" name="RSLS_loadA">내 자격증 불러오기</a>
-		</div>
+		<input type="button" id="RSLS_loadA" name="RSLS_loadA" value="내 자격증 불러오기" class="button button_widthFree">
 		<p style="clear: both; font-size: 12px; margin: 3px;">
 		각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. 고치거나 빼야함ㅎ</p>
 		
 		<br>
 		
 		<!-- input영역 1번째 줄 -->
-		<div id="licensePlusField" style="padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); height: auto;">
+		<div id="licensePlusField" style="padding: 10px;border: 1px solid lightgray; height: auto; width: 940px;">
 			<div id="licensePlus" class="licensePlus" style="border-bottom: 1px solid rgba(86, 111, 237, 0.3); margin: 0px;">
 				<!-- SEQ값 : hidden -->				
 				<input id="rsls_Seq" name="rsls_Seq" class="rsls_Seq" type="hidden">
 				
 				<!-- 'X'버튼 -->
-				<a id="licensePlusCancel" name="licensePlusCancel" href="#" style="text-decoration: none;">
-					<div id="licenseCloseButton" style="border: 1px solid rgba(86, 111, 237, 0.3); border-top:0px; border-right: 0px; background-color:white; margin: 0px; position: relative; left: 875px; width:30px; height: 30px;">X</div>
-				</a>
+				<input type="button" value="X" id="licensePlusCancel" name="licensePlusCancel" style="width: 35px; height: 35px; margin-left: 230px;">
 				
 				<!-- 자격증명 -->
 				<input id="rsls_Name"; name="rsls_Name" 
@@ -201,19 +197,12 @@
 				<br style="clear:both;">
 				
 				<!-- Save -->
-				<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
-					<a href="#" id="RSLS_saveA" name="RSLS_saveA">자격증관리에 저장</a>
-				</div>
-				<br><br>
+				<input type="button" id="RSLS_saveA" name="RSLS_saveA" value="저장하기" class="button">
 			</div>
 		</div>
 		
 		<!-- PlusButton -->
-		<a id="licenseplusButton" href="#" style="text-decoration: none;">
-			<div id="licenseplusButtonDiv" style="text-align:center; background-color: white; padding: 10px; padding-bottom: 20px; border: 1px solid rgba(86, 111, 237, 0.3); width: 95%; height: auto;">
-							+ 자격증 추가
-			</div>
-		</a>
+		<input type="button" value="추가하기" id="licenseplusButton" class="button" style="width: 956px;">
 	</div>
 </body>
 </html>
