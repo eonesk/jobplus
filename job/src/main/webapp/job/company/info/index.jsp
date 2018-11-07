@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="companyInfoWrite.do" method="post">
-	<input type="submit" value="기업정보작성">
+<form action="companyInfoWriteForm.do" method="post">
+	<input type="submit" value="기업정보작성">	
 </form>
 </body>
 </html>
