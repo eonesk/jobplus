@@ -77,10 +77,6 @@
 				<td>${companyMemberDTO.cpm_Num }</td>
 			</tr>
 			<tr>
-				<th>&nbsp;기업인증</th>
-				<td>${companyMemberDTO.cpm_Confirm }</td>
-			</tr>
-			<tr>
 				<th><font class="must">*</font>기업구분</th>
 				<td>${companyMemberDTO.cpm_Type }</td>
 			</tr>

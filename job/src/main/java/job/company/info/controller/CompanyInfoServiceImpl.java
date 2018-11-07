@@ -1,10 +1,13 @@
 package job.company.info.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import job.company.info.bean.CompanyInfoDTO;
 import job.company.info.dao.CompanyInfoDAO;
+import job.company.member.bean.CompanyMemberDTO;
 
+@Service
 public class CompanyInfoServiceImpl implements CompanyInfoService {
 
 	@Autowired
@@ -23,6 +26,11 @@ public class CompanyInfoServiceImpl implements CompanyInfoService {
 	@Override
 	public int selectLastSeq(String comId) {
 		return companyInfoDAO.selectLastSeq(comId);
+	}
+
+	@Override
+	public CompanyMemberDTO selectCompanyMember(String comId) {
+		return companyInfoDAO.selectCompanyMember(comId);
 	}
 
 }

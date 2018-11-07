@@ -8,11 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import job.company.info.bean.CompanyInfoDTO;
-import job.company.member.bean.companyMemberDTO;
+import job.company.member.bean.CompanyMemberDTO;
 
 @Controller
 public class CompanyInfoController {
+	
+	@Autowired
+	private CompanyInfoService companyInfoService;
 	
 	@RequestMapping(value = "/job/company/info/companyInfoWrite.do")
 	public ModelAndView insertCompanyInfo(HttpServletRequest request) {
@@ -22,6 +24,10 @@ public class CompanyInfoController {
 		session.setAttribute("comId", "test");
 		
 		String comId = (String) session.getAttribute("comId");
+		CompanyMemberDTO companyMemberDTO = companyInfoService.selectCompanyMember(comId);
+		
+		modelAndView.addObject("companyMemberDTO", companyMemberDTO);
+		modelAndView.setViewName("companyInfoWriteForm.jsp");
 		
 		return modelAndView;
 	}

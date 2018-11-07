@@ -1,5 +1,5 @@
 package job.company.member.controller;
 
-public class companyMemberController {
+public class CompanyMemberController {
 
 }

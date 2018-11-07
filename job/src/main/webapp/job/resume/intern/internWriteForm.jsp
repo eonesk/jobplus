@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>internWriteForm</title>
+<title>internwriteForm</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">	
 	var count = 0;		
@@ -164,7 +164,7 @@
 .write {
 	height: 100%;
     width: 100%;
-    background-color: #e8ecef;
+    background-color: white;
     font: 12px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
     color: #666;
     letter-spacing: -1px;
@@ -177,18 +177,21 @@
 	font-weight: bold;
 	color: #2A120A;
 }
-fieldset {
+.fieldset_intern {
+	margin: 0px auto;
+	width:95%;
 	background-color: #FFFFFF;
+	border: 1px solid lightgray;
 }
 .content {
 	padding-top: 5px;
 }
 .internsave, .internload {
-	width:80px;
+	width: auto;
     background-color: #5882FA;
     border: none;
     color:#fff;
-    padding: 10px 0;
+    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -200,17 +203,24 @@ fieldset {
 .internsave:hover, .internload:hover {
     background-color: #2E9AFE;
 }
-.internplus, .interndelete {
-	width: 100%;
+.internplus{
+	width:948px;
 	height: 50px;
-	background-color: #fff;
-    border: 1px solid #5882FA;
-    color: #5882FA;
-    text-align: center;
-    text-decoration: none;
-    font-size: 15px;
-    display: inline-block;
-    cursor: pointer;
+	background-color: #5882FA;
+	border: none;
+	color:#fff;
+	padding: 10px 0;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	margin: 26px;
+	cursor: pointer;
+}
+.interndelete{
+	width: 35px;
+	height: 15px;
+	margin-left: 348px;
 }
 .rsitType {
 	width:100px;
@@ -229,9 +239,10 @@ fieldset {
 	height: 30px;
 }
 .interndiv {
-	width: 100%;
-	background-color: #f5f7fb;	
-    margin: 0px 5px;
+	width: 98%;
+	background-color: white;	
+    margin: 0px;
+    padding: 10px;
 }
 </style>
 </head>
@@ -240,11 +251,11 @@ fieldset {
 	<input type="hidden" id="rsit_Seq2">
 	<input type="hidden" id="rsit_Seq3">
 <div id="interndiv" class="interndiv">	
-		<p class="title">인턴&middot;대외활동</p>
+		<p class="title" style="color: gray">인턴&middot;대외활동</p>
 		<!-- Load -->		 
-		<input type="button" value="불러오기" id="internload" class="internload">
+		<input type="button" value="내 인턴&middot;대외활동 불러오기" id="internload" class="internload">
 </div>
-	<fieldset>
+	<div class="fieldset_intern" style="padding: 0; margin: 0 auto;">
 		<div id="rsit_t" class="rsit_t">
 			<br>
 			<select name="rsitType" id="rsitType" class="rsitType" >				
@@ -259,15 +270,15 @@ fieldset {
 			<input type="text" id="rsitCompany" name="rsitCompany" class="rsitCompany" placeholder="회사/기관/단체명">
 			<input type="date" id="rsitStartdate" name="rsitStartdate" class="rsitStartdate">
 			<input type="date" id="rsitEnddate" name="rsitEnddate" class="rsitEnddate">
+			<input type="button" value="X" id="interndelete" class="interndelete" style="height: 35px;">
 			<div class="content">			
 				<textarea id="rsitContent" name="rsitContent" class="rsitContent" placeholder="활동내용" cols="85" rows="7"></textarea>
 			</div>		
 			<div>
 				<input type="button" value="저장하기" id="internsave" class="internsave">
-			</div>				
-			<input type="button" value="삭제" id="interndelete" class="interndelete">	
+			</div>	
 		</div>
-	</fieldset>
-	<input type="button" value="추가" id="internplus" class="internplus">	
+	</div>
+	<input type="button" value="추가하기" id="internplus" class="internplus">	
 </body>
 </html>

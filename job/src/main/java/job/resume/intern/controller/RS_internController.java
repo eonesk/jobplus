@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import job.resume.intern.bean.RS_internDTO;
-import job.resume.trophy.bean.RS_trophyDTO;
 
 @Controller
 public class RS_internController {
