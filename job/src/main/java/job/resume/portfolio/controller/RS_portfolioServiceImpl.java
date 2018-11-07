@@ -1,8 +1,6 @@
 package job.resume.portfolio.controller;
 
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import job.resume.portfolio.bean.RS_portfolioDTO;

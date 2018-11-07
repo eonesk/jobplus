@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import job.resume.image.bean.RS_imageDTO;
-import job.resume.image.controller.RS_imageController;
 import job.resume.portfolio.bean.RS_portfolioDTO;
-import job.resume.pr.bean.RS_prDTO;
 
 @Controller
 public class RS_portfolioController {

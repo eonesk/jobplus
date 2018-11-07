@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RM_timeController {
-
+	
 	@RequestMapping(value="/job/recruitment/time/timeWriteFormNext.do", method=RequestMethod.POST)
 	public ModelAndView timeWriteFormNext(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();

@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import job.resume.edu.bean.RS_eduDTO;
 import job.resume.trophy.bean.RS_trophyDTO;
 
 

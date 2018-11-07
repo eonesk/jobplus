@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import job.resume.intern.bean.RS_internDTO;
 import job.resume.language.bean.RS_languageDTO;
-import job.resume.trophy.bean.RS_trophyDTO;
 
 @Controller
 public class RS_languageController {
