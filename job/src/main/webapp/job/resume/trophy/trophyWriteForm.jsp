@@ -226,7 +226,7 @@ fieldset {
 		<input type="button" value="불러오기" id="trophyload" class="trophyload">			 
 </div>		
 <fieldset>
-	<div id="t" class="t">
+	<div id="rst_t" class="rst_t">
 		<br>	
 		<div>
 			<input type="hidden" id="rst_Seq" name="rst_Seq" class="rst_Seq">		
