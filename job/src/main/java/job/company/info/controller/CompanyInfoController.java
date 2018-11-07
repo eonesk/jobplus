@@ -83,14 +83,16 @@ public class CompanyInfoController {
 		companyInfoDTO.setCpi_Moneybase(Integer.parseInt(request.getParameter("cpi_Moneybase")));
 		companyInfoDTO.setCpi_Moneysell(Integer.parseInt(request.getParameter("cpi_Moneysell")));
 		companyInfoDTO.setCpi_Moneygain(Integer.parseInt(request.getParameter("cpi_Moneygain")));
-		companyInfoDTO.setCpl_Seq(Integer.parseInt(request.getParameter("cpl_Seq")));
+		companyInfoDTO.setCpl_Seq(null);
 		companyInfoDTO.setCpi_Vision(request.getParameter("cpi_Vision"));
 		companyInfoDTO.setCpi_History(request.getParameter("cpi_History"));
 		companyInfoDTO.setCpi_Welfare(request.getParameter("cpi_Welfare"));
 		companyInfoDTO.setCpi_Cafe(request.getParameter("cpi_Cafe"));
 		companyInfoDTO.setCpi_Etc(request.getParameter("cpi_Etc"));
 		
-		/*int su = companyInfoService.insertCompanyInfo(companyInfoDTO);*/
+		int su = companyInfoService.insertCompanyInfo(companyInfoDTO);
+		
+		out.print(su);
 	}
 }
 
