@@ -6,11 +6,39 @@ public class CompanyInfoDTO {
 
     // 기업정보seq 
     private Integer cpi_Seq;
-
+    
     // 기업아이디 
     private String cpm_Id;
 
-    // 기업명 
+    private String cpi_Pname;
+    private String cpi_Pphone;
+    private String cpi_Pemail;
+    
+    public String getCpi_Pname() {
+		return cpi_Pname;
+	}
+
+	public void setCpi_Pname(String cpi_Pname) {
+		this.cpi_Pname = cpi_Pname;
+	}
+
+	public String getCpi_Pphone() {
+		return cpi_Pphone;
+	}
+
+	public void setCpi_Pphone(String cpi_Pphone) {
+		this.cpi_Pphone = cpi_Pphone;
+	}
+
+	public String getCpi_Pemail() {
+		return cpi_Pemail;
+	}
+
+	public void setCpi_Pemail(String cpi_Pemail) {
+		this.cpi_Pemail = cpi_Pemail;
+	}
+
+	// 기업명 
     private String cpi_Companyname;
 
     // 대표자명 

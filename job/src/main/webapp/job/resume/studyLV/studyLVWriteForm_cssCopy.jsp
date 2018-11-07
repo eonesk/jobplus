@@ -475,11 +475,11 @@
 		<div id="Content_top" name="Content_top" class="Content_top">
 		
 			<!-- Title -->
-			<h1 id="studyLV_Title" name="studyLV_Title" class="studyLV_Title">학력</h1>
+			<h3 id="studyLV_Title" name="studyLV_Title" class="studyLV_Title">학력</h3>
 			
 			<!-- Load -->
 			<div id="studyLV_Load">
-				<input type="button" id="RSS_loadA" name="RSS_loadA" class="button button_widthFree" value="내 학력사항 불러오기">
+				<a id="RSS_loadA" name="RSS_loadA" class="RSS_loadA" href="#">내 학력사항 불러오기</a>
 			</div>
 			<p id="studyLV_Guide">
 				각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. 고치거나 빼야함ㅎ
@@ -496,15 +496,24 @@
 		<!-- Content_Middle : plus -->
 		<div id="Content_middle" name="Content_middle" class="Content_middle">
 		
-			<div id="studyLVPlus" name="studyLVPlus" class="studyLVPlus" style="border:1px solid lightgray; width: 954px; margin: 0px 25px 0px 21px; padding-top: 0px;">
+			<div id="studyLVPlus" name="studyLVPlus" class="studyLVPlus">
 			
 				<!-- SEQ : hidden -->
 				<input id="rss_Seq" name="rss_Seq" class="rss_Seq" type="hidden">
 				
-				<!-- 'X'버튼 -->			
+				<!-- 'X'버튼 -->
+				<a id="studyLVPlusCancel" name="studyLVPlusCancel" class="studyLVPlusCancel" href="#"
+					style="text-decoration: none;">
+					<div id="studyLVCloseButton" name="studyLVCloseButton" class="studyLVCloseButton"
+							style="background-color:white;	border: 1px solid rgba(86, 111, 237, 0.3); 	border-top:0px; border-right: 0px; margin: 0px; position: relative; left: 917px; top: 0; width:35px; height: 35px;">
+						X
+					</div>
+				</a>				
+							
 				<!-- isHighScool -->
-				<input id="isHighSchoolCheck" name="rss_Ishighschool" class="isHighSchoolCheck" type="checkbox"value="true" style="width: 20px; height: 20px; border: 2px solid gray; vertical-align: -6px;">고등학교 미만 졸업
-				<input type="button" value="X" id="studyLVPlusCancel" name="studyLVPlusCancel" style="width: 50px; margin-left: 786px;">
+				<div style="padding-top: 10px;">
+					<input id="isHighSchoolCheck" name="rss_Ishighschool" class="isHighSchoolCheck" type="checkbox"value="true">고등학교 미만 졸업
+				</div>
 				
 				<!-- 고등학교미만졸업일 때 숨겨지는 부분 -->
 				<div id="isHighSchoolHide" name="isHighSchoolHide" class="isHighSchoolHide">
@@ -516,7 +525,7 @@
 						<div style="float: left; z-index: 50px;">
 							<a href="#">
 								<div id="rssTypeFirst" style="float: left; background-color: white; margin-top: 8px; padding-left: 5px; padding-top: 15px; border: 1px solid lightgray; width: 130px; height: 37px;">
-									<span id="rssTypeTitle" style="display: inline;">학교구분</span><span style="position: absolute; left: 540px;">&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</span>
+									<span id="rssTypeTitle" style="display: inline;">학교구분</span><span style="position: absolute; left: 100px;">&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</span>
 								<input id="rssTypeValue" name="rss_Type" type="hidden">
 								</div>
 							</a>						
@@ -583,33 +592,28 @@
 					</div>
 					
 				</div>
-					<input type="button" class="button button_widthFree" id="RSS_saveA" value="학력관리에 저장" 
-					style="width: auto; padding: 10px;">
+						
+				<div style="background-color: white; border: 1px solid gray; padding: 5px; margin: 3px; display: inline-block; float: left;">
+					<a href="#" id="RSS_saveA">학력관리에 저장</a>
+				</div><br><br><br>
+				
 			</div>
 
 		</div>
 		
 		
 		<!-- Content_Bottom : plusButton -->
-		<div id="Content_bottom" name="Content_bottom" class="Content_bottom" align="center">
+		<div id="Content_bottom" name="Content_bottom" class="Content_bottom">
 			
 			<!-- borderBottom -->
-			
+			<div id="studyLVBottomBorder">&nbsp;</div>
 			<!-- PlusButton -->
-			<input type="button" value="추가하기" id="studyLVplusButton" name="studyLVplusButton" class="addButton_css" 
-			style="
-				width:955px;
-	   			background-color: #5882FA;
-			    border: none;
-			    color:#fff;
-			    padding: 10px 0;
-			    text-align: center;
-			    text-decoration: none;
-			    display: inline-block;
-			    font-size: 15px;
-			    margin: auto auto;
-			    cursor: pointer;
-			">
+			<a id="studyLVplusButton" name="studyLVplusButton" class="studyLVplusButton" href="#">
+				<div id="studyLVplusButtonDiv" name="studyLVplusButtonDiv" class="studyLVplusButtonDiv">
+								+ 학력 추가
+				</div>
+			</a>
+		
 		</div>
 		
 	</div><!-- 전체틀 -->
