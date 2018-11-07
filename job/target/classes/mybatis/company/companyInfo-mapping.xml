@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectCompanyMember" parameterType="String" resultType="companyMemberDTO">
-		select 	
+		select CPM_id, CPM_num, CPM_type, CPM_infoTime from companyMember where CPM_id=#{comId}
 	</select>
 	
 	<select id="selectLastSeq" parameterType="String" resultType="int">
