@@ -11,7 +11,6 @@
 function load_list(fileData) {
 	var listcount = 0;
 	$(function() {
-// 		alert("부모창");
 		var fileList = fileData.split('%');
 		console.log("공백날리기~" +fileList[0]);
 		//한 줄씩 가져오기
@@ -19,31 +18,24 @@ function load_list(fileData) {
 			console.log('fileList[' +i+ '] = ' + fileList[i]);	
 			var file_parts = fileList[i].split('&');					
 
-			var type, filename, urlname, title;					
+			var type, filename, urlname, title, seq ;					
 			listcount++;
 			var numbering = "_" + listcount;
-// 			alert(listcount); 
-// 			var findul = $( '#portfolio_list > li' ).length;
-// 			alert("findul :: " + findul); 
 
 			//리스트 내용 하나씩 자르기
 			for (var j = 1; j < file_parts.length; j++) {
 				console.log('file_parts[' +j+ '] = ' + file_parts[j]);							
-		
+				
 				switch (j) {
-				case 2:
-					urlname = file_parts[2];
-				case 3:
-					filename = file_parts[3];
-				case 4: 							
-					type = file_parts[4];	
-				case 6:
-					title = file_parts[6];			
+				case 1: seq = file_parts[1];
+				case 2: urlname = file_parts[2];
+				case 3: filename = file_parts[3];
+				case 4: type = file_parts[4];	
+				case 6: title = file_parts[6];		 
 				default:
 					break;
 				}
-			}
-			
+			}			
 			var type_li = $("<li>");
 			type_li.attr("id", "list_num" + numbering);
 			var type_p = $("<p>");
@@ -54,7 +46,7 @@ function load_list(fileData) {
 			title_span.attr("id","title");
 			var type_a = $("<a>");
 			type_a.attr("id","pf_name");
-			type_a.attr("href", filename);
+			type_a.attr("href", "#");
 			var type_aa = $("<a>");
 			type_aa.attr("id","url_name");
 			type_aa.attr("href","#");
@@ -76,18 +68,13 @@ function load_list(fileData) {
 			type_p.append(type_btn);
 			type_li.append(type_p);
 			
-// 			if(findul > 2){ 
-// 				alert("3개가 넘어요");
-// 				return false;
-// 			}
 			$("#portfolio_list").append(type_li);
 		}
 		$(".remove").click(function() {
-			$(this).parents('li').remove();
+			$(this).parents('li').remove();			
 		});
 	});
 }
-
 </script>
 <style type="text/css">
 .subtitle {
@@ -141,30 +128,17 @@ a.pf_name {
 </style>
 </head>
 <body>
-<form id="portfolioList">
-<div>
-
-	
-<div id="portfolio_area">
-	<p class="subtitle">포트폴리오 및 기타문서</p>
-	<div>
-		<button type="button" class="button" onclick="window.open('portfolioLoad.do','portfolioLoad','width=500, height=700, left=300, top=200')">내 파일함</button>
-		<button type="button" class="button" onclick="window.open('portfolioWriteForm.jsp','portfolioWriteForm','width=460, height=300, left=300, top=200')">등록</button>		
-	</div>	
+<form id="portfolioList">	
+	<div id="portfolio_area">
+		<p class="subtitle">포트폴리오 및 기타문서</p>
+		<div>
+			<button type="button" class="button" onclick="window.open('portfolioLoad.do','portfolioLoad','width=500, height=700, left=300, top=200')">내 파일함</button>
+			<button type="button" class="button" onclick="window.open('portfolioWriteForm.jsp','portfolioWriteForm','width=460, height=300, left=300, top=200')">등록</button>		
+		</div>	
 		<ul id="portfolio_list">
-	<!-- 	동적요소 생성 --> 
-<!-- 			<li> -->
-<!-- 				<p class="file_item"> -->
-<!-- 					<span id="type">[샘플입니당]</span> -->
-<!-- 					<span id="title" >애폴</span> -->
-<!-- 					<a id="pf_name" href="#">apple.png</a> -->
-<!-- 					<button type="button" class="remove" id="delete_btn1">삭제</button> -->
-<!-- 				</p> -->
-<!-- 			</li> -->
+			<!--동적요소 생성 --> 
 		</ul>
 	</div>
-</div>
 </form>
-
 </body>
 </html>

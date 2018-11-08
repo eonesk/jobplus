@@ -141,7 +141,7 @@ button:hover {
 					<label><input class="fileType" type="radio" name="rspf_Fileorurl" value="U"/>URL</label> 
 				</div>
 				<div><input type="file" id='rspf_File' name="pfFile"/></div>
-				<div><input type="text" id='rspf_Url' name="rspf_Url" value="http://" style="font-size: 13px; width: 303px;"/></div>
+				<div><input type="text" id='rspf_Url' name="rspf_Url" placeholder="http://" style="font-size: 13px; width: 303px;"/></div>
 			</td>
 		</tr>
 	</table>
