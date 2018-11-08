@@ -56,6 +56,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/recruitment/introduction-mapping.xml"/>
 		<mapper resource="mybatis/recruitment/job-mapping.xml"/>
 		<mapper resource="mybatis/recruitment/mainSearchResult-mapping.xml"/>
+		<mapper resource="mybatis/recruitment/mainSearch-mapping.xml"/>
 		
 		<!-- SQL문장이 기술되는 Mapper파일 / company 하위 테이블들 -->
 		<mapper resource="mybatis/company/companyInfo-mapping.xml"/>	

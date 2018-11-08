@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.mainSearchMapper">
+	<select id="selectXXO" parameterType="String" resultType="java.lang.Integer">
+		select (rmc_seq) from RM_condition where rmc_business1 = #{jobSelect3} or rmc_business2 = #{jobSelect3} or rmc_business3 = #{jobSelect3}
+	</select>
+	
+	<select id="selectXOX" parameterType="String" resultType="java.lang.Integer">
+		select (rmc_seq) from RM_condition where rmc_workspace like #{searchRegion}||'%'
+	</select>
+	
+	<select id="selectXOO" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select (rmc_seq) from RM_condition where rmc_workspace like #{searchRegion}||'%' and (rmc_business1 = #{jobSelect3} or rmc_business2 = #{jobSelect3} or rmc_business3 = #{jobSelect3})
+	</select>
+	
+	<select id="selectCompany" parameterType="String" resultType="String">
+		select (CPM_id) from companyInfo where CPI_companyName = #{searchCompany}
+	</select>
+	
+	<select id="selectTitle" parameterType="java.lang.Integer" resultType="String">
+		select (RM_title) from RM where RMC_seq = #{range}
+	</select>
+</mapper>
