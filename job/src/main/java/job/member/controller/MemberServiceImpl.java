@@ -29,9 +29,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String login(String id, String pwd) {
-		// TODO Auto-generated method stub
-		return null;
+	public String login(String m_id, String m_pw) {
+		return memberDAO.login(m_id, m_pw);
 	}
 
 	@Override
