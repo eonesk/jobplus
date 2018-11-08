@@ -23,7 +23,7 @@
     height: 140px;
     box-sizing: border-box;
 	background: #fafafa
-				url(img/bg_photo_add.png)
+				url(/job/job/resume/image/img/bg_photo_add.png)
 				50% 50% no-repeat;
 }
 #btn_imageload {
@@ -43,22 +43,19 @@
 <script type="text/javascript">
 
 	function photoWrite() {
-		window.open("imageWriteForm.jsp",
+		window.open("/job/job/resume/image/imageWriteForm.jsp",
 				"이미지불러오기", "width=460, height=300, left=100, top=50, resizable=no");
 	}
 	function photoList() { 
 // 		if(${getImageOfId > 0}) {
-			window.open("imageList.do", 
+			window.open("/job/job/resume/image/imageList.do", 
 					"이미지저장목록", "width=470, height=400, left=400, top=100");
 
 	}
 </script>
 </head>
 <body>
-
-
-
-
+<input type="hidden" id="rsim__Seq">
 	<!-- 이력서폼 사진 버튼 -->
 <%-- 	 ||${imageDTO.rsim_Seq}||   --%>
 <%-- 	 ||${imageDTO.rsim_Name}||  --%>
@@ -68,7 +65,7 @@
 	<div class="resume_image"> 
 		<a href="#" class="box_image">
 		<c:if test="${!empty imageDTO }">  
-			<img id='aaa' alt="" src="img/storage/${imageDTO.rsim_Name}" class="user_image" border="1" width="100" height="140" onclick="photoWrite();">
+			<img id='aaa' alt="" src="/job/job/resume/image/img/storage/${imageDTO.rsim_Name}" class="user_image" border="1" width="100" height="140" onclick="photoWrite();">
 		</c:if>   
 		<c:if test="${empty imageDTO }">
 			<img id='aaa' alt="" src="" class="user_image" border="1" width="100" height="140" onclick="photoWrite();">
