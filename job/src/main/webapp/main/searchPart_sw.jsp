@@ -649,6 +649,10 @@ ul.list_gnb li {
 		});
 		
 		$("#searchButton").click(function() {
+			/* if($("#searchText").val() == "") {
+				$("#searchText").val("없음");
+				console.log($("#searchText").val());
+			} */
 			document.searchInfo.submit();
 		});
 		
