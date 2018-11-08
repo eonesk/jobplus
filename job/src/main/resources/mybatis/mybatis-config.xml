@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/resume/trophy-mapping.xml"/>	
 		<mapper resource="mybatis/resume/language-mapping.xml"/>	
   		<mapper resource="mybatis/resume/license-mapping.xml"/>
-		<mapper resource="mybatis/resume/edu-mapping.xml"/>
+		<mapper resource="mybatis/resume/edu-mapping.xml"/> 
 		<mapper resource="mybatis/resume/studyLV-mapping.xml"/>
 		<mapper resource="mybatis/resume/pr-mapping.xml"/>
 		<mapper resource="mybatis/resume/foreign-mapping.xml"/>

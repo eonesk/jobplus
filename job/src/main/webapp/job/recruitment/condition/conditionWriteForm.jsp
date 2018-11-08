@@ -7,7 +7,7 @@
 <title>근무조건폼</title>
 <style type="text/css">
 body {
-}
+} 
 #conditionWrap {
 	margin: 50px;
 	padding: auto;

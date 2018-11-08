@@ -6,7 +6,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>

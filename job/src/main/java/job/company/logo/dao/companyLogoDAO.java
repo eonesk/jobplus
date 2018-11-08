@@ -13,7 +13,7 @@ public class companyLogoDAO {
 	//증명사진 등록
 	public int logoInsert(companyLogoDTO logoDTO) {
 		return sqlSession.insert("mybatis.logoMapper.logoInsert", logoDTO);
-	}
+	} 
 	
 //	//최근사진
 //	public companyLogoDTO ImageTopList(String m_Id) {

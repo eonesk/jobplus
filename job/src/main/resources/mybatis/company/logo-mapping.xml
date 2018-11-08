@@ -9,5 +9,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	INSERT INTO COMPANYLOGO VALUES 
 		(COMPANYLOGO_SEQ.NEXTVAL, #{cpl_Name}, #{cpi_Seq})
 	</insert>
-	
+	 
 </mapper>

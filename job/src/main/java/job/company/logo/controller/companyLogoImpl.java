@@ -12,7 +12,7 @@ public class companyLogoImpl implements companyLogoService {
 	private companyLogoDAO logoDAO;
 
 	@Override
-	public int logoInsert(companyLogoDTO logoDTO) {
+	public int logoInsert(companyLogoDTO logoDTO) { 
 		return logoDAO.logoInsert(logoDTO);
 	}
 }

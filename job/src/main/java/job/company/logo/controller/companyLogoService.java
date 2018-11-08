@@ -6,3 +6,4 @@ public interface companyLogoService {
 
 	int logoInsert(companyLogoDTO logoDTO);
 }
+ 

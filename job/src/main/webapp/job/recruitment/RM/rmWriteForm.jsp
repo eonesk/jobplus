@@ -89,7 +89,7 @@ $(document).ready(function() {
 </script>
 <style type="text/css">
 
-</style>
+</style> 
 </head>
 <body>
 <div id="rm_container" class="rm_container">

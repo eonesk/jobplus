@@ -7,7 +7,7 @@
 <title>접수기간폼</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	$(function() { 
+	$(function() {  
 		$("#timePopUp").hide();
 		$("#timeTitleButton").click(function() {
 			$("#timePopUp").show();
