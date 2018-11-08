@@ -52,17 +52,12 @@
 			});
 			
 			$("#RSS_saveA" + numbering).on("click", function() {
-				alert("진입");
 				
 				var is_check = $("#isHighSchoolCheck" + numbering).is(":checked");
 				
 				if(is_check){
-					alert(is_check);
 					window.open("/job/job/resume/studyLV/studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px resizable=0");
 				} else {
-					alert(is_check);
-					alert($("#rssStartDateValue" + numbering).val());
-					alert($("#rssTypeValue" + numbering).val());
 					
 					if($("#rssTypeValue" + numbering).val() == "") {
 						alert("학교구분을 설정해주세요.");
@@ -77,7 +72,6 @@
 						alert("졸업년월을 입력해주세요.");
 						$("#rssEndDateValue" + numbering).focus();
 					} else {
-						alert("[진입전]numbering="+numbering);
 						window.open("/job/job/resume/studyLV/studyLVSavePopUp.jsp?is_check="+is_check+"&numbering="+numbering, "", "width=500px height=500px");
 					}				
 				}
@@ -88,10 +82,10 @@
 				var is_check = $(this).is(":checked");
 				if(is_check) {
 					$("#isHighSchoolHide" + numbering).hide();
-					alert(is_check);
+					
 				} else {
 					$("#isHighSchoolHide" + numbering).show();
-					alert(is_check);
+					
 				}
 			});		// 고등학교미만 체크박스
 		
@@ -109,7 +103,6 @@
 				});
 				
 				$(".rssTypeList" + numbering).on("click", function(){			// 하위항목을 클릭하면
-					alert($(this).val());
 					var rssTypeValue;							// input태그에 넣어 줄 value
 					
 					switch($(this).val()) {						// 하위 List에서 눌려진 항목에 따라 value값이 정해짐
@@ -261,17 +254,12 @@
 						});
 						
 						$("#RSS_saveA" + numbering).on("click", function() {
-							alert("진입");
 							
 							var is_check = $("#isHighSchoolCheck" + numbering).is(":checked");
 							
 							if(is_check){
-								alert(is_check);
 								window.open("/job/job/resume/studyLV/studyLVSavePopUp.jsp?is_check="+is_check, "", "width=500px height=500px resizable=0");
 							} else {
-								alert(is_check);
-								alert($("#rssStartDateValue" + numbering).val());
-								alert($("#rssTypeValue" + numbering).val());
 								
 								if($("#rssTypeValue" + numbering).val() == "") {
 									alert("학교구분을 설정해주세요.");
@@ -286,7 +274,6 @@
 									alert("졸업년월을 입력해주세요.");
 									$("#rssEndDateValue" + numbering).focus();
 								} else {
-									alert("[진입전]numbering="+numbering);
 									window.open("/job/job/resume/studyLV/studyLVSavePopUp.jsp?is_check="+is_check+"&numbering="+numbering, "", "width=500px height=500px");
 								}				
 							}
@@ -297,10 +284,10 @@
 							var is_check = $(this).is(":checked");
 							if(is_check) {
 								$("#isHighSchoolHide" + numbering).hide();
-								alert(is_check);
+								
 							} else {
 								$("#isHighSchoolHide" + numbering).show();
-								alert(is_check);
+								
 							}
 						});		// 고등학교미만 체크박스
 					
@@ -318,7 +305,6 @@
 							});
 							
 							$(".rssTypeList" + numbering).on("click", function(){			// 하위항목을 클릭하면
-								alert($(this).val());
 								var rssTypeValue;							// input태그에 넣어 줄 value
 								
 								switch($(this).val()) {						// 하위 List에서 눌려진 항목에 따라 value값이 정해짐
@@ -400,7 +386,6 @@
 						});
 						
 						
-						alert("!!!!!!!!!!!!!!!!!!!!!!" + testDTO.rss_Ishighschool);
 						if(testDTO.rss_Ishighschool == "Y"){
 							$("#rss_Seq" + numbering).attr("value", testDTO.rss_Seq);
 							$("#rss__Seq" + numbering).attr("value", testDTO.rss_Seq);
@@ -475,11 +460,11 @@
 		<div id="Content_top" name="Content_top" class="Content_top">
 		
 			<!-- Title -->
-			<h1 id="studyLV_Title" name="studyLV_Title" class="studyLV_Title">학력</h1>
+			<h1 id="studyLV_Title" name="studyLV_Title" class="studyLV_Title" style="margin-left: 26px;">학력</h1>
 			
 			<!-- Load -->
 			<div id="studyLV_Load">
-				<input type="button" id="RSS_loadA" name="RSS_loadA" class="button button_widthFree" value="내 학력 불러오기">
+				<input type="button" id="RSS_loadA" name="RSS_loadA" class="button button_widthFree" value="내 학력 불러오기" style="margin-left: 26px;">
 			</div>
 			<p id="studyLV_Guide">
 				각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. 고치거나 빼야함ㅎ

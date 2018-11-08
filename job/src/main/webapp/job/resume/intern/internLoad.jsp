@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {		
-		alert("count = " + ${param.count});
+		alert("count = " + ${param.count_intern});
 		/* 총 개수 구함 */
 		$.ajax({
 			type: 'POST',
@@ -54,7 +54,7 @@
 								$("#rsit_LoadList").append(tr);	
 							});
 							
-							var num = ${param.count};
+							var num = ${param.count_intern};
 							
 							if(num == 3) {
 								$(".rsit_UserTitleR").attr("disabled", "true");
@@ -76,11 +76,10 @@
 								var accumSeq = "";
 								
 				                $(".rsit_UserTitleR:checked").each(function() {
-				                	alert($(this).val());
+				                	
 				                	accumSeq += $(this).val() + "/";
 				                });
 				                
-				                alert("accumSeq : " + accumSeq);
 				                
 				                if(accumSeq == "") {
 				                	alert("체크해주세요.");
@@ -88,9 +87,8 @@
 				                	alert("체크확인");
 				                	if(confirm("불러오기를 진행하시겠습니까?")) {
 				                		// 2개가 되야함. 확인해야할부분
-				                		 alert("selected accumSeq : " + accumSeq);
-				                		 alert("selected 보내기전 count : " + ${param.count});
-				                		opener.parent.selected_rsit(accumSeq, ${param.count});
+				                	
+				                		opener.parent.selected_rsit(accumSeq, ${param.count_intern});
 					                	self.close();
 				                	}
 				                	

@@ -7,33 +7,33 @@
 <title>internwriteForm</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">	
-	var count = 0;		
+	var count_intern = 0;		
 	$(function() {	
 		$("#rsit_t").hide();
 		
 		$("#internplus").click(function() {		
-			count++;
-			var num = count;	
-			var clone = $("#rsit_t").clone().attr('id', 'rsit_t' + count);
+			count_intern++;
+			var num = count_intern;	
+			var clone = $("#rsit_t").clone().attr('id', 'rsit_t' + count_intern);
 			
-			if (count >= 4) {
-				count--;
+			if (count_intern >= 4) {
+				count_intern--;
 				alert("항목추가는 최대 3개까지 입력가능합니다.");
 				return false;
 			}
 			
 			clone.find('*[id]').each(function() {
-				$(this).attr("id", $(this).attr("id") + count);
+				$(this).attr("id", $(this).attr("id") + count_intern);
 			});
 			
 			clone.insertAfter("#rsit_t");
 			$("#rsit_t" + num).show();
 			
 			$("#interndelete" + num).on("click", function() {
-				/*$("#t" + count).remove();*/
+				/*$("#t" + count_intern).remove();*/
 				$(this).parent("#rsit_t" + num).remove();
 				$("#rsit_Seq"+num).val("");
-				count--;
+				count_intern--;
 			});
 			
 			$("#internsave" + num).on("click", function() {
@@ -66,16 +66,14 @@
 			});			
 		});
 		$("#internload").click(function() {
-			window.open("/job/job/resume/intern/internLoad.jsp?count=" + count, "", "width=500px height=500px");
+			window.open("/job/job/resume/intern/internLoad.jsp?count_intern=" + count_intern, "", "width=500px height=500px");
 		});
 	});
 	
 	/** Load 함수 */
 	function selected_rsit(accumSeq, num) {
 		$(function() {
-			alert("selected_rsit함수 실행 num값 = " + num);
-			count = num;
-			alert("selected함수 실행 count값 = " + count);
+			count_intern = num;
 			$.ajax({
 				type: 'POST',
 				url: '/job/job/resume/intern/LoadView.do',
@@ -87,9 +85,9 @@
 					$.each(data.items, function(index, item) {
 						var testDTO = item;
 						
-						count++;
+						count_intern++;
 						
-						var num = count;
+						var num = count_intern;
 						var clone = $("#rsit_t").clone().attr("id", "rsit_t" + num);
 						
 						// id&name 넘버링 변경 작업
@@ -110,7 +108,7 @@
 						$("#interndelete" + num).on("click", function() {
 							$(this).parent("#t" + num).remove();
 							$("#rsit_Seq"+num).val("");
-							count--;
+							count_intern--;
 						});
 						
 						// 저장버튼 눌렀을 때
@@ -251,9 +249,9 @@
 	<input type="hidden" id="rsit_Seq2">
 	<input type="hidden" id="rsit_Seq3">
 <div id="interndiv" class="interndiv">	
-		<p class="title" style="color: gray">인턴&middot;대외활동</p>
+		<p class="title" style="color: gray; margin-left: 16px;">인턴&middot;대외활동</p>
 		<!-- Load -->		 
-		<input type="button" value="내 인턴&middot;대외활동 불러오기" id="internload" class="internload">
+		<input type="button" value="내 인턴&middot;대외활동 불러오기" id="internload" class="internload" style="margin-left: 17px;">
 </div>
 	<div class="fieldset_intern" style="padding: 0; margin: 0 auto;">
 		<div id="rsit_t" class="rsit_t">
@@ -265,7 +263,7 @@
 				<option value="동아리">동아리</option>
 				<option value="자원봉사">자원봉사</option>
 			</select>
-			<input type="hidden" id="count" name="count" class="count">		
+			<input type="hidden" id="count_intern" name="count_intern" class="count_intern">		
 			<input type="hidden" id="rsitSeq" name="rsitSeq" class="rsitSeq">	
 			<input type="text" id="rsitCompany" name="rsitCompany" class="rsitCompany" placeholder="회사/기관/단체명">
 			<input type="date" id="rsitStartdate" name="rsitStartdate" class="rsitStartdate">
