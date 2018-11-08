@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,7 +73,7 @@ public class RS_portfolioController {
 				// 학원 컴퓨터 경로
 //				"C:/Users/user/git/jobplus655/job/src/main/webapp/job/resume/portfolio/img/storage";
 				// 집 컴퓨터 경로
-				"C:/Users/jo2ri/git/jobplus8866/job/src/main/webapp/job/resume/portfolio/img/storage";
+				"C:/Users/jo2ri/git/jobplus555/job/src/main/webapp/job/resume/portfolio/img/storage";
 		String fileName = pfFile.getOriginalFilename();
 		File file = new File(filePath, fileName);
 
@@ -131,10 +132,25 @@ public class RS_portfolioController {
 		return modelAndView;
 	}
 	
+//	@RequestMapping(value = "/job/resume/portfolio/portfolioDown.do", method = RequestMethod.GET)
+//	public void fileDownload( HttpServletResponse response, HttpServletRequest request) throws IOException{
+//		HttpServletResponse response) throws IOException {
+//			System.out.println("bbbbbbb");
+//		String fileName = request.getParameter("rspf_File");
+//		 byte[] fileByte = FileUtils.readFileToByteArray(new File("C:/Users/jo2ri/git/jobplus555/job/src/main/webapp/job/resume/portfolio/img/storage/"+fileName));
+//		 
+//		 response.setContentType("application/octet-stream");
+//		 response.setContentLength(fileByte.length);
+//		 response.setHeader("Content-Disposition", "attachment; FileName=\"" + URLEncoder.encode(fileName, "UTF-8")+"\";");
+//		 response.setHeader("Content-Transfer-Encoding",  "binary");
+//		 response.getOutputStream().write(fileByte);
+//		 
+//		 response.getOutputStream().flush();
+//		 response.getOutputStream().close();
+//	}
+	
 	@RequestMapping(value="/job/resume/portfolio/portfolioCount.do", method=RequestMethod.POST)
-	public void getportfolioOfId(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-		System.out.println("뿔래랠래래래래래래");
+	public void getportfolioOfId(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
@@ -156,17 +172,6 @@ public class RS_portfolioController {
 		}
 		String path = RS_portfolioController.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
 	    System.out.println(path); //--> 절대 경로가 출력됨
-		//데이터
-	    
-//	    String accumSeq = request.getParameter("accumSeq");
-//	    System.out.println("[PF_controller] accumSeq : " + accumSeq);
-//	    
-//	    int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");
-//	    System.out.println("[PF_controller] accumSeqLastIndexOf : " + accumSeqLastIndexOf);
-//	    
-//	    String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);
-//		System.out.println("[PF_controller] accumSeqSubstring : " + accumSeqSubstring);
-//		
 	    
 		String memId = "num1";
 		String m_Id = request.getParameter(memId);
@@ -177,13 +182,11 @@ public class RS_portfolioController {
 		}else {
 			pg = 1;
 		}
-		  // Value of counter to be checked
 
 		//목록 수 : 10개씩
 		int endNum = pg * 10;
 		int startNum = endNum - 9;
-//		int endNum = 10;
-//		int startNum = 1;
+		
 		List<RS_portfolioDTO> list = portfolioService.portfolioListOfId(startNum, endNum, memId);
 		System.out.println("list :: " + list.toString());
 		//페이징 처리
