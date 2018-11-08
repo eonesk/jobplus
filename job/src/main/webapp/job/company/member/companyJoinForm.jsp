@@ -336,7 +336,7 @@ input[type=checkbox] {
 <body>
 	<div id=joinContainer>
 		<div id="header">
-			<a href="joinResult.jsp"><img src="img/test.png"></a>
+			<a href="../../../main/main.jsp"><img src="img/test.png"></a>
 		</div>
 		<div id="joinCategory">
 			<ul class="joinCategory">
