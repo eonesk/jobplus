@@ -19,18 +19,23 @@ public class CompanyInfoServiceImpl implements CompanyInfoService {
 	}
 
 	@Override
-	public CompanyInfoDTO selectCompanyInfo(String comId, int cpi_Seq) {
-		return companyInfoDAO.selectCompanyInfo(comId, cpi_Seq);
+	public CompanyInfoDTO selectCompanyInfo(String comId) {
+		return companyInfoDAO.selectCompanyInfo(comId);
 	}
 
 	@Override
-	public int selectLastSeq(String comId) {
-		return companyInfoDAO.selectLastSeq(comId);
+	public int selectCount(String comId) {
+		return companyInfoDAO.selectCount(comId);
 	}
 
 	@Override
 	public CompanyMemberDTO selectCompanyMember(String comId) {
 		return companyInfoDAO.selectCompanyMember(comId);
+	}
+
+	@Override
+	public int updateCompanyInfo(CompanyInfoDTO companyInfoDTO) {
+		return companyInfoDAO.updateCompanyInfo(companyInfoDTO);
 	}
 
 }

@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class CompanyInfoDTO {
 
-    // 기업정보seq 
-    private Integer cpi_Seq;
     
     // 기업아이디 
     private String cpm_Id;
@@ -86,13 +84,6 @@ public class CompanyInfoDTO {
     // 기타정보 
     private String cpi_Etc;
 
-	public Integer getCpi_Seq() {
-		return cpi_Seq;
-	}
-
-	public void setCpi_Seq(Integer cpi_Seq) {
-		this.cpi_Seq = cpi_Seq;
-	}
 
 	public String getCpm_Id() {
 		return cpm_Id;
