@@ -212,7 +212,199 @@
     }
 </script>
 <style type="text/css">
-	@import url('./css/timeWriteForm.css');
+body {
+}
+
+#timeWrap {
+	margin: 50px;
+	padding: auto;
+	width: 800px;
+}
+
+h2 {
+	float: left;
+	margin: 0;
+	margin-bottom: 5px;
+	padding: 0;
+}
+
+#guide {
+	float: left;
+	
+	padding: 0px;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+#timeTitleButton {
+	margin-left: 384px;
+	padding: 7px;
+	
+	background-color: #666666;
+	border: 1px solid #666666;
+	color: white;
+	
+	border-radius: 3px;
+}
+#timeTitleButton:hover {background-color: #3f3f3f;}
+
+#timePeriod {
+	border-bottom: 1px solid lightgray;
+}
+
+#timePeriodLeft {
+	float: left;
+	padding: 10px;
+	padding-left: 20px;
+	
+	width: 170px;
+	height: 150px;
+	color: #ff5a00;
+	font-weight: bold;
+}
+
+#timePeriodButtons {
+	padding: 10px 0 0 0;
+	height: 50px;	
+}
+
+.timePeriodButton {
+	float: left;
+	margin: 0;
+	border: 1px solid #b0b0b0; 
+	padding: 8px 15px 8px 15px;
+}
+
+#timePeriodButton2 {
+	border-left: 0px;
+	border-right: 0px;
+}
+
+#timePeriodDate {
+	background-color: white;
+}
+
+#timePeriodStartDate, #timePeriodEndDate {
+	height: 40px;
+	
+	padding-left: 5px;
+	border: 1px solid #b0b0b0;
+	border-radius: 3px;
+}
+
+#timePeriodNotice {
+	height: 57px;
+	padding-top: 10px;
+	color: #757575;	
+}
+
+.timePeriodNotice {
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+}
+
+.textOrange {
+	color: #ff5a00;
+}
+
+#timeMethod {
+	border-bottom: 1px solid lightgray;
+}
+
+#timeMethodLeft {
+	float: left;
+	padding: 10px;
+	padding-left: 20px;
+	
+	width: 170px;
+	height: 150px;
+	color: #ff5a00;
+	font-weight: bold;
+}
+
+#timeMethodRight {
+	float: left;
+}
+
+#onlineMethod {padding-top: 10px;}
+#onlineCheckboxDiv, #onlineLabelDiv {display: inline-block;}
+#onlineCheckbox {width: 25px; height: 25px; border: 2px;}
+#onlineLabelDiv > p {position: relative; top: -8px; margin: 0; color: #ff5a00;}
+#onlineNotiveDiv {padding-left: 10px;}
+#onlineNotiveDiv > p {margin: 0; color: #757575; font-size: 14px; display: inline-block;}
+#onlineNotiveDiv > p > a {color: black;}
+#onlineNotiveDiv > p > a:visited {color: #757575;}
+#onlineAgreeDiv {display: inline-block;}
+#onlineAgreeCheckbox {float: left; display: inline-block; position: relative; top: 8px; width: 20px; margin: 0;}
+#onlineAgreeDiv > p {float: left; display: inline-block; position: relative; top: 3px; margin: 0; }
+
+#homepageMethod {padding-top: 10px;}
+#homepageCheckboxDiv, #homepageLabelDiv, #homepageURLDiv {display: inline-block;}
+#homepageCheckbox {width: 25px; height: 25px; border: 2px;}
+#homepageURLDiv {position: relative; top: -8px; margin: 0;}
+#homepageLabelDiv > p {position: relative; top: -8px; margin: 0;}
+#homepageURL {width: 300px; height: 30px; border-radius: 3px; border: 1px solid #b0b0b0;}
+
+#etcMethod {padding-top: 10px;}
+#letterCheckboxDiv, #visitCheckboxDiv, #telCheckboxDiv, #faxCheckboxDiv {display: inline-block;}
+#letterLabelDiv, #visitLabelDiv, #telLabelDiv, #faxLabelDiv {display: inline-block; width: 70px;}
+#letterCheckbox, #visitCheckbox, #telCheckbox, #faxCheckbox {width: 25px; height: 25px; border: 2px;}
+#letterLabelDiv > p, #visitLabelDiv > p, #telLabelDiv > p, #faxLabelDiv > p {position: relative; top: -8px; margin: 0;}
+
+
+#timeForm {border-bottom: 1px solid lightgray;}
+#timeFormLeft {
+	float: left;
+	padding: 8px;
+	padding-left: 20px;
+	
+	width: 170px;
+	height: 60px;
+	color: #ff5a00;
+	font-weight: bold;
+}
+
+#timeFormRight {padding-top: 20px; padding-bottom: 20px;}
+#timeFormRight > div {display: inline-block;}
+#timeFormRight > div > input {width: 25px; height: 25px; border: 2px;}
+#timeFormRight > div > p {position: relative; top: -8px; margin: 0; width: 150px;}
+
+#timeNextButtonDiv {margin-top: 5px; margin-right: 10px; float: right;}
+
+#timeNextButton {
+	margin-left: 180px;
+	padding: 7px;
+	width: 100px;
+	
+	background-color: #666666;
+	border: 1px solid #666666;
+	color: white;
+	
+	border-radius: 3px;
+}
+#timeNextButton:hover {background-color: #3f3f3f;}
+
+
+
+#timePopUp{
+  width: 750px; height: 600px; background:white; color:black; 
+  position:absolute; top:115px; left: 20%; padding: 50px;
+  border:1px solid #666666; overflow: scroll; z-index: 100px;
+}
+
+#timeDeem {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(102, 102, 102, 0.8);
+	filter: alpha(opacity=50); /* For IE8 and earlier */
+	z-index: 50px;
+}
+
 </style>
 </head>
 <body>
