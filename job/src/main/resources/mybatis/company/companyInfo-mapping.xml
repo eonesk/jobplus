@@ -6,28 +6,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.companyInfoMapper">
 	<insert id="insertCompanyInfo" parameterType="companyInfoDTO">
 		insert into companyInfo values
-		(CPI_SEQ.nextval, #{cpm_Id}, #{cpm_Pname}, #{cpm_Pphone}, #{cpm_Pemail}, 
-		#{cpi_Companyname}, #{cpi_Firstname}, #{cpi_INDUSTRY}, 
+		(#{cpm_Id}, #{cpi_Pname}, #{cpi_Pphone}, #{cpi_Pemail}, 
+		#{cpi_Companyname}, #{cpi_Firstname}, #{cpi_Industry}, 
 		#{cpi_Content, jdbcType=VARCHAR}, #{cpi_Brand, jdbcType=VARCHAR}, #{cpi_Address}, 
 		#{cpi_Type, jdbcType=VARCHAR}, #{cpi_Birth, jdbcType=DATE}, 
-		#{cpi_Homepage, jdbcType=VARCHAR}, #{cpi_Blog}, #{cpi_Sns1, jdbcType=VARCHAR}, 
+		#{cpi_Homepage, jdbcType=VARCHAR}, #{cpi_Blog, jdbcType=VARCHAR}, #{cpi_Sns1, jdbcType=VARCHAR}, 
 		#{cpi_Sns2, jdbcType=VARCHAR}, #{cpi_Sns3, jdbcType=VARCHAR}, #{cpi_Tel}, 
 		#{cpi_Moneyyear, jdbcType=INTEGER}, #{cpi_Moneybase, jdbcType=INTEGER}, 
 		#{cpi_Moneysell, jdbcType=INTEGER}, #{cpi_Moneygain, jdbcType=INTEGER}, 
 		#{cpl_Seq, jdbcType=INTEGER}, #{cpi_Vision, jdbcType=VARCHAR}, 
 		#{cpi_History, jdbcType=VARCHAR}, #{cpi_Welfare, jdbcType=VARCHAR}, 
-		#{cpi_Cafe, jdbcType=VARCHAR}, #{cpi_Etc, jdbcType=VARCHAR} )
+		#{cpi_Cafe, jdbcType=VARCHAR}, #{cpi_Etc, jdbcType=VARCHAR})
 	</insert>
 	
-	<select id="selectCompanyInfo" parameterType="java.util.Map" resultType="companyInfoDTO">
-		select * from companyInfo where CPM_id=#{comId} and CPI_seq=#{cpi_Seq}
+	<update id="updateCompanyInfo" parameterType="companyInfoDTO">
+		update companyInfo set
+		CPI_pname=#{cpi_Pname}, CPI_pphone=#{cpi_Pphone}, CPI_pemail=#{cpi_Pemail},
+		CPI_companyName=#{cpi_Companyname}, CPI_firstName=#{cpi_Firstname},
+		CPI_industry=#{cpi_Industry}, CPI_content=#{cpi_Content, jdbcType=VARCHAR},
+		CPI_brand=#{cpi_Brand, jdbcType=VARCHAR}, CPI_address=#{cpi_Address},
+		CPI_type=#{cpi_Type, jdbcType=VARCHAR}, CPI_birth=#{cpi_Birth, jdbcType=DATE},
+		CPI_homepage=#{cpi_Homepage, jdbcType=VARCHAR},CPI_blog=#{cpi_Blog, jdbcType=VARCHAR},
+		CPI_sns1=#{cpi_Sns1, jdbcType=VARCHAR},CPI_sns2=#{cpi_Sns2, jdbcType=VARCHAR},
+		CPI_sns3=#{cpi_Sns3, jdbcType=VARCHAR},CPI_tel=#{cpi_Tel},
+		CPI_moneyyear=#{cpi_Moneyyear, jdbcType=INTEGER},CPI_moneybase=#{cpi_Moneybase, jdbcType=INTEGER},
+		CPI_moneysell=#{cpi_Moneysell, jdbcType=INTEGER},CPI_moneygain=#{cpi_Moneygain, jdbcType=INTEGER}, 
+		CPL_seq=#{cpl_Seq, jdbcType=INTEGER},CPI_vision=#{cpi_Vision, jdbcType=VARCHAR},
+		CPI_history=#{cpi_History, jdbcType=VARCHAR},CPI_welfare=#{cpi_Welfare, jdbcType=VARCHAR}, 
+		CPI_cafe=#{cpi_Cafe, jdbcType=VARCHAR},CPI_etc=#{cpi_Etc, jdbcType=VARCHAR}
+		where cpm_id=#{cpm_Id}
+	</update>
+	
+	<select id="selectCompanyInfo" parameterType="String" resultType="companyInfoDTO">
+		select * from companyInfo where CPM_id=#{comId}
 	</select>
 	
 	<select id="selectCompanyMember" parameterType="String" resultType="companyMemberDTO">
 		select CPM_id, CPM_num, CPM_type, CPM_infoTime from companyMember where CPM_id=#{comId}
 	</select>
 	
-	<select id="selectLastSeq" parameterType="String" resultType="int">
-		select max(CPI_seq) from resume where CPM_id=#{comId}
+	<select id="selectCount" parameterType="String" resultType="int">
+		select count(*) from companyInfo where CPM_id=#{comId}
 	</select>
 </mapper>
