@@ -9,8 +9,10 @@
 	window.onload = function() {
 		if(${resultCount > 0}) {
 			alert("회원가입성공.");
+			location.href = "../../../main/main.jsp";
 		} else {
 			alert("회원가입실패.");
+			location.href = "../../../main/main.jsp";
 		}
 	}
 </script>

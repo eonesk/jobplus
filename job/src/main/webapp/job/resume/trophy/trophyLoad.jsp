@@ -9,7 +9,6 @@
 <script type="text/javascript">
 	$(function() {
 		//var count = ${param.count};
-		alert("count = " + ${param.count});
 		// 총 개수
 		$.ajax({
 			type: 'POST',
@@ -56,7 +55,7 @@
 								$("#RST_LoadList").append(tr);	
 							});
 							
-							var num = ${param.count};
+							var num = ${param.count_trophy};
 							
 							if(num == 3) {
 								$(".RST_UserTitleR").attr("disabled", "true");
@@ -79,11 +78,8 @@
 								var accumSeq = "";
 								
 				                $(".RST_UserTitleR:checked").each(function() {
-				                	alert($(this).val());
 				                	accumSeq += $(this).val() + "/";
 				                });
-				                
-				                alert("accumSeq : " + accumSeq);
 				                
 				                if(accumSeq == "") {
 				                	alert("체크해주세요.");
@@ -91,9 +87,7 @@
 				                	alert("체크확인");
 				                	if(confirm("불러오기를 진행하시겠습니까?")) {
 				                		// 2개가 되야함. 확인해야할부분
-				                		 alert("selected accumSeq : " + accumSeq);
-				                		 alert("selected 보내기전 count : " + ${param.count});
-				                		opener.parent.selected_rst(accumSeq, ${param.count});
+				                		opener.parent.selected_rst(accumSeq, ${param.count_trophy});
 					                	self.close();
 				                	}
 				                	

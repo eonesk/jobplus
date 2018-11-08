@@ -9,7 +9,6 @@
 <script type="text/javascript">
 	$(function() {
 		var num = ${param.num};
-		alert("num의 수 = " + num);
 		var rslgCategory = $("#rslg_Category" + num, opener.document).val();	
 		if(rslgCategory == "공인시험"){
 			var rslgName = $("#rslg_Name" + num, opener.document).val();			
@@ -24,8 +23,6 @@
 			var rslgScore = null;
 			var rslgDate = null;
 		}
-		alert(rslgCategory + " // " + rslgName + " // " + rslgLv
-				+ " // " + rslgTest+ " // " + rslgScore+ " // " + rslgDate);
 			
 		$("#save").click(function() {
 			if(!$("#rslgUserTitle").val()) {

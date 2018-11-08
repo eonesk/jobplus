@@ -257,7 +257,6 @@ $("#rs_seq").val(null);
 		});
 		var modifyCk = ${modify};
 		if(modifyCk){
-			alert("수정실행");
 			modifyResume = true;
 			$("#rs_seq").val("${resumeDTO.rs_Seq}");
 			$("#rs_name").val("${resumeDTO.rs_Name}");
@@ -428,7 +427,7 @@ $("#rs_seq").val(null);
 			var rs_job1 = $("#rs_job1").val();
 			var rs_job2 = $("#rs_job2").val();
 			var rs_job3 = $("#rs_job3").val();
-			var rsim_Seq = null;
+			var rsim_Seq = $("#rsim__Seq").val();
 			var rss_Seq1 = $("#rss__Seq_1").val();
 			var rss_Seq2 = $("#rss__Seq_2").val();
 			var rss_Seq3 = $("#rss__Seq_3").val();
@@ -588,14 +587,13 @@ $("#rs_seq").val(null);
 <input type="hidden" id="rs_seq">
 <input type="hidden" id="memId" value="${sessionScope.memId }">
 <div id="header">
-	<a href="#">JOBPLUS</a>
-	<a href="#">이력서 관리</a>
+	<a href="#" id="goMain" style="font-size: 36px; color: white; font-weight: bold; text-decoration: none; margin-left: 30px;">JOBPLUS</a>
 </div>
 <div id="section">
 	<input type="text" name="rs_title" id="rs_title" placeholder="이력서 제목"><br>
 	<div id="member_info">
-	<h1>인적사항</h1>
-		<table>
+	<h1 style="margin-left: 24px; margin-top: 10px;">인적사항</h1>
+		<table style="margin-left: 17px;">
 			<tr>
 				<td><input type="text" name="rs_name" id="rs_name" value="${memberDTO.m_name }" placeholder="이름"></td>
 				<td><input type="date" name="rs_birth" id="rs_birth" class="rs_birth" value="${m_birth }" placeholder="생년월일"></td>
@@ -620,20 +618,20 @@ $("#rs_seq").val(null);
 					</c:if>
 					</select>
 				</td>
-				<td><input type="text" name="rs_email" id="rs_email" class="rs_email" value="${memberDTO.m_email }" placeholder="이메일"></td>
+				<td><input type="text" name="rs_email" id="rs_email" class="rs_email" value="${memberDTO.m_email }" placeholder="이메일" style="width: 340px;"></td>
 				<td rowspan="2"><jsp:include page="../image/imageForm.jsp"></jsp:include></td>
 			</tr>
 			<tr>
 				<td><input type="text" name="rs_homenum" id="rs_homenum" value="${memberDTO.m_homenum }" placeholder="전화번호"></td>
 				<td><input type="text" name="rs_phone" id="rs_phone" value="${memberDTO.m_phone }" placeholder="휴대폰번호"></td>
-				<td colspan="2"><input type="text" name="rs_address" id="rs_address" class="rs_address" value="${memberDTO.m_address }" placeholder="주소"></td>
+				<td colspan="2"><input type="text" name="rs_address" id="rs_address" class="rs_address" value="${memberDTO.m_address }" placeholder="주소" style="width: 440px;"></td>
 			</tr>
 		</table>
 	</div>
 	<hr id="hr_resume">
 	<div id="working_conditions">
-	<h1>희망근무조건</h1>
-		<div class="working_conditions_item1">
+	<h1 style="margin-left: 24px; margin-bottom: 10px;">희망근무조건</h1>
+		<div class="working_conditions_item1" style="margin-left: 17px;">
 			<select id="rs_type" name="rs_type" class="rs_type">
 				<option value="error">---고용형태---</option>
 				<option value="정규직">정규직</option>
@@ -648,7 +646,7 @@ $("#rs_seq").val(null);
 				<input type="checkbox" value="면접 후 결정" id="rs_pay_no" name="rs_pay_no" class="checkbox rs_pay_no"><label for="rs_pay_no">면접 후 결정</label>
 			</span>
 		</div>		
-		<table>
+		<table style="margin-left: 17px;">
 			<tr>
 				<td colspan="2">
 					<div class="header">
@@ -754,22 +752,22 @@ $("#rs_seq").val(null);
 				<td><label for="trophyCheck">수상</label></td>
 				<td><input type="checkbox" id="trophyCheck" class="checkbox"></td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td><label for="foreignCheck">해외경험</label></td>
 				<td><input type="checkbox" id="foreignCheck" class="checkbox"></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td><label for="languageCheck">어학</label></td>
 				<td><input type="checkbox" id="languageCheck" class="checkbox"></td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td><label for="portfolioCheck">포트폴리오</label></td>
 				<td><input type="checkbox" id="portfolioCheck" class="checkbox"></td>
-			</tr>
-			<tr>
+			</tr> -->
+			<!-- <tr>
 				<td><label for="vipCheck">취업우대</label></td>
 				<td><input type="checkbox" id="vipCheck" class="checkbox"></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td><label for="prCheck">자기소개서</label></td>
 				<td><input type="checkbox" id="prCheck" class="checkbox"></td>

@@ -60,6 +60,7 @@ function profileImgSave(imgPath){
 // 	window.opener.document.getElementById("fromInput").value=document.getElementById("imgValue").value
 	var imgData = $('#imgValue').val(); 
 	$(opener.document).find("#aaa").attr("src",imgData);
+	$(opener.document).find("#rsim__Seq").attr("value",$("#rsim_Seq").val());
 	document.imageWriteForm.submit();
 	window.close(); 
 // 	$("#img_form_url").attr("src", imgurl);
@@ -196,7 +197,7 @@ a {
 				<c:forEach var='imageDTO' items="${list }" varStatus="i">            
 				<td id="selectPhoto${i.index}" onclick="cscontrol('${i.index}','/job/job/resume/image/img/storage/${imageDTO.rsim_Name}');" style="border: 1px solid #e6e6e6;"> 
 					<div class="imgsize"><img id="tumbnail" src="/job/job/resume/image/img/storage/${imageDTO.rsim_Name}"/></div>  
-					<input type="hidden" id="rsim__Seq" value="${imageDTO.rsim_Seq }">
+					<input type="hidden" id="rsim_Seq" value="${imageDTO.rsim_Seq }">
 					<input type='hidden' id='imgValue' name = 'imgValue' value='/job/job/resume/image/img/storage/${imageDTO.rsim_Name}'/>   
 					<input type='hidden' name='user_title' value = '${imageDTO.rsim_Usertitle}'/>
 					<p id="user_title">${imageDTO.rsim_Usertitle}</p>

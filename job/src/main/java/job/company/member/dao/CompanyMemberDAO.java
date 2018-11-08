@@ -29,7 +29,7 @@ public class CompanyMemberDAO {
 	public String companyMemberLogin(String cpm_id, String cpm_pw) {
 		Map<String, String> map = new HashMap<>();
 		map.put("cpm_id", cpm_id);
-		map.put("cpm_pwd", cpm_pw);
+		map.put("cpm_pw", cpm_pw);
 		return sqlSession.selectOne("mybatis.companyMemberMapper.companyMemberLogin", map);
 	}
 	

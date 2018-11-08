@@ -31,7 +31,7 @@
 <input type="hidden" id="rspr_Seq">
 	<!-- jQuery로 생성할 부분.. 자기소개서 누르면 나타남 -->
 	<div id="PR_div"
-		style="display: inline-block; margin: 15px; width: 80%; background-color: #f5f7fb;">
+		style="display: inline-block; margin: 15px; width: 80%; background-color: white;">
 		
 		<h1>자기소개서</h1>		
 		<p style="clear: both; font-size: 12px; margin: 3px;">
