@@ -1,243 +1,322 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 *{
 	margin: 0;
-	padding: 0;
+	padding:0;
 }
-body{
+.rv_container div{
+	font-family: "Malgun Gothic",dotum,gulim,sans-serif;
+}
+.rv_container{
 	
 }
-.rmj_container{
-	background-color:#F2F2F2;
-	font-family: "Malgun Gothic",gulim,dotum,sans-serif;
+.rv_header{
+	width:1080px;
+	background-color: whitesmoke  ;
+	/* text-align: center; */
+	
+}
+.rv_title{
+	position: relative;
+	height:110px;
+	padding-left: 130px;
+	padding-top:15px;
+	line-height: 200%;
 	letter-spacing: -1px;
-	font-size:14px;
-	width: 880px;
-	/* height:698px; */
-	margin:auto;
-	line-height: 65px;
 }
-
-.rmj_header{
-	padding:20px;
-	letter-spacing: -3px;
-	font-size:33px;
+.rv_company{
+	display:block;
+	font-size:20px;
+}
+.rv_subject{
+	display: inline-block;
+	font-size: 36px;
+	
+	/* font-weight: bold; */
+}
+.rv_date{
+	font-size:18px;
+}
+.rv_d-day{
+	position:relative;
+	display:inline-block;
+	width:45px;
+	height:25px;
+	background-color: #fa6a71;
 	text-align: center;
+	color: white;
+	border-radius: 35px;
+	top:3px;
+	padding-bottom: 3px;
 }
-
-.rmj_line1{
-
-}
-
-.rmj_titleSpan{
-	float:left;
-	font-size: 21px;
-	font-weight: bold;
-	width:115px;
-}
-.rmj_job{
-	width: 587px;
-	height:50px;
-}
-
-.rmj_category{
-	width:150px;
-	height:52px;
-	background: #424242;
-	border-radius: 3px;
-	border-color: gray;
-	border:none;
+.rv_how{
+	position:relative;
+	width: 210px;
+	height: 60px;
+	background-color: white;
 	outline: none;
-	color:white;
-}
-
-.rmj_category:hover{
-	background: darkgray;
-}
-
-.rmj_careerUl{
-	display:inline-block;
-}
-.rmj_careerLi{
-	display:inline-block;
-	font-size:16px;
+	font-size: 20px;
 	font-weight: bold;
-}
-.rmj_career{
-	position:relative;
-	top: 4px;
-	width: 25px;
-	height:25px;
-}
-
-.rmj_careerLabel{
-	display:inline-block;
-	width:120px;
-	height:25px;
-}
-
-/** lineThree*/
-.rmj_typeUl{
-	float:left;
-	width:80%;	
-}
-
-.rmj_typeLi{
-	display:inline-block;
-	font-size:16px;
-	font-weight: bold;
-	
-}
-
-.rmj_type{
-	position:relative;
-	top: 5px;
-	width: 25px;
-	height:25px;
-	
-}
-.rmj_line3{
-	/* width:100%;
-	height:auto; */
-}
-
-.rmj_typeLabel{
-	display:inline-block;
-	width:120px;
-	height:25px;
-}
-
-/** lineFour */
-.rmj_detailMoveBtn{
-	width: 300px;
-	height:80px;
-	background-color: #424242;
-	color:white;
-	font-size:15px;
-	
-}
-.rmj_line1,.rmj_line2,.rmj_line3,.rmj_line4,.rmj_hideDiv{
-	display:inline-block;
-	width:100%;
-}
-
-.rmj_line4{
-	text-align: center;
-}
-.rmj_detailMoveBtn:hover{
-	background: darkgray;
-	
-}
-.rmj_hideDiv{
+	color:gray;
+	letter-spacing: -1px;
+	left: 50px;
+	top:15px;
 	border:1px solid lightgray;
-	background-color:white;
-	height :80px;
-	width:87%;
-	float:right;
-	padding-top: 10px;
 }
-
-.rmj_hideSelect{
-	width:90px;
-	height:40px;
-	margin-left: 5px;
-	margin-right: 5px;
-}
-
-.rmj_hideLabel{
-	display:inline-block;
-	width: 80px;
-	font-size:15px;
-	font-weight:bold;
+.rv_summary{
+	border: 1px solid blue;
+	position:relative;
+	
+	width: 1000px;
+	padding-top:200px;
 	text-align: center;
+}
+
+.rv_summaryView{
+	display:inline-block;
+	padding:30px;
+	box-sizing:border-box;
+	
+	width:325px;
+	height:275px;
+	border: 1px solid gray;
+}
+
+.rv_summaryTitle{
+	font-size: 24px;
+	font-weight: normal;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.rv_summaryList{
+	text-align: left;
+}
+
+.rv_summaryList li{
+	list-style: none;
+}
+.rv_content{
+	position:relative;
+	border:1px solid red;
+	width: 880px;
+	height:1000px;
+	margin:auto;
+	margin-top: 30px;
+	padding: 50px;
+	
+	/* top:500px; */
+}
+.rv_timeView,.rv_dateView{
+	
+	border: 1px solid green;
+	display:inline-block;
+}
+.rv_timeView{
+	margin-right: 16px;
+}
+.rv_dateView{
+	/* position:relative;
+	top:-130px; */
+}
+.rv_timeContent,.rv_dateContent{
+	box-sizing:border-box;
+	border: 1px solid yellow;
+	text-align:center;
+	width: 422px;
+	padding: 29px;
+}
+
+.rv_timeHeader,.rv_dateHeader{
+	padding-bottom: 10px;
+	font-weight: bold;
+	font-size: 17px;
+}
+.rv_timer{
+	padding: 8px;
+	background-color: #f4f4f4;
+}
+
+.rv_day,.rv_time{
+	color:#f66;
+	font-size:36px;
+}
+.rv_dayText{
+	color:#f66;
+	font-size: 22px;
+}
+.rv_startEndDiv{
+	text-align: center;
+	padding: 13px 50px 14px;
+	border-bottom: 1px solid lightgray;
+}
+.rv_startText,.rv_endText{
+	display:inline-block;
+	width: 70px;
+	font-size: 13px;
+	font-weight:bold;
+	border:1px solid #d9d9d9;
+	border-radius:22px;
+	color:#999;
+	padding: 3px;
+}
+.rv_endText{
+	border:1px solid #f66;
+	color:#f66;
+}
+.rv_startDay,.rv_endDay{
+	display:inline-block;
+	
+	width: 150px;
+}
+.rv_notice{
+	margin-top:3px;
+	font-size:13px;
+	color:#999;
+}
+
+.rv_companyView{
+	margin-top: 54px;
+	border: 1px solid purple;
+}
+
+.rv_companyHeader{
+	padding-bottom: 13px;
+	color:#444;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.rv_companyContent{
+	padding: 29px;
+	border:1px solid #ebebeb;
+	box-sizing: border-box;
+	color:#444;
+	background-color: #fff;
+}
+.rv_companyInfoTop{
+	margin-bottom: 20px;
+}
+
+.rv_cell{
+	display: inline-block;
+	width: 400px;
+	/* border: 1px solid navy;  */
+}
+
+.rv_tit{
+	display:inline-block;
+	width: 84px;
+	color:#999;
+	font-weight: normal;
+}
+
+.test,.test2{
+	line-height: 200%;
+}
+.test2{
+	border-top: 1px solid lightgray;
+	margin-top: 15px;
+	padding-top: 15px;
 }
 </style>
-<script type="text/javascript">
-	$(function() {
-		
-		$("#rmj_hideDiv").hide();
-		$("input[name='rmj_career']").change(function() {
-			if($(this).val() != "경력무관"){
-				$("#rmj_career3").prop("checked", false);
-			}else{
-				$("#rmj_career1").prop("checked", false);
-				$("#rmj_career2").prop("checked", false);
-			}
-			if($(this).val() == "경력"){
-				$("#rmj_hideDiv").show();
-			}else{
-				$("#rmj_hideDiv").hide();
-			}
-		});
-		
-		$("input[name='rmj_type']").change(function() {
-			if(($("input[name='rmj_type']:checked").length) > 3){
-				alert("안되");
-				$(this).prop("checked", false);
-				return false;
-			}
-		});
-	});
-</script>
+<title>채용 공고</title>
 </head>
 <body>
-<div id="rmj_container" class="rmj_container">
-	<p id="rmj_header" class="rmj_header">어떤 인재를 뽑을 계획이세요?</p>
-	<div id="rmj_content" class="rmj_content">
-		<div id="rmj_line1" class="rmj_line1">
-			<span id="rmj_titleSpan1" class="rmj_titleSpan">직종/직무</span>
-			<input type="text" id="rmj_job" name="rmj_job" class="rmj_job" placeholder="직종을 입력해 주세요">
-			<button id="" class="rmj_category">전체 카테고리</button>
+<div class="rv_container">
+	<div id="rv_header" class="rv_header" style="position: fixed; z-index: 100; height: 175px;">
+		<div id="rv_title" class="rv_title">	
+			<span id="rv_company" class="rv_company">JW그룹</span>
+			<span id="rv_subject" class="rv_subject">JW그룹 105기 신입사원 정기채용</span>
+			<span id="rv_date" class="rv_date">~11/14(수)</span>
+			<span id="rv_d-day" class="rv_d-day">D-6</span>
+			<input type="button" value="홈페이지 지원" id="rv_how" class="rv_how">
 		</div>
-		<div id="rmj_line2" class="rmj_line3">
-			<span id="rmj_titleSpan2" class="rmj_titleSpan">경력여부</span>
-			<ul id="rmj_careerUl" class="rmj_careerUl">
-				<li id="rmj_careerLi1" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="신입"   id="rmj_career" name="rmj_career" class="rmj_career">신입</label></li>
-				<li id="rmj_careerLi2" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="경력"    id="rmj_career2"name="rmj_career" class="rmj_career">경력</label></li>
-				<li id="rmj_careerLi3" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="경력무관" id="rmj_career3"name="rmj_career" class="rmj_career">경력무관</label>
-				</li>
-			</ul>
+	</div>
+	<div id="rv_summary" class="rv_summary">
+		<div id="rv_summaryView1" class="rv_summaryView">
+			<div id="rv_summaryTitle1" class="rv_summaryTitle"><span>지원자격</span></div>
+				<ul class="rv_summaryList">
+					<li>채용기준</li>
+					<li>학력</li>
+					
+				</ul>
 		</div>
-		<div id="rmj_hideDiv" class="rmj_hideDiv">
-			<label id="rmj_hideLabel" class="rmj_hideLabel">경력</label> 
-			<select id="rmj_carrerStart" name="rmj_carrerStart" class="rmj_hideSelect">
-				<c:forEach var="i"  begin="1" end="19" step="1">
-					<option>${i}년이상</option>
-				</c:forEach>
-			</select>~
-			<select id="rmj_carrerEnd" name="rmj_carrerEnd" class="rmj_hideSelect">
-				<c:forEach var="i"  begin="1" end="19" step="1">
-					<option>${i}년이하</option>
-				</c:forEach>
-			</select>
+		<div id="rv_summaryView2" class="rv_summaryView">
+			<div id="rv_summaryTitle2" class="rv_summaryTitle"><span>근무조건</span></div>
+				<ul class="rv_summaryList">
+					<li>근무조건</li>
+					<li>근무지역</li>
+					<li>근무요일</li>
+					<li>근무시간</li>
+				</ul>
 		</div>
-		<div id="rmj_line3" class="rmj_line3">
-			<span id="rmj_titleSpan3" class="rmj_titleSpan">고용형태</span>
-			<ul id="rmj_typeUl" class="rmj_typeUl">
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type1"  name="rmj_type" type="checkbox" class="rmj_type">정규직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type2"  name="rmj_type" type="checkbox" class="rmj_type">계약직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type3"  name="rmj_type" type="checkbox" class="rmj_type">아르바이트</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type4"  name="rmj_type" type="checkbox" class="rmj_type">인턴직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type5"  name="rmj_type" type="checkbox" class="rmj_type">프리랜서</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type6"  name="rmj_type" type="checkbox" class="rmj_type">파트</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type7"  name="rmj_type" type="checkbox" class="rmj_type">위촉직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type8"  name="rmj_type" type="checkbox" class="rmj_type">파견직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type9"  name="rmj_type" type="checkbox" class="rmj_type">전임</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type10" name="rmj_type" type="checkbox" class="rmj_type">병역특례</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type11" name="rmj_type" type="checkbox" class="rmj_type">교육생</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type12" name="rmj_type" type="checkbox" class="rmj_type">해외취업</label></li>
-			</ul>
+		<div id="rv_summaryView3" class="rv_summaryView">
+			<div id="rv_summaryTitle3" class="rv_summaryTitle"><span>기업정보</span></div>
+				<ul class="rv_summaryList">
+					<li>설립일</li>
+					<li>매출액</li>
+					<li>업종</li>
+				</ul>
 		</div>
-		<div id="rmj_line4" class="rmj_line4">
-			<input type="button" value="상세 내용 채우기로 이동 ▽" class="rmj_detailMoveBtn">
+	</div>
+	<div id="rv_content" class="rv_content">
+		<div id="rv_timeView" class="rv_timeView">
+			<h2 id="rv_timeHeader" class="rv_timeHeader">접수기간</h2>
+			<div id="rv_timeContent" class="rv_timeContent">
+				<div id="rv_timer" class="rv_timer"><span class="rv_timeText">남은 시간</span>
+					<span id="rv_day" class="rv_day">0</span>
+					<span id="rv_dayText" class="rv_dayText">일</span>
+					<span id="rv_time" class="rv_time">00:00:00</span>
+				</div>
+				<div id="rv_startEndDiv" class="rv_startEndDiv">
+					<span id="rv_startText" class="rv_startText">시작일</span>
+					<span id="rv_startDay" class="rv_startDay">2018.11.01 09:00</span>
+					<span id="rv_endText" class="rv_endText">마감일</span>
+					<span id="rv_endDay" class="rv_endDay">2018.11.14 23:00</span>
+				</div>
+				<div>
+					<p id="rv_notice" class="rv_notice">마감일은 기업의 사정,조기마감 등으로 변경될 수 있습니다.</p>
+				</div>
+			</div>
+		</div>
+		<div id="rv_dateView" class="rv_dateView">
+			<h2 id="rv_dateHeader" class="rv_dateHeader">접수방법</h2>
+			<div id="rv_dateContent" class="rv_dateContent">
+				<ul class="test">
+					<li>1</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="rv_companyView" class="rv_companyView">
+			<h2 id="rv_companyHeader" class="rv_companyHeader">기업정보</h2>
+			<div id="rv_companyContent" class="rv_companyContent">
+				<div id="rv_companyInfoTop" class="rv_companyInfoTop">
+					<div id="rv_companyLogo" class=""></div>
+					<div id="rv_companyName" class="rv_companyName">JW홀딩스(주)</div>
+					<div id="rv_company" class="rv_company">JW그룹</div>
+				</div>
+				<div id="" class="test">
+					<div class="rv_cell"><strong class="rv_tit">기업형태</strong> 코스피,중겹기업,주식회사</div>
+					<div class="rv_cell"><strong class="rv_tit">업종</strong> 지주회사</div>
+					<div class="rv_cell"><strong class="rv_tit">사업내용</strong> 지주회사,경영컨설팅,의약품 수출입</div>
+					<div class="rv_cell"><strong class="rv_tit">대표전화</strong> 02-840-6777</div>
+					<div class="rv_cell"><strong class="rv_tit">홈페이지</strong> www.jw-holdings.co.kr</div>
+					<div class="rv_cell"><strong class="rv_tit">기업주소</strong> 서울 서초구 남부순환로 2477</div>
+				</div>
+				<div id="" class="test2">
+					<div class="rv_cell"><strong class="rv_tit">지점명</strong>JW그룹</div>
+					<div class="rv_cell"><strong class="rv_tit">설립일</strong>1945년 8월 8일 (업력 73년)</div>
+					<div class="rv_cell"><strong class="rv_tit">대표자명</strong>이경하/전재광</div>
+					<div class="rv_cell"><strong class="rv_tit">사원수</strong>2,300명 (2017년 기준)</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
