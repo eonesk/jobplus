@@ -219,6 +219,7 @@ body {
 	margin: 50px;
 	padding: auto;
 	width: 800px;
+	padding-bottom: 32px;
 }
 
 h2 {

@@ -11,7 +11,7 @@
 /* HEADER */
 body			{min-width: 1600px;	margin: 0px;}
 ol, ul, li		{list-style: none;}
-#container		{position: relative;	padding-top: 90px;			text-align: center;	background-color: #eef2f7;}
+#container		{position: relative;	padding-top: 30px;			text-align: center;	background-color: #eef2f7;}
 #header			{position: fixed;		text-align: left;			top: 0;	left: 0;	z-index: 100;	width: 100%;	height: 90px;	}
 #header .inner	{z-index: 20;			position: relative;			margin: 0 auto;		width: 100%;
 				 height: inherit;		padding: 0px 0px 0px 0px;	background-color: #fff;}
@@ -56,13 +56,15 @@ a.logo_cm_service {
     width: 1600px;
 }
 #header .gnb .list_gnb {
-    padding-left: 242px;
+     padding-left: 374px;
     float: left;
     margin: 0;
 }
 #header .gnb .list_gnb.pos_right {
     float: right;
     padding-left: 0;
+        right: 165px;
+    position: relative;
 }
 ul.list_gnb li {
     float: left;
@@ -188,6 +190,7 @@ ul.list_gnb li {
     max-width: 100%;
     min-height: 600px;
     vertical-align: top;
+    text-align: left; 
 }
 .wrap_contents.control_margin #content {
     margin-bottom: 50px !important;

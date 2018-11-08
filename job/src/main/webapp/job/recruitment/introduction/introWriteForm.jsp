@@ -129,6 +129,12 @@
 #rmi_Work1 {
 	margin-left: 88px;
 }
+#rmi_Work2 {
+	margin-left: 158px;
+}
+#rmi_Work3 {
+	margin-left: 158px;
+}
 .rmi_Work:hover {
 	background-color: white;	
 }

@@ -6,7 +6,164 @@
 <meta charset="UTF-8">
 <title>근무조건폼</title>
 <style type="text/css">
-	@import url('./css/conditionWriteForm.css');
+body {
+}
+#conditionWrap {
+	margin: 50px;
+	padding: auto;
+	width: 800px;
+}
+#conditionSalary, #conditionBusiness, #conditionWorkspace, #conditionWeek, #conditionTime {
+	border-bottom: 1px solid lightgray;
+	width: 100%;
+}
+#conditionSalaryLeft {
+	float: left;
+	padding: 10px;
+	padding-left: 20px;	
+	width: 170px;
+	height: 55px;
+	color: #ff5a00;
+	font-weight: bold;
+}
+#conditionSalaryRight {padding-top: 10px;}
+
+#rmc_Salary1 , #conditionExtraPayDiv, #conditionExtraPayLabel, #conditionPayValue, #conditionPayHidden {display: inline-block;}
+
+#rmc_Salary1 {border: 1px solid #b0b0b0; border-radius: 3px; padding: 13px; width: 180px;}
+#conditionPayValue {position: relative; bottom: 2px; border: 1px solid #b0b0b0; border-radius: 3px; padding: 12px; width: 80px;}
+#rmc_Salary2 {position: relative; bottom: 2px; border: 1px solid #b0b0b0; border-radius: 3px; background-color: #eaeff2; width: 180px; height: 38px;}
+#conditionExtraPayLabel {font-size: 14px;}
+
+#conditionPayNoticeDiv {padding-top: 10px;}
+.conditionPayNotice {margin: 0; padding: 0; font-size: 14px; color: #757575;}
+
+#conditionBusinessLeft {
+ 	float: left;
+	padding: 10px;
+	padding-left: 20px;
+	
+	width: 170px;
+	height: 107px;
+	color: #ff5a00;
+	font-weight: bold;
+}
+
+#conditionBusinessRight {padding-top: 10px; padding-bottom: 10px;}
+
+#conditionBusinessInputDiv {display: inline-block; border: 1px solid #b0b0b0; border-radius: 3px; /* position: relative; left: 200px;  */width: 358px; height: 80px; margin-top: 10px;}
+#conditionBusinessInputUl {list-style: none; margin: 0; padding: 0;}
+.conditionBusinessInputLi {margin:  0 0 0 0; padding: 0 0 0 0; border: 0; float: left;}
+
+#conditionBusinessButton {margin-left: 50px;}
+#conditionBusinessButton a:link {color: black;}
+#conditionBusinessButton a:visited {color: black;}
+
+#conditionWorkspaceLeft {
+	float: left;
+	padding: 10px;
+	padding-left: 20px;
+	
+	width: 170px;
+	height: 128px;
+	color: #ff5a00;
+	font-weight: bold;
+}
+
+#conditionWorkspaceRight {padding-top: 10px; padding-bottom: 10px;}
+#workspaceDivCancel {float: right; margin-top: 10px; text-decoration: none;}
+#workspaceDivCancel:link {color: black;}
+#workspaceDivCancel:visited {color: black;}
+
+#radioIn, #radioOut {width: 25px; height: 25px;}
+#conditionWorkspaceRadio > label {position:relative; top:-5px}
+
+#addrFirst, #addrSecond {width: 400px; height: 30px; border: 1px solid #b0b0b0; border-radius: 3px;}
+#addrButton {
+	height: 35px;
+	padding: 7px;
+	padding-left: 20px;
+	padding-right: 20px;
+	
+	background-color: #666666;
+	border: 1px solid #666666;
+	color: white;
+	
+	border-radius: 3px;
+}
+
+#addrButton:hover {background-color: #3f3f3f;}
+
+#conditionAddrMap {
+	display: inline-block; border: 1px solid #b0b0b0; 
+	border-radius: 3px; width: 577px; height: 480px;
+	padding-left: 20px;
+}
+
+#conditionAddrMap > h4 {display: inline-block;}
+
+#conditionAddrMapValue {position: relative; z-index: 0; width: 97%; height: 300px;}
+
+#conditionWorkspaceOutSelect {display: inline-block; bottom: 2px; border: 1px solid #b0b0b0; border-radius: 3px; background-color: white; width: 180px; height: 28px; padding-top: 10px; padding-left: 10px;}
+#conditionWorkspaceOutInput {display: inline-block; bottom: 2px; border: 1px solid #b0b0b0; border-radius: 3px; background-color: #eaeff2; width: 400px; height: 38px;}
+
+#conditionWorkspaceOutSelect > select {border: 0; background-color: white;}
+#conditionWeekLeft {
+	float: left;
+	padding: 10px;
+	padding-top: 0;
+	padding-left: 20px;
+	
+	width: 170px;
+	height: 48px;
+	color: #757575;	
+}
+#conditionWeekSelectDiv {margin-bottom: 6px; display: inline-block; text-align: center; padding-top: 15px; border: 1px solid #b0b0b0; border-radius: 3px; width: 250px; height: 35px; background: white;}
+#rmc_Week {border: 0; font-size: 16px;}
+
+#conditionWeekRight {padding-top: 10px;}
+
+#conditionTimeLeft {
+	float: left;
+	padding: 10px;
+	padding-top: 0;
+	padding-left: 20px;
+	
+	width: 170px;
+	height: 48px;
+	color: #757575;	
+}
+
+#conditionTimeRight { padding-bottom: 10px;}
+
+#conditionTimeSelectDiv {margin-bottom: 6px; display: inline-block; text-align: center; padding-top: 10px; border: 1px solid #b0b0b0; border-radius: 3px; width: 250px; height: 35px; background: white;}
+#rmc_Time {border: 0; font-size: 16px; appearance: none;}
+
+#conditionNextButtonDiv {margin-top: 5px; margin-right: 10px; float: right;}
+
+#conditionNextButton {
+	margin-left: 180px;
+	padding: 7px;
+	width: 100px;
+	
+	background-color: #666666;
+	border: 1px solid #666666;
+	color: white;
+	border-radius: 3px;
+}
+#conditionNextButton:hover {background-color: #3f3f3f;}
+
+
+#conditionPopUp{
+  width: 620px; height: 300px; background:white; color:black; 
+  position:relative; top:-833px; left:248px; padding:0px 20px 0px 20px;
+  border:1px solid #666666; z-index: 500px;
+}
+
+#conditionCategoryTitle {padding: 0;}
+
+.workspace1 {list-style: none;}
+
 </style>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
