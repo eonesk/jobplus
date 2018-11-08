@@ -74,7 +74,8 @@ body{
 	font-size:16px;
 	font-weight: bold;
 }
-.rmj_career{
+
+.rmj_careerChk{
 	position:relative;
 	top: 4px;
 	width: 25px;
@@ -100,7 +101,8 @@ body{
 	
 }
 
-.rmj_type{
+
+.rmj_typeChk{
 	position:relative;
 	top: 5px;
 	width: 25px;
@@ -167,12 +169,13 @@ body{
 	$(function() {
 		
 		$("#rmj_hideDiv").hide();
-		$("input[name='rmj_career']").change(function() {
+
+		$("input[name='rmj_careerChk']").change(function() {
 			if($(this).val() != "경력무관"){
-				$("#rmj_career3").prop("checked", false);
+				$("#rmj_careerChk3").prop("checked", false);
 			}else{
-				$("#rmj_career1").prop("checked", false);
-				$("#rmj_career2").prop("checked", false);
+				$("#rmj_careerChk1").prop("checked", false);
+				$("#rmj_careerChk2").prop("checked", false);
 			}
 			if($(this).val() == "경력"){
 				$("#rmj_hideDiv").show();
@@ -180,9 +183,12 @@ body{
 				$("#rmj_hideDiv").hide();
 			}
 		});
-		
-		$("input[name='rmj_type']").change(function() {
-			if(($("input[name='rmj_type']:checked").length) > 3){
+
+		$("input[name='
+      ']").change(function() {
+			if(($("input[name='
+      
+      ']:checked").length) > 3){
 				alert("안되");
 				$(this).prop("checked", false);
 				return false;
@@ -197,26 +203,28 @@ body{
 	<div id="rmj_content" class="rmj_content">
 		<div id="rmj_line1" class="rmj_line1">
 			<span id="rmj_titleSpan1" class="rmj_titleSpan">직종/직무</span>
-			<input type="text" id="rmj_job" name="rmj_job" class="rmj_job" placeholder="직종을 입력해 주세요">
+
+			<input type="text" id="rmj_job" class="rmj_job" placeholder="직종을 입력해 주세요">
 			<button id="" class="rmj_category">전체 카테고리</button>
 		</div>
 		<div id="rmj_line2" class="rmj_line3">
 			<span id="rmj_titleSpan2" class="rmj_titleSpan">경력여부</span>
 			<ul id="rmj_careerUl" class="rmj_careerUl">
-				<li id="rmj_careerLi1" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="신입"   id="rmj_career" name="rmj_career" class="rmj_career">신입</label></li>
-				<li id="rmj_careerLi2" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="경력"    id="rmj_career2"name="rmj_career" class="rmj_career">경력</label></li>
-				<li id="rmj_careerLi3" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="경력무관" id="rmj_career3"name="rmj_career" class="rmj_career">경력무관</label>
+
+				<li id="rmj_careerLi1" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="신입"   id="rmj_careerChk1" name="rmj_careerChk" class="rmj_careerChk">신입</label></li>
+				<li id="rmj_careerLi2" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="경력"    id="rmj_careerChk2"name="rmj_careerChk" class="rmj_careerChk">경력</label></li>
+				<li id="rmj_careerLi3" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="경력무관" id="rmj_careerChk3"name="rmj_careerChk" class="rmj_careerChk">경력무관</label>
 				</li>
 			</ul>
 		</div>
 		<div id="rmj_hideDiv" class="rmj_hideDiv">
 			<label id="rmj_hideLabel" class="rmj_hideLabel">경력</label> 
-			<select id="rmj_carrerStart" name="rmj_carrerStart" class="rmj_hideSelect">
+			<select id="rmj_hideSelect1" class="rmj_hideSelect">
 				<c:forEach var="i"  begin="1" end="19" step="1">
 					<option>${i}년이상</option>
 				</c:forEach>
 			</select>~
-			<select id="rmj_carrerEnd" name="rmj_carrerEnd" class="rmj_hideSelect">
+			<select id="rmj_hideSelect2" class="rmj_hideSelect">
 				<c:forEach var="i"  begin="1" end="19" step="1">
 					<option>${i}년이하</option>
 				</c:forEach>
@@ -225,18 +233,18 @@ body{
 		<div id="rmj_line3" class="rmj_line3">
 			<span id="rmj_titleSpan3" class="rmj_titleSpan">고용형태</span>
 			<ul id="rmj_typeUl" class="rmj_typeUl">
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type1"  name="rmj_type" type="checkbox" class="rmj_type">정규직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type2"  name="rmj_type" type="checkbox" class="rmj_type">계약직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type3"  name="rmj_type" type="checkbox" class="rmj_type">아르바이트</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type4"  name="rmj_type" type="checkbox" class="rmj_type">인턴직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type5"  name="rmj_type" type="checkbox" class="rmj_type">프리랜서</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type6"  name="rmj_type" type="checkbox" class="rmj_type">파트</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type7"  name="rmj_type" type="checkbox" class="rmj_type">위촉직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type8"  name="rmj_type" type="checkbox" class="rmj_type">파견직</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type9"  name="rmj_type" type="checkbox" class="rmj_type">전임</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type10" name="rmj_type" type="checkbox" class="rmj_type">병역특례</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type11" name="rmj_type" type="checkbox" class="rmj_type">교육생</label></li>
-				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_type12" name="rmj_type" type="checkbox" class="rmj_type">해외취업</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk1"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">정규직</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk2"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">계약직</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk3"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">아르바이트</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk4"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">인턴직</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk5"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">프리랜서</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk6"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">파트</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk7"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">위촉직</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk8"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">파견직</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk9"  name="rmj_typeChk" type="checkbox" class="rmj_typeChk">전임</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk10" name="rmj_typeChk" type="checkbox" class="rmj_typeChk">병역특례</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk11" name="rmj_typeChk" type="checkbox" class="rmj_typeChk">교육생</label></li>
+				<li class="rmj_typeLi"><label class="rmj_typeLabel"><input id="rmj_typeChk12" name="rmj_typeChk" type="checkbox" class="rmj_typeChk">해외취업</label></li>
 			</ul>
 		</div>
 		<div id="rmj_line4" class="rmj_line4">

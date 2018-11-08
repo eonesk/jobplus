@@ -2,7 +2,12 @@ package job.company.member.controller;
 
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +23,21 @@ public class CompanyMemberController {
 	private CompanyMemberService companyMemberService;
 
 	@RequestMapping(value ="/job/company/member/companyJoinForm.do")
-	public ModelAndView index() {
+	public ModelAndView cJoinForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/job/company/member/companyJoinForm.jsp");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value ="/main/cLoginForm.do")
+	public ModelAndView cLoginForm() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/main/cLoginForm.jsp");
+		return modelAndView;
+	}
 
-	@RequestMapping(value = "/job/company/member/joinResult.do")
+
+	@RequestMapping(value = "/job/company/member/CompanyjoinResult.do")
 	public ModelAndView join(HttpServletRequest request, CompanyMemberDTO companyMemberDTO) {
 		ModelAndView modelAndView = new ModelAndView();
 		String cpm_id = request.getParameter("cpm_id");
@@ -45,5 +58,25 @@ public class CompanyMemberController {
 		modelAndView.addObject("resultCount", resultCount);
 		modelAndView.setViewName("companyJoinResult.jsp");
 		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/cLogin.do")
+	public void login(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=UTF-8");		
+		PrintWriter out = response.getWriter();
+		// 데이터 읽어오기
+		String cpm_id = request.getParameter("cpm_id");
+		String cpm_pw = request.getParameter("cpm_pw");
+		// DB
+		
+		
+		String result = companyMemberService.companyMemberLogin(cpm_id, cpm_pw);
+		System.out.println(result);
+		
+		if(result != null) { 				
+			HttpSession session = request.getSession();
+			session.setAttribute("cpm_id", cpm_id);
+		}
+		out.print(result);
 	}
 }

@@ -25,10 +25,10 @@ public class MemberDAO {
 		return sqlSession.selectOne("mybatis.memberMapper.memberGet", id);
 	}
 	
-	public String login(String id, String pwd) {
+	public String login(String m_id, String m_pw) {
 		Map<String, String> map = new HashMap<>();
-		map.put("id", id);
-		map.put("pwd", pwd);
+		map.put("m_id", m_id);
+		map.put("m_pw", m_pw);
 		return sqlSession.selectOne("mybatis.memberMapper.memberLogin", map);
 	}
 	

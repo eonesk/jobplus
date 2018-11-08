@@ -539,8 +539,8 @@ body {
 <input type="hidden" id="rsw__Seq_2">
 <input type="hidden" id="rsw__Seq_3">
 	<div id="workLvHeader" class="workLvHeader">
-		경력<br>
-		<button type="button" id="loadBtn" class="loadBtn">내 경력 불러오기</button>
+		<p class="title" style="color: gray; margin-left: 22px;">경력</p>
+		<button type="button" id="loadBtn" class="loadBtn" style="margin-left: 24px;">내 경력 불러오기</button>
 	</div>
 	<div id="workLvContainer" class="workLvContainer">
 		<div id="workLvContent" class="workLvContent">
@@ -737,6 +737,6 @@ body {
 			<textarea id="rsw_career" name="rsw_career"  class="lineSix" placeholder="경력기술서"></textarea>
 		</div>
 	</div>
-
+	<br>
 </body>
 </html>

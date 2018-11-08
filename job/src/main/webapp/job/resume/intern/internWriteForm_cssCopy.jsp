@@ -73,9 +73,7 @@
 	/** Load 함수 */
 	function selected_rsit(accumSeq, num) {
 		$(function() {
-			alert("selected_rsit함수 실행 num값 = " + num);
 			count = num;
-			alert("selected함수 실행 count값 = " + count);
 			$.ajax({
 				type: 'POST',
 				url: '/job/job/resume/intern/LoadView.do',

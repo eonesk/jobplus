@@ -24,14 +24,10 @@
 		var rss_Totscore;
 		var rss_UserTitle;
 		
-		alert("[save] is_check : " + is_check);
-		alert("[save] numbering : " + numbering);
 		
 		if(is_check) {
-			alert("고등학교 미만 졸업");
 			rss_Ishighschool = "Y";
 		} else {
-			alert("고등학교 이상 졸업");
 			rss_Type = $("#rssTypeValue" + numbering, opener.document).val();
 			rss_Name = $("#rssNameFirst" + numbering, opener.document).val();
 			rss_Startdate = $("#rssStartDateValue" + numbering, opener.document).val();
@@ -41,12 +37,9 @@
 			rss_Score = $("#rssScoreFirst" + numbering, opener.document).val();
 			rss_Totscore = $("#rssTotScoreValue" + numbering, opener.document).val();
 			
-			alert("[SavePopUp]" + rss_Type + " // " + rss_Name + " // " + rss_Startdate + " // " + rss_Enddate
-					 + " // " + rss_Ishighschool + " // " + rss_Major + " // " + rss_Score + " // " + rss_Totscore);
 		}
 		
 		$("#RSS_save_submit").click(function() {
-			alert("서밋");
 			rss_UserTitle = $("#rssUserTitle").val();
 			if(rss_UserTitle == "") {
 				alert("저장할 제목을 입력해주세요.");

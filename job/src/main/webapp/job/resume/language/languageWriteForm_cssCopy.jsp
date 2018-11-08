@@ -93,9 +93,7 @@
 	// load 함수
 	function selected_rslg(accumSeq, num) {
 		$(function() {
-			alert("selected함수 실행 num값 = " + num);
 			count = num;
-			alert("selected함수 실행 count값 = " + count);
 			$.ajax({
 				type: 'POST',
 				url: '/job/job/resume/language/LoadView.do',
@@ -177,7 +175,6 @@
 						$("#rslg_Seq" + num).val(testDTO.rst_Seq);						
 						$("#rslg_Category" + num).val(testDTO.rslg_Category);
 						if($("#rslg_Category" + num).val() == "공인시험"){
-							alert("if진입후");
 							$("#test"+num).css("display", "inline");
 							$("#lv"+ num).css("display", "none");
 						}else{
