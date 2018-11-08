@@ -707,7 +707,7 @@ ul.list_gnb li {
 		var m_id = $('input:hidden[class="Main_M_id"]').val();
 		
 		alert("CPM_id값 = " + CPM_id + "//" + "m_id값 = " + m_id);
-		/* 로그인/로그아웃화면 처리 */
+		/* 로그인/로그아웃화면 처리 */ 
 		if(!m_id){
 			document.getElementById("logout").style.display = "none";	
 			document.getElementById("login").style.display = "inline";
