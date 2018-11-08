@@ -43,4 +43,7 @@ public class RS_imageDAO {
 		return sqlSession.selectList("mybatis.imageMapper.ImageListOfId", map);				
 	}
 
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.imageMapper.selectLastSeq");
+	}
 }

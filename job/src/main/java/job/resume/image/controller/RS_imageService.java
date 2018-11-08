@@ -23,4 +23,5 @@ public interface RS_imageService {
 	//쓴 목록 보기
 	List<RS_imageDTO> ImageListOfId(int startNum, int endNum, String memId);
 	
+	int selectLastSeq();
 }

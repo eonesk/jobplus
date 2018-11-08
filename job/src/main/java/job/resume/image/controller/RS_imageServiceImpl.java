@@ -41,5 +41,10 @@ public class RS_imageServiceImpl implements RS_imageService {
 		return imageDAO.viewImageOfId(memId);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return imageDAO.selectLastSeq();
+	}
+
 
 }

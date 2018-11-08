@@ -27,8 +27,9 @@ public class RS_imageController {
 	private RS_imageService imageService;
 	
 	@RequestMapping(value="/job/resume/image/imageWriteForm.do", method=RequestMethod.GET)
-	public ModelAndView imageWriteForm(Model model) {
+	public ModelAndView imageWriteForm(Model model, HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
+		
 		modelAndView.addObject("display", "imageForm.jsp");
 		String memId = "num1";
 		RS_imageDTO imageDTO = new RS_imageDTO();
@@ -37,9 +38,13 @@ public class RS_imageController {
 		System.out.println("dataList :: " + imageDTO);
 //		modelAndView.addObject("imageDTO", imageDTO);
 		model.addAttribute("imageDTO", imageDTO);
-		System.out.println("이ㅓ거");
+		
+		if(request.getParameter("rsim_Seq") != null) {
+			System.out.println(request.getParameter("rsim_Seq"));
+			model.addAttribute("rsim__Seq", request.getParameter("rsim_Seq"));
+		}
+		
 		modelAndView.setViewName("imageForm.jsp");
-		System.out.println("감???");
 		return modelAndView;
 	}
 	
@@ -52,6 +57,9 @@ public class RS_imageController {
 //				"c:/users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
 				//집 컴퓨터 경로
 				"C:/Users/jo2ri/git/jobplus555/job/src/main/webapp/job/resume/image/img/storage";
+				
+				
+		
 		String fileName = img.getOriginalFilename();
  		File file = new File(filePath, fileName);
 		System.out.println("file=" + file);
@@ -78,9 +86,13 @@ public class RS_imageController {
 		
 		//DB
 		int su = imageService.imageWrite(imageDTO);
+		int rsim_Seq = 0;
+		if(su>0) {
+			rsim_Seq = imageService.selectLastSeq();
+		}
 		//화면 네비게이션
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("su", su);
+		modelAndView.addObject("rsim_Seq", rsim_Seq);
 		modelAndView.setViewName("imageWrite.jsp");
 		
 		return modelAndView;

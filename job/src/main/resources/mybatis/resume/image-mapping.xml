@@ -35,4 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		RS_IMAGE 
 		WHERE ROWNUM <![CDATA[<]]> 2 AND M_ID = 'num1' ORDER BY RSIM_SEQ DESC
 	</select>
+	
+	<select id="selectLastSeq" resultType="int">
+		select max(RSIM_seq) from RS_image
+	</select>
 </mapper>
