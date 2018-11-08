@@ -29,6 +29,11 @@ public class MainSearchController {
 			System.out.println("[MainSearchController] jobSelect3["+j+"] : " + jobSelect3[j]);
 		}
 		
+		modelAndView.addObject("searchCompany", searchCompany);
+		modelAndView.addObject("searchRegion", searchRegion);
+		modelAndView.addObject("jobSelect3", jobSelect3);
+		modelAndView.setViewName("/main/mainSearchResultForm.jsp");
+		
 		
 		return modelAndView;
 	}
