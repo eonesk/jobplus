@@ -31,6 +31,6 @@ public class RS_eduDAO {
 	}
 	
 	public int selectLastSeq() {
-		return sqlSession.selectOne("mybatis.eduMapper.selectLastSeq");
+		return sqlSession.selectOne("mybatis.imageMapper.selectLastSeq");
 	}
 }

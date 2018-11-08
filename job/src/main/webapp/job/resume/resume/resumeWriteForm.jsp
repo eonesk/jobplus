@@ -621,7 +621,7 @@ $("#rs_seq").val(null);
 					</select>
 				</td>
 				<td><input type="text" name="rs_email" id="rs_email" class="rs_email" value="${memberDTO.m_email }" placeholder="이메일"></td>
-				<td rowspan="2"><img src="./img/IDphoto_103x132.jpg" onclick="alert('오')"></td>
+				<td rowspan="2"><jsp:include page="../image/imageForm.jsp"></jsp:include></td>
 			</tr>
 			<tr>
 				<td><input type="text" name="rs_homenum" id="rs_homenum" value="${memberDTO.m_homenum }" placeholder="전화번호"></td>
