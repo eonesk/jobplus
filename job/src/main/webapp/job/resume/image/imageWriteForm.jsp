@@ -23,6 +23,7 @@ $(function() {
 				var reader = new FileReader();
 				reader.onload = function(e) {
 					$(opener.document).find("#aaa").val("src",e.target.result);
+					$(opener.document).find("")
 				}
 				reader.readAsDataURL(value.files[0]);
 			}
