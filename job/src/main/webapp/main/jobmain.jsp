@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
+
 /* HEADER */
 body			{min-width: 1600px;	margin: 0px;}
 ol, ul, li		{list-style: none;}
