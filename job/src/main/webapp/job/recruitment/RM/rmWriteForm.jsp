@@ -64,7 +64,7 @@
 </style>
 </head>
 <body>
-<div id="rm_content">
+<div id="rm_content"> 
 	<div id="rm_1">
 		<a href="#" id="next_btn1" class="recruit_btn_next"><img src="/job/job/recruitment/RM/img/next_btn.png"></a>
 		<div id="jobDiv">

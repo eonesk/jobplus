@@ -448,7 +448,7 @@ $(document).ready(function() {
  						<hr id="hr_recruitment">
   						<jsp:include page="/job/recruitment/RM/rmWriteForm.jsp"></jsp:include>
  					</div>
-				</div>
+				</div> 
 			</div>
 		</section>
 		

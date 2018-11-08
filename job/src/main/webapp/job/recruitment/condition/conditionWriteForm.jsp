@@ -8,7 +8,7 @@
 <style type="text/css">
 <style type="text/css">
 	body {
-}
+} 
 
 #conditionWrap {
 	margin: 50px;
