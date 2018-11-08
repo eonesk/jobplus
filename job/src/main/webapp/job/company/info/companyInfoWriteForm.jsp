@@ -8,6 +8,7 @@
 <link href="./css/companyInfo.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+var modify = ${modify};
 	/* 다음지도 */
 	$(function() {
 		$("#map_open").on("click", function() {
@@ -71,17 +72,17 @@
 		}
 		
 		$("#companyInfoWriteBtn").on("click", function() {
-			if($("#rmp_Name").val() == ""){
+			if($("#cpi_Pname").val() == ""){
 				alert("인사담당자 성함 입력은 필수 사항입니다.");
-				$("#rmp_Name").focus();
+				$("#cpi_Pname").focus();
 				return false;
-			}else if($("#rmp_Phone1").val() == ""){
+			}else if($("#cpi_Pphone").val() == ""){
 				alert("인사담당자 휴대폰번호 입력은 필수 사항입니다.");
-				$("#rmp_Phone1").focus();
+				$("#cpi_Pphone").focus();
 				return false;
-			}else if($("#rmp_Email").val() == ""){
+			}else if($("#cpi_Pemail").val() == ""){
 				alert("인사담당자 이메일 입력은 필수 사항입니다.");
-				$("#rmp_Email").focus();
+				$("#cpi_Pemail").focus();
 				return false;
 			}else if($("#cpm_Companyname").val() == ""){
 				alert("기업명 입력은 필수 사항입니다.");
@@ -105,9 +106,9 @@
 				return false;
 			}else{
 				var cpm_Id = $("#cpm_Id").val();
-				var cpi_Pname = $("#rmp_Name").val();
-				var cpi_Pphone = $("#rmp_Phone1").val();
-				var cpi_Pemail = $("#rmp_Email").val();
+				var cpi_Pname = $("#cpi_Pname").val();
+				var cpi_Pphone = $("#cpi_Pphone").val();
+				var cpi_Pemail = $("#cpi_Pemail").val();
 				var cpi_Companyname = $("#cpm_Companyname").val();
 				var cpi_Firstname = $("#cpm_Firstname").val();
 				var cpi_Industry = $("#cpi_Industry").val();
@@ -163,15 +164,27 @@
 						"cpi_Cafe" : cpi_Cafe,
 						"cpi_Etc" : cpi_Etc
 				};
+				
+				if(modify){
+					ajaxUrl = 'companyInfoModify.do';
+				}else{
+					ajaxUrl = 'companyInfoWrite.do';
+				}
+				
 				$.ajax({
-					url: 'companyInfoWrite.do',
+					url: ajaxUrl,
 					type: 'post',
 					data: allData,
 					timeout: 30000,
 					cache: false,
 					success: function(data) {
 						if(data>0){
-							alert("기업정보가 저장되었습니다.");	
+							if(modify){
+								alert("기업정보가 수정되었습니다.");	
+							}else{
+								alert("기업정보가 저장되었습니다.");	
+								modify=true;
+							}
 						}else{
 							alert("기업정보 저장에 실패했습니다. 다시 시도해주세요.");
 						}
@@ -226,15 +239,15 @@
 		<table class="table RM_personnel">
 			<tr>
 				<th><font class="must">*</font>담당자</th>
-				<td><input type="text" value="${RM_personnelDTO.rmp_Name }" size="20" id="rmp_Name" name="rmp_Name"></td>
+				<td><input type="text" value="${companyInfoDTO.cpi_Pname }" size="20" id="cpi_Pname" name="cpi_Pname"></td>
 			</tr>
 			<tr>
 				<th><font class="must">*</font>휴대폰번호</th>
-				<td><input type="text" value="${RM_personnelDTO.rmp_Phone1 }" size="20" id="rmp_Phone1" name="rmp_Phone1"></td>
+				<td><input type="text" value="${companyInfoDTO.cpi_Pphone }" size="20" id="cpi_Pphone" name="cpi_Pphone"></td>
 			</tr>
 			<tr>
 				<th><font class="must">*</font>이메일</th>
-				<td><input type="text" value="${RM_personnelDTO.rmp_Email }" size="40" id="rmp_Email" name="rmp_Email"></td>
+				<td><input type="text" value="${companyInfoDTO.cpi_Pemail }" size="40" id="cpi_Pemail" name="cpi_Pemail"></td>
 			</tr>
 		</table>
 	</div>
@@ -340,7 +353,7 @@
 			</tr>
 			<tr>
 				<th class="lineTh">&nbsp;설립일</th>
-				<td colspan="4"><input type="date" value="${companyInfoDTO.cpi_Birth }" name="cpi_Birth" id="cpi_Birth" ></td>
+				<td colspan="4"><input type="date" value="${cpi_Birth }" name="cpi_Birth" id="cpi_Birth" ></td>
 			</tr>
 			<tr>
 				<th class="lineTh">&nbsp;홈페이지</th>
