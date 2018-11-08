@@ -364,134 +364,10 @@ $(document).ready(function() {
 		if(container.has(e.target).length =='0')
 			container.hide();
 	});
-////////////////채용공고 등록///////////////////
-
-	$("#next_btn1").hide();	
-	$("#prev_btn2").hide();	$("#next_btn2").hide();	
-	$("#prev_btn3").hide();	$("#next_btn3").hide();	
-	$("#prev_btn4").hide();	$("#next_btn4").hide();	
-	$("#prev_btn5").hide();	$("#next_btn5").hide();	
-	$("#prev_btn6").hide();	$("#next_btn6").hide();	
-	$("#prev_btn7").hide();	$("#next_btn7").hide();	
-	$("#jobDiv").hide();
-	$("#introductionDiv").hide();
-	$("#applyDiv").hide();
-	$("#conditionDiv").hide();
-	$("#timeDiv").hide();
-	//$("#rmDiv").hide();
-	$("#personnelDiv").hide();
 	
-	$("#recruitment_insert").click(function() {
-		$("#jobDiv").show();			
-		$("#next_btn1").show();				
-	});	
-	//첫번째에서 두번째 페이지로 넘어감
-	$("#next_btn1").click(function() {
-		$("#jobDiv").hide();	
-		$("#introductionDiv").show();
-		$("#next_btn1").hide();	
-		$("#prev_btn2").show();
-		$("#next_btn2").show();
+	$("#recruitment_insert").click(function(){
+		$("#rmDiv").show();
 	});
-	//두번째에서 첫번째 페이지로 돌아감
-	$("#prev_btn2").click(function() {
-		$("#introductionDiv").hide();	
-		$("#1번").show();
-		$("#prev_btn2").hide();
-		$("#next_btn2").hide();
-		$("#next_btn1").show();	
-	});
-	//두번째에서 세번째 페이지로 넘어감
-	$("#next_btn2").click(function() {
-		$("#introductionDiv").hide();	
-		$("#applyDiv").show();
-		$("#prev_btn2").hide();
-		$("#next_btn2").hide();
-		$("#prev_btn3").show();
-		$("#next_btn3").show();
-	});
-	//세번째에서 두번째 페이지로 돌아감
-	$("#prev_btn3").click(function() {
-		$("#applyDiv").hide();	
-		$("#introductionDiv").show();
-		$("#prev_btn3").hide();
-		$("#next_btn3").hide();
-		$("#prev_btn2").show();	
-		$("#next_btn2").show();	
-	});
-	//세번째에서 네번째로 넘어감
-	$("#next_btn3").click(function() {
-		$("#applyDiv").hide();	
-		$("#conditionDiv").show();
-		$("#prev_btn3").hide();
-		$("#next_btn3").hide();
-		$("#prev_btn4").show();
-		$("#next_btn4").show();
-	});
-	//네번째에서 세번째로 돌아감
-	$("#prev_btn4").click(function() {
-		$("conditionDiv").hide();	
-		$("#timeDiv").show();
-		$("#prev_btn4").hide();
-		$("#next_btn4").hide();
-		$("#prev_btn3").show();	
-		$("#next_btn3").show();	
-	});
-	//네번째에서 다섯번째로 넘어감
-	$("#next_btn4").click(function() {
-		$("#conditionDiv").hide();	
-		$("#timeDiv").show();
-		$("#prev_btn4").hide();
-		$("#next_btn4").hide();
-		$("#prev_btn5").show();
-		$("#next_btn5").show();
-	});
-	//다섯번째에서 네번째로 돌아감
-	$("#prev_btn5").click(function() {
-		$("#timeDiv").hide();	
-		$("#applyDiv").show();
-		$("#prev_btn5").hide();
-		$("#next_btn5").hide();
-		$("#prev_btn4").show();	
-		$("#next_btn4").show();	
-	});
-	//다섯번째에서 여섯번째로 넘어감
-	$("#next_btn5").click(function() {
-		$("#timeDiv").hide();	
-		//$("#rmDiv").show();
-		$("#prev_btn5").hide();
-		$("#next_btn5").hide();
-		$("#prev_btn6").show();
-		$("#next_btn6").show();
-	});
-	//여섯번째에서 다섯번쨰로 돌아감
-	$("#prev_btn6").click(function() {
-		//$("#rmDiv").hide();	
-		$("#timeDiv").show();
-		$("#prev_btn6").hide();
-		$("#next_btn6").hide();
-		$("#prev_btn5").show();	
-		$("#next_btn5").show();	
-	});
-	//여섯번째에서 일곱번째로 넘어감
-	$("#next_btn6").click(function() {
-		//$("#rmDiv").hide();	
-		$("#personnelDiv").show();
-		$("#prev_btn6").hide();
-		$("#next_btn6").hide();
-		$("#prev_btn7").show();
-		$("#next_btn7").show();
-	});
-	//일곱번쨰에서 여섯번째로 돌아감
-		$("#prev_btn7").click(function() {
-		$("#personnelDiv").hide();	
-		//$("#rmDiv").show();
-		$("#prev_btn7").hide();
-		$("#next_btn7").hide();
-		$("#prev_btn6").show();	
-		$("#next_btn6").show();	
-	});
-//일곱번째에서 작성완료^^
 
 });
 
@@ -567,68 +443,12 @@ $(document).ready(function() {
 			</nav>
 			<div class="wrap_contents control_margin ">
 				<div id="wrap_contents_inner" class="cm_inner">
-					
-						<div class="left_wing" id="left_wing">
-							<a href="#" id="prev_btn2" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
-							<a href="#" id="prev_btn3" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
-							<a href="#" id="prev_btn4" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
-							<a href="#" id="prev_btn5" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
-							<a href="#" id="prev_btn6" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
-							<a href="#" id="prev_btn7" class="recruit_btn_prev"><img src="../img/prev_btn.png"></a>
-						</div>
-										
-					<!-- ~~~~~~~~~~~~~~~~인클루드 내용물~~~~~~~~~~~~~~~ -->
-					<div id="content" class="content_typea sub-content">
-						<!-- 1번 -->				
- 						<div id="jobDiv">
- 							<hr id="hr_recruitment">
-							<jsp:include page="/job/recruitment/job/jobForm.jsp"></jsp:include>
-						</div>		
-						<!-- 2번 모집요강 -->					
-						<div id="introductionDiv">
-							<hr id="hr_recruitment">
-							<jsp:include page="/job/recruitment/introduction/introWriteForm.jsp"></jsp:include>
-						</div>
-						<!-- 3번 자격요건 및 우대조건-->
-						<div id="applyDiv">
-							<hr id="hr_recruitment">
-							<jsp:include page="/job/recruitment/apply/applyWriteForm.jsp"></jsp:include>
-						</div>
-						<!-- 4번 근무조건-->				
- 						<div id="conditionDiv">
- 							<hr id="hr_recruitment">
- 							<jsp:include page="/job/recruitment/condition/conditionWriteForm.jsp"></jsp:include> 
- 						</div>									
-						<!-- 5번 접수기간 및 방법-->
- 						<div id="timeDiv">
- 							<hr id="hr_recruitment">
- 							<jsp:include page="/job/recruitment/time/timeWriteForm.jsp"></jsp:include>
- 						</div>				
-						<!-- 6번 전형절차 및 제출서류-->
-<!--					<div id="rmDiv">
-							<hr id="hr_recruitment">
-							<jsp:include page="/job/recruitment/RM/?????WriteForm.jsp"></jsp:include>
- 						</div>
- -->									
-						<!-- 7번 담당자 연락처-->
- 						<div id="personnelDiv"> 
- 							<hr id="hr_recruitment">
- 							<jsp:include page="/job/recruitment/personnel/personnelForm.jsp"></jsp:include> 
- 						</div>					
-											
-					</div>
-					<!-- paging -->
-					<div class="right_wing" id="right_wing">
-							<a href="#" id="next_btn1" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
-							<a href="#" id="next_btn2" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
-							<a href="#" id="next_btn3" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
-							<a href="#" id="next_btn4" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
-							<a href="#" id="next_btn5" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
-							<a href="#" id="next_btn6" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
-							<a href="#" id="next_btn7" class="recruit_btn_next"><img src="../img/next_btn.png"></a>
-					</div>	
-					
-				</div>
+				<!-- 채용공고 -->
+					<div id="rmDiv">
+ 						<hr id="hr_recruitment">
+  						<jsp:include page="/job/recruitment/RM/rmWriteForm.jsp"></jsp:include>
+ 					</div>
+				</div> 
 			</div>
 		</section>
 		
