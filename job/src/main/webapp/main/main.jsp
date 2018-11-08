@@ -105,8 +105,7 @@ ul.list_gnb li {
 #cm_contents {
     display: block;
     margin: 25px auto 58px;
-    width: 1200px;
-    max-width: 1200px;
+    width: 100%;
     text-align: center;
     vertical-align: top;
 }
@@ -266,6 +265,7 @@ ul.list_gnb li {
     clear: both;
     display: block;
     width: 100%;
+    margin-top: 100%;
     position: relative;
     z-index: 10;
     min-width: 960px;
@@ -336,6 +336,32 @@ ul.list_gnb li {
 .main_p1_1 {
 	font-weight: bold;
 }
+.main_table{
+	position:absolute;
+	margin-top: 5%;
+	margin-bottom: 10%;
+	width:1200px;
+	height:1200px;
+	left:200px;
+	border-spacing: 20px;
+	border: 1; 
+	background-color: white;
+}
+.main_Tbutton {
+	width: 250px;
+	height: 50px;
+	margin-top: 30%;
+	margin-bottom: -30px;
+	background-color: white;
+	font-weight: bolder;
+	font-size: 15px;
+	border: 1px solid;
+}
+.main_Tbutton:hover {
+	background-color: #5882FA;
+	color: white;
+	border: 0;
+}
 </style>   
 <script type="text/javascript">
 </script>
@@ -381,10 +407,109 @@ ul.list_gnb li {
 		 		
 		 	</div>
 		 	<!-- 4 * 6  총 24개 위치값(표)잡기   -->
-			<table border="1">
-				<tr>
-					<td></td>
-				</tr>
+			<table class="main_table">
+				<thead>
+					<tr>
+						<th colspan="4">기업정보</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class="main_div"><img alt="기업" src="../img/기업.png"></div>
+							<input type="button" id="main_Tbutton1" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton2" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton3" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton4" class="main_Tbutton" value="기업정보">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton5" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton6" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton7" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton8" class="main_Tbutton" value="기업정보">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton9" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton10" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton11" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton12" class="main_Tbutton" value="기업정보">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton13" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton14" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton15" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton16" class="main_Tbutton" value="기업정보">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton17" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton18" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton19" class="main_Tbutton" value="기업정보">
+						</td>
+						<td>
+							<div class="main_div">기업정보</div>
+							<input type="button" id="main_Tbutton20" class="main_Tbutton" value="기업정보">
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4"><div class="main_div">기업정보</div></td>						
+					</tr>
+				</tfoot>
 			</table>			
 		</section>
 					
