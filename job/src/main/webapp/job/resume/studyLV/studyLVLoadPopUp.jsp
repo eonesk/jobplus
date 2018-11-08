@@ -9,7 +9,6 @@
 <script type="text/javascript">
 	$(function() {
 		studyLVPlusButtonCnt = ${param.studyLVPlusButtonCnt};
-		alert("studyLVPlusButtonCnt : " + studyLVPlusButtonCnt);
 		$("#studyLVLoadCancel").click(function() {
 			window.close();
 		});

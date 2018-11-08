@@ -8,7 +8,6 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	alert("addCount : " + ${param.addCount});
 	/* 자기소개서의 총 개수 구함 */
 	$.ajax({
 		type: 'POST',
@@ -97,12 +96,10 @@ $(function() {
 							
 			                //체크한값의 
 							$(".rsw_userTitleR:checked").each(function() {
-			                	alert($(this).val());
 			                	//eduSeqList.push($(this).val());
 			                	accumSeq += $(this).val() + "/";
 			                });
 			                
-			                alert(accumSeq);
 			                
 			                if(accumSeq == "") {
 			                	alert("체크해주세요");
@@ -118,7 +115,6 @@ $(function() {
 						
 											
 						function add_event(event) {
-						alert(event.data.param.rsw_userTitle + " // " + event.data.param.m_id);
 						
 						$("#rswLoadSelectList").html("");
 

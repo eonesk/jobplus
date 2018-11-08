@@ -7,18 +7,18 @@
 <title>trophyWriteForm</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	var count = 0;		
+	var count_trophy = 0;		
 	$(function() {		
 		$("#rst_t").hide();
 		
 		$("#trophyplus").click(function() {		
-			count++;
-			var num = count;				
+			count_trophy++;
+			var num = count_trophy;				
 			var clone = $("#rst_t").clone().attr('id', 'rst_t' + num);
 			
-			if (count >= 4) {	
+			if (count_trophy >= 4) {	
 				alert("항목추가는 최대 3개까지만 추가가능합니다.")
-				count--;
+				count_trophy--;
 				return false;
 			}
 			
@@ -30,10 +30,10 @@
 			$("#rst_t" + num).show();
 			
 		$("#trophydelete" + num).on("click", function() {
-			/*$("#t" + count).remove();*/
+			/*$("#t" + count_trophy).remove();*/
 			$(this).parent("#rst_t" + num).remove();
 			$("#rst__Seq"+num).val("");
-			count--;
+			count_trophy--;
 		});
 		
 		$("#trophysave" + num).on("click", function() {
@@ -61,7 +61,7 @@
 			});		
 		});
 		$("#trophyload").click(function() {
-			window.open("/job/job/resume/trophy/trophyLoad.jsp?count=" + count, "", "width=500px height=500px");
+			window.open("/job/job/resume/trophy/trophyLoad.jsp?count_trophy=" + count_trophy, "", "width=500px height=500px");
 		});
 	});
 	
@@ -69,9 +69,7 @@
 	/** Load 함수 */
 	function selected_rst(accumSeq, num) {
 		$(function() {
-			alert("selected함수 실행 num값 = " + num);
-			count = num;
-			alert("selected함수 실행 count값 = " + count);
+			count_trophy = num;
 			$.ajax({
 				type: 'POST',
 				url: '/job/job/resume/trophy/LoadView.do',
@@ -83,9 +81,9 @@
 					$.each(data.items, function(index, item) {
 						var testDTO = item;
 						
-						count++;
+						count_trophy++;
 						
-						var num = count;
+						var num = count_trophy;
 						var clone = $("#rst_t").clone().attr("id", "rst_t" + num);
 						
 						// id&name 넘버링 변경 작업
@@ -106,7 +104,7 @@
 						$("#trophydelete" + num).on("click", function() {
 							$(this).parent("#rst_t" + num).remove();
 							$("#rst__Seq"+num).val("");
-							count--;
+							count_trophy--;
 						});
 						
 						// 저장버튼 눌렀을 때
@@ -166,8 +164,11 @@
 	font-weight: bold;
 	color: #2A120A;
 }
-fieldset {
+.fieldset_trophy {
+	margin: 0px auto;
+	width:95%;
 	background-color: #FFFFFF;
+	border: 1px solid lightgray;
 }
 .content {
 	padding-top: 5px;
@@ -189,17 +190,24 @@ fieldset {
 .trophysave:hover, .trophyload:hover {
     background-color: #2E9AFE;
 }
-.trophyplus, .trophydelete {
-	width: 100%;
+.trophyplus {
+	width:948px;
 	height: 50px;
-	background-color: #fff;
-    border: 1px solid #5882FA;
-    color: #5882FA;
-    text-align: center;
-    text-decoration: none;
-    font-size: 15px;
-    display: inline-block;
-    cursor: pointer;
+	background-color: #5882FA;
+	border: none;
+	color:#fff;
+	padding: 10px 0;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	margin: 26px;
+	cursor: pointer;
+}
+.trophydelete{
+	width: 35px;
+	height: 15px;
+	margin-left: 373px;
 }
 .rst_Name, .rst_Company {
 	width:200px;
@@ -211,7 +219,7 @@ fieldset {
 }
 .trophydiv {
 	width: 100%;
-	background-color: #f5f7fb;	
+	background-color: white;	
     margin: 0px 5px;
 }
 </style>
@@ -221,28 +229,26 @@ fieldset {
 <input type="hidden" id="rst__Seq2">
 <input type="hidden" id="rst__Seq3">
 <div id="trophydiv" class="trophydiv">	
-		<p class="title">수상내역</p>		
+		<p class="title" style="color: gray; margin-left: 17px;">수상내역</p>
 		<!-- Load -->		 
-		<input type="button" value="불러오기" id="trophyload" class="trophyload">			 
+		<input type="button" value="내 수상내역 불러오기" id="trophyload" class="button button_widthFree" style="margin-left: 19px;">			 
 </div>		
-<fieldset>
+<fieldset class="fieldset_trophy">
 	<div id="rst_t" class="rst_t">
-		<br>	
-		<div>
-			<input type="hidden" id="rst_Seq" name="rst_Seq" class="rst_Seq">		
-			<input type="text" id="rst_Name" name="rst_Name" class="rst_Name" placeholder="수상명" size="30">
-			<input type="text" id="rst_Company" name="rst_Company" class="rst_Company" placeholder="수여기관" size="30">
-			<input type="date" id="rst_Date" name="rst_Date" class="rst_Date" placeholder="수상연도" size="7">
-		</div>
+		<input type="hidden" id="rst_Seq" name="rst_Seq" class="rst_Seq">		
+		<input type="text" id="rst_Name" name="rst_Name" class="rst_Name" placeholder="수상명" size="30">
+		<input type="text" id="rst_Company" name="rst_Company" class="rst_Company" placeholder="수여기관" size="30">
+		<input type="date" id="rst_Date" name="rst_Date" class="rst_Date" placeholder="수상연도" size="7">
+		<input type="button" value="X" id="trophydelete" class="trophydelete" style="height: 35px;">
+		<br>
 		<div class="content">			
 			<textarea id="rst_Content" name="rst_Content" class="rst_Content" placeholder="수여내용" cols="81" rows="8"></textarea>
 		</div>		
 		<div>
 			<input type="button" value="저장하기" id="trophysave" class="trophysave">
 		</div>
-		<input type="button" value="삭제" id="trophydelete" class="trophydelete">	
 	</div>	
 </fieldset>
-<input type="button" value="추가" id="trophyplus" class="trophyplus">	
+<input type="button" value="추가하기" id="trophyplus" class="trophyplus">	
 </body>
 </html>

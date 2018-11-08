@@ -93,9 +93,7 @@
 	// load 함수
 	function selected_rslg(accumSeq, num) {
 		$(function() {
-			alert("selected함수 실행 num값 = " + num);
 			count = num;
-			alert("selected함수 실행 count값 = " + count);
 			$.ajax({
 				type: 'POST',
 				url: '/job/job/resume/language/LoadView.do',
@@ -177,7 +175,6 @@
 						$("#rslg_Seq" + num).val(testDTO.rst_Seq);						
 						$("#rslg_Category" + num).val(testDTO.rslg_Category);
 						if($("#rslg_Category" + num).val() == "공인시험"){
-							alert("if진입후");
 							$("#test"+num).css("display", "inline");
 							$("#lv"+ num).css("display", "none");
 						}else{
@@ -216,8 +213,11 @@
 	font-weight: bold;
 	color: #2A120A;
 }
-fieldset {
+.fieldset_language {
+	margin: 0px auto;
+	width:95%;
 	background-color: #FFFFFF;
+	border: 1px solid lightgray;
 }
 .content {
 	padding-top: 5px;
@@ -239,17 +239,24 @@ fieldset {
 .langsave:hover, .langload:hover {
     background-color: #2E9AFE;
 }
-.langplus, .langdelete {
-	width: 100%;
+.langplus {
+	width:948px;
 	height: 50px;
-	background-color: #fff;
-    border: 1px solid #5882FA;
-    color: #5882FA;
-    text-align: center;
-    text-decoration: none;
-    font-size: 15px;
-    display: inline-block;
-    cursor: pointer;
+	background-color: #5882FA;
+	border: none;
+	color:#fff;
+	padding: 10px 0;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	margin: 26px;
+	cursor: pointer;
+}
+.langdelete{
+	width: 35px;
+	height: 15px;	
+	
 }
 .rslg_Category {
 	width:100px;
@@ -262,6 +269,7 @@ fieldset {
 .rslg_Lv {
 	width: 150px;
 	height: 36px;
+	margin-right: 505px;
 }
 .rslg_Test {
 	width: 120px;
@@ -274,10 +282,11 @@ fieldset {
 .rslg_Date {
 	width: 120px;
 	height: 33px;
+	margin-right: 276px;
 }
 .langdiv {
-	width: 100%;
-	background-color: #f5f7fb;	
+	width: 98%;
+	background-color: white;	
     margin: 0px 5px;
 }
 </style>
@@ -287,13 +296,12 @@ fieldset {
 <input type="hidden" id="rslg__Seq2">
 <input type="hidden" id="rslg__Seq3">
 <div id="langdiv" class="langdiv">			
-		<p class="title">어학</p>
+		<p class="title" style="color: gray; margin-left: 15px;">어학</p>
 		<!-- Load -->		 
-		<input type="button" value="불러오기" id="langload" class="langload">			 
+		<input type="button" value="내 어학 불러오기" id="langload" class="button button_widthFree" style="margin-left: 19px;">			 
 </div>
-	<fieldset>
+	<fieldset class="fieldset_language">
 		<div id="rslg_t" class="rslg_t">
-		<br>
 		<input type="hidden" id="rslg_Seq" class="rslg_Seq">
 			<select name="rslg_Category" id="rslg_Category" class="rslg_Category">
 				<option value="회화능력">회화능력</option>
@@ -346,12 +354,12 @@ fieldset {
 				<input type="text" id="rslg_Score" name="rslg_Score" class="rslg_Score"	placeholder="급수/점수"> 
 				<input type="date" id="rslg_Date" name="rslg_Date" class="rslg_Date" placeholder="취득년월">
 			</div>
+			<input type="button" value="X" id="langdelete" class="langdelete" style="height: 35px;">
 			<div>
 				<input type="button" value="저장하기" id="langsave" class="langsave">
 			</div>
-			<input type="button" value="삭제" id="langdelete" class="langdelete">	
 		</div>	
 	</fieldset>
-	<input type="button" value="추가" id="langplus" class="langplus">		
+	<input type="button" value="추가하기" id="langplus" class="langplus">		
 </body>
 </html>

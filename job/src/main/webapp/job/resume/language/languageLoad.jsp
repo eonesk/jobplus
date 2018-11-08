@@ -8,7 +8,6 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {		
-	alert("count = " + ${param.count});
 	/* 총 개수 구함 */
 	$.ajax({
 		type: 'POST',
@@ -75,11 +74,9 @@ $(function() {
 							var accumSeq = "";
 							
 			                $(".RSLG_UserTitle1:checked").each(function() {
-			                	alert($(this).val());
 			                	accumSeq += $(this).val() + "/";
 			                });
 			                
-			                alert("accumSeq : " + accumSeq);
 			                
 			                if(accumSeq == "") {
 			                	alert("체크해주세요.");
@@ -87,8 +84,6 @@ $(function() {
 			                	alert("체크확인");
 			                	if(confirm("불러오기를 진행하시겠습니까?")) {
 			                		// 2개가 되야함. 확인해야할부분
-			                		 alert("selected accumSeq : " + accumSeq);
-			                		 alert("selected 보내기전 count : " + ${param.count});
 			                		opener.parent.selected_rslg(accumSeq, ${param.count});
 				                	self.close();
 			                	}

@@ -7,7 +7,7 @@
 		margin: 0; padding: 0;
 	}
 	body #header{
-		background: lightgray; 
+		background: #5882FA; 
 		width: 100%; height: 50px;
 	}
 	#section{
@@ -110,7 +110,7 @@
 		margin-right: 75px;
 	}
 	.rs_email{
-		width: 390px;
+		width: 350px;
 	}
 	.rs_address{
 		width: 480px;
