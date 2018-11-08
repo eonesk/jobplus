@@ -1,9 +1,12 @@
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
@@ -13,7 +16,7 @@
 	padding: 0;
 }
 body{
-	
+	width:800;
 }
 .rmj_container{
 	background-color:#F2F2F2;
@@ -71,6 +74,7 @@ body{
 	font-size:16px;
 	font-weight: bold;
 }
+
 .rmj_careerChk{
 	position:relative;
 	top: 4px;
@@ -96,6 +100,7 @@ body{
 	font-weight: bold;
 	
 }
+
 
 .rmj_typeChk{
 	position:relative;
@@ -164,6 +169,7 @@ body{
 	$(function() {
 		
 		$("#rmj_hideDiv").hide();
+
 		$("input[name='rmj_careerChk']").change(function() {
 			if($(this).val() != "경력무관"){
 				$("#rmj_careerChk3").prop("checked", false);
@@ -177,9 +183,12 @@ body{
 				$("#rmj_hideDiv").hide();
 			}
 		});
-		
-		$("input[name='rmj_typeChk']").change(function() {
-			if(($("input[name='rmj_typeChk']:checked").length) > 3){
+
+		$("input[name='
+      ']").change(function() {
+			if(($("input[name='
+      
+      ']:checked").length) > 3){
 				alert("안되");
 				$(this).prop("checked", false);
 				return false;
@@ -194,12 +203,14 @@ body{
 	<div id="rmj_content" class="rmj_content">
 		<div id="rmj_line1" class="rmj_line1">
 			<span id="rmj_titleSpan1" class="rmj_titleSpan">직종/직무</span>
+
 			<input type="text" id="rmj_job" class="rmj_job" placeholder="직종을 입력해 주세요">
 			<button id="" class="rmj_category">전체 카테고리</button>
 		</div>
 		<div id="rmj_line2" class="rmj_line3">
 			<span id="rmj_titleSpan2" class="rmj_titleSpan">경력여부</span>
 			<ul id="rmj_careerUl" class="rmj_careerUl">
+
 				<li id="rmj_careerLi1" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="신입"   id="rmj_careerChk1" name="rmj_careerChk" class="rmj_careerChk">신입</label></li>
 				<li id="rmj_careerLi2" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="경력"    id="rmj_careerChk2"name="rmj_careerChk" class="rmj_careerChk">경력</label></li>
 				<li id="rmj_careerLi3" class="rmj_careerLi"><label class="rmj_careerLabel"><input type="checkbox" value="경력무관" id="rmj_careerChk3"name="rmj_careerChk" class="rmj_careerChk">경력무관</label>

@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="job.recruitment.apply.bean.RM_applyDTO" alias="applyDTO"/>
 		<typeAlias type="job.recruitment.introduction.bean.RM_introductionDTO" alias="introductionDTO"/>
 		<typeAlias type="job.company.info.bean.CompanyInfoDTO" alias="companyInfoDTO"/>
+		<typeAlias type="job.company.logo.bean.companylogoDTO" alias="companylogoDTO"/>
 		<typeAlias type="job.company.member.bean.CompanyMemberDTO" alias="companyMemberDTO"/>
 		
 		
@@ -43,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/resume/trophy-mapping.xml"/>	
 		<mapper resource="mybatis/resume/language-mapping.xml"/>	
   		<mapper resource="mybatis/resume/license-mapping.xml"/>
-		<mapper resource="mybatis/resume/edu-mapping.xml"/>
+		<mapper resource="mybatis/resume/edu-mapping.xml"/> 
 		<mapper resource="mybatis/resume/studyLV-mapping.xml"/>
 		<mapper resource="mybatis/resume/pr-mapping.xml"/>
 		<mapper resource="mybatis/resume/foreign-mapping.xml"/>
@@ -60,5 +61,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!-- SQL문장이 기술되는 Mapper파일 / company 하위 테이블들 -->
 		<mapper resource="mybatis/company/companyInfo-mapping.xml"/>	
 		<mapper resource="mybatis/company/companyMember-mapping.xml"/>	 
+		<mapper resource="mybatis/company/logo-mapping.xml"/>	 
 	</mappers>
 </configuration>

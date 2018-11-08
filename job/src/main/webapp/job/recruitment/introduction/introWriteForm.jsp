@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>모집요강</title>
+<title>모집요강</title> 
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {	
@@ -128,6 +128,12 @@
 }
 #rmi_Work1 {
 	margin-left: 88px;
+}
+#rmi_Work2 {
+	margin-left: 158px;
+}
+#rmi_Work3 {
+	margin-left: 158px;
 }
 .rmi_Work:hover {
 	background-color: white;	
