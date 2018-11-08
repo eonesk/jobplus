@@ -18,11 +18,19 @@ public class CompanyMemberController {
 	private CompanyMemberService companyMemberService;
 
 	@RequestMapping(value ="/job/company/member/companyJoinForm.do")
-	public ModelAndView index() {
+	public ModelAndView cJoinForm() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/job/company/member/companyJoinForm.jsp");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value ="/main/cLoginForm.do")
+	public ModelAndView cLoginForm() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/main/cLoginForm.jsp");
+		return modelAndView;
+	}
+
 
 	@RequestMapping(value = "/job/company/member/joinResult.do")
 	public ModelAndView join(HttpServletRequest request, CompanyMemberDTO companyMemberDTO) {

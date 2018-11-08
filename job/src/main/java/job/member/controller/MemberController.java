@@ -1,10 +1,14 @@
 package job.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +29,34 @@ public class MemberController {
 		modelAndView.setViewName("/job/member/joinForm.jsp");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value ="/main/mLoginForm.do")
+	public ModelAndView mLoginForm() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/main/mLoginForm.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/main/mLogin.do")
+	public void login(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=UTF-8");		
+		PrintWriter out = response.getWriter();
+		// 데이터 읽어오기
+		String id = request.getParameter("m_id");
+		String pwd = request.getParameter("m_pw");
+		// DB
+		
+		
+		String result = memberService.login(id, pwd);
+		System.out.println(result);
+		
+		if(result != null) { 				
+			HttpSession session = request.getSession();
+			session.setAttribute("m_id", id);
+		}
+		out.print(result);
+	}
+	
 	@RequestMapping(value="/job/member/joinResult.do")
 	public ModelAndView join(HttpServletRequest request,MemberDTO memberDTO) {
 		ModelAndView modelAndView = new ModelAndView();
