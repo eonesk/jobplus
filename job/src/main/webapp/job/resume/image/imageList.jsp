@@ -194,10 +194,10 @@ a {
 		<table>
 		 	<tr class="sss">     
 				<c:forEach var='imageDTO' items="${list }" varStatus="i">            
-				<td id="selectPhoto${i.index}" onclick="cscontrol('${i.index}','img/storage/${imageDTO.rsim_Name}');" style="border: 1px solid #e6e6e6;"> 
-					<div class="imgsize"><img id="tumbnail" src="img/storage/${imageDTO.rsim_Name}"/></div>  
+				<td id="selectPhoto${i.index}" onclick="cscontrol('${i.index}','/job/job/resume/image/img/storage/${imageDTO.rsim_Name}');" style="border: 1px solid #e6e6e6;"> 
+					<div class="imgsize"><img id="tumbnail" src="/job/job/resume/image/img/storage/${imageDTO.rsim_Name}"/></div>  
 					    
-					<input type='hidden' id='imgValue' name = 'imgValue' value='img/storage/${imageDTO.rsim_Name}'/>   
+					<input type='hidden' id='imgValue' name = 'imgValue' value='/job/job/resume/image/img/storage/${imageDTO.rsim_Name}'/>   
 					<input type='hidden' name='user_title' value = '${imageDTO.rsim_Usertitle}'/>
 					<p id="user_title">${imageDTO.rsim_Usertitle}</p>
 					<div align="center"><input type="checkbox" name="image_check" id="image_check" class="image_check"></div>
@@ -226,7 +226,7 @@ a {
 			</tr>
 		</table>	 
 	<div class="bottom_btn" align="center">    
-		<button type="button" id="imgload" onclick="javascript:profileImgSave('img/storage/${imageDTO.rsim_Name}');">등록</button>
+		<button type="button" id="imgload" onclick="javascript:profileImgSave('/job/job/resume/image/img/storage/${imageDTO.rsim_Name}');">등록</button>
 <%-- <button type="button" onclick="checkImageInsert(${imageDTO.rsim_Name})">저장</button>  --%>
 		<button type="button"  onclick="window.close();">취소</button>
 	</div>
