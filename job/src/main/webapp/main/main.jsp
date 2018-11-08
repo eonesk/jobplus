@@ -11,7 +11,7 @@
 /* HEADER */
 body			{min-width: 1600px;	margin: 0px; }
 ol, ul, li		{list-style: none;}
-#container		{position: relative;	padding-top: 90px;			text-align: center;	background-color: #eef2f7;}
+#container		{position: relative;	padding-top: 90px;	margin-right: -90px;	 text-align: center;	background-color: #FFFFFF;}
 #header			{position: fixed;		text-align: left;			top: 0;	left: 0;	z-index: 100;	width: 100%;	height: 90px;	}
 #header .inner	{z-index: 20;			position: relative;			margin: 0 auto;		width: 100%;
 				 height: inherit;		padding: 0px 0px 0px 0px;	background-color: #fff;}
@@ -281,7 +281,7 @@ ul.list_gnb li {
     position: absolute;
 }
 .sri_footer .links ul {
-    margin: 0 auto;
+    margin: 0;
     font-size: 12px;
     line-height: 60px;
 }
@@ -338,13 +338,12 @@ ul.list_gnb li {
 }
 .main_table{
 	position:absolute;
-	margin-top: 5%;
+	margin-top: 0;
 	margin-bottom: 10%;
+	left: 350px;
 	width:1200px;
-	height:1200px;
-	left:200px;
-	border-spacing: 20px;
-	border: 1; 
+	height:1200px;	
+	border-spacing: 60px 60px;
 	background-color: white;
 }
 .main_Tbutton {
@@ -355,28 +354,57 @@ ul.list_gnb li {
 	background-color: white;
 	font-weight: bolder;
 	font-size: 15px;
-	border: 1px solid;
+	border: 1px solid #BDBDBD;
 }
 .main_Tbutton:hover {
 	background-color: #5882FA;
 	color: white;
 	border: 0;
 }
+.main_div {
+	margin: 0;
+	padding: 0;
+}
+.main_div:hover {
+	border-top: 3px solid #EFF8FB;
+}
+.img {
+	width: 200px;
+	height: 100px;
+}
+.img_add {
+	width: 80px;
+	height: 80px;
+	margin-top: 20px;
+}
+.main_tr {
+	margin-bottom: 20px;
+}
 </style>   
 <script type="text/javascript">
+	$(function{
+		/* 아이디 값 넘어와서 저장되는 곳 */
+		/* 아이디값이 있을때와 없을때 유효성검사 실행 */
+		var Main_CPM_id = "";
+		var Main_M_id = "";
+		
+	});
 </script>
 </head>
 <body id="topBar">
+<input type="hidden" id="Main_CPM_id" class="Main_CPM_id">
+<input type="hidden" id="Main_M_id" class="Main_M_id">
 	<div id="container">
 		<header id="header">
 			<div class="inner">
 				<div class="user_info" id="user_info">
-					<a href="#user_corp_popup" id="corp_name">기업이름</a>
+					<a href="#user_corp_popup" id="corp_name">로그인</a>
+					<a href="#user_corp_popup" id="corp_name" style="display: none;">로그아웃</a>
 				</div>
 				<div class="area_logo">
 					<div class="title_logo">
 						<a><img alt="로고" src="../img/사람인.jpg"></a>
-						<a href="../main/mian2.jsp" class="logo_cm_service" title="기업서비스">
+						<a href="../main/main.jsp" class="logo_cm_service" title="기업서비스">
 							<img alt="기업서비스" src="../img/logo_cm_service.png">
 						</a>
 					</div>
@@ -386,15 +414,15 @@ ul.list_gnb li {
 				</div>
 				<nav id="gnb" class="gnb">
 					<ul class="list_gnb">
-						<li><a href="#">공고등록</a></li>
+						<li><a href="../main/jobmain.jsp">공고등록</a></li>
 						<li><a href="#">공고/지원자관리</a></li>
-						<li><a href="#">인재검색</a></li>
-						<li><a href="#">인재관리</a></li>
+						<li><a href="http://www.saramin.co.kr/zf_user/talent/search">인재검색</a></li>
+						<li><a href="https://www.saramin.co.kr/zf_user/auth?ut=c&url=%2Fzf_user%2Fmemcom%2Ftalent-manage%2Fscrap-talent">인재관리</a></li>
 					</ul>
 					<ul class="list_gnb pos_right">
-						<li><a href="#">채용상품안내</a></li>
-						<li><a href="#">인재상품안내</a></li>
-						<li><a href="#">결제내역</a></li>
+						<li><a href="http://www.saramin.co.kr/zf_user/service/company/order">채용상품안내</a></li>
+						<li><a href="http://www.saramin.co.kr/zf_user/service/company/order?part_id=talent_search">인재상품안내</a></li>
+						<li><a href="https://www.saramin.co.kr/zf_user/auth?m_code=16&ut=c&url=%2Fzf_user%2Fmemcom%2Fservice-manage%2Fpayment-history">결제내역</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -407,107 +435,146 @@ ul.list_gnb li {
 		 		
 		 	</div>
 		 	<!-- 4 * 6  총 24개 위치값(표)잡기   -->
-			<table class="main_table">
-				<thead>
-					<tr>
-						<th colspan="4">기업정보</th>
-					</tr>
-				</thead>
+			<table class="main_table">				
 				<tbody>
-					<tr>
+					<tr class="main_tr">
 						<td>
-							<div class="main_div"><img alt="기업" src="../img/기업.png"></div>
-							<input type="button" id="main_Tbutton1" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업.png" class="img">
+								<input type="button" id="main_Tbutton1" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton2" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업1.png" class="img">
+								<input type="button" id="main_Tbutton2" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton3" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업2.png" class="img">
+								<input type="button" id="main_Tbutton3" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton4" class="main_Tbutton" value="기업정보">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton5" class="main_Tbutton" value="기업정보">
-						</td>
-						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton6" class="main_Tbutton" value="기업정보">
-						</td>
-						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton7" class="main_Tbutton" value="기업정보">
-						</td>
-						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton8" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업3.png" class="img">
+								<input type="button" id="main_Tbutton4" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 					</tr>
-					<tr>
+					<tr class="main_tr">
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton9" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업4.png" class="img">
+								<input type="button" id="main_Tbutton5" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton10" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업5.png" class="img">
+								<input type="button" id="main_Tbutton6" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton11" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업6.png" class="img">
+								<input type="button" id="main_Tbutton7" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton12" class="main_Tbutton" value="기업정보">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton13" class="main_Tbutton" value="기업정보">
-						</td>
-						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton14" class="main_Tbutton" value="기업정보">
-						</td>
-						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton15" class="main_Tbutton" value="기업정보">
-						</td>
-						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton16" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업7.png" class="img">
+								<input type="button" id="main_Tbutton8" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 					</tr>
-					<tr>
+					<tr class="main_tr">
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton17" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업8.png" class="img">
+								<input type="button" id="main_Tbutton9" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton18" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업9.png" class="img">
+								<input type="button" id="main_Tbutton10" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton19" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업10.png" class="img">
+								<input type="button" id="main_Tbutton11" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 						<td>
-							<div class="main_div">기업정보</div>
-							<input type="button" id="main_Tbutton20" class="main_Tbutton" value="기업정보">
+							<div class="main_div">
+								<img alt="기업" src="../img/기업11.png" class="img">
+								<input type="button" id="main_Tbutton12" class="main_Tbutton" value="기업정보">
+							</div>
+						</td>
+					</tr>
+					<tr class="main_tr">
+						<td>
+							<div class="main_div">
+								<img alt="기업" src="../img/기업12.png" class="img">
+								<input type="button" id="main_Tbutton13" class="main_Tbutton" value="기업정보">
+							</div>
+						</td>
+						<td>
+							<div class="main_div">
+								<img alt="기업" src="../img/기업13.png" class="img">
+								<input type="button" id="main_Tbutton14" class="main_Tbutton" value="기업정보">
+							</div>
+						</td>
+						<td>
+							<div class="main_div">
+								<img alt="기업" src="../img/기업14.png" class="img">
+								<input type="button" id="main_Tbutton15" class="main_Tbutton" value="기업정보">
+							</div>
+						</td>
+						<td>
+							<div class="main_div">
+								<img alt="기업" src="../img/기업15.png" class="img">
+								<input type="button" id="main_Tbutton16" class="main_Tbutton" value="기업정보">
+							</div>
+						</td>
+					</tr>
+					<tr class="main_tr">
+						<td>
+							<div class="main_div">
+								<img alt="기업" src="../img/기업16.png" class="img">
+								<input type="button" id="main_Tbutton17" class="main_Tbutton" value="기업정보">
+							</div>
+						</td>
+						<td>
+							<div class="main_div">
+								<img alt="기업" src="../img/기업17.png" class="img">
+								<input type="button" id="main_Tbutton18" class="main_Tbutton" value="기업정보">
+							</div>
+						</td>
+						<td>
+							<div class="main_div">
+								<img alt="기업" src="../img/기업18.png" class="img">
+								<input type="button" id="main_Tbutton19" class="main_Tbutton" value="기업정보">
+							</div>
+						</td>
+						<td>
+							<div class="main_div">
+								<img alt="기업" src="../img/기업19.png" class="img">
+								<input type="button" id="main_Tbutton20" class="main_Tbutton" value="기업정보">
+							</div>
 						</td>
 					</tr>
 				</tbody>
 				<tfoot>
 					<tr>
-						<td colspan="4"><div class="main_div">기업정보</div></td>						
+						<td colspan="4">
+							<div class="main_div" id="main_div_add">
+								<img alt="더하기" src="../img/더하기.png" class="img_add">							
+							</div>
+						</td>						
 					</tr>
 				</tfoot>
 			</table>			
@@ -530,7 +597,7 @@ ul.list_gnb li {
 					</ul>
 				</div>
 				<div class="copyright">
-    				<p>(주)KGITBANK,  서울특별시 구로구 디지털로34길 43(구로동) 201호, 대표 : 이름~~~~~<br>
+    				<p>(주)KGITBANK,  서울특별시 구로구 디지털로34길 43(구로동) 201호, 대표 : 똘똘이<br>
     				사업자등록 : 123-45-67890, 통신판매업 : 제 1109호, Copyright (c) (주)KG. All rights reserved.</p>
 				</div>
 			</div>
