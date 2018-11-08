@@ -699,34 +699,45 @@ ul.list_gnb li {
 		/*////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 	
 		/*  아이디 값 넘어와서 저장되는 곳 
-			아이디값이 있을때와 없을때 유효성검사 실행 
-		var Main_CPM_id = ${sessionScope.CPM_id}*/
-		var Main_CPM_id = "id";
-		var Main_M_id = "id";
+			아이디값이 있을때와 없을때 유효성검사 실행 	
+			!m_id (빈값체크)
+		var Main_CPM_id = ${sessionScope.CPM_id};		
+		var Main_M_id = ${sessionScope.m_id};	*/
+		var CPM_id = $('input:hidden[class="Main_CPM_id"]').val();
+		var m_id = $('input:hidden[class="Main_M_id"]').val();
 		
-		if(Main_CPM_id == "id"){
+		alert("CPM_id값 = " + CPM_id + "//" + "m_id값 = " + m_id);
+		/* 로그인/로그아웃화면 처리 */ 
+		if(!m_id){
+			document.getElementById("logout").style.display = "none";	
+			document.getElementById("login").style.display = "inline";
+			document.getElementById("job_main_m").style.display = "none";	
+			document.getElementById("job_main_cpm").style.display = "inline";
+		}else{
 			document.getElementById("logout").style.display = "inline";	
-			document.getElementById("login").style.display = "none";	
+			document.getElementById("login").style.display = "none";
+			document.getElementById("job_main_m").style.display = "inline";	
+			document.getElementById("job_main_cpm").style.display = "none";
 		}
 		/* 공고 등록 버튼 */
 		$("#job_main").on("click", function() {
-			if(Main_CPM_id == "id"){
-				location.href = "../main/jobmain.jsp";
+			if(!m_id){
+				alert("로그인상태에서만 접근가능합니다.");
 			}else {
-				alert("기업로그인상태에서만 접근가능합니다.");
+				location.href = "../main/jobmain.jsp";
 			}
 		});
 		/* 로그아웃 버튼 */
 		$("#logout").on("click", function() {
-			Main_CPM_id = null;
+			m_id = null;
 			location.href = "../main/main.jsp";
 		});
 	});
 </script>
 </head>
 <body id="topBar">
-<input type="hidden" id="Main_CPM_id" class="Main_CPM_id">
-<input type="hidden" id="Main_M_id" class="Main_M_id">
+<input type="hidden" id="Main_CPM_id" class="Main_CPM_id" value="${sessionScope.CPM_id}">
+<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.m_id}">
 	<div id="container">
 		<header id="header">
 			<div class="inner">
@@ -752,9 +763,15 @@ ul.list_gnb li {
 					</div>
 				</div>
 				<nav id="gnb" class="gnb">
-					<ul class="list_gnb"> <!-- href="../main/jobmain.jsp" -->					
-						<li id="job_main"><a>공고등록</a></li>
-						<li><a href="#">공고/지원자관리</a></li>					
+					<ul class="list_gnb"> <!-- href="../main/jobmain.jsp" -->	
+						<li id="job_main_m" class="job_main_m" style="display: inline;">												
+							 <li id="job_main"><a>이력서작성</a> 
+							 <!-- <div id="job_main"><a>이력서작성</a></div> -->
+						</li>
+						<li id="job_main_cpm" class="job_main_cpm" style="display: none;">												
+							<li id="job_main"><a id="job_main">공고등록</a>							
+							<li><a href="#">공고/지원자관리</a>		
+						</li>	
 						<li><a href="http://www.saramin.co.kr/zf_user/talent/search">인재검색</a></li>
 						<li><a href="https://www.saramin.co.kr/zf_user/auth?ut=c&url=%2Fzf_user%2Fmemcom%2Ftalent-manage%2Fscrap-talent">인재관리</a></li>
 					</ul>
