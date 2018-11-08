@@ -156,6 +156,7 @@ public class MainSearchController {
 					}
 					
 					for(int range:accumRange) {
+						
 						System.out.println("accumRange : " + range);
 						rm_title.add(mainSearchService.selectTitle(range));
 					}
