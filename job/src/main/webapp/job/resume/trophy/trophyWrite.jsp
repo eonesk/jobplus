@@ -9,13 +9,10 @@
 <script type="text/javascript">
 $(function() {
 	var num = ${param.num};
-	alert("num의 수 = " + num);
 	var rst_Name = $("#rst_Name" + num, opener.document).val();
 	var rst_Company = $("#rst_Company" + num, opener.document).val();
 	var rst_Date = $("#rst_Date" + num, opener.document).val();
 	var rst_Content = $("#rst_Content" + num, opener.document).val();
-	alert(rst_Name + " // " + rst_Company+ " // " + rst_Date
-			+ " // " + rst_Content);
 	
 	$("#save").click(function() {
 		if(!$("#rst_UserTitle").val()) {
