@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="job.recruitment.apply.bean.RM_applyDTO" alias="applyDTO"/>
 		<typeAlias type="job.recruitment.introduction.bean.RM_introductionDTO" alias="introductionDTO"/>
 		<typeAlias type="job.company.info.bean.CompanyInfoDTO" alias="companyInfoDTO"/>
-		<typeAlias type="job.company.logo.bean.companylogoDTO" alias="companylogoDTO"/>
+		<typeAlias type="job.company.logo.bean.companyLogoDTO" alias="companyLogoDTO"/>
 		<typeAlias type="job.company.member.bean.CompanyMemberDTO" alias="companyMemberDTO"/>
 		
 		

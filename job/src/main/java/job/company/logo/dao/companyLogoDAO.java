@@ -2,10 +2,11 @@ package job.company.logo.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import job.company.logo.bean.companyLogoDTO;
-import job.resume.image.bean.RS_imageDTO;
 
+@Repository
 public class companyLogoDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;

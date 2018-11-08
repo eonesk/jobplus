@@ -9,10 +9,10 @@ import job.company.logo.dao.companyLogoDAO;
 @Service
 public class companyLogoImpl implements companyLogoService {
 	@Autowired
-	private companyLogoDAO logoDAO;
+	private companyLogoDAO companyLogoDAO;
 
 	@Override
 	public int logoInsert(companyLogoDTO logoDTO) { 
-		return logoDAO.logoInsert(logoDTO);
+		return companyLogoDAO.logoInsert(logoDTO);
 	}
 }
