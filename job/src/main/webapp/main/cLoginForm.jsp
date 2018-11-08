@@ -186,13 +186,13 @@ input[type=text], input[type=password]{
 		</div>
 		<div id="loginCategory">
 			<ul class="loginCategory">
-				<li class="on">
+				<li class="">
 					<h2 class="tab01">
 						<a href="mLoginForm.do" class="tabBtn"><strong>개인회원 로그인</strong>
 						</a>
 					</h2>
 				</li>
-				<li class="">
+				<li class="on">
 					<h2 class="tab02">
 						<a href="#" class="tabBtn"><strong>기업회원 로그인</strong></a>
 					</h2>
