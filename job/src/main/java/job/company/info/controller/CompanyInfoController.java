@@ -3,6 +3,7 @@ package job.company.info.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,64 +34,118 @@ public class CompanyInfoController {
 		session.setAttribute("comId", "test");
 		
 		String comId = (String) session.getAttribute("comId");
-		CompanyMemberDTO companyMemberDTO = companyInfoService.selectCompanyMember(comId);
 		
+		int modify_su = companyInfoService.selectCount(comId);
+		boolean modify = false;
+		
+		CompanyMemberDTO companyMemberDTO = companyInfoService.selectCompanyMember(comId);
+		if(modify_su > 0) {
+			CompanyInfoDTO companyInfoDTO = companyInfoService.selectCompanyInfo(comId);
+			
+			String cpi_Birth_string = null;
+			if(companyInfoDTO.getCpi_Birth() != null) {
+				DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+				cpi_Birth_string = sdFormat.format(companyInfoDTO.getCpi_Birth());	
+			}
+			
+			modelAndView.addObject("cpi_Birth", cpi_Birth_string);
+			modelAndView.addObject("companyInfoDTO", companyInfoDTO);
+			modify = true;
+		}
+		
+		modelAndView.addObject("modify", modify);
 		modelAndView.addObject("companyMemberDTO", companyMemberDTO);
 		modelAndView.setViewName("companyInfoWriteForm.jsp");
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/job/company/info/companyInfoWrite.do")
-	public void companyInfoWrite(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		PrintWriter out = response.getWriter();
+	public CompanyInfoDTO companyInfoSetting(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		
+		String data[] = {"cpi_Content", "cpi_Brand", "cpi_Type", "cpi_Birth", "cpi_Blog", "cpi_Homepage",
+				"cpi_Sns1", "cpi_Sns2", "cpi_Sns3", "cpi_Vision", "cpi_History",
+				"cpi_Welfare", "cpi_Cafe", "cpi_Etc"};
+		String dataNum_string[] = {
+				"cpi_Moneyyear", "cpi_Moneybase", "cpi_Moneysell", "cpi_Moneygain", "cpl_Seq"};
+		Integer[] dataNum = new Integer[dataNum_string.length];
+		for(int i=0; i<data.length; i++) {
+			if(request.getParameter(data[i]) == "") {
+				data[i] = null;
+			}else {
+				data[i] = request.getParameter(data[i]);
+			}
+		}
+		for(int i=0; i<dataNum.length; i++) {
+			if(request.getParameter(dataNum_string[i]) == "") {
+				dataNum[i] = null;
+			}else {
+				dataNum[i] = Integer.parseInt(request.getParameter(dataNum_string[i]));
+			}
+		}
+		
 		Date date = null;
-		try {
-			date = new SimpleDateFormat("yyyyMMdd").parse(request.getParameter("cpi_Birth"));
-		} catch (ParseException e) {
-			e.printStackTrace();
+		if(data[3] != null) {
+			try {
+				date = new SimpleDateFormat("yyyyMMdd").parse(request.getParameter("cpi_Birth"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		CompanyInfoDTO companyInfoDTO = new CompanyInfoDTO();
 		
-		companyInfoDTO.setCpm_Id(request.getParameter("cpm_Id"));
+		companyInfoDTO.setCpm_Id((String)session.getAttribute("comId"));
 		companyInfoDTO.setCpi_Pname(request.getParameter("cpi_Pname"));
 		companyInfoDTO.setCpi_Pphone(request.getParameter("cpi_Pphone"));
 		companyInfoDTO.setCpi_Pemail(request.getParameter("cpi_Pemail"));
 		companyInfoDTO.setCpi_Companyname(request.getParameter("cpi_Companyname"));
 		companyInfoDTO.setCpi_Firstname(request.getParameter("cpi_Firstname"));
 		companyInfoDTO.setCpi_Industry(request.getParameter("cpi_Industry"));
-		companyInfoDTO.setCpi_Content(request.getParameter("cpi_Content"));
-		companyInfoDTO.setCpi_Brand(request.getParameter("cpi_Brand"));
+		companyInfoDTO.setCpi_Content(data[0]);
+		companyInfoDTO.setCpi_Brand(data[1]);
 		companyInfoDTO.setCpi_Address(request.getParameter("cpi_Address"));
-		companyInfoDTO.setCpi_Type(request.getParameter("cpi_Type"));
+		companyInfoDTO.setCpi_Type(data[2]);
 		companyInfoDTO.setCpi_Birth(date);
-		companyInfoDTO.setCpi_Homepage(request.getParameter("cpi_Homepage"));
-		companyInfoDTO.setCpi_Blog(request.getParameter("cpi_Blog"));
-		companyInfoDTO.setCpi_Sns1(request.getParameter("cpi_Sns1"));
-		companyInfoDTO.setCpi_Sns2(request.getParameter("cpi_Sns2"));
-		companyInfoDTO.setCpi_Sns3(request.getParameter("cpi_Sns3"));
+		companyInfoDTO.setCpi_Homepage(data[4]);
+		companyInfoDTO.setCpi_Blog(data[5]);
+		companyInfoDTO.setCpi_Sns1(data[6]);
+		companyInfoDTO.setCpi_Sns2(data[7]);
+		companyInfoDTO.setCpi_Sns3(data[8]);
 		companyInfoDTO.setCpi_Tel(request.getParameter("cpi_Tel"));
-		companyInfoDTO.setCpi_Moneyyear(Integer.parseInt(request.getParameter("cpi_Moneyyear")));
-		companyInfoDTO.setCpi_Moneybase(Integer.parseInt(request.getParameter("cpi_Moneybase")));
-		companyInfoDTO.setCpi_Moneysell(Integer.parseInt(request.getParameter("cpi_Moneysell")));
-		companyInfoDTO.setCpi_Moneygain(Integer.parseInt(request.getParameter("cpi_Moneygain")));
-		companyInfoDTO.setCpl_Seq(null);
-		companyInfoDTO.setCpi_Vision(request.getParameter("cpi_Vision"));
-		companyInfoDTO.setCpi_History(request.getParameter("cpi_History"));
-		companyInfoDTO.setCpi_Welfare(request.getParameter("cpi_Welfare"));
-		companyInfoDTO.setCpi_Cafe(request.getParameter("cpi_Cafe"));
-		companyInfoDTO.setCpi_Etc(request.getParameter("cpi_Etc"));
+		companyInfoDTO.setCpi_Moneyyear(dataNum[0]);
+		companyInfoDTO.setCpi_Moneybase(dataNum[1]);
+		companyInfoDTO.setCpi_Moneysell(dataNum[2]);
+		companyInfoDTO.setCpi_Moneygain(dataNum[3]);
+		companyInfoDTO.setCpl_Seq(dataNum[4]);
+		companyInfoDTO.setCpi_Vision(data[9]);
+		companyInfoDTO.setCpi_History(data[10]);
+		companyInfoDTO.setCpi_Welfare(data[11]);
+		companyInfoDTO.setCpi_Cafe(data[12]);
+		companyInfoDTO.setCpi_Etc(data[13]);
 		
-		int su = companyInfoService.insertCompanyInfo(companyInfoDTO);
+		return companyInfoDTO;
+	}
+	
+	@RequestMapping(value = "/job/company/info/companyInfoModify.do")
+	public void companyInfoModify (HttpServletRequest request, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		
+		int su = companyInfoService.updateCompanyInfo(companyInfoSetting(request));
+		
+		out.print(su);
+	}
+	
+	@RequestMapping(value = "/job/company/info/companyInfoWrite.do")
+	public void companyInfoWrite(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		
+		int su = companyInfoService.insertCompanyInfo(companyInfoSetting(request));
 		
 		out.print(su);
 	}

@@ -20,19 +20,19 @@ public class CompanyInfoDAO {
 		return sqlSession.insert("mybatis.companyInfoMapper.insertCompanyInfo", companyInfoDTO);
 	}
 	
-	public CompanyInfoDTO selectCompanyInfo(String comId, int cpi_Seq) {
-		Map<String, String> map = new HashMap<>();
-		map.put("comId", comId);
-		map.put("cpi_Seq", String.valueOf(cpi_Seq));
-		
-		return sqlSession.selectOne("mybatis.companyInfoMapper.selectCompanyInfo", map);
+	public CompanyInfoDTO selectCompanyInfo(String comId) {
+		return sqlSession.selectOne("mybatis.companyInfoMapper.selectCompanyInfo", comId);
 	}
 	
-	public int selectLastSeq(String memId) {
-		return sqlSession.selectOne("mybatis.companyInfoMapper.selectLastSeq", memId);
+	public int selectCount(String memId) {
+		return sqlSession.selectOne("mybatis.companyInfoMapper.selectCount", memId);
 	} 
 	
 	public CompanyMemberDTO selectCompanyMember(String comId) {
 		return sqlSession.selectOne("mybatis.companyInfoMapper.selectCompanyMember", comId);
+	}
+	
+	public int updateCompanyInfo(CompanyInfoDTO companyInfoDTO) {
+		return sqlSession.update("mybatis.companyInfoMapper.updateCompanyInfo", companyInfoDTO);
 	}
 }
