@@ -12,12 +12,20 @@
 	}
 	#section{
 		background: white; 
+		position: relative;
 		margin:50px auto; width: 1000px; text-align: left;
+		z-index: 2;
 	}
 	#nav{
 		background: white;
-		position: fixed; top: 100px; right : 80px;
-		width: 200px; float: right;
+		position: fixed; top: 100px; right : 230px;
+		width: 200px;
+		z-index: 1;
+	}
+	#resumeFooter{
+		background: #5882FA;
+		margin:20px auto; width: 960px; text-align: left;
+		padding: 20px;
 	}
 	#section tr, td{
 		padding: 5px;
@@ -162,4 +170,8 @@
 	}
 	#rs_job{
 		display: none;
+	}
+	#resumeGuide > li{
+		color: white;
+		font-size: 14px;
 	}

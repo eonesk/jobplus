@@ -466,8 +466,8 @@
 			<div id="studyLV_Load">
 				<input type="button" id="RSS_loadA" name="RSS_loadA" class="button button_widthFree" value="내 학력 불러오기" style="margin-left: 26px;">
 			</div>
-			<p id="studyLV_Guide">
-				각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. 고치거나 빼야함ㅎ
+			<p id="studyLV_Guide" style="margin-left: 20px;">
+				각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다.
 			</p>
 			
 			<br>
