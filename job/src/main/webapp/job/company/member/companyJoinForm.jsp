@@ -56,7 +56,7 @@ $(function() {
 		}
 		
 		if($("#cpm_type").val() == "기업 분류"){
-			$("#cpm_hideTypeSpan").css("color","red").html("사업자등록번호를 입력하세요.").show(); 
+			$("#cpm_hideTypeSpan").css("color","red").html("기업분류를 선택해주세요.").show(); 
 			$("input[name='cpm_type']").focus();
 			return false;
 		}else{

@@ -4,13 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.jobMapper">
-
-	<insert id="Write" parameterType="jobDTO">	
-	 	insert into RM_introduction values  
-		(RM_job_SEQ.nextval,#{rmj_job},#{rmj_career},#{rmj_carrerStart},#{rmj_carrerEnd},
+	<insert id="save" parameterType="jobDTO">	
+	 	insert into RM_job values  
+		(RM_job_SEQ.nextval,#{rmj_job},#{rmj_career},#{rmj_careerStart},#{rmj_careerEnd},
 		#{rmj_type}) 
 	</insert>	
-	<select id="selectLastSeq" resultType="int">
-		select max(rmj_seq) from rm_job
+	<select id="load" parameterType="int" resultType="jobDTO">
+		select * from RM_job where RMJ_seq=#{rmj_seq}
 	</select>
 </mapper>

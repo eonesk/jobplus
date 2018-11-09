@@ -1,5 +1,8 @@
 package job.recruitment.personnel.controller;
 
-public interface RM_personnelService {
+import job.recruitment.personnel.bean.RM_personnelDTO;
 
+public interface RM_personnelService {
+	public int save(RM_personnelDTO rm_personnelDTO);
+	public RM_personnelDTO load(int rmp_seq);
 }
