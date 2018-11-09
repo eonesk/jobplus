@@ -4,7 +4,57 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이력서 관리</title>
+<script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		function resumeList() {
+			$.ajax({
+				url: "resumeListJson.do",
+				type: "post",
+				dateType: "json",
+				success: function(data) {
+					if(data.total == "0"){
+						var tr = $("<tr>", {align: "center"});
+						var td = $("<td>").attr("colspan", "2").css("height","30px").html("등록된 이력서가 없습니다. 새롭게 이력서를 추가해보세요!");
+						tr.append(td);
+						$("#resumeListT").append(tr);
+					}else{
+						$.each(data.items, function(index, item) {
+							var tr = $("<tr>")
+							var td1 = $("<td>").css({
+								"border-right": "1px solid gray",
+								"height": "30px"
+							}).append(item.rs_Title).append(
+								$("<input>", {
+									click: function() {
+										alert("미구현된 기능입니다.");
+									}
+								}).attr("type", "button").attr("value", "수정").attr("class", "resumeEditBtn")).append(
+									$("<input>", {
+										click: function() {
+											var deleteCk = confirm("["+item.rs_Title+"] 이력서를 정말 삭제하시겠습니까?");
+											if(deleteCk){
+												//삭제기능추가해야해
+												alert("삭제되었습니다.");
+											}
+										}
+									}).attr("type", "button").attr("value", "삭제").attr("class", "resumeEditBtn");		
+								);
+							var td2 = $("<td>").css("text-align", "center").html(item.rs_Logdate);
+							
+							tr.append(td1).append(td2);
+							$("#resumeListT").append(tr);
+						});
+					}
+				},
+				error: function() {
+					alert("서버접속에 오류가 생겼습니다. 잠시후 다시 시도해주세요.");
+				}
+			});
+		}
+	});
+</script>
 <style type="text/css">
 body {
 	margin: 35px;
@@ -12,16 +62,40 @@ body {
 	height: 922px;
 	vertical-align: center;
 	outline: 0;
+	border: 1px solid black;
 }
 
 .button{
-	background-color: #2E64FE;
-	border-radius: 6px;
+	background-color: #5882FA;
 	color: white;
 	width: 100px;
-	height: 32px;
+	border: none;
+	padding: 10px;
 }
-
+.button:hover{
+	background-color: #2E9AFE;
+}
+.resumeEditBtn{
+	background-color: #5882FA;
+	color: white;
+	width: 34px;
+	border: none;
+	padding: 2px;
+	float: right;
+}
+.resumeEditBtn:hover{
+	background-color: #2E9AFE;
+}
+#rs_editBtn{
+	background-color: #5882FA;
+	color: white;
+	width: 30px;
+	border: none;
+	padding: 10px;
+}
+#rs_editBtn:hover{
+	background-color: #2E9AFE;
+}
 .status{
 	color: #444;
 	padding-bottom: 30px;
@@ -39,10 +113,7 @@ body {
 	position: relative;
 	color: #444;
 }
-.list .header h3{
-	position: absolute;
-	left: 0px;
-}
+
 .list .header .resumeWrite{
 	position: absolute;
 	right: 0px;
@@ -55,6 +126,22 @@ body {
 .list .content .edit{
 	position: absolute;
 	right: 0px;
+}
+.resumeList{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-collapse: collapse;
+	margin: 20px auto 20px auto;
+}
+.resumeList th{
+	background-color: #F2F2F2;
+}
+.resumeList .resumeTitleTh{
+	width: 600px;
+	border-right: 1px solid gray;
+}
+.resumeList .resumeEditTh{
+	width: 200px;
 }
 
 </style>
@@ -75,14 +162,19 @@ body {
 	</div>
 	<div class="listHeader">
 		<div class="header">
-			<h3>이력서 리스트</h3>
-			<input class="button resumeWrite" type="button" value="이력서 등록">
+			<font style="font-size: 24px; font-weight: bold; margin-left: 50px;">이력서 리스트</font>
+			<input class="button resumeWrite" type="button" value="이력서 등록" style="margin-left: 544px;" onclick="location.href='resumeWriteForm.do'">
 		</div>
 		<div class="content">
-			<hr>
-			<font class="title">이력서 제목</font>
-			<font class="edit">이력서 관리</font>
-			<hr>
+			<table id="resumeList" class="resumeList">
+				<tr>
+					<th class="resumeTitleTh">이력서 제목</th>
+					<th class="resumeEditTh">이력서 수정 날짜</th>
+				</tr>
+				<tbody id="resumeListT">
+				
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<div class="listContent">
