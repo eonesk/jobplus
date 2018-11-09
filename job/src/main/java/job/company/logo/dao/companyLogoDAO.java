@@ -11,14 +11,14 @@ public class companyLogoDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	//증명사진 등록
+	//로고 등록
 	public int logoInsert(companyLogoDTO logoDTO) {
 		return sqlSession.insert("mybatis.logoMapper.logoInsert", logoDTO);
 	} 
 	
-//	//최근사진
-//	public companyLogoDTO ImageTopList(String m_Id) {
-//		return sqlSession.selectOne("mybatis.logoMapper.logoTopList", m_Id);
-//	}
+	//최근사진
+	public companyLogoDTO logoTopList(String cpm_Id) {
+		return sqlSession.selectOne("mybatis.logoMapper.logoTopList",cpm_Id);
+	}
 
 }

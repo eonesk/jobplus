@@ -9,10 +9,17 @@ import job.company.logo.dao.companyLogoDAO;
 @Service
 public class companyLogoImpl implements companyLogoService {
 	@Autowired
-	private companyLogoDAO companyLogoDAO;
+	private companyLogoDAO logoDAO;
 
 	@Override
 	public int logoInsert(companyLogoDTO logoDTO) { 
-		return companyLogoDAO.logoInsert(logoDTO);
+		return logoDAO.logoInsert(logoDTO);
 	}
+
+	@Override
+	public companyLogoDTO logoTopList(String cpm_Id) {
+		return logoDAO.logoTopList(cpm_Id);
+	}
+
+
 }
