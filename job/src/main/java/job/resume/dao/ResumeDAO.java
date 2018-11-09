@@ -1,6 +1,7 @@
 package job.resume.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import job.member.bean.MemberDTO;
 import job.resume.bean.ResumeDTO;
+import job.resume.bean.ResumeListDTO;
 
 @Repository
 public class ResumeDAO {
@@ -63,5 +65,9 @@ public class ResumeDAO {
 	
 	public int selectLastSeq(String memId) {
 		return sqlSession.selectOne("mybatis.resumeMapper.selectLastSeq", memId);
+	}
+	
+	public List<ResumeListDTO> selectResumeList(String memId) {
+		return sqlSession.selectList("mybatis.resumeMapper.selectResumeList", memId);
 	}
 }

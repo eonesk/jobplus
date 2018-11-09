@@ -7,11 +7,14 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import job.member.bean.MemberDTO;
 import job.resume.bean.ResumeDTO;
+import job.resume.bean.ResumeListDTO;
 
 @Controller
 public class ResumeController {
@@ -200,4 +204,76 @@ public class ResumeController {
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="/job/resume/resume/resumeListJson.do")
+	public ModelAndView resumeListJson(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ModelAndView modelAndView = new ModelAndView();
+		
+		session.setAttribute("memId", "test");
+		
+		String memId = (String)session.getAttribute("memId");
+		
+		List<ResumeListDTO> list = resumeService.selectResumeList(memId);
+		
+		int total = list.size();
+		
+		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		JSONObject json = new JSONObject();
+		json.put("total", total);
+		if(total>0) {
+			JSONArray items = new JSONArray();
+			for(int i=0; i<list.size(); i++) {
+				ResumeListDTO resumeListDTO = list.get(i);
+				JSONObject tmp = new JSONObject();
+				tmp.put("rs_Seq", resumeListDTO.getRs_Seq());
+				tmp.put("rs_Title", resumeListDTO.getRs_Title());
+				String rs_Logdate_string = sdFormat.format(resumeListDTO.getRs_Logdate());
+				tmp.put("rs_Logdate", rs_Logdate_string);
+				
+				items.put(i, tmp);
+			}
+			json.put("items", items);
+		}
+		modelAndView.addObject("total", total);
+		modelAndView.addObject("json", json);
+		modelAndView.setViewName("resumeListJson.jsp");
+		
+		return modelAndView;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
