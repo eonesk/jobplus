@@ -31,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		
 		<!-- 클래스에 별명 설정 / recruitment 하위테이블 -->
 		<typeAlias type="job.recruitment.job.bean.RM_jobDTO" alias="jobDTO"/>
+		<typeAlias type="job.recruitment.personnel.bean.RM_personnelDTO" alias="personnelDTO"/>
 		<typeAlias type="job.recruitment.bean.RMDTO" alias="rmDTO"/>
 	</typeAliases>	
 	
@@ -60,6 +61,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/recruitment/job-mapping.xml"/>
 		<mapper resource="mybatis/recruitment/mainSearchResult-mapping.xml"/>
 		<mapper resource="mybatis/recruitment/mainSearch-mapping.xml"/>
+		<mapper resource="mybatis/recruitment/personnel-mapping.xml"/>
 		<mapper resource="mybatis/recruitment/RM-mapping.xml"/>
 		
 		<!-- SQL문장이 기술되는 Mapper파일 / company 하위 테이블들 -->
