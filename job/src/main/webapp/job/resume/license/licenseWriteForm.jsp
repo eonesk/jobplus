@@ -166,7 +166,7 @@
 		<!-- Load -->
 		<input type="button" id="RSLS_loadA" name="RSLS_loadA" value="내 자격증 불러오기" class="button button_widthFree">
 		<p style="clear: both; font-size: 12px; margin: 3px;">
-		각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. 고치거나 빼야함ㅎ</p>
+		각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다.</p>
 		
 		<br>
 		

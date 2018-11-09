@@ -11,4 +11,4 @@
 	<input type="submit" value="기업정보작성">	
 </form>
 </body>
-</html>
+</html>	
