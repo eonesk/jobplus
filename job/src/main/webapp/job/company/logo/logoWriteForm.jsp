@@ -5,32 +5,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"> 
-$(function() {
-	$("#img_save").click(function() {
-		if(!$("#thum_upload").val()) {
-			alert("사진을 등록해주세요."); 
-			$("#thum_upload").focus();
-			return false;
-		}
-		function readImg(input) {
-			if(input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					$(opener.document).find("#corp_thumnail").val("src",e.target.result);
-				}
-				reader.readAsDataURL(value.files[0]);
-			}
-		}
-		document.imageWriteForm.submit();
-	});
-	$("#img_cancle").click(function() {
-		window.close();
-	});
-});
-
-
-</script>
 <style type="text/css">
 input, button {
     font-family: "Malgun Gothic", "맑은 고딕", Dotum, 돋움, AppleGothic, sans-serif;
@@ -42,10 +16,6 @@ input, button {
 	font-weight: bold;
 	color: #2A120A;
 	letter-spacing: -1px;
-}
-#user_title {
-	height: 40px;
-	width: 440px;
 }
 .uploadform {
     margin-top: 10px;
@@ -79,20 +49,56 @@ button {
 button:hover {
     background-color: #2E9AFE;
 }
-#thum_upload { 
+#logo_upload { 
     width: 350px;
     font-size: 12px;
     border: 1px solid #ccc;
     background-color: #e6e6e6;
 }
 </style>
+<script type="text/javascript"> 
+$(function() {
+	$("#logo_save").click(function() {
+		if(!$("#logo_upload").val()) {
+			alert("사진을 등록해주세요."); 
+			$("#logo_upload").focus();
+			return false;
+		}
+		document.logoWriteForm.submit();
+		self.close();
+	});
+	$("#logo_cancle").click(function() {
+		window.close();
+	});
+
+});
+
+// function upload() {
+// 	var logo_i = documnet.getElementById("logo_upload");
+// 	var file = logo_ifiles[0];
+// 	console.log(file);
+// 	var formData = new Data();
+// 	formData.append("logo_upload",file);
+// 	$.ajax({
+// 		type:"POST",
+// 		url:"logoWrite.do",
+// 		data: formData,
+// 		processData: false,
+// 		contentType: false,
+// 		success:function(data) {
+// 			$("#cpl_Seq",opener.document).attr('src','/job/job/company/logo/img/storage/'+data);
+// 		}
+// 	});
+// }
+</script>
+
 </head>
 <body>
 <p class="subtitle">로고 등록/수정</p>
 <div>
-	<form action="imageWrite.do" id='imageWriteForm' name="imageWriteForm" id="" enctype="multipart/form-data" method="post">
+	<form action="logoWrite.do" id='logoWriteForm' name="logoWriteForm" enctype="multipart/form-data" method="post">
 		<div class="uploadform">
-			<input type="file" name="img" id="thum_upload">
+			<input type="file" name="logo" id="logo_upload" onchange="upload()">
 			<ul>
 				<li>*파일형식은 jpg, jpeg, gif, png만 업로드 가능합니다</li>
 				<li>*등록 가능한 최대 용량은 1M입니다</li>
@@ -100,8 +106,8 @@ button:hover {
 		</div>
 	</form>		
 	<div align="center">
-		<button type="button" id="img_save">등록</button>
-		<button type="button" id="img_cancle">취소</button>
+		<button type="button" id="logo_save">등록</button>
+		<button type="button" id="logo_cancle">취소</button>
 	</div>
 </div>
 

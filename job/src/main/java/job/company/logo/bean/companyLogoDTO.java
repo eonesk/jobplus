@@ -8,8 +8,8 @@ public class companyLogoDTO {
     // 기업로고이미지 
     private String cpl_Name;
 
-    // 기업정보seq 
-    private String cpi_Seq;
+    // 기업 아이디
+    private String cpm_Id;
 
 	public Integer getCpl_Seq() {
 		return cpl_Seq;
@@ -27,12 +27,12 @@ public class companyLogoDTO {
 		this.cpl_Name = cpl_Name;
 	}
 
-	public String getCpi_Seq() {
-		return cpi_Seq;
+	public String getcpm_Id() {
+		return cpm_Id;
 	}
 
-	public void setCpi_Seq(String cpi_Seq) {
-		this.cpi_Seq = cpi_Seq;
+	public void setcpm_Id(String cpm_Id) {
+		this.cpm_Id = cpm_Id;
 	}
 
   
