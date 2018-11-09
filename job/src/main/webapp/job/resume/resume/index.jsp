@@ -13,5 +13,9 @@
 <form action="resumeModifyForm.do" method="post">
 	<input type="submit" value="이력서수정">
 </form>
+<form action="resumeAdminBody.jsp" method="post">
+	<input type="submit" value="이력서목록">
+</form>
+
 </body>
 </html>

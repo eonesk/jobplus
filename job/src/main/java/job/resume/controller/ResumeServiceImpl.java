@@ -1,10 +1,13 @@
 package job.resume.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import job.member.bean.MemberDTO;
 import job.resume.bean.ResumeDTO;
+import job.resume.bean.ResumeListDTO;
 import job.resume.dao.ResumeDAO;
 
 @Service
@@ -46,6 +49,11 @@ public class ResumeServiceImpl implements ResumeService {
 	@Override
 	public int selectLastSeq(String memId) {
 		return resumeDAO.selectLastSeq(memId);
+	}
+
+	@Override
+	public List<ResumeListDTO> selectResumeList(String memId) {
+		return resumeDAO.selectResumeList(memId);
 	}
 
 }
