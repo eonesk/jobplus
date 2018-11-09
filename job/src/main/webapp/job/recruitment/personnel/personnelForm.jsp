@@ -16,35 +16,81 @@
 			}
 		});
 		$("#testButton").click(function() {
+			alert("진입");
 			if(!$("#rmp_name").val()) {
-
+				alert("이름을 입력하세요");
+				$("#rmp_name").focus();
+				return false;
 			}
 			if(!$("#rmp_dept").val()) {
-				
+				alert("부서를 입력하세요");
+				$("#rmp_dept").focus();
+				return false;
 			}
 			
 			for(var i = 1; i <= 3; i++){
 				if(!$("#rmp_homeTel"+i).val()) {
 					alert("전화번호를 입력하세요");
-					$(this).focus();
+					$("#rmp_homeTel"+i).focus();
 					return false;
 				}
 		    }
-
-
-		
-			/* if (!$("#rmp_").val()) {
-
+			
+			for(var i = 1; i <= 3; i++){
+				if(!$("#rmp_tel"+i).val()) {
+					alert("휴대폰번호를 입력하세요");
+					$("#rmp_tel"+i).focus();
+					return false;
+				}
+		    }
+			
+			if (!$("#rmp_inputEmail1").val()) {
+				alert("이메일주소를 입력하세요");
+				$("rmp_inputEmail1").click();
+				return false;
 			}
-			if (!$("#rmp_").val()) {
-
+			
+			if (!$("#rmp_inputEmail2").val()) {
+				alert("이메일주소를 입력하세요");
+				$("rmp_inputEmail2").click();
+				return false;
 			}
-			if (!$("#rmp_").val()) {
-
-			}
-			if (!$("#rmp_").val()) {
-
-			} */
+			
+			//ajax
+			var rmp_name   = $("#rmp_name").val();
+		   	var rmp_dept   = $("#rmp_dept").val();
+		   	var rmp_email  = $("#rmp_inputEmail1").val() + "@" + $("#rmp_inputEmail2").val();
+		   	var rmp_phone1 = $("#rmp_homeTel1").val() + "-" + $("#rmp_homeTel2").val() + "-" + $("#rmp_homeTel3").val();
+		   	var rmp_phone2 = $("#rmp_tel1").val() + "-" + $("#rmp_tel2").val() + "-" + $("#rmp_tel3").val();
+		   
+		   	
+		   	alert(rmp_name + rmp_dept + rmp_email + rmp_phone1 + rmp_phone2);
+		   	var allData ={
+				"rmp_name" : rmp_name,
+				"rmp_dept" : rmp_dept,
+				"rmp_email" : rmp_email,
+				"rmp_phone1" : rmp_phone1,
+				"rmp_phone2" : rmp_phone2
+			};
+			
+			$.ajax({
+				type: 'POST',
+				url: 'save.do',
+				data:allData,
+				dataType: 'text',
+				cache: false,
+				success: function(data) {
+					if(data == 0) {
+						alert("실패");
+					} else {
+						alert("성공");
+					}		
+				},
+			
+				error : function(e) {
+		            alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+		     	}
+			});
 		});
 
 	});
