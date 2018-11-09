@@ -247,27 +247,27 @@ $(function() {
                     <ul class="ap_chk_list">
 	                    <li class="chk_item">
 	                    	<label for="vip16">
-	                    		<input type="checkbox" name="Vip[]" id="vip16" class="chk" value="학점4.0이상"><span>공모전 입상자</span>
+	                    		<input type="checkbox" name="Vip[]" id="vip16" class="chk" value="학점4.0이상"><span>학점4.0이상</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="vip17">
-	                    		<input type="checkbox" name="Vip[]" id="vip17" class="chk" value="컴퓨터활용능력 우수"><span>해당직무 인턴경력</span>
+	                    		<input type="checkbox" name="Vip[]" id="vip17" class="chk" value="컴퓨터활용능력 우수"><span>컴퓨터활용능력 우수</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="vip18">
-	                    		<input type="checkbox" name="Vip[]" id="vip18" class="chk" value="문서작성 우수자"><span>해당직무 직무경력</span>
+	                    		<input type="checkbox" name="Vip[]" id="vip18" class="chk" value="문서작성 우수자"><span>문서작성 우수자</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="vip19">
-	                    		<input type="checkbox" name="Vip[]" id="vip19" class="chk" value="엑셀 고급능력자"><span>해외연수자</span>
+	                    		<input type="checkbox" name="Vip[]" id="vip19" class="chk" value="엑셀 고급능력자"><span>엑셀 고급능력자</span>
 	                    	</label>
 	                    </li>
 	                    <li class="chk_item">
 	                    	<label for="vip20">
-	                    		<input type="checkbox" name="Vip[]" id="vip20" class="chk" value="포토샵 능숙자"><span>군전역간부</span>
+	                    		<input type="checkbox" name="Vip[]" id="vip20" class="chk" value="포토샵 능숙자"><span>포토샵 능숙자</span>
 	                    	</label>
 	                    </li>
                     </ul>

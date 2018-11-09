@@ -201,7 +201,7 @@ ul.list_gnb li {
     z-index: 100;
     padding-top: 31px;
 }
-.user_corp_popup button{
+.user_corp_popup input{
   cursor:pointer;
 }
 .user_corp_name {
@@ -355,6 +355,7 @@ ul.list_gnb li {
 	font-weight: bolder;
 	font-size: 15px;
 	border: 1px solid #BDBDBD;
+	cursor:pointer;
 }
 .main_Tbutton:hover {
 	background-color: #5882FA;
@@ -380,6 +381,20 @@ ul.list_gnb li {
 .main_tr {
 	margin-bottom: 20px;
 }
+.job_main_btn {
+	border: 0;
+	background-color: #5882FA;
+	color: white;
+	font-size:14px;
+	font-weight:bolder;
+	width: 100px;
+	height: 40px;
+	cursor:pointer;
+}
+.job_main_btn:hover {
+	border: 1px solid #A9BCF5;	
+}
+
 /* ////////////////////////////////////// SEARCHPART ////////////////////////////////////////////////////////// */
 
 #main_searchJobDiv {
@@ -703,40 +718,53 @@ ul.list_gnb li {
 			!m_id (빈값체크)
 		var Main_CPM_id = ${sessionScope.CPM_id};		
 		var Main_M_id = ${sessionScope.m_id};	*/
-		var CPM_id = $('input:hidden[class="Main_CPM_id"]').val();
+		var cpm_id = $('input:hidden[class="Main_CPM_id"]').val();
 		var m_id = $('input:hidden[class="Main_M_id"]').val();
 		
-		alert("CPM_id값 = " + CPM_id + "//" + "m_id값 = " + m_id);
+		alert("cpm_id값 = " + cpm_id + "//" + "m_id값 = " + m_id);
+		
 		/* 로그인/로그아웃화면 처리 */ 
-		if(!m_id){
+		if(!m_id && !cpm_id){
 			document.getElementById("logout").style.display = "none";	
 			document.getElementById("login").style.display = "inline";
-			document.getElementById("job_main_m").style.display = "none";	
-			document.getElementById("job_main_cpm").style.display = "inline";
 		}else{
 			document.getElementById("logout").style.display = "inline";	
 			document.getElementById("login").style.display = "none";
-			document.getElementById("job_main_m").style.display = "inline";	
-			document.getElementById("job_main_cpm").style.display = "none";
 		}
-		/* 공고 등록 버튼 */
-		$("#job_main").on("click", function() {
+		
+		/* 이력서 등록 버튼 */
+		$("#job_main1").on("click", function() {
 			if(!m_id){
-				alert("로그인상태에서만 접근가능합니다.");
+				alert("회원로그인상태에서만 접근가능합니다.");
+			}else {
+				location.href = "../job/resume/resume/resumeAdminBody.jsp";
+			}
+		});
+		
+		/* 공고 등록 버튼 */
+		$("#job_main2").on("click", function() {
+			if(!cpm_id){
+				alert("기업로그인상태에서만 접근가능합니다.");
 			}else {
 				location.href = "../main/jobmain.jsp";
 			}
 		});
+		
 		/* 로그아웃 버튼 */
-		$("#logout").on("click", function() {
-			m_id = null;
-			location.href = "../main/main.jsp";
+		$("#logout").on("click", function() {	
+			location.href = "../main/logout.jsp";
+		});
+		
+		/* 메인에 있는 기업정보 클릭이벤트 (div버튼)  */
+		$("#main_Tbutton1").on("click", function() {
+			window.open("../main/rmViewForm.jsp", "", "width=1000px height=900px");
 		});
 	});
 </script>
 </head>
 <body id="topBar">
-<input type="hidden" id="Main_CPM_id" class="Main_CPM_id" value="${sessionScope.CPM_id}">
+<!-- 기업회원 개인회원 아이디값 -->
+<input type="hidden" id="Main_CPM_id" class="Main_CPM_id" value="${sessionScope.cpm_id}">
 <input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.m_id}">
 	<div id="container">
 		<header id="header">
@@ -744,11 +772,13 @@ ul.list_gnb li {
 				<div class="user_info" id="user_info">
 					<div class="login" id="login" style="display: inline;">					
 						<a href="../main/mLoginForm.jsp" class="#user_corp_popup" id="corp_name">로그인</a>
+						<!-- 
 						<a href="../main/cLoginForm.jsp" class="#user_corp_popup" id="corp_name">기업로그인</a>
+						 -->
 						<a href="../job/member/joinForm.jsp" class="#user_corp_popup" id="corp_name">회원가입</a>
 					</div>
 					<div class="logout" id="logout" style="display: none;">	
-						<a href="../main/main.jsp" class="#user_corp_popup" id="corp_name">로그아웃</a>
+						<input type="button" class="#user_corp_popup" id="corp_name" value="로그아웃" style="background-color: white; border: 1px solid #A9BCF5; cursor: pointer;">
 					</div>
 				</div>				
 				<div class="area_logo">
@@ -763,15 +793,10 @@ ul.list_gnb li {
 					</div>
 				</div>
 				<nav id="gnb" class="gnb">
-					<ul class="list_gnb"> <!-- href="../main/jobmain.jsp" -->	
-						<li id="job_main_m" class="job_main_m" style="display: inline;">												
-							 <li id="job_main"><a>이력서작성</a> 
-							 <!-- <div id="job_main"><a>이력서작성</a></div> -->
-						</li>
-						<li id="job_main_cpm" class="job_main_cpm" style="display: none;">												
-							<li id="job_main"><a id="job_main">공고등록</a>							
-							<li><a href="#">공고/지원자관리</a>		
-						</li>	
+					<ul class="list_gnb"> <!-- href="../main/jobmain.jsp" -->													
+						<li><input type="button" id="job_main1" class="job_main_btn" value="이력서작성"></li>																	
+						<li><input type="button" id="job_main2" class="job_main_btn" value="공고등록"></li>					
+						<li><a href="#">공고/지원자관리</a></li>	
 						<li><a href="http://www.saramin.co.kr/zf_user/talent/search">인재검색</a></li>
 						<li><a href="https://www.saramin.co.kr/zf_user/auth?ut=c&url=%2Fzf_user%2Fmemcom%2Ftalent-manage%2Fscrap-talent">인재관리</a></li>
 					</ul>
