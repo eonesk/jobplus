@@ -4,33 +4,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
+<title>Insert title here</title>
+<style>
 *{
 	margin: 0;
-	padding:0;
-}
-.rv_container div{
-	font-family: "Malgun Gothic",dotum,gulim,sans-serif;
-}
-.rv_container{
-	
+	padding: 0;
 }
 .rv_header{
+	position: fixed;
+	width:100%;
+	height: 175px;
 	min-width:1080px;
 	background-color: whitesmoke  ;
-	position: fixed; z-index: 100; height: 175px;
-	/* text-align: center; */
-	
+	z-index: 100; 
 }
 .rv_title{
-	
 	position: relative;
-	height:110px;
-	border:1px solid red;
-	padding-left: 130px;
+	width:1030px;
+	padding-left: 135px;
+	margin:0 auto;
 	padding-top:15px;
 	line-height: 200%;
 	letter-spacing: -1px;
+	
 }
 .rv_company{
 	display:block;
@@ -50,74 +46,101 @@
 	display:inline-block;
 	width:45px;
 	height:25px;
-	background-color: #fa6a71;
-	text-align: center;
-	color: white;
-	border-radius: 35px;
 	top:3px;
+	text-align: center;
+	background-color: #fa6a71;
+	color: white;
+	
+	border-radius: 35px;
 	padding-bottom: 3px;
 }
 .rv_how{
 	position:relative;
 	width: 210px;
 	height: 60px;
+	letter-spacing: -1px;
+	left: 50px;
+	top:15px;
 	background-color: white;
 	outline: none;
 	font-size: 20px;
 	font-weight: bold;
 	color:gray;
-	letter-spacing: -1px;
-	left: 50px;
-	top:15px;
 	border:1px solid lightgray;
 }
+
+/** rv_summary */
 .rv_summary{
+	/* border: 1px solid blue; */
 	position:relative;
-	border: 1px solid blue;
-	margin: 0 auto;
-	width: 1000px;
+	margin:0 auto;
+	width: 960px;
+	padding-left: 90px;
 	top:200px;
-	text-align: center;
 }
+
 .rv_summaryView{
-	padding:30px;
+	padding:29px;
 	box-sizing:border-box;
-	display:inline-block;
-	width:320px;
+	/* display:inline-block; */
+	float:left;
+	margin-right:20px;
+	width:300px;
 	height:275px;
-	border: 1px solid gray;
+	border: 1px solid lightgray;
+}
+
+.rv_contentWrap{
+	/* position:relative;
+	box-sizing:border-box;
+	border:1px solid red;
+	width: 940px;
+	height:1000px;
+	top:200px;
+	margin:0 auto;
+	padding: 50px;
+	left: 70px; */
+	position:relative;
+	margin:0 auto;
+	width: 960px;
+	padding-left: 90px;
+	top:500px;
+	
 }
 .rv_content{
-	position:relative;
-	border:1px solid lightgray;
-	width: 880px;
-	margin:auto;
-	margin-top: 30px;
-	padding: 50px;
-	top:200px;
-	margin-bottom: 50px;
+	margin-right: 320px;
+    padding: 39px;
+    width: 940px;
+    border: 1px solid #ebebeb;
+    box-sizing: border-box;
 }
+
 .rv_timeView,.rv_dateView{
-	
-	border: 1px solid green;
+	margin-top:-200px;
+	/* border: 1px solid green; */
 	display:inline-block;
 }
 .rv_timeView{
-	margin-right: 16px;
+	/* margin-right: 16px; */
 }
 .rv_dateView{
-	
+	position: relative;
+	top:6px;
+}
+.rv_wayList{
+	line-height: 200%;
+	text-align: left;
+	list-style: circle;
 }
 .rv_timeContent,.rv_dateContent{
 	box-sizing:border-box;
-	border: 1px solid yellow;
+	/* border: 1px solid yellow; */
+	border: 1px solid #ebebeb;
 	text-align:center;
-	width: 422px;
+	width: 400px;
+	height:230px;
 	padding: 29px;
 }
-
-
-
 
 .rv_timeHeader,.rv_dateHeader{
 	padding-bottom: 10px;
@@ -169,7 +192,7 @@
 
 .rv_companyView{
 	margin-top: 54px;
-	border: 1px solid purple;
+	/* border: 1px solid purple; */
 }
 
 .rv_companyHeader{
@@ -193,7 +216,7 @@
 .rv_cell{
 	display: inline-block;
 	width: 400px;
-	/* border: 1px solid navy;  */
+	
 	
 }
 
@@ -212,56 +235,35 @@
 	margin-top: 15px;
 	padding-top: 15px;
 }
-.inDiv{
-	border:1px solid red;
-}
 </style>
-<title>채용 공고</title>
 </head>
-<body>
-<div class="rv_container">
-	<div id="rv_header" class="rv_header">
-		<div id="rv_title" class="rv_title">	
-			<span id="rv_company" class="rv_company">JW그룹</span>
-			<span id="rv_subject" class="rv_subject">JW그룹 105기 신입사원 정기채용</span>
-			<span id="rv_date" class="rv_date">~11/14(수)</span>
-			<span id="rv_d-day" class="rv_d-day">D-6</span>
-			<input type="button" value="홈페이지 지원" id="rv_how" class="rv_how">
-		</div>
+<body class="rv_body">
+<div class="rv_header">
+	<div id="rv_title" class="rv_title">	
+		<span id="rv_company" class="rv_company">JW그룹</span>
+		<span id="rv_subject" class="rv_subject">JW그룹 105기 신입사원 정기채용</span>
+		<span id="rv_date" class="rv_date">~11/14(수)</span>
+		<span id="rv_d-day" class="rv_d-day">D-6</span>
+		<input type="button" value="홈페이지 지원" id="rv_how" class="rv_how">
 	</div>
-	<div id="rv_summary" class="rv_summary">
-		<div id="rv_summaryView1" class="rv_summaryView">
-			<div class="inDiv">
-				<span>담당업무</span>
-				<ul>
-					<li>신입</li>
-					<li>대학교졸업(4년)</li>
-					<li></li>
-				</ul>
-			</div>
-		</div>
-		<div id="rv_summaryView2" class="rv_summaryView">
-			<div class="inDiv">
-				<span>담당업무</span>
-				<ul>
-					<li>서울전체</li>
-					<li>정규직</li>
-					<li>기모띠</li>
-				</ul>
-			</div>
-		</div>
-		<div id="rv_summaryView3" class="rv_summaryView">
-			<div class="inDiv">
-				<span>담당업무</span>
-				<ul>
-					<li>기모띠</li>
-					<li>기모띠</li>
-					<li>기모띠</li>
-				</ul>
-			</div>
-		</div>
+</div>
+<div class="rv_summary">
+	<div id="rv_summaryView1" class="rv_summaryView">
+		<span>ㅋㅋ</span>
+		<ul>
+			<li>-제빵/제과 파트쉐</li>
+			<li>-카페 쉐프</li>
+		</ul>
 	</div>
-	<div id="rv_content" class="rv_content">
+	<div id="rv_summaryView2" class="rv_summaryView">
+		
+	</div>
+	<div id="rv_summaryView3" class="rv_summaryView">
+		
+	</div>
+</div>
+<div class="rv_contentWrap">
+	<div class="rv_content">
 		<div id="rv_timeView" class="rv_timeView">
 			<h2 id="rv_timeHeader" class="rv_timeHeader">접수기간</h2>
 			<div id="rv_timeContent" class="rv_timeContent">
@@ -284,8 +286,13 @@
 		<div id="rv_dateView" class="rv_dateView">
 			<h2 id="rv_dateHeader" class="rv_dateHeader">접수방법</h2>
 			<div id="rv_dateContent" class="rv_dateContent">
-				<ul class="test">
-					<li>1</li>
+				<ul class="rv_wayList">
+					<li>접수방법 : 홈페이지지원</li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
 				</ul>
 			</div>
 		</div>

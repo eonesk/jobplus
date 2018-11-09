@@ -19,17 +19,20 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="job.resume.license.bean.RS_licenseDTO" alias="licenseDTO"/>
 		<typeAlias type="job.resume.portfolio.bean.RS_portfolioDTO" alias="portfolioDTO"/>
 		<typeAlias type="job.resume.vip.bean.RS_vipDTO" alias="vipDTO"/>
+		<typeAlias type="job.resume.bean.ResumeListDTO" alias="resumeListDTO"/>
 		
 		<!-- 클래스에 별명 설정 / company 하위테이블 -->
 		<typeAlias type="job.recruitment.apply.bean.RM_applyDTO" alias="applyDTO"/>
 		<typeAlias type="job.recruitment.introduction.bean.RM_introductionDTO" alias="introductionDTO"/>
 		<typeAlias type="job.company.info.bean.CompanyInfoDTO" alias="companyInfoDTO"/>
-		<typeAlias type="job.company.logo.bean.companyLogoDTO" alias="companyLogoDTO"/>
+		<typeAlias type="job.company.logo.bean.companyLogoDTO" alias="logoDTO"/>
 		<typeAlias type="job.company.member.bean.CompanyMemberDTO" alias="companyMemberDTO"/>
 		
 		
 		<!-- 클래스에 별명 설정 / recruitment 하위테이블 -->
 		<typeAlias type="job.recruitment.job.bean.RM_jobDTO" alias="jobDTO"/>
+		<typeAlias type="job.recruitment.personnel.bean.RM_personnelDTO" alias="personnelDTO"/>
+		<typeAlias type="job.recruitment.bean.RMDTO" alias="rmDTO"/>
 	</typeAliases>	
 	
 	<!-- SQL Mapper 설정  -->
@@ -58,6 +61,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/recruitment/job-mapping.xml"/>
 		<mapper resource="mybatis/recruitment/mainSearchResult-mapping.xml"/>
 		<mapper resource="mybatis/recruitment/mainSearch-mapping.xml"/>
+		<mapper resource="mybatis/recruitment/personnel-mapping.xml"/>
+		<mapper resource="mybatis/recruitment/RM-mapping.xml"/>
 		
 		<!-- SQL문장이 기술되는 Mapper파일 / company 하위 테이블들 -->
 		<mapper resource="mybatis/company/companyInfo-mapping.xml"/>	

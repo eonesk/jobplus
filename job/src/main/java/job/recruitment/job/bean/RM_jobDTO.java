@@ -5,8 +5,8 @@ public class RM_jobDTO {
 	private Integer rmj_seq;
 	private String rmj_job;
 	private String rmj_career;
-	private String rmj_carrerStart;
-	private String rmj_carrerEnd;
+	private String rmj_careerStart;
+	private String rmj_careerEnd;
 	private String rmj_type;
 	
 	public Integer getRmj_seq() {
@@ -27,17 +27,19 @@ public class RM_jobDTO {
 	public void setRmj_career(String rmj_career) {
 		this.rmj_career = rmj_career;
 	}
-	public String getRmj_carrerStart() {
-		return rmj_carrerStart;
+	
+	
+	public String getRmj_careerStart() {
+		return rmj_careerStart;
 	}
-	public void setRmj_carrerStart(String rmj_carrerStart) {
-		this.rmj_carrerStart = rmj_carrerStart;
+	public void setRmj_careerStart(String rmj_careerStart) {
+		this.rmj_careerStart = rmj_careerStart;
 	}
-	public String getRmj_carrerEnd() {
-		return rmj_carrerEnd;
+	public String getRmj_careerEnd() {
+		return rmj_careerEnd;
 	}
-	public void setRmj_carrerEnd(String rmj_carrerEnd) {
-		this.rmj_carrerEnd = rmj_carrerEnd;
+	public void setRmj_careerEnd(String rmj_careerEnd) {
+		this.rmj_careerEnd = rmj_careerEnd;
 	}
 	public String getRmj_type() {
 		return rmj_type;

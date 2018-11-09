@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.personnelMapper">
+	<insert id="save" parameterType="personnelDTO">	
+	 	insert into RM_personnel values  
+		(RM_personnel_SEQ.nextval,#{cpm_id},#{rmp_name},#{rmp_dept},#{rmp_email},
+		#{rmp_phone1},#{rmp_phone2}) 
+	</insert>	
+	<select id="load" parameterType="int" resultType="personnelDTO">
+		select * from RM_personnel where RMP_seq=#{rmp_seq}
+	</select>
+</mapper>

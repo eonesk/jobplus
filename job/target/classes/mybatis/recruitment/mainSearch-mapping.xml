@@ -4,6 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.mainSearchMapper">
+	<select id="selectRM_seq" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select (RM_seq) from RM where RMC_seq = #{range}
+	</select>
+
 	<select id="selectXXO" parameterType="String" resultType="java.lang.Integer">
 		select (rmc_seq) from RM_condition where rmc_business1 = #{jobSelect3} or rmc_business2 = #{jobSelect3} or rmc_business3 = #{jobSelect3}
 	</select>
@@ -20,7 +24,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select (CPM_id) from companyInfo where CPI_companyName = #{searchCompany}
 	</select>
 	
-	<select id="selectTitle" parameterType="java.lang.Integer" resultType="String">
-		select (RM_title) from RM where RMC_seq = #{range}
+	<select id="selectRM_seqFromId" parameterType="String" resultType="java.lang.Integer">
+		select (RM_seq) from RM where CPM_id = #{cpm_id}
+	</select>
+	
+	<select id="selectRM_seqFromIdAndRMC_seq_cnt" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count (*) from RM where RMC_seq = #{range} and CPM_ID = #{cpm_id}
+	</select>
+	
+	<select id="selectRM_seqFromIdAndRMC_seq" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select (RM_seq) from RM where RMC_seq = #{range} and CPM_ID = #{cpm_id}
+	</select>
+	
+	<select id="selectRM_title" parameterType="java.lang.Integer" resultType="String">
+		select (RM_title) from RM where RM_seq = #{seq}
+	</select>	
+	
+	<select id="selectCpm_id"  parameterType="java.lang.Integer" resultType="String">
+		select (cpm_id) from RM where RM_seq = #{seq}
+	</select>
+	
+	<select id="selectRMJ_career"  parameterType="java.lang.Integer" resultType="String">
+		select (rmj_career) from RM_job where RMJ_seq = (select (rmj_seq) from RM where RM_seq = #{seq})
+	</select>
+	
+	<select id="selectRMA_studyLV" parameterType="java.lang.Integer" resultType="String">
+		select (rma_studyLV) from RM_apply where RMA_seq = (select (rma_seq) from RM where RM_seq = #{seq})
+	</select>
+	
+	<select id="selectRMJ_type" parameterType="java.lang.Integer" resultType="String">
+		select (rmj_type) from RM_job where RMJ_seq = (select (rmj_seq) from RM where RM_seq = #{seq})
+	</select>
+	
+	<select id="selectRMT_endDate" parameterType="java.lang.Integer" resultType="java.util.Date">
+		select (rmt_enddate) from RM_time where RMT_seq = (select (rmt_seq) from RM where RM_seq = #{seq})
 	</select>
 </mapper>
