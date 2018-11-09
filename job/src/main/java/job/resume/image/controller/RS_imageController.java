@@ -57,8 +57,8 @@ public class RS_imageController {
 //				"c:/users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
 				//집 컴퓨터 경로
 //				"C:/Users/jo2ri/git/jobplus555/job/src/main/webapp/job/resume/image/img/storage";
-				"C:/Users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
-				
+//				"C:/Users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
+				"C:/Users/user/git/jobplus3/job/src/main/webapp/job/resume/image/img/storage";
 		
 		String fileName = img.getOriginalFilename();
  		File file = new File(filePath, fileName);

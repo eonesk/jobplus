@@ -5,9 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="mybatis.logoMapper">
 	
-	<insert id="logoInsert" parameterType="imageDTO">
+	<insert id="logoInsert" parameterType="logoDTO">
 	 	INSERT INTO COMPANYLOGO VALUES 
-		(COMPANYLOGO_SEQ.NEXTVAL, #{cpl_Name}, #{cpi_Seq})
+		(COMPANYLOGO_SEQ.NEXTVAL, #{cpl_Name}, #{cpm_Id})
 	</insert>
-	 
+	
+	<select id="logoTopList" parameterType="String" resultType="logoDTO">
+		SELECT 
+		CPL_SEQ,
+		CPL_NAME,
+		CPM_ID,
+		FROM 
+		COMPANYLOGO
+		WHERE ROWNUM <![CDATA[<]]> 2 AND CPM_ID = 'comId' ORDER BY CPL_SEQ DESC
+	</select>
+	
 </mapper>

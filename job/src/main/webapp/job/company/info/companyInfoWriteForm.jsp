@@ -396,8 +396,8 @@ var modify = ${modify};
 	<div class="div companyLogo">
 		<p class="p companyInfo">로고</p>
 		<fieldset>
-			<input type="button" value="등록" class="button">
-			<div><img src="" name="cpl_Seq" id="cpl_Seq"></div>
+			<input type="button" value="등록" class="button" id="logo_btn" onclick="window.open('/job/job/company/logo/logoWriteForm.jsp','','width=460, height=300, left=100, top=50')">
+			<div><img src="/job/job/company/logo/img/storage/${logoDTO.cpl_Name}" name="cpl_Seq" id="cpl_Seq"></div>
 		</fieldset>
 	</div>
 	<div class="div CPI_vision">

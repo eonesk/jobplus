@@ -22,6 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{rspf_Seq, jdbcType=INTEGER}, #{rsv_Seq, jdbcType=INTEGER}, #{rspr_Seq, jdbcType=INTEGER}, sysdate)
 	</insert>
 
+	<select id="selectResumeList" parameterType="String" resultType="resumeListDTO">
+		select RS_seq, RS_title, RS_logdate from resume where M_id=#{memId}
+	</select>
+
 	<select id="selectResume" parameterType="java.util.Map" resultType="resumeDTO">
 		select * from resume where M_id=#{memId} and rs_seq=#{rs_seq}
 	</select>

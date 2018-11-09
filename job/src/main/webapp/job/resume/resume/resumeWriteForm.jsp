@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JOBPLUS-이력서</title>
 <link href="./css/resume.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -20,7 +20,7 @@ $("#rs_seq").val(null);
 		
 		$("#rs_workspace_btn").click(function() {
 			if(rs_workspace_cnt > 3){
-				alert("희망근무지는 3곳까지 선택 할 수 있습니다.");
+				alert("희망근무지는 3곳까지 선택 할 수 있습니다.\n삭제를 원하실 경우 해당 근무지를 클릭하세요.");
 				return false;
 			}
 			if(rs_workspace_btn_ck){
@@ -48,7 +48,20 @@ $("#rs_seq").val(null);
 						var data1 = $("#rs_workspace_select1 > select > option:selected").val();
 						var data2 = $("#rs_workspace_select2 > select > option:selected").val();
 						var result = data1 + " > "+ data2;
+						
 						rs_workspace_cnt = $("#rs_workspace_result input[type=button]").length;
+						for(var i=0; i<rs_workspace_cnt; i++){
+							if(result == $("#rs_workspace"+i).val()){
+								alert("이미 입력된 희망근무지입니다.");
+								rs_workspace_btn_ck = false;
+								$("#rs_workspace_select1").empty().hide();
+								$("#rs_workspace_select2").empty().hide();
+								$(document).off("change", "#rs_workspace_select1 > select");
+								$(document).off("change", "#rs_workspace_select2 > select");
+								return false;
+							}
+						}
+						
 						var clone_workspace = $("#rs_workspace").clone().attr('id', 'rs_workspace'+rs_workspace_cnt);
 						clone_workspace.insertBefore("#rs_workspace");
 						$("#rs_workspace"+(rs_workspace_cnt)).val(result);
@@ -83,7 +96,7 @@ $("#rs_seq").val(null);
 		
 		$("#rs_job_btn").on("click", function() {
 			if(rs_job_cnt > 3){
-				alert("희망직종은 3종류까지 선택 할 수 있습니다.");
+				alert("희망직종은 3종류까지 선택 할 수 있습니다.\n삭제를 원하실 경우 해당 직종를 클릭하세요.");
 				return false;
 			}
 			if(rs_job_btn_ck){
@@ -125,8 +138,21 @@ $("#rs_seq").val(null);
 						var data2 = $("#rs_job_select2 > select > option:selected").val();
 						var data3 = $("#rs_job_select3 > select > option:selected").val();
 						var result = data1 + " > "+ data2 + " > " + data3;
-						rs_job_cnt = $("#rs_job_result input[type=button]").length;
 						
+						rs_job_cnt = $("#rs_job_result input[type=button]").length;
+						for(var i=0; i<rs_job_cnt; i++){
+							if(result == $("#rs_job"+i).val()){
+								alert("이미 입력된 희망직종입니다.");
+								rs_job_btn_ck = false;
+								$("#rs_job_select1").empty().hide();
+								$("#rs_job_select2").empty().hide();
+								$("#rs_job_select3").empty().hide();
+								$(document).off("change", "#rs_job_select1 > select");
+								$(document).off("change", "#rs_job_select2 > select");
+								$(document).off("change", "#rs_job_select3 > select");
+								return false;
+							}
+						}
 						var clone_job = $("#rs_job").clone().attr('id', 'rs_job'+rs_job_cnt);
 						clone_job.insertBefore("#rs_job");
 						$("#rs_job"+(rs_job_cnt)).val(result);
@@ -368,42 +394,54 @@ $("#rs_seq").val(null);
 		$("#writeBtn").on("click", function() {
 			if($("#rs_name").val() == ""){
 				alert("이름을 입력하세요.");
+				$("#rs_name").focus();
 				return false;
 			}else if($("#rs_birth").val() == ""){
 				alert("생년월일을 입력하세요.");
+				$("#rs_birth").focus();
 				return false;
 			}else if($("#rs_gender option:selected").val() == "error"){
 				alert("성별을 선택하세요.");
+				$("#rs_gender").focus();
 				return false;
 			}else if($("#rs_email").val() == ""){
 				alert("이메일을 입력하세요.");
+				$("#rs_email").focus();
 				return false;
 			}else if($("#rs_homenum").val() == ""){
 				alert("집번호를 입력하세요.");
+				$("#rs_homenum").focus();
 				return false;
 			}else if($("#rs_phone").val() == ""){
 				alert("핸드폰번호를 입력하세요.");
+				$("#rs_phone").focus();
 				return false;
 			}else if($("#rs_address").val() == ""){
 				alert("주소를 입력하세요");
+				$("#rs_address").focus();
 				return false;
 			}else if($("#rs_type option:selected").val() == "error"){
 				alert("고용 형태를 선택하세요.");
+				$("#rs_type").focus();
 				return false;
 			}else if(!($("#rs_pay_no").is(":checked"))){
 				if($("#rs_pay").val() == ""){
 					alert("희망연봉을 작성하세요.");
+					$("#rs_pay").focus();
 					return false;
 				}					
 			}
 			if($("#rs_title").val() == ""){
 				alert("이력서 제목을 입력하세요.");
+				$("#rs_title").focus();
 				return false;
 			}else if($("#rs_workspace_result input[type=button]").length < 2){
 				alert("최소 1개의 희망 근무지를 선택하세요.");
+				$("#rs_workspace_btn").focus();
 				return false;
 			}else if($("#rs_job_result input[type=button]").length < 2){
 				alert("최소 1개의 직무 산업 키워드를 선택하세요.");
+				$("#rs_job_btn").focus();
 				return false;
 			}
 			var rs_seq = $("#rs_seq").val();
@@ -587,7 +625,8 @@ $("#rs_seq").val(null);
 <input type="hidden" id="rs_seq">
 <input type="hidden" id="memId" value="${sessionScope.memId }">
 <div id="header">
-	<a href="#" id="goMain" style="font-size: 36px; color: white; font-weight: bold; text-decoration: none; margin-left: 30px;">JOBPLUS</a>
+	<a href="#" id="goMain" style="font-size: 36px; color: white; font-weight: bold; text-decoration: none; margin-left: 450px;">JOBPLUS</a>
+	<a href="./resumeAdminBody.jsp" id="goResumeList" style="font-size: 18px; color: white; font-weight: bold; text-decoration: none; margin-left: 976px;">이력서 관리</a>
 </div>
 <div id="section">
 	<input type="text" name="rs_title" id="rs_title" placeholder="이력서 제목"><br>
@@ -724,6 +763,15 @@ $("#rs_seq").val(null);
 		<hr id="hr_resume">
 		<jsp:include page="../pr/prWriteForm.jsp"></jsp:include>
 	</div>
+</div>
+<div id="resumeFooter">
+	<h2 style="color: white;">안내사항</h2><br>
+	<ul id="resumeGuide">
+		<li>- 인적사항과 희망근무조건의 항목들은 모두 필수 기재사항입니다.</li>
+		<li>- 이력서 항목들은 개별적으로 저장하여 관리가 가능하며 새로운 이력서 작성 시 전에 저장했던 내용을 불러올 수 있습니다.</li>
+		<li>- 이력서 항목들은 개별적으로 저장해야 본 이력서에 입력이 완료됩니다.</li>
+		<li>- 이력서 항목들은 최대 1개 또는 3개까지 작성가능합니다.</li>
+	</ul>
 </div>
 <div id="nav">
 		<h2>이력서 항목</h2>

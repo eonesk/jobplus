@@ -1,7 +1,10 @@
 package job.resume.controller;
 
+import java.util.List;
+
 import job.member.bean.MemberDTO;
 import job.resume.bean.ResumeDTO;
+import job.resume.bean.ResumeListDTO;
 
 public interface ResumeService {
 	// 이력서 새로 입력
@@ -22,4 +25,6 @@ public interface ResumeService {
 	public ResumeDTO selectResume(String memId, int rs_seq);
 	
 	public int selectLastSeq(String memId);
+	
+	public List<ResumeListDTO> selectResumeList(String memId);
 }
