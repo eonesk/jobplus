@@ -24,4 +24,8 @@ public class RM_personnelDAO {
 	public int selectLastSeq() {
 		return sqlSession.selectOne("mybatis.personnelMapper.selectLastSeq");
 	}
+	
+	public RM_personnelDTO selectTable(int rmp_Seq) {
+		return sqlSession.selectOne("mybatis.personnelMapper.selectTable");
+	}
 }

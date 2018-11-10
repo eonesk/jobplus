@@ -24,4 +24,7 @@ public class RM_jobDAO {
 	public int selectLastSeq() {
 		return sqlSession.selectOne("mybatis.jobMapper.selectLastSeq");
 	}
+	public RM_jobDTO selectTable(int rmj_Seq) {
+		return sqlSession.selectOne("mybatis.jobMapper.selectTable", rmj_Seq);
+	}
 }

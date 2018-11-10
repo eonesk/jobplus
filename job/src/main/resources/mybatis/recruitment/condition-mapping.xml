@@ -14,4 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectLastSeq" resultType="int">
 		select max(RMC_seq) from RM_condition
 	</select>
+	<select id="selectTable" parameterType="int">
+		select * from RM_condition where RMC_seq=#{rmc_Seq}
+	</select>
 </mapper>

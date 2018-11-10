@@ -48,6 +48,10 @@ public class CompanyInfoController {
 				cpi_Birth_string = sdFormat.format(companyInfoDTO.getCpi_Birth());	
 			}
 			
+			String tmp = companyInfoDTO.getCpi_Type();
+			tmp = tmp.replace(",", "<br>");
+			companyInfoDTO.setCpi_Type(tmp);
+			
 			modelAndView.addObject("cpi_Birth", cpi_Birth_string);
 			modelAndView.addObject("companyInfoDTO", companyInfoDTO);
 			modify = true;
@@ -96,6 +100,12 @@ public class CompanyInfoController {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		if(data[2] != null) {
+			String tmp = data[2];
+			tmp = tmp.replace("<br>", ",");
+			data[2] = tmp;
 		}
 		
 		CompanyInfoDTO companyInfoDTO = new CompanyInfoDTO();

@@ -9,4 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		RM_seq.nextval(),#{cpm_Id},#{rm_Title},
 		#{rma_Seq},#{rmc_Seq},#{rmt_Seq},#{rmi_Seq},#{rmp_Seq})
 	</insert>
+	
+	<select id="selectRm" parameterType="int">
+		select * from rm where rm_seq=#{rm_Seq}
+	</select>
 </mapper>

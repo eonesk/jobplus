@@ -19,4 +19,8 @@ public class RM_conditionDAO {
 	public int selectLastSeq() {
 		return sqlSession.selectOne("mybatis.conditionMapper.selectLastSeq");
 	}
+	
+	public RM_conditionDTO selectTable(int rmc_Seq) {
+		return sqlSession.selectOne("mybatis.conditionMapper.selectTable", rmc_Seq);
+	}
 }

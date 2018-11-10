@@ -25,4 +25,9 @@ public class RM_personnelServiceImpl implements RM_personnelService {
 		return rm_personnelDAO.selectLastSeq();
 	}
 
+	@Override
+	public RM_personnelDTO selectTable(int rmp_Seq) {
+		return rm_personnelDAO.selectTable(rmp_Seq);
+	}
+
 }

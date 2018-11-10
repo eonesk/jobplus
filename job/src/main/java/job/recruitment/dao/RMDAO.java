@@ -15,4 +15,8 @@ public class RMDAO {
 	public int Write(RMDTO rmDTO) {
 		return sqlSession.insert("mybatis.rmMapper.Write", rmDTO);
 	}
+	
+	public RMDTO selectRm(int rm_Seq) {
+		return sqlSession.selectOne("mybatis.rmMapper.selectRm", rm_Seq);
+	}
 }
