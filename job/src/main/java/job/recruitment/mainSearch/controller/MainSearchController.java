@@ -28,8 +28,9 @@ public class MainSearchController {
 		
 		List<Integer> accumRange = new ArrayList<>();
 		List<Integer> rm_seq = new ArrayList<>();
+		List<Integer> rm_seqRange = new ArrayList<>();
 		String cpm_id = "";
-		
+
 		String searchCompany = request.getParameter("searchCompany");
 		System.out.println("[MainSearchController] searchCompany : " + searchCompany);
 		
@@ -328,9 +329,37 @@ public class MainSearchController {
 					}					
 				}
 			}
+		}		
+
+		// 데이터
+		//
+		String str_pg = request.getParameter("pg");
+		int pg = 1;
+		if(str_pg != null) {
+			pg = Integer.parseInt(str_pg);
 		}
 		
-		for(int seq:rm_seq) {
+		int endNum = pg * 5;
+		int startNum = endNum - 4;
+		//	rm_listRange	
+		if(endNum > rm_seq.size()) {
+			endNum = rm_seq.size();
+		}
+		
+		for(int i = (startNum - 1); i <= (endNum - 1); i++) {
+			rm_seqRange.add(rm_seq.get(i));
+		}
+		
+		int totalA = rm_seq.size();
+		int totalP = (totalA + 4) / 5;
+		
+		int startPage = (((pg - 1) / 3 ) * 3 ) + 1;			// (2-1)/3*3+1 = 1		
+		int endPage = startPage + 2;
+		if(endPage > totalP) {
+			endPage = totalP;
+		}
+		
+		for(int seq:rm_seqRange) {
 			System.out.println("[Last]rm_seq : " + seq);
 			MainSearchDTO mainSearchDTO = new MainSearchDTO();
 			
@@ -374,9 +403,23 @@ public class MainSearchController {
 		
 		System.out.println("rm_seq.size : " + rm_seq.size());
 		System.out.println("rm_list : " + rm_list);
+		System.out.println("rm_listSize" + rm_list.size());
 		System.out.println("cpm_id : " + cpm_id);
 		
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		
+		modelAndView.addObject("searchCompany", searchCompany);
+		modelAndView.addObject("searchRegion", searchRegion);
+		modelAndView.addObject("jobSelect3", jobSelect3);
 		modelAndView.addObject("rm_list", rm_list);
+		modelAndView.addObject("listSize", rm_seq.size());
+		modelAndView.addObject("searchRegionLength", searchRegion.length);
+		modelAndView.addObject("jobSelect3Length", jobSelect3.length);
+		modelAndView.addObject("req", "/main/searchResultList.jsp");
+		
 		modelAndView.setViewName("/main/mainSearchResultForm.jsp");
 		
 		
