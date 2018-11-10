@@ -25,4 +25,9 @@ public class RM_jobServiceImpl implements RM_jobService {
 	public int selectLastSeq() {
 		return rm_jobDAO.selectLastSeq();
 	}
+
+	@Override
+	public RM_jobDTO selectTable(int rmj_Seq) {
+		return rm_jobDAO.selectTable(rmj_Seq);
+	}
 }

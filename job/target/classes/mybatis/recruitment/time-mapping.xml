@@ -12,4 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectLastSeq" resultType="int">
 		select max(RMT_seq) from RM_time
 	</select>
+	<select id="selectTable" parameterType="int">
+		select * from RM_time where RMT_seq=#{rmt_Seq}
+	</select>
 </mapper>

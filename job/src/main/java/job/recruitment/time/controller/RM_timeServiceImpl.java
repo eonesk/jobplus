@@ -22,4 +22,9 @@ public class RM_timeServiceImpl implements RM_timeService {
 		return timeDAO.selectLastSeq();
 	}
 
+	@Override
+	public RM_timeDTO selectTable(int rmt_Seq) {
+		return timeDAO.selectTable(rmt_Seq);
+	}
+
 }

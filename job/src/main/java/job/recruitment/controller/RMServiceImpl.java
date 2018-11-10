@@ -16,4 +16,9 @@ public class RMServiceImpl implements RMService {
 	public int Write(RMDTO rmDTO) {
 		return rmDAO.Write(rmDTO); 
 	}
+
+	@Override
+	public RMDTO selectRM(int rm_Seq) {
+		return rmDAO.selectRm(rm_Seq);
+	}
 }

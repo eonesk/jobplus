@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import job.company.info.bean.CompanyInfoDTO;
+import job.company.info.controller.CompanyInfoService;
 import job.recruitment.apply.bean.RM_applyDTO;
 import job.recruitment.apply.controller.RM_applyService;
 import job.recruitment.bean.RMDTO;
@@ -47,6 +49,8 @@ public class RMController {
 	private RM_jobService jobService;
 	@Autowired
 	private RM_introductionService introductionService;
+	@Autowired
+	private CompanyInfoService companyInfoService;
 	
 	@RequestMapping(value= "/main/rmViewForm.do")
 	public ModelAndView rmViewForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -57,6 +61,26 @@ public class RMController {
 		int rm_Seq = 1;
 		String cpm_Id = "test";
 		
+		CompanyInfoDTO companyInfoDTO = companyInfoService.selectCompanyInfo(cpm_Id);
+		//회사로고도 가져오긴 해야함
+		RMDTO rmDTO = rmService.selectRM(rm_Seq);
+		
+		RM_applyDTO applyDTO = applyService.selectTable(rmDTO.getRma_Seq());
+		RM_conditionDTO conditionDTO = conditionService.selectTable(rmDTO.getRmc_Seq());
+		RM_timeDTO timeDTO = timeService.selectTable(rmDTO.getRmt_Seq());
+		RM_introductionDTO introductionDTO = introductionService.selectTable(rmDTO.getRmi_Seq());
+		RM_personnelDTO personnelDTO = personnelService.selectTable(rmDTO.getRmp_Seq());
+		RM_jobDTO jobDTO = jobService.selectTable(rmDTO.getRmj_Seq());
+		
+		modelAndView.addObject("companyInfoDTO",companyInfoDTO);
+		modelAndView.addObject("rmDTO", rmDTO);
+		modelAndView.addObject("applyDTO", applyDTO);
+		modelAndView.addObject("conditionDTO", conditionDTO);
+		modelAndView.addObject("timeDTO", timeDTO);
+		modelAndView.addObject("introductionDTO", introductionDTO);
+		modelAndView.addObject("personnelDTO", personnelDTO);
+		modelAndView.addObject("jobDTO", jobDTO);
+				
 		modelAndView.setViewName("/main/rmViewForm.jsp");
 		return modelAndView;
 	}

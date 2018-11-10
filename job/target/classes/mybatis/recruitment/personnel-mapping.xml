@@ -15,4 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectLastSeq" resultType="int">
 		select max(RMP_seq) from RM_personnel
 	</select>
+	<select id="selectTable" parameterType="int">
+		select * from RM_personnel where RMP_seq=#{rmp_Seq}
+	</select>
 </mapper>

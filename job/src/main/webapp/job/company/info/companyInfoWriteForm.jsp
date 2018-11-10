@@ -49,10 +49,15 @@ var modify = ${modify};
 			}
 			for(var i=2; i<7; i++){
 				if($("input:checkbox[name=cpi_Type"+ i + "]").is(':checked')){
-					cpi_Type_font += $("input:checkbox[name='cpi_Type" + i +"']:checked").val();
-					cpi_Type += $("input:radio[name='cpi_Type1']:checked").val();
-					cpi_Type_font += "<br>";
-					cpi_Type += ",";
+					var length = $("input:checkbox[name=cpi_Type"+ i + "]").length;
+					for(var k=1; k<length; k++){
+						if($("input:checkbox[id=cpi_Type"+ i + "-"+ k +"]").is(':checked')){
+							cpi_Type_font += $("input:checkbox[id='cpi_Type"+ i +"-"+ k +"']:checked").val();
+							cpi_Type += $("input:checkbox[id='cpi_Type"+ i +"-"+ k +"']:checked").val();
+							cpi_Type_font += "<br>";
+							cpi_Type += ",";
+						}
+					}
 				}
 			}
 			

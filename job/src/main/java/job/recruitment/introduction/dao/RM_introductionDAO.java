@@ -19,4 +19,8 @@ public class RM_introductionDAO {
 	public int selectLastSeq() {
 		return sqlSession.selectOne("mybatis.introductionMapper.selectLastSeq");
 	}
+	
+	public RM_introductionDTO selectTable(int rmi_Seq) {
+		return sqlSession.selectOne("mybatis.introductionMapper.selectTable", rmi_Seq);
+	}
 }

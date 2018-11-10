@@ -22,4 +22,9 @@ public class RM_conditionServiceImpl implements RM_conditionService {
 		return conditionDAO.selectLastSeq();
 	}
 
+	@Override
+	public RM_conditionDTO selectTable(int rmc_Seq) {
+		return conditionDAO.selectTable(rmc_Seq);
+	}
+
 }

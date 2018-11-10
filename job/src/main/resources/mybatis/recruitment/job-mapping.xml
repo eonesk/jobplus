@@ -15,4 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectLastSeq" resultType="int">
 		select max(RMJ_seq) from RM_job
 	</select>
+	<select id="selectTable" parameterType="int">
+		select * from RM_job where RMJ_seq=#{rmj_Seq}
+	</select>
 </mapper>

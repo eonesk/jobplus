@@ -19,4 +19,7 @@ public class RM_timeDAO {
 	public int selectLastSeq() {
 		return sqlSession.selectOne("mybatis.timeMapper.selectLastSeq");
 	}
+	public RM_timeDTO selectTable(int rmt_Seq) {
+		return sqlSession.selectOne("mybatis.timeMapper.selectTable", rmt_Seq);
+	}
 }
