@@ -1,7 +1,6 @@
 package job.recruitment.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +19,6 @@ import job.recruitment.apply.controller.RM_applyService;
 import job.recruitment.bean.RMDTO;
 import job.recruitment.condition.bean.RM_conditionDTO;
 import job.recruitment.condition.controller.RM_conditionService;
-import job.recruitment.dao.RMDAO;
 import job.recruitment.introduction.bean.RM_introductionDTO;
 import job.recruitment.introduction.controller.RM_introductionService;
 import job.recruitment.job.bean.RM_jobDTO;

@@ -218,8 +218,12 @@ body {
 #timeWrap {
 	margin: 50px;
 	padding: auto;
-	width: 800px;
+/* 	width: 800px; */
 	padding-bottom: 32px;
+	/**/
+	width: 811px;
+	position: relative;
+    left: 4%;
 }
 
 h2 {
@@ -409,6 +413,7 @@ h2 {
 </style>
 </head>
 <body>
+<div id="time_container" class="time_container">
 <form action="timeWriteFormNext.do" method="post" name="timeWriteForm">
 	<div id="timeWrap">
 		<div id="timeTitle">
@@ -531,5 +536,6 @@ h2 {
 		</div>
 	</div>
 </form>
+</div>
 </body>
 </html>

@@ -192,6 +192,7 @@ ul.list_gnb li {
     min-height: 600px;
     vertical-align: top;
     text-align: left; 
+    margin-bottom: -50px;/*<-*/
 }
 .wrap_contents.control_margin #content {
     margin-bottom: 50px !important;

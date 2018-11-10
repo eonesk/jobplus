@@ -65,7 +65,6 @@ $(function() {
 			return false;
 		}
 		document.logoWriteForm.submit();
-		self.close();
 	});
 	$("#logo_cancle").click(function() {
 		window.close();
@@ -98,7 +97,7 @@ $(function() {
 <div>
 	<form action="logoWrite.do" id='logoWriteForm' name="logoWriteForm" enctype="multipart/form-data" method="post">
 		<div class="uploadform">
-			<input type="file" name="logo" id="logo_upload" onchange="upload()">
+			<input type="file" name="img" id="logo_upload" onchange="upload()">
 			<ul>
 				<li>*파일형식은 jpg, jpeg, gif, png만 업로드 가능합니다</li>
 				<li>*등록 가능한 최대 용량은 1M입니다</li>

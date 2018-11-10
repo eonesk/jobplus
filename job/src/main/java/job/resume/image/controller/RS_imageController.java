@@ -31,7 +31,7 @@ public class RS_imageController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("display", "imageForm.jsp");
-		String memId = "num1";
+		String memId = "jobplus";
 		RS_imageDTO imageDTO = new RS_imageDTO();
 		imageDTO.setM_Id(memId);
 		imageDTO = imageService.ImageTopList(memId);
@@ -56,9 +56,9 @@ public class RS_imageController {
 				//학원 컴퓨터 경로
 //				"c:/users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
 				//집 컴퓨터 경로
-//				"C:/Users/jo2ri/git/jobplus555/job/src/main/webapp/job/resume/image/img/storage";
+				"C:/Users/jo2ri/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
 //				"C:/Users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
-				"C:/Users/user/git/jobplus3/job/src/main/webapp/job/resume/image/img/storage";
+//				"C:/Users/user/git/jobplus/job/src/main/webapp/job/resume/image/img/storage";
 		
 		String fileName = img.getOriginalFilename();
  		File file = new File(filePath, fileName);
@@ -73,7 +73,7 @@ public class RS_imageController {
 		}
 		
 		// 임의로 아이디 지정 (session값)
-		String memId = "num1";
+		String memId = "jobplus";
 		
 		//데이터
 		imageDTO.setM_Id(memId);
@@ -102,7 +102,7 @@ public class RS_imageController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		String memId = "num1";
+		String memId = "jobplus";
 		int numberOfImg = imageService.getImageOfId(memId); 
 		System.out.println("[RS_imageCtr] numberOfImg : " + numberOfImg);
 		out.print(numberOfImg);
@@ -149,7 +149,7 @@ public class RS_imageController {
 		String path = RS_imageController.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
 	    System.out.println(path); //--> 절대 경로가 출력됨
 		//데이터
-		String memId = "num1";
+		String memId = "jobplus";
 		String m_Id = request.getParameter(memId);
 		String str = request.getParameter("pg");
 		int pg = 0;
@@ -166,9 +166,11 @@ public class RS_imageController {
 //		int endNum = 10;
 //		int startNum = 1;
 		List<RS_imageDTO> list = imageService.ImageListOfId(startNum, endNum, memId);
+
 		System.out.println("list :: " + list);
 		//페이징 처리
 		int totalA = imageService.getImageOfId(memId);
+		System.out.println("total A :: "  + totalA);
 		int totalP = (totalA + 2) / 3;		// 총페이지수 = 9
 		int startPage = (pg-1)/3*3+1;
 		int endPage = startPage + 2;

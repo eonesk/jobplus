@@ -9,7 +9,6 @@
 <script type="text/javascript">
 	if(${su > 0}) {
 		alert("사진이 등록되었습니다.");
-		foward
 		self.close();
 	} else {
 		alert("등록에 실패하였습니다.");
@@ -18,6 +17,5 @@
 </script>
 </head>
 <body>
-
 </body>
 </html>

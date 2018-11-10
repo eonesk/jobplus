@@ -395,10 +395,14 @@ var modify = ${modify};
 	</div>
 	<div class="div companyLogo">
 		<p class="p companyInfo">로고</p>
-		<fieldset>
+ 		<fieldset>
+<!--
 			<input type="button" value="등록" class="button" id="logo_btn" onclick="window.open('/job/job/company/logo/logoWriteForm.jsp','','width=460, height=300, left=100, top=50')">
 			<div><img src="/job/job/company/logo/img/storage/${logoDTO.cpl_Name}" name="cpl_Seq" id="cpl_Seq"></div>
+ -->
+ 			<jsp:include page="/job/company/logo/logoForm.jsp"></jsp:include>	
 		</fieldset>
+
 	</div>
 	<div class="div CPI_vision">
 		<p class="p companyInfo">개요 및 비전</p>

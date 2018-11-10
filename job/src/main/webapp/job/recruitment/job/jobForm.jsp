@@ -16,14 +16,18 @@ body{
 	
 }
 .rmj_container{
-	background-color:#F2F2F2;
+/* 	background-color:#F2F2F2; */
 	font-family: "Malgun Gothic",gulim,dotum,sans-serif;
 	letter-spacing: -1px;
 	font-size:14px;
-	width: 880px;
+/* 	width: 880px; */
 	/* height:698px; */
-	margin:auto;
+/* 	margin:auto; */
 	line-height: 65px;
+	margin:50px;/*<-*/
+	width: 860px;/*<-*/
+	position: relative;/*<-*/
+    left: 1%;/*<-*/
 }
 
 .rmj_header{
