@@ -750,13 +750,14 @@ ul.list_gnb li {
 			}
 		});
 		
-		/* 로그아웃 버튼 */
+		/* 로그아웃 버튼  */
 		$("#logout").on("click", function() {	
 			location.href = "../main/logout.jsp";
 		});
 		
 		/* 메인에 있는 기업정보 클릭이벤트 (div버튼)  */
 		$("#main_Tbutton1").on("click", function() {
+			/* 채용정보로 넘어갈때 값두개 넘겨야함 */
 			window.open("../main/rmViewForm.do", "", "width=1000px height=900px");
 		});
 	});
