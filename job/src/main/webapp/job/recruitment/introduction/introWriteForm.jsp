@@ -58,7 +58,9 @@
 				$("#rmi_Official").focus();
 				return false;
 			}
-			window.open("/job/job/recruitment/introduction/introWrite.jsp", "", "width=500px height=500px");
+			$("#introCk").val("ok");
+			$("#rm_intro").hide();
+			$("#rm_apply").show();
 		});
 	});
 </script>

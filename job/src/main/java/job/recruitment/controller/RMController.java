@@ -86,10 +86,12 @@ public class RMController {
 	}
 	
 	@RequestMapping(value= "/main/rmWriteForm.do")
-	public ModelAndView rmWriteForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		ModelAndView modelAndView = new ModelAndView();
+	public void rmWriteForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		
 		HttpSession session = request.getSession();		
 		
+		session.setAttribute("comId", "test");
 		String cpm_Id = (String) session.getAttribute("comId");
 		
 		int rma_Seq = writeApply(request, response);
@@ -99,8 +101,8 @@ public class RMController {
 		int rmp_Seq = writePersonnel(request, response);
 		int rmj_Seq = writeJob(request, response);
 		
-		String rm_Title = request.getParameter("rm_Title");
-		
+		//String rm_Title = request.getParameter("rm_Title");
+		String rm_Title = "죽을거같아";
 		RMDTO rmDTO = new RMDTO();
 		rmDTO.setCpm_Id(cpm_Id);
 		rmDTO.setRm_Title(rm_Title);
@@ -112,10 +114,7 @@ public class RMController {
 		rmDTO.setRmj_Seq(rmj_Seq);
 		
 		int su = rmService.Write(rmDTO);
-		
-		modelAndView.addObject("su", su);
-		modelAndView.setViewName("/main/rmViewForm.jsp");
-		return modelAndView;
+		out.print(su);
 	}
 	
 	public int writeApply(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -142,12 +141,12 @@ public class RMController {
 		applyDTO.setRma_Gender(rma_Gender);
 		applyDTO.setRma_Age(rma_Age);
 		applyDTO.setRma_Age2(rma_Age2);
-		System.out.println(applyDTO.toString());
 		// (2) DB			
 		int su = applyService.Write(applyDTO);
 		int rma_Seq = 0;
 		if(su>0) {
 			rma_Seq = applyService.selectLastSeq();
+			System.out.println("rma 저장");
 		}
 		// (3) 화면네비게이션
 		return rma_Seq;
@@ -156,13 +155,13 @@ public class RMController {
 		// 데이터
 		response.setContentType("text/html; charset=UTF-8");		
 				
-		String rmc_Salary = request.getParameter("rmc_Salary1");
-		String rmc_Business1 = request.getParameter("rmc_Business1");
-		String rmc_Business2 = request.getParameter("rmc_Business2");
-		String rmc_Business3 = request.getParameter("rmc_Business3");
-		String rmc_Workspace = request.getParameter("rmc_Workspace");
-		String rmc_Week = request.getParameter("rmc_Week");
-		String rmc_Time = request.getParameter("rmc_Time");
+		String rmc_Salary = request.getParameter("rmc_Salary1_hidden");
+		String rmc_Business1 = request.getParameter("rmc_Business1_hidden");
+		String rmc_Business2 = request.getParameter("rmc_Business2_hidden");
+		String rmc_Business3 = request.getParameter("rmc_Business3_hidden");
+		String rmc_Workspace = request.getParameter("rmc_Workspace_hidden");
+		String rmc_Week = request.getParameter("rmc_Week_hidden");
+		String rmc_Time = request.getParameter("rmc_Time_hidden");
 		
 		RM_conditionDTO conditionDTO = new RM_conditionDTO();
 		conditionDTO.setRmc_Salary(rmc_Salary);
@@ -177,6 +176,7 @@ public class RMController {
 		int rmc_Seq = 0;
 		if(su>0) {
 			rmc_Seq = conditionService.selectLastSeq();
+			System.out.println("rmc 작성");
 		}
 		// (3) 화면네비게이션
 		return rmc_Seq;
@@ -184,11 +184,15 @@ public class RMController {
 	public int writeTime(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html; charset=UTF-8");		
 		
+		System.out.println(request.getParameter("rmt_Startdate"));
+		System.out.println(request.getParameter("rmt_Enddate"));
 		Date rmt_Startdate = null;
 		Date rmt_Enddate = null;
 		try {
 			rmt_Startdate = new SimpleDateFormat("yyyyMMdd").parse(request.getParameter("rmt_Startdate"));
 			rmt_Enddate = new SimpleDateFormat("yyyyMMdd").parse(request.getParameter("rmt_Enddate"));
+			System.out.println(rmt_Startdate);
+			System.out.println(rmt_Enddate);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -205,6 +209,7 @@ public class RMController {
 		int rmt_Seq = 0;
 		if(su>0) {
 			rmt_Seq = timeService.selectLastSeq();
+			System.out.println("rmt 작성");
 		}
 		// (3) 화면네비게이션
 		return rmt_Seq;
@@ -234,6 +239,7 @@ public class RMController {
 		int rmi_Seq = 0;
 		if(su>0) {
 			rmi_Seq = introductionService.selectLastSeq();
+			System.out.println("rmi 작성");
 		}
 		// (3) 화면네비게이션
 		return rmi_Seq;
@@ -242,11 +248,11 @@ public class RMController {
 		// 데이터
 		response.setContentType("text/html; charset=UTF-8");		
 		
-		String rmp_name = request.getParameter("rmp_name");
-		String rmp_dept = request.getParameter("rmp_dept");
-		String rmp_email = request.getParameter("rmp_email");
-		String rmp_phone1 = request.getParameter("rmp_phone1");
-		String rmp_phone2 = request.getParameter("rmp_phone2");		
+		String rmp_name = request.getParameter("rmp_name_hidden");
+		String rmp_dept = request.getParameter("rmp_dept_hidden");
+		String rmp_email = request.getParameter("rmp_email_hidden");
+		String rmp_phone1 = request.getParameter("rmp_phone1_hidden");
+		String rmp_phone2 = request.getParameter("rmp_phone2_hidden");		
 					
 		//테스트용
 		String cpm_id = "test";
@@ -268,6 +274,7 @@ public class RMController {
 		int rmp_Seq = 0;
 		if(su>0) {
 			rmp_Seq = personnelService.selectLastSeq();
+			System.out.println("rmp 작성");
 		}
 		// (3) 화면네비게이션
 		return rmp_Seq;
@@ -276,11 +283,11 @@ public class RMController {
 		// 데이터
 		response.setContentType("text/html; charset=UTF-8");		
 		
-		String rmj_job = request.getParameter("rmj_job");
-		String rmj_career = request.getParameter("rmj_career");
-		String rmj_careerStart = request.getParameter("rmj_careerStart");
-		String rmj_careerEnd = request.getParameter("rmj_careerEnd");
-		String rmj_type = request.getParameter("rmj_type");		
+		String rmj_job = request.getParameter("rmj_job_hidden");
+		String rmj_career = request.getParameter("rmj_career_hidden");
+		String rmj_careerStart = request.getParameter("rmj_careerStart_hidden");
+		String rmj_careerEnd = request.getParameter("rmj_careerEnd_hidden");
+		String rmj_type = request.getParameter("rmj_type_hidden");		
 					
 		RM_jobDTO rm_jobDTO = new RM_jobDTO();
 		rm_jobDTO.setRmj_job(rmj_job);
@@ -293,6 +300,7 @@ public class RMController {
 		int rmj_Seq = 0;
 		if(su>0) {
 			rmj_Seq = jobService.selectLastSeq();
+			System.out.println("rmj 작성");
 		}
 		// (3) 화면네비게이션
 		return rmj_Seq;

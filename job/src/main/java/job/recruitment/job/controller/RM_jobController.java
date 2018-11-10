@@ -25,7 +25,6 @@ public class RM_jobController {
 		response.setContentType("text/html; charset=UTF-8");		
 		PrintWriter out = response.getWriter();
 		
-		
 		String rmj_job = request.getParameter("rmj_job");
 		String rmj_career = request.getParameter("rmj_career");
 		String rmj_careerStart = request.getParameter("rmj_careerStart");

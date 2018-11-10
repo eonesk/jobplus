@@ -235,38 +235,26 @@ body{
 		        	rmj_type += ($(this).val()) + " ";
 		        }
 		    });
-		
-			var allData ={
-				"rmj_job" : $("#rmj_job").val(),
-				"rmj_career" : rmj_career,
-				"rmj_careerStart" : $("#rmj_hideSelect1").val(),
-				"rmj_careerEnd" : $("#rmj_hideSelect2").val(),
-				"rmj_type" : rmj_type
-			};
-			
-			$.ajax({
-				type: 'POST',
-				url: 'save.do',
-				data:allData,
-				dataType: 'text',
-				cache: false,
-				success: function(data) {
-					if(data == 0) {
-						alert("실패");
-					} else {
-						alert("성공");
-					}		
-				},
-			
-				error : function(e) {
-		            alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
-		     	}
-			});
+		    $("#rmj_job_hidden").val($("#rmj_job").val());
+		    $("#rmj_career_hidden").val(rmj_career);
+		    $("#rmj_careerStart_hidden").val($("#rmj_hideSelect1").val());
+		    $("#rmj_careerEnd_hidden").val($("#rmj_hideSelect2").val());
+		    $("#rmj_type_hidden").val(rmj_type);
+		    
+			$("#jobCk").val("ok");
+			$("#rm_job").hide();
+			$("#rm_intro").show();
 		});
 	});
 </script>
 </head>
 <body>
+<input type="hidden" id="rmj_job_hidden">
+<input type="hidden" id="rmj_career_hidden">
+<input type="hidden" id="rmj_careerStart_hidden">
+<input type="hidden" id="rmj_careerEnd_hidden">
+<input type="hidden" id="rmj_type_hidden">
+
 <div id="rmj_container" class="rmj_container">
 	<p id="rmj_header" class="rmj_header">어떤 인재를 뽑을 계획이세요?</p>
 	<div id="rmj_content" class="rmj_content">

@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.rmMapper">
 	<insert id="insertRM" parameterType="rmDTO">
 		insert into RM values(
-		RM_seq.nextval(),#{cpm_Id},#{rm_Title},
-		#{rma_Seq},#{rmc_Seq},#{rmt_Seq},#{rmi_Seq},#{rmp_Seq})
+		RM_seq.nextval,#{cpm_Id},#{rm_Title},
+		#{rma_Seq},#{rmc_Seq},#{rmt_Seq},#{rmi_Seq},#{rmp_Seq},#{rmj_Seq})
 	</insert>
 	
 	<select id="selectRm" parameterType="int" resultType="rmDTO">

@@ -533,15 +533,36 @@ body {
 			} else if($("input[name='rmc_Workspace']").val() == "") {
 				alert("근무지역을 입력해주세요.");
 			} else {
-				alert("완성");
+				$("#rmc_Salary1_hidden").val($("select[name='rmc_Salary1']").val());	
+				$("#rmc_Salary2_hidden").val($("input[name='rmc_Salary2']").val());		
+				$("#rmc_Business1_hidden").val($("input[name='rmc_Business1']").val());		
+				$("#rmc_Business2_hidden").val($("input[name='rmc_Business2']").val());	
+				$("#rmc_Business3_hidden").val($("input[name='rmc_Business3']").val());		
+				$("#rmc_Workspace_hidden").val($("input[name='rmc_Workspace']").val());		
+				$("#rmc_Workspace0_hidden").val($("input[name='rmc_Workspace0']").val());		
+				$("#rmc_Week_hidden").val($("select[name='rmc_Week']").val());		     
+				$("#rmc_Time_hidden").val($("select[name='rmc_Time']").val());		     
+				
+				$("#conditionCk").val("ok");
+				$("#rm_condition").hide();
+				$("#rm_time").show();
 			}
-			
 		});
 
 	});
 </script>
 </head>
 <body>
+<input type="hidden" id="rmc_Salary1_hidden">
+<input type="hidden" id="rmc_Salary2_hidden">
+<input type="hidden" id="rmc_Business1_hidden">
+<input type="hidden" id="rmc_Business2_hidden">
+<input type="hidden" id="rmc_Business3_hidden">
+<input type="hidden" id="rmc_Workspace_hidden">
+<input type="hidden" id="rmc_Workspace0_hidden">
+<input type="hidden" id="rmc_Week_hidden">
+<input type="hidden" id="rmc_Time_hidden">
+
 <div id="cdtion_container" class="cdtion_container">
 <form action="conditionWriteFormNext.do" method="POST" name="timeWriteForm">
 	<div id="conditionWrap">

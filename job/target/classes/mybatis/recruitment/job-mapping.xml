@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.jobMapper">
 	<insert id="save" parameterType="jobDTO">	
 	 	insert into RM_job values  
-		(RM_job_SEQ.nextval,#{rmj_job},#{rmj_career},#{rmj_careerStart},#{rmj_careerEnd},
+		(RM_job_SEQ.nextval,#{rmj_job},#{rmj_career},#{rmj_careerStart, jdbcType=VARCHAR},#{rmj_careerEnd, jdbcType=VARCHAR},
 		#{rmj_type}) 
 	</insert>	
 	<select id="load" parameterType="int" resultType="jobDTO">

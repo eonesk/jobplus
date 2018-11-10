@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mybatis.personnelMapper">
 	<insert id="save" parameterType="personnelDTO">	
 	 	insert into RM_personnel values  
-		(RM_personnel_SEQ.nextval,#{cpm_id},#{rmp_name},#{rmp_dept},#{rmp_email},
-		#{rmp_phone1},#{rmp_phone2}) 
+		(RM_personnel_SEQ.nextval,#{cpm_id},#{rmp_name},#{rmp_dept, jdbcType=VARCHAR},#{rmp_email},
+		#{rmp_phone1},#{rmp_phone2, jdbcType=VARCHAR}) 
 	</insert>	
 	<select id="load" parameterType="int" resultType="personnelDTO">
 		select * from RM_personnel where RMP_seq=#{rmp_seq}

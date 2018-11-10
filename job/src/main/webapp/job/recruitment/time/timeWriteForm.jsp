@@ -157,8 +157,14 @@
 			} else if($("input[name='rmt_Enddate']").val() == "") {
 				alert("접수종료일을 입력해주세요.");
 				$("input[name='rmt_Enddate']").focus();
-			} else {
-				document.timeWriteForm.submit();
+			} else if($("input[name='rmt_Form']").val() == ""){
+				alert("접수양식을 입력해주세요.");
+				$("input[name='rmt_Form']").focus();
+			}else{
+				
+				$("#timeCk").val("ok");
+				$("#rm_time").hide();
+				$("#rm_personnel").show();
 			}
 		});
 /////////////////////////////////////////////////////////		
@@ -413,6 +419,10 @@ h2 {
 </style>
 </head>
 <body>
+<input type="hidden" id="rmt_StartDate_hidden">
+<input type="hidden" id="rmt_EndDate_hidden">
+<input type="hidden" id="rmt_How_hidden">
+<input type="hidden" id="rmt_Form_hidden">
 <div id="time_container" class="time_container">
 <form action="timeWriteFormNext.do" method="post" name="timeWriteForm">
 	<div id="timeWrap">
