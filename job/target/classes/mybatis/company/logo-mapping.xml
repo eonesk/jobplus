@@ -12,12 +12,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="logoTopList" parameterType="String" resultType="logoDTO">
 		SELECT 
-		CPL_SEQ,
-		CPL_NAME,
-		CPM_ID,
+			CPL_SEQ,
+			CPL_NAME, 
+			CPM_ID
 		FROM 
 		COMPANYLOGO
-		WHERE ROWNUM <![CDATA[<]]> 2 AND CPM_ID = 'comId' ORDER BY CPL_SEQ DESC
+		WHERE ROWNUM <![CDATA[<]]> 2 AND CPM_ID = #{cpm_Id} ORDER BY CPL_SEQ DESC
 	</select>
 	
+	<select id="viewLogoOfId" parameterType="String" resultType="logoDTO">
+		SELECT * FROM COMPANYLOGO WHERE CPM_ID = #{cpm_Id}
+	</select>
+	
+	 <select id="logoListOfId" parameterType="java.util.Map" resultType="logoDTO">
+ 		<![CDATA[ SELECT * FROM 
+ 				 (SELECT ROWNUM RN,TT.*FROM 
+ 				 (SELECT * FROM COMPANYLOGO WHERE CPM_ID = #{cpm_Id} ORDER BY CPL_SEQ DESC) TT)
+ 				 WHERE RN >= #{startNum} AND RN <= #{endNum} ]]>
+ 	</select> 
+ 	
+ 	<select id="getLogoOfId" parameterType="String" resultType="int">
+		SELECT COUNT (*) FROM COMPANYLOGO WHERE CPM_ID = #{cpm_Id}
+	</select>
 </mapper>

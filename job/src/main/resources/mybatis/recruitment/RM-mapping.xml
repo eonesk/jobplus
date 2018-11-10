@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{rma_Seq},#{rmc_Seq},#{rmt_Seq},#{rmi_Seq},#{rmp_Seq})
 	</insert>
 	
-	<select id="selectRm" parameterType="int">
+	<select id="selectRm" parameterType="int" resultType="rmDTO">
 		select * from rm where rm_seq=#{rm_Seq}
 	</select>
 </mapper>
