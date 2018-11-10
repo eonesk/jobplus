@@ -61,8 +61,7 @@ $(document).ready(function() {
 	$("#rm_personnel").hide();
 	
 	$("#next_btn1").click(function() {
-		$("#rm_job").hide();
-		$("#rm_intro").show();
+		
 	});
 	$("#next_btn2").click(function() {
 		$("#rm_intro").hide();
@@ -111,6 +110,12 @@ $(document).ready(function() {
 </style> 
 </head>
 <body>
+<input type="hidden" id="jobCk">
+<input type="hidden" id="introCk">
+<input type="hidden" id="applyCk">
+<input type="hidden" id="conditionCk">
+<input type="hidden" id="timeCk">
+<input type="hidden" id="personnelCk">
 <div id="rm_container" class="rm_container">
 			<!-- 1번 -->				
 			<span id="rm_job">			
