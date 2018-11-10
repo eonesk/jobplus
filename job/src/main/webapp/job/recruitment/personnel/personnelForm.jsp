@@ -15,83 +15,6 @@
 				$("#rmp_inputEmail2").val($(this).val());
 			}
 		});
-		$("#testButton").click(function() {
-			alert("진입");
-			if(!$("#rmp_name").val()) {
-				alert("이름을 입력하세요");
-				$("#rmp_name").focus();
-				return false;
-			}
-			if(!$("#rmp_dept").val()) {
-				alert("부서를 입력하세요");
-				$("#rmp_dept").focus();
-				return false;
-			}
-			
-			for(var i = 1; i <= 3; i++){
-				if(!$("#rmp_homeTel"+i).val()) {
-					alert("전화번호를 입력하세요");
-					$("#rmp_homeTel"+i).focus();
-					return false;
-				}
-		    }
-			
-			for(var i = 1; i <= 3; i++){
-				if(!$("#rmp_tel"+i).val()) {
-					alert("휴대폰번호를 입력하세요");
-					$("#rmp_tel"+i).focus();
-					return false;
-				}
-		    }
-			
-			if (!$("#rmp_inputEmail1").val()) {
-				alert("이메일주소를 입력하세요");
-				$("rmp_inputEmail1").click();
-				return false;
-			}
-			
-			if (!$("#rmp_inputEmail2").val()) {
-				alert("이메일주소를 입력하세요");
-				$("rmp_inputEmail2").click();
-				return false;
-			}
-			
-			//ajax
-			var rmp_name   = $("#rmp_name").val();
-		   	var rmp_dept   = $("#rmp_dept").val();
-		   	var rmp_email  = $("#rmp_inputEmail1").val() + "@" + $("#rmp_inputEmail2").val();
-		   	var rmp_phone1 = $("#rmp_homeTel1").val() + "-" + $("#rmp_homeTel2").val() + "-" + $("#rmp_homeTel3").val();
-		   	var rmp_phone2 = $("#rmp_tel1").val() + "-" + $("#rmp_tel2").val() + "-" + $("#rmp_tel3").val();
-		   
-		   	
-		   	alert(rmp_name + rmp_dept + rmp_email + rmp_phone1 + rmp_phone2);
-		   	var allData ={
-				"rmp_name" : rmp_name,
-				"rmp_dept" : rmp_dept,
-				"rmp_email" : rmp_email,
-				"rmp_phone1" : rmp_phone1,
-				"rmp_phone2" : rmp_phone2
-			};
-			
-			$.ajax({
-				type: 'POST',
-				url: 'save.do',
-				data:allData,
-				dataType: 'text',
-				cache: false,
-				success: function(data) {
-					if(data == 0) {
-						alert("실패");
-					} else {
-						alert("성공");
-					}		
-				},
-			
-				error : function(e) {
-		            alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
-		     	}
-			});
-		});
 
 	});
 </script>
@@ -233,6 +156,11 @@
 </style>
 </head>
 <body>
+<input type="hidden" id="rmp_name_hidden">
+<input type="hidden" id="rmp_dept_hidden">
+<input type="hidden" id="rmp_email_hidden">
+<input type="hidden" id="rmp_phone1_hidden">
+<input type="hidden" id="rmp_phone2_hidden">
 	<div id="rmp_container" class="rmp_container">
 		<div id="rmp_header" class="rmp_header">
 			<h3>
@@ -298,7 +226,6 @@
 						※e메일을 통해 허위입사지원의 사례가 발생되고 있습니다. <br>사람인 온라인접수 선택 후 e메일을 비공개로
 						등록해주시면 악용되는 경우가 방지됩니다.
 					</div>
-					<button type="button" id="testButton">test</button>
 				</div>
 			</div>
 		</div>

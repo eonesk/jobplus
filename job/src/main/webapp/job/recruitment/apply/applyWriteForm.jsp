@@ -76,8 +76,21 @@
 			}
 			/** 히든인 rma_Gender값에 체크된 값을 넣어주는것  */
 			var Gender = $('input:radio[class="rma_Gender"]:checked').val();
-			$("#rma_Gender").val(Gender);			
-			window.open("/job/job/recruitment/apply/applyWrite.jsp", "", "width=500px height=500px");
+			$("#rma_Gender").val(Gender);
+			alert(Gender);
+			$("#rma_Studylv_hidden").val($("#rma_Studylv").val());
+			$("#rma_Isfinish_hidden").val($("#rma_Isfinish").val());
+			$("#rma_Major_hidden").val($("#rma_Major").val());
+			$("#rma_Vip_hidden").val($("#rma_Vip").val());
+			$("#rma_Foreign_hidden").val($("#rma_Foreign").val());
+			$("#rma_License_hidden").val($("#rma_License").val());
+			$("#rma_Age_hidden").val($("#rma_Age").val());
+			$("#rma_Age2_hidden").val($("#rma_Age2").val());
+			$("#rma_Gender_hidden").val(Gender);
+			alert($("#rma_Gender_hidden").val());
+			$("#applyCk").val("ok");
+			$("#rm_apply").hide();
+			$("#rm_condition").show();
 		});
 	});
 </script>
@@ -204,14 +217,6 @@ div#apply_container {
 <div id="apply_container" class="apply_container">
 	<input type="hidden" id="rm_Seq" class="rm_Seq">
 	<!-- 여기서부터 앞페이지에서 정보넘어온값 -->
-	<input type="hidden" id="rmi_Seq" class="rmi_Seq">
-	<input type="hidden" id="rmi_Personnel" class="rmi_Personnel">
-	<input type="hidden" id="rmi_Type" class="rmi_Type">
-	<input type="hidden" id="rmi_Work1" class="rmi_Work1">
-	<input type="hidden" id="rmi_Work2" class="rmi_Work2">
-	<input type="hidden" id="rmi_Work3" class="rmi_Work3">
-	<input type="hidden" id="rmi_Department" class="rmi_Department">
-	<input type="hidden" id="rmi_Official" class="rmi_Official">
 	<div>
 		<p class="ap_p2">자격요건 및 우대조건</p>
 		<hr>

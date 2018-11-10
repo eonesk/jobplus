@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="Write" parameterType="applyDTO">	
 	 	insert into RM_apply values  
-		(RM_apply_SEQ.nextval,#{rma_Studylv},#{rma_Isfinish},#{rma_Major},#{rma_Vip},#{rma_Foreign},#{rma_License}, #{rma_Gender}, #{rma_Age}, #{rma_Age2}) 
+		(RM_apply_SEQ.nextval,#{rma_Studylv, jdbcType=VARCHAR},#{rma_Isfinish, jdbcType=VARCHAR},#{rma_Major},#{rma_Vip},#{rma_Foreign},#{rma_License}, #{rma_Gender}, #{rma_Age, jdbcType=VARCHAR}, #{rma_Age2, jdbcType=VARCHAR}) 
 	</insert>	
 	<select id="selectLastSeq" resultType="int">
 		select max(RMA_seq) from RM_apply

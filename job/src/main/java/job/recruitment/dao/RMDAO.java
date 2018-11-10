@@ -13,7 +13,7 @@ public class RMDAO {
 	SqlSessionTemplate sqlSession;
 	
 	public int Write(RMDTO rmDTO) {
-		return sqlSession.insert("mybatis.rmMapper.Write", rmDTO);
+		return sqlSession.insert("mybatis.rmMapper.insertRM", rmDTO);
 	}
 	
 	public RMDTO selectRm(int rm_Seq) {
