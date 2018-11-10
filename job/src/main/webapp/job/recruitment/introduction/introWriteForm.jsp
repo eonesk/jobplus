@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>모집요강</title> 
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -63,6 +63,18 @@
 	});
 </script>
 <style type="text/css">
+div#intro_container {
+    width: 765px;
+    display: table;
+    position: relative;
+    left: 4%;
+    margin: 50px;
+}
+/**/
+p {
+    padding-bottom: 13px;
+    padding-top: 13px;
+}
 .in_write {
 	position: absolute; 
     margin: -150px 0 0 -75px;
@@ -74,6 +86,8 @@
 	text-align: center;
 	font: 30px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
 	font-weight: 500;
+	/**/
+	padding-bottom: 20px;
 }
 .in_p2 {
 	text-align: left;
@@ -171,6 +185,7 @@
 </style>
 </head>
 <body class="in_write">
+<div id="intro_container" class="intro_container">
 	<input type="hidden" id="rmi_Seq" class="rmi_Seq">
 	<div>
 		<p class="in_p1">바쁘시더라도 필수는 꼭 입력하세요. (<span class="in_span">&lowast;</span>표시)</p>	
@@ -199,5 +214,6 @@
 	<p class="in_p7">직급/직책
 		<input type="text" id="rmi_Official" class="rmi_Official"> </p>
 		<input type="button" id="in_next" class="in_next" value="다음">
+</div>
 </body>
 </html>

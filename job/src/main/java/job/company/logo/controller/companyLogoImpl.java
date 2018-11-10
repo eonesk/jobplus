@@ -1,5 +1,7 @@
 package job.company.logo.controller;
 
+import java.util.List; 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,18 @@ public class companyLogoImpl implements companyLogoService {
 	public companyLogoDTO logoTopList(String cpm_Id) {
 		return logoDAO.logoTopList(cpm_Id);
 	}
+	@Override
+	public companyLogoDTO viewLogoOfId(String cpm_Id) {
+		return logoDAO.viewLogoOfId(cpm_Id);
+	}
 
+	@Override
+	public List<companyLogoDTO> logoListOfId(int startNum, int endNum, String cpm_Id) {
+		return logoDAO.logoListOfId(startNum, endNum, cpm_Id);
+	}
 
+	@Override
+	public int getLogoOfId(String cpm_Id) {
+		return logoDAO.getLogoOfId(cpm_Id);
+	}
 }
