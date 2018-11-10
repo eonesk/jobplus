@@ -42,6 +42,6 @@ input#btn_imageload {
 </c:if>
 <input type="button" value="등록" class="button" id="logo_btn" 
 		onclick="window.open('/job/job/company/logo/logoWriteForm.jsp','','width=460, height=300, left=100, top=50')">
-<input type="button" value="로고 목록" id="btn_imageload" class="button">	
+<input type="button" value="로고 목록" id="btn_imageload" class="button" onclick="logoList();">	
 </body>
 </html>
