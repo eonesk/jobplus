@@ -757,7 +757,7 @@ ul.list_gnb li {
 		
 		/* 메인에 있는 기업정보 클릭이벤트 (div버튼)  */
 		$("#main_Tbutton1").on("click", function() {
-			window.open("../main/rmViewForm.jsp", "", "width=1000px height=900px");
+			window.open("../main/rmViewForm.do", "", "width=1000px height=900px");
 		});
 	});
 </script>

@@ -5,13 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>근무조건폼</title>
-<style type="text/css">
+<style type="text/css"> 
 body {
 } 
 #conditionWrap {
 	margin: 50px;
 	padding: auto;
 	width: 800px;
+	position: relative;
+    left: 4%;
 }
 #conditionSalary, #conditionBusiness, #conditionWorkspace, #conditionWeek, #conditionTime {
 	border-bottom: 1px solid lightgray;
@@ -21,7 +23,7 @@ body {
 	float: left;
 	padding: 10px;
 	padding-left: 20px;	
-	width: 170px;
+	width: 140px;
 	height: 55px;
 	color: #ff5a00;
 	font-weight: bold;
@@ -43,7 +45,7 @@ body {
 	padding: 10px;
 	padding-left: 20px;
 	
-	width: 170px;
+	width: 140px;
 	height: 107px;
 	color: #ff5a00;
 	font-weight: bold;
@@ -64,7 +66,7 @@ body {
 	padding: 10px;
 	padding-left: 20px;
 	
-	width: 170px;
+	width: 140px;
 	height: 128px;
 	color: #ff5a00;
 	font-weight: bold;
@@ -114,7 +116,7 @@ body {
 	padding-top: 0;
 	padding-left: 20px;
 	
-	width: 170px;
+	width: 140px;
 	height: 48px;
 	color: #757575;	
 }
@@ -129,7 +131,7 @@ body {
 	padding-top: 0;
 	padding-left: 20px;
 	
-	width: 170px;
+	width: 140px;
 	height: 48px;
 	color: #757575;	
 }
@@ -540,6 +542,7 @@ body {
 </script>
 </head>
 <body>
+<div id="cdtion_container" class="cdtion_container">
 <form action="conditionWriteFormNext.do" method="POST" name="timeWriteForm">
 	<div id="conditionWrap">
 		<input id="rmc_Business1" name="rmc_Business1" type="hidden">
@@ -613,9 +616,6 @@ body {
 						<br>
 						<div id="conditionAddrMapValue"></div>
 					</div>
-					<script>
-					    
-					</script>
 					<br>
 				</div>
 				<div id="conditionWorkspaceOut">
@@ -834,8 +834,7 @@ body {
 			<button id="conditionNextButton" type="button">다음</button>
 		</div>
 		
-		<br style="clear: both;">
-		</div>		
+		<br style="clear: both;">		
 		<div id="conditionPopUp">
 			<div id="conditionCategoryTitle"><h3>업종 카테고리 선택</h3></div>
 			<hr>
@@ -1012,5 +1011,6 @@ body {
 		</div>
 	</div>
 </form>
+</div>
 </body>
 </html>

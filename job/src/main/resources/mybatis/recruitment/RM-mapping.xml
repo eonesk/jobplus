@@ -3,17 +3,14 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="mybatis.mainSearchResultMapper">
-	<!-- <select id="selectCpiCompanyName" parameterType="String" resultType="String">
-		select CPI_companyName from companyInfo where CPM_id=#{comId}
+<mapper namespace="mybatis.rmMapper">
+	<insert id="insertRM" parameterType="rmDTO">
+		insert into RM values(
+		RM_seq.nextval(),#{cpm_Id},#{rm_Title},
+		#{rma_Seq},#{rmc_Seq},#{rmt_Seq},#{rmi_Seq},#{rmp_Seq})
+	</insert>
+	
+	<select id="selectRm" parameterType="int" resultType="rmDTO">
+		select * from rm where rm_seq=#{rm_Seq}
 	</select>
-	<select id="selectRmTitle" parameterType="java.util.Map" resultType="rmDTO">
-		select * from rm where rm_seq=#{rm_Seq} and cpm_id=#{comId}
-	</select>
-	<select id="selectRmJob" parameterType="int" resultType="jobDTO">
-		select RMJ_career, RMJ_job, RMJ_type from RM_job where RMJ_seq=#{rmj_Seq}
-	</select>
-	<select id="selectRmCondition" parameterType="int" resultType="conditionDTO">
-		select RMC_salary, RMC_workspace from RM_condition where RMC_seq=#{rmc_Seq}
-	</select> -->
 </mapper>

@@ -9,5 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	insert into RM_introduction values  
 		(RM_introduction_SEQ.nextval,#{rmi_Personnel},#{rmi_Type},#{rmi_Work1},#{rmi_Work2},#{rmi_Department},#{rmi_Official}, #{rmi_Work3}) 
 	</insert>	
-	
+	<select id="selectLastSeq" resultType="int">
+		select max(RMI_seq) from RM_introduction
+	</select>
+	<select id="selectTable" parameterType="int">
+		select * from RM_introduction where RMI_seq=#{rmi_Seq}
+	</select>
 </mapper>

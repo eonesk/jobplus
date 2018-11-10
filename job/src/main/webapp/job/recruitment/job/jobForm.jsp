@@ -9,21 +9,25 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <style type="text/css">
 *{
-	margin: 0;
+	margin: 0; 
 	padding: 0;
 }
 body{
 	
 }
 .rmj_container{
-	background-color:#F2F2F2;
+/* 	background-color:#F2F2F2; */
 	font-family: "Malgun Gothic",gulim,dotum,sans-serif;
 	letter-spacing: -1px;
 	font-size:14px;
-	width: 880px;
+/* 	width: 880px; */
 	/* height:698px; */
-	margin:auto;
+/* 	margin:auto; */
 	line-height: 65px;
+	margin:50px;/*<-*/
+	width: 860px;/*<-*/
+	position: relative;/*<-*/
+    left: 1%;/*<-*/
 }
 
 .rmj_header{
@@ -200,6 +204,23 @@ body{
 		});
 		
 		$("#rmj_detailMoveBtn").click(function() {
+			if(!$("input[name='rmj_job']").val()){
+				alert("직종을 입력하세요.");
+				$("input[name='rmj_job']").focus();
+				return false;
+			}
+			
+			if(!$("input[name='rmj_careerChk']").is(":checked")){
+				alert("경력여부를 체크하세요.");
+				$("input[name='rmj_careerChk']:eq(0)").focus();
+				return false;
+			}
+			
+			if(!$("input[name='rmj_typeChk']").is(":checked")){
+				alert("고용형태를 체크하세요.");
+				$("input[name='rmj_typeChk']:eq(0)").focus();
+				return false;
+			}
 			
 			var rmj_career ="";
 		    $("input:checkbox[name=rmj_careerChk]").each(function() {
@@ -251,7 +272,7 @@ body{
 	<div id="rmj_content" class="rmj_content">
 		<div id="rmj_line1" class="rmj_line1">
 			<span id="rmj_titleSpan1" class="rmj_titleSpan">직종/직무</span>
-			<input type="text" id="rmj_job" class="rmj_job" placeholder="직종을 입력해 주세요">
+			<input type="text" id="rmj_job" name="rmj_job" class="rmj_job" placeholder="직종을 입력해 주세요">
 			<button id="" class="rmj_category">전체 카테고리</button>
 		</div>
 		<div id="rmj_line2" class="rmj_line3">

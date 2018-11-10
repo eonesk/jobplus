@@ -1,5 +1,8 @@
 package job.recruitment.controller;
 
-public interface RMService {
+import job.recruitment.bean.RMDTO;
 
+public interface RMService {
+	int Write(RMDTO rmDTO);
+	RMDTO selectRM(int rm_Seq);
 }

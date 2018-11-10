@@ -20,4 +20,11 @@ public class RM_jobDAO {
 	public RM_jobDTO load(int rmj_seq) {
 		return sqlSession.selectOne("mybatis.jobMapper.load", rmj_seq);
 	}
+	
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.jobMapper.selectLastSeq");
+	}
+	public RM_jobDTO selectTable(int rmj_Seq) {
+		return sqlSession.selectOne("mybatis.jobMapper.selectTable", rmj_Seq);
+	}
 }

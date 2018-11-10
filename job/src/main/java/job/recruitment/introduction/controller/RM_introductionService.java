@@ -4,5 +4,7 @@ import job.recruitment.introduction.bean.RM_introductionDTO;
 
 public interface RM_introductionService {
 	// 등록
-	int Write(RM_introductionDTO introductionDTO);	
+	int Write(RM_introductionDTO introductionDTO);
+	int selectLastSeq();
+	RM_introductionDTO selectTable(int rmi_Seq);
 }
