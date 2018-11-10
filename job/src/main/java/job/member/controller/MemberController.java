@@ -77,7 +77,7 @@ public class MemberController {
 		
 		Date birthDate=null;
 		try {
-			birthDate = new SimpleDateFormat("yyyyMMdd").parse(m_Birth);
+			birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(m_Birth);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
