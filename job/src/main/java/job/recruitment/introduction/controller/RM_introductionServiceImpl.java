@@ -15,4 +15,9 @@ public class RM_introductionServiceImpl implements RM_introductionService {
 		return introductionDAO.Write(introductionDTO);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return introductionDAO.selectLastSeq();
+	}
+
 }

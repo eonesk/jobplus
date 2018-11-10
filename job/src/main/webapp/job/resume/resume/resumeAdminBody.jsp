@@ -8,51 +8,68 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		function resumeList() {
-			$.ajax({
-				url: "resumeListJson.do",
-				type: "post",
-				dateType: "json",
-				success: function(data) {
-					if(data.total == "0"){
-						var tr = $("<tr>", {align: "center"});
-						var td = $("<td>").attr("colspan", "2").css("height","30px").html("등록된 이력서가 없습니다. 새롭게 이력서를 추가해보세요!");
-						tr.append(td);
-						$("#resumeListT").append(tr);
-					}else{
-						$.each(data.items, function(index, item) {
-							var tr = $("<tr>")
-							var td1 = $("<td>").css({
-								"border-right": "1px solid gray",
-								"height": "30px"
-							}).append(item.rs_Title).append(
-								$("<input>", {
+		$.ajax({
+			url: "resumeListJson.do",
+			type: "post",
+			dateType: "json",
+			success: function(data) {
+				if(data.total == "0"){
+					var tr = $("<tr>", {align: "center"});
+					var td = $("<td>").attr("colspan", "2").css("height","30px").html("등록된 이력서가 없습니다. 새롭게 이력서를 추가해보세요!");
+					tr.append(td);
+					$("#resumeListT").append(tr);
+				}else{
+					$.each(data.items, function(index, item) {
+						var tr = $("<tr>")
+						var td1 = $("<td>").css({
+							"border-right": "1px solid gray",
+							"height": "30px"
+						}).append(item.rs_Title).append(
+							$("<input>", {
+								click: function() {
+									resumeDelteCk = confirm("["+ item.rs_Title +"] 이력서를 삭제하시겠습니까?");
+									if(resumeDelteCk){
+										var dataSeq = {
+												"rs_Seq": item.rs_Seq
+										};
+										$.ajax({
+											url:"resumeDelete.do",
+											type: 'post',
+											data: dataSeq,
+											dataType: 'text',
+											timeout: 30000,
+											cache: false,
+											success: function(data) {
+												if(data > 0){
+													alert("삭제되었습니다.");
+													location.href='resumeAdminBody.jsp';
+												}else{
+													alert("네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+												}
+											},
+											errer: function() {
+												alert("네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+											}
+										});
+									}
+								}
+							}).attr("type", "button").attr("value", "삭제").attr("class", "resumeEditBtn")).append(
+								$("<input>",{
 									click: function() {
 										alert("미구현된 기능입니다.");
 									}
-								}).attr("type", "button").attr("value", "수정").attr("class", "resumeEditBtn")).append(
-									$("<input>", {
-										click: function() {
-											var deleteCk = confirm("["+item.rs_Title+"] 이력서를 정말 삭제하시겠습니까?");
-											if(deleteCk){
-												//삭제기능추가해야해
-												alert("삭제되었습니다.");
-											}
-										}
-									}).attr("type", "button").attr("value", "삭제").attr("class", "resumeEditBtn");		
-								);
-							var td2 = $("<td>").css("text-align", "center").html(item.rs_Logdate);
-							
-							tr.append(td1).append(td2);
-							$("#resumeListT").append(tr);
-						});
-					}
-				},
-				error: function() {
-					alert("서버접속에 오류가 생겼습니다. 잠시후 다시 시도해주세요.");
+								}).attr("type", "button").attr("value","수정").attr("class","resumeEditBtn"));
+						var td2 = $("<td>").css("text-align", "center").html(item.rs_Logdate);
+						
+						tr.append(td1).append(td2);
+						$("#resumeListT").append(tr);
+					});
 				}
-			});
-		}
+			},
+			error: function() {
+				alert("서버접속에 오류가 생겼습니다. 잠시후 다시 시도해주세요.");
+			}
+		});
 	});
 </script>
 <style type="text/css">
@@ -81,6 +98,7 @@ body {
 	width: 34px;
 	border: none;
 	padding: 2px;
+	margin-left: 5px;
 	float: right;
 }
 .resumeEditBtn:hover{

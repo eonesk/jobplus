@@ -20,4 +20,9 @@ public class RM_personnelServiceImpl implements RM_personnelService {
 		return rm_personnelDAO.load(rmp_seq);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return rm_personnelDAO.selectLastSeq();
+	}
+
 }

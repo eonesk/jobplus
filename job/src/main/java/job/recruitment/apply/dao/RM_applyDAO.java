@@ -16,4 +16,8 @@ public class RM_applyDAO {
 	public int Write(RM_applyDTO applyDTO) {
 		return sqlSession.insert("mybatis.applyMapper.Write", applyDTO);
 	}
+	
+	public int selectLastSeq() {
+		return sqlSession.selectOne("mybatis.applyMapper.selectLastSeq");
+	}
 }
