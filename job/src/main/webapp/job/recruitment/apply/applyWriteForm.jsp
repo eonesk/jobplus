@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head> 
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>모집요강</title>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -82,6 +82,13 @@
 	});
 </script>
 <style type="text/css">
+div#apply_container {
+    margin: 21px 0 10px 63px;
+    padding: auto;
+    width: 769px;
+    position: relative;
+    left: 5%;
+} /*<-*/
 .ap_write {
 	position: absolute; 
     margin: -150px 0 0 -75px;
@@ -92,7 +99,8 @@
 .ap_p2 {
 	text-align: left;
 	font: 22px "맑은 고딕", Malgun Gothic, "돋움", Dotum, sans-serif;
-	font-weight: bold;
+	font-weight: bold;    
+	margin-bottom: 12px;/*<-*/
 }
 .ap_span {
 	color: #FF8000;
@@ -193,6 +201,7 @@
 </style>
 </head>
 <body class="ap_write">
+<div id="apply_container" class="apply_container">
 	<input type="hidden" id="rm_Seq" class="rm_Seq">
 	<!-- 여기서부터 앞페이지에서 정보넘어온값 -->
 	<input type="hidden" id="rmi_Seq" class="rmi_Seq">
@@ -359,5 +368,6 @@
   		</div>
 	<hr>
 	<input type="button" id="ap_next" class="ap_next" value="다음">
+</div>
 </body>
 </html>

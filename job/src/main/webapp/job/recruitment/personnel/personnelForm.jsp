@@ -8,7 +8,7 @@
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#rmp_selectEmail").change(function() {
+		$("#rmp_selectEmail").change(function() { 
 			if ($(this).val() == "직접입력") {
 				$("#rmp_inputEmail2").val("");
 			} else {
@@ -96,6 +96,7 @@
 	});
 </script>
 <style type="text/css">
+
 .rmp_container div {
 	border-collapse: collapse;
 }
@@ -108,8 +109,12 @@
 }
 
 .rmp_container {
-	width: 860px;
-}
+/* 	width: 860px; */
+	width: 740px;
+	margin: 50px;
+    position: relative;
+    left: 8%;
+}/*<-*/
 
 .rmp_header {
 	margin-bottom: 10px;
@@ -126,7 +131,8 @@
 }
 
 .rmp_lineOne .rmp_lineOneTitle {
-	width: 207px;
+/* 	width: 207px; */
+	width: 167px;
 }
 
 .rmp_lineOne .rmp_lineOneTitleLabel {
@@ -156,7 +162,8 @@
 }
 
 .rmp_lineTwo {
-	width: 860px;
+/* 	width: 860px; */
+	width: 740px;
 	height: 211px;
 	border-top: 1px solid lightgray;
 	border-bottom: 1px solid lightgray;
@@ -167,7 +174,8 @@
 .rmp_lineTwoTitle {
 	padding-top: 10px;
 	float: left;
-	width: 207px;
+/* 	width: 207px; */
+	width: 170px;
 	height: 100%;
 }
 
@@ -181,7 +189,8 @@
 .rmp_lineTwoContent {
 	height: 100%;
 	float: left;
-	width: 653px;
+/* 	width: 653px; */
+	width: 557px;
 }
 
 .rmp_lineTwoContentDiv {

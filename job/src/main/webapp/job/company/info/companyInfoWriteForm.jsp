@@ -10,7 +10,7 @@
 <script type="text/javascript">
 var modify = ${modify};
 	/* 다음지도 */
-	$(function() {
+	$(function() { 
 		$("#map_open").on("click", function() {
 			var title = "기업 위치 확인";
 			var location = $("#cpi_Address").val();
@@ -49,15 +49,10 @@ var modify = ${modify};
 			}
 			for(var i=2; i<7; i++){
 				if($("input:checkbox[name=cpi_Type"+ i + "]").is(':checked')){
-					var length = $("input:checkbox[name=cpi_Type"+ i + "]").length;
-					for(var k=1; k<length; k++){
-						if($("input:checkbox[id=cpi_Type"+ i + "-"+ k +"]").is(':checked')){
-							cpi_Type_font += $("input:checkbox[id='cpi_Type"+ i +"-"+ k +"']:checked").val();
-							cpi_Type += $("input:checkbox[id='cpi_Type"+ i +"-"+ k +"']:checked").val();
-							cpi_Type_font += "<br>";
-							cpi_Type += ",";
-						}
-					}
+					cpi_Type_font += $("input:checkbox[name='cpi_Type" + i +"']:checked").val();
+					cpi_Type += $("input:radio[name='cpi_Type1']:checked").val();
+					cpi_Type_font += "<br>";
+					cpi_Type += ",";
 				}
 			}
 			
@@ -400,10 +395,14 @@ var modify = ${modify};
 	</div>
 	<div class="div companyLogo">
 		<p class="p companyInfo">로고</p>
-		<fieldset>
+ 		<fieldset>
+<!--
 			<input type="button" value="등록" class="button" id="logo_btn" onclick="window.open('/job/job/company/logo/logoWriteForm.jsp','','width=460, height=300, left=100, top=50')">
 			<div><img src="/job/job/company/logo/img/storage/${logoDTO.cpl_Name}" name="cpl_Seq" id="cpl_Seq"></div>
+ -->
+ 			<jsp:include page="/job/company/logo/logoForm.jsp"></jsp:include>	
 		</fieldset>
+
 	</div>
 	<div class="div CPI_vision">
 		<p class="p companyInfo">개요 및 비전</p>

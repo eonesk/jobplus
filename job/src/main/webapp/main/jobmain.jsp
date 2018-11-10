@@ -26,7 +26,7 @@ left: 43%;
 z-index: 20;
 margin-left: -636px;
 max-width: 226px;
-height: inherit;
+height: inherit; 
 }
 #header .area_logo .title_logo {
     margin: 45px 0px 0 0;
@@ -192,6 +192,7 @@ ul.list_gnb li {
     min-height: 600px;
     vertical-align: top;
     text-align: left; 
+    margin-bottom: -50px;/*<-*/
 }
 .wrap_contents.control_margin #content {
     margin-bottom: 50px !important;
