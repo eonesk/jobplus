@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.conditionMapper">
+
+	<insert id="Write" parameterType="conditionDTO">	
+	 	insert into RM_condition values  
+		(RM_condition_seq.nextval,#{rmc_Salary},#{rmc_Business1},
+		#{rmc_Business2, jdbcType=VARCHAR},#{rmc_Business3, jdbcType=VARCHAR},#{rmc_Workspace},
+		#{rmc_Week, jdbcType=VARCHAR}, #{rmc_Time, jdbcType=VARCHAR}) 
+	</insert>	
+	<select id="selectLastSeq" resultType="int">
+		select max(RMC_seq) from RM_condition
+	</select>
+</mapper>

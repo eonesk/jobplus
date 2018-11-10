@@ -24,6 +24,17 @@ public class RMDTO {
 
     // 담당자정보seq 
     private Integer rmp_Seq;
+    
+    private Integer rmj_Seq;
+
+    
+	public Integer getRmj_Seq() {
+		return rmj_Seq;
+	}
+
+	public void setRmj_Seq(Integer rmj_Seq) {
+		this.rmj_Seq = rmj_Seq;
+	}
 
 	public Integer getRm_Seq() {
 		return rm_Seq;

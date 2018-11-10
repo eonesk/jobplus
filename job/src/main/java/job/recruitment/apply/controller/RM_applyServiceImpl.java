@@ -15,4 +15,9 @@ public class RM_applyServiceImpl implements RM_applyService {
 		return applyDAO.Write(applyDTO);
 	}
 
+	@Override
+	public int selectLastSeq() {
+		return applyDAO.selectLastSeq();
+	}
+
 }

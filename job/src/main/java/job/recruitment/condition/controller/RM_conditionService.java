@@ -1,5 +1,9 @@
 package job.recruitment.condition.controller;
 
-public interface RM_conditionService {
+import job.recruitment.condition.bean.RM_conditionDTO;
 
+public interface RM_conditionService {
+	// 등록
+	int Write(RM_conditionDTO conditionDTO);
+	int selectLastSeq();
 }

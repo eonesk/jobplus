@@ -9,5 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	insert into RM_apply values  
 		(RM_apply_SEQ.nextval,#{rma_Studylv},#{rma_Isfinish},#{rma_Major},#{rma_Vip},#{rma_Foreign},#{rma_License}, #{rma_Gender}, #{rma_Age}, #{rma_Age2}) 
 	</insert>	
-	
+	<select id="selectLastSeq" resultType="int">
+		select max(RMA_seq) from RM_apply
+	</select>
 </mapper>

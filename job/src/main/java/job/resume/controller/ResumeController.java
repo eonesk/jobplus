@@ -189,8 +189,8 @@ public class ResumeController {
 	}
 	
 	@RequestMapping(value="/job/resume/resume/resumeDelete.do")
-	public ModelAndView resumeDelete(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
+	public void resumeDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
 		
 		HttpSession session = request.getSession();
 		
@@ -199,10 +199,7 @@ public class ResumeController {
 		
 		int su = resumeService.deleteResume(rs_Seq, m_Id);
 		
-		modelAndView.addObject("su", su);
-		modelAndView.setViewName("resumeDelete.jsp");
-		
-		return modelAndView;
+		out.print(su);
 	}
 	
 	@RequestMapping(value="/job/resume/resume/resumeListJson.do")

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.timeMapper">
+
+	<insert id="Write" parameterType="timeDTO">	
+	 	insert into RM_time values  
+		(RM_time_seq.nextval,#{RMT_startDate},#{RMT_endDate},#{RMT_how},#{RMT_form}) 
+	</insert>	
+	<select id="selectLastSeq" resultType="int">
+		select max(RMT_seq) from RM_time
+	</select>
+</mapper>
