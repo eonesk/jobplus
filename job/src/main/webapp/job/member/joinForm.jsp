@@ -8,77 +8,133 @@
 <script type="text/javascript" src="script/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	//id 속성이 join인 <form>태그 안의 submit 버튼을 누른 경우
+    $(".m_hideSpan").hide();
+    
+ 	//한글입력막기 스크립트
+    $(".m_onlyNum").keypress(function(e) { 
+    	if((e.keyCode < 48 || e.keyCode > 57)) {
+    		return false;
+    	}
+    });
+	
+    //숫자막기 스크립트
+ 	$(".m_notNum").keypress(function(e) { 
+    	if((e.keyCode > 48 && e.keyCode < 57)) {
+    		return false;
+    	}
+    });
+
+
+
+	
+    //id 속성이 join인 <form>태그 안의 submit 버튼을 누른 경우
 	$("form[name='joinForm']").submit(function() {
-		//$(input요소).val() 는 사용자가 입력한 값을 리턴한다.
+		var idReg = /^[A-za-z0-9]{5,15}$/g;
+		var pwReg = /^[A-za-z0-9]{5,15}$/g;
+		
+
+		
 		if(!$("input[name='m_Id']").val()){
-			alert("아이디를 입력하세요.");
+			$("#m_hideIdSpan").css("color","red").html("아이디를 입력하세요.").show();
 			$("input[name='m_Id']").focus();
 			return false;
+		}else if(!idReg.test($("input[name='m_Id']").val())){
+			$("#m_hideIdSpan").css("color","red").html("아이디는 영문자로 시작하는 5~15자 영문자 또는 숫자이어야 합니다").show();
+			$("input[name='m_Id']").focus();
+			return false;
+		}else{
+			$("#m_hideIdSpan").css("color","green").html("사용가능한 아이디 입니다.").show();
 		}
+		
 		/**비밀번호 입력 검사 */
 		if(!$("input[name='m_Pw']").val()){
-			alert("비밀번호를 입력하세요.");
+			$("#m_hidePwSpan").css("color","red").html("비밀번호를 입력하세요.").show(); 
 			$("input[name='m_Pw']").focus();
 			return false;
+		}else if(!pwReg.test($("input[name='m_Pw']").val())){
+			$("#m_hidePwSpan").css("color","red").html("비밀번호는 영문자로 시작하는 5~15자 영문자 또는 숫자이어야 합니다").show();
+			$("input[name='m_Pw']").focus();
+			return false;
+		}else{
+			$("#m_hidePwSpan").css("color","green").html("사용가능한 비밀번호 입니다.").show();
 		}
+		
+		
 		if(!$("input[name='m_Name']").val()){
-			alert("이름을 입력하세요.");
+			$("#m_hideNameSpan").css("color","red").html("이름을 입력하세요.").show(); 
 			$("input[name='m_Name']").focus();
 			return false;
+		}else{
+			$("#m_hideNameSpan").hide();
 		}
+		
 		/**라디오버튼 선택여부 검사 */
 		//!$("라디오버튼CSS셀렉터").is("checked") --> 체크일 경우 : true
 		if(!$("input[name='m_Gender']").is(":checked")){
-			alert("성별을 입력하세요.");
+			$("#m_hideGenderSpan").css("color","red").html("성별을 체크하세요.").show();
 			$("input[name='m_Gender']:eq(0)").focus();
 			return false;
-		}
-		/**이메일주소 입력여부 검사 */
-		if(!$("input[name='m_Email']").val()){
-			alert("이메일주소를 입력하세요.");
-			$("input[name='m_Email']").focus();
-			return false;
-		}
-		
-		if(!$("input[name='m_Address1']").val()){
-			alert("주소를 입력하세요.");
-			$("input[name='m_Address1']").focus();
-			return false;
-		}
-		
-		if(!$("input[name='m_Address2']").val()){
-			alert("주소를 입력하세요.");
-			$("input[name='m_Address2']").focus();
-			return false;
+		}else{
+			$("#m_hideGenderSpan").hide();
 		}
 		
 		if(!$("input[name='m_Homenum']").val()){
-			alert("상세주소를 입력하세요.");
+			$("#m_hideHomeNumSpan").css("color","red").html("전화번호를 입력하세요.").show();
 			$("input[name='m_Homenum']").focus();
 			return false;
+		}else{
+			$("#m_hideHomeNumSpan").hide();
 		}
 		
 		/**핸드폰번호 입력여부 검사 */
 		if(!$("input[name='m_Phone']").val()){
-			alert("핸드폰번호를 입력하세요.");
+			$("#m_hidePhoneSpan").css("color","red").html("핸드폰번호를 입력하세요.").show();
 			$("input[name='m_Phone']").focus();
 			return false;
+		}else{
+			$("#m_hidePhoneSpan").hide();
 		}
 		
-		/**핸드폰번호 입력여부 검사 */
-		if(!$("input[name='m_Phone']").val()){
-			alert("핸드폰번호를 입력하세요.");
-			$("input[name='m_Phone']").focus();
-			return false;
-		}
 		
-		/**핸드폰번호 입력여부 검사 */
 		if(!$("input[name='m_Birth']").val()){
-			alert("핸드폰번호를 입력하세요.");
+			$("#m_hideBirthSpan").css("color","red").html("출생일을 입력하세요.").show();
 			$("input[name='m_Birth']").focus();
 			return false;
+		}else{
+			$("#m_hideBirthSpan").hide();
 		}
+		
+		/**이메일주소 입력여부 검사 */
+		if(!$("input[name='m_Email']").val()){
+			$("#m_hideEmailSpan").css("color","red").html("이메일주소를 입력하세요.").show();
+			$("input[name='m_Email']").focus();
+			return false;
+		}else{
+			$("#m_hideEmailSpan").hide();
+		}
+		
+		if(!$("input[name='m_Address1']").val()){
+			$("#m_hideAddressSpan").css("color","red").html("주소를 입력하세요.").show();
+			$("input[name='m_Address1']").focus();
+			return false;
+		}else{
+			$("#m_hideAddressSpan").hide();
+		}
+		
+		if(!$("input[name='m_Address2']").val()){
+			$("#m_hideAddressSpan").css("color","red").html("상세주소를 입력하세요.").show();
+			$("input[name='m_Address2']").focus();
+			return false;
+		}else{
+			$("#m_hideAddressSpan").hide();
+		}
+		
+		
+		
+		
+		
+		
+		
 		
 		/**체크박스 선택여부 검사 */
 		if(!$("li.must .consent").is(":checked")){
@@ -257,6 +313,12 @@ input[type=checkbox] {
 	font-weight: bold;
 	cursor: pointer;
 }
+.m_hideSpan{
+	display: inline-block;
+	height:30px;
+	font-size:15px;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -285,47 +347,56 @@ input[type=checkbox] {
 					<span>ID/PW</span>
 				</h3>
 				<input name="m_Id" id="m_Id" type="text" placeholder="아이디">
+				<span id="m_hideIdSpan" class="m_hideSpan"></span>
 				<input name="m_Pw" id="m_Pw" type="password" placeholder="비밀번호">
+				<span id="m_hidePwSpan" class="m_hideSpan"></span>
 
 				<h3>
 					<span>이름</span>
 				</h3>
-				<input name="m_Name" id="m_Name" type="text" placeholder="이름">
-
+				<input name="m_Name" id="m_Name" type="text" class="m_notNum" placeholder="이름">
+				<span id="m_hideNameSpan" class="m_hideSpan"></span>
+				
 				<h3>
 					<span>성별</span>
 				</h3>
 				<label><input type="radio" name="m_Gender" value="남자">남자</label>
-				<label><input type="radio" name="m_Gender" value="여자">여자</label>
-
+				<label><input type="radio" name="m_Gender" value="여자">여자</label><br>
+				<span id="m_hideGenderSpan" class="m_hideSpan"></span>
+				
 				<h3>
 					<span>집전화</span>
 				</h3>
-				<input name="m_Homenum" id="m_Homenum" type="tel" placeholder="집전화">
-
+				<input name="m_Homenum" id="m_Homenum" type="text" class="m_onlyNum" placeholder="집전화">
+				<span id="m_hideHomeNumSpan" class="m_hideSpan"></span>
+				
 				<h3>
 					<span>휴대전화</span>
 				</h3>
-				<input name="m_Phone" id="m_Phone" type="tel" placeholder="휴대전화">
-
+				<input name="m_Phone" id="m_Phone" type="text" class="m_onlyNum" placeholder="휴대전화">
+				<span id="m_hidePhoneSpan" class="m_hideSpan"></span>
+				
 				<h3>
 					<span>생년월일</span>
 				</h3>
-				<input name="m_Birth" id="m_Birth" type="text" placeholder="YYYYMMDD">
-
+				<input name="m_Birth" id="m_Birth" type="text" class="m_onlyNum" placeholder="YYYYMMDD">
+				<span id="m_hideBirthSpan" class="m_hideSpan"></span>
+				
 				<h3>
 					<span>이메일</span>
 				</h3>
 				<input name="m_Email" id="m_Email" type="email"
 					placeholder="id@email">
-
+				<span id="m_hideEmailSpan" class="m_hideSpan"></span>
+				
 				<h3>
 					<span>주소</span>
 				</h3>
 				<input name="m_Address1" id="m_Address1" type="text"
 					placeholder="주소지"> <input name="m_Address2" id="m_Address2"
 					type="text" placeholder="상세주소지">
-
+				<span id="m_hideAddressSpan" class="m_hideSpan"></span>
+				
 				<h3>
 					<span>약관동의</span>
 				</h3>
