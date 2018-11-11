@@ -15,8 +15,8 @@ function logoSave(imgPath){
 	alert("사진이 등록되었습니다.");
 // 	window.opener.document.getElementById("fromInput").value=document.getElementById("imgValue").value
 	var imgData = $('#imgValue').val(); 
-	$(opener.document).find("#cpl_Seq").attr("src",imgData);
-	$(opener.document).find("#cpl__Seq").attr("value",$("#cpl_Seq").val());
+/* 	$(opener.document).find("#cpl_Seq").attr("src",imgData);
+	$(opener.document).find("#cpl__Seq").attr("value",$("#cpl_Seq").val()); */
 	document.logoWriteForm.submit();
 	window.close(); 
 }
@@ -24,7 +24,6 @@ $( document ).ready(function() {
   
 });
 
-<script type="text/javascript">
 $("input:checkbox").on('click', function() {
 	var $box = $(this);
 		if ($box.is(":checked")) {

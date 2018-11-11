@@ -38,7 +38,7 @@ input#btn_imageload {
 	<img id='cpl_Seq' alt="" src="/job/job/company/logo/img/storage/${logoDTO.cpl_Name}">
 </c:if>  
 <c:if test="${empty logoDTO }">
-	<img alt="" src="" name="cpl_Seq" id="cpl_Seq">
+	<img alt="cpl_Seq" src="" name="cpl_Seq" id="cpl_Seq">
 </c:if>
 <input type="button" value="등록" class="button" id="logo_btn" 
 		onclick="window.open('/job/job/company/logo/logoWriteForm.jsp','','width=460, height=300, left=100, top=50')">

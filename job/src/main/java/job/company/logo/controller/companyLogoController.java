@@ -38,8 +38,8 @@ public class companyLogoController {
 				//학원 컴퓨터 경로
 //				"C:/Users/user/git/jobplus33442/job/src/main/webapp/job/company/logo/img/storage";
 				//집 컴퓨터 경로
-				"C:/Users/jo2ri/git/jobplus/job/src/main/webapp/job/company/logo/img/storage";
-		
+		//		"C:/Users/jo2ri/git/jobplus/job/src/main/webapp/job/company/logo/img/storage";
+				"C:/Users/samsung/git/jobplus336/job/src/main/webapp/job/company/logo/img/storage";
 		String fileName = img.getOriginalFilename();
 		File file = new File(filePath, fileName);
 		System.out.println("file = " + file);

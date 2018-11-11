@@ -25,6 +25,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="isExistId" parameterType="String" resultType="String">
-		select name from member where m_id=#{m_id}
+		select m_pw from member where m_id=#{id}
 	</select>
 </mapper>

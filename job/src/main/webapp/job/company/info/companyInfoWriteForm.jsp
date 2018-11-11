@@ -127,7 +127,7 @@ var modify = ${modify};
 				var cpi_Moneybase = $("#cpi_Moneybase").val();
 				var cpi_Moneysell = $("#cpi_Moneysell").val();
 				var cpi_Moneygain = $("#cpi_Moneygain").val();
-				var cpl_Seq = null;
+				var cpl_Seq = $("#cpl__Seq").val();
 				var cpi_Vision = $("#cpi_Vision").val();
 				var cpi_History = $("#cpi_History").val();
 				var cpi_Welfare = $("#cpi_Welfare").val();
@@ -436,7 +436,8 @@ var modify = ${modify};
 <!--
 			<input type="button" value="등록" class="button" id="logo_btn" onclick="window.open('/job/job/company/logo/logoWriteForm.jsp','','width=460, height=300, left=100, top=50')">
 			<div><img src="/job/job/company/logo/img/storage/${logoDTO.cpl_Name}" name="cpl_Seq" id="cpl_Seq"></div>
- -->
+ -->		
+ 			<input type="hidden" id="cpl__Seq">
  			<jsp:include page="/job/company/logo/logoForm.jsp"></jsp:include>	
 		</fieldset>
 

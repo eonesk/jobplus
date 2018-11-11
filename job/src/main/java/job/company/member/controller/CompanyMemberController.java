@@ -79,4 +79,17 @@ public class CompanyMemberController {
 		}
 		out.print(result);
 	}
+	
+	@RequestMapping(value="/job/company/member/checkId.do")
+	public void checkId(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=UTF-8");		
+		PrintWriter out = response.getWriter();
+		
+		String cpm_id = request.getParameter("checkId");
+		
+		boolean exist = companyMemberService.isExistId(cpm_id);
+		
+		out.print(exist);
+		
+	}
 }
