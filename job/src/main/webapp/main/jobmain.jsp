@@ -29,7 +29,7 @@ max-width: 226px;
 height: inherit; 
 }
 #header .area_logo .title_logo {
-    margin: 45px 0px 0 0;
+    margin: 30px 0px 0 0;
     font-size: 100%;
     font-weight: normal;
 }
@@ -364,7 +364,7 @@ $(document).ready(function() {
 	    return false;
 	});
 	$("#logo_modify").click(function() {
-		window.open("../job/company/logo/corpImageForm.jsp","","width=460, height=250, left=700, top=100");
+		window.open("/job/job/company/logo/corpImageForm.jsp","","width=460, height=250, left=700, top=100");
 	});
 	$(document).mouseup(function(e) {
 		var container = $("#user_corp_popup");
@@ -403,7 +403,7 @@ $(document).ready(function() {
 					  			</div>
 					  		</div>
 					  		<div class="area_bottom">
-						  		<a href="#">기업정보관리</a>
+						  		<a href="/job/job/company/info/companyInfoWriteForm.do">기업정보관리</a>
 						  		<a href="#">로그아웃</a>
 					  		</div>
 					  </div>		
@@ -411,14 +411,9 @@ $(document).ready(function() {
 				</div>
 				<div class="area_logo">
 					<div class="title_logo">
-						<a>메인로고</a>
-						<a href="../main/jobmain.jsp" class="logo_cm_service" title="기업서비스">
-							<img alt="기업서비스" src="../img/logo_cm_service.png">
-						</a>
+						<a href="/job/main/main.jsp" id="goMain" style="font-size: 36px; color: #5882FA; font-weight: bold; text-decoration: none; margin-left: 0px;">JOBPLUS</a>
 					</div>
-					<div class="all_menu">
-						<button type="button" id="layer_all_menu_toggle_btn" class="btn_menu">메뉴 전체보기</button>
-					</div>
+					
 				</div>
 				<nav id="gnb" class="gnb">
 					<ul class="list_gnb">

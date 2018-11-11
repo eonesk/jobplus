@@ -204,15 +204,52 @@ var modify = ${modify};
 </script>
 </head>
 <body>
+<header id="header">
+			<div class="inner">
+				<div class="user_info" id="user_info">
+					<div class="login" id="login" style="display: inline;">					
+						<a href="/job/main/mLoginForm.jsp" class="#user_corp_popup" id="corp_name">로그인</a>
+						<!-- 
+						<a href="../main/cLoginForm.jsp" class="#user_corp_popup" id="corp_name">기업로그인</a>
+						 -->
+						<a href="/job/job/member/joinForm.jsp" class="#user_corp_popup" id="corp_name">회원가입</a>
+					</div>
+					<div class="logout" id="logout" style="display: none;">	
+						<input type="button" class="#user_corp_popup" id="corp_name" value="로그아웃" style="background-color: white; border: 1px solid #A9BCF5; cursor: pointer;">
+					</div>
+				</div>				
+				<div class="area_logo">
+					<div class="title_logo">
+						<a href="/job/main/main.jsp" id="goMain" style="font-size: 36px; color: #5882FA; font-weight: bold; text-decoration: none; margin-left: 0px;">JOBPLUS</a>
+					</div>
+				</div>
+				<nav id="gnb" class="gnb">
+					<ul class="list_gnb"> <!-- href="../main/jobmain.jsp" -->													
+						<li><input type="button" id="job_main1" class="job_main_btn" value="이력서작성"></li>																	
+						<li><input type="button" id="job_main2" class="job_main_btn" value="공고등록"></li>					
+						<li><a href="#">공고/지원자관리</a></li>	
+						<li><a href="http://www.saramin.co.kr/zf_user/talent/search">인재검색</a></li>
+						<li><a href="https://www.saramin.co.kr/zf_user/auth?ut=c&url=%2Fzf_user%2Fmemcom%2Ftalent-manage%2Fscrap-talent">인재관리</a></li>
+					</ul>
+					<ul class="list_gnb pos_right">
+						<li><a href="http://www.saramin.co.kr/zf_user/service/company/order">채용상품안내</a></li>
+						<li><a href="http://www.saramin.co.kr/zf_user/service/company/order?part_id=talent_search">인재상품안내</a></li>
+						<li><a href="https://www.saramin.co.kr/zf_user/auth?m_code=16&ut=c&url=%2Fzf_user%2Fmemcom%2Fservice-manage%2Fpayment-history">결제내역</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="box_withshadow" style="border-bottom: 1px solid rgb(220, 220, 220);"></div>
+		</header>
+<div id="companyContent">
 <input type="hidden" id="cpm_Id" value="">
 	<h1>기업정보 관리</h1>
-	<h4 class="h4 CPM_companyName"><font class="font CPM_companyName">${sessionScope.comId }</font>님, 안녕하세요</h4>
+	<h4 class="h4 CPM_companyName"><font class="font CPM_companyName">${sessionScope.cpm_id }</font>님, 안녕하세요</h4>
 	<div class="div companyMember">
 		<p class="p companyMember">계정 정보</p>
 		<table class="table companyMember">
 			<tr>
 				<th>&nbsp;아이디</th>
-				<td>${sessionScope.comId }</td>
+				<td>${sessionScope.cpm_id }</td>
 			</tr>
 			<tr>
 				<th>&nbsp;사업자등록번호</th>
@@ -434,8 +471,31 @@ var modify = ${modify};
 			<textarea rows="7" cols="115" name="cpi_Etc" id="cpi_Etc">${companyInfoDTO.cpi_Etc }</textarea>
 		</fieldset>
 	</div>
-	<div class="buttonDiv" align="center">
+	<div class="buttonDiv">
 		<input type="button" value="수정하기" class="writeBtn" id="companyInfoWriteBtn">
 	</div>
+</div>
+	<footer id="sri_footer" class="sri_footer">
+    		<div class="wrap_footer">
+       			<div class="links">
+   					<strong class="blind">바로가기</strong>
+					<ul>
+						<li class="first"><a href="#" rel="noopener" title="회사소개 새창열기">회사소개</a></li>
+						<li><a href="#" target="_blank" rel="noopener" title="보도기사 새창열기">보도기사</a></li>
+						<li><a href="#" target="_blank" rel="noopener" title="찾아오시는길 새창열기">찾아오시는길</a></li>
+						<li><a href="#">회원약관</a></li>
+						<li class="bold"><a href="#" title="개인정보처리방침 바로가기">개인정보처리방침</a></li>
+						<li><a href="#" onclick="" rel="noopener" title="이메일무단수집거부 바로가기">이메일무단수집거부</a></li>
+						<li><a href="#" target="_blank" rel="noopener" title="오픈API 새창열기">오픈API</a></li>
+						<li><a href="#" title="사이트맵 바로가기">사이트맵</a></li>
+						<li><a href="#" title="고객센터 바로가기">고객센터</a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+    				<p>(주)KGITBANK,  서울특별시 구로구 디지털로34길 43(구로동) 201호, 대표 : 똘똘이<br>
+    				사업자등록 : 123-45-67890, 통신판매업 : 제 1109호, Copyright (c) (주)KG. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
 </body>
 </html>

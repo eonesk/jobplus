@@ -31,7 +31,7 @@ public class CompanyInfoController {
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession session = request.getSession();
 		
-		String comId = (String) session.getAttribute("comId");
+		String comId = (String) session.getAttribute("cpm_id");
 		
 		int modify_su = companyInfoService.selectCount(comId);
 		boolean modify = false;
@@ -108,7 +108,7 @@ public class CompanyInfoController {
 		
 		CompanyInfoDTO companyInfoDTO = new CompanyInfoDTO();
 		
-		companyInfoDTO.setCpm_Id((String)session.getAttribute("comId"));
+		companyInfoDTO.setCpm_Id((String)session.getAttribute("cpm_id"));
 		companyInfoDTO.setCpi_Pname(request.getParameter("cpi_Pname"));
 		companyInfoDTO.setCpi_Pphone(request.getParameter("cpi_Pphone"));
 		companyInfoDTO.setCpi_Pemail(request.getParameter("cpi_Pemail"));
