@@ -38,8 +38,8 @@ public class MainSearchDAO {
 		return sqlSession.selectList("mybatis.mainSearchMapper.selectXOO", map);
 	}
 	
-	public String selectCompany(String searchCompany) {
-		return sqlSession.selectOne("mybatis.mainSearchMapper.selectCompany", searchCompany);
+	public List<String> selectCompany(String searchCompany) {
+		return sqlSession.selectList("mybatis.mainSearchMapper.selectCompany", searchCompany);
 	}
 	
 	public List<Integer> selectRM_seqFromId(String cpm_id) {
@@ -86,6 +86,10 @@ public class MainSearchDAO {
 	
 	public Date selectRMT_endDate(int seq) {
 		return sqlSession.selectOne("mybatis.mainSearchMapper.selectRMT_endDate", seq);
+	}
+	
+	public String selectCPI_companyName(String cpm_id_re) {
+		return sqlSession.selectOne("mybatis.mainSearchMapper.selectCPI_companyName", cpm_id_re);
 	}
 	
 }

@@ -37,7 +37,7 @@ public class MainSearchServiceImpl implements MainSearchService {
 	}
 
 	@Override
-	public String selectCompany(String searchCompany) {
+	public List<String> selectCompany(String searchCompany) {
 		return mainSearchDAO.selectCompany(searchCompany);
 	}
 
@@ -84,5 +84,10 @@ public class MainSearchServiceImpl implements MainSearchService {
 	@Override
 	public Date selectRMT_endDate(int seq) {
 		return mainSearchDAO.selectRMT_endDate(seq);
+	}
+
+	@Override
+	public String selectCPI_companyName(String cpm_id_re) {
+		return mainSearchDAO.selectCPI_companyName(cpm_id_re);
 	}
 }
