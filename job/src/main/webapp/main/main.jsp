@@ -756,10 +756,19 @@ ul.list_gnb li {
 			location.href = "../main/logout.jsp";
 		});
 		
-		/* 메인에 있는 기업정보 클릭이벤트 (div버튼)  */
+		/* 메인에 있는 기업정보 클릭이벤트 (div버튼) 
+		   채용정보로 넘어갈때 값두개 넘겨야함 */
 		$("#main_Tbutton1").on("click", function() {
-			/* 채용정보로 넘어갈때 값두개 넘겨야함 */
-			window.open("../main/rmViewForm.do", "", "width=1000px height=900px");
+			window.open("../main/rmViewForm.do?cpm_id=SKbank&rm_Seq=1", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton2").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=IBKbank&rm_Seq=2", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton3").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=naver&rm_Seq=3", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton4").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=SINHANbank&rm_Seq=4", "", "width=1000px height=900px");
 		});
 	});
 </script>
@@ -785,10 +794,8 @@ ul.list_gnb li {
 				</div>				
 				<div class="area_logo">
 					<div class="title_logo">
-						<a><img alt="로고" src="../img/사람인.jpg"></a>
-						<a href="../main/main.jsp" class="logo_cm_service" title="기업서비스">
-							<img alt="기업서비스" src="../img/logo_cm_service.png">
-						</a>
+						<a href="../main/main.jsp" id="goMain" style="font-size: 36px; color: #5882FA; font-weight: bold;
+						 text-decoration: none; margin-left: 0px;">JOBPLUS</a>						
 					</div>
 					<div class="all_menu">
 						<button type="button" id="layer_all_menu_toggle_btn" class="btn_menu">메뉴 전체보기</button>
