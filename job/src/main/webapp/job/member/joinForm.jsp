@@ -29,6 +29,28 @@ $(function() {
 	
     //id 속성이 join인 <form>태그 안의 submit 버튼을 누른 경우
 	$("form[name='joinForm']").submit(function() {
+		var isDuplicate;
+		var allData ={
+				"checkId" : $("input[name='m_Id']").val()
+		};
+		
+		$.ajax({
+			type: 'POST',
+			url: 'checkId.do',
+			data:allData,
+			dataType: 'text',
+			cache: false,
+			success: function(data) {
+				if(data){
+					isDuplicate = true;
+				}
+				alert(isDuplicate);
+			},
+		
+			error : function(e) {
+	            alert('서버 연결 도중 에러가 났습니다. 다시 시도해 주십시오.');
+	     	}
+		});
 		var idReg = /^[A-za-z0-9]{5,15}$/g;
 		var pwReg = /^[A-za-z0-9]{5,15}$/g;
 		
@@ -40,6 +62,10 @@ $(function() {
 			return false;
 		}else if(!idReg.test($("input[name='m_Id']").val())){
 			$("#m_hideIdSpan").css("color","red").html("아이디는 영문자로 시작하는 5~15자 영문자 또는 숫자이어야 합니다").show();
+			$("input[name='m_Id']").focus();
+			return false;
+		}else if(isDuplicate){
+			$("#m_hideIdSpan").css("color","red").html("이미 사용중인 아이디 입니다.").show();
 			$("input[name='m_Id']").focus();
 			return false;
 		}else{

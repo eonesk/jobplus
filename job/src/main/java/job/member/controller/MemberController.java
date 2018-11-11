@@ -105,4 +105,17 @@ public class MemberController {
 		modelAndView.setViewName("joinResult.jsp");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="job/member/checkId.do")
+	public void checkId(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=UTF-8");		
+		PrintWriter out = response.getWriter();
+		
+		String id = request.getParameter("checkId");
+		
+		boolean exist = memberService.isExistId(id);
+		
+		out.print(exist);
+		
+	}
 }
