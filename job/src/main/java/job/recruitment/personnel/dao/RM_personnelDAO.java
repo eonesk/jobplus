@@ -26,6 +26,6 @@ public class RM_personnelDAO {
 	}
 	
 	public RM_personnelDTO selectTable(int rmp_Seq) {
-		return sqlSession.selectOne("mybatis.personnelMapper.selectTable");
+		return sqlSession.selectOne("mybatis.personnelMapper.selectTable", rmp_Seq);
 	}
 }
