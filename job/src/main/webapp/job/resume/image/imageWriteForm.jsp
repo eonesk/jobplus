@@ -16,18 +16,26 @@ $(function() {
 		if(!$("#photo_upload").val()) {
 			alert("사진을 등록해주세요."); 
 			$("#photo_upload").focus();
-			return false;
+			return false;				
 		}
-		function readImg(input) {
-			if(input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					$(opener.document).find("#aaa").val("src",e.target.result); 
-					$(opener.document).find("")
-				}
-				reader.readAsDataURL(value.files[0]);
-			}
+		var fileNm = $("#photo_upload").val();		 
+		if (fileNm != "") {		 
+		    var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();	 
+		    if (!(ext == "gif" || ext == "jpg")) {
+		        alert("사진 파일은 JPG,GIF 파일만 업로드 가능합니다.");
+		        return false;
+		    }		 
 		}
+// 		var maxSize = 1024 * 1024;
+// 		if($("#photo_upload").val() != "") {
+// 			var fileSize =$("#photo_upload").files[0].size;
+// 			if(fileSize > maxSize) {
+// 				 alert("파일용량 1MB을 초과했습니다.");
+// 		         $("#photo_upload").val("");
+// 		         $("#photo_upload").focus();
+// 		         return false;
+// 			}
+// 		} 
 		document.imageWriteForm.submit();
 	});
 	$("#cancle").click(function() {

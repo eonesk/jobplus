@@ -24,7 +24,6 @@ $( document ).ready(function() {
   
 });
 
-<script type="text/javascript">
 $("input:checkbox").on('click', function() {
 	var $box = $(this);
 		if ($box.is(":checked")) {
