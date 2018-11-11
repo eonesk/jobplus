@@ -142,7 +142,7 @@ button:hover {
 }
 table {
 	table-layout:fixed;
-	border-collapse: collapse;
+/* 	border-collapse: collapse; */
 	margin: auto;
 	width: 420px;
 	height: 220px;

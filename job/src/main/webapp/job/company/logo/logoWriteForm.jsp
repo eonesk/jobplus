@@ -64,6 +64,14 @@ $(function() {
 			$("#logo_upload").focus();
 			return false;
 		}
+		var fileNm = $("#logo_upload").val();		 
+		if (fileNm != "") {		 
+		    var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();	 
+		    if (!(ext == "jpg" || ext == "jpeg" || ext == "gif" || ext == "png")) {
+		        alert("파일형식은 jpg, jpeg, gif, png만 업로드 가능합니다.");
+		        return false;
+		    }		 
+		}
 		document.logoWriteForm.submit();
 	});
 	$("#logo_cancle").click(function() {

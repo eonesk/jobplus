@@ -49,7 +49,7 @@
 	function photoList() { 
 // 		if(${getImageOfId > 0}) {
 			window.open("/job/job/resume/image/imageList.do", 
-					"이미지저장목록", "width=470, height=400, left=400, top=100");
+					"이미지저장목록", "width=470, height=430, left=400, top=100");
 
 	}
 </script>
