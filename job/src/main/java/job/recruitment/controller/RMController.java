@@ -56,10 +56,8 @@ public class RMController {
 	public ModelAndView rmViewForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ModelAndView modelAndView = new ModelAndView();
 				
-		//String cpm_Id = request.getParameter("cpm_Id");
-		//int rm_Seq = Integer.parseInt(request.getParameter("rm_Seq"));
-		int rm_Seq = 1;
-		String cpm_Id = "test";
+		String cpm_Id = request.getParameter("cpm_id");
+		int rm_Seq = Integer.parseInt(request.getParameter("rm_Seq"));
 		
 		CompanyInfoDTO companyInfoDTO = companyInfoService.selectCompanyInfo(cpm_Id);
 		//회사로고도 가져오긴 해야함
@@ -91,8 +89,7 @@ public class RMController {
 		
 		HttpSession session = request.getSession();		
 		
-		session.setAttribute("comId", "test");
-		String cpm_Id = (String) session.getAttribute("comId");
+		String cpm_Id = (String) session.getAttribute("cpm_id");
 		
 		int rma_Seq = writeApply(request, response);
 		int rmc_Seq = writeCondition(request, response);
@@ -101,8 +98,8 @@ public class RMController {
 		int rmp_Seq = writePersonnel(request, response);
 		int rmj_Seq = writeJob(request, response);
 		
-		//String rm_Title = request.getParameter("rm_Title");
-		String rm_Title = "죽을거같아";
+		String rm_Title = request.getParameter("rm_Title");
+		
 		RMDTO rmDTO = new RMDTO();
 		rmDTO.setCpm_Id(cpm_Id);
 		rmDTO.setRm_Title(rm_Title);
@@ -253,13 +250,10 @@ public class RMController {
 		String rmp_email = request.getParameter("rmp_email_hidden");
 		String rmp_phone1 = request.getParameter("rmp_phone1_hidden");
 		String rmp_phone2 = request.getParameter("rmp_phone2_hidden");		
-					
-		//테스트용
-		String cpm_id = "test";
 		
 		//실제
-		//HttpSession session = request.getSession();
-		//String cpm_id = session.getAttribute("cpm_id");
+		HttpSession session = request.getSession();
+		String cpm_id = (String) session.getAttribute("cpm_id");
 		
 		RM_personnelDTO rm_personnelDTO = new RM_personnelDTO();
 		rm_personnelDTO.setCpm_id(cpm_id);

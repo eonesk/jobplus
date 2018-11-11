@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,8 +35,10 @@ public class RS_vipController {
 		response.setContentType("text/html; charset=UTF-8");		
 		PrintWriter out = response.getWriter();
 		
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";		
+		String memId = (String) session.getAttribute("memId");	
 		
 		String rsv_isMedal   = request.getParameter("rsv_isMedal");
 		String rsv_isProtect    = request.getParameter("rsv_isProtect");
@@ -87,8 +90,10 @@ public class RS_vipController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		//DB작업 : memID가 가지고 있는 자소서의 개수를 구함
 		int countingValue = rs_vipService.rsvCounting(memId);		
@@ -101,8 +106,10 @@ public class RS_vipController {
 	public ModelAndView eduLoad(HttpServletRequest request) throws IOException {
 		ModelAndView modelAndView = new ModelAndView();
 		
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		// memId의 갯수구하기
 		List<RS_vipDTO> rsv_list = rs_vipService.rsvGetList(memId);

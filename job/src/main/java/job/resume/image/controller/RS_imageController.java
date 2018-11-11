@@ -31,7 +31,11 @@ public class RS_imageController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("display", "imageForm.jsp");
-		String memId = "num1";
+		HttpSession session = request.getSession();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
+		
 		RS_imageDTO imageDTO = new RS_imageDTO();
 		imageDTO.setM_Id(memId);
 		imageDTO = imageService.ImageTopList(memId);
@@ -72,8 +76,9 @@ public class RS_imageController {
 			e.printStackTrace();
 		}
 		
-		// 임의로 아이디 지정 (session값)
-		String memId = "num1";
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
 		
 		//데이터
 		imageDTO.setM_Id(memId);
@@ -102,7 +107,10 @@ public class RS_imageController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		String memId = "num1";
+		HttpSession session = request.getSession();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
 		int numberOfImg = imageService.getImageOfId(memId); 
 		System.out.println("[RS_imageCtr] numberOfImg : " + numberOfImg);
 		out.print(numberOfImg);

@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,8 +28,10 @@ public class RS_trophyController {
 
 	@RequestMapping(value="/job/resume/trophy/Write.do", method=RequestMethod.POST)
 	public void Write(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// Session으로 넘어오는 memID값 임시 지정
-		String mId = "ID";
+		HttpSession session = request.getSession();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
 		
 		response.setContentType("text/html; charset=UTF-8");		
 		PrintWriter out = response.getWriter();
@@ -52,7 +55,7 @@ public class RS_trophyController {
 		trophyDTO.setRst_Date(date);
 		trophyDTO.setRst_Content(rst_Content);
 		trophyDTO.setRST_UserTitle(RST_UserTitle);
-		trophyDTO.setM_Id(mId);
+		trophyDTO.setM_Id(memId);
 		// DB작업
 		int su = trophyService.Write(trophyDTO);	
 		int rst_Seq = 0;
@@ -68,9 +71,11 @@ public class RS_trophyController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
-		// Session으로 넘어오는 ID값 임시 지정 
-		String memId = "ID";
-
+		HttpSession session = request.getSession();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
+		
 		// DB작업 : memID가 가지고 있는 자소서의 개수를 구함
 		int num = trophyService.selectNumtrophy(memId);
 		out.print(num);
@@ -78,8 +83,10 @@ public class RS_trophyController {
 	@RequestMapping(value="/job/resume/trophy/Load.do", method=RequestMethod.POST)
 	public ModelAndView Load(HttpServletRequest request) throws IOException {
 		ModelAndView modelAndView = new ModelAndView();		
-		// Session으로 넘어오는 ID값 임시 지정
-		String memId = "ID";		
+		HttpSession session = request.getSession();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
 		// memId가 가지고 있는 자소서의 UserTitleList을 select해서 list에 추가
 		List<RS_trophyDTO> UserTitleList = trophyService.selectTitleList(memId);	
 		JSONObject jsonObject = new JSONObject();

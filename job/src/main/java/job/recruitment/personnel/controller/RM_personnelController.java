@@ -34,13 +34,9 @@ public class RM_personnelController {
 		String rmp_phone1 = request.getParameter("rmp_phone1");
 		String rmp_phone2 = request.getParameter("rmp_phone2");		
 		
-					
-		//테스트용
-		String cpm_id = "test";
-		
 		//실제
-		//HttpSession session = request.getSession();
-		//String cpm_id = session.getAttribute("cpm_id");
+		HttpSession session = request.getSession();
+		String cpm_id = (String) session.getAttribute("cpm_id");
 		
 		RM_personnelDTO rm_personnelDTO = new RM_personnelDTO();
 		rm_personnelDTO.setCpm_id(cpm_id);

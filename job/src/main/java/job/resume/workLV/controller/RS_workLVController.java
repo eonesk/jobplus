@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,8 +32,10 @@ public class RS_workLVController {
 		response.setContentType("text/html; charset=UTF-8");		
 		PrintWriter out = response.getWriter();
 		
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";		
+		String memId = (String) session.getAttribute("memId");	
 		
 		String rsw_company   = request.getParameter("rsw_company");
 		String rsw_dept      = request.getParameter("rsw_dept");
@@ -89,8 +92,10 @@ public class RS_workLVController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		//DB작업 : memID가 가지고 있는 자소서의 개수를 구함
 		int countingValue = rs_workLVService.rswCounting(memId);		
@@ -103,8 +108,10 @@ public class RS_workLVController {
 	public ModelAndView eduLoad(HttpServletRequest request) throws IOException {
 		ModelAndView modelAndView = new ModelAndView();
 		
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		// memId의 갯수구하기
 		List<RS_workLVDTO> rsw_list = rs_workLVService.rswGetList(memId);

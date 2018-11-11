@@ -153,6 +153,13 @@
 	border-radius: 3px;
 	border: 1px solid lightgray;
 }
+.rm_Title{
+	height: 40px;
+	width: 100%;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 18px;
+}
 </style>
 </head>
 <body>
@@ -227,6 +234,9 @@
 						등록해주시면 악용되는 경우가 방지됩니다.
 					</div>
 				</div>
+			</div>
+			<div>
+					<input type="text" placeholder="채용공고 제목을 작성해주세요." id="rm_Title" class="rm_Title">
 			</div>
 		</div>
 	</div>

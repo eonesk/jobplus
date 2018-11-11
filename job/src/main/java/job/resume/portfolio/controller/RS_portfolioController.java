@@ -85,8 +85,9 @@ public class RS_portfolioController {
 			e.printStackTrace();
 		}
 	
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		String rspf_Usertitle = request.getParameter("rspf_Usertitle");
 		System.out.println("rspf_Usertitle>>>" + rspf_Usertitle);
@@ -153,8 +154,10 @@ public class RS_portfolioController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		//memId가 가진 글 개수
 		int numberOfportfolio = portfolioService.getportfolioOfId(memId);
@@ -172,7 +175,10 @@ public class RS_portfolioController {
 		String path = RS_portfolioController.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
 	    System.out.println(path); //--> 절대 경로가 출력됨
 	    
-		String memId = "num1";
+		HttpSession session = request.getSession();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
 		String m_Id = request.getParameter(memId);
 		String str = request.getParameter("pg");
 		int pg = 0;

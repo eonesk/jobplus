@@ -49,10 +49,31 @@ span.left	{float: left;}
 #next_btn1,#next_btn2,#next_btn3,#next_btn4,#next_btn5 {float:right; position: relative;}
 #prev_btn2,#prev_btn3,#prev_btn4,#prev_btn5,#prev_btn6 {float: left; } 
 */
+
+
+#loading {
+ width: 100%;  
+ height: 100%;  
+ top: 0px;
+ left: 0px;
+ position: fixed;  
+ display: block;  
+ opacity: 0.7;  
+ background-color: #fff;  
+ z-index: 99;  
+ text-align: center; 
+ } 
+  
+#loading-image {  
+ position: absolute;  
+ top: 50%;  
+ left: 50%; 
+ z-index: 100; }
+
 </style>
 <script type="text/javascript">
-
 $(document).ready(function() {
+	$('#loading').hide();
 	$("#rm_job").show();
 	$("#rm_intro").hide();
 	$("#rm_apply").hide();
@@ -91,13 +112,19 @@ $(document).ready(function() {
 			
 			if (!$("#rmp_inputEmail1").val()) {
 				alert("이메일주소를 입력하세요");
-				$("rmp_inputEmail1").click();
+				$("#rmp_inputEmail1").click();
 				return false;
 			}
 			
 			if (!$("#rmp_inputEmail2").val()) {
 				alert("이메일주소를 입력하세요");
-				$("rmp_inputEmail2").click();
+				$("#rmp_inputEmail2").click();
+				return false;
+			}
+			
+			if(!$("#rm_Title").val()){
+				alert("채용공고 제목을 입력하세요.");
+				$("#rm_Title").focus();
 				return false;
 			}
 			
@@ -172,8 +199,10 @@ $(document).ready(function() {
 				"rmj_career_hidden": $("#rmj_career_hidden").val(),
 				"rmj_careerStart_hidden": $("#rmj_careerStart_hidden").val(),
 				"rmj_careerEnd_hidden": $("#rmj_careerEnd_hidden").val(),
-				"rmj_type_hidden": $("#rmj_type_hidden").val()
+				"rmj_type_hidden": $("#rmj_type_hidden").val(),
+				"rm_Title": $("#rm_Title").val()
 			};
+			$('#loading').show();  
 			
 			$.ajax({
 				url: 'rmWriteForm.do',
@@ -183,12 +212,15 @@ $(document).ready(function() {
 				cache: false,
 				success: function(data) {
 					if(data>0){
+						$('#loading').hide();  
 						alert("채용공고가 작성되었습니다.");
 					}else{
+						$('#loading').hide();
 						alert("채용공고가 작성에 실패했습니다. 잠시후 다시 시도해주세요.");
 					}
 				},
 				error: function() {
+					$('#loading').hide();
 					alert("통신 중 장애가 발생했습니다! 잠시 후 다시 시도해주세요.");
 				}
 			});
@@ -201,6 +233,7 @@ $(document).ready(function() {
 </style> 
 </head>
 <body>
+<div id="loading"><img id="loading-image" src="/job/img/ajax-loader.gif" alt="Loading..." /></div>
 <input type="hidden" id="jobCk">
 <input type="hidden" id="introCk">
 <input type="hidden" id="applyCk">

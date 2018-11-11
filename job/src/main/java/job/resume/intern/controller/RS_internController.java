@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,9 +30,11 @@ public class RS_internController {
 	@RequestMapping(value="/job/resume/intern/Write.do", method=RequestMethod.POST)
 	public void Write(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 데이터
-		// Session으로 넘어오는 ID값 
-		String mId = "ID";		
-
+		HttpSession session = request.getSession();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
+		
 		response.setContentType("text/html; charset=UTF-8");		
 		PrintWriter out = response.getWriter();
 		
@@ -60,7 +63,7 @@ public class RS_internController {
 		internDTO.setRsit_Type(rsitType);		
 		internDTO.setRsit_Startdate(Startdate);
 		internDTO.setRsit_Enddate(Enddate);	
-		internDTO.setM_Id(mId);
+		internDTO.setM_Id(memId);
 		internDTO.setRsit_UserTitle(rsitUserTitle);		
 		// (2) DB			
 		int su = internService.Write(internDTO);
@@ -78,9 +81,10 @@ public class RS_internController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
-		// Session으로 넘어오는 ID값 임시 지정 
+		HttpSession session = request.getSession();
 		
-		String memId = "ID";
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
 		
 		// DB작업 : memID가 가지고 있는 자소서의 개수를 구함
 		int num = internService.selectNumintern(memId);			
@@ -89,8 +93,10 @@ public class RS_internController {
 	@RequestMapping(value="/job/resume/intern/Load.do")
 	public ModelAndView Load(HttpServletRequest request) throws IOException {
 		ModelAndView modelAndView = new ModelAndView();		
-		// Session으로 넘어오는 ID값 임시 지정
-		String memId = "ID";		
+		HttpSession session = request.getSession();
+		
+		/** Session으로 넘어오는 memID값 임시 지정 */
+		String memId = (String) session.getAttribute("memId");	
 		// memId가 가지고 있는 자소서의 UserTitleList을 select해서 list에 추가
 		List<RS_internDTO> UserTitleList = internService.selectTitleList(memId);
 		JSONObject jsonObject = new JSONObject();
