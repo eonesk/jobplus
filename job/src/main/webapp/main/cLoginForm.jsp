@@ -63,7 +63,7 @@ $(function() {
 
 #loginContainer #header {
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 100px;
 	margin-right: 20px;
 }
 
@@ -107,11 +107,13 @@ input[type=text], input[type=password]{
 	display: inline-block;
 	width: 100%;
 	height: 50px;
-	margin-bottom: 10px;
+	
 }
-
+.joinDiv{
+	margin-top:35px;
+}
 .loginBtn {
-	position:relative;
+	
 	display: block;
 	margin: 0 auto;
 	width: 220px;
@@ -122,9 +124,27 @@ input[type=text], input[type=password]{
 	letter-spacing: -1px;
 	font-weight: bold;
 	cursor: pointer;
-	top:30px;
+	
+}
+.menuDiv{
+	margin-top:30px;
+	text-decoration: none;
+	text-align: center;
 }
 
+.menuDiv a{
+	display:inline-block;
+	width:150px;
+	text-decoration: none;
+	color: black;
+}
+
+.menuDiv a:nth-child(1){
+	border-right: 1px solid gray;
+}
+.menuDiv a:nth-child(2){
+	border-right: 1px solid gray;
+}
 /* FOOTER */
 .sri_footer {
     clear: both;
@@ -182,7 +202,7 @@ input[type=text], input[type=password]{
 <body>
 	<div id=loginContainer>
 		<div id="header">
-			<a href="main.jsp"><img src="img/test.png"></a>
+			<a href="/job/main/main.jsp" id="goMain" style="font-size: 60px; color: #5882FA; font-weight: bold; text-decoration: none; margin-left: 0px;">JOBPLUS</a>
 		</div>
 		<div id="loginCategory">
 			<ul class="loginCategory">
@@ -204,6 +224,9 @@ input[type=text], input[type=password]{
 			<input name="cpm_pw" id="cpm_pw" type="password" placeholder="비밀번호">
 			<div class="joinDiv">
 				<input id="loginBtn" class="loginBtn" type="button" value="로그인">
+			</div>
+			<div class="menuDiv">
+				<a href="#">아이디 찾기</a><a href="#"> 비밀번호 찾기</a><a href="#">회원가입</a>
 			</div>
 		</div>
 	</div>
