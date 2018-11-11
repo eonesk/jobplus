@@ -202,8 +202,6 @@ public class ResumeController {
 		HttpSession session = request.getSession();
 		ModelAndView modelAndView = new ModelAndView();
 		
-		session.setAttribute("memId", "test");
-		
 		String memId = (String)session.getAttribute("memId");
 		
 		List<ResumeListDTO> list = resumeService.selectResumeList(memId);

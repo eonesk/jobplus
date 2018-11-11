@@ -625,7 +625,7 @@ $("#rs_seq").val(null);
 <input type="hidden" id="rs_seq">
 <input type="hidden" id="memId" value="${sessionScope.memId }">
 <div id="header">
-	<a href="#" id="goMain" style="font-size: 36px; color: white; font-weight: bold; text-decoration: none; margin-left: 450px;">JOBPLUS</a>
+	<a href="/job/main/main.jsp" id="goMain" style="font-size: 36px; color: white; font-weight: bold; text-decoration: none; margin-left: 450px;">JOBPLUS</a>
 	<a href="./resumeAdminBody.jsp" id="goResumeList" style="font-size: 18px; color: white; font-weight: bold; text-decoration: none; margin-left: 976px;">이력서 관리</a>
 </div>
 <div id="section">

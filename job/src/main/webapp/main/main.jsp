@@ -133,6 +133,7 @@ ul.list_gnb li {
     word-spacing: -1px;
     text-decoration: none;
 }
+
 #cm_contents .btn_write_job:hover {
     text-decoration: underline;
 }
@@ -717,14 +718,14 @@ ul.list_gnb li {
 			아이디값이 있을때와 없을때 유효성검사 실행 	
 			!m_id (빈값체크)
 		var Main_CPM_id = ${sessionScope.CPM_id};		
-		var Main_M_id = ${sessionScope.m_id};	*/
+		var Main_M_id = ${sessionScope.memId};	*/
 		var cpm_id = $('input:hidden[class="Main_CPM_id"]').val();
-		var m_id = $('input:hidden[class="Main_M_id"]').val();
+		var memId = $('input:hidden[class="Main_M_id"]').val();
 		
-		alert("cpm_id값 = " + cpm_id + "//" + "m_id값 = " + m_id);
+		alert("cpm_id값 = " + cpm_id + "//" + "memId값 = " + memId);
 		
 		/* 로그인/로그아웃화면 처리 */ 
-		if(!m_id && !cpm_id){
+		if(!memId && !cpm_id){
 			document.getElementById("logout").style.display = "none";	
 			document.getElementById("login").style.display = "inline";
 		}else{
@@ -734,7 +735,7 @@ ul.list_gnb li {
 		
 		/* 이력서 등록 버튼 */
 		$("#job_main1").on("click", function() {
-			if(!m_id){
+			if(!memId){
 				alert("회원로그인상태에서만 접근가능합니다.");
 			}else {
 				location.href = "../job/resume/resume/resumeAdminBody.jsp";
@@ -766,7 +767,7 @@ ul.list_gnb li {
 <body id="topBar">
 <!-- 기업회원 개인회원 아이디값 -->
 <input type="hidden" id="Main_CPM_id" class="Main_CPM_id" value="${sessionScope.cpm_id}">
-<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.m_id}">
+<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.memId}">
 	<div id="container">
 		<header id="header">
 			<div class="inner">
