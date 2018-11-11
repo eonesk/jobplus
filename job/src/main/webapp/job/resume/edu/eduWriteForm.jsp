@@ -20,7 +20,7 @@
 			var clone = $("#eduPlus").clone().attr("id", "eduPlus" + numbering);
 			
 			if(eduPlusButtonCnt >=4){
-				console.log("항목추가는 최대 3개까지만 추가가능 합니다.")
+				alert("항목추가는 최대 3개까지만 추가가능 합니다.")
 				eduPlusButtonCnt--;
 				return false;
 			}

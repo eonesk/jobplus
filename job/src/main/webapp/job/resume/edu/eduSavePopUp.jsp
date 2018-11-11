@@ -57,6 +57,10 @@
 		});
 	});
 </script>
+<style type="text/css">
+	#RSE_save_submit {padding: 5px 10px 5px 10px; background-color: #5882FA; border: 0; color: white;}
+	#RSE_save_cancle {padding: 5px 10px 5px 10px; background-color: white; border: 1px solid lightgray;}
+</style>
 </head>
 <body>
 	<div style="background: #f5f7fb; padding: 10px; padding-top: 2px;">

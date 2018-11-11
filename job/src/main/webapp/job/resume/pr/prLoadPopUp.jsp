@@ -23,7 +23,7 @@
 				$("#numberOfPr").append(data);
 				if(data == "0") {
 					alert("저장하신 자기소개서가 없습니다.");
-					$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo($("<tr>")).addClass("rsprLoadListLabelTr").appendTo("#rsprLoadListTable");
+// 					$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo($("<tr>")).addClass("rsprLoadListLabelTr").appendTo("#rsprLoadListTable");
 					//$("<td>").addClass("rsprLoadListLabelTd").html("제목").appendTo("#rsprLoadListTable");
 				} else {				
 					console.log("자기소개서 있을 때");
@@ -35,7 +35,7 @@
 							console.log("성공");
 							
 							var trTitle = $("<tr>").addClass("rsprLoadListLabelTr");
-							var tdTitle = $("<td>").addClass("rsprLoadListLabelTd").html("제목");
+							var tdTitle = $("<td>").addClass("rsprLoadListLabelTd").html("&nbsp;");
 							
 							trTitle.append(tdTitle);
 							$("#rsprLoadListTable").append(trTitle);
@@ -58,8 +58,14 @@
 							function add_event(event) {
 								console.log(event.data.param.rspr_UserTitle + " // " + event.data.param.m_Id);
 				                $("#rsprLoadViewInit").hide();
-				                var title = $("<h3>").html("[ " + event.data.param.rspr_Title + " ]");
-				                var content = $("<p>").html(" " + event.data.param.rspr_Content);
+				                $("#rsprLoadView").html("");
+				                var title = $("<h3>").html("[ " + event.data.param.rspr_Title + " ]").css({
+									"background": "#5882FA",
+									"color": "white"
+									});
+				                var content = $("<p>").html(" " + event.data.param.rspr_Content).css({
+									"background": "white"
+								});
 				                
 				                $("#rsprLoadView").append(title);
 				                $("#rsprLoadView").append(content);
@@ -90,18 +96,23 @@
 		});		
 	});
 </script>
+<style type="text/css">
+	#rspr_UserTitleA:link {color: black; text-decoration: none;}
+	#rspr_UserTitleA:visited {color: black; text-decoration: none;}
+	#rspr_UserTitleA:hover {color: #5882FA; text-decoration: underline;}
+</style>
 </head>
 <body>
 	<h3>자기소개서 불러오기</h3>
 	<!-- float로 연결하든가.. 암튼 한 줄에 표현되어야 함 -->
 	내 자소서 보관함 총&nbsp;<span id="numberOfPr" style="color: orange;">&nbsp;</span>건
 	<div style="width: 500px; height: 150px; overflow-y: scroll; overflow-x: hidden;">
-		<table border="1" id="rsprLoadListTable" name="rsprLoadListTable">
+		<table id="rsprLoadListTable" name="rsprLoadListTable">
 		<!-- 자기소개서 List 들어갈 부분 -->
 		</table>
 	</div>
 	<br>
-	<div style="background: #f5f7fb; padding: 10px; padding-top: 2px; height: 250px;" id="rsprLoadView">
+	<div style="background: #f5f7fb; padding: 10px; padding-top: 2px; height: 250px; overflow-y: scroll;" id="rsprLoadView">
 		<div style="text-align: center;" id="rsprLoadViewInit">
 			<p style="font-size: 14px; margin: 80px;">
 				위 목록에서 자기소개서를 선택하신 후,<br>
