@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectLastSeq" resultType="int">
 		select max(RMA_seq) from RM_apply
 	</select>
-	<select id="selectTable" parameterType="int">
+	<select id="selectTable" parameterType="int" resultType="applyDTO">
 		select * from RM_apply where RMA_seq=#{rma_Seq}
 	</select>
 </mapper>
