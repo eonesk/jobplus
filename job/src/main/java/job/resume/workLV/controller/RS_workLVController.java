@@ -2,6 +2,7 @@ package job.resume.workLV.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -118,17 +119,22 @@ public class RS_workLVController {
 		
 		JSONObject jsonObject = new JSONObject();
 		JSONArray items = new JSONArray();
-		
+		String rsw_startDate = "";
+		String rsw_endDate = "";
 		// rsw_list 리스트값 확인
 		for(int i = 0; i < rsw_list.size(); i++) {
 			RS_workLVDTO rsw_dto = rsw_list.get(i);
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
+			rsw_startDate = dateFormat.format(rsw_dto.getRsw_startDate());
+			rsw_endDate = dateFormat.format(rsw_dto.getRsw_endDate());
 			
 			JSONObject temp = new JSONObject();
 			temp.put("rsw_seq", rsw_dto.getRsw_seq());
 			temp.put("rsw_company", rsw_dto.getRsw_company());
 			temp.put("rsw_dept", rsw_dto.getRsw_dept());
-			temp.put("rsw_startDate", rsw_dto.getRsw_startDate());
-			temp.put("rsw_endDate", rsw_dto.getRsw_endDate());
+			temp.put("rsw_startDate",rsw_startDate);
+			temp.put("rsw_endDate", rsw_endDate);
 			temp.put("rsw_isNow", rsw_dto.getRsw_isNow());
 			temp.put("rsw_position", rsw_dto.getRsw_position());
 			temp.put("rsw_job", rsw_dto.getRsw_job());
@@ -166,17 +172,25 @@ public class RS_workLVController {
 		int accumSeqLastIndexOf = accumSeq.lastIndexOf("/");
 		String accumSeqSubstring = accumSeq.substring(0, accumSeqLastIndexOf);
 		System.out.println("[RS_eduLVController] accumSeqSubstring : " + accumSeqSubstring);
-		
+		String rsw_startDate = "";
+		String rsw_endDate = "";
 		String[] accumSeqSplit = accumSeq.split("/"); 
+		
 		for(int i = 0; i < accumSeqSplit.length; i++) {
 			int rsw_seq = Integer.parseInt(accumSeqSplit[i]);
 			RS_workLVDTO rsw_dto = rs_workLVService.rswGetDTO(rsw_seq);
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
+			rsw_startDate = dateFormat.format(rsw_dto.getRsw_startDate());
+			rsw_endDate = dateFormat.format(rsw_dto.getRsw_endDate());
+			
+			
 			JSONObject temp = new JSONObject();
 			temp.put("rsw_seq", rsw_dto.getRsw_seq());
 			temp.put("rsw_company", rsw_dto.getRsw_company());
 			temp.put("rsw_dept", rsw_dto.getRsw_dept());
-			temp.put("rsw_startDate", rsw_dto.getRsw_startDate());
-			temp.put("rsw_endDate", rsw_dto.getRsw_endDate());
+			temp.put("rsw_startDate", rsw_startDate);
+			temp.put("rsw_endDate", rsw_endDate);
 			temp.put("rsw_isNow", rsw_dto.getRsw_isNow());
 			temp.put("rsw_position", rsw_dto.getRsw_position());
 			temp.put("rsw_job", rsw_dto.getRsw_job());

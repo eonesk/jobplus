@@ -280,7 +280,7 @@ input[type=text], input[type=password], input[type=email],[type=tel] {
 	padding-left: 10px;
 	padding-right: 10px;
 	list-style: none;
-	min-height: 45px;
+	min-height: 40px;
 }
 
 #joinContent #consent li:nth-child(2) {
@@ -350,7 +350,7 @@ input[type=checkbox] {
 <body>
 	<div id=joinContainer>
 		<div id="header">
-			<a href="joinResult.jsp"><img src="img/test.png"></a>
+			<a href="/job/main/main.jsp" id="goMain" style="font-size: 46px; color: #5882FA; font-weight: bold; text-decoration: none; margin-left: 0px;">JOBPLUS</a>
 		</div>
 		<div id="joinCategory">
 			<ul class="joinCategory">

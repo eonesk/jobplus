@@ -179,12 +179,12 @@ body {
 	    margin: 4px;
 	    cursor: pointer;
 }
-.lineFour button:hover,.loadBtn:hover {
+.lineFour input[type=button]:hover,.loadBtn:hover {
 	background-color: #2E9AFE;
 }
 
 .addBtn {
-	width: 101%;
+	width: 100%;
 	height: 50px;
 	background-color: #5882FA;
 	font-size: 15px;

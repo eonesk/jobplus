@@ -319,7 +319,8 @@ input[type=checkbox] {
 .cmp_infoContentSpan{
 	font-size:13px;
 	margin-left:10px;
-	margin-right:20px;
+	margin-right:10px;
+	font-weight: bold;
 }
 .cpm_infotimeLabel{
 	position:relative;
@@ -359,7 +360,7 @@ input[type=checkbox] {
 <body>
 	<div id=joinContainer>
 		<div id="header">
-			<a href="../../../main/main.jsp"><img src="img/test.png"></a>
+			<a href="/job/main/main.jsp" id="goMain" style="font-size: 46px; color: #5882FA; font-weight: bold; text-decoration: none; margin-left: 0px;">JOBPLUS</a>
 		</div>
 		<div id="joinCategory">
 			<ul class="joinCategory">

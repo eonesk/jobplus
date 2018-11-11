@@ -197,7 +197,7 @@ body{
 		$("#rmj_hideSelect1,#rmj_hideSelect2").change(function() {
 			var first = $("#rmj_hideSelect1").val().split('년',2);
 			var second = $("#rmj_hideSelect2").val().split('년',2);
-			alert(first[0]+","+second[0]);
+			
 			if(first[0] >= second[0]){
 				alert("올바른 값을 입력 해주십시오.")
 			}
