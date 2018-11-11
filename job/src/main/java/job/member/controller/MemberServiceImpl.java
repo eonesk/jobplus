@@ -35,7 +35,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean isExistId(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return memberDAO.isExistId(id);
 	}
 }

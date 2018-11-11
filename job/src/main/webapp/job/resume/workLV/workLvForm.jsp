@@ -119,6 +119,24 @@ body {
 	border-top: 1px solid gray;
 }
 
+.footer input[type=button]{
+		width: 80px;
+		height: 40px;
+	    background-color: #5882FA;
+	    border: none;
+	    color:#fff;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 13px;
+	    margin: 4px;
+	    cursor: pointer;
+}
+
+.footer input[type=button]:hover{
+	background-color: #2E9AFE;
+}
+
 .workLvPart textarea {
 	width: 900px;
 	height: 80px;
@@ -131,15 +149,23 @@ body {
 }
 
 .closeBtn {
+	background-color: #5882FA;
+	border: none;
+	color:#fff;
 	overflow: hidden;
 	position: absolute;
 	right: 0;
 	top: 0;
 	width: 35px;
 	height: 35px;
+	cursor: pointer;
 }
 
-.lineFour button,.loadBtn {
+.closeBtn:hover{
+	background-color: #2E9AFE;
+}
+
+.lineFour input[type=button],.loadBtn {
 		width: auto;
 		height: 50px;
 	    background-color: #5882FA;
@@ -158,7 +184,7 @@ body {
 }
 
 .addBtn {
-	width: 100%;
+	width: 101%;
 	height: 50px;
 	background-color: #5882FA;
 	font-size: 15px;
@@ -179,17 +205,8 @@ body {
 	resize: none;
 }
 
-.addBtn span:before {
-	content: '';
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 14px;
-	width: 20px;
-	height: 20px;
-	background: url('/content/images/text_user/resume/write/sprite-icon.png' ')
-		no-repeat 0 -247px;
-}
+
+
 </style>
 <script type="text/javascript" src="/job/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -477,7 +494,7 @@ body {
 						
 						$("#free"+numberRing).on("click", function() {
 							$("#position_list"+numberRing).hide();
-							$("#rsw_position"+numberRing).val($("#free"+numberRing).html());
+							$("#rsw_position"+numberRing).val("프리랜서");
 						});
 						
 						$("#rsw_isNow"+numberRing).on("change", function() {
@@ -491,20 +508,20 @@ body {
 						$("#payBtn"+numberRing).on("click",function() {
 							if($("#rsw_pay"+numberRing).css("display") == "none" ) { 
 							    $("#rsw_pay"+numberRing).show();
-							    $(this).html("연봉-");
+							    $(this).val("연봉-");
 							} else { 
 							    $("#rsw_pay"+numberRing).hide()  
-							    $(this).html("연봉+");
+							    $(this).val("연봉+");
 							} 
 						});
 						
 						$("#partBtn"+numberRing).on("click",function() {
 							if($("#rsw_part"+numberRing).css("display") == "none" ) { 
 							    $("#rsw_part"+numberRing).show();
-							    $(this).html("담당업무-");
+							    $(this).val("담당업무-");
 							} else { 
 							    $("#rsw_part"+numberRing).hide()  
-							    $(this).html("담당업무+");
+							    $(this).val("담당업무+");
 							} 
 						});
 						
@@ -540,12 +557,12 @@ body {
 <input type="hidden" id="rsw__Seq_3">
 	<div id="workLvHeader" class="workLvHeader">
 		<p class="title" style="color: gray; margin-left: 22px;">경력</p>
-		<button type="button" id="loadBtn" class="loadBtn" style="margin-left: 24px;">내 경력 불러오기</button>
+		<input type="button" id="loadBtn" class="loadBtn" style="margin-left: 24px;" value="내 경력 불러오기">
 	</div>
 	<div id="workLvContainer" class="workLvContainer">
 		<div id="workLvContent" class="workLvContent">
 			
-			<button id="closeBtn" type="button" class="closeBtn">X</button>
+			<input id="closeBtn" type="button" class="closeBtn" value="X">
 			<div id="lineOne" class="lineOne">
 				<div id="workLvCompany" class="workLvCompany">
 					<input type="text" id="rsw_company" name="rsw_company"
@@ -707,9 +724,9 @@ body {
 							</div>
 						</div>
 						<div id="footer" class="footer">
-							<button type="button" id="free" class="free">프리랜서</button>
-							<button type="button" id="cancle" class="cancle">취소</button>
-							<button type="button" id="ok" class="ok">확인</button>
+							<input type="button" id="free" class="free" value="프리랜서">
+							<input type="button" id="cancle" class="cancle" value="취소">
+							<input type="button" id="ok" class="ok" value="확인">
 						</div>
 					</div>
 				</div>
@@ -723,15 +740,13 @@ body {
 				</div>
 			</div>
 			<div id="lineFour" class="lineFour">
-				<button id="payBtn" class="payBtn payAdd" type="button">연봉+</button>
-				<button id="partBtn" class="partBtn partAdd" type="button">담당업무+</button>
-				<button id="saveBtn" class="saveBtn saveAdd" type="button">저장하기</button>
+				<input id="payBtn" class="payBtn payAdd" type="button" value="연봉+">
+				<input id="partBtn" class="partBtn partAdd" type="button" value="담당업무+">
+				<input id="saveBtn" class="saveBtn saveAdd" type="button" value="저장하기">
 			</div>
 		</div>
 		<div id="lineFive" class="lineFive">
-			<button id="addBtn" class="addBtn" type="button">
-				<span>추가하기</span>
-			</button>
+			<input id="addBtn" class="addBtn" type="button" value="추가하기">
 		</div>
 		<div id="lineSix" class="lineSix">
 			<textarea id="rsw_career" name="rsw_career"  class="lineSix" placeholder="경력기술서"></textarea>

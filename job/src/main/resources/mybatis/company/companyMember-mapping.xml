@@ -23,6 +23,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="isExistId" parameterType="String" resultType="String">
-		select name from companyMember where cpm_id=#{cpm_id}
+		select cpm_pw from companyMember where cpm_id=#{cpm_id}
 	</select>
 </mapper>
