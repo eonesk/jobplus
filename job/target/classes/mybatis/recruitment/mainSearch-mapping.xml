@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectCompany" parameterType="String" resultType="String">
-		select (CPM_id) from companyInfo where CPI_companyName = #{searchCompany}
+		select (CPM_id) from companyInfo where CPI_companyName like '%' || #{searchCompany} || '%'
 	</select>
 	
 	<select id="selectRM_seqFromId" parameterType="String" resultType="java.lang.Integer">
@@ -58,5 +58,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectRMT_endDate" parameterType="java.lang.Integer" resultType="java.util.Date">
 		select (rmt_enddate) from RM_time where RMT_seq = (select (rmt_seq) from RM where RM_seq = #{seq})
+	</select>
+	
+	<select id="selectCPI_companyName" parameterType="String" resultType="String">
+		select (CPI_companyName) from companyInfo where CPM_id = #{cpm_id_re}
 	</select>
 </mapper>

@@ -97,7 +97,7 @@
 		<tr style="text-align: left;">
 			<td>
 				<div style="padding: 10px;">
-					<a href="#">${param.searchCompany}</a><br>
+					<a href="#">${mainSearchDTO.cpi_companyName}</a><br>
 					<a href="#" class="listTitle">${ mainSearchDTO.rm_title }</a>
 					<span style="font-size: 14px; color: #888;">~${ mainSearchDTO.rmt_endDate }까지</span>
 					<div style="font-size: 14px; color: #888;">
