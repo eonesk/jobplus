@@ -2,6 +2,7 @@ package job.recruitment.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -70,6 +71,14 @@ public class RMController {
 		RM_personnelDTO personnelDTO = personnelService.selectTable(rmDTO.getRmp_Seq());
 		RM_jobDTO jobDTO = jobService.selectTable(rmDTO.getRmj_Seq());
 		
+		DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String rmt_Startdate_String = sdFormat.format(timeDTO.getRmt_Startdate());
+		String rmt_Enddate_String = sdFormat.format(timeDTO.getRmt_Enddate());
+		String cpi_Birth = sdFormat.format(companyInfoDTO.getCpi_Birth());
+		
+		modelAndView.addObject("cpi_Birth", cpi_Birth);
+		modelAndView.addObject("rmt_Startdate_String", rmt_Startdate_String);
+		modelAndView.addObject("rmt_Enddate_String", rmt_Enddate_String);
 		modelAndView.addObject("companyInfoDTO",companyInfoDTO);
 		modelAndView.addObject("rmDTO", rmDTO);
 		modelAndView.addObject("applyDTO", applyDTO);

@@ -35,7 +35,7 @@
 		
 		<h1>자기소개서</h1>		
 		<p style="clear: both; font-size: 12px; margin: 3px;">
-		각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다.</p>		
+		<!-- 각 항목명은 변경할 수 있으며(최대 45자), 항목은 총 10개까지 작성 가능합니다. --></p>		
 		
 		<input type="button" id="RSPR_loadA" class="button button_widthFree" value="내 자소서 불러오기">		
 		<input type="button" id="RSPR_saveA" class="button button_widthFree" value="내 자소서 저장하기">
