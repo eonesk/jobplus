@@ -501,7 +501,7 @@
 						<div style="float: left; z-index: 50px;">
 							<a href="#">
 								<div id="rssTypeFirst" style="float: left; background-color: white; margin-top: 8px; padding-left: 5px; padding-top: 15px; border: 1px solid lightgray; width: 130px; height: 37px;">
-									<span id="rssTypeTitle" style="display: inline;">학교구분</span><span style="position: absolute; left: 540px;">&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</span>
+									<span id="rssTypeTitle" style="display: inline;">학교구분</span><span style="position: absolute; left: 123px;">&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</span>
 								<input id="rssTypeValue" name="rss_Type" type="hidden">
 								</div>
 							</a>						

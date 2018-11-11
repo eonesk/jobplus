@@ -17,6 +17,7 @@
 				$("#rsprContent").focus();
 			} else {
 				window.open("/job/job/resume/pr/prSavePopUp.jsp", "", "width=5	00px height=500px");
+			}
 		});
 		
 		$("#RSPR_loadA").click(function() {
