@@ -52,7 +52,7 @@ public class MemberController {
 		
 		if(result != null) { 				
 			HttpSession session = request.getSession();
-			session.setAttribute("m_id", id);
+			session.setAttribute("memId", id);
 		}
 		out.print(result);
 	}
@@ -77,7 +77,7 @@ public class MemberController {
 		
 		Date birthDate=null;
 		try {
-			birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(m_Birth);
+			birthDate = new SimpleDateFormat("yyyyMMdd").parse(m_Birth);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
