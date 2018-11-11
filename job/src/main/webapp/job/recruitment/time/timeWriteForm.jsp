@@ -343,10 +343,10 @@ h2 {
 #onlineCheckbox {width: 25px; height: 25px; border: 2px;}
 #onlineLabelDiv > p {position: relative; top: -8px; margin: 0; color: #ff5a00;}
 #onlineNotiveDiv {padding-left: 10px;}
-#onlineNotiveDiv > p {margin: 0; color: #757575; font-size: 14px; display: inline-block;}
+#onlineNotiveDiv > p {margin: 0; color: #757575; font-size: 14px; display: block;}
 #onlineNotiveDiv > p > a {color: black;}
 #onlineNotiveDiv > p > a:visited {color: #757575;}
-#onlineAgreeDiv {display: inline-block;}
+#onlineAgreeDiv {display: block;}
 #onlineAgreeCheckbox {float: left; display: inline-block; position: relative; top: 8px; width: 20px; margin: 0;}
 #onlineAgreeDiv > p {float: left; display: inline-block; position: relative; top: 3px; margin: 0; }
 
