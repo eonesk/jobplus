@@ -798,9 +798,10 @@ ul.list_gnb li {
 				</div>				
 				<div class="area_logo">
 					<div class="title_logo">
-						<a><img alt="로고" src="../img/사람인.jpg"></a>
+							<a href="/job/main/main.jsp" id="goMain" style="font-size: 36px; color: #5882FA; font-weight: bold; text-decoration: none; margin-left: 0px;">JOBPLUS</a>
+<!-- 						<a><img alt="로고" src="../img/사람인.jpg"></a> -->
 						<a href="../main/main.jsp" class="logo_cm_service" title="기업서비스">
-							<img alt="기업서비스" src="../img/logo_cm_service.png">
+							<img alt="기업서비스" src="/job/img/logo_cm_service.png">
 						</a>
 					</div>
 					<div class="all_menu">
