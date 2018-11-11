@@ -377,6 +377,9 @@ $(document).ready(function() {
 		$("#rmDiv").show();
 	});
 
+	$("#companyInfoBtn").click(function() {
+		location.href="/job/job/company/info/companyInfoWriteForm.do";
+	});
 });
 
 </script>
@@ -435,6 +438,7 @@ $(document).ready(function() {
 		
 		<section id="cm_contents">
 			<nav id="lnb" class="lnb">
+				<a href="#" class="btn_write_job" id="companyInfoBtn"><span>기업정보 수정</span></a>
 				<a href="#" class="btn_write_job" id="recruitment_insert"><span>공고 등록하기</span></a>
 				<ul class="list_lnb">
 					<li><a href="#">전체공고</a></li>
