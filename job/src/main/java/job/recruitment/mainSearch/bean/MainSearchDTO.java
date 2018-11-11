@@ -10,6 +10,9 @@ public class MainSearchDTO {
 	// 기업아이디 - RM
 	private String cpm_id;
 	
+	// 기업이름 - CompanyInfo
+	private String cpi_companyName;
+	
 	// 채용공고 제목 - RM
 	private String rm_title;
 	
@@ -27,9 +30,9 @@ public class MainSearchDTO {
 
 	@Override
 	public String toString() {
-		return "MainSearchDTO [rm_seq=" + rm_seq + ", cpm_id=" + cpm_id + ", rm_title=" + rm_title + ", rmj_career="
-				+ rmj_career + ", rma_studyLV=" + rma_studyLV + ", rmj_type=" + rmj_type + ", rmt_endDate="
-				+ rmt_endDate + "]";
+		return "MainSearchDTO [rm_seq=" + rm_seq + ", cpm_id=" + cpm_id + ", cpi_companyName=" + cpi_companyName
+				+ ", rm_title=" + rm_title + ", rmj_career=" + rmj_career + ", rma_studyLV=" + rma_studyLV
+				+ ", rmj_type=" + rmj_type + ", rmt_endDate=" + rmt_endDate + "]";
 	}
 
 	public int getRm_seq() {
@@ -87,5 +90,14 @@ public class MainSearchDTO {
 	public void setRmt_endDate(String rmt_endDate) {
 		this.rmt_endDate = rmt_endDate;
 	}
+
+	public String getCpi_companyName() {
+		return cpi_companyName;
+	}
+
+	public void setCpi_companyName(String cpi_companyName) {
+		this.cpi_companyName = cpi_companyName;
+	}
+	
 	
 }
