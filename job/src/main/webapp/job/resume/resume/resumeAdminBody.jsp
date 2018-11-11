@@ -137,7 +137,7 @@ max-width: 226px;
 height: inherit;
 }
 #header .area_logo .title_logo {
-    margin: 45px 0px 0 0;
+    margin: 30px 0px 0 0;
     font-size: 100%;
     font-weight: normal;
 }
@@ -218,7 +218,6 @@ ul.list_gnb li {
     clear: both;
     display: block;
     width: 100%;
-    margin-top: 100%;
     position: relative;
     z-index: 10;
     min-width: 960px;
@@ -353,7 +352,7 @@ ul.list_gnb li {
 .resumeContent {
 	margin: 150px auto;
 	width: 900px;
-	height: auto;
+	height: 600px;
 	vertical-align: center;
 	outline: 0;
 }
@@ -459,13 +458,7 @@ ul.list_gnb li {
 				</div>				
 				<div class="area_logo">
 					<div class="title_logo">
-						<a><img alt="로고" src="/job/img/사람인.jpg"></a>
-						<a href="/job/main/main.jsp" class="logo_cm_service" title="기업서비스">
-							<img alt="기업서비스" src="/job/img/logo_cm_service.png">
-						</a>
-					</div>
-					<div class="all_menu">
-						<button type="button" id="layer_all_menu_toggle_btn" class="btn_menu">메뉴 전체보기</button>
+						<a href="/job/main/main.jsp" id="goMain" style="font-size: 36px; color: #5882FA; font-weight: bold; text-decoration: none; margin-left: 0px;">JOBPLUS</a>
 					</div>
 				</div>
 				<nav id="gnb" class="gnb">
