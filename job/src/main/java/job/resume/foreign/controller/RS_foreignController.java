@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +39,10 @@ public class RS_foreignController {
 		response.setContentType("text/html; charset=UTF-8");		
 		PrintWriter out = response.getWriter();
 		
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		// 넘어오는 변수값 콘솔 확인
 		String rsf_Name = request.getParameter("rsf_Name");
@@ -80,8 +84,10 @@ public class RS_foreignController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		//memId가 가진 글 개수
 		int numberOfForeign = foreignService.getForeignOfId(memId);
@@ -97,8 +103,10 @@ public class RS_foreignController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
+		HttpSession session = request.getSession();
+		
 		/** Session으로 넘어오는 memID값 임시 지정 */
-		String memId = "num1";
+		String memId = (String) session.getAttribute("memId");	
 		
 		//memId가 가진 글 리스트
 		List<RS_foreignDTO> viewForeignOfId = foreignService.viewForeignOfId(memId);

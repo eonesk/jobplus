@@ -349,9 +349,11 @@ ul.list_gnb li {
 #timeDiv {display: none;}
 #rmDiv {display: none;}
 #personnelDiv {display: none;}
+
 </style>
    
 <script type="text/javascript">
+
 /*레이어 팝업*/
 $(document).ready(function() {
 	$("#user_corp_popup").hide();

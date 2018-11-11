@@ -31,8 +31,6 @@ public class CompanyInfoController {
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession session = request.getSession();
 		
-		session.setAttribute("comId", "test");
-		
 		String comId = (String) session.getAttribute("comId");
 		
 		int modify_su = companyInfoService.selectCount(comId);

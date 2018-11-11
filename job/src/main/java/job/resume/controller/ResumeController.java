@@ -35,8 +35,6 @@ public class ResumeController {
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession session = request.getSession();
 
-		session.setAttribute("memId", "test");
-
 		String memId = (String) session.getAttribute("memId");
 		MemberDTO memberDTO = resumeService.selectMember(memId);
 
@@ -56,12 +54,9 @@ public class ResumeController {
 		ModelAndView modelAndView = new ModelAndView();
 		HttpSession session = request.getSession();
 
-		session.setAttribute("memId", "test");
-
-		String memId = (String) session.getAttribute("memId");
 		
-		//수정해야됨!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		int rs_seq = 64;
+		String memId = (String) session.getAttribute("memId");
+		int rs_seq = Integer.parseInt(request.getParameter("rs_seq"));
 		
 		ResumeDTO resumeDTO = resumeService.selectResume(memId, rs_seq);
 		
