@@ -440,7 +440,7 @@ ul.list_gnb li {
 </head>
 <body>
 <input type="hidden" id="Main_CPM_id" class="Main_CPM_id" value="${sessionScope.cpm_id}">
-<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.m_id}">
+<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.memId}">
 <header id="header">
 			<div class="inner">
 				<div class="user_info" id="user_info">
@@ -488,7 +488,6 @@ ul.list_gnb li {
 			</li>
 			<li>인재정보는 <strong>1개의 이력서만 공개 가능</strong>합니다.
 			</li>
-			<li>컨설팅은 사람인 회원이라면 누구나 연 1회, 인재정보 공개 시 신청 가능합니다.</li>
 		</ul>
 	</div>
 	<div class="listHeader">
