@@ -218,6 +218,7 @@
 	width: 400px;
 	
 	
+	
 }
 
 .rv_tit{
