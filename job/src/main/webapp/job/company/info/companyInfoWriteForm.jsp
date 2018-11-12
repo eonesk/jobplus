@@ -11,6 +11,47 @@
 var modify = ${modify};
 	/* 다음지도 */
 	$(function() { 
+		var cpm_id = $('input:hidden[class="Main_CPM_id"]').val();
+		var m_id = $('input:hidden[class="Main_M_id"]').val();
+		
+		
+		/* 로그인/로그아웃화면 처리 */ 
+		if(!m_id && !cpm_id){
+			document.getElementById("logout").style.display = "none";	
+			document.getElementById("login").style.display = "inline";
+		}else{
+			document.getElementById("logout").style.display = "inline";	
+			document.getElementById("login").style.display = "none";
+		}
+		
+		/* 이력서 등록 버튼 */
+		$("#job_main1").on("click", function() {
+			if(!m_id){
+				alert("회원로그인상태에서만 접근가능합니다.");
+			}else {
+				location.href = "/job/resume/resume/resumeAdminBody.jsp";
+			}
+		});
+		
+		/* 공고 등록 버튼 */
+		$("#job_main2").on("click", function() {
+			if(!cpm_id){
+				alert("기업로그인상태에서만 접근가능합니다.");
+			}else {
+				location.href = "/job/main/jobmain.jsp";
+			}
+		});
+		
+		/* 로그아웃 버튼 */
+		$("#logout").on("click", function() {	
+			location.href = "/job/main/logout.jsp";
+		});
+		
+		/* 메인에 있는 기업정보 클릭이벤트 (div버튼)  */
+		$("#main_Tbutton1").on("click", function() {
+			window.open("/job/main/rmViewForm.do", "", "width=1000px height=900px");
+		});
+		
 		$("#map_open").on("click", function() {
 			var title = "기업 위치 확인";
 			var location = $("#cpi_Address").val();
@@ -204,6 +245,8 @@ var modify = ${modify};
 </script>
 </head>
 <body>
+<input type="hidden" id="Main_CPM_id" class="Main_CPM_id" value="${sessionScope.cpm_id}">
+<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.m_id}">
 <header id="header">
 			<div class="inner">
 				<div class="user_info" id="user_info">
@@ -473,7 +516,7 @@ var modify = ${modify};
 		</fieldset>
 	</div>
 	<div class="buttonDiv">
-		<input type="button" value="수정하기" class="writeBtn" id="companyInfoWriteBtn">
+		<input type="button" value="수정하기" class="writeBtn" id="companyInfoWriteBtn" style="margin-left: 340px;">
 	</div>
 </div>
 	<footer id="sri_footer" class="sri_footer">

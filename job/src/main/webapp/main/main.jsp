@@ -722,7 +722,6 @@ ul.list_gnb li {
 		var cpm_id = $('input:hidden[class="Main_CPM_id"]').val();
 		var memId = $('input:hidden[class="Main_M_id"]').val();
 		
-		alert("cpm_id값 = " + cpm_id + "//" + "memId값 = " + memId);
 		
 		/* 로그인/로그아웃화면 처리 */ 
 		if(!memId && !cpm_id){
