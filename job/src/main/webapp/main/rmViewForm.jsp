@@ -355,9 +355,9 @@
 					<div class="rv_cell"><strong class="rv_tit">기업주소</strong> ${companyInfoDTO.cpi_Address }</div>
 				</div>
 				<div id="" class="test2">
-					<div class="rv_cell"><strong class="rv_tit">설립일</strong>${cpi_Birth }년</div>
-					<div class="rv_cell"><strong class="rv_tit">대표자명</strong>${companyInfoDTO.cpi_Firstname }만원</div>
-					<div class="rv_cell"><strong class="rv_tit">재무정보 기준년도</strong>${companyInfoDTO.cpi_Moneyyear }만원</div>
+					<div class="rv_cell"><strong class="rv_tit">설립일</strong>${cpi_Birth }</div>
+					<div class="rv_cell"><strong class="rv_tit">대표자명</strong>${companyInfoDTO.cpi_Firstname }</div>
+					<div class="rv_cell"><strong class="rv_tit">재무정보 기준년도</strong>${companyInfoDTO.cpi_Moneyyear }년</div>
 					<div class="rv_cell"><strong class="rv_tit">자본금</strong>${companyInfoDTO.cpi_Moneybase }만원</div>
 					<div class="rv_cell"><strong class="rv_tit">매출액</strong>${companyInfoDTO.cpi_Moneysell }만원</div>
 					<div class="rv_cell"><strong class="rv_tit">영업이익</strong>${companyInfoDTO.cpi_Moneygain }만원</div>

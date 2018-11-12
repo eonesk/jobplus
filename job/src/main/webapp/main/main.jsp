@@ -844,9 +844,6 @@ ul.list_gnb li {
 						<a href="../main/main.jsp" id="goMain" style="font-size: 36px; color: #5882FA; font-weight: bold;
 						 text-decoration: none; margin-left: 0px;">JOBPLUS</a>						
 					</div>
-					<div class="all_menu">
-						<button type="button" id="layer_all_menu_toggle_btn" class="btn_menu">메뉴 전체보기</button>
-					</div>
 				</div>
 				<nav id="gnb" class="gnb">
 					<ul class="list_gnb"> <!-- href="../main/jobmain.jsp" -->													
