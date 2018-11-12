@@ -770,6 +770,54 @@ ul.list_gnb li {
 		$("#main_Tbutton4").on("click", function() {
 			window.open("../main/rmViewForm.do?cpm_id=SINHANbank&rm_Seq=4", "", "width=1000px height=900px");
 		});
+		$("#main_Tbutton5").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=WEbank&rm_Seq=5", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton6").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=NCsoft&rm_Seq=6", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton7").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=Wemade&rm_Seq=7", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton8").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=SDCcity&rm_Seq=8", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton9").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=KSIAk&rm_Seq=9", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton10").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=EXload&rm_Seq=10", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton11").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=KETIt&rm_Seq=11", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton12").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=UbiQuoss&rm_Seq=12", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton13").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=SKTcc&rm_Seq=13", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton14").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=KAKAO&rm_Seq=14", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton15").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=Entert&rm_Seq=15", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton16").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=KTtel&rm_Seq=16", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton17").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=Pasteur&rm_Seq=17", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton18").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=LHbuild&rm_Seq=18", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton19").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=SKplanet&rm_Seq=19", "", "width=1000px height=900px");
+		});
+		$("#main_Tbutton20").on("click", function() {
+			window.open("../main/rmViewForm.do?cpm_id=SKbuild&rm_Seq=20", "", "width=1000px height=900px");
+		});
 	});
 </script>
 </head>
