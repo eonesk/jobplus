@@ -24,7 +24,7 @@
 	padding-left: 135px;
 	margin:0 auto;
 	padding-top:15px;
-	line-height: 200%;
+	line-height: 250%;
 	letter-spacing: -1px;
 	
 }
@@ -33,7 +33,7 @@
 	font-size:20px;
 }
 .rv_subject{
-	display: inline-block;
+	display: block;
 	font-size: 36px;
 	
 	/* font-weight: bold; */
@@ -46,7 +46,7 @@
 	display:inline-block;
 	width:45px;
 	height:25px;
-	top:3px;
+	top:10px;
 	text-align: center;
 	background-color: #fa6a71;
 	color: white;
@@ -59,8 +59,8 @@
 	width: 210px;
 	height: 60px;
 	letter-spacing: -1px;
-	left: 50px;
-	top:15px;
+	left: 550px;
+	
 	background-color: white;
 	outline: none;
 	font-size: 20px;

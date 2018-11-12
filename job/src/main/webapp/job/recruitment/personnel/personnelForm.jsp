@@ -187,7 +187,7 @@
 						class="rmp_inputLabel rmp_deptLabel">담당부서</label> <input
 						type="text" id="rmp_dept" class="rmp_dept" name="rmp_dept">
 				</div>
-			</div>
+			</div> 
 			<div id="rmp_lineTwo" class="rmp_lineTwo">
 				<div id="rmp_lineTwoTitle" class="rmp_lineTwoTitle">
 					<label class="rmp_lineTwoTitleLabel">＊연락처</label>
