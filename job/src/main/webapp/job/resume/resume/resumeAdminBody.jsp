@@ -76,7 +76,6 @@
 		var cpm_id = $('input:hidden[class="Main_CPM_id"]').val();
 		var m_id = $('input:hidden[class="Main_M_id"]').val();
 		
-		alert("cpm_id값 = " + cpm_id + "//" + "m_id값 = " + m_id);
 		
 		/* 로그인/로그아웃화면 처리 */ 
 		if(!m_id && !cpm_id){

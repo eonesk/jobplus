@@ -117,8 +117,6 @@
 	    font-size: 30px;
 	    margin: 4px;
 	    cursor: pointer;
-	    position: relative;
-	    left: -250px;
 	}
 	.writeBtn:hover{
 		 background-color: #2E9AFE;
