@@ -246,7 +246,7 @@ var modify = ${modify};
 </head>
 <body>
 <input type="hidden" id="Main_CPM_id" class="Main_CPM_id" value="${sessionScope.cpm_id}">
-<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.m_id}">
+<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.memId}">
 <header id="header">
 			<div class="inner">
 				<div class="user_info" id="user_info">

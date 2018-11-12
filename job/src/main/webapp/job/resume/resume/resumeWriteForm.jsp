@@ -621,6 +621,8 @@ $("#rs_seq").val(null);
 </script>
 </head>
 <body>
+<input type="hidden" id="Main_CPM_id" class="Main_CPM_id" value="${sessionScope.cpm_id}">
+<input type="hidden" id="Main_M_id" class="Main_M_id" value="${sessionScope.memId}">
 <form action="resumeWrite.do" method="post" name="resumeWriteForm">
 <input type="hidden" id="rs_seq">
 <input type="hidden" id="memId" value="${sessionScope.memId }">
